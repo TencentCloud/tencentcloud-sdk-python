@@ -14888,17 +14888,15 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _CaCertificate: CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
+        :param _CaCertificate: <p>CA证书内容</p>
         :type CaCertificate: str
-        :param _VerificationCertificate: 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
+        :param _VerificationCertificate: <p>验证证书内容</p>
         :type VerificationCertificate: str
-        :param _Format: 证书格式，不传默认PEM格式，当前仅支持PEM格式
+        :param _Format: <p>证书格式，不传默认PEM格式，当前仅支持PEM格式</p>
         :type Format: str
-        :param _Status: 证书状态，不传默认ACTIVE状态
-    ACTIVE：激活
-    INACTIVE：未激活
+        :param _Status: <p>证书状态，不传默认ACTIVE状态<br>    ACTIVE：激活<br>    INACTIVE：未激活</p>
         :type Status: str
         """
         self._InstanceId = None
@@ -14909,7 +14907,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14920,7 +14918,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def CaCertificate(self):
-        r"""CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
+        r"""<p>CA证书内容</p>
         :rtype: str
         """
         return self._CaCertificate
@@ -14931,7 +14929,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def VerificationCertificate(self):
-        r"""验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
+        r"""<p>验证证书内容</p>
         :rtype: str
         """
         return self._VerificationCertificate
@@ -14942,7 +14940,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""证书格式，不传默认PEM格式，当前仅支持PEM格式
+        r"""<p>证书格式，不传默认PEM格式，当前仅支持PEM格式</p>
         :rtype: str
         """
         return self._Format
@@ -14953,9 +14951,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""证书状态，不传默认ACTIVE状态
-    ACTIVE：激活
-    INACTIVE：未激活
+        r"""<p>证书状态，不传默认ACTIVE状态<br>    ACTIVE：激活<br>    INACTIVE：未激活</p>
         :rtype: str
         """
         return self._Status
@@ -14988,9 +14984,9 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: mqtt实例ID
+        :param _InstanceId: <p>mqtt实例ID</p>
         :type InstanceId: str
-        :param _CaSn: ca 证书的序列号
+        :param _CaSn: <p>ca 证书的序列号</p>
         :type CaSn: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15001,7 +14997,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""mqtt实例ID
+        r"""<p>mqtt实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15012,7 +15008,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     @property
     def CaSn(self):
-        r"""ca 证书的序列号
+        r"""<p>ca 证书的序列号</p>
         :rtype: str
         """
         return self._CaSn

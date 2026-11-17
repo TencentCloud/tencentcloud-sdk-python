@@ -671,6 +671,87 @@ class BankCardVerificationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlackListItem(AbstractModel):
+    r"""BlackListItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>黑名单条目 ID，客户创建条目时自定义，用于回溯是哪一条命中</p>
+        :type ModelId: str
+        :param _ModelType: <p>条目类型。当前仅有 face（人脸）</p>
+        :type ModelType: str
+        :param _FaceScore: <p>人脸相似度，字符串形式表示，保留 4 位小数，取值 0.0000–1.0000</p>
+        :type FaceScore: str
+        :param _BackgroundScore: <p>背景相似度</p>
+        :type BackgroundScore: str
+        """
+        self._ModelId = None
+        self._ModelType = None
+        self._FaceScore = None
+        self._BackgroundScore = None
+
+    @property
+    def ModelId(self):
+        r"""<p>黑名单条目 ID，客户创建条目时自定义，用于回溯是哪一条命中</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelType(self):
+        r"""<p>条目类型。当前仅有 face（人脸）</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def FaceScore(self):
+        r"""<p>人脸相似度，字符串形式表示，保留 4 位小数，取值 0.0000–1.0000</p>
+        :rtype: str
+        """
+        return self._FaceScore
+
+    @FaceScore.setter
+    def FaceScore(self, FaceScore):
+        self._FaceScore = FaceScore
+
+    @property
+    def BackgroundScore(self):
+        r"""<p>背景相似度</p>
+        :rtype: str
+        """
+        return self._BackgroundScore
+
+    @BackgroundScore.setter
+    def BackgroundScore(self, BackgroundScore):
+        self._BackgroundScore = BackgroundScore
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelType = params.get("ModelType")
+        self._FaceScore = params.get("FaceScore")
+        self._BackgroundScore = params.get("BackgroundScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChargeDetail(AbstractModel):
     r"""计费详情
 
@@ -1792,11 +1873,14 @@ class DetectAIFakeFacesRequest(AbstractModel):
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param _EncryptedBody: <p>加密后的密文。</p><ul><li>加密前的数据格式如下:{&quot;FaceInput&quot;:&quot;AAAAA&quot;,&quot;FaceInputType&quot;:1}。</li></ul>
         :type EncryptedBody: str
+        :param _ExtraRiskInfo: <p>一次性携带本次请求的风控上下文，即“是谁、在哪、从哪个 IP 发起”</p>
+        :type ExtraRiskInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskInfo`
         """
         self._FaceInput = None
         self._FaceInputType = None
         self._Encryption = None
         self._EncryptedBody = None
+        self._ExtraRiskInfo = None
 
     @property
     def FaceInput(self):
@@ -1842,6 +1926,17 @@ class DetectAIFakeFacesRequest(AbstractModel):
     def EncryptedBody(self, EncryptedBody):
         self._EncryptedBody = EncryptedBody
 
+    @property
+    def ExtraRiskInfo(self):
+        r"""<p>一次性携带本次请求的风控上下文，即“是谁、在哪、从哪个 IP 发起”</p>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskInfo`
+        """
+        return self._ExtraRiskInfo
+
+    @ExtraRiskInfo.setter
+    def ExtraRiskInfo(self, ExtraRiskInfo):
+        self._ExtraRiskInfo = ExtraRiskInfo
+
 
     def _deserialize(self, params):
         self._FaceInput = params.get("FaceInput")
@@ -1850,6 +1945,9 @@ class DetectAIFakeFacesRequest(AbstractModel):
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
         self._EncryptedBody = params.get("EncryptedBody")
+        if params.get("ExtraRiskInfo") is not None:
+            self._ExtraRiskInfo = ExtraRiskInfo()
+            self._ExtraRiskInfo._deserialize(params.get("ExtraRiskInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1873,12 +1971,16 @@ class DetectAIFakeFacesResponse(AbstractModel):
         :type AttackRiskDetailList: list of AttackRiskDetail
         :param _ExtraInfo: <p>返回额外信息（包括命中模板的详细信息）。</p>
         :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        :param _ExtraRiskResult: <p>附加风险结论的独立容器，回答“本次附加风险检查是否可信、有没有发现问题”。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraRiskResult: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AttackRiskLevel = None
         self._AttackRiskDetailList = None
         self._ExtraInfo = None
+        self._ExtraRiskResult = None
         self._RequestId = None
 
     @property
@@ -1915,6 +2017,18 @@ class DetectAIFakeFacesResponse(AbstractModel):
         self._ExtraInfo = ExtraInfo
 
     @property
+    def ExtraRiskResult(self):
+        r"""<p>附加风险结论的独立容器，回答“本次附加风险检查是否可信、有没有发现问题”。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskResult`
+        """
+        return self._ExtraRiskResult
+
+    @ExtraRiskResult.setter
+    def ExtraRiskResult(self, ExtraRiskResult):
+        self._ExtraRiskResult = ExtraRiskResult
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1937,6 +2051,9 @@ class DetectAIFakeFacesResponse(AbstractModel):
         if params.get("ExtraInfo") is not None:
             self._ExtraInfo = ExtraInfo()
             self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        if params.get("ExtraRiskResult") is not None:
+            self._ExtraRiskResult = ExtraRiskResult()
+            self._ExtraRiskResult._deserialize(params.get("ExtraRiskResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3724,6 +3841,178 @@ class ExtraInfo(AbstractModel):
                 obj = RetrievalLivenessExtraInfo()
                 obj._deserialize(item)
                 self._RetrievalLivenessExtraInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraRiskInfo(AbstractModel):
+    r"""ExtraRiskInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: <p>客户业务域内稳定且唯一的人员标识，用于把同一人员的多次位置上报关联起来，判断是否存在异常位移。</p><p>入参限制：长度 ≤ 128 字符；不可含控制字符（ASCII &lt; 0x20 或 0x7F）；建议传脱敏标识，勿传明文身份证号/手机号</p>
+        :type PersonId: str
+        :param _Latitude: <p>设备采集时的纬度，WGS84 十进制度    </p><p>入参限制：与 Longitude 必须成对出现；取值 [-90, 90]；须为有效数字，不接受 NaN/Inf；JSON 中按字符串传（如 &quot;22.5431&quot;）</p>
+        :type Latitude: str
+        :param _Longitude: <p>设备采集时的经度，WGS84 十进制度    </p><p>入参限制：与 Latitude 必须成对出现；取值 [-180, 180]；其余同上</p>
+        :type Longitude: str
+        :param _Ip: <p>设备采集时的公网出口 IP    </p><p>入参限制：长度 ≤ 64；须为可解析的 IPv4/IPv6；私网、回环、链路本地、组播地址视为不可定位</p>
+        :type Ip: str
+        """
+        self._PersonId = None
+        self._Latitude = None
+        self._Longitude = None
+        self._Ip = None
+
+    @property
+    def PersonId(self):
+        r"""<p>客户业务域内稳定且唯一的人员标识，用于把同一人员的多次位置上报关联起来，判断是否存在异常位移。</p><p>入参限制：长度 ≤ 128 字符；不可含控制字符（ASCII &lt; 0x20 或 0x7F）；建议传脱敏标识，勿传明文身份证号/手机号</p>
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Latitude(self):
+        r"""<p>设备采集时的纬度，WGS84 十进制度    </p><p>入参限制：与 Longitude 必须成对出现；取值 [-90, 90]；须为有效数字，不接受 NaN/Inf；JSON 中按字符串传（如 &quot;22.5431&quot;）</p>
+        :rtype: str
+        """
+        return self._Latitude
+
+    @Latitude.setter
+    def Latitude(self, Latitude):
+        self._Latitude = Latitude
+
+    @property
+    def Longitude(self):
+        r"""<p>设备采集时的经度，WGS84 十进制度    </p><p>入参限制：与 Latitude 必须成对出现；取值 [-180, 180]；其余同上</p>
+        :rtype: str
+        """
+        return self._Longitude
+
+    @Longitude.setter
+    def Longitude(self, Longitude):
+        self._Longitude = Longitude
+
+    @property
+    def Ip(self):
+        r"""<p>设备采集时的公网出口 IP    </p><p>入参限制：长度 ≤ 64；须为可解析的 IPv4/IPv6；私网、回环、链路本地、组播地址视为不可定位</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._Latitude = params.get("Latitude")
+        self._Longitude = params.get("Longitude")
+        self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraRiskResult(AbstractModel):
+    r"""ExtraRiskResult
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>本次附加检查的完成度，回答“这次结果可否采信”。</p><p>枚举值：</p><ul><li>Completed： 本次请求所需的检查均已给出结论（命中或通过）</li><li>Partial： 至少一项检查未能给出结论：依赖不可用、数据不足、入参不完整或非法。结果仅供参考，不代表安全</li></ul>
+        :type Status: str
+        :param _RiskLevel: <p>附加风险等级，可能为空字符串</p><p>枚举值：</p><ul><li>High： 存在已生效的风险命中项（此时 RiskDetailList 非空）</li><li>Low： 检查已完成，且确认无命中</li><li>&quot;&quot;（空字符串）    ： 未识别：本次没有任何一项检查能给出结论，或检查未全部完成。既不代表有风险，也不代表安全</li></ul>
+        :type RiskLevel: str
+        :param _BlackListResult: <p>命中的风险项列表，未命中时为空数组 []</p>
+        :type BlackListResult: list of BlackListItem
+        :param _RiskDetailList: <p>人脸黑名单命中明细，未命中时为空数组 []</p>
+        :type RiskDetailList: list of RiskDetailItem
+        """
+        self._Status = None
+        self._RiskLevel = None
+        self._BlackListResult = None
+        self._RiskDetailList = None
+
+    @property
+    def Status(self):
+        r"""<p>本次附加检查的完成度，回答“这次结果可否采信”。</p><p>枚举值：</p><ul><li>Completed： 本次请求所需的检查均已给出结论（命中或通过）</li><li>Partial： 至少一项检查未能给出结论：依赖不可用、数据不足、入参不完整或非法。结果仅供参考，不代表安全</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskLevel(self):
+        r"""<p>附加风险等级，可能为空字符串</p><p>枚举值：</p><ul><li>High： 存在已生效的风险命中项（此时 RiskDetailList 非空）</li><li>Low： 检查已完成，且确认无命中</li><li>&quot;&quot;（空字符串）    ： 未识别：本次没有任何一项检查能给出结论，或检查未全部完成。既不代表有风险，也不代表安全</li></ul>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def BlackListResult(self):
+        r"""<p>命中的风险项列表，未命中时为空数组 []</p>
+        :rtype: list of BlackListItem
+        """
+        return self._BlackListResult
+
+    @BlackListResult.setter
+    def BlackListResult(self, BlackListResult):
+        self._BlackListResult = BlackListResult
+
+    @property
+    def RiskDetailList(self):
+        r"""<p>人脸黑名单命中明细，未命中时为空数组 []</p>
+        :rtype: list of RiskDetailItem
+        """
+        return self._RiskDetailList
+
+    @RiskDetailList.setter
+    def RiskDetailList(self, RiskDetailList):
+        self._RiskDetailList = RiskDetailList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RiskLevel = params.get("RiskLevel")
+        if params.get("BlackListResult") is not None:
+            self._BlackListResult = []
+            for item in params.get("BlackListResult"):
+                obj = BlackListItem()
+                obj._deserialize(item)
+                self._BlackListResult.append(obj)
+        if params.get("RiskDetailList") is not None:
+            self._RiskDetailList = []
+            for item in params.get("RiskDetailList"):
+                obj = RiskDetailItem()
+                obj._deserialize(item)
+                self._RiskDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10288,6 +10577,42 @@ class RetrievalLivenessExtraInfo(AbstractModel):
         self._HitGroup = params.get("HitGroup")
         self._SimilarityScore = params.get("SimilarityScore")
         self._HitTemplate = params.get("HitTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskDetailItem(AbstractModel):
+    r"""RiskDetailItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>风险项类型</p><p>枚举值：</p><ul><li>IpLocationMismatch： 上报坐标所在国家/地区与 IP 归属国家/地区不一致</li><li>AbnormalLocationChange： 同一人员短时间内发生物理上不可能的位移    </li><li>BlacklistHit： 命中客户自建人脸黑名单</li></ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""<p>风险项类型</p><p>枚举值：</p><ul><li>IpLocationMismatch： 上报坐标所在国家/地区与 IP 归属国家/地区不一致</li><li>AbnormalLocationChange： 同一人员短时间内发生物理上不可能的位移    </li><li>BlacklistHit： 命中客户自建人脸黑名单</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

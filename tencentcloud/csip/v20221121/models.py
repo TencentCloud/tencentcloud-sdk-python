@@ -93273,16 +93273,20 @@ class DescribeExposureTrendResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExposeTrendList: 暴露周期趋势数量统计信息
+        :param _ExposeTrendList: <p>暴露周期趋势数量统计信息</p>
         :type ExposeTrendList: list of ExposeTrendItem
-        :param _ExposeIncrement: 暴露周期新增数量统计
+        :param _ExposeIncrement: <p>暴露周期新增数量统计</p>
         :type ExposeIncrement: int
-        :param _OpenCount: 近1天（24h）完全开放数量
+        :param _OpenCount: <p>近1天（24h）完全开放数量</p>
         :type OpenCount: int
-        :param _AclCount: 近1天（24h）受限访问数量
+        :param _AclCount: <p>近1天（24h）受限访问数量</p>
         :type AclCount: int
-        :param _CloseCount: 近1天（24h）无法访问数量
+        :param _CloseCount: <p>近1天（24h）无法访问数量</p>
         :type CloseCount: int
+        :param _ExposeTotalCount: <p>互联网边界总数</p>
+        :type ExposeTotalCount: int
+        :param _ToGovernRiskCount: <p>待处理边界数量</p>
+        :type ToGovernRiskCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -93291,11 +93295,13 @@ class DescribeExposureTrendResponse(AbstractModel):
         self._OpenCount = None
         self._AclCount = None
         self._CloseCount = None
+        self._ExposeTotalCount = None
+        self._ToGovernRiskCount = None
         self._RequestId = None
 
     @property
     def ExposeTrendList(self):
-        r"""暴露周期趋势数量统计信息
+        r"""<p>暴露周期趋势数量统计信息</p>
         :rtype: list of ExposeTrendItem
         """
         return self._ExposeTrendList
@@ -93306,7 +93312,7 @@ class DescribeExposureTrendResponse(AbstractModel):
 
     @property
     def ExposeIncrement(self):
-        r"""暴露周期新增数量统计
+        r"""<p>暴露周期新增数量统计</p>
         :rtype: int
         """
         return self._ExposeIncrement
@@ -93317,7 +93323,7 @@ class DescribeExposureTrendResponse(AbstractModel):
 
     @property
     def OpenCount(self):
-        r"""近1天（24h）完全开放数量
+        r"""<p>近1天（24h）完全开放数量</p>
         :rtype: int
         """
         return self._OpenCount
@@ -93328,7 +93334,7 @@ class DescribeExposureTrendResponse(AbstractModel):
 
     @property
     def AclCount(self):
-        r"""近1天（24h）受限访问数量
+        r"""<p>近1天（24h）受限访问数量</p>
         :rtype: int
         """
         return self._AclCount
@@ -93339,7 +93345,7 @@ class DescribeExposureTrendResponse(AbstractModel):
 
     @property
     def CloseCount(self):
-        r"""近1天（24h）无法访问数量
+        r"""<p>近1天（24h）无法访问数量</p>
         :rtype: int
         """
         return self._CloseCount
@@ -93347,6 +93353,28 @@ class DescribeExposureTrendResponse(AbstractModel):
     @CloseCount.setter
     def CloseCount(self, CloseCount):
         self._CloseCount = CloseCount
+
+    @property
+    def ExposeTotalCount(self):
+        r"""<p>互联网边界总数</p>
+        :rtype: int
+        """
+        return self._ExposeTotalCount
+
+    @ExposeTotalCount.setter
+    def ExposeTotalCount(self, ExposeTotalCount):
+        self._ExposeTotalCount = ExposeTotalCount
+
+    @property
+    def ToGovernRiskCount(self):
+        r"""<p>待处理边界数量</p>
+        :rtype: int
+        """
+        return self._ToGovernRiskCount
+
+    @ToGovernRiskCount.setter
+    def ToGovernRiskCount(self, ToGovernRiskCount):
+        self._ToGovernRiskCount = ToGovernRiskCount
 
     @property
     def RequestId(self):
@@ -93371,6 +93399,8 @@ class DescribeExposureTrendResponse(AbstractModel):
         self._OpenCount = params.get("OpenCount")
         self._AclCount = params.get("AclCount")
         self._CloseCount = params.get("CloseCount")
+        self._ExposeTotalCount = params.get("ExposeTotalCount")
+        self._ToGovernRiskCount = params.get("ToGovernRiskCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -152758,7 +152788,7 @@ class LoginWhitePlaceInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CountryId: <p>国家ID，当前仅支持国内：1</p>
+        :param _CountryId: <p>国家ID，当前仅支持境内：1</p>
         :type CountryId: int
         :param _ProvinceId: <p>省份ID；99999 表示全部省份</p>
         :type ProvinceId: int
@@ -152771,7 +152801,7 @@ class LoginWhitePlaceInput(AbstractModel):
 
     @property
     def CountryId(self):
-        r"""<p>国家ID，当前仅支持国内：1</p>
+        r"""<p>国家ID，当前仅支持境内：1</p>
         :rtype: int
         """
         return self._CountryId
@@ -194478,6 +194508,8 @@ class UserItem(AbstractModel):
         :type ShareFromAppID: int
         :param _ShareFromUser: <p>配额共享方账号</p>
         :type ShareFromUser: str
+        :param _IsTrialOrder: <p>是否试用订单</p>
+        :type IsTrialOrder: int
         """
         self._AppID = None
         self._AccountType = None
@@ -194490,6 +194522,7 @@ class UserItem(AbstractModel):
         self._QuotaSource = None
         self._ShareFromAppID = None
         self._ShareFromUser = None
+        self._IsTrialOrder = None
 
     @property
     def AppID(self):
@@ -194612,6 +194645,17 @@ class UserItem(AbstractModel):
     def ShareFromUser(self, ShareFromUser):
         self._ShareFromUser = ShareFromUser
 
+    @property
+    def IsTrialOrder(self):
+        r"""<p>是否试用订单</p>
+        :rtype: int
+        """
+        return self._IsTrialOrder
+
+    @IsTrialOrder.setter
+    def IsTrialOrder(self, IsTrialOrder):
+        self._IsTrialOrder = IsTrialOrder
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -194625,6 +194669,7 @@ class UserItem(AbstractModel):
         self._QuotaSource = params.get("QuotaSource")
         self._ShareFromAppID = params.get("ShareFromAppID")
         self._ShareFromUser = params.get("ShareFromUser")
+        self._IsTrialOrder = params.get("IsTrialOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

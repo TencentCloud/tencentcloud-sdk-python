@@ -894,6 +894,11 @@ def test_import_lowcode_v20210108():
     from tencentcloud.lowcode.v20210108 import models
 
 
+def test_import_makers_v20261113():
+    from tencentcloud.makers.v20261113 import makers_client
+    from tencentcloud.makers.v20261113 import models
+
+
 def test_import_mall_v20230518():
     from tencentcloud.mall.v20230518 import mall_client
     from tencentcloud.mall.v20230518 import models

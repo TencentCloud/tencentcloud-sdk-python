@@ -4339,6 +4339,8 @@ class DBInfo(AbstractModel):
         :type EncryptConn: str
         :param _SetId: <p>tdsql的分片id。如节点类型为set必填。</p>
         :type SetId: str
+        :param _Shard: <p>MongoDB专用。分片标识（如&quot;shard01&quot;），仅NodeType=cluster时生效，用于区分分片集群中不同的mongod节点</p>
+        :type Shard: str
         """
         self._Role = None
         self._DbKernel = None
@@ -4362,6 +4364,7 @@ class DBInfo(AbstractModel):
         self._TmpToken = None
         self._EncryptConn = None
         self._SetId = None
+        self._Shard = None
 
     @property
     def Role(self):
@@ -4605,6 +4608,17 @@ class DBInfo(AbstractModel):
     def SetId(self, SetId):
         self._SetId = SetId
 
+    @property
+    def Shard(self):
+        r"""<p>MongoDB专用。分片标识（如&quot;shard01&quot;），仅NodeType=cluster时生效，用于区分分片集群中不同的mongod节点</p>
+        :rtype: str
+        """
+        return self._Shard
+
+    @Shard.setter
+    def Shard(self, Shard):
+        self._Shard = Shard
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
@@ -4629,6 +4643,7 @@ class DBInfo(AbstractModel):
         self._TmpToken = params.get("TmpToken")
         self._EncryptConn = params.get("EncryptConn")
         self._SetId = params.get("SetId")
+        self._Shard = params.get("Shard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15045,19 +15060,34 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
         :type DumpThread: int
         :param _DumpRps: <p>迁移全量导出的 Rps 限制、需要大于 0</p>
         :type DumpRps: int
+        :param _DumpBps: <p>全量导出Bps，单位MB/s，MongoDB专用，上限80</p>
+        :type DumpBps: int
         :param _LoadThread: <p>迁移任务全量导入线程数、有效值为 1-16</p>
         :type LoadThread: int
         :param _SinkerThread: <p>迁移任务增量导入线程数、有效值为 1-128</p>
         :type SinkerThread: int
         :param _LoadRps: <p>全量导入Rps限制</p>
         :type LoadRps: int
+        :param _LoadBps: <p>导入BPS，单位MB/s。目前仅对redis生效，表示目标库单分片流量限制大小</p>
+        :type LoadBps: int
+        :param _DstShardCount: <p>目标库分片数，目前仅对redis生效</p>
+        :type DstShardCount: int
+        :param _SinkerRps: <p>增量导入Rps，MongoDB专用，上限30000</p>
+        :type SinkerRps: int
+        :param _SinkerBps: <p>增量导入Bps，单位MB/s，MongoDB专用，上限120</p>
+        :type SinkerBps: int
         """
         self._JobId = None
         self._DumpThread = None
         self._DumpRps = None
+        self._DumpBps = None
         self._LoadThread = None
         self._SinkerThread = None
         self._LoadRps = None
+        self._LoadBps = None
+        self._DstShardCount = None
+        self._SinkerRps = None
+        self._SinkerBps = None
 
     @property
     def JobId(self):
@@ -15093,6 +15123,17 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
         self._DumpRps = DumpRps
 
     @property
+    def DumpBps(self):
+        r"""<p>全量导出Bps，单位MB/s，MongoDB专用，上限80</p>
+        :rtype: int
+        """
+        return self._DumpBps
+
+    @DumpBps.setter
+    def DumpBps(self, DumpBps):
+        self._DumpBps = DumpBps
+
+    @property
     def LoadThread(self):
         r"""<p>迁移任务全量导入线程数、有效值为 1-16</p>
         :rtype: int
@@ -15125,14 +15166,63 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
     def LoadRps(self, LoadRps):
         self._LoadRps = LoadRps
 
+    @property
+    def LoadBps(self):
+        r"""<p>导入BPS，单位MB/s。目前仅对redis生效，表示目标库单分片流量限制大小</p>
+        :rtype: int
+        """
+        return self._LoadBps
+
+    @LoadBps.setter
+    def LoadBps(self, LoadBps):
+        self._LoadBps = LoadBps
+
+    @property
+    def DstShardCount(self):
+        r"""<p>目标库分片数，目前仅对redis生效</p>
+        :rtype: int
+        """
+        return self._DstShardCount
+
+    @DstShardCount.setter
+    def DstShardCount(self, DstShardCount):
+        self._DstShardCount = DstShardCount
+
+    @property
+    def SinkerRps(self):
+        r"""<p>增量导入Rps，MongoDB专用，上限30000</p>
+        :rtype: int
+        """
+        return self._SinkerRps
+
+    @SinkerRps.setter
+    def SinkerRps(self, SinkerRps):
+        self._SinkerRps = SinkerRps
+
+    @property
+    def SinkerBps(self):
+        r"""<p>增量导入Bps，单位MB/s，MongoDB专用，上限120</p>
+        :rtype: int
+        """
+        return self._SinkerBps
+
+    @SinkerBps.setter
+    def SinkerBps(self, SinkerBps):
+        self._SinkerBps = SinkerBps
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._DumpThread = params.get("DumpThread")
         self._DumpRps = params.get("DumpRps")
+        self._DumpBps = params.get("DumpBps")
         self._LoadThread = params.get("LoadThread")
         self._SinkerThread = params.get("SinkerThread")
         self._LoadRps = params.get("LoadRps")
+        self._LoadBps = params.get("LoadBps")
+        self._DstShardCount = params.get("DstShardCount")
+        self._SinkerRps = params.get("SinkerRps")
+        self._SinkerBps = params.get("SinkerBps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17358,7 +17448,7 @@ class RateLimit(AbstractModel):
         r"""
         :param _DumpThread: <p>全量导出线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :type DumpThread: int
-        :param _DumpRps: <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        :param _DumpRps: <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000。支持mysql系相关链路、mongodb链路。</p>
         :type DumpRps: int
         :param _LoadThread: <p>全量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :type LoadThread: int
@@ -17366,12 +17456,27 @@ class RateLimit(AbstractModel):
         :type LoadRps: int
         :param _SinkerThread: <p>增量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为128</p>
         :type SinkerThread: int
+        :param _LoadBps: <p>全量导入Bps（暂时只有redis产品生效），单位MB/s</p>
+        :type LoadBps: int
+        :param _DstShardCount: <p>目标库分片数，目前暂时只有redis用</p>
+        :type DstShardCount: int
+        :param _DumpBps: <p>全量导出Bps（pg链路及MongoDB链路使用。MongoDB上限80），单位MB/s</p>
+        :type DumpBps: int
+        :param _SinkerRps: <p>增量导入RPS限制，MongoDB专用。上限30000</p>
+        :type SinkerRps: int
+        :param _SinkerBps: <p>增量导入BPS限制，单位MB/s，MongoDB专用。上限120</p>
+        :type SinkerBps: int
         """
         self._DumpThread = None
         self._DumpRps = None
         self._LoadThread = None
         self._LoadRps = None
         self._SinkerThread = None
+        self._LoadBps = None
+        self._DstShardCount = None
+        self._DumpBps = None
+        self._SinkerRps = None
+        self._SinkerBps = None
 
     @property
     def DumpThread(self):
@@ -17386,7 +17491,7 @@ class RateLimit(AbstractModel):
 
     @property
     def DumpRps(self):
-        r"""<p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        r"""<p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000。支持mysql系相关链路、mongodb链路。</p>
         :rtype: int
         """
         return self._DumpRps
@@ -17428,6 +17533,61 @@ class RateLimit(AbstractModel):
     def SinkerThread(self, SinkerThread):
         self._SinkerThread = SinkerThread
 
+    @property
+    def LoadBps(self):
+        r"""<p>全量导入Bps（暂时只有redis产品生效），单位MB/s</p>
+        :rtype: int
+        """
+        return self._LoadBps
+
+    @LoadBps.setter
+    def LoadBps(self, LoadBps):
+        self._LoadBps = LoadBps
+
+    @property
+    def DstShardCount(self):
+        r"""<p>目标库分片数，目前暂时只有redis用</p>
+        :rtype: int
+        """
+        return self._DstShardCount
+
+    @DstShardCount.setter
+    def DstShardCount(self, DstShardCount):
+        self._DstShardCount = DstShardCount
+
+    @property
+    def DumpBps(self):
+        r"""<p>全量导出Bps（pg链路及MongoDB链路使用。MongoDB上限80），单位MB/s</p>
+        :rtype: int
+        """
+        return self._DumpBps
+
+    @DumpBps.setter
+    def DumpBps(self, DumpBps):
+        self._DumpBps = DumpBps
+
+    @property
+    def SinkerRps(self):
+        r"""<p>增量导入RPS限制，MongoDB专用。上限30000</p>
+        :rtype: int
+        """
+        return self._SinkerRps
+
+    @SinkerRps.setter
+    def SinkerRps(self, SinkerRps):
+        self._SinkerRps = SinkerRps
+
+    @property
+    def SinkerBps(self):
+        r"""<p>增量导入BPS限制，单位MB/s，MongoDB专用。上限120</p>
+        :rtype: int
+        """
+        return self._SinkerBps
+
+    @SinkerBps.setter
+    def SinkerBps(self, SinkerBps):
+        self._SinkerBps = SinkerBps
+
 
     def _deserialize(self, params):
         self._DumpThread = params.get("DumpThread")
@@ -17435,6 +17595,11 @@ class RateLimit(AbstractModel):
         self._LoadThread = params.get("LoadThread")
         self._LoadRps = params.get("LoadRps")
         self._SinkerThread = params.get("SinkerThread")
+        self._LoadBps = params.get("LoadBps")
+        self._DstShardCount = params.get("DstShardCount")
+        self._DumpBps = params.get("DumpBps")
+        self._SinkerRps = params.get("SinkerRps")
+        self._SinkerBps = params.get("SinkerBps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17452,28 +17617,44 @@ class RateLimitOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentDumpThread: 当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+        :param _CurrentDumpThread: <p>当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :type CurrentDumpThread: int
-        :param _DefaultDumpThread: 默认的全量导出线程数，该字段仅在出参有意义
+        :param _DefaultDumpThread: <p>默认的全量导出线程数，该字段仅在出参有意义</p>
         :type DefaultDumpThread: int
-        :param _CurrentDumpRps: 当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
+        :param _CurrentDumpRps: <p>当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
         :type CurrentDumpRps: int
-        :param _DefaultDumpRps: 默认的全量导出Rps，该字段仅在出参有意义
+        :param _DefaultDumpRps: <p>默认的全量导出Rps，该字段仅在出参有意义</p>
         :type DefaultDumpRps: int
-        :param _CurrentLoadThread: 当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+        :param _CurrentLoadThread: <p>当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :type CurrentLoadThread: int
-        :param _DefaultLoadThread: 默认的全量导入线程数，该字段仅在出参有意义
+        :param _DefaultLoadThread: <p>默认的全量导入线程数，该字段仅在出参有意义</p>
         :type DefaultLoadThread: int
-        :param _CurrentLoadRps: 当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
+        :param _CurrentLoadRps: <p>当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
         :type CurrentLoadRps: int
-        :param _DefaultLoadRps: 默认的全量导入Rps，该字段仅在出参有意义	
+        :param _DefaultLoadRps: <p>默认的全量导入Rps，该字段仅在出参有意义</p>
         :type DefaultLoadRps: int
-        :param _CurrentSinkerThread: 当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
+        :param _CurrentSinkerThread: <p>当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128</p>
         :type CurrentSinkerThread: int
-        :param _DefaultSinkerThread: 默认的增量导入线程数，该字段仅在出参有意义
+        :param _DefaultSinkerThread: <p>默认的增量导入线程数，该字段仅在出参有意义</p>
         :type DefaultSinkerThread: int
-        :param _HasUserSetRateLimit: enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
+        :param _HasUserSetRateLimit: <p>enum:&quot;no&quot;/&quot;yes&quot;、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义</p>
         :type HasUserSetRateLimit: str
+        :param _DefaultDumpBps: <p>默认的全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :type DefaultDumpBps: int
+        :param _CurrentSinkerRps: <p>增量导入RPS，目前仅支持mongodb链路</p>
+        :type CurrentSinkerRps: int
+        :param _DefaultSinkerRps: <p>默认的增量导入RPS，目前仅支持mongodb链路</p>
+        :type DefaultSinkerRps: int
+        :param _CurrentLoadBps: <p>当前导入BPS，暂时只有redis在用，单位MB/s</p>
+        :type CurrentLoadBps: int
+        :param _CurrentDstShardCount: <p>目标库分片数，暂时只有redis在用</p>
+        :type CurrentDstShardCount: int
+        :param _CurrentDumpBps: <p>全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :type CurrentDumpBps: int
+        :param _CurrentSinkerBps: <p>增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :type CurrentSinkerBps: int
+        :param _DefaultSinkerBps: <p>默认的增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :type DefaultSinkerBps: int
         """
         self._CurrentDumpThread = None
         self._DefaultDumpThread = None
@@ -17486,10 +17667,18 @@ class RateLimitOption(AbstractModel):
         self._CurrentSinkerThread = None
         self._DefaultSinkerThread = None
         self._HasUserSetRateLimit = None
+        self._DefaultDumpBps = None
+        self._CurrentSinkerRps = None
+        self._DefaultSinkerRps = None
+        self._CurrentLoadBps = None
+        self._CurrentDstShardCount = None
+        self._CurrentDumpBps = None
+        self._CurrentSinkerBps = None
+        self._DefaultSinkerBps = None
 
     @property
     def CurrentDumpThread(self):
-        r"""当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+        r"""<p>当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :rtype: int
         """
         return self._CurrentDumpThread
@@ -17500,7 +17689,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def DefaultDumpThread(self):
-        r"""默认的全量导出线程数，该字段仅在出参有意义
+        r"""<p>默认的全量导出线程数，该字段仅在出参有意义</p>
         :rtype: int
         """
         return self._DefaultDumpThread
@@ -17511,7 +17700,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def CurrentDumpRps(self):
-        r"""当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
+        r"""<p>当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
         :rtype: int
         """
         return self._CurrentDumpRps
@@ -17522,7 +17711,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def DefaultDumpRps(self):
-        r"""默认的全量导出Rps，该字段仅在出参有意义
+        r"""<p>默认的全量导出Rps，该字段仅在出参有意义</p>
         :rtype: int
         """
         return self._DefaultDumpRps
@@ -17533,7 +17722,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def CurrentLoadThread(self):
-        r"""当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+        r"""<p>当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
         :rtype: int
         """
         return self._CurrentLoadThread
@@ -17544,7 +17733,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def DefaultLoadThread(self):
-        r"""默认的全量导入线程数，该字段仅在出参有意义
+        r"""<p>默认的全量导入线程数，该字段仅在出参有意义</p>
         :rtype: int
         """
         return self._DefaultLoadThread
@@ -17555,7 +17744,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def CurrentLoadRps(self):
-        r"""当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
+        r"""<p>当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
         :rtype: int
         """
         return self._CurrentLoadRps
@@ -17566,7 +17755,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def DefaultLoadRps(self):
-        r"""默认的全量导入Rps，该字段仅在出参有意义	
+        r"""<p>默认的全量导入Rps，该字段仅在出参有意义</p>
         :rtype: int
         """
         return self._DefaultLoadRps
@@ -17577,7 +17766,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def CurrentSinkerThread(self):
-        r"""当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
+        r"""<p>当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128</p>
         :rtype: int
         """
         return self._CurrentSinkerThread
@@ -17588,7 +17777,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def DefaultSinkerThread(self):
-        r"""默认的增量导入线程数，该字段仅在出参有意义
+        r"""<p>默认的增量导入线程数，该字段仅在出参有意义</p>
         :rtype: int
         """
         return self._DefaultSinkerThread
@@ -17599,7 +17788,7 @@ class RateLimitOption(AbstractModel):
 
     @property
     def HasUserSetRateLimit(self):
-        r"""enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
+        r"""<p>enum:&quot;no&quot;/&quot;yes&quot;、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义</p>
         :rtype: str
         """
         return self._HasUserSetRateLimit
@@ -17607,6 +17796,94 @@ class RateLimitOption(AbstractModel):
     @HasUserSetRateLimit.setter
     def HasUserSetRateLimit(self, HasUserSetRateLimit):
         self._HasUserSetRateLimit = HasUserSetRateLimit
+
+    @property
+    def DefaultDumpBps(self):
+        r"""<p>默认的全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :rtype: int
+        """
+        return self._DefaultDumpBps
+
+    @DefaultDumpBps.setter
+    def DefaultDumpBps(self, DefaultDumpBps):
+        self._DefaultDumpBps = DefaultDumpBps
+
+    @property
+    def CurrentSinkerRps(self):
+        r"""<p>增量导入RPS，目前仅支持mongodb链路</p>
+        :rtype: int
+        """
+        return self._CurrentSinkerRps
+
+    @CurrentSinkerRps.setter
+    def CurrentSinkerRps(self, CurrentSinkerRps):
+        self._CurrentSinkerRps = CurrentSinkerRps
+
+    @property
+    def DefaultSinkerRps(self):
+        r"""<p>默认的增量导入RPS，目前仅支持mongodb链路</p>
+        :rtype: int
+        """
+        return self._DefaultSinkerRps
+
+    @DefaultSinkerRps.setter
+    def DefaultSinkerRps(self, DefaultSinkerRps):
+        self._DefaultSinkerRps = DefaultSinkerRps
+
+    @property
+    def CurrentLoadBps(self):
+        r"""<p>当前导入BPS，暂时只有redis在用，单位MB/s</p>
+        :rtype: int
+        """
+        return self._CurrentLoadBps
+
+    @CurrentLoadBps.setter
+    def CurrentLoadBps(self, CurrentLoadBps):
+        self._CurrentLoadBps = CurrentLoadBps
+
+    @property
+    def CurrentDstShardCount(self):
+        r"""<p>目标库分片数，暂时只有redis在用</p>
+        :rtype: int
+        """
+        return self._CurrentDstShardCount
+
+    @CurrentDstShardCount.setter
+    def CurrentDstShardCount(self, CurrentDstShardCount):
+        self._CurrentDstShardCount = CurrentDstShardCount
+
+    @property
+    def CurrentDumpBps(self):
+        r"""<p>全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :rtype: int
+        """
+        return self._CurrentDumpBps
+
+    @CurrentDumpBps.setter
+    def CurrentDumpBps(self, CurrentDumpBps):
+        self._CurrentDumpBps = CurrentDumpBps
+
+    @property
+    def CurrentSinkerBps(self):
+        r"""<p>增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :rtype: int
+        """
+        return self._CurrentSinkerBps
+
+    @CurrentSinkerBps.setter
+    def CurrentSinkerBps(self, CurrentSinkerBps):
+        self._CurrentSinkerBps = CurrentSinkerBps
+
+    @property
+    def DefaultSinkerBps(self):
+        r"""<p>默认的增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+        :rtype: int
+        """
+        return self._DefaultSinkerBps
+
+    @DefaultSinkerBps.setter
+    def DefaultSinkerBps(self, DefaultSinkerBps):
+        self._DefaultSinkerBps = DefaultSinkerBps
 
 
     def _deserialize(self, params):
@@ -17621,6 +17898,14 @@ class RateLimitOption(AbstractModel):
         self._CurrentSinkerThread = params.get("CurrentSinkerThread")
         self._DefaultSinkerThread = params.get("DefaultSinkerThread")
         self._HasUserSetRateLimit = params.get("HasUserSetRateLimit")
+        self._DefaultDumpBps = params.get("DefaultDumpBps")
+        self._CurrentSinkerRps = params.get("CurrentSinkerRps")
+        self._DefaultSinkerRps = params.get("DefaultSinkerRps")
+        self._CurrentLoadBps = params.get("CurrentLoadBps")
+        self._CurrentDstShardCount = params.get("CurrentDstShardCount")
+        self._CurrentDumpBps = params.get("CurrentDumpBps")
+        self._CurrentSinkerBps = params.get("CurrentSinkerBps")
+        self._DefaultSinkerBps = params.get("DefaultSinkerBps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

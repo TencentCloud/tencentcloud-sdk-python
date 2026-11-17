@@ -16464,6 +16464,57 @@ class AigcVideoTaskUsage(AbstractModel):
         
 
 
+class AigcWhitelistModel(AbstractModel):
+    r"""AIGC模型白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本</p>
+        :type ModelVersion: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     r"""转动图任务类型
 
@@ -39252,6 +39303,165 @@ class DescribeAigcUsageDataResponse(AbstractModel):
         if params.get("AigcTextDetails") is not None:
             self._AigcTextDetails = AigcTextDetail()
             self._AigcTextDetails._deserialize(params.get("AigcTextDetails"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcWhitelistRequest(AbstractModel):
+    r"""DescribeAigcWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _AigcType: <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :type AigcType: str
+        """
+        self._SubAppId = None
+        self._AigcType = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AigcType = params.get("AigcType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcWhitelistResponse(AbstractModel):
+    r"""DescribeAigcWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AigcType: <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :type AigcType: str
+        :param _ModelWhitelistSwitch: <p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+        :type ModelWhitelistSwitch: str
+        :param _ModelWhitelist: <p>模型白名单列表</p>
+        :type ModelWhitelist: list of AigcWhitelistModel
+        :param _IpWhitelistSwitch: <p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+        :type IpWhitelistSwitch: str
+        :param _IpWhitelist: <p>IP白名单的CIDR列表</p>
+        :type IpWhitelist: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AigcType = None
+        self._ModelWhitelistSwitch = None
+        self._ModelWhitelist = None
+        self._IpWhitelistSwitch = None
+        self._IpWhitelist = None
+        self._RequestId = None
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+    @property
+    def ModelWhitelistSwitch(self):
+        r"""<p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+        :rtype: str
+        """
+        return self._ModelWhitelistSwitch
+
+    @ModelWhitelistSwitch.setter
+    def ModelWhitelistSwitch(self, ModelWhitelistSwitch):
+        self._ModelWhitelistSwitch = ModelWhitelistSwitch
+
+    @property
+    def ModelWhitelist(self):
+        r"""<p>模型白名单列表</p>
+        :rtype: list of AigcWhitelistModel
+        """
+        return self._ModelWhitelist
+
+    @ModelWhitelist.setter
+    def ModelWhitelist(self, ModelWhitelist):
+        self._ModelWhitelist = ModelWhitelist
+
+    @property
+    def IpWhitelistSwitch(self):
+        r"""<p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+        :rtype: str
+        """
+        return self._IpWhitelistSwitch
+
+    @IpWhitelistSwitch.setter
+    def IpWhitelistSwitch(self, IpWhitelistSwitch):
+        self._IpWhitelistSwitch = IpWhitelistSwitch
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP白名单的CIDR列表</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AigcType = params.get("AigcType")
+        self._ModelWhitelistSwitch = params.get("ModelWhitelistSwitch")
+        if params.get("ModelWhitelist") is not None:
+            self._ModelWhitelist = []
+            for item in params.get("ModelWhitelist"):
+                obj = AigcWhitelistModel()
+                obj._deserialize(item)
+                self._ModelWhitelist.append(obj)
+        self._IpWhitelistSwitch = params.get("IpWhitelistSwitch")
+        self._IpWhitelist = params.get("IpWhitelist")
         self._RequestId = params.get("RequestId")
 
 
@@ -95930,6 +96140,150 @@ class SemanticsSearchResult(AbstractModel):
         
 
 
+class SetAigcWhitelistRequest(AbstractModel):
+    r"""SetAigcWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _AigcType: <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :type AigcType: str
+        :param _ModelWhitelistSwitch: <p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+        :type ModelWhitelistSwitch: str
+        :param _IpWhitelistSwitch: <p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+        :type IpWhitelistSwitch: str
+        :param _ModelWhitelist: <p>模型白名单列表</p>
+        :type ModelWhitelist: list of AigcWhitelistModel
+        :param _IpWhitelist: <p>IP白名单的CIDR列表</p>
+        :type IpWhitelist: list of str
+        """
+        self._SubAppId = None
+        self._AigcType = None
+        self._ModelWhitelistSwitch = None
+        self._IpWhitelistSwitch = None
+        self._ModelWhitelist = None
+        self._IpWhitelist = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+    @property
+    def ModelWhitelistSwitch(self):
+        r"""<p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+        :rtype: str
+        """
+        return self._ModelWhitelistSwitch
+
+    @ModelWhitelistSwitch.setter
+    def ModelWhitelistSwitch(self, ModelWhitelistSwitch):
+        self._ModelWhitelistSwitch = ModelWhitelistSwitch
+
+    @property
+    def IpWhitelistSwitch(self):
+        r"""<p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+        :rtype: str
+        """
+        return self._IpWhitelistSwitch
+
+    @IpWhitelistSwitch.setter
+    def IpWhitelistSwitch(self, IpWhitelistSwitch):
+        self._IpWhitelistSwitch = IpWhitelistSwitch
+
+    @property
+    def ModelWhitelist(self):
+        r"""<p>模型白名单列表</p>
+        :rtype: list of AigcWhitelistModel
+        """
+        return self._ModelWhitelist
+
+    @ModelWhitelist.setter
+    def ModelWhitelist(self, ModelWhitelist):
+        self._ModelWhitelist = ModelWhitelist
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP白名单的CIDR列表</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AigcType = params.get("AigcType")
+        self._ModelWhitelistSwitch = params.get("ModelWhitelistSwitch")
+        self._IpWhitelistSwitch = params.get("IpWhitelistSwitch")
+        if params.get("ModelWhitelist") is not None:
+            self._ModelWhitelist = []
+            for item in params.get("ModelWhitelist"):
+                obj = AigcWhitelistModel()
+                obj._deserialize(item)
+                self._ModelWhitelist.append(obj)
+        self._IpWhitelist = params.get("IpWhitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAigcWhitelistResponse(AbstractModel):
+    r"""SetAigcWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SetCLSPushTargetRequest(AbstractModel):
     r"""SetCLSPushTarget请求参数结构体
 
@@ -97930,19 +98284,9 @@ class StatDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
-<li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
-<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+        :param _Time: <p>数据所在时间区间的开始时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。</p><li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li><li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
         :type Time: str
-        :param _Value: 数据大小。
-<li>存储空间的数据，单位是字节。</li>
-<li>转码时长的数据，单位是秒。</li>
-<li>流量数据，单位是字节。</li>
-<li>带宽数据，单位是比特每秒。</li>
-<li>直播剪辑数据，单位是秒。</li>
-<li>轮播数据，单位是秒。</li>
-<li>子应用数量数据，单位是个。</li>
-<li>日志服务用量数据，单位是条。</li>
+        :param _Value: <p>数据大小。</p><li>存储空间的数据，单位是字节。</li><li>转码时长的数据，单位是秒。</li><li>流量数据，单位是字节。</li><li>带宽数据，单位是比特每秒。</li><li>直播剪辑数据，单位是秒。</li><li>轮播数据，单位是秒。</li><li>子应用数量数据，单位是个。</li><li>日志服务用量数据，单位是条。</li>
         :type Value: int
         """
         self._Time = None
@@ -97950,9 +98294,7 @@ class StatDataItem(AbstractModel):
 
     @property
     def Time(self):
-        r"""数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
-<li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
-<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+        r"""<p>数据所在时间区间的开始时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。</p><li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li><li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
         :rtype: str
         """
         return self._Time
@@ -97963,15 +98305,7 @@ class StatDataItem(AbstractModel):
 
     @property
     def Value(self):
-        r"""数据大小。
-<li>存储空间的数据，单位是字节。</li>
-<li>转码时长的数据，单位是秒。</li>
-<li>流量数据，单位是字节。</li>
-<li>带宽数据，单位是比特每秒。</li>
-<li>直播剪辑数据，单位是秒。</li>
-<li>轮播数据，单位是秒。</li>
-<li>子应用数量数据，单位是个。</li>
-<li>日志服务用量数据，单位是条。</li>
+        r"""<p>数据大小。</p><li>存储空间的数据，单位是字节。</li><li>转码时长的数据，单位是秒。</li><li>流量数据，单位是字节。</li><li>带宽数据，单位是比特每秒。</li><li>直播剪辑数据，单位是秒。</li><li>轮播数据，单位是秒。</li><li>子应用数量数据，单位是个。</li><li>日志服务用量数据，单位是条。</li>
         :rtype: int
         """
         return self._Value

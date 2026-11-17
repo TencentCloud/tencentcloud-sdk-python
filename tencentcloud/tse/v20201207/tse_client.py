@@ -3614,7 +3614,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNetworkAccessStrategy(self, request):
-        r"""修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+        r"""修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。 支持 AccessControlSource=reference 引用实例基础配置，与自定义 CIDR 互斥。
 
         :param request: Request instance for ModifyNetworkAccessStrategy.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkAccessStrategyRequest`

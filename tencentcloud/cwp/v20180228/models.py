@@ -45948,9 +45948,9 @@ class DescribeMachinesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MachineType: <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
+        :param _MachineType: <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区<br>ALL 全部机器类型</p>
         :type MachineType: str
-        :param _MachineRegion: <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
+        :param _MachineRegion: <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others ，全部地域使用：all-regions</p>
         :type MachineRegion: str
         :param _Limit: <p>返回数量，默认为10，最大值为100。</p>
         :type Limit: int
@@ -45973,7 +45973,7 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""<p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
+        r"""<p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区<br>ALL 全部机器类型</p>
         :rtype: str
         """
         return self._MachineType
@@ -45984,7 +45984,7 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def MachineRegion(self):
-        r"""<p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
+        r"""<p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others ，全部地域使用：all-regions</p>
         :rtype: str
         """
         return self._MachineRegion

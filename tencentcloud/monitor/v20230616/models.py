@@ -760,6 +760,14 @@ class AlarmNotifyHistory(AbstractModel):
         :param _ReceiverGroups: <p>该条通知实际执行的接收人/组明细。一条元素对应通知模板里的一条渠道发送规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverGroups: list of ReceiverGroup
+        :param _AlarmId: <p>发送时的告警历史 ID，用于从通知历史跳到对应告警历史。非分级告警与告警 ID 相同；分级告警为“告警 ID_发生时间的 32 进制_告警级别”。</p>
+        :type AlarmId: str
+        :param _AlarmName: <p>发送时的告警内容，不含产品名前缀，按请求语言返回。用于列表「告警历史」的展示文案。</p>
+        :type AlarmName: str
+        :param _AlarmStatus: <p>发送时的告警状态。控制台「告警状态」请使用 TriggerStatus。无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>ALARM： 未恢复</li><li>OK： 已恢复</li></ul>
+        :type AlarmStatus: str
+        :param _NotifyType: <p>通知类型，无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>Recovery： 恢复</li><li>FirstTrigger： 首次触发</li><li>ContinueTrigger： 持续触发</li></ul>
+        :type NotifyType: str
         """
         self._NotifyId = None
         self._PolicyId = None
@@ -779,6 +787,10 @@ class AlarmNotifyHistory(AbstractModel):
         self._PromeConsoleURL = None
         self._Labels = None
         self._ReceiverGroups = None
+        self._AlarmId = None
+        self._AlarmName = None
+        self._AlarmStatus = None
+        self._NotifyType = None
 
     @property
     def NotifyId(self):
@@ -980,6 +992,50 @@ class AlarmNotifyHistory(AbstractModel):
     def ReceiverGroups(self, ReceiverGroups):
         self._ReceiverGroups = ReceiverGroups
 
+    @property
+    def AlarmId(self):
+        r"""<p>发送时的告警历史 ID，用于从通知历史跳到对应告警历史。非分级告警与告警 ID 相同；分级告警为“告警 ID_发生时间的 32 进制_告警级别”。</p>
+        :rtype: str
+        """
+        return self._AlarmId
+
+    @AlarmId.setter
+    def AlarmId(self, AlarmId):
+        self._AlarmId = AlarmId
+
+    @property
+    def AlarmName(self):
+        r"""<p>发送时的告警内容，不含产品名前缀，按请求语言返回。用于列表「告警历史」的展示文案。</p>
+        :rtype: str
+        """
+        return self._AlarmName
+
+    @AlarmName.setter
+    def AlarmName(self, AlarmName):
+        self._AlarmName = AlarmName
+
+    @property
+    def AlarmStatus(self):
+        r"""<p>发送时的告警状态。控制台「告警状态」请使用 TriggerStatus。无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>ALARM： 未恢复</li><li>OK： 已恢复</li></ul>
+        :rtype: str
+        """
+        return self._AlarmStatus
+
+    @AlarmStatus.setter
+    def AlarmStatus(self, AlarmStatus):
+        self._AlarmStatus = AlarmStatus
+
+    @property
+    def NotifyType(self):
+        r"""<p>通知类型，无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>Recovery： 恢复</li><li>FirstTrigger： 首次触发</li><li>ContinueTrigger： 持续触发</li></ul>
+        :rtype: str
+        """
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
 
     def _deserialize(self, params):
         self._NotifyId = params.get("NotifyId")
@@ -1020,6 +1076,10 @@ class AlarmNotifyHistory(AbstractModel):
                 obj = ReceiverGroup()
                 obj._deserialize(item)
                 self._ReceiverGroups.append(obj)
+        self._AlarmId = params.get("AlarmId")
+        self._AlarmName = params.get("AlarmName")
+        self._AlarmStatus = params.get("AlarmStatus")
+        self._NotifyType = params.get("NotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1349,9 +1409,18 @@ class ChannelContent(AbstractModel):
         :param _Content: <p>该渠道实际发送的消息正文，由 Ark 按写时捕获的内容还原</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
+        :param _DeliverStatus: <p>短信：SUCCESS / FAIL。电话：ANSWERED / UNANSWERED / ABNORMAL</p><p>枚举值：</p><ul><li>SUCCESS： 短信已送达</li><li>FAIL： 短信送达失败</li><li>ANSWERED： 电话已接听</li><li>UNANSWERED： 电话未接听</li><li>ABNORMAL： 电话拨打异常</li></ul>
+        :type DeliverStatus: str
+        :param _DeliverTime: <p>原始时间字符串，不做时区转换。短信是收到时间；电话只在接听时有值</p><p>参数格式：短信为 YYYY-MM-DD hh:mm:ss，例如 2026-08-05 18:04:46。电话为 Unix 秒级时间戳的数字字符串，仅接听时有值，例如 1717824258。空字符串表示没有时间。</p>
+        :type DeliverTime: str
+        :param _DeliverErrMsg: <p>短信回执的运营商错误码，原样透传。成功为 DELIVRD。失败为运营商原始码，如 EXPIRED、UNDELIV、MK:0001、MK:0012、24、29。电话为空。</p>
+        :type DeliverErrMsg: str
         """
         self._SubChannel = None
         self._Content = None
+        self._DeliverStatus = None
+        self._DeliverTime = None
+        self._DeliverErrMsg = None
 
     @property
     def SubChannel(self):
@@ -1377,10 +1446,46 @@ class ChannelContent(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def DeliverStatus(self):
+        r"""<p>短信：SUCCESS / FAIL。电话：ANSWERED / UNANSWERED / ABNORMAL</p><p>枚举值：</p><ul><li>SUCCESS： 短信已送达</li><li>FAIL： 短信送达失败</li><li>ANSWERED： 电话已接听</li><li>UNANSWERED： 电话未接听</li><li>ABNORMAL： 电话拨打异常</li></ul>
+        :rtype: str
+        """
+        return self._DeliverStatus
+
+    @DeliverStatus.setter
+    def DeliverStatus(self, DeliverStatus):
+        self._DeliverStatus = DeliverStatus
+
+    @property
+    def DeliverTime(self):
+        r"""<p>原始时间字符串，不做时区转换。短信是收到时间；电话只在接听时有值</p><p>参数格式：短信为 YYYY-MM-DD hh:mm:ss，例如 2026-08-05 18:04:46。电话为 Unix 秒级时间戳的数字字符串，仅接听时有值，例如 1717824258。空字符串表示没有时间。</p>
+        :rtype: str
+        """
+        return self._DeliverTime
+
+    @DeliverTime.setter
+    def DeliverTime(self, DeliverTime):
+        self._DeliverTime = DeliverTime
+
+    @property
+    def DeliverErrMsg(self):
+        r"""<p>短信回执的运营商错误码，原样透传。成功为 DELIVRD。失败为运营商原始码，如 EXPIRED、UNDELIV、MK:0001、MK:0012、24、29。电话为空。</p>
+        :rtype: str
+        """
+        return self._DeliverErrMsg
+
+    @DeliverErrMsg.setter
+    def DeliverErrMsg(self, DeliverErrMsg):
+        self._DeliverErrMsg = DeliverErrMsg
+
 
     def _deserialize(self, params):
         self._SubChannel = params.get("SubChannel")
         self._Content = params.get("Content")
+        self._DeliverStatus = params.get("DeliverStatus")
+        self._DeliverTime = params.get("DeliverTime")
+        self._DeliverErrMsg = params.get("DeliverErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

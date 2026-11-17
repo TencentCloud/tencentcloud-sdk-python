@@ -710,6 +710,8 @@ class CreateBatchVideoAnnotationJobRequest(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.trro.v20220325.models.OutputStorage`
         :param _CallbackInfo: <p>回调信息，配置后当任务下子处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
         :type CallbackInfo: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        :param _ExtraSources: <p>伴生输入文件列表，全批共用一份。与主视频同桶同凭证，Path 相对每个处理项各自的主视频目录解析，支持 ${FileName} 占位符。最多 8 条；HTTP 源（InputType=2）不支持。</p>
+        :type ExtraSources: list of ExtraSourceInfo
         """
         self._InputStorage = None
         self._AnnotationType = None
@@ -717,6 +719,7 @@ class CreateBatchVideoAnnotationJobRequest(AbstractModel):
         self._ProcessParams = None
         self._OutputStorage = None
         self._CallbackInfo = None
+        self._ExtraSources = None
 
     @property
     def InputStorage(self):
@@ -784,6 +787,17 @@ class CreateBatchVideoAnnotationJobRequest(AbstractModel):
     def CallbackInfo(self, CallbackInfo):
         self._CallbackInfo = CallbackInfo
 
+    @property
+    def ExtraSources(self):
+        r"""<p>伴生输入文件列表，全批共用一份。与主视频同桶同凭证，Path 相对每个处理项各自的主视频目录解析，支持 ${FileName} 占位符。最多 8 条；HTTP 源（InputType=2）不支持。</p>
+        :rtype: list of ExtraSourceInfo
+        """
+        return self._ExtraSources
+
+    @ExtraSources.setter
+    def ExtraSources(self, ExtraSources):
+        self._ExtraSources = ExtraSources
+
 
     def _deserialize(self, params):
         if params.get("InputStorage") is not None:
@@ -802,6 +816,12 @@ class CreateBatchVideoAnnotationJobRequest(AbstractModel):
         if params.get("CallbackInfo") is not None:
             self._CallbackInfo = CallbackInfo()
             self._CallbackInfo._deserialize(params.get("CallbackInfo"))
+        if params.get("ExtraSources") is not None:
+            self._ExtraSources = []
+            for item in params.get("ExtraSources"):
+                obj = ExtraSourceInfo()
+                obj._deserialize(item)
+                self._ExtraSources.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1282,6 +1302,8 @@ class CreateVideoAnnotationJobRequest(AbstractModel):
         :type OutputInfo: :class:`tencentcloud.trro.v20220325.models.OutputInfo`
         :param _CallbackInfo: <p>回调信息，配置后当处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
         :type CallbackInfo: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        :param _ExtraSources: <p>伴生输入文件列表。与主视频同桶同凭证，每个元素包含 Name（文件引用名）与 Path（相对主视频所在目录的 COS 路径）。最多 8 条；HTTP 源（InputType=2）不支持。</p>
+        :type ExtraSources: list of ExtraSourceInfo
         """
         self._InputType = None
         self._AnnotationType = None
@@ -1291,6 +1313,7 @@ class CreateVideoAnnotationJobRequest(AbstractModel):
         self._ProcessParams = None
         self._OutputInfo = None
         self._CallbackInfo = None
+        self._ExtraSources = None
 
     @property
     def InputType(self):
@@ -1380,6 +1403,17 @@ class CreateVideoAnnotationJobRequest(AbstractModel):
     def CallbackInfo(self, CallbackInfo):
         self._CallbackInfo = CallbackInfo
 
+    @property
+    def ExtraSources(self):
+        r"""<p>伴生输入文件列表。与主视频同桶同凭证，每个元素包含 Name（文件引用名）与 Path（相对主视频所在目录的 COS 路径）。最多 8 条；HTTP 源（InputType=2）不支持。</p>
+        :rtype: list of ExtraSourceInfo
+        """
+        return self._ExtraSources
+
+    @ExtraSources.setter
+    def ExtraSources(self, ExtraSources):
+        self._ExtraSources = ExtraSources
+
 
     def _deserialize(self, params):
         self._InputType = params.get("InputType")
@@ -1400,6 +1434,12 @@ class CreateVideoAnnotationJobRequest(AbstractModel):
         if params.get("CallbackInfo") is not None:
             self._CallbackInfo = CallbackInfo()
             self._CallbackInfo._deserialize(params.get("CallbackInfo"))
+        if params.get("ExtraSources") is not None:
+            self._ExtraSources = []
+            for item in params.get("ExtraSources"):
+                obj = ExtraSourceInfo()
+                obj._deserialize(item)
+                self._ExtraSources.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4439,6 +4479,57 @@ class DurationDetails(AbstractModel):
         self._MultiFourK = params.get("MultiFourK")
         self._MultiOnline = params.get("MultiOnline")
         self._DeductDuration = params.get("DeductDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraSourceInfo(AbstractModel):
+    r"""伴生输入文件登记（多输入）。与主视频同桶同凭证，Name 为文件引用名，Path 为相对主视频所在目录的 COS 路径。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>伴生文件的引用名。只允许 [A-Za-z0-9._-] 路径段，可含子目录（深度 ≤3 层）；不能以 / 开头，不能包含 ..；同一请求内不重复</p>
+        :type Name: str
+        :param _Path: <p>伴生文件相对主视频所在目录（含文件名）的 COS 相对路径。必须为相对路径（不能以 / 开头），长度 ≤128 字节，允许 ../ 上溯最多 2 层；批量接口支持 ${FileName} 占位符（替换为该处理项主视频文件名，不含扩展名</p>
+        :type Path: str
+        """
+        self._Name = None
+        self._Path = None
+
+    @property
+    def Name(self):
+        r"""<p>伴生文件的引用名。只允许 [A-Za-z0-9._-] 路径段，可含子目录（深度 ≤3 层）；不能以 / 开头，不能包含 ..；同一请求内不重复</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""<p>伴生文件相对主视频所在目录（含文件名）的 COS 相对路径。必须为相对路径（不能以 / 开头），长度 ≤128 字节，允许 ../ 上溯最多 2 层；批量接口支持 ${FileName} 占位符（替换为该处理项主视频文件名，不含扩展名</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

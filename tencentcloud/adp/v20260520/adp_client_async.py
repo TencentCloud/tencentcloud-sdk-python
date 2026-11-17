@@ -2042,6 +2042,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMessageRecordFeedback(
+            self,
+            request: models.ModifyMessageRecordFeedbackRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMessageRecordFeedbackResponse:
+        """
+        修改消息记录反馈
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMessageRecordFeedback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMessageRecordFeedbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMsgRecordCategory(
             self,
             request: models.ModifyMsgRecordCategoryRequest,

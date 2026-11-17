@@ -4146,7 +4146,7 @@ class CreateBackupGroupRequest(AbstractModel):
         :type DiskIds: list of str
         :param _BackupGroupName: 备份组的名称
         :type BackupGroupName: str
-        :param _Deadline: 指定备份组到期时间，如果未传入该参数，默认为永久保留。
+        :param _Deadline: 指定备份组到期时间，ISO 8601 格式字符串，如 2026-01-01T00:00:00+08:00。如果未传入该参数，默认为永久保留。
         :type Deadline: str
         """
         self._DiskIds = None
@@ -4177,7 +4177,7 @@ class CreateBackupGroupRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""指定备份组到期时间，如果未传入该参数，默认为永久保留。
+        r"""指定备份组到期时间，ISO 8601 格式字符串，如 2026-01-01T00:00:00+08:00。如果未传入该参数，默认为永久保留。
         :rtype: str
         """
         return self._Deadline
@@ -4996,11 +4996,11 @@ class CreateFileBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: <p>资源ID列表</p>
+        :param _ResourceId: <p>资源ID（单个）：CVM 场景传实例ID（ins-xxx），CFS 场景传文件系统ID（cfs-xxx），COS 场景传源桶名称。</p>
         :type ResourceId: str
         :param _PlanId: <p>计划ID</p>
         :type PlanId: str
-        :param _BackupPaths: <p>备份路径列表，1~20 个</p>
+        :param _BackupPaths: <p>备份路径列表，0~20 个。不传或传空数组时，CVM/CFS 默认 ["/"]（根目录），COS 默认整桶；COS 最多 1 个对象前缀。</p>
         :type BackupPaths: list of str
         :param _IncludeFileTypes: <p>包含文件类型，0~20 个</p>
         :type IncludeFileTypes: list of str
@@ -5012,7 +5012,7 @@ class CreateFileBackupRequest(AbstractModel):
         :type BackupStorageId: str
         :param _Deadline: <p>备份到期时间</p>
         :type Deadline: str
-        :param _BackupName: <p>备份名称</p>
+        :param _BackupName: <p>备份名称，最长128个字符；不传或为空时系统自动生成</p>
         :type BackupName: str
         :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
         :type ResourceType: str
@@ -5036,7 +5036,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""<p>资源ID列表</p>
+        r"""<p>资源ID（单个）：CVM 场景传实例ID（ins-xxx），CFS 场景传文件系统ID（cfs-xxx），COS 场景传源桶名称。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -5058,7 +5058,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""<p>备份路径列表，1~20 个</p>
+        r"""<p>备份路径列表，0~20 个。不传或传空数组时，CVM/CFS 默认 ["/"]（根目录），COS 默认整桶；COS 最多 1 个对象前缀。</p>
         :rtype: list of str
         """
         return self._BackupPaths
@@ -5124,7 +5124,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""<p>备份名称</p>
+        r"""<p>备份名称，最长128个字符；不传或为空时系统自动生成</p>
         :rtype: str
         """
         return self._BackupName
@@ -8062,6 +8062,12 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         :type CFSAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
         :param _COSAgentBackupOverview: <p>COS备份概览数据</p>
         :type COSAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        :param _LocalCVMAgentBackupOverview: <p>非腾讯云虚拟机备份概览数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCVMAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        :param _LocalCFSAgentBackupOverview: <p>非腾讯云文件存储备份概览数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCFSAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8072,6 +8078,8 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         self._ProtectedResourceOverview = None
         self._CFSAgentBackupOverview = None
         self._COSAgentBackupOverview = None
+        self._LocalCVMAgentBackupOverview = None
+        self._LocalCFSAgentBackupOverview = None
         self._RequestId = None
 
     @property
@@ -8152,6 +8160,30 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         self._COSAgentBackupOverview = COSAgentBackupOverview
 
     @property
+    def LocalCVMAgentBackupOverview(self):
+        r"""<p>非腾讯云虚拟机备份概览数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        """
+        return self._LocalCVMAgentBackupOverview
+
+    @LocalCVMAgentBackupOverview.setter
+    def LocalCVMAgentBackupOverview(self, LocalCVMAgentBackupOverview):
+        self._LocalCVMAgentBackupOverview = LocalCVMAgentBackupOverview
+
+    @property
+    def LocalCFSAgentBackupOverview(self):
+        r"""<p>非腾讯云文件存储备份概览数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        """
+        return self._LocalCFSAgentBackupOverview
+
+    @LocalCFSAgentBackupOverview.setter
+    def LocalCFSAgentBackupOverview(self, LocalCFSAgentBackupOverview):
+        self._LocalCFSAgentBackupOverview = LocalCFSAgentBackupOverview
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8185,6 +8217,12 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         if params.get("COSAgentBackupOverview") is not None:
             self._COSAgentBackupOverview = FileBackupOverview()
             self._COSAgentBackupOverview._deserialize(params.get("COSAgentBackupOverview"))
+        if params.get("LocalCVMAgentBackupOverview") is not None:
+            self._LocalCVMAgentBackupOverview = FileBackupOverview()
+            self._LocalCVMAgentBackupOverview._deserialize(params.get("LocalCVMAgentBackupOverview"))
+        if params.get("LocalCFSAgentBackupOverview") is not None:
+            self._LocalCFSAgentBackupOverview = FileBackupOverview()
+            self._LocalCFSAgentBackupOverview._deserialize(params.get("LocalCFSAgentBackupOverview"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16747,6 +16785,12 @@ class ProtectedResourceOverview(AbstractModel):
         :param _COSAgent: <p>COS备份受保护统计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type COSAgent: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        :param _LocalCVMAgent: <p>非腾讯云虚拟机备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCVMAgent: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        :param _LocalCFSAgent: <p>非腾讯云文件存储备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCFSAgent: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
         """
         self._TotalProtectedCount = None
         self._TotalResourceCount = None
@@ -16754,6 +16798,8 @@ class ProtectedResourceOverview(AbstractModel):
         self._CFS = None
         self._CFSAgent = None
         self._COSAgent = None
+        self._LocalCVMAgent = None
+        self._LocalCFSAgent = None
 
     @property
     def TotalProtectedCount(self):
@@ -16823,6 +16869,30 @@ class ProtectedResourceOverview(AbstractModel):
     def COSAgent(self, COSAgent):
         self._COSAgent = COSAgent
 
+    @property
+    def LocalCVMAgent(self):
+        r"""<p>非腾讯云虚拟机备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        """
+        return self._LocalCVMAgent
+
+    @LocalCVMAgent.setter
+    def LocalCVMAgent(self, LocalCVMAgent):
+        self._LocalCVMAgent = LocalCVMAgent
+
+    @property
+    def LocalCFSAgent(self):
+        r"""<p>非腾讯云文件存储备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        """
+        return self._LocalCFSAgent
+
+    @LocalCFSAgent.setter
+    def LocalCFSAgent(self, LocalCFSAgent):
+        self._LocalCFSAgent = LocalCFSAgent
+
 
     def _deserialize(self, params):
         self._TotalProtectedCount = params.get("TotalProtectedCount")
@@ -16839,6 +16909,12 @@ class ProtectedResourceOverview(AbstractModel):
         if params.get("COSAgent") is not None:
             self._COSAgent = ResourceProtectStat()
             self._COSAgent._deserialize(params.get("COSAgent"))
+        if params.get("LocalCVMAgent") is not None:
+            self._LocalCVMAgent = ResourceProtectStat()
+            self._LocalCVMAgent._deserialize(params.get("LocalCVMAgent"))
+        if params.get("LocalCFSAgent") is not None:
+            self._LocalCFSAgent = ResourceProtectStat()
+            self._LocalCFSAgent._deserialize(params.get("LocalCFSAgent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1901,6 +1901,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcWhitelist(
+            self,
+            request: models.DescribeAigcWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcWhitelistResponse:
+        """
+        查询AIGC白名单配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllClass(
             self,
             request: models.DescribeAllClassRequest,
@@ -4485,6 +4503,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "SearchMediaBySemantics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchMediaBySemanticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetAigcWhitelist(
+            self,
+            request: models.SetAigcWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.SetAigcWhitelistResponse:
+        """
+        修改AIGC白名单设置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetAigcWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetAigcWhitelistResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

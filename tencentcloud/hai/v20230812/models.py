@@ -6025,9 +6025,9 @@ class ServiceMetaData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceName: 服务名称
+        :param _ServiceName: <p>服务名称</p>
         :type ServiceName: str
-        :param _ServiceChargeType: <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
+        :param _ServiceChargeType: <p>付费方式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量后付费</li><li>PREPAID_BY_MONTH： 包年包月</li><li>SPOT： 竞价售卖</li></ul>
         :type ServiceChargeType: str
         """
         self._ServiceName = None
@@ -6035,7 +6035,7 @@ class ServiceMetaData(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._ServiceName
@@ -6046,7 +6046,7 @@ class ServiceMetaData(AbstractModel):
 
     @property
     def ServiceChargeType(self):
-        r"""<p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
+        r"""<p>付费方式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量后付费</li><li>PREPAID_BY_MONTH： 包年包月</li><li>SPOT： 竞价售卖</li></ul>
         :rtype: str
         """
         return self._ServiceChargeType

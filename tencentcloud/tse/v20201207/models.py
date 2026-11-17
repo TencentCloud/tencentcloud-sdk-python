@@ -7983,6 +7983,8 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         :type Weight: int
         :param _IsDefaultWeight: 是否默认权重
         :type IsDefaultWeight: bool
+        :param _NodeType: 节点类型
+        :type NodeType: str
         """
         self._NodeId = None
         self._NodeIp = None
@@ -7993,6 +7995,7 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         self._Status = None
         self._Weight = None
         self._IsDefaultWeight = None
+        self._NodeType = None
 
     @property
     def NodeId(self):
@@ -8093,6 +8096,17 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     def IsDefaultWeight(self, IsDefaultWeight):
         self._IsDefaultWeight = IsDefaultWeight
 
+    @property
+    def NodeType(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -8104,6 +8118,7 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         self._Status = params.get("Status")
         self._Weight = params.get("Weight")
         self._IsDefaultWeight = params.get("IsDefaultWeight")
+        self._NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13465,43 +13480,38 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 云原生API网关名字, 最多支持60个字符。
+        :param _Name: <p>云原生API网关名字, 最多支持60个字符。</p>
         :type Name: str
-        :param _Type: 云原生API网关类型, 目前只支持kong。
+        :param _Type: <p>云原生API网关类型, 目前只支持kong。</p>
         :type Type: str
-        :param _GatewayVersion: 云原生API网关版本。参考值：
-- 2.4.1
-- 2.5.1
+        :param _GatewayVersion: <p>云原生API网关版本。参考值：</p><ul><li>2.4.1</li><li>2.5.1</li></ul>
         :type GatewayVersion: str
-        :param _NodeConfig: 云原生API网关节点配置。
+        :param _NodeConfig: <p>云原生API网关节点配置。</p>
         :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
-        :param _VpcConfig: 云原生API网关vpc配置。
+        :param _VpcConfig: <p>云原生API网关vpc配置。</p>
         :type VpcConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayVpcConfig`
-        :param _Description: 云原生API网关描述信息, 最多支持120个字符。
+        :param _Description: <p>云原生API网关描述信息, 最多支持120个字符。</p>
         :type Description: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of InstanceTagInfo
-        :param _EnableCls: 是否开启 CLS 日志。默认值：fasle
+        :param _EnableCls: <p>是否开启 CLS 日志。默认值：fasle</p>
         :type EnableCls: bool
-        :param _FeatureVersion: 产品版本。参考值：
-- TRIAL：开发版
-- STANDARD：标准版 （默认值）
-- PROFESSIONAL：专业版
+        :param _FeatureVersion: <p>产品版本</p><p>枚举值：</p><ul><li>STANDARD： 标准版</li><li>PROFESSIONAL： 专业版</li></ul>
         :type FeatureVersion: str
-        :param _InternetMaxBandwidthOut: 公网出流量带宽，[1,2048]Mbps
+        :param _InternetMaxBandwidthOut: <p>公网出流量带宽，[1,2048]Mbps</p>
         :type InternetMaxBandwidthOut: int
-        :param _EngineRegion: 实例实际的地域信息，默认值：ap-guangzhou
+        :param _EngineRegion: <p>实例实际的地域信息，默认值：ap-guangzhou</p>
         :type EngineRegion: str
-        :param _IngressClassName: ingress Class名称
+        :param _IngressClassName: <p>ingress Class名称</p>
         :type IngressClassName: str
-        :param _TradeType: 付费类型。参考值：
-0：后付费（默认值）
-1：预付费（接口暂不支持创建预付费实例）
+        :param _TradeType: <p>付费类型。参考值：<br>0：后付费（默认值）<br>1：预付费（接口暂不支持创建预付费实例）</p>
         :type TradeType: int
-        :param _InternetConfig: 公网相关配置
+        :param _InternetConfig: <p>公网相关配置</p>
         :type InternetConfig: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
-        :param _PromId: 关联的prometheus ID
+        :param _PromId: <p>关联的prometheus ID</p>
         :type PromId: str
+        :param _EnableHttpPort: <p>是否开启HTTP 80 端口的访问</p>
+        :type EnableHttpPort: bool
         """
         self._Name = None
         self._Type = None
@@ -13518,10 +13528,11 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
         self._TradeType = None
         self._InternetConfig = None
         self._PromId = None
+        self._EnableHttpPort = None
 
     @property
     def Name(self):
-        r"""云原生API网关名字, 最多支持60个字符。
+        r"""<p>云原生API网关名字, 最多支持60个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -13532,7 +13543,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""云原生API网关类型, 目前只支持kong。
+        r"""<p>云原生API网关类型, 目前只支持kong。</p>
         :rtype: str
         """
         return self._Type
@@ -13543,9 +13554,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def GatewayVersion(self):
-        r"""云原生API网关版本。参考值：
-- 2.4.1
-- 2.5.1
+        r"""<p>云原生API网关版本。参考值：</p><ul><li>2.4.1</li><li>2.5.1</li></ul>
         :rtype: str
         """
         return self._GatewayVersion
@@ -13556,7 +13565,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def NodeConfig(self):
-        r"""云原生API网关节点配置。
+        r"""<p>云原生API网关节点配置。</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
         """
         return self._NodeConfig
@@ -13567,7 +13576,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def VpcConfig(self):
-        r"""云原生API网关vpc配置。
+        r"""<p>云原生API网关vpc配置。</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayVpcConfig`
         """
         return self._VpcConfig
@@ -13578,7 +13587,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""云原生API网关描述信息, 最多支持120个字符。
+        r"""<p>云原生API网关描述信息, 最多支持120个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -13589,7 +13598,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of InstanceTagInfo
         """
         return self._Tags
@@ -13600,7 +13609,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def EnableCls(self):
-        r"""是否开启 CLS 日志。默认值：fasle
+        r"""<p>是否开启 CLS 日志。默认值：fasle</p>
         :rtype: bool
         """
         return self._EnableCls
@@ -13611,10 +13620,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def FeatureVersion(self):
-        r"""产品版本。参考值：
-- TRIAL：开发版
-- STANDARD：标准版 （默认值）
-- PROFESSIONAL：专业版
+        r"""<p>产品版本</p><p>枚举值：</p><ul><li>STANDARD： 标准版</li><li>PROFESSIONAL： 专业版</li></ul>
         :rtype: str
         """
         return self._FeatureVersion
@@ -13625,7 +13631,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""公网出流量带宽，[1,2048]Mbps
+        r"""<p>公网出流量带宽，[1,2048]Mbps</p>
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -13636,7 +13642,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def EngineRegion(self):
-        r"""实例实际的地域信息，默认值：ap-guangzhou
+        r"""<p>实例实际的地域信息，默认值：ap-guangzhou</p>
         :rtype: str
         """
         return self._EngineRegion
@@ -13647,7 +13653,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def IngressClassName(self):
-        r"""ingress Class名称
+        r"""<p>ingress Class名称</p>
         :rtype: str
         """
         return self._IngressClassName
@@ -13658,9 +13664,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def TradeType(self):
-        r"""付费类型。参考值：
-0：后付费（默认值）
-1：预付费（接口暂不支持创建预付费实例）
+        r"""<p>付费类型。参考值：<br>0：后付费（默认值）<br>1：预付费（接口暂不支持创建预付费实例）</p>
         :rtype: int
         """
         return self._TradeType
@@ -13671,7 +13675,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def InternetConfig(self):
-        r"""公网相关配置
+        r"""<p>公网相关配置</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
         """
         return self._InternetConfig
@@ -13682,7 +13686,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
 
     @property
     def PromId(self):
-        r"""关联的prometheus ID
+        r"""<p>关联的prometheus ID</p>
         :rtype: str
         """
         return self._PromId
@@ -13690,6 +13694,17 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
     @PromId.setter
     def PromId(self, PromId):
         self._PromId = PromId
+
+    @property
+    def EnableHttpPort(self):
+        r"""<p>是否开启HTTP 80 端口的访问</p>
+        :rtype: bool
+        """
+        return self._EnableHttpPort
+
+    @EnableHttpPort.setter
+    def EnableHttpPort(self, EnableHttpPort):
+        self._EnableHttpPort = EnableHttpPort
 
 
     def _deserialize(self, params):
@@ -13719,6 +13734,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
             self._InternetConfig = InternetConfig()
             self._InternetConfig._deserialize(params.get("InternetConfig"))
         self._PromId = params.get("PromId")
+        self._EnableHttpPort = params.get("EnableHttpPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13736,7 +13752,7 @@ class CreateCloudNativeAPIGatewayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 创建云原生API网关实例响应结果。
+        :param _Result: <p>创建云原生API网关实例响应结果。</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13746,7 +13762,7 @@ class CreateCloudNativeAPIGatewayResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""创建云原生API网关实例响应结果。
+        r"""<p>创建云原生API网关实例响应结果。</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayResult`
         """
         return self._Result
@@ -13945,58 +13961,42 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _ServiceID: 所属服务的ID
+        :param _ServiceID: <p>所属服务的ID</p>
         :type ServiceID: str
-        :param _RouteName: 路由的名字，实例级别唯一，可以不提供
+        :param _RouteName: <p>路由的名字，实例级别唯一，可以不提供</p>
         :type RouteName: str
-        :param _Methods: 路由的方法，其中方法可选值：
-- GET
-- POST
-- DELETE
-- PUT
-- OPTIONS
-- PATCH
-- HEAD
-- ANY
-- TRACE
-- COPY
-- MOVE
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- LOCK
-- UNLOCK
+        :param _Methods: <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
         :type Methods: list of str
-        :param _Hosts: 路由的域名
+        :param _Hosts: <p>路由的域名</p>
         :type Hosts: list of str
-        :param _Paths: 路由的路径
+        :param _Paths: <p>路由的路径</p>
         :type Paths: list of str
-        :param _Protocols: 路由的协议，可选
-- https
-- http
+        :param _Protocols: <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
         :type Protocols: list of str
-        :param _PreserveHost: 转发到后端时是否保留Host
+        :param _PreserveHost: <p>转发到后端时是否保留Host</p>
         :type PreserveHost: bool
-        :param _HttpsRedirectStatusCode: https重定向状态码
+        :param _HttpsRedirectStatusCode: <p>https重定向状态码</p>
         :type HttpsRedirectStatusCode: int
-        :param _StripPath: 转发到后端时是否StripPath
+        :param _StripPath: <p>转发到后端时是否StripPath</p>
         :type StripPath: bool
-        :param _ForceHttps: 是否开启强制HTTPS
+        :param _ForceHttps: <p>是否开启强制HTTPS</p>
         :type ForceHttps: bool
-        :param _DestinationPorts: 四层匹配的目的端口
+        :param _DestinationPorts: <p>四层匹配的目的端口</p>
         :type DestinationPorts: list of int non-negative
-        :param _Headers: 路由的Headers
+        :param _Headers: <p>路由的Headers</p>
         :type Headers: list of KVMapping
-        :param _RequestBuffering: 是否缓存请求body，默认true
+        :param _RequestBuffering: <p>是否缓存请求body，默认true</p>
         :type RequestBuffering: bool
-        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :param _ResponseBuffering: <p>是否缓存响应body，默认true</p>
         :type ResponseBuffering: bool
-        :param _RegexPriority: 正则优先级
+        :param _RegexPriority: <p>正则优先级</p>
         :type RegexPriority: int
-        :param _QueryStringParameters: queryString参数
+        :param _QueryStringParameters: <p>queryString参数</p>
         :type QueryStringParameters: list of KVMapping
+        :param _Timeout: <p>路由级超时时间，单位ms</p>
+        :type Timeout: int
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -14015,10 +14015,11 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._ResponseBuffering = None
         self._RegexPriority = None
         self._QueryStringParameters = None
+        self._Timeout = None
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -14029,7 +14030,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def ServiceID(self):
-        r"""所属服务的ID
+        r"""<p>所属服务的ID</p>
         :rtype: str
         """
         return self._ServiceID
@@ -14040,7 +14041,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RouteName(self):
-        r"""路由的名字，实例级别唯一，可以不提供
+        r"""<p>路由的名字，实例级别唯一，可以不提供</p>
         :rtype: str
         """
         return self._RouteName
@@ -14051,23 +14052,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Methods(self):
-        r"""路由的方法，其中方法可选值：
-- GET
-- POST
-- DELETE
-- PUT
-- OPTIONS
-- PATCH
-- HEAD
-- ANY
-- TRACE
-- COPY
-- MOVE
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- LOCK
-- UNLOCK
+        r"""<p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
         :rtype: list of str
         """
         return self._Methods
@@ -14078,7 +14063,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        r"""路由的域名
+        r"""<p>路由的域名</p>
         :rtype: list of str
         """
         return self._Hosts
@@ -14089,7 +14074,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Paths(self):
-        r"""路由的路径
+        r"""<p>路由的路径</p>
         :rtype: list of str
         """
         return self._Paths
@@ -14100,9 +14085,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Protocols(self):
-        r"""路由的协议，可选
-- https
-- http
+        r"""<p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
         :rtype: list of str
         """
         return self._Protocols
@@ -14113,7 +14096,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def PreserveHost(self):
-        r"""转发到后端时是否保留Host
+        r"""<p>转发到后端时是否保留Host</p>
         :rtype: bool
         """
         return self._PreserveHost
@@ -14124,7 +14107,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def HttpsRedirectStatusCode(self):
-        r"""https重定向状态码
+        r"""<p>https重定向状态码</p>
         :rtype: int
         """
         return self._HttpsRedirectStatusCode
@@ -14135,7 +14118,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def StripPath(self):
-        r"""转发到后端时是否StripPath
+        r"""<p>转发到后端时是否StripPath</p>
         :rtype: bool
         """
         return self._StripPath
@@ -14148,7 +14131,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def ForceHttps(self):
         warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
 
-        r"""是否开启强制HTTPS
+        r"""<p>是否开启强制HTTPS</p>
         :rtype: bool
         """
         return self._ForceHttps
@@ -14161,7 +14144,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def DestinationPorts(self):
-        r"""四层匹配的目的端口
+        r"""<p>四层匹配的目的端口</p>
         :rtype: list of int non-negative
         """
         return self._DestinationPorts
@@ -14172,7 +14155,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Headers(self):
-        r"""路由的Headers
+        r"""<p>路由的Headers</p>
         :rtype: list of KVMapping
         """
         return self._Headers
@@ -14183,7 +14166,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RequestBuffering(self):
-        r"""是否缓存请求body，默认true
+        r"""<p>是否缓存请求body，默认true</p>
         :rtype: bool
         """
         return self._RequestBuffering
@@ -14194,7 +14177,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def ResponseBuffering(self):
-        r"""是否缓存响应body，默认true
+        r"""<p>是否缓存响应body，默认true</p>
         :rtype: bool
         """
         return self._ResponseBuffering
@@ -14205,7 +14188,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RegexPriority(self):
-        r"""正则优先级
+        r"""<p>正则优先级</p>
         :rtype: int
         """
         return self._RegexPriority
@@ -14216,7 +14199,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def QueryStringParameters(self):
-        r"""queryString参数
+        r"""<p>queryString参数</p>
         :rtype: list of KVMapping
         """
         return self._QueryStringParameters
@@ -14224,6 +14207,17 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
     @QueryStringParameters.setter
     def QueryStringParameters(self, QueryStringParameters):
         self._QueryStringParameters = QueryStringParameters
+
+    @property
+    def Timeout(self):
+        r"""<p>路由级超时时间，单位ms</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
 
 
     def _deserialize(self, params):
@@ -14254,6 +14248,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._QueryStringParameters.append(obj)
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28326,6 +28321,8 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         :type AvailableRollbackVersion: str
         :param _ForceHTTPSRedirect: <p>强制跳转HTTPS开关</p>
         :type ForceHTTPSRedirect: bool
+        :param _PrivateIpAddresses: <p>内网IP地址列表</p>
+        :type PrivateIpAddresses: list of str
         """
         self._GatewayId = None
         self._Status = None
@@ -28358,6 +28355,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._AvailableUpgrade = None
         self._AvailableRollbackVersion = None
         self._ForceHTTPSRedirect = None
+        self._PrivateIpAddresses = None
 
     @property
     def GatewayId(self):
@@ -28701,6 +28699,17 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     def ForceHTTPSRedirect(self, ForceHTTPSRedirect):
         self._ForceHTTPSRedirect = ForceHTTPSRedirect
 
+    @property
+    def PrivateIpAddresses(self):
+        r"""<p>内网IP地址列表</p>
+        :rtype: list of str
+        """
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -28745,6 +28754,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._AvailableUpgrade = params.get("AvailableUpgrade")
         self._AvailableRollbackVersion = params.get("AvailableRollbackVersion")
         self._ForceHTTPSRedirect = params.get("ForceHTTPSRedirect")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28880,6 +28890,10 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         :type OrderField: str
         :param _OrderType: <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
         :type OrderType: str
+        :param _TagIds: <p>按标签 ID 过滤路由（AND 语义，需同时命中所有传入的 tag），最多 10 个。关联需求：路由/服务标签分组管理</p>
+        :type TagIds: list of int
+        :param _TagFilters: <p>按标签 K:V 过滤路由（AND 语义，前端下拉直传场景），最多 10 个。与 TagIds 同时传时取交集</p>
+        :type TagFilters: list of TagKVFilter
         """
         self._GatewayId = None
         self._Limit = None
@@ -28891,6 +28905,8 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         self._GrayRoutesFirst = None
         self._OrderField = None
         self._OrderType = None
+        self._TagIds = None
+        self._TagFilters = None
 
     @property
     def GatewayId(self):
@@ -29002,6 +29018,28 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
     def OrderType(self, OrderType):
         self._OrderType = OrderType
 
+    @property
+    def TagIds(self):
+        r"""<p>按标签 ID 过滤路由（AND 语义，需同时命中所有传入的 tag），最多 10 个。关联需求：路由/服务标签分组管理</p>
+        :rtype: list of int
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def TagFilters(self):
+        r"""<p>按标签 K:V 过滤路由（AND 语义，前端下拉直传场景），最多 10 个。与 TagIds 同时传时取交集</p>
+        :rtype: list of TagKVFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -29019,6 +29057,13 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         self._GrayRoutesFirst = params.get("GrayRoutesFirst")
         self._OrderField = params.get("OrderField")
         self._OrderType = params.get("OrderType")
+        self._TagIds = params.get("TagIds")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagKVFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40751,6 +40796,13 @@ class KongRoutePreview(AbstractModel):
         :type QueryStringParameters: list of KVMapping
         :param _RouteSource: <p>路由来源</p>
         :type RouteSource: str
+        :param _Tags: <p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+        :type Tags: list of KongUserTagKV
+        :param _Timeout: <p>超时时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param _TimeoutSource: <p>路由超时配置的来源。</p>
+        :type TimeoutSource: str
         """
         self._ID = None
         self._Name = None
@@ -40772,6 +40824,9 @@ class KongRoutePreview(AbstractModel):
         self._RegexPriority = None
         self._QueryStringParameters = None
         self._RouteSource = None
+        self._Tags = None
+        self._Timeout = None
+        self._TimeoutSource = None
 
     @property
     def ID(self):
@@ -41001,6 +41056,40 @@ class KongRoutePreview(AbstractModel):
     def RouteSource(self, RouteSource):
         self._RouteSource = RouteSource
 
+    @property
+    def Tags(self):
+        r"""<p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+        :rtype: list of KongUserTagKV
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def TimeoutSource(self):
+        r"""<p>路由超时配置的来源。</p>
+        :rtype: str
+        """
+        return self._TimeoutSource
+
+    @TimeoutSource.setter
+    def TimeoutSource(self, TimeoutSource):
+        self._TimeoutSource = TimeoutSource
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -41033,6 +41122,14 @@ class KongRoutePreview(AbstractModel):
                 obj._deserialize(item)
                 self._QueryStringParameters.append(obj)
         self._RouteSource = params.get("RouteSource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = KongUserTagKV()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Timeout = params.get("Timeout")
+        self._TimeoutSource = params.get("TimeoutSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41803,38 +41900,41 @@ class KongTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: Host
+        :param _Host: <p>Host</p>
         :type Host: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: int
-        :param _Weight: 权重
+        :param _Weight: <p>权重</p>
         :type Weight: int
-        :param _Health: 健康状态
-        :type Health: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _Source: Target的来源
-        :type Source: str
-        :param _CvmInstanceId: CVM实例ID
+        :param _CvmInstanceId: <p>CVM实例ID</p>
         :type CvmInstanceId: str
-        :param _CvmInstanceName: CVM实例名称
+        :param _CvmInstanceName: <p>CVM实例名称</p>
         :type CvmInstanceName: str
-        :param _Tags: target标签
+        :param _Health: <p>健康状态</p>
+        :type Health: str
+        :param _Id: <p>Target ID</p>
+        :type Id: str
+        :param _Source: <p>Target的来源</p>
+        :type Source: str
+        :param _Tags: <p>target标签</p>
         :type Tags: list of str
         """
         self._Host = None
         self._Port = None
         self._Weight = None
-        self._Health = None
         self._CreatedTime = None
-        self._Source = None
         self._CvmInstanceId = None
         self._CvmInstanceName = None
+        self._Health = None
+        self._Id = None
+        self._Source = None
         self._Tags = None
 
     @property
     def Host(self):
-        r"""Host
+        r"""<p>Host</p>
         :rtype: str
         """
         return self._Host
@@ -41845,7 +41945,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._Port
@@ -41856,7 +41956,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Weight(self):
-        r"""权重
+        r"""<p>权重</p>
         :rtype: int
         """
         return self._Weight
@@ -41866,19 +41966,8 @@ class KongTarget(AbstractModel):
         self._Weight = Weight
 
     @property
-    def Health(self):
-        r"""健康状态
-        :rtype: str
-        """
-        return self._Health
-
-    @Health.setter
-    def Health(self, Health):
-        self._Health = Health
-
-    @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -41888,19 +41977,8 @@ class KongTarget(AbstractModel):
         self._CreatedTime = CreatedTime
 
     @property
-    def Source(self):
-        r"""Target的来源
-        :rtype: str
-        """
-        return self._Source
-
-    @Source.setter
-    def Source(self, Source):
-        self._Source = Source
-
-    @property
     def CvmInstanceId(self):
-        r"""CVM实例ID
+        r"""<p>CVM实例ID</p>
         :rtype: str
         """
         return self._CvmInstanceId
@@ -41911,7 +41989,7 @@ class KongTarget(AbstractModel):
 
     @property
     def CvmInstanceName(self):
-        r"""CVM实例名称
+        r"""<p>CVM实例名称</p>
         :rtype: str
         """
         return self._CvmInstanceName
@@ -41921,8 +41999,41 @@ class KongTarget(AbstractModel):
         self._CvmInstanceName = CvmInstanceName
 
     @property
+    def Health(self):
+        r"""<p>健康状态</p>
+        :rtype: str
+        """
+        return self._Health
+
+    @Health.setter
+    def Health(self, Health):
+        self._Health = Health
+
+    @property
+    def Id(self):
+        r"""<p>Target ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Source(self):
+        r"""<p>Target的来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
     def Tags(self):
-        r"""target标签
+        r"""<p>target标签</p>
         :rtype: list of str
         """
         return self._Tags
@@ -41936,11 +42047,12 @@ class KongTarget(AbstractModel):
         self._Host = params.get("Host")
         self._Port = params.get("Port")
         self._Weight = params.get("Weight")
-        self._Health = params.get("Health")
         self._CreatedTime = params.get("CreatedTime")
-        self._Source = params.get("Source")
         self._CvmInstanceId = params.get("CvmInstanceId")
         self._CvmInstanceName = params.get("CvmInstanceName")
+        self._Health = params.get("Health")
+        self._Id = params.get("Id")
+        self._Source = params.get("Source")
         self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -42427,6 +42539,72 @@ class KongUpstreamPreview(AbstractModel):
                 obj = KongTarget()
                 obj._deserialize(item)
                 self._Target.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUserTagKV(AbstractModel):
+    r"""用户业务标签的 KV 表示（路由/服务标签分组）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: <p>标签 ID</p>
+        :type TagId: int
+        :param _TagKey: <p>标签 Key</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签 Value</p>
+        :type TagValue: str
+        """
+        self._TagId = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagId(self):
+        r"""<p>标签 ID</p>
+        :rtype: int
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def TagKey(self):
+        r"""<p>标签 Key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签 Value</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45529,6 +45707,8 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type RegexPriority: int
         :param _QueryStringParameters: <p>querysring参数</p>
         :type QueryStringParameters: list of KVMapping
+        :param _Timeout: <p>路由级超时时间，单位ms</p>
+        :type Timeout: int
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -45548,6 +45728,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._ResponseBuffering = None
         self._RegexPriority = None
         self._QueryStringParameters = None
+        self._Timeout = None
 
     @property
     def GatewayId(self):
@@ -45751,6 +45932,17 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def QueryStringParameters(self, QueryStringParameters):
         self._QueryStringParameters = QueryStringParameters
 
+    @property
+    def Timeout(self):
+        r"""<p>路由级超时时间，单位ms</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -45781,6 +45973,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._QueryStringParameters.append(obj)
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47301,28 +47494,32 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 云原生API网关实例ID。
+        :param _GatewayId: <p>云原生API网关实例ID。</p>
         :type GatewayId: str
-        :param _GroupId: 分组id
+        :param _GroupId: <p>分组id</p>
         :type GroupId: str
-        :param _NetworkType: 网络类型： 
-- Open 公网
-- Internal 内网	（暂不支持）
+        :param _NetworkType: <p>网络类型： </p><ul><li>Open 公网</li><li>Internal 内网    （暂不支持）</li></ul>
         :type NetworkType: str
-        :param _Vip: ip地址
+        :param _Vip: <p>ip地址</p>
         :type Vip: str
-        :param _AccessControl: 访问控制策略
+        :param _AccessControl: <p>访问控制策略</p>
         :type AccessControl: :class:`tencentcloud.tse.v20201207.models.NetworkAccessControl`
+        :param _AccessControlSource: <p>GlobalConfig / Custom；不传默认 Custom</p>
+        :type AccessControlSource: str
+        :param _GlobalConfigId: <p>全局配置ID</p>
+        :type GlobalConfigId: str
         """
         self._GatewayId = None
         self._GroupId = None
         self._NetworkType = None
         self._Vip = None
         self._AccessControl = None
+        self._AccessControlSource = None
+        self._GlobalConfigId = None
 
     @property
     def GatewayId(self):
-        r"""云原生API网关实例ID。
+        r"""<p>云原生API网关实例ID。</p>
         :rtype: str
         """
         return self._GatewayId
@@ -47333,7 +47530,7 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""分组id
+        r"""<p>分组id</p>
         :rtype: str
         """
         return self._GroupId
@@ -47344,9 +47541,7 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""网络类型： 
-- Open 公网
-- Internal 内网	（暂不支持）
+        r"""<p>网络类型： </p><ul><li>Open 公网</li><li>Internal 内网    （暂不支持）</li></ul>
         :rtype: str
         """
         return self._NetworkType
@@ -47357,7 +47552,7 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""ip地址
+        r"""<p>ip地址</p>
         :rtype: str
         """
         return self._Vip
@@ -47368,7 +47563,7 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
 
     @property
     def AccessControl(self):
-        r"""访问控制策略
+        r"""<p>访问控制策略</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.NetworkAccessControl`
         """
         return self._AccessControl
@@ -47376,6 +47571,28 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
     @AccessControl.setter
     def AccessControl(self, AccessControl):
         self._AccessControl = AccessControl
+
+    @property
+    def AccessControlSource(self):
+        r"""<p>GlobalConfig / Custom；不传默认 Custom</p>
+        :rtype: str
+        """
+        return self._AccessControlSource
+
+    @AccessControlSource.setter
+    def AccessControlSource(self, AccessControlSource):
+        self._AccessControlSource = AccessControlSource
+
+    @property
+    def GlobalConfigId(self):
+        r"""<p>全局配置ID</p>
+        :rtype: str
+        """
+        return self._GlobalConfigId
+
+    @GlobalConfigId.setter
+    def GlobalConfigId(self, GlobalConfigId):
+        self._GlobalConfigId = GlobalConfigId
 
 
     def _deserialize(self, params):
@@ -47386,6 +47603,8 @@ class ModifyNetworkAccessStrategyRequest(AbstractModel):
         if params.get("AccessControl") is not None:
             self._AccessControl = NetworkAccessControl()
             self._AccessControl._deserialize(params.get("AccessControl"))
+        self._AccessControlSource = params.get("AccessControlSource")
+        self._GlobalConfigId = params.get("GlobalConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51295,6 +51514,57 @@ class TSEGatewaySelector(AbstractModel):
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Services = params.get("Services")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagKVFilter(AbstractModel):
+    r"""按标签 K:V 过滤条件（关联需求：路由/服务标签分组管理）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>标签 Key，长度 1~64</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签 Value，长度 1~128</p>
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>标签 Key，长度 1~64</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签 Value，长度 1~128</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

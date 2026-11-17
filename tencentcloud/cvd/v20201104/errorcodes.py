@@ -101,6 +101,9 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # 资源不足
 INVALIDPARAMETERVALUE_RESOURCENOTENOUGH = 'InvalidParameterValue.ResourceNotEnough'
 
+# 未找到用户，请检查参数
+INVALIDPARAMETERVALUE_USERKEYWORD = 'InvalidParameterValue.UserKeyword'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 

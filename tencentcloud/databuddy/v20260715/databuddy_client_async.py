@@ -115,6 +115,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateExperiment(
+            self,
+            request: models.CreateExperimentRequest,
+            opts: Dict = None,
+    ) -> models.CreateExperimentResponse:
+        """
+        创建实验。实验是 MLflow 训练跟踪的容器，用于承载训练运行记录与已记录模型。支持 MACHINE_LEARNING/CLASSIFICATION/REGRESSION/FORECASTING/AGENT 五种类型；AutoML 类型（分类/回归/时序预测）需同时传入 AutoMlConf 与 TrainingData。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateExperiment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateExperimentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFile(
             self,
             request: models.CreateFileRequest,
@@ -605,6 +623,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "GetFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFileContent(
+            self,
+            request: models.GetFileContentRequest,
+            opts: Dict = None,
+    ) -> models.GetFileContentResponse:
+        """
+        获取文件内容。第一期：支持 FileId 定位
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFileContent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFileContentResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1541,6 +1541,24 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListVideoSnapshotResult(
+            self,
+            request: models.ListVideoSnapshotResultRequest,
+            opts: Dict = None,
+    ) -> models.ListVideoSnapshotResultResponse:
+        """
+        获取截图结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVideoSnapshotResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVideoSnapshotResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListVideoSnapshotTemplate(
             self,
             request: models.ListVideoSnapshotTemplateRequest,

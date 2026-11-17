@@ -2928,24 +2928,23 @@ class CertificateInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证。
-默认为 UNIDIRECTIONAL。
+        :param _SSLMode: <p>认证类型，取值：<code>UNIDIRECTIONAL</code>：单向认证；<code>MUTUAL</code>：双向认证。 此参数是否必填取决于调用场景： - 创建监听器或转发规则：需要通过 Certificate 配置证书时，此参数必填；复用已有域名证书的转发规则无需传入。 - 修改监听器或域名属性：通过 Certificate 更新证书时，此参数必填；不修改证书时，无需传入整个 Certificate。 - 批量替换证书（ReplaceCertForLoadBalancers）：此参数无需传入，接口仅替换证书，不修改认证类型。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 单向认证</li><li>MUTUAL： 双向认证</li></ul>
         :type SSLMode: str
-        :param _SSLVerifyClient: 双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
+        :param _SSLVerifyClient: <p>双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。</p>
         :type SSLVerifyClient: str
-        :param _CertId: 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。
+        :param _CertId: <p>服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。</p>
         :type CertId: str
-        :param _CertCaId: 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
+        :param _CertCaId: <p>客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。</p>
         :type CertCaId: str
-        :param _CertName: 上传服务端证书的名称，如果没有 CertId，则此项必传。
+        :param _CertName: <p>上传服务端证书的名称，如果没有 CertId，则此项必传。</p>
         :type CertName: str
-        :param _CertKey: 上传服务端证书的 key，如果没有 CertId，则此项必传。
+        :param _CertKey: <p>上传服务端证书的 key，如果没有 CertId，则此项必传。</p>
         :type CertKey: str
-        :param _CertContent: 上传服务端证书的内容，如果没有 CertId，则此项必传。
+        :param _CertContent: <p>上传服务端证书的内容，如果没有 CertId，则此项必传。</p>
         :type CertContent: str
-        :param _CertCaName: 上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+        :param _CertCaName: <p>上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
         :type CertCaName: str
-        :param _CertCaContent: 上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+        :param _CertCaContent: <p>上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
         :type CertCaContent: str
         """
         self._SSLMode = None
@@ -2960,8 +2959,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def SSLMode(self):
-        r"""认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证。
-默认为 UNIDIRECTIONAL。
+        r"""<p>认证类型，取值：<code>UNIDIRECTIONAL</code>：单向认证；<code>MUTUAL</code>：双向认证。 此参数是否必填取决于调用场景： - 创建监听器或转发规则：需要通过 Certificate 配置证书时，此参数必填；复用已有域名证书的转发规则无需传入。 - 修改监听器或域名属性：通过 Certificate 更新证书时，此参数必填；不修改证书时，无需传入整个 Certificate。 - 批量替换证书（ReplaceCertForLoadBalancers）：此参数无需传入，接口仅替换证书，不修改认证类型。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 单向认证</li><li>MUTUAL： 双向认证</li></ul>
         :rtype: str
         """
         return self._SSLMode
@@ -2972,7 +2970,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def SSLVerifyClient(self):
-        r"""双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
+        r"""<p>双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。</p>
         :rtype: str
         """
         return self._SSLVerifyClient
@@ -2983,7 +2981,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertId(self):
-        r"""服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。
+        r"""<p>服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。</p>
         :rtype: str
         """
         return self._CertId
@@ -2994,7 +2992,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertCaId(self):
-        r"""客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
+        r"""<p>客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。</p>
         :rtype: str
         """
         return self._CertCaId
@@ -3005,7 +3003,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertName(self):
-        r"""上传服务端证书的名称，如果没有 CertId，则此项必传。
+        r"""<p>上传服务端证书的名称，如果没有 CertId，则此项必传。</p>
         :rtype: str
         """
         return self._CertName
@@ -3016,7 +3014,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertKey(self):
-        r"""上传服务端证书的 key，如果没有 CertId，则此项必传。
+        r"""<p>上传服务端证书的 key，如果没有 CertId，则此项必传。</p>
         :rtype: str
         """
         return self._CertKey
@@ -3027,7 +3025,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertContent(self):
-        r"""上传服务端证书的内容，如果没有 CertId，则此项必传。
+        r"""<p>上传服务端证书的内容，如果没有 CertId，则此项必传。</p>
         :rtype: str
         """
         return self._CertContent
@@ -3038,7 +3036,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertCaName(self):
-        r"""上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+        r"""<p>上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
         :rtype: str
         """
         return self._CertCaName
@@ -3049,7 +3047,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertCaContent(self):
-        r"""上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+        r"""<p>上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
         :rtype: str
         """
         return self._CertCaContent
@@ -37978,7 +37976,7 @@ class StickyConfig(AbstractModel):
         r"""
         :param _Enabled: <p>是否开启粘连路由</p>
         :type Enabled: bool
-        :param _TimeoutSeconds: <p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
+        :param _TimeoutSeconds: <p>会话粘性的超时时间（秒），取值范围 180–21600。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
         :type TimeoutSeconds: int
         """
         self._Enabled = None
@@ -37997,7 +37995,7 @@ class StickyConfig(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        r"""<p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
+        r"""<p>会话粘性的超时时间（秒），取值范围 180–21600。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
         :rtype: int
         """
         return self._TimeoutSeconds

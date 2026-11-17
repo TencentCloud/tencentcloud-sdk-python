@@ -79,6 +79,26 @@ class DbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBackupPlan(
+            self,
+            request: models.DeleteBackupPlanRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBackupPlanResponse:
+        """
+        删除备份计划。
+
+        仅已下线的备份计划支持删除，删除后不可恢复。已隔离（isolated）的备份计划请先调用 DestroyBackupPlanByUser 完成下线，再进行删除。调用接口后，若通过 DescribeBackupPlans 接口查询不到对应的备份计划，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBackupPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBackupPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBackupCheckJob(
             self,
             request: models.DescribeBackupCheckJobRequest,
@@ -92,6 +112,25 @@ class DbsClient(AbstractClient):
         kwargs["action"] = "DescribeBackupCheckJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBackupCheckJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBackupPlanDetail(
+            self,
+            request: models.DescribeBackupPlanDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupPlanDetailResponse:
+        """
+        查询备份计划详情。
+        返回备份计划的基本信息、源库信息、备份对象、备份策略、备份进度和付费信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupPlanDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupPlanDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -133,6 +172,122 @@ class DbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFullBackupSetDetail(
+            self,
+            request: models.DescribeFullBackupSetDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFullBackupSetDetailResponse:
+        """
+        查询全量备份集详情。
+
+        返回全量备份集的基本信息、源库信息、备份对象、备份进度和加密信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFullBackupSetDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFullBackupSetDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIncrementBackupSetFiles(
+            self,
+            request: models.DescribeIncrementBackupSetFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIncrementBackupSetFilesResponse:
+        """
+        查询增量备份集文件列表。
+
+        文件按最后修改时间倒序返回，支持分页。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIncrementBackupSetFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIncrementBackupSetFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIncrementBackupSets(
+            self,
+            request: models.DescribeIncrementBackupSetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIncrementBackupSetsResponse:
+        """
+        本接口（DescribeIncrementBackupSets）用于查询增量备份集列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIncrementBackupSets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIncrementBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyBackupPlanByUser(
+            self,
+            request: models.DestroyBackupPlanByUserRequest,
+            opts: Dict = None,
+    ) -> models.DestroyBackupPlanByUserResponse:
+        """
+        立即下线已隔离的备份计划。
+
+        下线后备份计划不可恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 offlined，则表示下线成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyBackupPlanByUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyBackupPlanByUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBackupPlanSourceInfo(
+            self,
+            request: models.ModifyBackupPlanSourceInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBackupPlanSourceInfoResponse:
+        """
+        本接口（ModifyBackupPlanSourceInfo）用于修改备份计划的源实例信息、备份对象信息等。注意，调用该接口后，原有备份计划任务将立即停止，您可以在修改完源信息后重新启动备份任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBackupPlanSourceInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBackupPlanSourceInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResumeBackupPlan(
+            self,
+            request: models.ResumeBackupPlanRequest,
+            opts: Dict = None,
+    ) -> models.ResumeBackupPlanResponse:
+        """
+        恢复已暂停的备份计划。
+
+        仅已暂停的备份计划支持恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 running，则表示恢复成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResumeBackupPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResumeBackupPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StartBackupCheckJob(
             self,
             request: models.StartBackupCheckJobRequest,
@@ -164,6 +319,26 @@ class DbsClient(AbstractClient):
         kwargs["action"] = "StartBackupPlan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StartBackupPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopBackupPlan(
+            self,
+            request: models.StopBackupPlanRequest,
+            opts: Dict = None,
+    ) -> models.StopBackupPlanResponse:
+        """
+        暂停备份计划。
+
+        仅运行中的备份计划支持暂停。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 paused，则表示暂停成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopBackupPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopBackupPlanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1943,6 +1943,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLLMHourBillDetail(
+            self,
+            request: models.DescribeLLMHourBillDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMHourBillDetailResponse:
+        """
+        查询单实例、单日的按小时账单明细，包含账单预估总额、分项费用、分时趋势和分时明细
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMHourBillDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMHourBillDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLLMKeywordLibrary(
             self,
             request: models.DescribeLLMKeywordLibraryRequest,
@@ -2010,6 +2028,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DescribeLLMWafProtectRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLLMWafProtectRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMWafToolCallRules(
+            self,
+            request: models.DescribeLLMWafToolCallRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMWafToolCallRulesResponse:
+        """
+        查询 Tool Call 规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMWafToolCallRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMWafToolCallRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3676,6 +3712,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLLMSdkAccess(
+            self,
+            request: models.ModifyLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMSdkAccessResponse:
+        """
+        llmwaf-sdk边界接入配置接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMSdkAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyLLMStatus(
             self,
             request: models.ModifyLLMStatusRequest,
@@ -3725,6 +3779,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "ModifyLLMWafProtectRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLLMWafProtectRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMWafToolCallRule(
+            self,
+            request: models.ModifyLLMWafToolCallRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMWafToolCallRuleResponse:
+        """
+        修改 Tool Call 规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMWafToolCallRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMWafToolCallRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

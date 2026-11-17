@@ -2341,6 +2341,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCloudStoragePackages(self, request):
+        r"""查询设备云存套餐
+
+        :param request: Request instance for DescribeDeviceCloudStoragePackages.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceCloudStoragePackagesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceCloudStoragePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCloudStoragePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCloudStoragePackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceData(self, request):
         r"""根据设备产品ID、设备名称，获取设备上报的属性数据。
 

@@ -1255,6 +1255,87 @@ class CloudAuditLog(AbstractModel):
         
 
 
+class CloudFileSourceInput(AbstractModel):
+    r"""通用文件来源。FILE 用于 Plugin 原始文件上传，SizeBytes 必填，SHA256 可选；VERSION 仅用于 UpdateRegistryRecord 复用同一 Record 的 READY 文件版本，仅填写 SourceVersionId。与其他来源互斥，不校验插件格式或语义。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>通用文件来源类型，区分大小写。</p><p>枚举值：</p><ul><li>FILE： 创建 Plugin 文件版本，必须填写 SizeBytes，SHA256 可选；随后通过预签名 PUT 链接上传原始文件。</li><li>VERSION： 仅 UpdateRegistryRecord 支持，复用同一 Skill 或 Plugin Record 的 READY 文件版本，仅填写 SourceVersionId。</li></ul><p>Registry 不做 Plugin 文件内容格式或语义校验，由运行端解析加载。VERSION 不继承来源版本的 Metadata 和 SupportedHarnessVersions。</p>
+        :type Type: str
+        :param _SizeBytes: <p>待上传 Plugin 文件的原始字节数。FILE 时必填，VERSION 时禁止填写。</p><p>取值范围：[1, 54525952]</p><p>单位：字节</p><p>上限 52 MiB，服务端校验实际上传文件的字节数；不推断文件格式。</p>
+        :type SizeBytes: int
+        :param _SHA256: <p>期望的文件 SHA-256 摘要。FILE 时可选，VERSION 时禁止填写。</p><p>参数格式：64 位小写十六进制字符串。</p><p>提供时服务端计算实际文件摘要并比对；省略时仍计算摘要并在 READY 版本的 ContentSHA256 中返回。</p>
+        :type SHA256: str
+        :param _SourceVersionId: <p>用于复用文件内容的来源 Version ID。</p><p>参数格式：rv- 前缀的 Version ID。</p><p>入参限制：VERSION 时必填，FILE 时禁止填写。只能在 UpdateRegistryRecord 中引用同一 Record 下未删除、内容 READY 且存在可用制品的 Skill 或 Plugin 文件版本。</p><p>只复用文件，不继承来源版本的 Metadata 和 SupportedHarnessVersions；不能跨 Record 或跨 Registry 复用。</p>
+        :type SourceVersionId: str
+        """
+        self._Type = None
+        self._SizeBytes = None
+        self._SHA256 = None
+        self._SourceVersionId = None
+
+    @property
+    def Type(self):
+        r"""<p>通用文件来源类型，区分大小写。</p><p>枚举值：</p><ul><li>FILE： 创建 Plugin 文件版本，必须填写 SizeBytes，SHA256 可选；随后通过预签名 PUT 链接上传原始文件。</li><li>VERSION： 仅 UpdateRegistryRecord 支持，复用同一 Skill 或 Plugin Record 的 READY 文件版本，仅填写 SourceVersionId。</li></ul><p>Registry 不做 Plugin 文件内容格式或语义校验，由运行端解析加载。VERSION 不继承来源版本的 Metadata 和 SupportedHarnessVersions。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SizeBytes(self):
+        r"""<p>待上传 Plugin 文件的原始字节数。FILE 时必填，VERSION 时禁止填写。</p><p>取值范围：[1, 54525952]</p><p>单位：字节</p><p>上限 52 MiB，服务端校验实际上传文件的字节数；不推断文件格式。</p>
+        :rtype: int
+        """
+        return self._SizeBytes
+
+    @SizeBytes.setter
+    def SizeBytes(self, SizeBytes):
+        self._SizeBytes = SizeBytes
+
+    @property
+    def SHA256(self):
+        r"""<p>期望的文件 SHA-256 摘要。FILE 时可选，VERSION 时禁止填写。</p><p>参数格式：64 位小写十六进制字符串。</p><p>提供时服务端计算实际文件摘要并比对；省略时仍计算摘要并在 READY 版本的 ContentSHA256 中返回。</p>
+        :rtype: str
+        """
+        return self._SHA256
+
+    @SHA256.setter
+    def SHA256(self, SHA256):
+        self._SHA256 = SHA256
+
+    @property
+    def SourceVersionId(self):
+        r"""<p>用于复用文件内容的来源 Version ID。</p><p>参数格式：rv- 前缀的 Version ID。</p><p>入参限制：VERSION 时必填，FILE 时禁止填写。只能在 UpdateRegistryRecord 中引用同一 Record 下未删除、内容 READY 且存在可用制品的 Skill 或 Plugin 文件版本。</p><p>只复用文件，不继承来源版本的 Metadata 和 SupportedHarnessVersions；不能跨 Record 或跨 Registry 复用。</p>
+        :rtype: str
+        """
+        return self._SourceVersionId
+
+    @SourceVersionId.setter
+    def SourceVersionId(self, SourceVersionId):
+        self._SourceVersionId = SourceVersionId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SizeBytes = params.get("SizeBytes")
+        self._SHA256 = params.get("SHA256")
+        self._SourceVersionId = params.get("SourceVersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudFilter(AbstractModel):
     r"""通用过滤条件。Name 为字段名，Values 为字段候选值；字段间 AND、Values 内 OR。
 
@@ -1407,25 +1488,25 @@ class CloudRecord(AbstractModel):
         :param _LifecycleStatus: <p>生命周期状态。ACTIVE：可用；DELETED：软删除墓碑，不再参与常规查询、下发或版本配额。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LifecycleStatus: str
-        :param _AppId: <p>所属租户 AppId。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: int
-        :param _CreatorUin: <p>创建者主账号 UIN。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatorUin: str
-        :param _CreatorSubAccountUin: <p>创建者子账号 UIN；主账号直接创建时为空。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatorSubAccountUin: str
         :param _CreateTime: <p>创建时间，ISO 8601 UTC。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: <p>最近一次更新时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _VersionCount: <p>Record 下未删除 Version 数量。</p>
+        :param _AppId: <p>所属租户 AppId。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CreatorUin: <p>创建者主账号 UIN。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param _CreatorSubAccountUin: <p>创建者子账号 UIN；主账号直接创建时为空。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorSubAccountUin: str
+        :param _VersionCount: <p>Record 下未删除 Version 数量。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionCount: int
-        :param _LabelSet: <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+        :param _LabelSet: <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelSet: list of str
         """
@@ -1435,11 +1516,11 @@ class CloudRecord(AbstractModel):
         self._Description = None
         self._DescriptorType = None
         self._LifecycleStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
         self._AppId = None
         self._CreatorUin = None
         self._CreatorSubAccountUin = None
-        self._CreateTime = None
-        self._UpdateTime = None
         self._VersionCount = None
         self._LabelSet = None
 
@@ -1516,42 +1597,6 @@ class CloudRecord(AbstractModel):
         self._LifecycleStatus = LifecycleStatus
 
     @property
-    def AppId(self):
-        r"""<p>所属租户 AppId。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._AppId
-
-    @AppId.setter
-    def AppId(self, AppId):
-        self._AppId = AppId
-
-    @property
-    def CreatorUin(self):
-        r"""<p>创建者主账号 UIN。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CreatorUin
-
-    @CreatorUin.setter
-    def CreatorUin(self, CreatorUin):
-        self._CreatorUin = CreatorUin
-
-    @property
-    def CreatorSubAccountUin(self):
-        r"""<p>创建者子账号 UIN；主账号直接创建时为空。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CreatorSubAccountUin
-
-    @CreatorSubAccountUin.setter
-    def CreatorSubAccountUin(self, CreatorSubAccountUin):
-        self._CreatorSubAccountUin = CreatorSubAccountUin
-
-    @property
     def CreateTime(self):
         r"""<p>创建时间，ISO 8601 UTC。</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1576,8 +1621,44 @@ class CloudRecord(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def AppId(self):
+        r"""<p>所属租户 AppId。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreatorUin(self):
+        r"""<p>创建者主账号 UIN。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreatorSubAccountUin(self):
+        r"""<p>创建者子账号 UIN；主账号直接创建时为空。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorSubAccountUin
+
+    @CreatorSubAccountUin.setter
+    def CreatorSubAccountUin(self, CreatorSubAccountUin):
+        self._CreatorSubAccountUin = CreatorSubAccountUin
+
+    @property
     def VersionCount(self):
-        r"""<p>Record 下未删除 Version 数量。</p>
+        r"""<p>Record 下未删除 Version 数量。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1589,7 +1670,7 @@ class CloudRecord(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""<p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+        r"""<p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1607,11 +1688,11 @@ class CloudRecord(AbstractModel):
         self._Description = params.get("Description")
         self._DescriptorType = params.get("DescriptorType")
         self._LifecycleStatus = params.get("LifecycleStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._AppId = params.get("AppId")
         self._CreatorUin = params.get("CreatorUin")
         self._CreatorSubAccountUin = params.get("CreatorSubAccountUin")
-        self._CreateTime = params.get("CreateTime")
-        self._UpdateTime = params.get("UpdateTime")
         self._VersionCount = params.get("VersionCount")
         self._LabelSet = params.get("LabelSet")
         memeber_set = set(params.keys())
@@ -3135,9 +3216,12 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
         :type Image: str
         :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
+        :param _PreCacheType: <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+        :type PreCacheType: str
         """
         self._Image = None
         self._ImageRegistryType = None
+        self._PreCacheType = None
 
     @property
     def Image(self):
@@ -3161,10 +3245,22 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
     def ImageRegistryType(self, ImageRegistryType):
         self._ImageRegistryType = ImageRegistryType
 
+    @property
+    def PreCacheType(self):
+        r"""<p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+        :rtype: str
+        """
+        return self._PreCacheType
+
+    @PreCacheType.setter
+    def PreCacheType(self, PreCacheType):
+        self._PreCacheType = PreCacheType
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._ImageRegistryType = params.get("ImageRegistryType")
+        self._PreCacheType = params.get("PreCacheType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3274,7 +3370,7 @@ class CreateRegistryRecordRequest(AbstractModel):
         :type RegistryId: str
         :param _Name: <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
         :type Name: str
-        :param _DescriptorType: <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+        :param _DescriptorType: <p>资产类型。取值包括 MCP、A2A、AGUI、CUSTOM、AGENT_SKILLS 和 PLUGIN。Record 创建后不可修改。PLUGIN 按通用文件资产保存，由运行端解析和加载。</p>
         :type DescriptorType: str
         :param _Description: <p>Record 描述，最大 4096 字符，可选，默认空。</p>
         :type Description: str
@@ -3288,6 +3384,12 @@ class CreateRegistryRecordRequest(AbstractModel):
         :type SkillSource: :class:`tencentcloud.ags.v20250920.models.CloudSkillSourceInput`
         :param _CustomDescriptors: <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
         :type CustomDescriptors: str
+        :param _FileSource: <p>Plugin 通用文件来源。DescriptorType=PLUGIN 时必填，其他类型禁止。</p><p>入参限制：Create 仅支持 Type=FILE；声明 SizeBytes 为 1..54525952 字节，可选 SHA256 为 64 位小写十六进制摘要。</p><p>Registry 保存原始文件，不校验插件内容格式或语义；由运行端解析和加载。Skill 继续使用原 SkillSource。</p>
+        :type FileSource: :class:`tencentcloud.ags.v20250920.models.CloudFileSourceInput`
+        :param _SupportedHarnessVersions: <p>本版本支持的 HarnessVersionReference 对象列表；每项包含 HarnessEngine 和 HarnessEngineVersion，原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：两个字段均必填，各为 1 至 128 字符的精确值，区分大小写，不含空白、通配符或版本范围；最多 128 项，按引擎与版本二元组去重。不接受旧字符串数组、null、缺少字段或额外字段。</p><p>省略或空数组表示未声明，不继承前一版本，不代表支持所有 Harness。兼容性按同一对象的引擎与版本共同判断。修改兼容声明需创建新 Version，文件资产可通过 FileSource.Type=VERSION 复用制品。</p>
+        :type SupportedHarnessVersions: list of HarnessVersionReference
+        :param _Metadata: <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+        :type Metadata: list of MetadataEntry
         """
         self._RegistryId = None
         self._Name = None
@@ -3298,6 +3400,9 @@ class CreateRegistryRecordRequest(AbstractModel):
         self._AgentSource = None
         self._SkillSource = None
         self._CustomDescriptors = None
+        self._FileSource = None
+        self._SupportedHarnessVersions = None
+        self._Metadata = None
 
     @property
     def RegistryId(self):
@@ -3323,7 +3428,7 @@ class CreateRegistryRecordRequest(AbstractModel):
 
     @property
     def DescriptorType(self):
-        r"""<p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+        r"""<p>资产类型。取值包括 MCP、A2A、AGUI、CUSTOM、AGENT_SKILLS 和 PLUGIN。Record 创建后不可修改。PLUGIN 按通用文件资产保存，由运行端解析和加载。</p>
         :rtype: str
         """
         return self._DescriptorType
@@ -3398,6 +3503,39 @@ class CreateRegistryRecordRequest(AbstractModel):
     def CustomDescriptors(self, CustomDescriptors):
         self._CustomDescriptors = CustomDescriptors
 
+    @property
+    def FileSource(self):
+        r"""<p>Plugin 通用文件来源。DescriptorType=PLUGIN 时必填，其他类型禁止。</p><p>入参限制：Create 仅支持 Type=FILE；声明 SizeBytes 为 1..54525952 字节，可选 SHA256 为 64 位小写十六进制摘要。</p><p>Registry 保存原始文件，不校验插件内容格式或语义；由运行端解析和加载。Skill 继续使用原 SkillSource。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudFileSourceInput`
+        """
+        return self._FileSource
+
+    @FileSource.setter
+    def FileSource(self, FileSource):
+        self._FileSource = FileSource
+
+    @property
+    def SupportedHarnessVersions(self):
+        r"""<p>本版本支持的 HarnessVersionReference 对象列表；每项包含 HarnessEngine 和 HarnessEngineVersion，原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：两个字段均必填，各为 1 至 128 字符的精确值，区分大小写，不含空白、通配符或版本范围；最多 128 项，按引擎与版本二元组去重。不接受旧字符串数组、null、缺少字段或额外字段。</p><p>省略或空数组表示未声明，不继承前一版本，不代表支持所有 Harness。兼容性按同一对象的引擎与版本共同判断。修改兼容声明需创建新 Version，文件资产可通过 FileSource.Type=VERSION 复用制品。</p>
+        :rtype: list of HarnessVersionReference
+        """
+        return self._SupportedHarnessVersions
+
+    @SupportedHarnessVersions.setter
+    def SupportedHarnessVersions(self, SupportedHarnessVersions):
+        self._SupportedHarnessVersions = SupportedHarnessVersions
+
+    @property
+    def Metadata(self):
+        r"""<p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+        :rtype: list of MetadataEntry
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -3415,6 +3553,21 @@ class CreateRegistryRecordRequest(AbstractModel):
             self._SkillSource = CloudSkillSourceInput()
             self._SkillSource._deserialize(params.get("SkillSource"))
         self._CustomDescriptors = params.get("CustomDescriptors")
+        if params.get("FileSource") is not None:
+            self._FileSource = CloudFileSourceInput()
+            self._FileSource._deserialize(params.get("FileSource"))
+        if params.get("SupportedHarnessVersions") is not None:
+            self._SupportedHarnessVersions = []
+            for item in params.get("SupportedHarnessVersions"):
+                obj = HarnessVersionReference()
+                obj._deserialize(item)
+                self._SupportedHarnessVersions.append(obj)
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataEntry()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3439,13 +3592,13 @@ class CreateRegistryRecordResponse(AbstractModel):
         :type Record: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
         :param _Version: <p>本次创建的 Revision 1 Version 详情。</p>
         :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
-        :param _UploadURL: <p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+        :param _UploadURL: <p>文件上传预签名 URL。使用文件上传方式创建 Skill 或 Plugin 版本时返回；Plugin 文件使用 application/octet-stream 上传。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UploadURL: str
-        :param _ExpireTime: <p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+        :param _ExpireTime: <p>文件上传链接的过期时间，使用文件上传方式创建 Skill 或 Plugin 版本时返回。</p><p>参数格式：ISO 8601 UTC，例如 2026-10-21T15:30:08Z。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param _ContentStatus: <p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+        :param _ContentStatus: <p>文件版本的内容状态，使用文件上传方式创建 Skill 或 Plugin 版本时返回。创建上传会话后通常为 UPLOADING；文件处理完成后为 READY，失败为 FAILED。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3495,7 +3648,7 @@ class CreateRegistryRecordResponse(AbstractModel):
 
     @property
     def UploadURL(self):
-        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+        r"""<p>文件上传预签名 URL。使用文件上传方式创建 Skill 或 Plugin 版本时返回；Plugin 文件使用 application/octet-stream 上传。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3507,7 +3660,7 @@ class CreateRegistryRecordResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+        r"""<p>文件上传链接的过期时间，使用文件上传方式创建 Skill 或 Plugin 版本时返回。</p><p>参数格式：ISO 8601 UTC，例如 2026-10-21T15:30:08Z。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3519,7 +3672,7 @@ class CreateRegistryRecordResponse(AbstractModel):
 
     @property
     def ContentStatus(self):
-        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+        r"""<p>文件版本的内容状态，使用文件上传方式创建 Skill 或 Plugin 版本时返回。创建上传会话后通常为 UPLOADING；文件处理完成后为 READY，失败为 FAILED。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4983,6 +5136,70 @@ class DeleteDeploymentRequest(AbstractModel):
 
 class DeleteDeploymentResponse(AbstractModel):
     r"""DeleteDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGPUResourceGroupRequest(AbstractModel):
+    r"""DeleteGPUResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: 待删除的 GPU 资源组 ID，必填、非空，最多 64 字节。资源组必须属于当前租户，且已清空有效 GPU 实例、占用绑定和关联沙箱工具。
+        :type ResourceGroupId: str
+        """
+        self._ResourceGroupId = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""待删除的 GPU 资源组 ID，必填、非空，最多 64 字节。资源组必须属于当前租户，且已清空有效 GPU 实例、占用绑定和关联沙箱工具。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGPUResourceGroupResponse(AbstractModel):
+    r"""DeleteGPUResourceGroup返回参数结构体
 
     """
 
@@ -6524,6 +6741,488 @@ class DescribeEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGPUResourceGroupsRequest(AbstractModel):
+    r"""DescribeGPUResourceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，最多 10 项，Name 不可重复，每项 Values 为 1–10 个值。不同 Name 为 AND、同一 Values 为 OR。支持 resource-group-id（精确 ID）、resource-group-name（精确名称）、resource-group-name-like（普通文本子串，% 和 _ 不作为通配符）、gpu-type、gpu-num、cpu、memory。ID/GPUType 最多 64 字节，名称最多 128 字节；gpu-num 为正整数字符串，cpu/memory 为正数字符串，单位核/GiB。
+        :type Filters: list of Filter
+        :param _Offset: 分页偏移量，默认为 0，必须大于等于 0。
+        :type Offset: int
+        :param _Limit: 每页条数，省略或传 0 时取 100；非零取值范围 1–500。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件，最多 10 项，Name 不可重复，每项 Values 为 1–10 个值。不同 Name 为 AND、同一 Values 为 OR。支持 resource-group-id（精确 ID）、resource-group-name（精确名称）、resource-group-name-like（普通文本子串，% 和 _ 不作为通配符）、gpu-type、gpu-num、cpu、memory。ID/GPUType 最多 64 字节，名称最多 128 字节；gpu-num 为正整数字符串，cpu/memory 为正数字符串，单位核/GiB。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认为 0，必须大于等于 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页条数，省略或传 0 时取 100；非零取值范围 1–500。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGPUResourceGroupsResponse(AbstractModel):
+    r"""DescribeGPUResourceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroups: 匹配的资源组列表；无匹配时为 []。
+        :type ResourceGroups: list of GPUResourceGroup
+        :param _TotalCount: 匹配的资源组总数，分页前计算。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceGroups = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResourceGroups(self):
+        r"""匹配的资源组列表；无匹配时为 []。
+        :rtype: list of GPUResourceGroup
+        """
+        return self._ResourceGroups
+
+    @ResourceGroups.setter
+    def ResourceGroups(self, ResourceGroups):
+        self._ResourceGroups = ResourceGroups
+
+    @property
+    def TotalCount(self):
+        r"""匹配的资源组总数，分页前计算。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceGroups") is not None:
+            self._ResourceGroups = []
+            for item in params.get("ResourceGroups"):
+                obj = GPUResourceGroup()
+                obj._deserialize(item)
+                self._ResourceGroups.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGPUResourceSpecsRequest(AbstractModel):
+    r"""DescribeGPUResourceSpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUType: <p>GPU 类型标识，例如 5090d；指定时必须同时提供 CPU、Memory、GPUNum。</p>
+        :type GPUType: str
+        :param _CPU: <p>CPU 核数，必须为正数；与 GPUType、Memory、GPUNum 同时提供。</p>
+        :type CPU: int
+        :param _Memory: <p>主机内存 GiB，必须为正数；与 GPUType、CPU、GPUNum 同时提供。</p>
+        :type Memory: int
+        :param _GPUNum: <p>单台 GPU 卡数，必须为正整数；与 GPUType、CPU、Memory 同时提供。</p>
+        :type GPUNum: int
+        :param _Offset: <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+        :type Offset: int
+        :param _Limit: <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+        :type Limit: int
+        """
+        self._GPUType = None
+        self._CPU = None
+        self._Memory = None
+        self._GPUNum = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GPUType(self):
+        r"""<p>GPU 类型标识，例如 5090d；指定时必须同时提供 CPU、Memory、GPUNum。</p>
+        :rtype: str
+        """
+        return self._GPUType
+
+    @GPUType.setter
+    def GPUType(self, GPUType):
+        self._GPUType = GPUType
+
+    @property
+    def CPU(self):
+        r"""<p>CPU 核数，必须为正数；与 GPUType、Memory、GPUNum 同时提供。</p>
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""<p>主机内存 GiB，必须为正数；与 GPUType、CPU、GPUNum 同时提供。</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def GPUNum(self):
+        r"""<p>单台 GPU 卡数，必须为正整数；与 GPUType、CPU、Memory 同时提供。</p>
+        :rtype: int
+        """
+        return self._GPUNum
+
+    @GPUNum.setter
+    def GPUNum(self, GPUNum):
+        self._GPUNum = GPUNum
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0，必须大于等于 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GPUType = params.get("GPUType")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._GPUNum = params.get("GPUNum")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGPUResourceSpecsResponse(AbstractModel):
+    r"""DescribeGPUResourceSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUResourceSpecSet: <p>可售规格与额度列表；无可售规格时为 []。</p>
+        :type GPUResourceSpecSet: list of GPUResourceSpec
+        :param _TotalCount: <p>筛选后、分页前的总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GPUResourceSpecSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GPUResourceSpecSet(self):
+        r"""<p>可售规格与额度列表；无可售规格时为 []。</p>
+        :rtype: list of GPUResourceSpec
+        """
+        return self._GPUResourceSpecSet
+
+    @GPUResourceSpecSet.setter
+    def GPUResourceSpecSet(self, GPUResourceSpecSet):
+        self._GPUResourceSpecSet = GPUResourceSpecSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>筛选后、分页前的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GPUResourceSpecSet") is not None:
+            self._GPUResourceSpecSet = []
+            for item in params.get("GPUResourceSpecSet"):
+                obj = GPUResourceSpec()
+                obj._deserialize(item)
+                self._GPUResourceSpecSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGPUResourcesRequest(AbstractModel):
+    r"""DescribeGPUResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: <p>按资源组 ID 过滤，可省略，最多 64 字节。</p>
+        :type ResourceGroupId: str
+        :param _ResourceIds: <p>按GPU资源 ID 过滤，最多 500 个，每个为非空字符串且最多 64 字节；值之间为 OR，与其他条件为 AND。</p>
+        :type ResourceIds: list of str
+        :param _State: <p>按GPU状态过滤，可省略。大小写敏感：Delivering、Active、Isolated、Destroying。</p>
+        :type State: str
+        :param _AllocationState: <p>按占用状态过滤，可省略。大小写敏感：Idle、Allocating、InUse、Returning、Unavailable。</p>
+        :type AllocationState: str
+        :param _Offset: <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+        :type Offset: int
+        :param _Limit: <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+        :type Limit: int
+        """
+        self._ResourceGroupId = None
+        self._ResourceIds = None
+        self._State = None
+        self._AllocationState = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>按资源组 ID 过滤，可省略，最多 64 字节。</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceIds(self):
+        r"""<p>按GPU资源 ID 过滤，最多 500 个，每个为非空字符串且最多 64 字节；值之间为 OR，与其他条件为 AND。</p>
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def State(self):
+        r"""<p>按GPU状态过滤，可省略。大小写敏感：Delivering、Active、Isolated、Destroying。</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def AllocationState(self):
+        r"""<p>按占用状态过滤，可省略。大小写敏感：Idle、Allocating、InUse、Returning、Unavailable。</p>
+        :rtype: str
+        """
+        return self._AllocationState
+
+    @AllocationState.setter
+    def AllocationState(self, AllocationState):
+        self._AllocationState = AllocationState
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0，必须大于等于 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceIds = params.get("ResourceIds")
+        self._State = params.get("State")
+        self._AllocationState = params.get("AllocationState")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGPUResourcesResponse(AbstractModel):
+    r"""DescribeGPUResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resources: <p>GPU 资源列表；每台一条，无匹配时为 []。</p>
+        :type Resources: list of GPUResource
+        :param _TotalCount: <p>筛选后、分页前的总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Resources = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Resources(self):
+        r"""<p>GPU 资源列表；每台一条，无匹配时为 []。</p>
+        :rtype: list of GPUResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def TotalCount(self):
+        r"""<p>筛选后、分页前的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = GPUResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePreCacheImageListRequest(AbstractModel):
     r"""DescribePreCacheImageList请求参数结构体
 
@@ -7503,7 +8202,7 @@ class DescribeRegistryRecordListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: <p>父 Registry ID。</p>
+        :param _RegistryId: <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
         :type RegistryId: str
         :param _Offset: <p>分页起始偏移，默认 0。</p>
         :type Offset: int
@@ -7519,7 +8218,7 @@ class DescribeRegistryRecordListRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""<p>父 Registry ID。</p>
+        r"""<p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
         :rtype: str
         """
         return self._RegistryId
@@ -7652,7 +8351,7 @@ class DescribeRegistryRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: <p>父 Registry ID。</p>
+        :param _RegistryId: <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
         :type RegistryId: str
         :param _RecordId: <p>Record ID。</p>
         :type RecordId: str
@@ -7668,7 +8367,7 @@ class DescribeRegistryRecordRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""<p>父 Registry ID。</p>
+        r"""<p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
         :rtype: str
         """
         return self._RegistryId
@@ -10010,6 +10709,650 @@ class Filter(AbstractModel):
         
 
 
+class GPUResource(AbstractModel):
+    r"""已购买GPU资源详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>GPU 资源 ID，与沙箱 InstanceId、底层 VM ID 不同。</p>
+        :type ResourceId: str
+        :param _ResourceGroupId: <p>所属 GPU 资源组 ID。</p>
+        :type ResourceGroupId: str
+        :param _State: <p>GPU资源状态，大小写敏感：Delivering（准备中）、Active（已生效）、Isolated（已隔离）、Destroying（释放中）。不返回 Destroyed 和补偿完成的 Failed。</p>
+        :type State: str
+        :param _AllocationState: <p>占用状态，大小写敏感：Idle（可领取）、Allocating（领取中）、InUse（使用中）、Returning（归还中）、Unavailable（暂不可用）。不能根据 InstanceId 是否存在判断是否空闲。</p>
+        :type AllocationState: str
+        :param _InstanceId: <p>已绑定的最终 AGS 沙箱实例 ID；尚未绑定或未占用时可能不返回。</p>
+        :type InstanceId: str
+        :param _ActiveAt: <p>生效时间，未生效时可能不返回。</p>
+        :type ActiveAt: str
+        :param _ExpireAt: <p>到期时间，未生效时可能不返回。</p>
+        :type ExpireAt: str
+        :param _RenewFlag: <p>续费标记：0 不自动续费，1 自动续费，2 不再续费。</p>
+        :type RenewFlag: int
+        :param _StatusReason: <p>安全的状态原因标识；空串表示无额外原因，PhysicalUnavailable 表示物理状态不可用，BindingPending 表示绑定身份尚待确认。未知值应作状态确认中处理。</p>
+        :type StatusReason: str
+        """
+        self._ResourceId = None
+        self._ResourceGroupId = None
+        self._State = None
+        self._AllocationState = None
+        self._InstanceId = None
+        self._ActiveAt = None
+        self._ExpireAt = None
+        self._RenewFlag = None
+        self._StatusReason = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>GPU 资源 ID，与沙箱 InstanceId、底层 VM ID 不同。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>所属 GPU 资源组 ID。</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def State(self):
+        r"""<p>GPU资源状态，大小写敏感：Delivering（准备中）、Active（已生效）、Isolated（已隔离）、Destroying（释放中）。不返回 Destroyed 和补偿完成的 Failed。</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def AllocationState(self):
+        r"""<p>占用状态，大小写敏感：Idle（可领取）、Allocating（领取中）、InUse（使用中）、Returning（归还中）、Unavailable（暂不可用）。不能根据 InstanceId 是否存在判断是否空闲。</p>
+        :rtype: str
+        """
+        return self._AllocationState
+
+    @AllocationState.setter
+    def AllocationState(self, AllocationState):
+        self._AllocationState = AllocationState
+
+    @property
+    def InstanceId(self):
+        r"""<p>已绑定的最终 AGS 沙箱实例 ID；尚未绑定或未占用时可能不返回。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ActiveAt(self):
+        r"""<p>生效时间，未生效时可能不返回。</p>
+        :rtype: str
+        """
+        return self._ActiveAt
+
+    @ActiveAt.setter
+    def ActiveAt(self, ActiveAt):
+        self._ActiveAt = ActiveAt
+
+    @property
+    def ExpireAt(self):
+        r"""<p>到期时间，未生效时可能不返回。</p>
+        :rtype: str
+        """
+        return self._ExpireAt
+
+    @ExpireAt.setter
+    def ExpireAt(self, ExpireAt):
+        self._ExpireAt = ExpireAt
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标记：0 不自动续费，1 自动续费，2 不再续费。</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def StatusReason(self):
+        r"""<p>安全的状态原因标识；空串表示无额外原因，PhysicalUnavailable 表示物理状态不可用，BindingPending 表示绑定身份尚待确认。未知值应作状态确认中处理。</p>
+        :rtype: str
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._State = params.get("State")
+        self._AllocationState = params.get("AllocationState")
+        self._InstanceId = params.get("InstanceId")
+        self._ActiveAt = params.get("ActiveAt")
+        self._ExpireAt = params.get("ExpireAt")
+        self._RenewFlag = params.get("RenewFlag")
+        self._StatusReason = params.get("StatusReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUResourceGroup(AbstractModel):
+    r"""GPU 资源组元数据及统计；资源组是管理集合，期限和续费标记逐台保存。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: GPU 资源组 ID。
+        :type ResourceGroupId: str
+        :param _Name: 资源组名称。
+        :type Name: str
+        :param _Spec: 资源组固定规格；已下架规格的已购组仍可查询。
+        :type Spec: :class:`tencentcloud.ags.v20250920.models.GPUResourceGroupSpec`
+        :param _Statistics: 当前资源统计。
+        :type Statistics: :class:`tencentcloud.ags.v20250920.models.GPUResourceGroupStatistics`
+        """
+        self._ResourceGroupId = None
+        self._Name = None
+        self._Spec = None
+        self._Statistics = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""GPU 资源组 ID。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Name(self):
+        r"""资源组名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Spec(self):
+        r"""资源组固定规格；已下架规格的已购组仍可查询。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.GPUResourceGroupSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Statistics(self):
+        r"""当前资源统计。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.GPUResourceGroupStatistics`
+        """
+        return self._Statistics
+
+    @Statistics.setter
+    def Statistics(self, Statistics):
+        self._Statistics = Statistics
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._Name = params.get("Name")
+        if params.get("Spec") is not None:
+            self._Spec = GPUResourceGroupSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("Statistics") is not None:
+            self._Statistics = GPUResourceGroupStatistics()
+            self._Statistics._deserialize(params.get("Statistics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUResourceGroupSpec(AbstractModel):
+    r"""已购买 GPU 资源组的固定规格及展示元数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUType: <p>GPU 类型标识，例如 5090d。</p>
+        :type GPUType: str
+        :param _GPUTypeAlias: <p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+        :type GPUTypeAlias: str
+        :param _GPUMemoryGiB: <p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+        :type GPUMemoryGiB: int
+        :param _CPU: <p>单台实例 CPU 核数。</p>
+        :type CPU: int
+        :param _Memory: <p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+        :type Memory: int
+        :param _GPUNum: <p>单台实例的 GPU 卡数。</p>
+        :type GPUNum: int
+        """
+        self._GPUType = None
+        self._GPUTypeAlias = None
+        self._GPUMemoryGiB = None
+        self._CPU = None
+        self._Memory = None
+        self._GPUNum = None
+
+    @property
+    def GPUType(self):
+        r"""<p>GPU 类型标识，例如 5090d。</p>
+        :rtype: str
+        """
+        return self._GPUType
+
+    @GPUType.setter
+    def GPUType(self, GPUType):
+        self._GPUType = GPUType
+
+    @property
+    def GPUTypeAlias(self):
+        r"""<p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+        :rtype: str
+        """
+        return self._GPUTypeAlias
+
+    @GPUTypeAlias.setter
+    def GPUTypeAlias(self, GPUTypeAlias):
+        self._GPUTypeAlias = GPUTypeAlias
+
+    @property
+    def GPUMemoryGiB(self):
+        r"""<p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+        :rtype: int
+        """
+        return self._GPUMemoryGiB
+
+    @GPUMemoryGiB.setter
+    def GPUMemoryGiB(self, GPUMemoryGiB):
+        self._GPUMemoryGiB = GPUMemoryGiB
+
+    @property
+    def CPU(self):
+        r"""<p>单台实例 CPU 核数。</p>
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""<p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def GPUNum(self):
+        r"""<p>单台实例的 GPU 卡数。</p>
+        :rtype: int
+        """
+        return self._GPUNum
+
+    @GPUNum.setter
+    def GPUNum(self, GPUNum):
+        self._GPUNum = GPUNum
+
+
+    def _deserialize(self, params):
+        self._GPUType = params.get("GPUType")
+        self._GPUTypeAlias = params.get("GPUTypeAlias")
+        self._GPUMemoryGiB = params.get("GPUMemoryGiB")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._GPUNum = params.get("GPUNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUResourceGroupStatistics(AbstractModel):
+    r"""组内当前资源统计。可用/占用是额外维度，不能与 StateCounts 相加。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>组内当前资源总数，单位台；不含已销毁和补偿完成的失败资源。</p>
+        :type TotalCount: int
+        :param _AvailableCount: <p>Active、无占用且物理状态当前可领取的资源数量，单位台。</p>
+        :type AvailableCount: int
+        :param _AllocatedCount: <p>仍被占用或绑定的资源数量，含领取中、使用中及归还未完成，单位台。</p>
+        :type AllocatedCount: int
+        :param _StateCounts: <p>资源状态计数，四项之和等于本组 TotalCount。</p>
+        :type StateCounts: :class:`tencentcloud.ags.v20250920.models.GPUResourceStateCount`
+        """
+        self._TotalCount = None
+        self._AvailableCount = None
+        self._AllocatedCount = None
+        self._StateCounts = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>组内当前资源总数，单位台；不含已销毁和补偿完成的失败资源。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AvailableCount(self):
+        r"""<p>Active、无占用且物理状态当前可领取的资源数量，单位台。</p>
+        :rtype: int
+        """
+        return self._AvailableCount
+
+    @AvailableCount.setter
+    def AvailableCount(self, AvailableCount):
+        self._AvailableCount = AvailableCount
+
+    @property
+    def AllocatedCount(self):
+        r"""<p>仍被占用或绑定的资源数量，含领取中、使用中及归还未完成，单位台。</p>
+        :rtype: int
+        """
+        return self._AllocatedCount
+
+    @AllocatedCount.setter
+    def AllocatedCount(self, AllocatedCount):
+        self._AllocatedCount = AllocatedCount
+
+    @property
+    def StateCounts(self):
+        r"""<p>资源状态计数，四项之和等于本组 TotalCount。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.GPUResourceStateCount`
+        """
+        return self._StateCounts
+
+    @StateCounts.setter
+    def StateCounts(self, StateCounts):
+        self._StateCounts = StateCounts
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._AvailableCount = params.get("AvailableCount")
+        self._AllocatedCount = params.get("AllocatedCount")
+        if params.get("StateCounts") is not None:
+            self._StateCounts = GPUResourceStateCount()
+            self._StateCounts._deserialize(params.get("StateCounts"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUResourceSpec(AbstractModel):
+    r"""当前地域可售 GPU 规格与当前租户可购买额度。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUType: <p>GPU 类型标识，例如 5090d。</p>
+        :type GPUType: str
+        :param _GPUTypeAlias: <p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+        :type GPUTypeAlias: str
+        :param _GPUMemoryGiB: <p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+        :type GPUMemoryGiB: int
+        :param _CPU: <p>单台实例 CPU 核数。</p>
+        :type CPU: int
+        :param _Memory: <p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+        :type Memory: int
+        :param _GPUNum: <p>单台实例的 GPU 卡数。</p>
+        :type GPUNum: int
+        :param _AvailableCount: <p>当前可购买数量，单位台，不是卡数；0 表示确认无额度，null 表示额度未知。实际购买时仍会重新校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableCount: int
+        """
+        self._GPUType = None
+        self._GPUTypeAlias = None
+        self._GPUMemoryGiB = None
+        self._CPU = None
+        self._Memory = None
+        self._GPUNum = None
+        self._AvailableCount = None
+
+    @property
+    def GPUType(self):
+        r"""<p>GPU 类型标识，例如 5090d。</p>
+        :rtype: str
+        """
+        return self._GPUType
+
+    @GPUType.setter
+    def GPUType(self, GPUType):
+        self._GPUType = GPUType
+
+    @property
+    def GPUTypeAlias(self):
+        r"""<p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+        :rtype: str
+        """
+        return self._GPUTypeAlias
+
+    @GPUTypeAlias.setter
+    def GPUTypeAlias(self, GPUTypeAlias):
+        self._GPUTypeAlias = GPUTypeAlias
+
+    @property
+    def GPUMemoryGiB(self):
+        r"""<p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+        :rtype: int
+        """
+        return self._GPUMemoryGiB
+
+    @GPUMemoryGiB.setter
+    def GPUMemoryGiB(self, GPUMemoryGiB):
+        self._GPUMemoryGiB = GPUMemoryGiB
+
+    @property
+    def CPU(self):
+        r"""<p>单台实例 CPU 核数。</p>
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""<p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def GPUNum(self):
+        r"""<p>单台实例的 GPU 卡数。</p>
+        :rtype: int
+        """
+        return self._GPUNum
+
+    @GPUNum.setter
+    def GPUNum(self, GPUNum):
+        self._GPUNum = GPUNum
+
+    @property
+    def AvailableCount(self):
+        r"""<p>当前可购买数量，单位台，不是卡数；0 表示确认无额度，null 表示额度未知。实际购买时仍会重新校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AvailableCount
+
+    @AvailableCount.setter
+    def AvailableCount(self, AvailableCount):
+        self._AvailableCount = AvailableCount
+
+
+    def _deserialize(self, params):
+        self._GPUType = params.get("GPUType")
+        self._GPUTypeAlias = params.get("GPUTypeAlias")
+        self._GPUMemoryGiB = params.get("GPUMemoryGiB")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._GPUNum = params.get("GPUNum")
+        self._AvailableCount = params.get("AvailableCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUResourceStateCount(AbstractModel):
+    r"""资源状态计数；四项之和为组内 TotalCount，不含已销毁和补偿完成的失败资源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Delivering: <p>准备中的资源数量，单位台。</p>
+        :type Delivering: int
+        :param _Active: <p>已生效的资源数量，单位台；不等于当前可领取数量。</p>
+        :type Active: int
+        :param _Isolated: <p>已隔离的资源数量，单位台。</p>
+        :type Isolated: int
+        :param _Destroying: <p>正在释放的资源数量，单位台。</p>
+        :type Destroying: int
+        """
+        self._Delivering = None
+        self._Active = None
+        self._Isolated = None
+        self._Destroying = None
+
+    @property
+    def Delivering(self):
+        r"""<p>准备中的资源数量，单位台。</p>
+        :rtype: int
+        """
+        return self._Delivering
+
+    @Delivering.setter
+    def Delivering(self, Delivering):
+        self._Delivering = Delivering
+
+    @property
+    def Active(self):
+        r"""<p>已生效的资源数量，单位台；不等于当前可领取数量。</p>
+        :rtype: int
+        """
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+    @property
+    def Isolated(self):
+        r"""<p>已隔离的资源数量，单位台。</p>
+        :rtype: int
+        """
+        return self._Isolated
+
+    @Isolated.setter
+    def Isolated(self, Isolated):
+        self._Isolated = Isolated
+
+    @property
+    def Destroying(self):
+        r"""<p>正在释放的资源数量，单位台。</p>
+        :rtype: int
+        """
+        return self._Destroying
+
+    @Destroying.setter
+    def Destroying(self, Destroying):
+        self._Destroying = Destroying
+
+
+    def _deserialize(self, params):
+        self._Delivering = params.get("Delivering")
+        self._Active = params.get("Active")
+        self._Isolated = params.get("Isolated")
+        self._Destroying = params.get("Destroying")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetSkillPackageDownloadURLRequest(AbstractModel):
     r"""GetSkillPackageDownloadURL请求参数结构体
 
@@ -10966,6 +12309,85 @@ class ModifyDeploymentResponse(AbstractModel):
         if params.get("Deployment") is not None:
             self._Deployment = Deployment()
             self._Deployment._deserialize(params.get("Deployment"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGPUResourceGroupRequest(AbstractModel):
+    r"""ModifyGPUResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: GPU 资源组 ID，必填、非空，最多 64 字节。
+        :type ResourceGroupId: str
+        :param _Name: 新的资源组名称；去除首尾空白后不能为空，最多 128 字节，UTF-8 中文通常占 3 字节。
+        :type Name: str
+        """
+        self._ResourceGroupId = None
+        self._Name = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""GPU 资源组 ID，必填、非空，最多 64 字节。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Name(self):
+        r"""新的资源组名称；去除首尾空白后不能为空，最多 128 字节，UTF-8 中文通常占 3 字节。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGPUResourceGroupResponse(AbstractModel):
+    r"""ModifyGPUResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -12113,12 +13535,15 @@ class QuotaResourceInfo(AbstractModel):
         :type CPUCores: float
         :param _MemoryGiB: <p>内存配额或当前用量</p><p>单位：GiB</p>
         :type MemoryGiB: float
+        :param _PreCacheImageConcurrency: <p>最大镜像预热并发处理数量</p><p>单位：个</p>
+        :type PreCacheImageConcurrency: int
         """
         self._SandboxTools = None
         self._SandboxInstances = None
         self._PausedInstances = None
         self._CPUCores = None
         self._MemoryGiB = None
+        self._PreCacheImageConcurrency = None
 
     @property
     def SandboxTools(self):
@@ -12175,6 +13600,17 @@ class QuotaResourceInfo(AbstractModel):
     def MemoryGiB(self, MemoryGiB):
         self._MemoryGiB = MemoryGiB
 
+    @property
+    def PreCacheImageConcurrency(self):
+        r"""<p>最大镜像预热并发处理数量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._PreCacheImageConcurrency
+
+    @PreCacheImageConcurrency.setter
+    def PreCacheImageConcurrency(self, PreCacheImageConcurrency):
+        self._PreCacheImageConcurrency = PreCacheImageConcurrency
+
 
     def _deserialize(self, params):
         self._SandboxTools = params.get("SandboxTools")
@@ -12182,6 +13618,7 @@ class QuotaResourceInfo(AbstractModel):
         self._PausedInstances = params.get("PausedInstances")
         self._CPUCores = params.get("CPUCores")
         self._MemoryGiB = params.get("MemoryGiB")
+        self._PreCacheImageConcurrency = params.get("PreCacheImageConcurrency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14513,6 +15950,12 @@ class UpdateRegistryRecordRequest(AbstractModel):
         :type CustomDescriptors: str
         :param _LabelMutations: <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
         :type LabelMutations: list of CloudRecordLabelMutation
+        :param _FileSource: <p>Skill 或 Plugin 后续版本的文件来源。PLUGIN 可使用 FILE 上传新文件，或使用 VERSION 复用同一 Record 的 READY 制品；Skill 仅通过 VERSION 复用现有文件。与其他内容来源互斥。</p><p>VERSION 只提交 Type、SourceVersionId；Metadata 和 SupportedHarnessVersions 由本次请求单独声明，不继承来源版本。</p>
+        :type FileSource: :class:`tencentcloud.ags.v20250920.models.CloudFileSourceInput`
+        :param _SupportedHarnessVersions: <p>资产版本支持的 Harness 引擎与具体版本列表。每个元素同时包含 HarnessEngine 和 HarnessEngineVersion，取值原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：最多 128 个元素；两个字段均必填，长度 1～128，区分大小写，不允许空白、通配符或版本范围。按完整配对去重；不接受字符串数组或 null。</p><p>省略或空数组表示未声明兼容性，不表示兼容全部。仅随新 Version 写入，后续修改需创建新 Version。筛选时 supported_harness_engine 与 supported_harness_version 必须同时传入，并在同一元素中精确匹配。</p>
+        :type SupportedHarnessVersions: list of HarnessVersionReference
+        :param _Metadata: <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+        :type Metadata: list of MetadataEntry
         """
         self._RegistryId = None
         self._RecordId = None
@@ -14524,6 +15967,9 @@ class UpdateRegistryRecordRequest(AbstractModel):
         self._SkillSource = None
         self._CustomDescriptors = None
         self._LabelMutations = None
+        self._FileSource = None
+        self._SupportedHarnessVersions = None
+        self._Metadata = None
 
     @property
     def RegistryId(self):
@@ -14635,6 +16081,39 @@ class UpdateRegistryRecordRequest(AbstractModel):
     def LabelMutations(self, LabelMutations):
         self._LabelMutations = LabelMutations
 
+    @property
+    def FileSource(self):
+        r"""<p>Skill 或 Plugin 后续版本的文件来源。PLUGIN 可使用 FILE 上传新文件，或使用 VERSION 复用同一 Record 的 READY 制品；Skill 仅通过 VERSION 复用现有文件。与其他内容来源互斥。</p><p>VERSION 只提交 Type、SourceVersionId；Metadata 和 SupportedHarnessVersions 由本次请求单独声明，不继承来源版本。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudFileSourceInput`
+        """
+        return self._FileSource
+
+    @FileSource.setter
+    def FileSource(self, FileSource):
+        self._FileSource = FileSource
+
+    @property
+    def SupportedHarnessVersions(self):
+        r"""<p>资产版本支持的 Harness 引擎与具体版本列表。每个元素同时包含 HarnessEngine 和 HarnessEngineVersion，取值原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：最多 128 个元素；两个字段均必填，长度 1～128，区分大小写，不允许空白、通配符或版本范围。按完整配对去重；不接受字符串数组或 null。</p><p>省略或空数组表示未声明兼容性，不表示兼容全部。仅随新 Version 写入，后续修改需创建新 Version。筛选时 supported_harness_engine 与 supported_harness_version 必须同时传入，并在同一元素中精确匹配。</p>
+        :rtype: list of HarnessVersionReference
+        """
+        return self._SupportedHarnessVersions
+
+    @SupportedHarnessVersions.setter
+    def SupportedHarnessVersions(self, SupportedHarnessVersions):
+        self._SupportedHarnessVersions = SupportedHarnessVersions
+
+    @property
+    def Metadata(self):
+        r"""<p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+        :rtype: list of MetadataEntry
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -14658,6 +16137,21 @@ class UpdateRegistryRecordRequest(AbstractModel):
                 obj = CloudRecordLabelMutation()
                 obj._deserialize(item)
                 self._LabelMutations.append(obj)
+        if params.get("FileSource") is not None:
+            self._FileSource = CloudFileSourceInput()
+            self._FileSource._deserialize(params.get("FileSource"))
+        if params.get("SupportedHarnessVersions") is not None:
+            self._SupportedHarnessVersions = []
+            for item in params.get("SupportedHarnessVersions"):
+                obj = HarnessVersionReference()
+                obj._deserialize(item)
+                self._SupportedHarnessVersions.append(obj)
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataEntry()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

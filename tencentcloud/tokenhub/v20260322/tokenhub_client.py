@@ -646,6 +646,31 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTokenPlanPersonalPackage(self, request):
+        r"""查询个人版套餐详情。
+
+        查询指定产品类型的个人版 Token Plan 套餐状态、额度及续费信息。
+
+        :param request: Request instance for DescribeTokenPlanPersonalPackage.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanPersonalPackageRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanPersonalPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanPersonalPackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanPersonalPackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUsageRankList(self, request):
         r"""查询用量排行列表。
 

@@ -142,6 +142,29 @@ class KeewidbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInstanceAccount(self, request):
+        r"""本接口（CreateInstanceAccount）用于自定义访问实例的账号。
+
+        :param request: Request instance for CreateInstanceAccount.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.CreateInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.CreateInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstanceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstances(self, request):
         r"""创建数据库实例
 
@@ -156,6 +179,29 @@ class KeewidbClient(AbstractClient):
             body = self.call("CreateInstances", params, headers=headers)
             response = json.loads(body)
             model = models.CreateInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInstanceAccount(self, request):
+        r"""本接口（DeleteInstanceAccount）用于删除实例自定义账号。
+
+        :param request: Request instance for DeleteInstanceAccount.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.DeleteInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.DeleteInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstanceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstanceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -225,6 +271,29 @@ class KeewidbClient(AbstractClient):
             body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceAccount(self, request):
+        r"""本接口（DescribeInstanceAccount）用于查看实例账号信息。
+
+        :param request: Request instance for DescribeInstanceAccount.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -731,6 +800,29 @@ class KeewidbClient(AbstractClient):
             body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceAccount(self, request):
+        r"""本接口（ModifyInstanceAccount）用于修改实例账号。
+
+        :param request: Request instance for ModifyInstanceAccount.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.ModifyInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -12287,6 +12287,40 @@ class DescribeDatabaseACLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEnvAccessControlRequest(AbstractModel):
+    r"""DescribeEnvAccessControl请求参数结构体
+
+    """
+
+
+class DescribeEnvAccessControlResponse(AbstractModel):
+    r"""DescribeEnvAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnvAccountCircleRequest(AbstractModel):
     r"""DescribeEnvAccountCircle请求参数结构体
 
@@ -24964,6 +24998,40 @@ class ModifyDatabaseACLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyEnvAccessControlRequest(AbstractModel):
+    r"""ModifyEnvAccessControl请求参数结构体
+
+    """
+
+
+class ModifyEnvAccessControlResponse(AbstractModel):
+    r"""ModifyEnvAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyEnvExtraRequest(AbstractModel):
     r"""ModifyEnvExtra请求参数结构体
 
@@ -25321,21 +25389,21 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境 ID，用于指定需要修改登录策略的云开发环境。
+        :param _EnvId: <p>环境 ID，用于指定需要修改登录策略的云开发环境。</p>
         :type EnvId: str
-        :param _PhoneNumberLogin: 手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+        :param _PhoneNumberLogin: <p>手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。</p>
         :type PhoneNumberLogin: bool
-        :param _EmailLogin: 邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+        :param _EmailLogin: <p>邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。</p>
         :type EmailLogin: bool
-        :param _UserNameLogin: 用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+        :param _UserNameLogin: <p>用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。</p>
         :type UserNameLogin: bool
-        :param _AnonymousLogin: 匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+        :param _AnonymousLogin: <p>匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。</p>
         :type AnonymousLogin: bool
-        :param _SmsVerificationConfig: 短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+        :param _SmsVerificationConfig: <p>短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。</p>
         :type SmsVerificationConfig: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
-        :param _MfaConfig: MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+        :param _MfaConfig: <p>MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。</p>
         :type MfaConfig: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
-        :param _PwdUpdateStrategy: 密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+        :param _PwdUpdateStrategy: <p>密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。</p>
         :type PwdUpdateStrategy: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
         """
         self._EnvId = None
@@ -25349,7 +25417,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境 ID，用于指定需要修改登录策略的云开发环境。
+        r"""<p>环境 ID，用于指定需要修改登录策略的云开发环境。</p>
         :rtype: str
         """
         return self._EnvId
@@ -25360,7 +25428,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def PhoneNumberLogin(self):
-        r"""手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+        r"""<p>手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。</p>
         :rtype: bool
         """
         return self._PhoneNumberLogin
@@ -25371,7 +25439,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def EmailLogin(self):
-        r"""邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+        r"""<p>邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。</p>
         :rtype: bool
         """
         return self._EmailLogin
@@ -25382,7 +25450,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def UserNameLogin(self):
-        r"""用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+        r"""<p>用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。</p>
         :rtype: bool
         """
         return self._UserNameLogin
@@ -25393,7 +25461,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def AnonymousLogin(self):
-        r"""匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+        r"""<p>匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。</p>
         :rtype: bool
         """
         return self._AnonymousLogin
@@ -25404,7 +25472,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def SmsVerificationConfig(self):
-        r"""短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+        r"""<p>短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
         """
         return self._SmsVerificationConfig
@@ -25415,7 +25483,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def MfaConfig(self):
-        r"""MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+        r"""<p>MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
         """
         return self._MfaConfig
@@ -25426,7 +25494,7 @@ class ModifyLoginConfigRequest(AbstractModel):
 
     @property
     def PwdUpdateStrategy(self):
-        r"""密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+        r"""<p>密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
         """
         return self._PwdUpdateStrategy

@@ -1186,7 +1186,7 @@ class AddAttackWhiteRuleRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 规则状态
+        :param _Status: 规则状态，0表示关闭，1表示开启
         :type Status: int
         :param _Rules: 匹配规则项列表
         :type Rules: list of UserWhiteRuleItem
@@ -1226,7 +1226,7 @@ class AddAttackWhiteRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""规则状态
+        r"""规则状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -1420,6 +1420,13 @@ class AddBatchCustomRuleRequest(AbstractModel):
         :type ActionRatio: int
         :param _GroupIds: <p>绑定的防护组ID</p>
         :type GroupIds: list of int non-negative
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+默认值：0
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :type Preview: int
         """
         self._Name = None
         self._ExpireTime = None
@@ -1437,6 +1444,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
         self._PageId = None
         self._ActionRatio = None
         self._GroupIds = None
+        self._Preview = None
 
     @property
     def Name(self):
@@ -1614,6 +1622,22 @@ class AddBatchCustomRuleRequest(AbstractModel):
     def GroupIds(self, GroupIds):
         self._GroupIds = GroupIds
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+默认值：0
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1639,6 +1663,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
         self._GroupIds = params.get("GroupIds")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1974,7 +1999,7 @@ class AddCustomRuleRequest(AbstractModel):
         :type Source: str
         :param _Label: 规则标签，小程序规则用，标识是内置规则还是自定义规则
         :type Label: str
-        :param _Status: 开关状态，小程序风控规则的时候传该值
+        :param _Status: 规则开关状态，0表示关闭，1表示开启，小程序风控规则传该值
         :type Status: int
         :param _PageId: 拦截页面id
         :type PageId: str
@@ -1986,6 +2011,13 @@ class AddCustomRuleRequest(AbstractModel):
 取值范围：1-100
 默认值：100（全量生效）
         :type ActionRatio: int
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+默认值：0
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :type Preview: int
         """
         self._Name = None
         self._SortId = None
@@ -2005,6 +2037,7 @@ class AddCustomRuleRequest(AbstractModel):
         self._PageId = None
         self._LogicalOp = None
         self._ActionRatio = None
+        self._Preview = None
 
     @property
     def Name(self):
@@ -2173,7 +2206,7 @@ class AddCustomRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""开关状态，小程序风控规则的时候传该值
+        r"""规则开关状态，0表示关闭，1表示开启，小程序风控规则传该值
         :rtype: int
         """
         return self._Status
@@ -2219,6 +2252,22 @@ class AddCustomRuleRequest(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+默认值：0
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2246,6 +2295,7 @@ class AddCustomRuleRequest(AbstractModel):
         self._PageId = params.get("PageId")
         self._LogicalOp = params.get("LogicalOp")
         self._ActionRatio = params.get("ActionRatio")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7939,6 +7989,11 @@ class BatchCustomRuleListItem(AbstractModel):
         :type ActionRatio: int
         :param _GroupIds: <p>防护对象组ID</p>
         :type GroupIds: list of int non-negative
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+        :type Preview: int
         """
         self._Id = None
         self._ActionType = None
@@ -7963,6 +8018,7 @@ class BatchCustomRuleListItem(AbstractModel):
         self._LogicalOp = None
         self._ActionRatio = None
         self._GroupIds = None
+        self._Preview = None
 
     @property
     def Id(self):
@@ -8217,6 +8273,20 @@ class BatchCustomRuleListItem(AbstractModel):
     def GroupIds(self, GroupIds):
         self._GroupIds = GroupIds
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8249,6 +8319,7 @@ class BatchCustomRuleListItem(AbstractModel):
         self._LogicalOp = params.get("LogicalOp")
         self._ActionRatio = params.get("ActionRatio")
         self._GroupIds = params.get("GroupIds")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14822,7 +14893,7 @@ class CreateBatchIpAccessControlRequest(AbstractModel):
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
-        :param _ActionType: 42为黑名单，40为白名单
+        :param _ActionType: IP黑白名单类型，40表示白名单，42表示黑名单
         :type ActionType: int
         :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
         :type GroupIds: list of int non-negative
@@ -14874,7 +14945,7 @@ class CreateBatchIpAccessControlRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""42为黑名单，40为白名单
+        r"""IP黑白名单类型，40表示白名单，42表示黑名单
         :rtype: int
         """
         return self._ActionType
@@ -15841,7 +15912,7 @@ class CreateIpAccessControlRequest(AbstractModel):
         :type Domain: str
         :param _IpList: ip参数列表
         :type IpList: list of str
-        :param _ActionType: 42为黑名单，40为白名单
+        :param _ActionType: IP黑白名单类型，40表示白名单，42表示黑名单
         :type ActionType: int
         :param _ValidTS: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
         :type ValidTS: int
@@ -15894,7 +15965,7 @@ class CreateIpAccessControlRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""42为黑名单，40为白名单
+        r"""IP黑白名单类型，40表示白名单，42表示黑名单
         :rtype: int
         """
         return self._ActionType
@@ -16792,6 +16863,10 @@ class CreateRateLimitV2Request(AbstractModel):
         :type PathsOption: list of PathItem
         :param _Order: 限流执行顺序，0：默认情况，限流优先，1：安全防护优先
         :type Order: int
+        :param _MatchConditions: 统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条。MatchConditions非空时引擎只走新字段
+        :type MatchConditions: list of Strategy
+        :param _ConditionLogic: 条件间逻辑：and(默认)/or
+        :type ConditionLogic: str
         """
         self._Domain = None
         self._Name = None
@@ -16815,6 +16890,8 @@ class CreateRateLimitV2Request(AbstractModel):
         self._QuotaShare = None
         self._PathsOption = None
         self._Order = None
+        self._MatchConditions = None
+        self._ConditionLogic = None
 
     @property
     def Domain(self):
@@ -17058,6 +17135,28 @@ class CreateRateLimitV2Request(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
+    @property
+    def MatchConditions(self):
+        r"""统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条。MatchConditions非空时引擎只走新字段
+        :rtype: list of Strategy
+        """
+        return self._MatchConditions
+
+    @MatchConditions.setter
+    def MatchConditions(self, MatchConditions):
+        self._MatchConditions = MatchConditions
+
+    @property
+    def ConditionLogic(self):
+        r"""条件间逻辑：and(默认)/or
+        :rtype: str
+        """
+        return self._ConditionLogic
+
+    @ConditionLogic.setter
+    def ConditionLogic(self, ConditionLogic):
+        self._ConditionLogic = ConditionLogic
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -17112,6 +17211,13 @@ class CreateRateLimitV2Request(AbstractModel):
                 obj._deserialize(item)
                 self._PathsOption.append(obj)
         self._Order = params.get("Order")
+        if params.get("MatchConditions") is not None:
+            self._MatchConditions = []
+            for item in params.get("MatchConditions"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._MatchConditions.append(obj)
+        self._ConditionLogic = params.get("ConditionLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18883,7 +18989,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
         :type IsId: bool
         :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
         :type DeleteAll: bool
-        :param _SourceType: 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
+        :param _SourceType: 数据来源，'batch'表示批量黑白名单规则，空/不传表示单域名黑白名单规则
         :type SourceType: str
         :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单
         :type ActionType: int
@@ -18941,7 +19047,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
+        r"""数据来源，'batch'表示批量黑白名单规则，空/不传表示单域名黑白名单规则
         :rtype: str
         """
         return self._SourceType
@@ -19050,7 +19156,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
         :type RuleIds: list of int non-negative
         :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
         :type DeleteAll: bool
-        :param _SourceType: 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
+        :param _SourceType: 数据来源，'batch'表示批量黑白名单规则，空/不传表示单域名黑白名单规则
         :type SourceType: str
         :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
         :type ActionType: int
@@ -19096,7 +19202,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
+        r"""数据来源，'batch'表示批量黑白名单规则，空/不传表示单域名黑白名单规则
         :rtype: str
         """
         return self._SourceType
@@ -26291,6 +26397,11 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :type LogicalOp: str
         :param _ActionRatio: 规则灰度的比例，默认是100，不灰度
         :type ActionRatio: int
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+        :type Preview: int
         """
         self._ActionType = None
         self._Bypass = None
@@ -26314,6 +26425,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._Domain = None
         self._LogicalOp = None
         self._ActionRatio = None
+        self._Preview = None
 
     @property
     def ActionType(self):
@@ -26557,6 +26669,20 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._ActionType = params.get("ActionType")
@@ -26588,6 +26714,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._Domain = params.get("Domain")
         self._LogicalOp = params.get("LogicalOp")
         self._ActionRatio = params.get("ActionRatio")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28221,7 +28348,7 @@ class DescribeHostLimitRequest(AbstractModel):
         :type Domain: str
         :param _InstanceID: 实例id
         :type InstanceID: str
-        :param _AlbType: 流量来源
+        :param _AlbType: 流量来源类型，'clb'表示CLB负载均衡，'apisix'表示自建网关（含Kong），'tsegw'表示TSE云原生网关
         :type AlbType: str
         """
         self._Domain = None
@@ -28252,7 +28379,7 @@ class DescribeHostLimitRequest(AbstractModel):
 
     @property
     def AlbType(self):
-        r"""流量来源
+        r"""流量来源类型，'clb'表示CLB负载均衡，'apisix'表示自建网关（含Kong），'tsegw'表示TSE云原生网关
         :rtype: str
         """
         return self._AlbType
@@ -29716,6 +29843,191 @@ class DescribeLLMContentSecCheckResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLLMHourBillDetailRequest(AbstractModel):
+    r"""DescribeLLMHourBillDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+参数格式：形如 waf_xxxxxxxx
+        :type InstanceId: str
+        :param _Date: 查询日期，仅支持单日
+参数格式：YYYY-MM-DD 或 YYYYMMDD
+        :type Date: str
+        """
+        self._InstanceId = None
+        self._Date = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+参数格式：形如 waf_xxxxxxxx
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        r"""查询日期，仅支持单日
+参数格式：YYYY-MM-DD 或 YYYYMMDD
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMHourBillDetailResponse(AbstractModel):
+    r"""DescribeLLMHourBillDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Date: 查询日期，归一化为YYYY-MM-DD格式
+        :type Date: str
+        :param _EstimatedTotalFee: 当日账单预估总额（元，扣减免费额度后的净费用）
+        :type EstimatedTotalFee: str
+        :param _ItemFees: 当日按计费项拆分的费用
+        :type ItemFees: :class:`tencentcloud.waf.v20180125.models.LLMBillItemFee`
+        :param _HourlyTrend: 24小时账单趋势，固定24条，无数据补0
+        :type HourlyTrend: list of LLMHourBillTrendItem
+        :param _HourlyDetail: 24小时账单明细，固定24条，无数据补0
+        :type HourlyDetail: list of LLMHourBillDetailItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Date = None
+        self._EstimatedTotalFee = None
+        self._ItemFees = None
+        self._HourlyTrend = None
+        self._HourlyDetail = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        r"""查询日期，归一化为YYYY-MM-DD格式
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def EstimatedTotalFee(self):
+        r"""当日账单预估总额（元，扣减免费额度后的净费用）
+        :rtype: str
+        """
+        return self._EstimatedTotalFee
+
+    @EstimatedTotalFee.setter
+    def EstimatedTotalFee(self, EstimatedTotalFee):
+        self._EstimatedTotalFee = EstimatedTotalFee
+
+    @property
+    def ItemFees(self):
+        r"""当日按计费项拆分的费用
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMBillItemFee`
+        """
+        return self._ItemFees
+
+    @ItemFees.setter
+    def ItemFees(self, ItemFees):
+        self._ItemFees = ItemFees
+
+    @property
+    def HourlyTrend(self):
+        r"""24小时账单趋势，固定24条，无数据补0
+        :rtype: list of LLMHourBillTrendItem
+        """
+        return self._HourlyTrend
+
+    @HourlyTrend.setter
+    def HourlyTrend(self, HourlyTrend):
+        self._HourlyTrend = HourlyTrend
+
+    @property
+    def HourlyDetail(self):
+        r"""24小时账单明细，固定24条，无数据补0
+        :rtype: list of LLMHourBillDetailItem
+        """
+        return self._HourlyDetail
+
+    @HourlyDetail.setter
+    def HourlyDetail(self, HourlyDetail):
+        self._HourlyDetail = HourlyDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        self._EstimatedTotalFee = params.get("EstimatedTotalFee")
+        if params.get("ItemFees") is not None:
+            self._ItemFees = LLMBillItemFee()
+            self._ItemFees._deserialize(params.get("ItemFees"))
+        if params.get("HourlyTrend") is not None:
+            self._HourlyTrend = []
+            for item in params.get("HourlyTrend"):
+                obj = LLMHourBillTrendItem()
+                obj._deserialize(item)
+                self._HourlyTrend.append(obj)
+        if params.get("HourlyDetail") is not None:
+            self._HourlyDetail = []
+            for item in params.get("HourlyDetail"):
+                obj = LLMHourBillDetailItem()
+                obj._deserialize(item)
+                self._HourlyDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLLMKeywordLibraryRequest(AbstractModel):
     r"""DescribeLLMKeywordLibrary请求参数结构体
 
@@ -30363,6 +30675,105 @@ class DescribeLLMWafProtectRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLLMWafToolCallRulesRequest(AbstractModel):
+    r"""DescribeLLMWafToolCallRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务ID</p>
+        :type ServiceId: str
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        """
+        self._ServiceId = None
+        self._InstanceId = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMWafToolCallRulesResponse(AbstractModel):
+    r"""DescribeLLMWafToolCallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Categories: <p>类别列表</p>
+        :type Categories: list of CategoryGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Categories = None
+        self._RequestId = None
+
+    @property
+    def Categories(self):
+        r"""<p>类别列表</p>
+        :rtype: list of CategoryGroup
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Categories") is not None:
+            self._Categories = []
+            for item in params.get("Categories"):
+                obj = CategoryGroup()
+                obj._deserialize(item)
+                self._Categories.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLogHistogramRequest(AbstractModel):
     r"""DescribeLogHistogram请求参数结构体
 
@@ -30563,14 +30974,14 @@ class DescribeModuleStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 要查询状态的域名
+        :param _Domain: <p>要查询状态的域名</p>
         :type Domain: str
         """
         self._Domain = None
 
     @property
     def Domain(self):
-        r"""要查询状态的域名
+        r"""<p>要查询状态的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -30599,21 +31010,23 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebSecurity: WEB安全规则是否开启
+        :param _WebSecurity: <p>WEB安全规则是否开启</p>
         :type WebSecurity: int
-        :param _AccessControl: 访问控制规则是否开启
+        :param _AccessControl: <p>访问控制规则是否开启</p>
         :type AccessControl: int
-        :param _CcProtection: CC防护是否开启
+        :param _CcProtection: <p>CC防护是否开启</p>
         :type CcProtection: int
-        :param _AntiTamper: 网页防篡改是否开启
+        :param _AntiTamper: <p>网页防篡改是否开启</p>
         :type AntiTamper: int
-        :param _AntiLeakage: 信息防泄漏是否开启
+        :param _AntiLeakage: <p>信息防泄漏是否开启</p>
         :type AntiLeakage: int
-        :param _ApiProtection: API安全是否开启
+        :param _ApiProtection: <p>API安全是否开启</p>
         :type ApiProtection: int
-        :param _RateLimit: 限流模块开关
+        :param _ApiDetect: <p>API安全检测开关是否开启</p>
+        :type ApiDetect: int
+        :param _RateLimit: <p>限流模块开关，0表示关闭，1表示开启</p>
         :type RateLimit: int
-        :param _GzipAnalysis: gzip 开关
+        :param _GzipAnalysis: <p>gzip 开关</p>
         :type GzipAnalysis: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30624,13 +31037,14 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiTamper = None
         self._AntiLeakage = None
         self._ApiProtection = None
+        self._ApiDetect = None
         self._RateLimit = None
         self._GzipAnalysis = None
         self._RequestId = None
 
     @property
     def WebSecurity(self):
-        r"""WEB安全规则是否开启
+        r"""<p>WEB安全规则是否开启</p>
         :rtype: int
         """
         return self._WebSecurity
@@ -30641,7 +31055,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def AccessControl(self):
-        r"""访问控制规则是否开启
+        r"""<p>访问控制规则是否开启</p>
         :rtype: int
         """
         return self._AccessControl
@@ -30652,7 +31066,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def CcProtection(self):
-        r"""CC防护是否开启
+        r"""<p>CC防护是否开启</p>
         :rtype: int
         """
         return self._CcProtection
@@ -30663,7 +31077,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def AntiTamper(self):
-        r"""网页防篡改是否开启
+        r"""<p>网页防篡改是否开启</p>
         :rtype: int
         """
         return self._AntiTamper
@@ -30674,7 +31088,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def AntiLeakage(self):
-        r"""信息防泄漏是否开启
+        r"""<p>信息防泄漏是否开启</p>
         :rtype: int
         """
         return self._AntiLeakage
@@ -30685,7 +31099,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def ApiProtection(self):
-        r"""API安全是否开启
+        r"""<p>API安全是否开启</p>
         :rtype: int
         """
         return self._ApiProtection
@@ -30695,8 +31109,19 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._ApiProtection = ApiProtection
 
     @property
+    def ApiDetect(self):
+        r"""<p>API安全检测开关是否开启</p>
+        :rtype: int
+        """
+        return self._ApiDetect
+
+    @ApiDetect.setter
+    def ApiDetect(self, ApiDetect):
+        self._ApiDetect = ApiDetect
+
+    @property
     def RateLimit(self):
-        r"""限流模块开关
+        r"""<p>限流模块开关，0表示关闭，1表示开启</p>
         :rtype: int
         """
         return self._RateLimit
@@ -30707,7 +31132,7 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     @property
     def GzipAnalysis(self):
-        r"""gzip 开关
+        r"""<p>gzip 开关</p>
         :rtype: int
         """
         return self._GzipAnalysis
@@ -30735,6 +31160,7 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiTamper = params.get("AntiTamper")
         self._AntiLeakage = params.get("AntiLeakage")
         self._ApiProtection = params.get("ApiProtection")
+        self._ApiDetect = params.get("ApiDetect")
         self._RateLimit = params.get("RateLimit")
         self._GzipAnalysis = params.get("GzipAnalysis")
         self._RequestId = params.get("RequestId")
@@ -31812,7 +32238,7 @@ class DescribePolicyStatusRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Edition: clb-waf或者saas-waf
+        :param _Edition: clb-waf或者sparta-waf
         :type Edition: str
         """
         self._Domain = None
@@ -31831,7 +32257,7 @@ class DescribePolicyStatusRequest(AbstractModel):
 
     @property
     def Edition(self):
-        r"""clb-waf或者saas-waf
+        r"""clb-waf或者sparta-waf
         :rtype: str
         """
         return self._Edition
@@ -38591,6 +39017,8 @@ class FieldWriteConfig(AbstractModel):
         :type EnableHeaders: int
         :param _EnableBody: <p>1:开启 0:不开启</p>
         :type EnableBody: int
+        :param _EnableAttackBody: <p>仅当该条访问日志命中攻击规则时，是否额外存储 attack_body 字段（取值与 body 字段相同）。1:开启 0/不填:不开启。与 EnableBody 完全独立，互不影响。仅在存储查询链路（DescribeAccessMeta/ModifyAccessPeriod）中生效，不影响 CLS/CKafka 自定义投递（CreatePostCLSFlow/CreatePostCKafkaFlow）配置。</p>
+        :type EnableAttackBody: int
         :param _EnableBot: <p>1:开启 0:不开启</p>
         :type EnableBot: int
         :param _EnableResponse: <p>响应方向body<br>1:开启 0:不开启</p>
@@ -38601,14 +39029,21 @@ class FieldWriteConfig(AbstractModel):
         :type EnableResponseLength: int
         :param _EnableResponseStatusLine: <p>是否投递 response_status_line（客户端可见 HTTP 状态行，如 HTTP/1.1 200 OK，超过1KB截断）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。拦截/未回源时也会有值，记录的是 WAF 返回给客户端的状态行。</p>
         :type EnableResponseStatusLine: int
+        :param _LlmItem: <p>大模型安全防护详情字段，用;分割，仅对 SDK 访问日志生效。不传表示全部写入；传空字符串表示只写必填字段（uuid、appid、instance、timestamp、llm_service_id）。</p>
+        :type LlmItem: str
+        :param _FilterPlusEnableHeaderFilter: <p>headers 字段中10个通用冗余子字段（accept/accept-encoding/accept-language/connection/content-type/cookie/host/referer/x-forwarded-for/user-agent）剔除开关。1:剔除 0/不填:不剔除。仅在CLS/CKafka自定义投递（CreatePostCLSFlow/CreatePostCKafkaFlow及对应Describe接口）中生效，不影响原有存储日志配置。</p>
+        :type FilterPlusEnableHeaderFilter: int
         """
         self._EnableHeaders = None
         self._EnableBody = None
+        self._EnableAttackBody = None
         self._EnableBot = None
         self._EnableResponse = None
         self._EnableResponseHeaders = None
         self._EnableResponseLength = None
         self._EnableResponseStatusLine = None
+        self._LlmItem = None
+        self._FilterPlusEnableHeaderFilter = None
 
     @property
     def EnableHeaders(self):
@@ -38631,6 +39066,17 @@ class FieldWriteConfig(AbstractModel):
     @EnableBody.setter
     def EnableBody(self, EnableBody):
         self._EnableBody = EnableBody
+
+    @property
+    def EnableAttackBody(self):
+        r"""<p>仅当该条访问日志命中攻击规则时，是否额外存储 attack_body 字段（取值与 body 字段相同）。1:开启 0/不填:不开启。与 EnableBody 完全独立，互不影响。仅在存储查询链路（DescribeAccessMeta/ModifyAccessPeriod）中生效，不影响 CLS/CKafka 自定义投递（CreatePostCLSFlow/CreatePostCKafkaFlow）配置。</p>
+        :rtype: int
+        """
+        return self._EnableAttackBody
+
+    @EnableAttackBody.setter
+    def EnableAttackBody(self, EnableAttackBody):
+        self._EnableAttackBody = EnableAttackBody
 
     @property
     def EnableBot(self):
@@ -38687,15 +39133,40 @@ class FieldWriteConfig(AbstractModel):
     def EnableResponseStatusLine(self, EnableResponseStatusLine):
         self._EnableResponseStatusLine = EnableResponseStatusLine
 
+    @property
+    def LlmItem(self):
+        r"""<p>大模型安全防护详情字段，用;分割，仅对 SDK 访问日志生效。不传表示全部写入；传空字符串表示只写必填字段（uuid、appid、instance、timestamp、llm_service_id）。</p>
+        :rtype: str
+        """
+        return self._LlmItem
+
+    @LlmItem.setter
+    def LlmItem(self, LlmItem):
+        self._LlmItem = LlmItem
+
+    @property
+    def FilterPlusEnableHeaderFilter(self):
+        r"""<p>headers 字段中10个通用冗余子字段（accept/accept-encoding/accept-language/connection/content-type/cookie/host/referer/x-forwarded-for/user-agent）剔除开关。1:剔除 0/不填:不剔除。仅在CLS/CKafka自定义投递（CreatePostCLSFlow/CreatePostCKafkaFlow及对应Describe接口）中生效，不影响原有存储日志配置。</p>
+        :rtype: int
+        """
+        return self._FilterPlusEnableHeaderFilter
+
+    @FilterPlusEnableHeaderFilter.setter
+    def FilterPlusEnableHeaderFilter(self, FilterPlusEnableHeaderFilter):
+        self._FilterPlusEnableHeaderFilter = FilterPlusEnableHeaderFilter
+
 
     def _deserialize(self, params):
         self._EnableHeaders = params.get("EnableHeaders")
         self._EnableBody = params.get("EnableBody")
+        self._EnableAttackBody = params.get("EnableAttackBody")
         self._EnableBot = params.get("EnableBot")
         self._EnableResponse = params.get("EnableResponse")
         self._EnableResponseHeaders = params.get("EnableResponseHeaders")
         self._EnableResponseLength = params.get("EnableResponseLength")
         self._EnableResponseStatusLine = params.get("EnableResponseStatusLine")
+        self._LlmItem = params.get("LlmItem")
+        self._FilterPlusEnableHeaderFilter = params.get("FilterPlusEnableHeaderFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42548,7 +43019,7 @@ class InstanceInfo(AbstractModel):
         :type DomainPkg: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
         :param _AppId: <p>用户appid</p>
         :type AppId: int
-        :param _Edition: <p>clb或saas</p>
+        :param _Edition: <p>实例接入类型</p><p>枚举值：<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdn-waf：CDN上的Web防护实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例<br>llm-sdk-waf：大模型SDK WAF实例</p>
         :type Edition: str
         :param _FraudPkg: <p>业务安全包</p>
         :type FraudPkg: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
@@ -42894,7 +43365,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Edition(self):
-        r"""<p>clb或saas</p>
+        r"""<p>实例接入类型</p><p>枚举值：<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdn-waf：CDN上的Web防护实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例<br>llm-sdk-waf：大模型SDK WAF实例</p>
         :rtype: str
         """
         return self._Edition
@@ -44376,6 +44847,87 @@ class KeyWordInfo(AbstractModel):
         
 
 
+class LLMBillItemFee(AbstractModel):
+    r"""大模型安全按小时账单分项费用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptAttackFee: 提示词攻击防护费用（元）
+        :type PromptAttackFee: str
+        :param _ContentTextFee: 内容合规检测（文本）费用（元）
+        :type ContentTextFee: str
+        :param _ContentImageFee: 内容合规检测（图片）费用（元）
+        :type ContentImageFee: str
+        :param _SensitiveDataFee: 敏感数据检测费用（元）
+        :type SensitiveDataFee: str
+        """
+        self._PromptAttackFee = None
+        self._ContentTextFee = None
+        self._ContentImageFee = None
+        self._SensitiveDataFee = None
+
+    @property
+    def PromptAttackFee(self):
+        r"""提示词攻击防护费用（元）
+        :rtype: str
+        """
+        return self._PromptAttackFee
+
+    @PromptAttackFee.setter
+    def PromptAttackFee(self, PromptAttackFee):
+        self._PromptAttackFee = PromptAttackFee
+
+    @property
+    def ContentTextFee(self):
+        r"""内容合规检测（文本）费用（元）
+        :rtype: str
+        """
+        return self._ContentTextFee
+
+    @ContentTextFee.setter
+    def ContentTextFee(self, ContentTextFee):
+        self._ContentTextFee = ContentTextFee
+
+    @property
+    def ContentImageFee(self):
+        r"""内容合规检测（图片）费用（元）
+        :rtype: str
+        """
+        return self._ContentImageFee
+
+    @ContentImageFee.setter
+    def ContentImageFee(self, ContentImageFee):
+        self._ContentImageFee = ContentImageFee
+
+    @property
+    def SensitiveDataFee(self):
+        r"""敏感数据检测费用（元）
+        :rtype: str
+        """
+        return self._SensitiveDataFee
+
+    @SensitiveDataFee.setter
+    def SensitiveDataFee(self, SensitiveDataFee):
+        self._SensitiveDataFee = SensitiveDataFee
+
+
+    def _deserialize(self, params):
+        self._PromptAttackFee = params.get("PromptAttackFee")
+        self._ContentTextFee = params.get("ContentTextFee")
+        self._ContentImageFee = params.get("ContentImageFee")
+        self._SensitiveDataFee = params.get("SensitiveDataFee")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMDetectResult(AbstractModel):
     r"""大模型安全检测综合结果
 
@@ -44620,6 +45172,228 @@ class LLMDetectResult(AbstractModel):
         if params.get("UrlDetectResult") is not None:
             self._UrlDetectResult = UrlDetectResult()
             self._UrlDetectResult._deserialize(params.get("UrlDetectResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMHourBillDetailItem(AbstractModel):
+    r"""大模型安全按小时账单明细行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeRange: 小时区间，如00:00-01:00
+        :type TimeRange: str
+        :param _PromptAttackUsage: 提示词攻击防护计量值（token）
+        :type PromptAttackUsage: int
+        :param _ContentTextUsage: 内容合规检测（文本）计量值（token）
+        :type ContentTextUsage: int
+        :param _ContentImageUsage: 内容合规检测（图片）计量值（张）
+        :type ContentImageUsage: int
+        :param _SensitiveDataUsage: 敏感数据检测计量值（token）
+        :type SensitiveDataUsage: int
+        :param _PromptAttackFee: 该小时提示词攻击防护费用（元）
+        :type PromptAttackFee: str
+        :param _ContentTextFee: 该小时内容合规检测（文本）费用（元）
+        :type ContentTextFee: str
+        :param _ContentImageFee: 该小时内容合规检测（图片）费用（元）
+        :type ContentImageFee: str
+        :param _SensitiveDataFee: 该小时敏感数据检测费用（元）
+        :type SensitiveDataFee: str
+        :param _TotalFee: 该小时账单总额（元，净费用）
+        :type TotalFee: str
+        """
+        self._TimeRange = None
+        self._PromptAttackUsage = None
+        self._ContentTextUsage = None
+        self._ContentImageUsage = None
+        self._SensitiveDataUsage = None
+        self._PromptAttackFee = None
+        self._ContentTextFee = None
+        self._ContentImageFee = None
+        self._SensitiveDataFee = None
+        self._TotalFee = None
+
+    @property
+    def TimeRange(self):
+        r"""小时区间，如00:00-01:00
+        :rtype: str
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def PromptAttackUsage(self):
+        r"""提示词攻击防护计量值（token）
+        :rtype: int
+        """
+        return self._PromptAttackUsage
+
+    @PromptAttackUsage.setter
+    def PromptAttackUsage(self, PromptAttackUsage):
+        self._PromptAttackUsage = PromptAttackUsage
+
+    @property
+    def ContentTextUsage(self):
+        r"""内容合规检测（文本）计量值（token）
+        :rtype: int
+        """
+        return self._ContentTextUsage
+
+    @ContentTextUsage.setter
+    def ContentTextUsage(self, ContentTextUsage):
+        self._ContentTextUsage = ContentTextUsage
+
+    @property
+    def ContentImageUsage(self):
+        r"""内容合规检测（图片）计量值（张）
+        :rtype: int
+        """
+        return self._ContentImageUsage
+
+    @ContentImageUsage.setter
+    def ContentImageUsage(self, ContentImageUsage):
+        self._ContentImageUsage = ContentImageUsage
+
+    @property
+    def SensitiveDataUsage(self):
+        r"""敏感数据检测计量值（token）
+        :rtype: int
+        """
+        return self._SensitiveDataUsage
+
+    @SensitiveDataUsage.setter
+    def SensitiveDataUsage(self, SensitiveDataUsage):
+        self._SensitiveDataUsage = SensitiveDataUsage
+
+    @property
+    def PromptAttackFee(self):
+        r"""该小时提示词攻击防护费用（元）
+        :rtype: str
+        """
+        return self._PromptAttackFee
+
+    @PromptAttackFee.setter
+    def PromptAttackFee(self, PromptAttackFee):
+        self._PromptAttackFee = PromptAttackFee
+
+    @property
+    def ContentTextFee(self):
+        r"""该小时内容合规检测（文本）费用（元）
+        :rtype: str
+        """
+        return self._ContentTextFee
+
+    @ContentTextFee.setter
+    def ContentTextFee(self, ContentTextFee):
+        self._ContentTextFee = ContentTextFee
+
+    @property
+    def ContentImageFee(self):
+        r"""该小时内容合规检测（图片）费用（元）
+        :rtype: str
+        """
+        return self._ContentImageFee
+
+    @ContentImageFee.setter
+    def ContentImageFee(self, ContentImageFee):
+        self._ContentImageFee = ContentImageFee
+
+    @property
+    def SensitiveDataFee(self):
+        r"""该小时敏感数据检测费用（元）
+        :rtype: str
+        """
+        return self._SensitiveDataFee
+
+    @SensitiveDataFee.setter
+    def SensitiveDataFee(self, SensitiveDataFee):
+        self._SensitiveDataFee = SensitiveDataFee
+
+    @property
+    def TotalFee(self):
+        r"""该小时账单总额（元，净费用）
+        :rtype: str
+        """
+        return self._TotalFee
+
+    @TotalFee.setter
+    def TotalFee(self, TotalFee):
+        self._TotalFee = TotalFee
+
+
+    def _deserialize(self, params):
+        self._TimeRange = params.get("TimeRange")
+        self._PromptAttackUsage = params.get("PromptAttackUsage")
+        self._ContentTextUsage = params.get("ContentTextUsage")
+        self._ContentImageUsage = params.get("ContentImageUsage")
+        self._SensitiveDataUsage = params.get("SensitiveDataUsage")
+        self._PromptAttackFee = params.get("PromptAttackFee")
+        self._ContentTextFee = params.get("ContentTextFee")
+        self._ContentImageFee = params.get("ContentImageFee")
+        self._SensitiveDataFee = params.get("SensitiveDataFee")
+        self._TotalFee = params.get("TotalFee")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMHourBillTrendItem(AbstractModel):
+    r"""大模型安全按小时账单趋势数据点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hour: 小时，取值00到23
+        :type Hour: str
+        :param _Fee: 该小时账单总额（元，净费用）
+        :type Fee: str
+        """
+        self._Hour = None
+        self._Fee = None
+
+    @property
+    def Hour(self):
+        r"""小时，取值00到23
+        :rtype: str
+        """
+        return self._Hour
+
+    @Hour.setter
+    def Hour(self, Hour):
+        self._Hour = Hour
+
+    @property
+    def Fee(self):
+        r"""该小时账单总额（元，净费用）
+        :rtype: str
+        """
+        return self._Fee
+
+    @Fee.setter
+    def Fee(self, Fee):
+        self._Fee = Fee
+
+
+    def _deserialize(self, params):
+        self._Hour = params.get("Hour")
+        self._Fee = params.get("Fee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46078,6 +46852,10 @@ class LimitRuleV2(AbstractModel):
         :type PathsOption: list of PathItem
         :param _Order: 574新增需求，限流执行顺序，0：默认情况，限流优先，1：安全防护优先
         :type Order: int
+        :param _MatchConditions: 统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条
+        :type MatchConditions: list of Strategy
+        :param _ConditionLogic: 条件间逻辑：and(默认)/or
+        :type ConditionLogic: str
         """
         self._LimitRuleID = None
         self._Name = None
@@ -46102,6 +46880,8 @@ class LimitRuleV2(AbstractModel):
         self._QuotaShare = None
         self._PathsOption = None
         self._Order = None
+        self._MatchConditions = None
+        self._ConditionLogic = None
 
     @property
     def LimitRuleID(self):
@@ -46367,6 +47147,28 @@ class LimitRuleV2(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
+    @property
+    def MatchConditions(self):
+        r"""统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条
+        :rtype: list of Strategy
+        """
+        return self._MatchConditions
+
+    @MatchConditions.setter
+    def MatchConditions(self, MatchConditions):
+        self._MatchConditions = MatchConditions
+
+    @property
+    def ConditionLogic(self):
+        r"""条件间逻辑：and(默认)/or
+        :rtype: str
+        """
+        return self._ConditionLogic
+
+    @ConditionLogic.setter
+    def ConditionLogic(self, ConditionLogic):
+        self._ConditionLogic = ConditionLogic
+
 
     def _deserialize(self, params):
         self._LimitRuleID = params.get("LimitRuleID")
@@ -46422,6 +47224,13 @@ class LimitRuleV2(AbstractModel):
                 obj._deserialize(item)
                 self._PathsOption.append(obj)
         self._Order = params.get("Order")
+        if params.get("MatchConditions") is not None:
+            self._MatchConditions = []
+            for item in params.get("MatchConditions"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._MatchConditions.append(obj)
+        self._ConditionLogic = params.get("ConditionLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48365,7 +49174,7 @@ class ModifyAntiFakeUrlStatusRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 状态
+        :param _Status: 防篡改规则状态，0表示关闭，1表示开启
         :type Status: int
         :param _Ids: Id列表
         :type Ids: list of int non-negative
@@ -48387,7 +49196,7 @@ class ModifyAntiFakeUrlStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""防篡改规则状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -48461,7 +49270,7 @@ class ModifyAntiInfoLeakRuleStatusRequest(AbstractModel):
         :type Domain: str
         :param _RuleId: 规则
         :type RuleId: int
-        :param _Status: 状态
+        :param _Status: 防信息泄露规则状态，0表示关闭，1表示开启
         :type Status: int
         """
         self._Domain = None
@@ -48492,7 +49301,7 @@ class ModifyAntiInfoLeakRuleStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""防信息泄露规则状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -48557,7 +49366,7 @@ class ModifyAntiInfoLeakRulesRequest(AbstractModel):
         :type Name: str
         :param _Domain: 域名
         :type Domain: str
-        :param _ActionType: Action 值
+        :param _ActionType: 防信息泄露动作类型，取值0~4
         :type ActionType: int
         :param _Strategies: 策略数组
         :type Strategies: list of StrategyForAntiInfoLeak
@@ -48603,7 +49412,7 @@ class ModifyAntiInfoLeakRulesRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""Action 值
+        r"""防信息泄露动作类型，取值0~4
         :rtype: int
         """
         return self._ActionType
@@ -49641,7 +50450,7 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
         :type RuleId: int
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 规则状态
+        :param _Status: 规则状态，0表示关闭，1表示开启
         :type Status: int
         :param _Rules: 匹配规则项列表
         :type Rules: list of UserWhiteRuleItem
@@ -49690,7 +50499,7 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""规则状态
+        r"""规则状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -49875,6 +50684,13 @@ class ModifyBatchCustomRuleRequest(AbstractModel):
         :type PageId: str
         :param _ActionRatio: 动作灰度的比例，1-100，默认是100
         :type ActionRatio: int
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+未传入时保留规则当前的预览设置
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :type Preview: int
         """
         self._Id = None
         self._Name = None
@@ -49893,6 +50709,7 @@ class ModifyBatchCustomRuleRequest(AbstractModel):
         self._LogicalOp = None
         self._PageId = None
         self._ActionRatio = None
+        self._Preview = None
 
     @property
     def Id(self):
@@ -50085,6 +50902,22 @@ class ModifyBatchCustomRuleRequest(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+未传入时保留规则当前的预览设置
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -50111,6 +50944,7 @@ class ModifyBatchCustomRuleRequest(AbstractModel):
         self._LogicalOp = params.get("LogicalOp")
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50560,7 +51394,7 @@ class ModifyBatchIpAccessControlRequest(AbstractModel):
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
-        :param _ActionType: 42为黑名单，40为白名单
+        :param _ActionType: IP黑白名单类型，40表示白名单，42表示黑名单
         :type ActionType: int
         :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
         :type GroupIds: list of int non-negative
@@ -50624,7 +51458,7 @@ class ModifyBatchIpAccessControlRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""42为黑名单，40为白名单
+        r"""IP黑白名单类型，40表示白名单，42表示黑名单
         :rtype: int
         """
         return self._ActionType
@@ -51159,7 +51993,7 @@ class ModifyBotStatusRequest(AbstractModel):
         r"""
         :param _Category: 类别
         :type Category: str
-        :param _Status: 状态
+        :param _Status: BOT模块开关状态，传入'0'表示关闭，'1'表示开启
         :type Status: str
         :param _Domain: 域名
         :type Domain: str
@@ -51193,7 +52027,7 @@ class ModifyBotStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""BOT模块开关状态，传入'0'表示关闭，'1'表示开启
         :rtype: str
         """
         return self._Status
@@ -51404,7 +52238,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _Source: 规则来源，判断是不是小程序的
         :type Source: str
-        :param _Status: 开关状态，小程序风控规则的时候传该值
+        :param _Status: 规则开关状态，0表示关闭，1表示开启，小程序风控规则传该值
         :type Status: int
         :param _PageId: 拦截页面id
         :type PageId: str
@@ -51416,6 +52250,13 @@ class ModifyCustomRuleRequest(AbstractModel):
 取值范围：1-100
 默认值：100（全量生效）
         :type ActionRatio: int
+        :param _Preview: 自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+未传入时保留规则当前的预览设置
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :type Preview: int
         """
         self._Domain = None
         self._RuleId = None
@@ -51434,6 +52275,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._PageId = None
         self._LogicalOp = None
         self._ActionRatio = None
+        self._Preview = None
 
     @property
     def Domain(self):
@@ -51591,7 +52433,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""开关状态，小程序风控规则的时候传该值
+        r"""规则开关状态，0表示关闭，1表示开启，小程序风控规则传该值
         :rtype: int
         """
         return self._Status
@@ -51637,6 +52479,22 @@ class ModifyCustomRuleRequest(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Preview(self):
+        r"""自定义规则预览开关
+枚举值：
+0：关闭预览
+1：开启预览
+未传入时保留规则当前的预览设置
+开启后仅记录规则命中并继续匹配后续规则，不执行本规则配置的防护动作。仅支持自定义规则，启用时动作灰度比例须为100；不支持精准白名单和小程序规则。仅支持CNAME接入或云原生清洗接入，启用预览前须开启规则。
+        :rtype: int
+        """
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -51663,6 +52521,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._PageId = params.get("PageId")
         self._LogicalOp = params.get("LogicalOp")
         self._ActionRatio = params.get("ActionRatio")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52564,7 +53423,7 @@ class ModifyDomainsCLSStatusRequest(AbstractModel):
         r"""
         :param _Domains: 需要修改的域名列表
         :type Domains: list of DomainURI
-        :param _Status: 修改域名的访问日志开关为Status
+        :param _Status: CLS访问日志开关，0表示关闭，1表示开启
         :type Status: int
         """
         self._Domains = None
@@ -52583,7 +53442,7 @@ class ModifyDomainsCLSStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""修改域名的访问日志开关为Status
+        r"""CLS访问日志开关，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -53664,7 +54523,7 @@ class ModifyIpAccessControlRequest(AbstractModel):
         :type Domain: str
         :param _IpList: ip参数列表
         :type IpList: list of str
-        :param _ActionType: 42为黑名单，40为白名单
+        :param _ActionType: IP黑白名单类型，40表示白名单，42表示黑名单
         :type ActionType: int
         :param _RuleId: 规则ID
         :type RuleId: int
@@ -53720,7 +54579,7 @@ class ModifyIpAccessControlRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""42为黑名单，40为白名单
+        r"""IP黑白名单类型，40表示白名单，42表示黑名单
         :rtype: int
         """
         return self._ActionType
@@ -54441,6 +55300,115 @@ class ModifyLLMKeywordLibraryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLLMSdkAccessRequest(AbstractModel):
+    r"""ModifyLLMSdkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 要接入的应用名称
+        :type Name: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Domain: serviceid
+        :type Domain: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Name = None
+        self._InstanceId = None
+        self._Domain = None
+        self._Remark = None
+
+    @property
+    def Name(self):
+        r"""要接入的应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Domain(self):
+        r"""serviceid
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InstanceId = params.get("InstanceId")
+        self._Domain = params.get("Domain")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMSdkAccessResponse(AbstractModel):
+    r"""ModifyLLMSdkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyLLMStatusRequest(AbstractModel):
     r"""ModifyLLMStatus请求参数结构体
 
@@ -54572,10 +55540,10 @@ class ModifyLLMWafDLPRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: <p>服务ID</p>
-        :type ServiceId: str
         :param _RuleIds: <p>要修改的规则id列表</p>
         :type RuleIds: list of str
+        :param _ServiceId: <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
+        :type ServiceId: str
         :param _RuleAction: <p>动作</p>
         :type RuleAction: str
         :param _Status: <p>开关</p>
@@ -54584,24 +55552,16 @@ class ModifyLLMWafDLPRuleRequest(AbstractModel):
         :type InstanceId: str
         :param _Direction: <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
         :type Direction: int
+        :param _Domain: <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :type Domain: str
         """
-        self._ServiceId = None
         self._RuleIds = None
+        self._ServiceId = None
         self._RuleAction = None
         self._Status = None
         self._InstanceId = None
         self._Direction = None
-
-    @property
-    def ServiceId(self):
-        r"""<p>服务ID</p>
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
+        self._Domain = None
 
     @property
     def RuleIds(self):
@@ -54613,6 +55573,17 @@ class ModifyLLMWafDLPRuleRequest(AbstractModel):
     @RuleIds.setter
     def RuleIds(self, RuleIds):
         self._RuleIds = RuleIds
+
+    @property
+    def ServiceId(self):
+        r"""<p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
     @property
     def RuleAction(self):
@@ -54658,14 +55629,26 @@ class ModifyLLMWafDLPRuleRequest(AbstractModel):
     def Direction(self, Direction):
         self._Direction = Direction
 
+    @property
+    def Domain(self):
+        r"""<p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
 
     def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
         self._RuleIds = params.get("RuleIds")
+        self._ServiceId = params.get("ServiceId")
         self._RuleAction = params.get("RuleAction")
         self._Status = params.get("Status")
         self._InstanceId = params.get("InstanceId")
         self._Direction = params.get("Direction")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54711,6 +55694,160 @@ class ModifyLLMWafProtectRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleIds: <p>要修改的规则id列表</p>
+        :type RuleIds: list of str
+        :param _ServiceId: <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
+        :type ServiceId: str
+        :param _RuleAction: <p>规则动作</p>
+        :type RuleAction: str
+        :param _Status: <p>开关</p>
+        :type Status: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Direction: <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :type Direction: int
+        :param _Domain: <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :type Domain: str
+        """
+        self._RuleIds = None
+        self._ServiceId = None
+        self._RuleAction = None
+        self._Status = None
+        self._InstanceId = None
+        self._Direction = None
+        self._Domain = None
+
+    @property
+    def RuleIds(self):
+        r"""<p>要修改的规则id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def ServiceId(self):
+        r"""<p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RuleAction(self):
+        r"""<p>规则动作</p>
+        :rtype: str
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def Status(self):
+        r"""<p>开关</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Direction(self):
+        r"""<p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Domain(self):
+        r"""<p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
+        self._ServiceId = params.get("ServiceId")
+        self._RuleAction = params.get("RuleAction")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Direction = params.get("Direction")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMWafProtectRuleResponse(AbstractModel):
+    r"""ModifyLLMWafProtectRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMWafToolCallRuleRequest(AbstractModel):
+    r"""ModifyLLMWafToolCallRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param _ServiceId: <p>服务ID</p>
         :type ServiceId: str
         :param _RuleIds: <p>要修改的规则id列表</p>
@@ -54721,15 +55858,12 @@ class ModifyLLMWafProtectRuleRequest(AbstractModel):
         :type Status: int
         :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _Direction: <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
-        :type Direction: int
         """
         self._ServiceId = None
         self._RuleIds = None
         self._RuleAction = None
         self._Status = None
         self._InstanceId = None
-        self._Direction = None
 
     @property
     def ServiceId(self):
@@ -54786,17 +55920,6 @@ class ModifyLLMWafProtectRuleRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
-    @property
-    def Direction(self):
-        r"""<p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
-        :rtype: int
-        """
-        return self._Direction
-
-    @Direction.setter
-    def Direction(self, Direction):
-        self._Direction = Direction
-
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -54804,7 +55927,6 @@ class ModifyLLMWafProtectRuleRequest(AbstractModel):
         self._RuleAction = params.get("RuleAction")
         self._Status = params.get("Status")
         self._InstanceId = params.get("InstanceId")
-        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54815,8 +55937,8 @@ class ModifyLLMWafProtectRuleRequest(AbstractModel):
         
 
 
-class ModifyLLMWafProtectRuleResponse(AbstractModel):
-    r"""ModifyLLMWafProtectRule返回参数结构体
+class ModifyLLMWafToolCallRuleResponse(AbstractModel):
+    r"""ModifyLLMWafToolCallRule返回参数结构体
 
     """
 
@@ -54850,23 +55972,25 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要设置的domain
+        :param _Domain: <p>需要设置的domain</p>
         :type Domain: str
-        :param _WebSecurity: Web 安全模块开关，0或1
+        :param _WebSecurity: <p>Web 安全模块开关，0或1</p>
         :type WebSecurity: int
-        :param _AccessControl: 访问控制模块开关，0或者1
+        :param _AccessControl: <p>访问控制模块开关，0或者1</p>
         :type AccessControl: int
-        :param _CcProtection: CC模块开关，0或者1
+        :param _CcProtection: <p>CC模块开关，0或者1</p>
         :type CcProtection: int
-        :param _ApiProtection: API安全模块开关，0或者1
+        :param _ApiProtection: <p>API安全模块开关，0或者1</p>
         :type ApiProtection: int
-        :param _AntiTamper: 防篡改模块开关，0或者1
+        :param _ApiDetect: <p>API安全检测开关，0关闭1开启</p>
+        :type ApiDetect: int
+        :param _AntiTamper: <p>防篡改模块开关，0或者1</p>
         :type AntiTamper: int
-        :param _AntiLeakage: 防泄漏模块开关，0或者1
+        :param _AntiLeakage: <p>防泄漏模块开关，0或者1</p>
         :type AntiLeakage: int
-        :param _RateLimit: 限流模块开关，0或1
+        :param _RateLimit: <p>限流模块开关，0或1</p>
         :type RateLimit: int
-        :param _GzipAnalysis: gzip 开关
+        :param _GzipAnalysis: <p>gzip 开关</p>
         :type GzipAnalysis: int
         """
         self._Domain = None
@@ -54874,6 +55998,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._AccessControl = None
         self._CcProtection = None
         self._ApiProtection = None
+        self._ApiDetect = None
         self._AntiTamper = None
         self._AntiLeakage = None
         self._RateLimit = None
@@ -54881,7 +56006,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""需要设置的domain
+        r"""<p>需要设置的domain</p>
         :rtype: str
         """
         return self._Domain
@@ -54892,7 +56017,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def WebSecurity(self):
-        r"""Web 安全模块开关，0或1
+        r"""<p>Web 安全模块开关，0或1</p>
         :rtype: int
         """
         return self._WebSecurity
@@ -54903,7 +56028,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def AccessControl(self):
-        r"""访问控制模块开关，0或者1
+        r"""<p>访问控制模块开关，0或者1</p>
         :rtype: int
         """
         return self._AccessControl
@@ -54914,7 +56039,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def CcProtection(self):
-        r"""CC模块开关，0或者1
+        r"""<p>CC模块开关，0或者1</p>
         :rtype: int
         """
         return self._CcProtection
@@ -54925,7 +56050,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def ApiProtection(self):
-        r"""API安全模块开关，0或者1
+        r"""<p>API安全模块开关，0或者1</p>
         :rtype: int
         """
         return self._ApiProtection
@@ -54935,8 +56060,19 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._ApiProtection = ApiProtection
 
     @property
+    def ApiDetect(self):
+        r"""<p>API安全检测开关，0关闭1开启</p>
+        :rtype: int
+        """
+        return self._ApiDetect
+
+    @ApiDetect.setter
+    def ApiDetect(self, ApiDetect):
+        self._ApiDetect = ApiDetect
+
+    @property
     def AntiTamper(self):
-        r"""防篡改模块开关，0或者1
+        r"""<p>防篡改模块开关，0或者1</p>
         :rtype: int
         """
         return self._AntiTamper
@@ -54947,7 +56083,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def AntiLeakage(self):
-        r"""防泄漏模块开关，0或者1
+        r"""<p>防泄漏模块开关，0或者1</p>
         :rtype: int
         """
         return self._AntiLeakage
@@ -54958,7 +56094,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def RateLimit(self):
-        r"""限流模块开关，0或1
+        r"""<p>限流模块开关，0或1</p>
         :rtype: int
         """
         return self._RateLimit
@@ -54969,7 +56105,7 @@ class ModifyModuleStatusRequest(AbstractModel):
 
     @property
     def GzipAnalysis(self):
-        r"""gzip 开关
+        r"""<p>gzip 开关</p>
         :rtype: int
         """
         return self._GzipAnalysis
@@ -54985,6 +56121,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._AccessControl = params.get("AccessControl")
         self._CcProtection = params.get("CcProtection")
         self._ApiProtection = params.get("ApiProtection")
+        self._ApiDetect = params.get("ApiDetect")
         self._AntiTamper = params.get("AntiTamper")
         self._AntiLeakage = params.get("AntiLeakage")
         self._RateLimit = params.get("RateLimit")
@@ -59888,23 +61025,23 @@ class PostCLSFlowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 投递流唯一ID
+        :param _FlowId: <p>投递流唯一ID</p>
         :type FlowId: int
-        :param _LogType: 1-访问日志 2-攻击日志
+        :param _LogType: <p>1-访问日志 2-攻击日志</p>
         :type LogType: int
-        :param _Status: 状态 0-为关闭 1-为启用
+        :param _Status: <p>状态 0-为关闭 1-为启用</p>
         :type Status: int
-        :param _CLSRegion: CLS所在区域
+        :param _CLSRegion: <p>CLS所在区域</p>
         :type CLSRegion: str
-        :param _LogsetName: CLS日志集合名称
+        :param _LogsetName: <p>CLS日志集合名称</p>
         :type LogsetName: str
-        :param _LogsetID: CLS日志集合ID
+        :param _LogsetID: <p>CLS日志集合ID</p>
         :type LogsetID: str
-        :param _LogTopicName: CLS日志主题名称
+        :param _LogTopicName: <p>CLS日志主题名称</p>
         :type LogTopicName: str
-        :param _LogTopicID: CLS日志集合ID
+        :param _LogTopicID: <p>CLS日志集合ID</p>
         :type LogTopicID: str
-        :param _WriteConfig: 写配置
+        :param _WriteConfig: <p>写配置</p>
         :type WriteConfig: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
         """
         self._FlowId = None
@@ -59919,7 +61056,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""投递流唯一ID
+        r"""<p>投递流唯一ID</p>
         :rtype: int
         """
         return self._FlowId
@@ -59930,7 +61067,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def LogType(self):
-        r"""1-访问日志 2-攻击日志
+        r"""<p>1-访问日志 2-攻击日志</p>
         :rtype: int
         """
         return self._LogType
@@ -59941,7 +61078,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 0-为关闭 1-为启用
+        r"""<p>状态 0-为关闭 1-为启用</p>
         :rtype: int
         """
         return self._Status
@@ -59952,7 +61089,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def CLSRegion(self):
-        r"""CLS所在区域
+        r"""<p>CLS所在区域</p>
         :rtype: str
         """
         return self._CLSRegion
@@ -59963,7 +61100,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def LogsetName(self):
-        r"""CLS日志集合名称
+        r"""<p>CLS日志集合名称</p>
         :rtype: str
         """
         return self._LogsetName
@@ -59974,7 +61111,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def LogsetID(self):
-        r"""CLS日志集合ID
+        r"""<p>CLS日志集合ID</p>
         :rtype: str
         """
         return self._LogsetID
@@ -59985,7 +61122,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def LogTopicName(self):
-        r"""CLS日志主题名称
+        r"""<p>CLS日志主题名称</p>
         :rtype: str
         """
         return self._LogTopicName
@@ -59996,7 +61133,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""CLS日志集合ID
+        r"""<p>CLS日志集合ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -60007,7 +61144,7 @@ class PostCLSFlowInfo(AbstractModel):
 
     @property
     def WriteConfig(self):
-        r"""写配置
+        r"""<p>写配置</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
         """
         return self._WriteConfig
@@ -64258,7 +65395,7 @@ class Strategy(AbstractModel):
 		<tr>
 			<td>Referer（Referer）</td>
 			<td>不支持参数</td>
-			<td>empty（内容为空）<br />nempty（内容不为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 			<td>请输入内容,512个字符以内</td>
 		</tr>
 		<tr>
@@ -64270,7 +65407,7 @@ class Strategy(AbstractModel):
 		<tr>
 			<td>UserAgent（UserAgent）</td>
 			<td>不支持参数</td>
-			<td>同匹配字段<font color="Red">Referer</font>逻辑符号</td>
+			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 			<td>请输入内容,512个字符以内</td>
 		</tr>
 		<tr>
@@ -64348,8 +65485,8 @@ class Strategy(AbstractModel):
 		<tr>
 			<td>CONTENT_LENGTH（Content-length）</td>
 			<td>不支持参数</td>
-			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numge（数值大于等于）<br />numle（数值小于等于）</td>
-			<td>请输入0-9999999999999之间的整数</td>
+			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）</td>
+			<td>请输入0-999999999999之间的整数</td>
 		</tr>
 		<tr>
 			<td>IP_GEO（来源IP归属地）</td>
@@ -64465,7 +65602,7 @@ strsuffix （ 后缀匹配）
 		<tr>
 			<td>Referer（Referer）</td>
 			<td>不支持参数</td>
-			<td>empty（内容为空）<br />nempty（内容不为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 			<td>请输入内容,512个字符以内</td>
 		</tr>
 		<tr>
@@ -64477,7 +65614,7 @@ strsuffix （ 后缀匹配）
 		<tr>
 			<td>UserAgent（UserAgent）</td>
 			<td>不支持参数</td>
-			<td>同匹配字段<font color="Red">Referer</font>逻辑符号</td>
+			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 			<td>请输入内容,512个字符以内</td>
 		</tr>
 		<tr>
@@ -64555,8 +65692,8 @@ strsuffix （ 后缀匹配）
 		<tr>
 			<td>CONTENT_LENGTH（Content-length）</td>
 			<td>不支持参数</td>
-			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numge（数值大于等于）<br />numle（数值小于等于）</td>
-			<td>请输入0-9999999999999之间的整数</td>
+			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）</td>
+			<td>请输入0-999999999999之间的整数</td>
 		</tr>
 		<tr>
 			<td>IP_GEO（来源IP归属地）</td>
@@ -66486,6 +67623,10 @@ class UpdateRateLimitV2Request(AbstractModel):
         :type PathsOption: list of PathItem
         :param _Order: 限流执行顺序，0：默认情况，限流优先，1：安全防护优先
         :type Order: int
+        :param _MatchConditions: 统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条。MatchConditions非空时引擎只走新字段
+        :type MatchConditions: list of Strategy
+        :param _ConditionLogic: 条件间逻辑：and(默认)/or
+        :type ConditionLogic: str
         """
         self._Domain = None
         self._LimitRuleId = None
@@ -66510,6 +67651,8 @@ class UpdateRateLimitV2Request(AbstractModel):
         self._QuotaShare = None
         self._PathsOption = None
         self._Order = None
+        self._MatchConditions = None
+        self._ConditionLogic = None
 
     @property
     def Domain(self):
@@ -66764,6 +67907,28 @@ class UpdateRateLimitV2Request(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
+    @property
+    def MatchConditions(self):
+        r"""统一匹配条件列表，复用ACL自定义策略结构，条件数量上限10条。MatchConditions非空时引擎只走新字段
+        :rtype: list of Strategy
+        """
+        return self._MatchConditions
+
+    @MatchConditions.setter
+    def MatchConditions(self, MatchConditions):
+        self._MatchConditions = MatchConditions
+
+    @property
+    def ConditionLogic(self):
+        r"""条件间逻辑：and(默认)/or
+        :rtype: str
+        """
+        return self._ConditionLogic
+
+    @ConditionLogic.setter
+    def ConditionLogic(self, ConditionLogic):
+        self._ConditionLogic = ConditionLogic
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -66819,6 +67984,13 @@ class UpdateRateLimitV2Request(AbstractModel):
                 obj._deserialize(item)
                 self._PathsOption.append(obj)
         self._Order = params.get("Order")
+        if params.get("MatchConditions") is not None:
+            self._MatchConditions = []
+            for item in params.get("MatchConditions"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._MatchConditions.append(obj)
+        self._ConditionLogic = params.get("ConditionLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67135,7 +68307,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Domain: str
         :param _Name: 名称
         :type Name: str
-        :param _Status: 状态
+        :param _Status: CC规则开关，0表示关闭，1表示开启
         :type Status: int
         :param _Advance: 高级模式（是否使用Session检测），0表示不启用，1表示启用
         :type Advance: str
@@ -67147,7 +68319,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type ActionType: str
         :param _Priority: 优先级
         :type Priority: int
-        :param _ValidTime: 动作有效时间
+        :param _ValidTime: 动作有效时间，单位：秒，取值范围60~604800（即1分钟~7天）
         :type ValidTime: int
         :param _Url: 检测Url
         :type Url: str
@@ -67157,7 +68329,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type OptionsArr: str
         :param _Edition: waf版本，sparta-waf或者clb-waf
         :type Edition: str
-        :param _Type: 操作类型
+        :param _Type: CC规则类型，0表示基础规则，1表示高级规则
         :type Type: int
         :param _EventId: 添加规则的来源事件id
         :type EventId: str
@@ -67244,7 +68416,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""CC规则开关，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -67310,7 +68482,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def ValidTime(self):
-        r"""动作有效时间
+        r"""动作有效时间，单位：秒，取值范围60~604800（即1分钟~7天）
         :rtype: int
         """
         return self._ValidTime
@@ -67365,7 +68537,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""操作类型
+        r"""CC规则类型，0表示基础规则，1表示高级规则
         :rtype: int
         """
         return self._Type

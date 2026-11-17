@@ -1123,9 +1123,9 @@ class AnswerElement(AbstractModel):
         r"""
         :param _IsCorrect: <p>答案是否正确</p>
         :type IsCorrect: bool
-        :param _AnswerAnalysis: <p>答案分析结果</p>
+        :param _AnswerAnalysis: <p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，该字段返回空。通过ResultList. AnswerAnalysis返回题目维度答案解析<br>当ModelType= youtu_correction_model，返回答案维度答案解析</p>
         :type AnswerAnalysis: str
-        :param _RightAnswer: <p>返回正确答案内容</p>
+        :param _RightAnswer: <p>返回正确答案内容。为提升速度算式批改场景默认不输出正确答案</p>
         :type RightAnswer: str
         """
         self._IsCorrect = None
@@ -1145,7 +1145,7 @@ class AnswerElement(AbstractModel):
 
     @property
     def AnswerAnalysis(self):
-        r"""<p>答案分析结果</p>
+        r"""<p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，该字段返回空。通过ResultList. AnswerAnalysis返回题目维度答案解析<br>当ModelType= youtu_correction_model，返回答案维度答案解析</p>
         :rtype: str
         """
         return self._AnswerAnalysis
@@ -1156,7 +1156,7 @@ class AnswerElement(AbstractModel):
 
     @property
     def RightAnswer(self):
-        r"""<p>返回正确答案内容</p>
+        r"""<p>返回正确答案内容。为提升速度算式批改场景默认不输出正确答案</p>
         :rtype: str
         """
         return self._RightAnswer
@@ -1534,6 +1534,327 @@ class ArithmeticOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
         self._Angle = params.get("Angle")
+        self._RequestId = params.get("RequestId")
+
+
+class AuditMaterialAgentRequest(AbstractModel):
+    r"""AuditMaterialAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentType: <p>资料审核Agent类型，不同类型包含不同的输入、输出参数，提供不同的审核能力。</p><p>枚举值：</p><ul><li>StorePicAudit： 商户照片审核</li></ul>
+        :type AgentType: str
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageUrl: str
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageBase64: str
+        :param _NeedSceneType: <p>商户照片分类是否输出具体场景标签。注：开启后耗时会增加。 支持该入参的资料审核Agent类型：StorePicAudit</p>
+        :type NeedSceneType: bool
+        :param _StoreInfoHint: <p>商户名称信息，辅助判断具体场景标签。注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :type StoreInfoHint: str
+        :param _IgnoreWatermarkCategories: <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+        :type IgnoreWatermarkCategories: list of str
+        """
+        self._AgentType = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._NeedSceneType = None
+        self._StoreInfoHint = None
+        self._IgnoreWatermarkCategories = None
+
+    @property
+    def AgentType(self):
+        r"""<p>资料审核Agent类型，不同类型包含不同的输入、输出参数，提供不同的审核能力。</p><p>枚举值：</p><ul><li>StorePicAudit： 商户照片审核</li></ul>
+        :rtype: str
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def NeedSceneType(self):
+        r"""<p>商户照片分类是否输出具体场景标签。注：开启后耗时会增加。 支持该入参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: bool
+        """
+        return self._NeedSceneType
+
+    @NeedSceneType.setter
+    def NeedSceneType(self, NeedSceneType):
+        self._NeedSceneType = NeedSceneType
+
+    @property
+    def StoreInfoHint(self):
+        r"""<p>商户名称信息，辅助判断具体场景标签。注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: str
+        """
+        return self._StoreInfoHint
+
+    @StoreInfoHint.setter
+    def StoreInfoHint(self, StoreInfoHint):
+        self._StoreInfoHint = StoreInfoHint
+
+    @property
+    def IgnoreWatermarkCategories(self):
+        r"""<p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+        :rtype: list of str
+        """
+        return self._IgnoreWatermarkCategories
+
+    @IgnoreWatermarkCategories.setter
+    def IgnoreWatermarkCategories(self, IgnoreWatermarkCategories):
+        self._IgnoreWatermarkCategories = IgnoreWatermarkCategories
+
+
+    def _deserialize(self, params):
+        self._AgentType = params.get("AgentType")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._NeedSceneType = params.get("NeedSceneType")
+        self._StoreInfoHint = params.get("StoreInfoHint")
+        self._IgnoreWatermarkCategories = params.get("IgnoreWatermarkCategories")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditMaterialAgentResponse(AbstractModel):
+    r"""AuditMaterialAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StoreLabel: <p>商户照片类型  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :type StoreLabel: list of str
+        :param _SceneType: <p>商户照片分类具体场景标签，输出3个最匹配的场景， 注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :type SceneType: str
+        :param _StoreInfo: <p>商户门头名称  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :type StoreInfo: list of StoreInfo
+        :param _Angle: <p>图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :type Angle: float
+        :param _Tamper: <p>区域篡改提示</p>
+        :type Tamper: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _Synthesis: <p>AIGC合成提示</p>
+        :type Synthesis: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _RemakeScreen: <p>屏幕翻拍提示</p>
+        :type RemakeScreen: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _Screenshot: <p>截图提示</p>
+        :type Screenshot: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _TextWatermark: <p>文字水印提示</p>
+        :type TextWatermark: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _WatermarkContent: <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :type WatermarkContent: str
+        :param _Template: <p>模板图片提示</p>
+        :type Template: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StoreLabel = None
+        self._SceneType = None
+        self._StoreInfo = None
+        self._Angle = None
+        self._Tamper = None
+        self._Synthesis = None
+        self._RemakeScreen = None
+        self._Screenshot = None
+        self._TextWatermark = None
+        self._WatermarkContent = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def StoreLabel(self):
+        r"""<p>商户照片类型  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: list of str
+        """
+        return self._StoreLabel
+
+    @StoreLabel.setter
+    def StoreLabel(self, StoreLabel):
+        self._StoreLabel = StoreLabel
+
+    @property
+    def SceneType(self):
+        r"""<p>商户照片分类具体场景标签，输出3个最匹配的场景， 注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def StoreInfo(self):
+        r"""<p>商户门头名称  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: list of StoreInfo
+        """
+        return self._StoreInfo
+
+    @StoreInfo.setter
+    def StoreInfo(self, StoreInfo):
+        self._StoreInfo = StoreInfo
+
+    @property
+    def Angle(self):
+        r"""<p>图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负  支持该出参的资料审核Agent类型：StorePicAudit</p>
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def Tamper(self):
+        r"""<p>区域篡改提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Tamper
+
+    @Tamper.setter
+    def Tamper(self, Tamper):
+        self._Tamper = Tamper
+
+    @property
+    def Synthesis(self):
+        r"""<p>AIGC合成提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Synthesis
+
+    @Synthesis.setter
+    def Synthesis(self, Synthesis):
+        self._Synthesis = Synthesis
+
+    @property
+    def RemakeScreen(self):
+        r"""<p>屏幕翻拍提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._RemakeScreen
+
+    @RemakeScreen.setter
+    def RemakeScreen(self, RemakeScreen):
+        self._RemakeScreen = RemakeScreen
+
+    @property
+    def Screenshot(self):
+        r"""<p>截图提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def TextWatermark(self):
+        r"""<p>文字水印提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._TextWatermark
+
+    @TextWatermark.setter
+    def TextWatermark(self, TextWatermark):
+        self._TextWatermark = TextWatermark
+
+    @property
+    def WatermarkContent(self):
+        r"""<p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :rtype: str
+        """
+        return self._WatermarkContent
+
+    @WatermarkContent.setter
+    def WatermarkContent(self, WatermarkContent):
+        self._WatermarkContent = WatermarkContent
+
+    @property
+    def Template(self):
+        r"""<p>模板图片提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StoreLabel = params.get("StoreLabel")
+        self._SceneType = params.get("SceneType")
+        if params.get("StoreInfo") is not None:
+            self._StoreInfo = []
+            for item in params.get("StoreInfo"):
+                obj = StoreInfo()
+                obj._deserialize(item)
+                self._StoreInfo.append(obj)
+        self._Angle = params.get("Angle")
+        if params.get("Tamper") is not None:
+            self._Tamper = SceneWarnInfo()
+            self._Tamper._deserialize(params.get("Tamper"))
+        if params.get("Synthesis") is not None:
+            self._Synthesis = SceneWarnInfo()
+            self._Synthesis._deserialize(params.get("Synthesis"))
+        if params.get("RemakeScreen") is not None:
+            self._RemakeScreen = SceneWarnInfo()
+            self._RemakeScreen._deserialize(params.get("RemakeScreen"))
+        if params.get("Screenshot") is not None:
+            self._Screenshot = SceneWarnInfo()
+            self._Screenshot._deserialize(params.get("Screenshot"))
+        if params.get("TextWatermark") is not None:
+            self._TextWatermark = SceneWarnInfo()
+            self._TextWatermark._deserialize(params.get("TextWatermark"))
+        self._WatermarkContent = params.get("WatermarkContent")
+        if params.get("Template") is not None:
+            self._Template = SceneWarnInfo()
+            self._Template._deserialize(params.get("Template"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5012,6 +5333,12 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
         :type ErrorMessage: str
         :param _JobStatus: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :type JobStatus: str
+        :param _QuestionInfo: <p>支持题目结构化、批改场景的结构。AgentType为1、2都按照这个结构返回</p>
+        :type QuestionInfo: list of QuestionInfo
+        :param _AgentResultJson: <p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+        :type AgentResultJson: str
+        :param _ThoughtContent: <p>扩展字段</p>
+        :type ThoughtContent: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5020,6 +5347,9 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._JobStatus = None
+        self._QuestionInfo = None
+        self._AgentResultJson = None
+        self._ThoughtContent = None
         self._RequestId = None
 
     @property
@@ -5078,6 +5408,39 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
         self._JobStatus = JobStatus
 
     @property
+    def QuestionInfo(self):
+        r"""<p>支持题目结构化、批改场景的结构。AgentType为1、2都按照这个结构返回</p>
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
+
+    @property
+    def AgentResultJson(self):
+        r"""<p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+        :rtype: str
+        """
+        return self._AgentResultJson
+
+    @AgentResultJson.setter
+    def AgentResultJson(self, AgentResultJson):
+        self._AgentResultJson = AgentResultJson
+
+    @property
+    def ThoughtContent(self):
+        r"""<p>扩展字段</p>
+        :rtype: str
+        """
+        return self._ThoughtContent
+
+    @ThoughtContent.setter
+    def ThoughtContent(self, ThoughtContent):
+        self._ThoughtContent = ThoughtContent
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5100,6 +5463,14 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMessage = params.get("ErrorMessage")
         self._JobStatus = params.get("JobStatus")
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
+        self._AgentResultJson = params.get("AgentResultJson")
+        self._ThoughtContent = params.get("ThoughtContent")
         self._RequestId = params.get("RequestId")
 
 
@@ -5389,6 +5760,8 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def MarkInfos(self):
+        warnings.warn("parameter `MarkInfos` is deprecated", DeprecationWarning) 
+
         r"""<p>试题批改信息  （该字段后续废弃，使用QuestionInfo兼容多页批改场景）</p>
         :rtype: list of MarkInfo
         """
@@ -5396,6 +5769,8 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @MarkInfos.setter
     def MarkInfos(self, MarkInfos):
+        warnings.warn("parameter `MarkInfos` is deprecated", DeprecationWarning) 
+
         self._MarkInfos = MarkInfos
 
     @property
@@ -22022,13 +22397,13 @@ class Polygon(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LeftTop: 左上顶点坐标
+        :param _LeftTop: <p>左上顶点坐标</p>
         :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
-        :param _RightTop: 右上顶点坐标
+        :param _RightTop: <p>右上顶点坐标</p>
         :type RightTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
-        :param _RightBottom: 右下顶点坐标
+        :param _RightBottom: <p>右下顶点坐标</p>
         :type RightBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
-        :param _LeftBottom: 左下顶点坐标
+        :param _LeftBottom: <p>左下顶点坐标</p>
         :type LeftBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         self._LeftTop = None
@@ -22038,7 +22413,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftTop(self):
-        r"""左上顶点坐标
+        r"""<p>左上顶点坐标</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftTop
@@ -22049,7 +22424,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightTop(self):
-        r"""右上顶点坐标
+        r"""<p>右上顶点坐标</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightTop
@@ -22060,7 +22435,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightBottom(self):
-        r"""右下顶点坐标
+        r"""<p>右下顶点坐标</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightBottom
@@ -22071,7 +22446,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftBottom(self):
-        r"""左下顶点坐标
+        r"""<p>左下顶点坐标</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftBottom
@@ -23092,10 +23467,14 @@ class QuestionInfo(AbstractModel):
         :type OrgHeight: int
         :param _OrgWidth: <p>输入图片宽度</p><p>单位：px</p>
         :type OrgWidth: int
-        :param _ImageBase64: <p>预处理后的图片base64编码</p>
+        :param _ImageBase64: <p>废弃字段</p>
         :type ImageBase64: str
         :param _ReturnImageUrl: <p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
         :type ReturnImageUrl: str
+        :param _ClassName: <p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 时生效。其他模型类型不支持该能力。</p>
+        :type ClassName: str
+        :param _PageIndex: <p>文档所在页</p>
+        :type PageIndex: int
         """
         self._Angle = None
         self._Height = None
@@ -23105,6 +23484,8 @@ class QuestionInfo(AbstractModel):
         self._OrgWidth = None
         self._ImageBase64 = None
         self._ReturnImageUrl = None
+        self._ClassName = None
+        self._PageIndex = None
 
     @property
     def Angle(self):
@@ -23175,7 +23556,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""<p>预处理后的图片base64编码</p>
+        r"""<p>废弃字段</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -23195,6 +23576,28 @@ class QuestionInfo(AbstractModel):
     def ReturnImageUrl(self, ReturnImageUrl):
         self._ReturnImageUrl = ReturnImageUrl
 
+    @property
+    def ClassName(self):
+        r"""<p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 时生效。其他模型类型不支持该能力。</p>
+        :rtype: str
+        """
+        return self._ClassName
+
+    @ClassName.setter
+    def ClassName(self, ClassName):
+        self._ClassName = ClassName
+
+    @property
+    def PageIndex(self):
+        r"""<p>文档所在页</p>
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
 
     def _deserialize(self, params):
         self._Angle = params.get("Angle")
@@ -23210,6 +23613,8 @@ class QuestionInfo(AbstractModel):
         self._OrgWidth = params.get("OrgWidth")
         self._ImageBase64 = params.get("ImageBase64")
         self._ReturnImageUrl = params.get("ReturnImageUrl")
+        self._ClassName = params.get("ClassName")
+        self._PageIndex = params.get("PageIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28393,14 +28798,18 @@ class ResultList(AbstractModel):
         :param _Coord: <p>整题的坐标，多页单题跨页/单页单题跨栏场景下，存在一道题有多个坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Coord: list of Polygon
-        :param _CoordPageIndex: <p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
+        :param _CoordPageIndex: <p>单题跨栏/跨页场景下：配合CoordPageIndex一起使用，支持多坐标显示在不同页，按顺序对齐</p><p>默认值：[]</p>
         :type CoordPageIndex: list of int
-        :param _RightAnswer: <p>返回正确答案内容</p>
+        :param _RightAnswer: <p>【批改 API 专属特性】返回步骤批改场景下的正确答案内容</p>
         :type RightAnswer: str
         :param _Subject: <p>学科（如语文、数学、英语）</p>
         :type Subject: str
         :param _KnowledgePoints: <p>返回题目的知识点内容</p>
         :type KnowledgePoints: list of str
+        :param _AnswerAnalysis: <p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，通过该字段返回题目维度的答案解析<br>当ModelType= youtu_correction_model，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</p>
+        :type AnswerAnalysis: str
+        :param _Grade: <p>年级：小学/初中/高中</p>
+        :type Grade: str
         """
         self._Question = None
         self._Option = None
@@ -28413,6 +28822,8 @@ class ResultList(AbstractModel):
         self._RightAnswer = None
         self._Subject = None
         self._KnowledgePoints = None
+        self._AnswerAnalysis = None
+        self._Grade = None
 
     @property
     def Question(self):
@@ -28499,7 +28910,7 @@ class ResultList(AbstractModel):
 
     @property
     def CoordPageIndex(self):
-        r"""<p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
+        r"""<p>单题跨栏/跨页场景下：配合CoordPageIndex一起使用，支持多坐标显示在不同页，按顺序对齐</p><p>默认值：[]</p>
         :rtype: list of int
         """
         return self._CoordPageIndex
@@ -28510,7 +28921,7 @@ class ResultList(AbstractModel):
 
     @property
     def RightAnswer(self):
-        r"""<p>返回正确答案内容</p>
+        r"""<p>【批改 API 专属特性】返回步骤批改场景下的正确答案内容</p>
         :rtype: str
         """
         return self._RightAnswer
@@ -28540,6 +28951,28 @@ class ResultList(AbstractModel):
     @KnowledgePoints.setter
     def KnowledgePoints(self, KnowledgePoints):
         self._KnowledgePoints = KnowledgePoints
+
+    @property
+    def AnswerAnalysis(self):
+        r"""<p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，通过该字段返回题目维度的答案解析<br>当ModelType= youtu_correction_model，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</p>
+        :rtype: str
+        """
+        return self._AnswerAnalysis
+
+    @AnswerAnalysis.setter
+    def AnswerAnalysis(self, AnswerAnalysis):
+        self._AnswerAnalysis = AnswerAnalysis
+
+    @property
+    def Grade(self):
+        r"""<p>年级：小学/初中/高中</p>
+        :rtype: str
+        """
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
 
 
     def _deserialize(self, params):
@@ -28589,6 +29022,8 @@ class ResultList(AbstractModel):
         self._RightAnswer = params.get("RightAnswer")
         self._Subject = params.get("Subject")
         self._KnowledgePoints = params.get("KnowledgePoints")
+        self._AnswerAnalysis = params.get("AnswerAnalysis")
+        self._Grade = params.get("Grade")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31067,6 +31502,8 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         :type ModelConfig: str
         :param _AgentType: <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
         :type AgentType: int
+        :param _QuestionConfigMap: <p>输出配置扩展，当key对应为1表示开启配置开关。</p>
+        :type QuestionConfigMap: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -31077,6 +31514,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._FileEndPageNumber = None
         self._ModelConfig = None
         self._AgentType = None
+        self._QuestionConfigMap = None
 
     @property
     def ImageBase64(self):
@@ -31181,6 +31619,17 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
     def AgentType(self, AgentType):
         self._AgentType = AgentType
 
+    @property
+    def QuestionConfigMap(self):
+        r"""<p>输出配置扩展，当key对应为1表示开启配置开关。</p>
+        :rtype: str
+        """
+        return self._QuestionConfigMap
+
+    @QuestionConfigMap.setter
+    def QuestionConfigMap(self, QuestionConfigMap):
+        self._QuestionConfigMap = QuestionConfigMap
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -31197,6 +31646,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._FileEndPageNumber = params.get("FileEndPageNumber")
         self._ModelConfig = params.get("ModelConfig")
         self._AgentType = params.get("AgentType")
+        self._QuestionConfigMap = params.get("QuestionConfigMap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31265,11 +31715,17 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
         :type PdfPageNumber: int
         :param _QuestionConfigMap: <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
         :type QuestionConfigMap: str
+        :param _AgentType: <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示中英文作文批改Agent</p><p>1:表示教辅试卷题库拆录Agent(支持拆录含解析与答案的教辅（解析、答案可与正文分置首尾，或与试题混排）、多页成套标准答案试卷及带有手写批注痕迹的试题)</p>
+        :type AgentType: int
+        :param _PageRange: <p>需要识别的页码范围（目前只有AgentType=1支持），单次调用最多支持100页。  参数格式：1-10   示例值：1-2</p>
+        :type PageRange: str
         """
         self._ImageBase64List = None
         self._ImageUrlList = None
         self._PdfPageNumber = None
         self._QuestionConfigMap = None
+        self._AgentType = None
+        self._PageRange = None
 
     @property
     def ImageBase64List(self):
@@ -31295,6 +31751,8 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
+        warnings.warn("parameter `PdfPageNumber` is deprecated", DeprecationWarning) 
+
         r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
         :rtype: int
         """
@@ -31302,6 +31760,8 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @PdfPageNumber.setter
     def PdfPageNumber(self, PdfPageNumber):
+        warnings.warn("parameter `PdfPageNumber` is deprecated", DeprecationWarning) 
+
         self._PdfPageNumber = PdfPageNumber
 
     @property
@@ -31315,12 +31775,36 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
     def QuestionConfigMap(self, QuestionConfigMap):
         self._QuestionConfigMap = QuestionConfigMap
 
+    @property
+    def AgentType(self):
+        r"""<p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示中英文作文批改Agent</p><p>1:表示教辅试卷题库拆录Agent(支持拆录含解析与答案的教辅（解析、答案可与正文分置首尾，或与试题混排）、多页成套标准答案试卷及带有手写批注痕迹的试题)</p>
+        :rtype: int
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
+    @property
+    def PageRange(self):
+        r"""<p>需要识别的页码范围（目前只有AgentType=1支持），单次调用最多支持100页。  参数格式：1-10   示例值：1-2</p>
+        :rtype: str
+        """
+        return self._PageRange
+
+    @PageRange.setter
+    def PageRange(self, PageRange):
+        self._PageRange = PageRange
+
 
     def _deserialize(self, params):
         self._ImageBase64List = params.get("ImageBase64List")
         self._ImageUrlList = params.get("ImageUrlList")
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._QuestionConfigMap = params.get("QuestionConfigMap")
+        self._AgentType = params.get("AgentType")
+        self._PageRange = params.get("PageRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31575,7 +32059,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type BoolSingleQuestion: bool
         :param _EnableDeepThink: <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
         :type EnableDeepThink: bool
-        :param _QuestionConfigMap: <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p>
+        :param _QuestionConfigMap: <p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
         :type QuestionConfigMap: str
         :param _ReferenceAnswer: <p>【废弃字段】</p>
         :type ReferenceAnswer: str
@@ -31589,6 +32073,8 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type AnswerAssistMap: str
         :param _EnableImageCrop: <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUrl中,默认为false不开启</p>
         :type EnableImageCrop: bool
+        :param _ModelType: <p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+        :type ModelType: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -31602,6 +32088,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._AssistMarkType = None
         self._AnswerAssistMap = None
         self._EnableImageCrop = None
+        self._ModelType = None
 
     @property
     def ImageBase64(self):
@@ -31668,7 +32155,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def QuestionConfigMap(self):
-        r"""<p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p>
+        r"""<p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
         :rtype: str
         """
         return self._QuestionConfigMap
@@ -31679,6 +32166,8 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ReferenceAnswer(self):
+        warnings.warn("parameter `ReferenceAnswer` is deprecated", DeprecationWarning) 
+
         r"""<p>【废弃字段】</p>
         :rtype: str
         """
@@ -31686,6 +32175,8 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @ReferenceAnswer.setter
     def ReferenceAnswer(self, ReferenceAnswer):
+        warnings.warn("parameter `ReferenceAnswer` is deprecated", DeprecationWarning) 
+
         self._ReferenceAnswer = ReferenceAnswer
 
     @property
@@ -31743,6 +32234,17 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
     def EnableImageCrop(self, EnableImageCrop):
         self._EnableImageCrop = EnableImageCrop
 
+    @property
+    def ModelType(self):
+        r"""<p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -31757,6 +32259,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._AssistMarkType = params.get("AssistMarkType")
         self._AnswerAssistMap = params.get("AnswerAssistMap")
         self._EnableImageCrop = params.get("EnableImageCrop")
+        self._ModelType = params.get("ModelType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31776,9 +32279,9 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务唯一ID。由服务端生成.</p>
         :type JobId: str
-        :param _QuestionInfo: <p>切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）</p>
+        :param _QuestionInfo: <p>【废弃字段】</p>
         :type QuestionInfo: list of QuestionInfo
-        :param _QuestionCount: <p>题目切题数量，作为计费题目数总量</p>
+        :param _QuestionCount: <p>【废弃字段】</p>
         :type QuestionCount: str
         :param _OriginalImageUrl: <p>【废弃字段】</p>
         :type OriginalImageUrl: str
@@ -31804,28 +32307,38 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def QuestionInfo(self):
-        r"""<p>切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）</p>
+        warnings.warn("parameter `QuestionInfo` is deprecated", DeprecationWarning) 
+
+        r"""<p>【废弃字段】</p>
         :rtype: list of QuestionInfo
         """
         return self._QuestionInfo
 
     @QuestionInfo.setter
     def QuestionInfo(self, QuestionInfo):
+        warnings.warn("parameter `QuestionInfo` is deprecated", DeprecationWarning) 
+
         self._QuestionInfo = QuestionInfo
 
     @property
     def QuestionCount(self):
-        r"""<p>题目切题数量，作为计费题目数总量</p>
+        warnings.warn("parameter `QuestionCount` is deprecated", DeprecationWarning) 
+
+        r"""<p>【废弃字段】</p>
         :rtype: str
         """
         return self._QuestionCount
 
     @QuestionCount.setter
     def QuestionCount(self, QuestionCount):
+        warnings.warn("parameter `QuestionCount` is deprecated", DeprecationWarning) 
+
         self._QuestionCount = QuestionCount
 
     @property
     def OriginalImageUrl(self):
+        warnings.warn("parameter `OriginalImageUrl` is deprecated", DeprecationWarning) 
+
         r"""<p>【废弃字段】</p>
         :rtype: str
         """
@@ -31833,6 +32346,8 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
 
     @OriginalImageUrl.setter
     def OriginalImageUrl(self, OriginalImageUrl):
+        warnings.warn("parameter `OriginalImageUrl` is deprecated", DeprecationWarning) 
+
         self._OriginalImageUrl = OriginalImageUrl
 
     @property

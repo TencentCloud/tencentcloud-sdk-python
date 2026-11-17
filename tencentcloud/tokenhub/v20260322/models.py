@@ -4115,6 +4115,310 @@ class DescribeTokenPlanListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTokenPlanPersonalPackageRequest(AbstractModel):
+    r"""DescribeTokenPlanPersonalPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>产品类型。取值：personal（个人版）、personal-hunyuan（个人版混元）。</p>
+        :type ProductType: str
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型。取值：personal（个人版）、personal-hunyuan（个人版混元）。</p>
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanPersonalPackageResponse(AbstractModel):
+    r"""DescribeTokenPlanPersonalPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>产品类型。</p>
+        :type ProductType: str
+        :param _PackageStatus: <p>套餐状态。取值：active（生效中）、processing（处理中）、failed（创建失败）、isolated（隔离/欠费）、destroyed（已销毁）、used_up（额度用尽）、stopped（已停止）、unpurchased（未购买）。</p>
+        :type PackageStatus: str
+        :param _ResourceId: <p>计费资源ID</p>
+        :type ResourceId: str
+        :param _TotalCredits: <p>总额度。</p>
+        :type TotalCredits: str
+        :param _TotalUsed: <p>已使用额度。</p>
+        :type TotalUsed: str
+        :param _CycleCredits: <p>单周期额度。</p>
+        :type CycleCredits: str
+        :param _TotalCycles: <p>总周期数。</p>
+        :type TotalCycles: int
+        :param _CurrentCycle: <p>当前周期序号。</p>
+        :type CurrentCycle: int
+        :param _RemainCycles: <p>剩余周期数。</p>
+        :type RemainCycles: int
+        :param _StartTime: <p>套餐生效时间，ISO 8601 格式。</p>
+        :type StartTime: str
+        :param _ExpireTime: <p>套餐过期时间，ISO 8601 格式。</p>
+        :type ExpireTime: str
+        :param _PeriodEndDate: <p>当前周期到期日，ISO 8601 格式。</p>
+        :type PeriodEndDate: str
+        :param _AutoRenewFlag: <p>自动续费标识。取值：0（未开启）、1（已开启）。</p>
+        :type AutoRenewFlag: int
+        :param _OutputToken: <p>输出token数</p><p>单位：tokens</p>
+        :type OutputToken: int
+        :param _InputToken: <p>输入token数</p><p>单位：token</p>
+        :type InputToken: int
+        :param _CacheToken: <p>缓存命中token数</p><p>单位：token</p>
+        :type CacheToken: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProductType = None
+        self._PackageStatus = None
+        self._ResourceId = None
+        self._TotalCredits = None
+        self._TotalUsed = None
+        self._CycleCredits = None
+        self._TotalCycles = None
+        self._CurrentCycle = None
+        self._RemainCycles = None
+        self._StartTime = None
+        self._ExpireTime = None
+        self._PeriodEndDate = None
+        self._AutoRenewFlag = None
+        self._OutputToken = None
+        self._InputToken = None
+        self._CacheToken = None
+        self._RequestId = None
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型。</p>
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def PackageStatus(self):
+        r"""<p>套餐状态。取值：active（生效中）、processing（处理中）、failed（创建失败）、isolated（隔离/欠费）、destroyed（已销毁）、used_up（额度用尽）、stopped（已停止）、unpurchased（未购买）。</p>
+        :rtype: str
+        """
+        return self._PackageStatus
+
+    @PackageStatus.setter
+    def PackageStatus(self, PackageStatus):
+        self._PackageStatus = PackageStatus
+
+    @property
+    def ResourceId(self):
+        r"""<p>计费资源ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TotalCredits(self):
+        r"""<p>总额度。</p>
+        :rtype: str
+        """
+        return self._TotalCredits
+
+    @TotalCredits.setter
+    def TotalCredits(self, TotalCredits):
+        self._TotalCredits = TotalCredits
+
+    @property
+    def TotalUsed(self):
+        r"""<p>已使用额度。</p>
+        :rtype: str
+        """
+        return self._TotalUsed
+
+    @TotalUsed.setter
+    def TotalUsed(self, TotalUsed):
+        self._TotalUsed = TotalUsed
+
+    @property
+    def CycleCredits(self):
+        r"""<p>单周期额度。</p>
+        :rtype: str
+        """
+        return self._CycleCredits
+
+    @CycleCredits.setter
+    def CycleCredits(self, CycleCredits):
+        self._CycleCredits = CycleCredits
+
+    @property
+    def TotalCycles(self):
+        r"""<p>总周期数。</p>
+        :rtype: int
+        """
+        return self._TotalCycles
+
+    @TotalCycles.setter
+    def TotalCycles(self, TotalCycles):
+        self._TotalCycles = TotalCycles
+
+    @property
+    def CurrentCycle(self):
+        r"""<p>当前周期序号。</p>
+        :rtype: int
+        """
+        return self._CurrentCycle
+
+    @CurrentCycle.setter
+    def CurrentCycle(self, CurrentCycle):
+        self._CurrentCycle = CurrentCycle
+
+    @property
+    def RemainCycles(self):
+        r"""<p>剩余周期数。</p>
+        :rtype: int
+        """
+        return self._RemainCycles
+
+    @RemainCycles.setter
+    def RemainCycles(self, RemainCycles):
+        self._RemainCycles = RemainCycles
+
+    @property
+    def StartTime(self):
+        r"""<p>套餐生效时间，ISO 8601 格式。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>套餐过期时间，ISO 8601 格式。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def PeriodEndDate(self):
+        r"""<p>当前周期到期日，ISO 8601 格式。</p>
+        :rtype: str
+        """
+        return self._PeriodEndDate
+
+    @PeriodEndDate.setter
+    def PeriodEndDate(self, PeriodEndDate):
+        self._PeriodEndDate = PeriodEndDate
+
+    @property
+    def AutoRenewFlag(self):
+        r"""<p>自动续费标识。取值：0（未开启）、1（已开启）。</p>
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def OutputToken(self):
+        r"""<p>输出token数</p><p>单位：tokens</p>
+        :rtype: int
+        """
+        return self._OutputToken
+
+    @OutputToken.setter
+    def OutputToken(self, OutputToken):
+        self._OutputToken = OutputToken
+
+    @property
+    def InputToken(self):
+        r"""<p>输入token数</p><p>单位：token</p>
+        :rtype: int
+        """
+        return self._InputToken
+
+    @InputToken.setter
+    def InputToken(self, InputToken):
+        self._InputToken = InputToken
+
+    @property
+    def CacheToken(self):
+        r"""<p>缓存命中token数</p><p>单位：token</p>
+        :rtype: int
+        """
+        return self._CacheToken
+
+    @CacheToken.setter
+    def CacheToken(self, CacheToken):
+        self._CacheToken = CacheToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        self._PackageStatus = params.get("PackageStatus")
+        self._ResourceId = params.get("ResourceId")
+        self._TotalCredits = params.get("TotalCredits")
+        self._TotalUsed = params.get("TotalUsed")
+        self._CycleCredits = params.get("CycleCredits")
+        self._TotalCycles = params.get("TotalCycles")
+        self._CurrentCycle = params.get("CurrentCycle")
+        self._RemainCycles = params.get("RemainCycles")
+        self._StartTime = params.get("StartTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._PeriodEndDate = params.get("PeriodEndDate")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._OutputToken = params.get("OutputToken")
+        self._InputToken = params.get("InputToken")
+        self._CacheToken = params.get("CacheToken")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTokenPlanRequest(AbstractModel):
     r"""DescribeTokenPlan请求参数结构体
 

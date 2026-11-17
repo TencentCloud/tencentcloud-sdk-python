@@ -116,6 +116,24 @@ class KeewidbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInstanceAccount(
+            self,
+            request: models.CreateInstanceAccountRequest,
+            opts: Dict = None,
+    ) -> models.CreateInstanceAccountResponse:
+        """
+        本接口（CreateInstanceAccount）用于自定义访问实例的账号。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInstanceAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInstanceAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInstances(
             self,
             request: models.CreateInstancesRequest,
@@ -129,6 +147,24 @@ class KeewidbClient(AbstractClient):
         kwargs["action"] = "CreateInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteInstanceAccount(
+            self,
+            request: models.DeleteInstanceAccountRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInstanceAccountResponse:
+        """
+        本接口（DeleteInstanceAccount）用于删除实例自定义账号。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInstanceAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInstanceAccountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -183,6 +219,24 @@ class KeewidbClient(AbstractClient):
         kwargs["action"] = "DescribeDBSecurityGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceAccount(
+            self,
+            request: models.DescribeInstanceAccountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceAccountResponse:
+        """
+        本接口（DescribeInstanceAccount）用于查看实例账号信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceAccountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -579,6 +633,24 @@ class KeewidbClient(AbstractClient):
         kwargs["action"] = "ModifyInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyInstanceAccount(
+            self,
+            request: models.ModifyInstanceAccountRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceAccountResponse:
+        """
+        本接口（ModifyInstanceAccount）用于修改实例账号。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceAccountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

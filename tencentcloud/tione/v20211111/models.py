@@ -1749,18 +1749,20 @@ class CreateDataSourceRequest(AbstractModel):
         r"""
         :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
-        :param _Name: 数据源名称
+        :param _Name: <p>数据源名称</p>
         :type Name: str
-        :param _Type: 数据源类型英文名
+        :param _Type: <p>数据源类型英文名</p>
         :type Type: str
-        :param _Permission: 数据源权限，取值有RW RO
+        :param _Permission: <p>数据源权限，取值有RW RO</p>
         :type Permission: str
-        :param _StorageId: 存储实例ID
+        :param _StorageId: <p>存储实例ID</p>
         :type StorageId: str
-        :param _MountConfigure: 数据源挂载配置
+        :param _MountConfigure: <p>数据源挂载配置</p>
         :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
-        :param _Tags: 标签配置
+        :param _Tags: <p>标签配置</p>
         :type Tags: list of Tag
+        :param _ContainerPath: <p>挂载数据源时默认填充的容器内路径</p>
+        :type ContainerPath: str
         """
         self._TiProjectId = None
         self._Name = None
@@ -1769,6 +1771,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._StorageId = None
         self._MountConfigure = None
         self._Tags = None
+        self._ContainerPath = None
 
     @property
     def TiProjectId(self):
@@ -1783,7 +1786,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
         :rtype: str
         """
         return self._Name
@@ -1794,7 +1797,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""数据源类型英文名
+        r"""<p>数据源类型英文名</p>
         :rtype: str
         """
         return self._Type
@@ -1805,7 +1808,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def Permission(self):
-        r"""数据源权限，取值有RW RO
+        r"""<p>数据源权限，取值有RW RO</p>
         :rtype: str
         """
         return self._Permission
@@ -1816,7 +1819,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def StorageId(self):
-        r"""存储实例ID
+        r"""<p>存储实例ID</p>
         :rtype: str
         """
         return self._StorageId
@@ -1827,7 +1830,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def MountConfigure(self):
-        r"""数据源挂载配置
+        r"""<p>数据源挂载配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
         """
         return self._MountConfigure
@@ -1838,7 +1841,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签配置
+        r"""<p>标签配置</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -1846,6 +1849,17 @@ class CreateDataSourceRequest(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def ContainerPath(self):
+        r"""<p>挂载数据源时默认填充的容器内路径</p>
+        :rtype: str
+        """
+        return self._ContainerPath
+
+    @ContainerPath.setter
+    def ContainerPath(self, ContainerPath):
+        self._ContainerPath = ContainerPath
 
 
     def _deserialize(self, params):
@@ -1863,6 +1877,7 @@ class CreateDataSourceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ContainerPath = params.get("ContainerPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1880,7 +1895,7 @@ class CreateDataSourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 数据源ID
+        :param _Id: <p>数据源ID</p>
         :type Id: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1890,7 +1905,7 @@ class CreateDataSourceResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
         :rtype: str
         """
         return self._Id
@@ -3538,12 +3553,15 @@ class CreateNotebookImageRequest(AbstractModel):
         :type Kernels: list of str
         :param _RegisterToImageCenter: <p>是否保存到镜像中心</p>
         :type RegisterToImageCenter: bool
+        :param _IgnoreUnfreezableProcesses: <p>是否忽略无法被冻结的进程</p>
+        :type IgnoreUnfreezableProcesses: bool
         """
         self._ImageInfo = None
         self._NotebookId = None
         self._TiProjectId = None
         self._Kernels = None
         self._RegisterToImageCenter = None
+        self._IgnoreUnfreezableProcesses = None
 
     @property
     def ImageInfo(self):
@@ -3600,6 +3618,17 @@ class CreateNotebookImageRequest(AbstractModel):
     def RegisterToImageCenter(self, RegisterToImageCenter):
         self._RegisterToImageCenter = RegisterToImageCenter
 
+    @property
+    def IgnoreUnfreezableProcesses(self):
+        r"""<p>是否忽略无法被冻结的进程</p>
+        :rtype: bool
+        """
+        return self._IgnoreUnfreezableProcesses
+
+    @IgnoreUnfreezableProcesses.setter
+    def IgnoreUnfreezableProcesses(self, IgnoreUnfreezableProcesses):
+        self._IgnoreUnfreezableProcesses = IgnoreUnfreezableProcesses
+
 
     def _deserialize(self, params):
         if params.get("ImageInfo") is not None:
@@ -3609,6 +3638,7 @@ class CreateNotebookImageRequest(AbstractModel):
         self._TiProjectId = params.get("TiProjectId")
         self._Kernels = params.get("Kernels")
         self._RegisterToImageCenter = params.get("RegisterToImageCenter")
+        self._IgnoreUnfreezableProcesses = params.get("IgnoreUnfreezableProcesses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4870,7 +4900,7 @@ class CreateTrainingTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
+        :param _Name: <p>训练任务名称，不超过256个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :type Name: str
         :param _ChargeType: <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
         :type ChargeType: str
@@ -4896,7 +4926,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
         :param _TrainingMode: <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
         :type TrainingMode: str
-        :param _DataConfigs: <p>数据配置，依赖DataSource字段，数量不超过10个</p>
+        :param _DataConfigs: <p>数据配置，数量不超过10个</p>
         :type DataConfigs: list of DataConfig
         :param _VpcId: <p>VPC Id</p>
         :type VpcId: str
@@ -4964,7 +4994,7 @@ class CreateTrainingTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
+        r"""<p>训练任务名称，不超过256个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :rtype: str
         """
         return self._Name
@@ -5107,7 +5137,7 @@ class CreateTrainingTaskRequest(AbstractModel):
 
     @property
     def DataConfigs(self):
-        r"""<p>数据配置，依赖DataSource字段，数量不超过10个</p>
+        r"""<p>数据配置，数量不超过10个</p>
         :rtype: list of DataConfig
         """
         return self._DataConfigs
@@ -5605,10 +5635,10 @@ class DataConfig(AbstractModel):
         r"""
         :param _MappingPath: <p>映射路径</p>
         :type MappingPath: str
-        :param _DataSourceUsage: <p>存储用途<br>可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER</p>
+        :param _DataSourceUsage: <p>存储用途，用于标识该数据配置中数据的使用场景。</p><p>枚举值：</p><ul><li>BUILTIN_CODE： 内置代码</li><li>BUILTIN_DATA： 内置数据</li><li>BUILTIN_MODEL： 内置模型</li><li>USER_DATA： 用户数据</li><li>USER_CODE： 用户代码</li><li>USER_MODEL： 用户模型</li><li>OUTPUT： 训练输出</li><li>DEFAULT： 其他</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceUsage: str
-        :param _DataSourceType: <p>DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS</p>
+        :param _DataSourceType: <p>存储类型，各取值对应的数据结构见下方枚举值说明。</p><p>枚举值：</p><ul><li>DATASET： 数据集，填 DataSetSource</li><li>COS： COS 对象存储，填 COSSource；仅 Train 支持</li><li>COSFS： COS 挂载（COSFS），填 COSSource</li><li>CFS： CFS 文件存储，填 CFSSource</li><li>CFSTurbo： CFSTurbo 文件存储，填 CFSSource；兼容历史字段 CFSTurboSource；仅 Train 支持</li><li>GooseFS： GooseFS 实例，填 GooseFSSource</li><li>GooseFSx： GooseFSx 实例，填 GooseFSSource</li><li>HDFS： HDFS 存储，填 HDFSSource；仅 Train 支持</li><li>LOCAL_DISK： 本地磁盘，填 LocalDiskSource</li><li>HOST_PATH： 宿主机路径，填 HostPathSource</li><li>PUBLIC_DATA_SOURCE： 公有云数据源，填 PublicDataSource</li><li>CLOUD_PREMIUM： 高性能云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>CLOUD_SSD： SSD 云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>FREE： 免费云硬盘（CBS），填 CBSSource；仅 Notebook 支持</li><li>CFS_TURBO： CFSTurbo 文件存储，填 CFSSource；仅 Notebook 支持</li><li>BUILTIN_DATASET： 平台内置数据集，填 DataSetSource</li><li>PRELOAD_FILE： 预加载文件，填 PreloadFileSource</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param _DataSetSource: <p>来自数据集的数据</p>
@@ -5671,7 +5701,7 @@ class DataConfig(AbstractModel):
 
     @property
     def DataSourceUsage(self):
-        r"""<p>存储用途<br>可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER</p>
+        r"""<p>存储用途，用于标识该数据配置中数据的使用场景。</p><p>枚举值：</p><ul><li>BUILTIN_CODE： 内置代码</li><li>BUILTIN_DATA： 内置数据</li><li>BUILTIN_MODEL： 内置模型</li><li>USER_DATA： 用户数据</li><li>USER_CODE： 用户代码</li><li>USER_MODEL： 用户模型</li><li>OUTPUT： 训练输出</li><li>DEFAULT： 其他</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5683,7 +5713,7 @@ class DataConfig(AbstractModel):
 
     @property
     def DataSourceType(self):
-        r"""<p>DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS</p>
+        r"""<p>存储类型，各取值对应的数据结构见下方枚举值说明。</p><p>枚举值：</p><ul><li>DATASET： 数据集，填 DataSetSource</li><li>COS： COS 对象存储，填 COSSource；仅 Train 支持</li><li>COSFS： COS 挂载（COSFS），填 COSSource</li><li>CFS： CFS 文件存储，填 CFSSource</li><li>CFSTurbo： CFSTurbo 文件存储，填 CFSSource；兼容历史字段 CFSTurboSource；仅 Train 支持</li><li>GooseFS： GooseFS 实例，填 GooseFSSource</li><li>GooseFSx： GooseFSx 实例，填 GooseFSSource</li><li>HDFS： HDFS 存储，填 HDFSSource；仅 Train 支持</li><li>LOCAL_DISK： 本地磁盘，填 LocalDiskSource</li><li>HOST_PATH： 宿主机路径，填 HostPathSource</li><li>PUBLIC_DATA_SOURCE： 公有云数据源，填 PublicDataSource</li><li>CLOUD_PREMIUM： 高性能云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>CLOUD_SSD： SSD 云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>FREE： 免费云硬盘（CBS），填 CBSSource；仅 Notebook 支持</li><li>CFS_TURBO： CFSTurbo 文件存储，填 CFSSource；仅 Notebook 支持</li><li>BUILTIN_DATASET： 平台内置数据集，填 DataSetSource</li><li>PRELOAD_FILE： 预加载文件，填 PreloadFileSource</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6073,6 +6103,8 @@ class DataSourceInfo(AbstractModel):
         :param _ExtraConf: <p>额外配置,对应存储实例的额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        :param _ContainerPath: <p>挂载数据源时默认填充的容器内路径</p>
+        :type ContainerPath: str
         """
         self._Id = None
         self._Name = None
@@ -6088,6 +6120,7 @@ class DataSourceInfo(AbstractModel):
         self._LimitMount = None
         self._Tags = None
         self._ExtraConf = None
+        self._ContainerPath = None
 
     @property
     def Id(self):
@@ -6244,6 +6277,17 @@ class DataSourceInfo(AbstractModel):
     def ExtraConf(self, ExtraConf):
         self._ExtraConf = ExtraConf
 
+    @property
+    def ContainerPath(self):
+        r"""<p>挂载数据源时默认填充的容器内路径</p>
+        :rtype: str
+        """
+        return self._ContainerPath
+
+    @ContainerPath.setter
+    def ContainerPath(self, ContainerPath):
+        self._ContainerPath = ContainerPath
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6269,6 +6313,7 @@ class DataSourceInfo(AbstractModel):
         if params.get("ExtraConf") is not None:
             self._ExtraConf = StorageExtraConf()
             self._ExtraConf._deserialize(params.get("ExtraConf"))
+        self._ContainerPath = params.get("ContainerPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14844,11 +14889,11 @@ class DescribeTrainingTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 训练任务ID
+        :param _Id: <p>训练任务ID</p>
         :type Id: str
         :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
-        :param _InstanceId: 训练任务实例ID
+        :param _InstanceId: <p>训练任务实例ID</p>
         :type InstanceId: str
         """
         self._Id = None
@@ -14857,7 +14902,7 @@ class DescribeTrainingTaskRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""训练任务ID
+        r"""<p>训练任务ID</p>
         :rtype: str
         """
         return self._Id
@@ -14879,7 +14924,7 @@ class DescribeTrainingTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""训练任务实例ID
+        r"""<p>训练任务实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14910,7 +14955,7 @@ class DescribeTrainingTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrainingTaskDetail: 训练任务详情
+        :param _TrainingTaskDetail: <p>训练任务详情</p>
         :type TrainingTaskDetail: :class:`tencentcloud.tione.v20211111.models.TrainingTaskDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14920,7 +14965,7 @@ class DescribeTrainingTaskResponse(AbstractModel):
 
     @property
     def TrainingTaskDetail(self):
-        r"""训练任务详情
+        r"""<p>训练任务详情</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.TrainingTaskDetail`
         """
         return self._TrainingTaskDetail
@@ -16732,12 +16777,15 @@ class GooseFS(AbstractModel):
         :type NameSpace: str
         :param _MountOptions: <p>客户端的挂载参数，逗号分隔的参数名</p>
         :type MountOptions: str
+        :param _FuseOptions: <p>GooseFS FUSE，支持用户自定义配置，输入格式为“空格”分隔的参数名</p>
+        :type FuseOptions: str
         """
         self._Id = None
         self._Type = None
         self._Path = None
         self._NameSpace = None
         self._MountOptions = None
+        self._FuseOptions = None
 
     @property
     def Id(self):
@@ -16798,6 +16846,17 @@ class GooseFS(AbstractModel):
     def MountOptions(self, MountOptions):
         self._MountOptions = MountOptions
 
+    @property
+    def FuseOptions(self):
+        r"""<p>GooseFS FUSE，支持用户自定义配置，输入格式为“空格”分隔的参数名</p>
+        :rtype: str
+        """
+        return self._FuseOptions
+
+    @FuseOptions.setter
+    def FuseOptions(self, FuseOptions):
+        self._FuseOptions = FuseOptions
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16805,6 +16864,7 @@ class GooseFS(AbstractModel):
         self._Path = params.get("Path")
         self._NameSpace = params.get("NameSpace")
         self._MountOptions = params.get("MountOptions")
+        self._FuseOptions = params.get("FuseOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24063,6 +24123,8 @@ class NotebookSetItem(AbstractModel):
         :type Description: str
         :param _LatestOperatorInfo: <p>操作者信息</p>
         :type LatestOperatorInfo: :class:`tencentcloud.tione.v20211111.models.OperatorInfo`
+        :param _ResourceGroupInstanceId: <p>预付费专用资源组</p>
+        :type ResourceGroupInstanceId: str
         """
         self._Id = None
         self._Name = None
@@ -24097,6 +24159,7 @@ class NotebookSetItem(AbstractModel):
         self._ExposePortConfig = None
         self._Description = None
         self._LatestOperatorInfo = None
+        self._ResourceGroupInstanceId = None
 
     @property
     def Id(self):
@@ -24483,6 +24546,17 @@ class NotebookSetItem(AbstractModel):
     def LatestOperatorInfo(self, LatestOperatorInfo):
         self._LatestOperatorInfo = LatestOperatorInfo
 
+    @property
+    def ResourceGroupInstanceId(self):
+        r"""<p>预付费专用资源组</p>
+        :rtype: str
+        """
+        return self._ResourceGroupInstanceId
+
+    @ResourceGroupInstanceId.setter
+    def ResourceGroupInstanceId(self, ResourceGroupInstanceId):
+        self._ResourceGroupInstanceId = ResourceGroupInstanceId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -24535,6 +24609,7 @@ class NotebookSetItem(AbstractModel):
         if params.get("LatestOperatorInfo") is not None:
             self._LatestOperatorInfo = OperatorInfo()
             self._LatestOperatorInfo._deserialize(params.get("LatestOperatorInfo"))
+        self._ResourceGroupInstanceId = params.get("ResourceGroupInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25308,25 +25383,25 @@ class PodInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: pod名
+        :param _Name: <p>pod名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _IP: pod的IP
+        :param _IP: <p>pod的IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param _Status: pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
+        :param _Status: <p>pod状态</p><p>枚举值：</p><ul><li>PENDING： 排队中</li><li>RUNNING： 运行中</li><li>SUCCEEDED： 已完成</li><li>FAILED： 异常</li><li>TERMINATING： 停止中</li><li>TERMINATED： 已停止</li><li>UNKNOWN： 未知</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _StartTime: pod启动时间
+        :param _StartTime: <p>pod启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: pod结束时间
+        :param _EndTime: <p>pod结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ResourceConfigInfo: pod资源配置
+        :param _ResourceConfigInfo: <p>pod资源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
-        :param _SubUin: Pod所属任务的SubUin信息
+        :param _SubUin: <p>Pod所属任务的SubUin信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubUin: str
         """
@@ -25340,7 +25415,7 @@ class PodInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""pod名
+        r"""<p>pod名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25352,7 +25427,7 @@ class PodInfo(AbstractModel):
 
     @property
     def IP(self):
-        r"""pod的IP
+        r"""<p>pod的IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25364,7 +25439,7 @@ class PodInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
+        r"""<p>pod状态</p><p>枚举值：</p><ul><li>PENDING： 排队中</li><li>RUNNING： 运行中</li><li>SUCCEEDED： 已完成</li><li>FAILED： 异常</li><li>TERMINATING： 停止中</li><li>TERMINATED： 已停止</li><li>UNKNOWN： 未知</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25376,7 +25451,7 @@ class PodInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""pod启动时间
+        r"""<p>pod启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25388,7 +25463,7 @@ class PodInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""pod结束时间
+        r"""<p>pod结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25400,7 +25475,7 @@ class PodInfo(AbstractModel):
 
     @property
     def ResourceConfigInfo(self):
-        r"""pod资源配置
+        r"""<p>pod资源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
         """
@@ -25412,7 +25487,7 @@ class PodInfo(AbstractModel):
 
     @property
     def SubUin(self):
-        r"""Pod所属任务的SubUin信息
+        r"""<p>Pod所属任务的SubUin信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31480,7 +31555,7 @@ class SmartRouterComponent(AbstractModel):
         :type ResourceConfig: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceConfig`
         :param _Status: <p>组件状态：CREATING 创建中 / CREATE_FAILED 创建失败 / Normal 正常运行中 / Stopped 已停止 / Stopping 停止中 / Abnormal 异常 / Pending 启动中 / Waiting 就绪中</p>
         :type Status: str
-        :param _ResourceSpec: <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+        :param _ResourceSpec: <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute / ResourceGroupSWType；内网版场景展示：QueueId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceSpec: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceSpec`
         :param _BusinessStatus: <p>业务状态（组件级计费状态，Gateway/Scheduler 独立判定）：Billing 计费中 / Normal 正常（未计费或已停止计费）/ WhitelistUsing 白名单使用中（免计费）</p>
@@ -31556,7 +31631,7 @@ class SmartRouterComponent(AbstractModel):
 
     @property
     def ResourceSpec(self):
-        r"""<p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+        r"""<p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute / ResourceGroupSWType；内网版场景展示：QueueId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceSpec`
         """
@@ -33958,7 +34033,7 @@ class TrainingTaskDetail(AbstractModel):
         :type SubUinName: str
         :param _Region: <p>地域</p>
         :type Region: str
-        :param _FrameworkName: <p>训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH</p>
+        :param _FrameworkName: <p>训练框架名称，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkName: str
         :param _FrameworkVersion: <p>训练框架版本</p>
@@ -34045,7 +34120,7 @@ class TrainingTaskDetail(AbstractModel):
         :param _Message: <p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>SUCCEED： 已完成</li><li>FAILED： 异常</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :type Status: str
         :param _CallbackUrl: <p>回调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -34170,7 +34245,7 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def FrameworkName(self):
-        r"""<p>训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH</p>
+        r"""<p>训练框架名称，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34545,7 +34620,7 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>SUCCEED： 已完成</li><li>FAILED： 异常</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -35204,20 +35279,23 @@ class UpdateDataSourceRequest(AbstractModel):
         r"""
         :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
-        :param _Id: 数据源ID
+        :param _Id: <p>数据源ID</p>
         :type Id: str
-        :param _Name: 数据源名称
+        :param _Name: <p>数据源名称</p>
         :type Name: str
-        :param _Permission: 数据源权限，取值有RW RO
+        :param _Permission: <p>数据源权限，取值有RW RO</p>
         :type Permission: str
-        :param _MountConfigure: 数据源挂载配置
+        :param _MountConfigure: <p>数据源挂载配置</p>
         :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        :param _ContainerPath: <p>挂载数据源时默认填充的容器内路径</p>
+        :type ContainerPath: str
         """
         self._TiProjectId = None
         self._Id = None
         self._Name = None
         self._Permission = None
         self._MountConfigure = None
+        self._ContainerPath = None
 
     @property
     def TiProjectId(self):
@@ -35232,7 +35310,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
         :rtype: str
         """
         return self._Id
@@ -35243,7 +35321,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
         :rtype: str
         """
         return self._Name
@@ -35254,7 +35332,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     @property
     def Permission(self):
-        r"""数据源权限，取值有RW RO
+        r"""<p>数据源权限，取值有RW RO</p>
         :rtype: str
         """
         return self._Permission
@@ -35265,7 +35343,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     @property
     def MountConfigure(self):
-        r"""数据源挂载配置
+        r"""<p>数据源挂载配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
         """
         return self._MountConfigure
@@ -35273,6 +35351,17 @@ class UpdateDataSourceRequest(AbstractModel):
     @MountConfigure.setter
     def MountConfigure(self, MountConfigure):
         self._MountConfigure = MountConfigure
+
+    @property
+    def ContainerPath(self):
+        r"""<p>挂载数据源时默认填充的容器内路径</p>
+        :rtype: str
+        """
+        return self._ContainerPath
+
+    @ContainerPath.setter
+    def ContainerPath(self, ContainerPath):
+        self._ContainerPath = ContainerPath
 
 
     def _deserialize(self, params):
@@ -35283,6 +35372,7 @@ class UpdateDataSourceRequest(AbstractModel):
         if params.get("MountConfigure") is not None:
             self._MountConfigure = MountConfigureInfo()
             self._MountConfigure._deserialize(params.get("MountConfigure"))
+        self._ContainerPath = params.get("ContainerPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17,6 +17,12 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 请求头无效或缺失。
+AUTHFAILURE_HEADERINVALID = 'AuthFailure.HeaderInvalid'
+
+# JWT Token 无效或已过期。
+AUTHFAILURE_JWTTOKENINVALID = 'AuthFailure.JwtTokenInvalid'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -34,6 +40,9 @@ FAILEDOPERATION_EXISTWORKFLOWEXECUTIONS = 'FailedOperation.ExistWorkflowExecutio
 
 # 标签数量已达到最大允许限制
 FAILEDOPERATION_LABELCOUNTLIMIT = 'FailedOperation.LabelCountLimit'
+
+# Mlflow 操作失败，可能由网络异常、权限不足或请求参数不匹配等原因导致。
+FAILEDOPERATION_MLFLOWFAILEDOPERATION = 'FailedOperation.MlflowFailedOperation'
 
 # 无需操作的工作流运行
 FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = 'FailedOperation.NoWorkflowExecutionNeedOperate'
@@ -86,6 +95,12 @@ INTERNALERROR_INTERFACECALLERROR = 'InternalError.InterfaceCallError'
 # 参数不合法
 INTERNALERROR_INVALIDPARAMETER = 'InternalError.InvalidParameter'
 
+# Mlflow 服务内部错误。
+INTERNALERROR_MLFLOWINTERNALERROR = 'InternalError.MlflowInternalError'
+
+# 当前工作空间的 Mlflow 环境初始化中或初始化失败。
+INTERNALERROR_MLFLOWSERVERNOTFOUND = 'InternalError.MlflowServerNotFound'
+
 # 当前账号无权限操作该资源：不在工作空间内，或缺少该资源的查看/运行/删除权限
 INTERNALERROR_PERMISSIONDENIED = 'InternalError.PermissionDenied'
 
@@ -98,7 +113,10 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
-# InvalidParameter.InvalidParameter
+# 实验类型无效
+INVALIDPARAMETER_EXPERIMENTTYPEINVALID = 'InvalidParameter.ExperimentTypeInvalid'
+
+# Invalid request parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # 无效参数
@@ -115,6 +133,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 同一工作流内存在重名任务
 INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = 'InvalidParameterValue.DuplicateTaskNameError'
+
+# 当前版本不支持通过文件路径 FilePath 定位文件，请使用 FileId
+INVALIDPARAMETERVALUE_FILEPATH = 'InvalidParameterValue.FilePath'
 
 # 用户组ID列表不能为空
 INVALIDPARAMETERVALUE_GROUPIDSEMPTY = 'InvalidParameterValue.GroupIdsEmpty'
@@ -227,6 +248,9 @@ INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = 'InvalidParameterValu
 # 已达自定义角色数量上限
 LIMITEXCEEDED_CUSTOMROLEQUOTA = 'LimitExceeded.CustomRoleQuota'
 
+# 文件内容大小超过 1MB 限制
+LIMITEXCEEDED_FILESIZE = 'LimitExceeded.FileSize'
+
 # 当前租户 Setats Catalog 数量已达上限（最多5个）
 LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = 'LimitExceeded.SetatsCatalogLimitExceeded'
 
@@ -275,6 +299,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 指定的 Catalog 不存在
 RESOURCENOTFOUND_CATALOGNOTFOUND = 'ResourceNotFound.CatalogNotFound'
 
+# 文件不存在或已被移入回收站
+RESOURCENOTFOUND_FILE = 'ResourceNotFound.File'
+
 # 指定的模型不存在
 RESOURCENOTFOUND_MODELNOTFOUND = 'ResourceNotFound.ModelNotFound'
 
@@ -313,6 +340,9 @@ RESOURCENOTFOUND_WORKFLOWTASKNOTEXIST = 'ResourceNotFound.WorkflowTaskNotExist'
 
 # 工作流的调度配置未找到
 RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = 'ResourceNotFound.WorkflowTriggerNotFound'
+
+# 无权限访问该文件
+UNAUTHORIZEDOPERATION_FILE = 'UnauthorizedOperation.File'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

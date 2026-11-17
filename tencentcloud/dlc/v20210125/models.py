@@ -41869,6 +41869,120 @@ class DescribePartitionDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePartitionMonitorOverviewRequest(AbstractModel):
+    r"""DescribePartitionMonitorOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: <p>资源分区编码</p>
+        :type PartitionCode: str
+        :param _QueueName: <p>资源组（队列）名称，可选。不传时返回 partition 维度指标（含 pending_workloads / admission_wait_seconds / top_queue_by_cpu 排队卡片、<em>_limit_business 计费口径已使用量、</em><em>quota_total 配额、postpay_month_consumed_total 当月已消耗）；传入时切换为 queue 维度：仅返回 queue</em> 前缀指标（queue_<em><em>limit_business 计费口径已使用量 / queue</em></em>_admitted Kueue 对照口径 / queue_pending_workloads / queue_admission_wait_seconds）+ 该队列的配额指标（cpu_quota_total / memory_quota_total / gpu_quota_total / vram_quota_total，数值来自队列的 resource_usage 而非分区 resource_config）+ postpay_month_consumed_total</p>
+        :type QueueName: str
+        :param _MetricKeys: <p>指标 key 过滤列表，为空则返回全部指标</p>
+        :type MetricKeys: list of str
+        """
+        self._PartitionCode = None
+        self._QueueName = None
+        self._MetricKeys = None
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区编码</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""<p>资源组（队列）名称，可选。不传时返回 partition 维度指标（含 pending_workloads / admission_wait_seconds / top_queue_by_cpu 排队卡片、<em>_limit_business 计费口径已使用量、</em><em>quota_total 配额、postpay_month_consumed_total 当月已消耗）；传入时切换为 queue 维度：仅返回 queue</em> 前缀指标（queue_<em><em>limit_business 计费口径已使用量 / queue</em></em>_admitted Kueue 对照口径 / queue_pending_workloads / queue_admission_wait_seconds）+ 该队列的配额指标（cpu_quota_total / memory_quota_total / gpu_quota_total / vram_quota_total，数值来自队列的 resource_usage 而非分区 resource_config）+ postpay_month_consumed_total</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def MetricKeys(self):
+        r"""<p>指标 key 过滤列表，为空则返回全部指标</p>
+        :rtype: list of str
+        """
+        return self._MetricKeys
+
+    @MetricKeys.setter
+    def MetricKeys(self, MetricKeys):
+        self._MetricKeys = MetricKeys
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._MetricKeys = params.get("MetricKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePartitionMonitorOverviewResponse(AbstractModel):
+    r"""DescribePartitionMonitorOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Metrics: <p>监控指标列表</p>
+        :type Metrics: list of MetricValue
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Metrics = None
+        self._RequestId = None
+
+    @property
+    def Metrics(self):
+        r"""<p>监控指标列表</p>
+        :rtype: list of MetricValue
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricValue()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePartitionQueuesRequest(AbstractModel):
     r"""DescribePartitionQueues请求参数结构体
 
@@ -76324,6 +76438,199 @@ class MetricItem(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricLabels(AbstractModel):
+    r"""维度标签集合。当前已知 key：QueueName（多队列时序）、QueueAlias（队列展示别名，前端图例展示用，alias 缺省时回落为队列 code）、GpuType（GPU 类指标按卡型拆分时携带）、ResourceType（预留，时序路径当前不输出）。未来扩展新维度（如 Region / Zone）时，以 optional 属性形式追加到本 schema
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GpuType: <p>GPU 卡型简称，取值如 T4 / A10 / V100 / L20 / H20。来自 TKE GPU Exporter 暴露的 gpu_info.name，由查询层归一（name=&quot;Tesla T4&quot; → GpuType=&quot;T4&quot;）；未识别的卡型保留原始 name 值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param _QueueName: <p>队列编码 code（多队列时序查询时，每个 series 携带所属队列 code，与 GpuType 组合区分曲线；展示别名见 QueueAlias）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        :param _QueueAlias: <p>队列展示别名（多队列时序查询时每个 series 携带，前端图例展示用；队列不存在或 alias 为空时回落为队列 code）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueAlias: str
+        :param _ResourceType: <p>计费项资源类型（CPU / HM_CPU）。Overview 路径的 CPU / 内存类指标按计费项资源类型拆分 series 时携带；时序路径当前不输出该字段（预留对齐 MetricLabels 定义）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        """
+        self._GpuType = None
+        self._QueueName = None
+        self._QueueAlias = None
+        self._ResourceType = None
+
+    @property
+    def GpuType(self):
+        r"""<p>GPU 卡型简称，取值如 T4 / A10 / V100 / L20 / H20。来自 TKE GPU Exporter 暴露的 gpu_info.name，由查询层归一（name=&quot;Tesla T4&quot; → GpuType=&quot;T4&quot;）；未识别的卡型保留原始 name 值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def QueueName(self):
+        r"""<p>队列编码 code（多队列时序查询时，每个 series 携带所属队列 code，与 GpuType 组合区分曲线；展示别名见 QueueAlias）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def QueueAlias(self):
+        r"""<p>队列展示别名（多队列时序查询时每个 series 携带，前端图例展示用；队列不存在或 alias 为空时回落为队列 code）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
+
+    @property
+    def ResourceType(self):
+        r"""<p>计费项资源类型（CPU / HM_CPU）。Overview 路径的 CPU / 内存类指标按计费项资源类型拆分 series 时携带；时序路径当前不输出该字段（预留对齐 MetricLabels 定义）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._GpuType = params.get("GpuType")
+        self._QueueName = params.get("QueueName")
+        self._QueueAlias = params.get("QueueAlias")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricValue(AbstractModel):
+    r"""监控指标值（不含展示名，前端按 MetricKey 自行映射文案）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricKey: <p>指标键名，如 cpu_allocation、cpu_quota_total 等</p>
+        :type MetricKey: str
+        :param _Value: <p>指标当前值，可能为 null（PromQL 返回空数据集时），前端按 null 视作&quot;无数据&quot;处理</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param _Unit: <p>指标单位，如 core、card、GB</p>
+        :type Unit: str
+        :param _ResourceType: <p>资源类型：cpu / gpu / memory / vram / kueue / consumption</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _Labels: <p>维度标签。单 series 指标（CPU / 内存 / Kueue 等）不出现此字段；多 series 指标（GPU 类按卡型拆分）每条 MetricValue 携带不同的 Labels 区分维度。前端按 (MetricKey, Labels) 二元组识别每条记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: :class:`tencentcloud.dlc.v20210125.models.MetricLabels`
+        """
+        self._MetricKey = None
+        self._Value = None
+        self._Unit = None
+        self._ResourceType = None
+        self._Labels = None
+
+    @property
+    def MetricKey(self):
+        r"""<p>指标键名，如 cpu_allocation、cpu_quota_total 等</p>
+        :rtype: str
+        """
+        return self._MetricKey
+
+    @MetricKey.setter
+    def MetricKey(self, MetricKey):
+        self._MetricKey = MetricKey
+
+    @property
+    def Value(self):
+        r"""<p>指标当前值，可能为 null（PromQL 返回空数据集时），前端按 null 视作&quot;无数据&quot;处理</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Unit(self):
+        r"""<p>指标单位，如 core、card、GB</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型：cpu / gpu / memory / vram / kueue / consumption</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Labels(self):
+        r"""<p>维度标签。单 series 指标（CPU / 内存 / Kueue 等）不出现此字段；多 series 指标（GPU 类按卡型拆分）每条 MetricValue 携带不同的 Labels 区分维度。前端按 (MetricKey, Labels) 二元组识别每条记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MetricLabels`
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._MetricKey = params.get("MetricKey")
+        self._Value = params.get("Value")
+        self._Unit = params.get("Unit")
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Labels") is not None:
+            self._Labels = MetricLabels()
+            self._Labels._deserialize(params.get("Labels"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

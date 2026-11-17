@@ -2463,6 +2463,8 @@ class ResourceInfo(AbstractModel):
         :type ClusterId: str
         :param _ClusterRole: <p>集群角色，0-未加入集群 1-主 2-从</p>
         :type ClusterRole: int
+        :param _SyncStatus: <p>同步状态</p>
+        :type SyncStatus: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -2493,6 +2495,7 @@ class ResourceInfo(AbstractModel):
         self._Version = None
         self._ClusterId = None
         self._ClusterRole = None
+        self._SyncStatus = None
 
     @property
     def ResourceId(self):
@@ -2813,6 +2816,17 @@ class ResourceInfo(AbstractModel):
     def ClusterRole(self, ClusterRole):
         self._ClusterRole = ClusterRole
 
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -2854,6 +2868,7 @@ class ResourceInfo(AbstractModel):
         self._Version = params.get("Version")
         self._ClusterId = params.get("ClusterId")
         self._ClusterRole = params.get("ClusterRole")
+        self._SyncStatus = params.get("SyncStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

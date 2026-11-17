@@ -237,7 +237,7 @@ class AgsClient(AbstractClient):
 
 
     def CreateRegistryRecord(self, request):
-        r"""统一创建 Registry Record（含 revision 1）。请求通过 DescriptorType 与严格内容输入 Union 选择底层类型：MCPSource / AgentSource / SkillSource / CustomDescriptors 四选一，必须与 DescriptorType 对应。不接受 RecordId 或 ChangeLog；同名 Record 返回冲突，不隐式追加 Version。追加 Version 请使用 UpdateRegistryRecord。
+        r"""统一创建 Registry Record（含 revision 1）。MCPSource / AgentSource / SkillSource / CustomDescriptors / FileSource 五选一，必须与 DescriptorType 对应。PLUGIN 使用 FileSource.Type=FILE 上传通用文件，Registry 不校验插件内容格式和语义，运行端负责解析和加载。SupportedHarnessVersions 为该版本支持的 HarnessVersionReference 对象列表，每项同时包含 HarnessEngine 和 HarnessEngineVersion，原样使用 DescribeHarnessEngineList 返回的选项；Metadata 为 Name/Value 字符串数组，Name 非空、小写且唯一，服务内部保存 map[string]string；两项属性省略时均保存空列表，不继承其他版本。不接受 RecordId 或 ChangeLog；同名 Record 返回冲突，不隐式追加 Version。追加 Version 请使用 UpdateRegistryRecord。
 
         :param request: Request instance for CreateRegistryRecord.
         :type request: :class:`tencentcloud.ags.v20250920.models.CreateRegistryRecordRequest`
@@ -392,6 +392,29 @@ class AgsClient(AbstractClient):
             body = self.call("DeleteDeployment", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDeploymentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGPUResourceGroup(self, request):
+        r"""同步删除当前租户的空 GPU 资源组。资源组内不能存在交付中、已生效、已隔离、销毁中或其他未完成清理的 GPU 实例，也不能有剩余占用绑定或未删除的关联沙箱工具，否则返回 ResourceInUse。已销毁或补偿清理完成的历史记录不阻止删除。同租户重复删除已删除的资源组返回成功；资源组不存在或不属于当前租户时返回 ResourceNotFound。本接口仅软删除资源组，不执行退订退款、停止沙箱或释放底层 VM，历史计费记录保留。
+
+        :param request: Request instance for DeleteGPUResourceGroup.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DeleteGPUResourceGroupRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DeleteGPUResourceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGPUResourceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGPUResourceGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -681,6 +704,75 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGPUResourceGroups(self, request):
+        r"""查询当前地域、当前租户的 GPU 资源组及统计。通过 resource-group-id 精确过滤可查询组详情，仍返回数组；无匹配项返回空数组。资源组可以为空，商业期限和续费标记逐台保存。
+
+        :param request: Request instance for DescribeGPUResourceGroups.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourceGroupsRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGPUResourceGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGPUResourceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGPUResourceSpecs(self, request):
+        r"""查询当前地域可售 GPU 规格与当前租户可购买额度。GPUType、CPU、Memory、GPUNum 必须同时提供或同时省略；精确过滤时按四项匹配。不返回底层机型、资源池或计费标签。总显存为单台全部 GPU 的显存之和。
+
+        :param request: Request instance for DescribeGPUResourceSpecs.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourceSpecsRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourceSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGPUResourceSpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGPUResourceSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGPUResources(self, request):
+        r"""查询当前地域、当前租户的逐台 GPU 商业资源及占用状态。仅展示当前资源，不展示已销毁或补偿完成的失败资源；先筛选（含占用状态）再统计和分页。
+
+        :param request: Request instance for DescribeGPUResources.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourcesRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeGPUResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGPUResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGPUResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePreCacheImageList(self, request):
         r"""查询镜像预热列表
 
@@ -820,7 +912,7 @@ class AgsClient(AbstractClient):
 
 
     def DescribeRegistryRecord(self, request):
-        r"""查询 Record 详情和其中一个 Version。请求可通过互斥的 VersionId 或 Label 选择 Version；均省略时默认 Label=stable。取代原 DescribeRegistryRecordVersion。
+        r"""RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。 RecordId 必填，VersionId/Label 互斥，均省略解析 stable；市场无可读 stable 返回 ResourceNotFound，不回退 latest。市场 Record/Version 使用公开字段投影，隐藏创建者、租户、审批动作和 SourceConfig。普通模式保留原 AppID/归属，由后端执行 Record 级 CAM batch 检查。
 
         :param request: Request instance for DescribeRegistryRecord.
         :type request: :class:`tencentcloud.ags.v20250920.models.DescribeRegistryRecordRequest`
@@ -843,7 +935,7 @@ class AgsClient(AbstractClient):
 
 
     def DescribeRegistryRecordList(self, request):
-        r"""分页查询 Registry 下的 Record 列表。list 类接口不接入 CAM 转发鉴权；业务侧按 CAM 二次过滤。
+        r"""RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。 返回至少有一个市场可读版本的 Record；去重、过滤、计数后分页，VersionCount/LabelSet 只反映市场可读版本，隐藏租户及创建者信息。真实 RegistryId 保留原 AppID/CAM 资源过滤，接口由后端自行鉴权。
 
         :param request: Request instance for DescribeRegistryRecordList.
         :type request: :class:`tencentcloud.ags.v20250920.models.DescribeRegistryRecordListRequest`
@@ -1145,6 +1237,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGPUResourceGroup(self, request):
+        r"""仅同步修改当前租户 GPU 资源组的名称，允许重名、同名重试；不修改规格、数量、计费期限或续费标记。不存在或不属于当前租户的资源组返回 ResourceNotFound。
+
+        :param request: Request instance for ModifyGPUResourceGroup.
+        :type request: :class:`tencentcloud.ags.v20250920.models.ModifyGPUResourceGroupRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ModifyGPUResourceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGPUResourceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGPUResourceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySession(self, request):
         r"""修改会话信息
 
@@ -1377,7 +1492,7 @@ class AgsClient(AbstractClient):
 
 
     def UpdateRegistryRecord(self, request):
-        r"""更新 Registry Record。两种互斥模式：①Record 更新模式：不提交任何 Source / CustomDescriptors，可通过 Description、LabelMutations 修改元数据与 Label（至少提交一项）；②Version 创建模式：提交且仅提交一种与现有 DescriptorType 匹配的内容输入，可选 VersionName / ChangeLog，禁止 Description / LabelMutations，服务端在 Record 下创建下一个 Revision。取代原 ChangeRegistryRecordStableVersion / RollbackRegistryRecordVersion / Create*RegistryRecordVersion。
+        r"""更新 Registry Record。两种互斥模式：①Record 更新模式：不提交任何 Source / CustomDescriptors，可通过 Description、LabelMutations 修改元数据与 Label（至少提交一项）；②Version 创建模式：提交且仅提交一种与现有 DescriptorType 匹配的内容输入，可选 VersionName / ChangeLog / SupportedHarnessVersions / Metadata，禁止 Description / LabelMutations，服务端创建下一个 Revision。PLUGIN 使用 FileSource.Type=FILE 上传原始文件；FileSource.Type=VERSION 可为 Skill 或 Plugin 复用同一 Record 下未删除且 READY 的文件版本，填写 SourceVersionId，不复制来源版本的 Metadata 或 SupportedHarnessVersions。Metadata 以 Name/Value 字符串数组传输，所有层级 key 必须小写；两项版本属性省略时分别为空对象和空列表，不继承上一版本。取代原 ChangeRegistryRecordStableVersion / RollbackRegistryRecordVersion / Create*RegistryRecordVersion。
 
         :param request: Request instance for UpdateRegistryRecord.
         :type request: :class:`tencentcloud.ags.v20250920.models.UpdateRegistryRecordRequest`

@@ -1962,6 +1962,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListVideoSnapshotResult(self, request):
+        r"""获取截图结果列表
+
+        :param request: Request instance for ListVideoSnapshotResult.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotResultRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVideoSnapshotResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVideoSnapshotResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListVideoSnapshotTemplate(self, request):
         r"""获取截图模板详情列表
 

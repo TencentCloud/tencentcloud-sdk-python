@@ -141,6 +141,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExperiment(self, request):
+        r"""创建实验。实验是 MLflow 训练跟踪的容器，用于承载训练运行记录与已记录模型。支持 MACHINE_LEARNING/CLASSIFICATION/REGRESSION/FORECASTING/AGENT 五种类型；AutoML 类型（分类/回归/时序预测）需同时传入 AutoMlConf 与 TrainingData。
+
+        :param request: Request instance for CreateExperiment.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateExperimentRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateExperimentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExperiment", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExperimentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFile(self, request):
         r"""在Studio（统一开发 IDE）的工作空间文件树中新建一个文件（Notebook/SQL/Python等），创建成功后返回文件的完整元信息。
 
@@ -752,6 +775,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("GetFile", params, headers=headers)
             response = json.loads(body)
             model = models.GetFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFileContent(self, request):
+        r"""获取文件内容。第一期：支持 FileId 定位
+
+        :param request: Request instance for GetFileContent.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetFileContentRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetFileContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFileContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFileContentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

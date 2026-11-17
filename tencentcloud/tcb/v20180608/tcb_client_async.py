@@ -1058,6 +1058,26 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEnvAccessControl(
+            self,
+            request: models.DescribeEnvAccessControlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEnvAccessControlResponse:
+        """
+        查询云开发域名访问限制配置，返回指定环境下公网、VPC、办公网三种来源的当前访问策略
+        （1）可以通过控制台调用查询域名访问控制。响应  Current 返回各来源（PUBLIC/VPC/WOA）当前生效的配置
+        （2）不产生写副作用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEnvAccessControl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEnvAccessControlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvAccountCircle(
             self,
             request: models.DescribeEnvAccountCircleRequest,
@@ -1935,6 +1955,28 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyEnv"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEnvAccessControl(
+            self,
+            request: models.ModifyEnvAccessControlRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEnvAccessControlResponse:
+        """
+        云开发域名访问限制配置
+        （1）影响指定环境下域名来源访问策略，包含公网与 VPC 白名单
+        （2）关闭公网访问后，云开发提供的默认域名在公网访问场景下返回403
+        （3）可以通过配置 VPC 白名单指定放通特定 VPC 来源的请求
+        （4）可以通过云开发控制台调用修改访问配置，修改后可通过查询接口核对生效配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEnvAccessControl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEnvAccessControlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

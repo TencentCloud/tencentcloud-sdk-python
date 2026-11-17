@@ -520,6 +520,26 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTokenPlanPersonalPackage(
+            self,
+            request: models.DescribeTokenPlanPersonalPackageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanPersonalPackageResponse:
+        """
+        查询个人版套餐详情。
+
+        查询指定产品类型的个人版 Token Plan 套餐状态、额度及续费信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanPersonalPackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanPersonalPackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUsageRankList(
             self,
             request: models.DescribeUsageRankListRequest,

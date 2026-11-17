@@ -25428,6 +25428,13 @@ class KongRoutePreview(AbstractModel):
         :type QueryStringParameters: list of KVMapping
         :param _RouteSource: <p>路由来源</p>
         :type RouteSource: str
+        :param _Tags: <p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+        :type Tags: list of KongUserTagKV
+        :param _Timeout: <p>超时时间，单位ms</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param _TimeoutSource: <p>路由超时配置的来源。</p>
+        :type TimeoutSource: str
         """
         self._ID = None
         self._Name = None
@@ -25449,6 +25456,9 @@ class KongRoutePreview(AbstractModel):
         self._RegexPriority = None
         self._QueryStringParameters = None
         self._RouteSource = None
+        self._Tags = None
+        self._Timeout = None
+        self._TimeoutSource = None
 
     @property
     def ID(self):
@@ -25678,6 +25688,40 @@ class KongRoutePreview(AbstractModel):
     def RouteSource(self, RouteSource):
         self._RouteSource = RouteSource
 
+    @property
+    def Tags(self):
+        r"""<p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+        :rtype: list of KongUserTagKV
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间，单位ms</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def TimeoutSource(self):
+        r"""<p>路由超时配置的来源。</p>
+        :rtype: str
+        """
+        return self._TimeoutSource
+
+    @TimeoutSource.setter
+    def TimeoutSource(self, TimeoutSource):
+        self._TimeoutSource = TimeoutSource
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -25710,6 +25754,14 @@ class KongRoutePreview(AbstractModel):
                 obj._deserialize(item)
                 self._QueryStringParameters.append(obj)
         self._RouteSource = params.get("RouteSource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = KongUserTagKV()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Timeout = params.get("Timeout")
+        self._TimeoutSource = params.get("TimeoutSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26016,23 +26068,25 @@ class KongTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: 目标主机地址
+        :param _Host: <p>目标主机地址</p>
         :type Host: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: int
-        :param _Weight: 权重
+        :param _Weight: <p>权重</p>
         :type Weight: int
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _CvmInstanceId: CVM实例ID
+        :param _CvmInstanceId: <p>CVM实例ID</p>
         :type CvmInstanceId: str
-        :param _CvmInstanceName: CVM实例名称
+        :param _CvmInstanceName: <p>CVM实例名称</p>
         :type CvmInstanceName: str
-        :param _Health: 健康状态
+        :param _Health: <p>健康状态</p>
         :type Health: str
-        :param _Source: Target的来源
+        :param _Id: <p>Target ID</p>
+        :type Id: str
+        :param _Source: <p>Target的来源</p>
         :type Source: str
-        :param _Tags: target标签
+        :param _Tags: <p>target标签</p>
         :type Tags: list of str
         """
         self._Host = None
@@ -26042,12 +26096,13 @@ class KongTarget(AbstractModel):
         self._CvmInstanceId = None
         self._CvmInstanceName = None
         self._Health = None
+        self._Id = None
         self._Source = None
         self._Tags = None
 
     @property
     def Host(self):
-        r"""目标主机地址
+        r"""<p>目标主机地址</p>
         :rtype: str
         """
         return self._Host
@@ -26058,7 +26113,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._Port
@@ -26069,7 +26124,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Weight(self):
-        r"""权重
+        r"""<p>权重</p>
         :rtype: int
         """
         return self._Weight
@@ -26080,7 +26135,7 @@ class KongTarget(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -26091,7 +26146,7 @@ class KongTarget(AbstractModel):
 
     @property
     def CvmInstanceId(self):
-        r"""CVM实例ID
+        r"""<p>CVM实例ID</p>
         :rtype: str
         """
         return self._CvmInstanceId
@@ -26102,7 +26157,7 @@ class KongTarget(AbstractModel):
 
     @property
     def CvmInstanceName(self):
-        r"""CVM实例名称
+        r"""<p>CVM实例名称</p>
         :rtype: str
         """
         return self._CvmInstanceName
@@ -26113,7 +26168,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Health(self):
-        r"""健康状态
+        r"""<p>健康状态</p>
         :rtype: str
         """
         return self._Health
@@ -26123,8 +26178,19 @@ class KongTarget(AbstractModel):
         self._Health = Health
 
     @property
+    def Id(self):
+        r"""<p>Target ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
     def Source(self):
-        r"""Target的来源
+        r"""<p>Target的来源</p>
         :rtype: str
         """
         return self._Source
@@ -26135,7 +26201,7 @@ class KongTarget(AbstractModel):
 
     @property
     def Tags(self):
-        r"""target标签
+        r"""<p>target标签</p>
         :rtype: list of str
         """
         return self._Tags
@@ -26153,6 +26219,7 @@ class KongTarget(AbstractModel):
         self._CvmInstanceId = params.get("CvmInstanceId")
         self._CvmInstanceName = params.get("CvmInstanceName")
         self._Health = params.get("Health")
+        self._Id = params.get("Id")
         self._Source = params.get("Source")
         self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
@@ -26528,6 +26595,72 @@ class KongUpstreamInfo(AbstractModel):
                 obj = KongTarget()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUserTagKV(AbstractModel):
+    r"""用户业务标签的 KV 表示（路由/服务标签分组）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: <p>标签 ID</p>
+        :type TagId: int
+        :param _TagKey: <p>标签 Key</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签 Value</p>
+        :type TagValue: str
+        """
+        self._TagId = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagId(self):
+        r"""<p>标签 ID</p>
+        :rtype: int
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def TagKey(self):
+        r"""<p>标签 Key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签 Value</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

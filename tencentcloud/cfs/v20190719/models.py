@@ -11281,6 +11281,8 @@ class SnapshotInfo(AbstractModel):
         :param _SnapshotTime: <p>实际快照时间，反映快照对应文件系统某个时刻的数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
+        :param _FinishTime: <p>快照完成时间</p>
+        :type FinishTime: str
         """
         self._CreationTime = None
         self._SnapshotName = None
@@ -11297,6 +11299,7 @@ class SnapshotInfo(AbstractModel):
         self._Tags = None
         self._SnapshotType = None
         self._SnapshotTime = None
+        self._FinishTime = None
 
     @property
     def CreationTime(self):
@@ -11465,6 +11468,17 @@ class SnapshotInfo(AbstractModel):
     def SnapshotTime(self, SnapshotTime):
         self._SnapshotTime = SnapshotTime
 
+    @property
+    def FinishTime(self):
+        r"""<p>快照完成时间</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
 
     def _deserialize(self, params):
         self._CreationTime = params.get("CreationTime")
@@ -11487,6 +11501,7 @@ class SnapshotInfo(AbstractModel):
                 self._Tags.append(obj)
         self._SnapshotType = params.get("SnapshotType")
         self._SnapshotTime = params.get("SnapshotTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

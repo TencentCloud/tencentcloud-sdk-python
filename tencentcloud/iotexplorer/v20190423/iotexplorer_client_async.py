@@ -1845,6 +1845,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceCloudStoragePackages(
+            self,
+            request: models.DescribeDeviceCloudStoragePackagesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCloudStoragePackagesResponse:
+        """
+        查询设备云存套餐
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCloudStoragePackages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCloudStoragePackagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceData(
             self,
             request: models.DescribeDeviceDataRequest,

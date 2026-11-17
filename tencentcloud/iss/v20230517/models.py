@@ -14091,6 +14091,278 @@ class ListVideoDownloadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListVideoSnapshotResultData(AbstractModel):
+    r"""截图结果列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>截图信息列表</p>
+        :type List: list of VideoSnapshotInfo
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _PageNumber: <p>页码</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目</p>
+        :type PageSize: int
+        """
+        self._List = None
+        self._TotalCount = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def List(self):
+        r"""<p>截图信息列表</p>
+        :rtype: list of VideoSnapshotInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VideoSnapshotInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoSnapshotResultRequest(AbstractModel):
+    r"""ListVideoSnapshotResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: <p>开始时间</p><p>单位：秒</p>
+        :type BeginTime: int
+        :param _EndTime: <p>结束时间</p><p>单位：秒</p>
+        :type EndTime: int
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        :param _ChannelId: <p>通道Id</p>
+        :type ChannelId: str
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _ImageUrlExpires: <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+        :type ImageUrlExpires: int
+        :param _PageNumber: <p>页码</p><p>默认值：1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :type PageSize: int
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._ConfigId = None
+        self._ChannelId = None
+        self._Type = None
+        self._ImageUrlExpires = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def BeginTime(self):
+        r"""<p>开始时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道Id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ImageUrlExpires(self):
+        r"""<p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+        :rtype: int
+        """
+        return self._ImageUrlExpires
+
+    @ImageUrlExpires.setter
+    def ImageUrlExpires(self, ImageUrlExpires):
+        self._ImageUrlExpires = ImageUrlExpires
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._ConfigId = params.get("ConfigId")
+        self._ChannelId = params.get("ChannelId")
+        self._Type = params.get("Type")
+        self._ImageUrlExpires = params.get("ImageUrlExpires")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoSnapshotResultResponse(AbstractModel):
+    r"""ListVideoSnapshotResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图结果列表</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotResultData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图结果列表</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotResultData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListVideoSnapshotResultData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListVideoSnapshotTemplateData(AbstractModel):
     r"""获取截图模板详情列表
 
@@ -20766,6 +21038,177 @@ class VideoSnapshotConfigInfo(AbstractModel):
         self._RelatedChannelCount = params.get("RelatedChannelCount")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSnapshotInfo(AbstractModel):
+    r"""视频截图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>图片Id</p>
+        :type ImageId: str
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        :param _ConfigName: <p>截图配置名称</p>
+        :type ConfigName: str
+        :param _ChannelId: <p>通道Id</p>
+        :type ChannelId: str
+        :param _ChannelName: <p>通道名称</p>
+        :type ChannelName: str
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _ImageUrl: <p>图片Url</p>
+        :type ImageUrl: str
+        :param _ImageUrlExpires: <p>图片Url有效期</p>
+        :type ImageUrlExpires: int
+        :param _Timestamp: <p>截图时间点</p>
+        :type Timestamp: int
+        :param _FileSize: <p>图片大小</p><p>单位：字节</p>
+        :type FileSize: int
+        """
+        self._ImageId = None
+        self._ConfigId = None
+        self._ConfigName = None
+        self._ChannelId = None
+        self._ChannelName = None
+        self._Type = None
+        self._ImageUrl = None
+        self._ImageUrlExpires = None
+        self._Timestamp = None
+        self._FileSize = None
+
+    @property
+    def ImageId(self):
+        r"""<p>图片Id</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def ConfigName(self):
+        r"""<p>截图配置名称</p>
+        :rtype: str
+        """
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道Id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        r"""<p>通道名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片Url</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageUrlExpires(self):
+        r"""<p>图片Url有效期</p>
+        :rtype: int
+        """
+        return self._ImageUrlExpires
+
+    @ImageUrlExpires.setter
+    def ImageUrlExpires(self, ImageUrlExpires):
+        self._ImageUrlExpires = ImageUrlExpires
+
+    @property
+    def Timestamp(self):
+        r"""<p>截图时间点</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def FileSize(self):
+        r"""<p>图片大小</p><p>单位：字节</p>
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._ConfigId = params.get("ConfigId")
+        self._ConfigName = params.get("ConfigName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._Type = params.get("Type")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageUrlExpires = params.get("ImageUrlExpires")
+        self._Timestamp = params.get("Timestamp")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

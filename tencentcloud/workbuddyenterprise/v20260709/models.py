@@ -6695,10 +6695,52 @@ class DescribeUserAccessTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AccessToken: <p>OneID 颁发的用户级访问凭证</p>
+        :type AccessToken: str
+        :param _TokenType: <p>凭证类型，目前固定 Bearer</p>
+        :type TokenType: str
+        :param _ExpiresIn: <p>凭证有效期，单位：秒</p>
+        :type ExpiresIn: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AccessToken = None
+        self._TokenType = None
+        self._ExpiresIn = None
         self._RequestId = None
+
+    @property
+    def AccessToken(self):
+        r"""<p>OneID 颁发的用户级访问凭证</p>
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+    @property
+    def TokenType(self):
+        r"""<p>凭证类型，目前固定 Bearer</p>
+        :rtype: str
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def ExpiresIn(self):
+        r"""<p>凭证有效期，单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpiresIn
+
+    @ExpiresIn.setter
+    def ExpiresIn(self, ExpiresIn):
+        self._ExpiresIn = ExpiresIn
 
     @property
     def RequestId(self):
@@ -6713,6 +6755,9 @@ class DescribeUserAccessTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AccessToken = params.get("AccessToken")
+        self._TokenType = params.get("TokenType")
+        self._ExpiresIn = params.get("ExpiresIn")
         self._RequestId = params.get("RequestId")
 
 

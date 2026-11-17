@@ -371,6 +371,29 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyStableIPStatus(self, request):
+        r"""本接口 ModifyStableIPStatus 用于修改固定 IP 状态
+
+        :param request: Request instance for ModifyStableIPStatus.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.ModifyStableIPStatusRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ModifyStableIPStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStableIPStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStableIPStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OperateServerManage(self, request):
         r"""操作发布单
 

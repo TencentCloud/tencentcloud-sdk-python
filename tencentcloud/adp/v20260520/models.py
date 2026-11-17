@@ -648,6 +648,140 @@ class AgentAdvancedConfig(AbstractModel):
         
 
 
+class AgentBuiltinTool(AbstractModel):
+    r"""Agent 内置工具详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Config: <p>内置工具基础配置</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.AgentBuiltinToolConfig`
+        :param _DisplayName: <p>工具展示名称</p>
+        :type DisplayName: str
+        :param _Description: <p>工具描述</p>
+        :type Description: str
+        :param _BillingType: <p>计费标识</p><p>枚举值：</p><ul><li>0： 免费</li><li>1： 限时免费</li><li>2： 官方收费</li></ul>
+        :type BillingType: int
+        """
+        self._Config = None
+        self._DisplayName = None
+        self._Description = None
+        self._BillingType = None
+
+    @property
+    def Config(self):
+        r"""<p>内置工具基础配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AgentBuiltinToolConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def DisplayName(self):
+        r"""<p>工具展示名称</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        r"""<p>工具描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BillingType(self):
+        r"""<p>计费标识</p><p>枚举值：</p><ul><li>0： 免费</li><li>1： 限时免费</li><li>2： 官方收费</li></ul>
+        :rtype: int
+        """
+        return self._BillingType
+
+    @BillingType.setter
+    def BillingType(self, BillingType):
+        self._BillingType = BillingType
+
+
+    def _deserialize(self, params):
+        if params.get("Config") is not None:
+            self._Config = AgentBuiltinToolConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._BillingType = params.get("BillingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentBuiltinToolConfig(AbstractModel):
+    r"""Agent 内置工具配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>工具名称</p>
+        :type Name: str
+        :param _Disabled: <p>是否禁用该内置工具</p>
+        :type Disabled: bool
+        """
+        self._Name = None
+        self._Disabled = None
+
+    @property
+    def Name(self):
+        r"""<p>工具名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Disabled(self):
+        r"""<p>是否禁用该内置工具</p>
+        :rtype: bool
+        """
+        return self._Disabled
+
+    @Disabled.setter
+    def Disabled(self, Disabled):
+        self._Disabled = Disabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Disabled = params.get("Disabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentCollaborationConfig(AbstractModel):
     r"""[数据结构定义] Agent协同配置
 
@@ -739,6 +873,17 @@ class AgentDetail(AbstractModel):
         :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
         :param _ExternalToolList: <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent 忽略该字段与</p>
         :type ExternalToolList: list of AgentExternalToolConfig
+        :param _ProviderType: <p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :type ProviderType: int
+        :param _ReferenceAppId: <p>引用应用的ID</p>
+        :type ReferenceAppId: str
+        :param _ReferenceAppStatus: <p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+        :type ReferenceAppStatus: int
+        :param _ReferenceApp: <p>引用应用详情，ProviderType=1 时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReferenceApp: :class:`tencentcloud.adp.v20260520.models.ReferenceAppDetail`
+        :param _BuiltinToolList: <p>内置工具列表</p>
+        :type BuiltinToolList: list of AgentBuiltinTool
         """
         self._AgentId = None
         self._Profile = None
@@ -749,6 +894,11 @@ class AgentDetail(AbstractModel):
         self._SkillList = None
         self._AdvancedConfig = None
         self._ExternalToolList = None
+        self._ProviderType = None
+        self._ReferenceAppId = None
+        self._ReferenceAppStatus = None
+        self._ReferenceApp = None
+        self._BuiltinToolList = None
 
     @property
     def AgentId(self):
@@ -849,6 +999,62 @@ class AgentDetail(AbstractModel):
     def ExternalToolList(self, ExternalToolList):
         self._ExternalToolList = ExternalToolList
 
+    @property
+    def ProviderType(self):
+        r"""<p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :rtype: int
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def ReferenceAppId(self):
+        r"""<p>引用应用的ID</p>
+        :rtype: str
+        """
+        return self._ReferenceAppId
+
+    @ReferenceAppId.setter
+    def ReferenceAppId(self, ReferenceAppId):
+        self._ReferenceAppId = ReferenceAppId
+
+    @property
+    def ReferenceAppStatus(self):
+        r"""<p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+        :rtype: int
+        """
+        return self._ReferenceAppStatus
+
+    @ReferenceAppStatus.setter
+    def ReferenceAppStatus(self, ReferenceAppStatus):
+        self._ReferenceAppStatus = ReferenceAppStatus
+
+    @property
+    def ReferenceApp(self):
+        r"""<p>引用应用详情，ProviderType=1 时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ReferenceAppDetail`
+        """
+        return self._ReferenceApp
+
+    @ReferenceApp.setter
+    def ReferenceApp(self, ReferenceApp):
+        self._ReferenceApp = ReferenceApp
+
+    @property
+    def BuiltinToolList(self):
+        r"""<p>内置工具列表</p>
+        :rtype: list of AgentBuiltinTool
+        """
+        return self._BuiltinToolList
+
+    @BuiltinToolList.setter
+    def BuiltinToolList(self, BuiltinToolList):
+        self._BuiltinToolList = BuiltinToolList
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -886,6 +1092,18 @@ class AgentDetail(AbstractModel):
                 obj = AgentExternalToolConfig()
                 obj._deserialize(item)
                 self._ExternalToolList.append(obj)
+        self._ProviderType = params.get("ProviderType")
+        self._ReferenceAppId = params.get("ReferenceAppId")
+        self._ReferenceAppStatus = params.get("ReferenceAppStatus")
+        if params.get("ReferenceApp") is not None:
+            self._ReferenceApp = ReferenceAppDetail()
+            self._ReferenceApp._deserialize(params.get("ReferenceApp"))
+        if params.get("BuiltinToolList") is not None:
+            self._BuiltinToolList = []
+            for item in params.get("BuiltinToolList"):
+                obj = AgentBuiltinTool()
+                obj._deserialize(item)
+                self._BuiltinToolList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2212,6 +2430,12 @@ class AgentSpec(AbstractModel):
         :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
         :param _ExternalToolList: <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent  忽略该字段与</p>
         :type ExternalToolList: list of AgentExternalToolConfig
+        :param _ProviderType: <p>子 Agent执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :type ProviderType: int
+        :param _ReferenceAppId: <p>引用应用的Id</p>
+        :type ReferenceAppId: str
+        :param _BuiltinToolList: <p>内置工具信息</p>
+        :type BuiltinToolList: list of AgentBuiltinToolConfig
         """
         self._Profile = None
         self._Instructions = None
@@ -2221,6 +2445,9 @@ class AgentSpec(AbstractModel):
         self._SkillList = None
         self._AdvancedConfig = None
         self._ExternalToolList = None
+        self._ProviderType = None
+        self._ReferenceAppId = None
+        self._BuiltinToolList = None
 
     @property
     def Profile(self):
@@ -2310,6 +2537,39 @@ class AgentSpec(AbstractModel):
     def ExternalToolList(self, ExternalToolList):
         self._ExternalToolList = ExternalToolList
 
+    @property
+    def ProviderType(self):
+        r"""<p>子 Agent执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :rtype: int
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def ReferenceAppId(self):
+        r"""<p>引用应用的Id</p>
+        :rtype: str
+        """
+        return self._ReferenceAppId
+
+    @ReferenceAppId.setter
+    def ReferenceAppId(self, ReferenceAppId):
+        self._ReferenceAppId = ReferenceAppId
+
+    @property
+    def BuiltinToolList(self):
+        r"""<p>内置工具信息</p>
+        :rtype: list of AgentBuiltinToolConfig
+        """
+        return self._BuiltinToolList
+
+    @BuiltinToolList.setter
+    def BuiltinToolList(self, BuiltinToolList):
+        self._BuiltinToolList = BuiltinToolList
+
 
     def _deserialize(self, params):
         if params.get("Profile") is not None:
@@ -2346,6 +2606,14 @@ class AgentSpec(AbstractModel):
                 obj = AgentExternalToolConfig()
                 obj._deserialize(item)
                 self._ExternalToolList.append(obj)
+        self._ProviderType = params.get("ProviderType")
+        self._ReferenceAppId = params.get("ReferenceAppId")
+        if params.get("BuiltinToolList") is not None:
+            self._BuiltinToolList = []
+            for item in params.get("BuiltinToolList"):
+                obj = AgentBuiltinToolConfig()
+                obj._deserialize(item)
+                self._BuiltinToolList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2369,10 +2637,16 @@ class AgentSummary(AbstractModel):
         :type Profile: :class:`tencentcloud.adp.v20260520.models.AgentProfile`
         :param _AdvancedConfig: <p>高级设置;scope=0 时返回</p>
         :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
+        :param _ProviderType: <p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :type ProviderType: int
+        :param _ReferenceAppStatus: <p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+        :type ReferenceAppStatus: int
         """
         self._AgentId = None
         self._Profile = None
         self._AdvancedConfig = None
+        self._ProviderType = None
+        self._ReferenceAppStatus = None
 
     @property
     def AgentId(self):
@@ -2407,6 +2681,28 @@ class AgentSummary(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def ProviderType(self):
+        r"""<p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+        :rtype: int
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def ReferenceAppStatus(self):
+        r"""<p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+        :rtype: int
+        """
+        return self._ReferenceAppStatus
+
+    @ReferenceAppStatus.setter
+    def ReferenceAppStatus(self, ReferenceAppStatus):
+        self._ReferenceAppStatus = ReferenceAppStatus
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -2416,6 +2712,8 @@ class AgentSummary(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AgentAdvancedConfig()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._ProviderType = params.get("ProviderType")
+        self._ReferenceAppStatus = params.get("ReferenceAppStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3122,32 +3420,23 @@ class ApiKeyAuthConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyLocation: 密钥位置 HEADER/QUERY
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | Header鉴权 |
-| 1 | Query鉴权 |
+        :param _KeyLocation: <p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | Header鉴权 |<br>| 1 | Query鉴权 |</p>
         :type KeyLocation: int
-        :param _KeyParamName: 密钥参数名
+        :param _KeyParamName: <p>密钥参数名</p>
         :type KeyParamName: str
-        :param _KeyParamValue: 密钥参数值
+        :param _KeyParamValue: <p>密钥参数值</p>
         :type KeyParamValue: str
+        :param _KeyValueUsage: <p>密钥值用途，未指定按允许工具调用处理</p><p>枚举值：</p><ul><li>1： 允许用于工具调用</li><li>2： 仅用于连接测试和获取工具列表</li></ul>
+        :type KeyValueUsage: int
         """
         self._KeyLocation = None
         self._KeyParamName = None
         self._KeyParamValue = None
+        self._KeyValueUsage = None
 
     @property
     def KeyLocation(self):
-        r"""密钥位置 HEADER/QUERY
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | Header鉴权 |
-| 1 | Query鉴权 |
+        r"""<p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | Header鉴权 |<br>| 1 | Query鉴权 |</p>
         :rtype: int
         """
         return self._KeyLocation
@@ -3158,7 +3447,7 @@ class ApiKeyAuthConfig(AbstractModel):
 
     @property
     def KeyParamName(self):
-        r"""密钥参数名
+        r"""<p>密钥参数名</p>
         :rtype: str
         """
         return self._KeyParamName
@@ -3169,7 +3458,7 @@ class ApiKeyAuthConfig(AbstractModel):
 
     @property
     def KeyParamValue(self):
-        r"""密钥参数值
+        r"""<p>密钥参数值</p>
         :rtype: str
         """
         return self._KeyParamValue
@@ -3178,11 +3467,23 @@ class ApiKeyAuthConfig(AbstractModel):
     def KeyParamValue(self, KeyParamValue):
         self._KeyParamValue = KeyParamValue
 
+    @property
+    def KeyValueUsage(self):
+        r"""<p>密钥值用途，未指定按允许工具调用处理</p><p>枚举值：</p><ul><li>1： 允许用于工具调用</li><li>2： 仅用于连接测试和获取工具列表</li></ul>
+        :rtype: int
+        """
+        return self._KeyValueUsage
+
+    @KeyValueUsage.setter
+    def KeyValueUsage(self, KeyValueUsage):
+        self._KeyValueUsage = KeyValueUsage
+
 
     def _deserialize(self, params):
         self._KeyLocation = params.get("KeyLocation")
         self._KeyParamName = params.get("KeyParamName")
         self._KeyParamValue = params.get("KeyParamValue")
+        self._KeyValueUsage = params.get("KeyValueUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8085,6 +8386,72 @@ class BillingAttribute(AbstractModel):
         
 
 
+class ByteCapacity(AbstractModel):
+    r"""知识库容量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxCapacity: <p>最大容量</p>
+        :type MaxCapacity: str
+        :param _ExceededInvalidCapacity: <p>超量失效容量</p>
+        :type ExceededInvalidCapacity: str
+        :param _UsedCapacity: <p>已使用容量</p>
+        :type UsedCapacity: str
+        """
+        self._MaxCapacity = None
+        self._ExceededInvalidCapacity = None
+        self._UsedCapacity = None
+
+    @property
+    def MaxCapacity(self):
+        r"""<p>最大容量</p>
+        :rtype: str
+        """
+        return self._MaxCapacity
+
+    @MaxCapacity.setter
+    def MaxCapacity(self, MaxCapacity):
+        self._MaxCapacity = MaxCapacity
+
+    @property
+    def ExceededInvalidCapacity(self):
+        r"""<p>超量失效容量</p>
+        :rtype: str
+        """
+        return self._ExceededInvalidCapacity
+
+    @ExceededInvalidCapacity.setter
+    def ExceededInvalidCapacity(self, ExceededInvalidCapacity):
+        self._ExceededInvalidCapacity = ExceededInvalidCapacity
+
+    @property
+    def UsedCapacity(self):
+        r"""<p>已使用容量</p>
+        :rtype: str
+        """
+        return self._UsedCapacity
+
+    @UsedCapacity.setter
+    def UsedCapacity(self, UsedCapacity):
+        self._UsedCapacity = UsedCapacity
+
+
+    def _deserialize(self, params):
+        self._MaxCapacity = params.get("MaxCapacity")
+        self._ExceededInvalidCapacity = params.get("ExceededInvalidCapacity")
+        self._UsedCapacity = params.get("UsedCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallMCPToolRequest(AbstractModel):
     r"""CallMCPTool请求参数结构体
 
@@ -9095,6 +9462,72 @@ class ChannelSpec(AbstractModel):
             self._WecomRobot._deserialize(params.get("WecomRobot"))
         self._ShareGroupConversation = params.get("ShareGroupConversation")
         self._IsDebug = params.get("IsDebug")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CharacterSize(AbstractModel):
+    r"""知识库容量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxCharSize: <p>最大字符数</p>
+        :type MaxCharSize: str
+        :param _OverCharSize: <p>超量字符数</p>
+        :type OverCharSize: str
+        :param _UsedCharSize: <p>已用字符数</p>
+        :type UsedCharSize: str
+        """
+        self._MaxCharSize = None
+        self._OverCharSize = None
+        self._UsedCharSize = None
+
+    @property
+    def MaxCharSize(self):
+        r"""<p>最大字符数</p>
+        :rtype: str
+        """
+        return self._MaxCharSize
+
+    @MaxCharSize.setter
+    def MaxCharSize(self, MaxCharSize):
+        self._MaxCharSize = MaxCharSize
+
+    @property
+    def OverCharSize(self):
+        r"""<p>超量字符数</p>
+        :rtype: str
+        """
+        return self._OverCharSize
+
+    @OverCharSize.setter
+    def OverCharSize(self, OverCharSize):
+        self._OverCharSize = OverCharSize
+
+    @property
+    def UsedCharSize(self):
+        r"""<p>已用字符数</p>
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+
+    def _deserialize(self, params):
+        self._MaxCharSize = params.get("MaxCharSize")
+        self._OverCharSize = params.get("OverCharSize")
+        self._UsedCharSize = params.get("UsedCharSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10537,6 +10970,9 @@ class ConversationContent(AbstractModel):
         :param _EnterpriseCharts: <p>企业表单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnterpriseCharts: str
+        :param _File: <p>文件信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type File: :class:`tencentcloud.adp.v20260520.models.ConversationFileInfo`
         :param _OptionCardList: <p>选项卡列表</p>
         :type OptionCardList: list of str
         :param _OptionCards: <p>选项卡列表</p>
@@ -10544,6 +10980,9 @@ class ConversationContent(AbstractModel):
         :param _OptionMode: <p>选项卡模式 枚举值: 0-OPTION_MODE_SINGLE(单选), 1-OPTION_MODE_MULTI(多选)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionMode: int
+        :param _Questionnaire: <p>问卷信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Questionnaire: :class:`tencentcloud.adp.v20260520.models.ConversationQuestionnaire`
         :param _QuoteInfoList: <p>引用角标信息列表</p>
         :type QuoteInfoList: list of ConversationQuoteInfo
         :param _QuoteInfos: <p>引用角标信息列表</p>
@@ -10559,6 +10998,12 @@ class ConversationContent(AbstractModel):
         :type TaskList: list of ConversationAgentTask
         :param _Tasks: <p>智能体任务列表</p>
         :type Tasks: list of ConversationAgentTask
+        :param _Widget: <p>Widget 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Widget: :class:`tencentcloud.adp.v20260520.models.ConversationWidget`
+        :param _WidgetAction: <p>Widget 动作信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WidgetAction: :class:`tencentcloud.adp.v20260520.models.ConversationWidgetAction`
         :param _WorkflowInput: <p>工作流输入参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowInput: str
@@ -10572,9 +11017,11 @@ class ConversationContent(AbstractModel):
         self._CustomParams = None
         self._CustomVariablesData = None
         self._EnterpriseCharts = None
+        self._File = None
         self._OptionCardList = None
         self._OptionCards = None
         self._OptionMode = None
+        self._Questionnaire = None
         self._QuoteInfoList = None
         self._QuoteInfos = None
         self._ReferenceList = None
@@ -10582,6 +11029,8 @@ class ConversationContent(AbstractModel):
         self._RelatedRecordId = None
         self._TaskList = None
         self._Tasks = None
+        self._Widget = None
+        self._WidgetAction = None
         self._WorkflowInput = None
         self._McpApp = None
 
@@ -10654,6 +11103,18 @@ class ConversationContent(AbstractModel):
         self._EnterpriseCharts = EnterpriseCharts
 
     @property
+    def File(self):
+        r"""<p>文件信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationFileInfo`
+        """
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+    @property
     def OptionCardList(self):
         r"""<p>选项卡列表</p>
         :rtype: list of str
@@ -10686,6 +11147,18 @@ class ConversationContent(AbstractModel):
     @OptionMode.setter
     def OptionMode(self, OptionMode):
         self._OptionMode = OptionMode
+
+    @property
+    def Questionnaire(self):
+        r"""<p>问卷信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationQuestionnaire`
+        """
+        return self._Questionnaire
+
+    @Questionnaire.setter
+    def Questionnaire(self, Questionnaire):
+        self._Questionnaire = Questionnaire
 
     @property
     def QuoteInfoList(self):
@@ -10766,6 +11239,30 @@ class ConversationContent(AbstractModel):
         self._Tasks = Tasks
 
     @property
+    def Widget(self):
+        r"""<p>Widget 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationWidget`
+        """
+        return self._Widget
+
+    @Widget.setter
+    def Widget(self, Widget):
+        self._Widget = Widget
+
+    @property
+    def WidgetAction(self):
+        r"""<p>Widget 动作信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationWidgetAction`
+        """
+        return self._WidgetAction
+
+    @WidgetAction.setter
+    def WidgetAction(self, WidgetAction):
+        self._WidgetAction = WidgetAction
+
+    @property
     def WorkflowInput(self):
         r"""<p>工作流输入参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10797,9 +11294,15 @@ class ConversationContent(AbstractModel):
         self._CustomParams = params.get("CustomParams")
         self._CustomVariablesData = params.get("CustomVariablesData")
         self._EnterpriseCharts = params.get("EnterpriseCharts")
+        if params.get("File") is not None:
+            self._File = ConversationFileInfo()
+            self._File._deserialize(params.get("File"))
         self._OptionCardList = params.get("OptionCardList")
         self._OptionCards = params.get("OptionCards")
         self._OptionMode = params.get("OptionMode")
+        if params.get("Questionnaire") is not None:
+            self._Questionnaire = ConversationQuestionnaire()
+            self._Questionnaire._deserialize(params.get("Questionnaire"))
         if params.get("QuoteInfoList") is not None:
             self._QuoteInfoList = []
             for item in params.get("QuoteInfoList"):
@@ -10837,6 +11340,12 @@ class ConversationContent(AbstractModel):
                 obj = ConversationAgentTask()
                 obj._deserialize(item)
                 self._Tasks.append(obj)
+        if params.get("Widget") is not None:
+            self._Widget = ConversationWidget()
+            self._Widget._deserialize(params.get("Widget"))
+        if params.get("WidgetAction") is not None:
+            self._WidgetAction = ConversationWidgetAction()
+            self._WidgetAction._deserialize(params.get("WidgetAction"))
         self._WorkflowInput = params.get("WorkflowInput")
         if params.get("McpApp") is not None:
             self._McpApp = ConversationMcpApp()
@@ -11333,6 +11842,9 @@ class ConversationMessage(AbstractModel):
         r"""
         :param _ConversationId: <p>会话 ID</p>
         :type ConversationId: str
+        :param _ExtraInfo: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: :class:`tencentcloud.adp.v20260520.models.ConversationMessageExtraInfo`
         :param _Icon: <p>消息图标</p>
         :type Icon: str
         :param _MessageId: <p>消息 ID</p>
@@ -11357,6 +11869,7 @@ class ConversationMessage(AbstractModel):
         :type Type: str
         """
         self._ConversationId = None
+        self._ExtraInfo = None
         self._Icon = None
         self._MessageId = None
         self._Name = None
@@ -11379,6 +11892,18 @@ class ConversationMessage(AbstractModel):
     @ConversationId.setter
     def ConversationId(self, ConversationId):
         self._ConversationId = ConversationId
+
+    @property
+    def ExtraInfo(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationMessageExtraInfo`
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
 
     @property
     def Icon(self):
@@ -11504,6 +12029,9 @@ class ConversationMessage(AbstractModel):
 
     def _deserialize(self, params):
         self._ConversationId = params.get("ConversationId")
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ConversationMessageExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
         self._Icon = params.get("Icon")
         self._MessageId = params.get("MessageId")
         self._Name = params.get("Name")
@@ -11525,6 +12053,726 @@ class ConversationMessage(AbstractModel):
                 obj._deserialize(item)
                 self._Contents.append(obj)
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationMessageExtraInfo(AbstractModel):
+    r"""MessageExtraInfo 消息扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentIcon: <p>智能体图标</p>
+        :type AgentIcon: str
+        :param _AgentName: <p>智能体名称</p>
+        :type AgentName: str
+        :param _Elapsed: <p>消息处理耗时</p>
+        :type Elapsed: str
+        :param _ParentMessageId: <p>父消息 ID</p>
+        :type ParentMessageId: str
+        :param _RelatedRecordId: <p>关联记录 ID</p>
+        :type RelatedRecordId: str
+        :param _StartTime: <p>消息处理开始时间戳（毫秒）</p>
+        :type StartTime: str
+        :param _ToolIcon: <p>工具图标</p>
+        :type ToolIcon: str
+        :param _ToolName: <p>工具名称</p>
+        :type ToolName: str
+        :param _TraceId: <p>Trace ID</p>
+        :type TraceId: str
+        :param _CanFeedback: <p>是否可以反馈</p>
+        :type CanFeedback: bool
+        :param _CanRate: <p>是否可以点赞点踩</p>
+        :type CanRate: bool
+        :param _EndTime: <p>消息处理开始时间戳（毫秒）</p>
+        :type EndTime: str
+        :param _HasRead: <p>是否已读</p>
+        :type HasRead: bool
+        :param _IsModelGenerated: <p>是否大模型生成</p>
+        :type IsModelGenerated: bool
+        :param _ReasonList: <p>用户反馈标签列表</p>
+        :type ReasonList: list of str
+        :param _ReplyMethod: <p>回复方式</p>
+        :type ReplyMethod: int
+        :param _Score: <p>用户打分</p>
+        :type Score: int
+        :param _SubAgentRunId: <p>子 Agent 运行 Id</p>
+        :type SubAgentRunId: str
+        :param _IsSubAgent: <p>是否是子 Agent 的消息</p>
+        :type IsSubAgent: bool
+        :param _SubAgentThreadId: <p>子 Agent 线程 ID</p>
+        :type SubAgentThreadId: str
+        :param _IsTeammate: <p>是否是 Agent Team 模式下的 teammate 成员</p>
+        :type IsTeammate: bool
+        :param _TeammateName: <p>Agent Team 模式下的 teammate 名称</p>
+        :type TeammateName: str
+        :param _WorkflowNodeName: <p>工作流节点名称</p>
+        :type WorkflowNodeName: str
+        """
+        self._AgentIcon = None
+        self._AgentName = None
+        self._Elapsed = None
+        self._ParentMessageId = None
+        self._RelatedRecordId = None
+        self._StartTime = None
+        self._ToolIcon = None
+        self._ToolName = None
+        self._TraceId = None
+        self._CanFeedback = None
+        self._CanRate = None
+        self._EndTime = None
+        self._HasRead = None
+        self._IsModelGenerated = None
+        self._ReasonList = None
+        self._ReplyMethod = None
+        self._Score = None
+        self._SubAgentRunId = None
+        self._IsSubAgent = None
+        self._SubAgentThreadId = None
+        self._IsTeammate = None
+        self._TeammateName = None
+        self._WorkflowNodeName = None
+
+    @property
+    def AgentIcon(self):
+        r"""<p>智能体图标</p>
+        :rtype: str
+        """
+        return self._AgentIcon
+
+    @AgentIcon.setter
+    def AgentIcon(self, AgentIcon):
+        self._AgentIcon = AgentIcon
+
+    @property
+    def AgentName(self):
+        r"""<p>智能体名称</p>
+        :rtype: str
+        """
+        return self._AgentName
+
+    @AgentName.setter
+    def AgentName(self, AgentName):
+        self._AgentName = AgentName
+
+    @property
+    def Elapsed(self):
+        r"""<p>消息处理耗时</p>
+        :rtype: str
+        """
+        return self._Elapsed
+
+    @Elapsed.setter
+    def Elapsed(self, Elapsed):
+        self._Elapsed = Elapsed
+
+    @property
+    def ParentMessageId(self):
+        r"""<p>父消息 ID</p>
+        :rtype: str
+        """
+        return self._ParentMessageId
+
+    @ParentMessageId.setter
+    def ParentMessageId(self, ParentMessageId):
+        self._ParentMessageId = ParentMessageId
+
+    @property
+    def RelatedRecordId(self):
+        r"""<p>关联记录 ID</p>
+        :rtype: str
+        """
+        return self._RelatedRecordId
+
+    @RelatedRecordId.setter
+    def RelatedRecordId(self, RelatedRecordId):
+        self._RelatedRecordId = RelatedRecordId
+
+    @property
+    def StartTime(self):
+        r"""<p>消息处理开始时间戳（毫秒）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ToolIcon(self):
+        r"""<p>工具图标</p>
+        :rtype: str
+        """
+        return self._ToolIcon
+
+    @ToolIcon.setter
+    def ToolIcon(self, ToolIcon):
+        self._ToolIcon = ToolIcon
+
+    @property
+    def ToolName(self):
+        r"""<p>工具名称</p>
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def TraceId(self):
+        r"""<p>Trace ID</p>
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def CanFeedback(self):
+        r"""<p>是否可以反馈</p>
+        :rtype: bool
+        """
+        return self._CanFeedback
+
+    @CanFeedback.setter
+    def CanFeedback(self, CanFeedback):
+        self._CanFeedback = CanFeedback
+
+    @property
+    def CanRate(self):
+        r"""<p>是否可以点赞点踩</p>
+        :rtype: bool
+        """
+        return self._CanRate
+
+    @CanRate.setter
+    def CanRate(self, CanRate):
+        self._CanRate = CanRate
+
+    @property
+    def EndTime(self):
+        r"""<p>消息处理开始时间戳（毫秒）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def HasRead(self):
+        r"""<p>是否已读</p>
+        :rtype: bool
+        """
+        return self._HasRead
+
+    @HasRead.setter
+    def HasRead(self, HasRead):
+        self._HasRead = HasRead
+
+    @property
+    def IsModelGenerated(self):
+        r"""<p>是否大模型生成</p>
+        :rtype: bool
+        """
+        return self._IsModelGenerated
+
+    @IsModelGenerated.setter
+    def IsModelGenerated(self, IsModelGenerated):
+        self._IsModelGenerated = IsModelGenerated
+
+    @property
+    def ReasonList(self):
+        r"""<p>用户反馈标签列表</p>
+        :rtype: list of str
+        """
+        return self._ReasonList
+
+    @ReasonList.setter
+    def ReasonList(self, ReasonList):
+        self._ReasonList = ReasonList
+
+    @property
+    def ReplyMethod(self):
+        r"""<p>回复方式</p>
+        :rtype: int
+        """
+        return self._ReplyMethod
+
+    @ReplyMethod.setter
+    def ReplyMethod(self, ReplyMethod):
+        self._ReplyMethod = ReplyMethod
+
+    @property
+    def Score(self):
+        r"""<p>用户打分</p>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def SubAgentRunId(self):
+        r"""<p>子 Agent 运行 Id</p>
+        :rtype: str
+        """
+        return self._SubAgentRunId
+
+    @SubAgentRunId.setter
+    def SubAgentRunId(self, SubAgentRunId):
+        self._SubAgentRunId = SubAgentRunId
+
+    @property
+    def IsSubAgent(self):
+        r"""<p>是否是子 Agent 的消息</p>
+        :rtype: bool
+        """
+        return self._IsSubAgent
+
+    @IsSubAgent.setter
+    def IsSubAgent(self, IsSubAgent):
+        self._IsSubAgent = IsSubAgent
+
+    @property
+    def SubAgentThreadId(self):
+        r"""<p>子 Agent 线程 ID</p>
+        :rtype: str
+        """
+        return self._SubAgentThreadId
+
+    @SubAgentThreadId.setter
+    def SubAgentThreadId(self, SubAgentThreadId):
+        self._SubAgentThreadId = SubAgentThreadId
+
+    @property
+    def IsTeammate(self):
+        r"""<p>是否是 Agent Team 模式下的 teammate 成员</p>
+        :rtype: bool
+        """
+        return self._IsTeammate
+
+    @IsTeammate.setter
+    def IsTeammate(self, IsTeammate):
+        self._IsTeammate = IsTeammate
+
+    @property
+    def TeammateName(self):
+        r"""<p>Agent Team 模式下的 teammate 名称</p>
+        :rtype: str
+        """
+        return self._TeammateName
+
+    @TeammateName.setter
+    def TeammateName(self, TeammateName):
+        self._TeammateName = TeammateName
+
+    @property
+    def WorkflowNodeName(self):
+        r"""<p>工作流节点名称</p>
+        :rtype: str
+        """
+        return self._WorkflowNodeName
+
+    @WorkflowNodeName.setter
+    def WorkflowNodeName(self, WorkflowNodeName):
+        self._WorkflowNodeName = WorkflowNodeName
+
+
+    def _deserialize(self, params):
+        self._AgentIcon = params.get("AgentIcon")
+        self._AgentName = params.get("AgentName")
+        self._Elapsed = params.get("Elapsed")
+        self._ParentMessageId = params.get("ParentMessageId")
+        self._RelatedRecordId = params.get("RelatedRecordId")
+        self._StartTime = params.get("StartTime")
+        self._ToolIcon = params.get("ToolIcon")
+        self._ToolName = params.get("ToolName")
+        self._TraceId = params.get("TraceId")
+        self._CanFeedback = params.get("CanFeedback")
+        self._CanRate = params.get("CanRate")
+        self._EndTime = params.get("EndTime")
+        self._HasRead = params.get("HasRead")
+        self._IsModelGenerated = params.get("IsModelGenerated")
+        self._ReasonList = params.get("ReasonList")
+        self._ReplyMethod = params.get("ReplyMethod")
+        self._Score = params.get("Score")
+        self._SubAgentRunId = params.get("SubAgentRunId")
+        self._IsSubAgent = params.get("IsSubAgent")
+        self._SubAgentThreadId = params.get("SubAgentThreadId")
+        self._IsTeammate = params.get("IsTeammate")
+        self._TeammateName = params.get("TeammateName")
+        self._WorkflowNodeName = params.get("WorkflowNodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationQuestion(AbstractModel):
+    r"""Question 问卷问题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>问题序号</p>
+        :type Index: int
+        :param _Question: <p>问题内容</p>
+        :type Question: str
+        :param _Required: <p>是否必答</p>
+        :type Required: bool
+        :param _Type: <p>问题类型 枚举值: 0-QUESTION_TYPE_UNSPECIFIED(未指定), 1-QUESTION_TYPE_SINGLE(单选), 2-QUESTION_TYPE_MULTIPLE(多选)</p>
+        :type Type: int
+        :param _OptionList: <p>选项列表</p>
+        :type OptionList: list of ConversationQuestionOption
+        :param _Options: <p>选项列表</p>
+        :type Options: list of ConversationQuestionOption
+        """
+        self._Index = None
+        self._Question = None
+        self._Required = None
+        self._Type = None
+        self._OptionList = None
+        self._Options = None
+
+    @property
+    def Index(self):
+        r"""<p>问题序号</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Question(self):
+        r"""<p>问题内容</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Required(self):
+        r"""<p>是否必答</p>
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Type(self):
+        r"""<p>问题类型 枚举值: 0-QUESTION_TYPE_UNSPECIFIED(未指定), 1-QUESTION_TYPE_SINGLE(单选), 2-QUESTION_TYPE_MULTIPLE(多选)</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OptionList(self):
+        r"""<p>选项列表</p>
+        :rtype: list of ConversationQuestionOption
+        """
+        return self._OptionList
+
+    @OptionList.setter
+    def OptionList(self, OptionList):
+        self._OptionList = OptionList
+
+    @property
+    def Options(self):
+        r"""<p>选项列表</p>
+        :rtype: list of ConversationQuestionOption
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Question = params.get("Question")
+        self._Required = params.get("Required")
+        self._Type = params.get("Type")
+        if params.get("OptionList") is not None:
+            self._OptionList = []
+            for item in params.get("OptionList"):
+                obj = ConversationQuestionOption()
+                obj._deserialize(item)
+                self._OptionList.append(obj)
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = ConversationQuestionOption()
+                obj._deserialize(item)
+                self._Options.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationQuestionAnswer(AbstractModel):
+    r"""QuestionAnswer 问题答案信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: <p>问题内容</p>
+        :type Question: str
+        :param _SelectedLabelList: <p>已选择的选项标签列表</p>
+        :type SelectedLabelList: list of str
+        :param _SelectedLabels: <p>已选择的选项标签列表</p>
+        :type SelectedLabels: list of str
+        """
+        self._Question = None
+        self._SelectedLabelList = None
+        self._SelectedLabels = None
+
+    @property
+    def Question(self):
+        r"""<p>问题内容</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def SelectedLabelList(self):
+        r"""<p>已选择的选项标签列表</p>
+        :rtype: list of str
+        """
+        return self._SelectedLabelList
+
+    @SelectedLabelList.setter
+    def SelectedLabelList(self, SelectedLabelList):
+        self._SelectedLabelList = SelectedLabelList
+
+    @property
+    def SelectedLabels(self):
+        r"""<p>已选择的选项标签列表</p>
+        :rtype: list of str
+        """
+        return self._SelectedLabels
+
+    @SelectedLabels.setter
+    def SelectedLabels(self, SelectedLabels):
+        self._SelectedLabels = SelectedLabels
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._SelectedLabelList = params.get("SelectedLabelList")
+        self._SelectedLabels = params.get("SelectedLabels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationQuestionOption(AbstractModel):
+    r"""QuestionOption 问题选项信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: <p>选项描述</p>
+        :type Description: str
+        :param _Label: <p>选项标签</p>
+        :type Label: str
+        """
+        self._Description = None
+        self._Label = None
+
+    @property
+    def Description(self):
+        r"""<p>选项描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Label(self):
+        r"""<p>选项标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationQuestionnaire(AbstractModel):
+    r"""Questionnaire 问卷信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: <p>问卷标题</p>
+        :type Title: str
+        :param _AnswerList: <p>答案列表</p>
+        :type AnswerList: list of ConversationQuestionAnswer
+        :param _Answers: <p>答案列表</p>
+        :type Answers: list of ConversationQuestionAnswer
+        :param _QuestionList: <p>问题列表</p>
+        :type QuestionList: list of ConversationQuestion
+        :param _Questions: <p>问题列表</p>
+        :type Questions: list of ConversationQuestion
+        """
+        self._Title = None
+        self._AnswerList = None
+        self._Answers = None
+        self._QuestionList = None
+        self._Questions = None
+
+    @property
+    def Title(self):
+        r"""<p>问卷标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def AnswerList(self):
+        r"""<p>答案列表</p>
+        :rtype: list of ConversationQuestionAnswer
+        """
+        return self._AnswerList
+
+    @AnswerList.setter
+    def AnswerList(self, AnswerList):
+        self._AnswerList = AnswerList
+
+    @property
+    def Answers(self):
+        r"""<p>答案列表</p>
+        :rtype: list of ConversationQuestionAnswer
+        """
+        return self._Answers
+
+    @Answers.setter
+    def Answers(self, Answers):
+        self._Answers = Answers
+
+    @property
+    def QuestionList(self):
+        r"""<p>问题列表</p>
+        :rtype: list of ConversationQuestion
+        """
+        return self._QuestionList
+
+    @QuestionList.setter
+    def QuestionList(self, QuestionList):
+        self._QuestionList = QuestionList
+
+    @property
+    def Questions(self):
+        r"""<p>问题列表</p>
+        :rtype: list of ConversationQuestion
+        """
+        return self._Questions
+
+    @Questions.setter
+    def Questions(self, Questions):
+        self._Questions = Questions
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("AnswerList") is not None:
+            self._AnswerList = []
+            for item in params.get("AnswerList"):
+                obj = ConversationQuestionAnswer()
+                obj._deserialize(item)
+                self._AnswerList.append(obj)
+        if params.get("Answers") is not None:
+            self._Answers = []
+            for item in params.get("Answers"):
+                obj = ConversationQuestionAnswer()
+                obj._deserialize(item)
+                self._Answers.append(obj)
+        if params.get("QuestionList") is not None:
+            self._QuestionList = []
+            for item in params.get("QuestionList"):
+                obj = ConversationQuestion()
+                obj._deserialize(item)
+                self._QuestionList.append(obj)
+        if params.get("Questions") is not None:
+            self._Questions = []
+            for item in params.get("Questions"):
+                obj = ConversationQuestion()
+                obj._deserialize(item)
+                self._Questions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12153,6 +13401,87 @@ class ConversationWidget(AbstractModel):
         self._Position = params.get("Position")
         self._State = params.get("State")
         self._View = params.get("View")
+        self._WidgetId = params.get("WidgetId")
+        self._WidgetRunId = params.get("WidgetRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationWidgetAction(AbstractModel):
+    r"""WidgetAction 组件交互动作信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: <p>动作类型，非枚举类型，用户自定义</p>
+        :type ActionType: str
+        :param _Payload: <p>动作载荷</p>
+        :type Payload: str
+        :param _WidgetId: <p>组件 ID</p>
+        :type WidgetId: str
+        :param _WidgetRunId: <p>组件运行 ID</p>
+        :type WidgetRunId: str
+        """
+        self._ActionType = None
+        self._Payload = None
+        self._WidgetId = None
+        self._WidgetRunId = None
+
+    @property
+    def ActionType(self):
+        r"""<p>动作类型，非枚举类型，用户自定义</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Payload(self):
+        r"""<p>动作载荷</p>
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def WidgetId(self):
+        r"""<p>组件 ID</p>
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+    @property
+    def WidgetRunId(self):
+        r"""<p>组件运行 ID</p>
+        :rtype: str
+        """
+        return self._WidgetRunId
+
+    @WidgetRunId.setter
+    def WidgetRunId(self, WidgetRunId):
+        self._WidgetRunId = WidgetRunId
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._Payload = params.get("Payload")
         self._WidgetId = params.get("WidgetId")
         self._WidgetRunId = params.get("WidgetRunId")
         memeber_set = set(params.keys())
@@ -29386,10 +30715,22 @@ class KBCapacity(AbstractModel):
         :type OverCharSize: str
         :param _UsedCharSize: <p>已用字符数</p>
         :type UsedCharSize: str
+        :param _CharacterSize: <p>字符数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CharacterSize: :class:`tencentcloud.adp.v20260520.models.CharacterSize`
+        :param _ByteCapacity: <p>容量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ByteCapacity: :class:`tencentcloud.adp.v20260520.models.ByteCapacity`
+        :param _CapacityStatus: <p>知识库容量状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>2： 超量但可用（pu 抵扣）</li><li>3： 超量不可用</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityStatus: int
         """
         self._MaxCharSize = None
         self._OverCharSize = None
         self._UsedCharSize = None
+        self._CharacterSize = None
+        self._ByteCapacity = None
+        self._CapacityStatus = None
 
     @property
     def MaxCharSize(self):
@@ -29424,11 +30765,54 @@ class KBCapacity(AbstractModel):
     def UsedCharSize(self, UsedCharSize):
         self._UsedCharSize = UsedCharSize
 
+    @property
+    def CharacterSize(self):
+        r"""<p>字符数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CharacterSize`
+        """
+        return self._CharacterSize
+
+    @CharacterSize.setter
+    def CharacterSize(self, CharacterSize):
+        self._CharacterSize = CharacterSize
+
+    @property
+    def ByteCapacity(self):
+        r"""<p>容量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ByteCapacity`
+        """
+        return self._ByteCapacity
+
+    @ByteCapacity.setter
+    def ByteCapacity(self, ByteCapacity):
+        self._ByteCapacity = ByteCapacity
+
+    @property
+    def CapacityStatus(self):
+        r"""<p>知识库容量状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>2： 超量但可用（pu 抵扣）</li><li>3： 超量不可用</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CapacityStatus
+
+    @CapacityStatus.setter
+    def CapacityStatus(self, CapacityStatus):
+        self._CapacityStatus = CapacityStatus
+
 
     def _deserialize(self, params):
         self._MaxCharSize = params.get("MaxCharSize")
         self._OverCharSize = params.get("OverCharSize")
         self._UsedCharSize = params.get("UsedCharSize")
+        if params.get("CharacterSize") is not None:
+            self._CharacterSize = CharacterSize()
+            self._CharacterSize._deserialize(params.get("CharacterSize"))
+        if params.get("ByteCapacity") is not None:
+            self._ByteCapacity = ByteCapacity()
+            self._ByteCapacity._deserialize(params.get("ByteCapacity"))
+        self._CapacityStatus = params.get("CapacityStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35288,6 +36672,145 @@ class ModifyLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMessageRecordFeedbackRequest(AbstractModel):
+    r"""ModifyMessageRecordFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: <p>需要反馈的消息记录ID</p>
+        :type RecordId: str
+        :param _AppKey: <p>消息记录所属应用的授权AppKey</p>
+        :type AppKey: str
+        :param _Score: <p>反馈分值</p><p>枚举值：</p><ul><li>0： 取消点赞或点踩</li><li>1： 点赞</li><li>2： 点踩</li></ul>
+        :type Score: int
+        :param _ReasonList: <p>反馈的原因列表</p>
+        :type ReasonList: list of str
+        :param _FeedbackContent: <p>反馈的补充内容</p>
+        :type FeedbackContent: str
+        :param _AppId: <p>消息记录所属的应用ID</p>
+        :type AppId: str
+        """
+        self._RecordId = None
+        self._AppKey = None
+        self._Score = None
+        self._ReasonList = None
+        self._FeedbackContent = None
+        self._AppId = None
+
+    @property
+    def RecordId(self):
+        r"""<p>需要反馈的消息记录ID</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def AppKey(self):
+        r"""<p>消息记录所属应用的授权AppKey</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def Score(self):
+        r"""<p>反馈分值</p><p>枚举值：</p><ul><li>0： 取消点赞或点踩</li><li>1： 点赞</li><li>2： 点踩</li></ul>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def ReasonList(self):
+        r"""<p>反馈的原因列表</p>
+        :rtype: list of str
+        """
+        return self._ReasonList
+
+    @ReasonList.setter
+    def ReasonList(self, ReasonList):
+        self._ReasonList = ReasonList
+
+    @property
+    def FeedbackContent(self):
+        r"""<p>反馈的补充内容</p>
+        :rtype: str
+        """
+        return self._FeedbackContent
+
+    @FeedbackContent.setter
+    def FeedbackContent(self, FeedbackContent):
+        self._FeedbackContent = FeedbackContent
+
+    @property
+    def AppId(self):
+        r"""<p>消息记录所属的应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._AppKey = params.get("AppKey")
+        self._Score = params.get("Score")
+        self._ReasonList = params.get("ReasonList")
+        self._FeedbackContent = params.get("FeedbackContent")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMessageRecordFeedbackResponse(AbstractModel):
+    r"""ModifyMessageRecordFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMsgRecordCategoryRequest(AbstractModel):
     r"""ModifyMsgRecordCategory请求参数结构体
 
@@ -40305,6 +41828,117 @@ class ReadMCPResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReferenceAppDetail(AbstractModel):
+    r"""引用的来源应用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>来源应用当前名称</p>
+        :type Name: str
+        :param _AppMode: <p>来源应用模式</p><p>枚举值：</p><ul><li>1： 标准模式</li><li>2： Multi-Agent模式</li><li>3： 单工作流模式</li><li>4： Claw模式</li></ul>
+        :type AppMode: int
+        :param _MainAgentName: <p>主 Agent 名称</p>
+        :type MainAgentName: str
+        :param _SubAgentNameList: <p>子 Agent 名称列表</p>
+        :type SubAgentNameList: list of str
+        :param _Creator: <p>来源应用创建人</p>
+        :type Creator: str
+        :param _UpdateTime: <p>来源应用修改时间</p>
+        :type UpdateTime: str
+        """
+        self._Name = None
+        self._AppMode = None
+        self._MainAgentName = None
+        self._SubAgentNameList = None
+        self._Creator = None
+        self._UpdateTime = None
+
+    @property
+    def Name(self):
+        r"""<p>来源应用当前名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppMode(self):
+        r"""<p>来源应用模式</p><p>枚举值：</p><ul><li>1： 标准模式</li><li>2： Multi-Agent模式</li><li>3： 单工作流模式</li><li>4： Claw模式</li></ul>
+        :rtype: int
+        """
+        return self._AppMode
+
+    @AppMode.setter
+    def AppMode(self, AppMode):
+        self._AppMode = AppMode
+
+    @property
+    def MainAgentName(self):
+        r"""<p>主 Agent 名称</p>
+        :rtype: str
+        """
+        return self._MainAgentName
+
+    @MainAgentName.setter
+    def MainAgentName(self, MainAgentName):
+        self._MainAgentName = MainAgentName
+
+    @property
+    def SubAgentNameList(self):
+        r"""<p>子 Agent 名称列表</p>
+        :rtype: list of str
+        """
+        return self._SubAgentNameList
+
+    @SubAgentNameList.setter
+    def SubAgentNameList(self, SubAgentNameList):
+        self._SubAgentNameList = SubAgentNameList
+
+    @property
+    def Creator(self):
+        r"""<p>来源应用创建人</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def UpdateTime(self):
+        r"""<p>来源应用修改时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AppMode = params.get("AppMode")
+        self._MainAgentName = params.get("MainAgentName")
+        self._SubAgentNameList = params.get("SubAgentNameList")
+        self._Creator = params.get("Creator")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseRecord(AbstractModel):
     r"""[数据结构定义] 发布记录
 
@@ -41427,6 +43061,10 @@ class ResourcePackageInfo(AbstractModel):
         :type KnowledgeUsage: float
         :param _ResourceStatus: <p>资源包状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>3： 已到期</li><li>4： 即将到期</li></ul>
         :type ResourceStatus: int
+        :param _CloudDiskCapacity: <p>云盘容量</p><p>单位：GB</p>
+        :type CloudDiskCapacity: float
+        :param _CloudDiskUsage: <p>云盘用量</p><p>单位：GB</p>
+        :type CloudDiskUsage: float
         """
         self._PackageType = None
         self._ResourceTotal = None
@@ -41434,6 +43072,8 @@ class ResourcePackageInfo(AbstractModel):
         self._KnowledgeCapacity = None
         self._KnowledgeUsage = None
         self._ResourceStatus = None
+        self._CloudDiskCapacity = None
+        self._CloudDiskUsage = None
 
     @property
     def PackageType(self):
@@ -41501,6 +43141,28 @@ class ResourcePackageInfo(AbstractModel):
     def ResourceStatus(self, ResourceStatus):
         self._ResourceStatus = ResourceStatus
 
+    @property
+    def CloudDiskCapacity(self):
+        r"""<p>云盘容量</p><p>单位：GB</p>
+        :rtype: float
+        """
+        return self._CloudDiskCapacity
+
+    @CloudDiskCapacity.setter
+    def CloudDiskCapacity(self, CloudDiskCapacity):
+        self._CloudDiskCapacity = CloudDiskCapacity
+
+    @property
+    def CloudDiskUsage(self):
+        r"""<p>云盘用量</p><p>单位：GB</p>
+        :rtype: float
+        """
+        return self._CloudDiskUsage
+
+    @CloudDiskUsage.setter
+    def CloudDiskUsage(self, CloudDiskUsage):
+        self._CloudDiskUsage = CloudDiskUsage
+
 
     def _deserialize(self, params):
         self._PackageType = params.get("PackageType")
@@ -41509,6 +43171,8 @@ class ResourcePackageInfo(AbstractModel):
         self._KnowledgeCapacity = params.get("KnowledgeCapacity")
         self._KnowledgeUsage = params.get("KnowledgeUsage")
         self._ResourceStatus = params.get("ResourceStatus")
+        self._CloudDiskCapacity = params.get("CloudDiskCapacity")
+        self._CloudDiskUsage = params.get("CloudDiskUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

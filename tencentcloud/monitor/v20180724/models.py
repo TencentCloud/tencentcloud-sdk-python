@@ -37204,6 +37204,8 @@ class PrometheusClusterAgentBasic(AbstractModel):
         :type DropAll: bool
         :param _CollectAll: <p>是否采集全部指标</p><p>枚举值：</p><ul><li>false： 不采集</li><li>true： 采集</li></ul><p>默认值：false</p>
         :type CollectAll: bool
+        :param _PrivateLinkIP: <p>私有连接的 IP</p>
+        :type PrivateLinkIP: str
         :param _OpenDefaultRecord: <p>是否开启默认预聚合规则</p>
         :type OpenDefaultRecord: bool
         """
@@ -37217,6 +37219,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._NotScrape = None
         self._DropAll = None
         self._CollectAll = None
+        self._PrivateLinkIP = None
         self._OpenDefaultRecord = None
 
     @property
@@ -37330,6 +37333,17 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._CollectAll = CollectAll
 
     @property
+    def PrivateLinkIP(self):
+        r"""<p>私有连接的 IP</p>
+        :rtype: str
+        """
+        return self._PrivateLinkIP
+
+    @PrivateLinkIP.setter
+    def PrivateLinkIP(self, PrivateLinkIP):
+        self._PrivateLinkIP = PrivateLinkIP
+
+    @property
     def OpenDefaultRecord(self):
         r"""<p>是否开启默认预聚合规则</p>
         :rtype: bool
@@ -37359,6 +37373,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._NotScrape = params.get("NotScrape")
         self._DropAll = params.get("DropAll")
         self._CollectAll = params.get("CollectAll")
+        self._PrivateLinkIP = params.get("PrivateLinkIP")
         self._OpenDefaultRecord = params.get("OpenDefaultRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

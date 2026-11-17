@@ -15355,6 +15355,10 @@ class CreateS3RechargeRequest(AbstractModel):
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _TaskType: <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul><p>默认值：1</p>
         :type TaskType: int
+        :param _SQSEnabled: <p>是否启用SQS。</p><p>默认值：false</p><p>仅允许 TaskType=2是为true。</p>
+        :type SQSEnabled: bool
+        :param _SQSUrl: <p>SQS队列URL。SqsEnabled=true 时必填非空标准队列 URL；默认空字符串，不隐式开启 SQS，关闭时不生效。</p>
+        :type SQSUrl: str
         """
         self._TopicId = None
         self._Name = None
@@ -15368,6 +15372,8 @@ class CreateS3RechargeRequest(AbstractModel):
         self._Compress = None
         self._ExtractRuleInfo = None
         self._TaskType = None
+        self._SQSEnabled = None
+        self._SQSUrl = None
 
     @property
     def TopicId(self):
@@ -15501,6 +15507,28 @@ class CreateS3RechargeRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def SQSEnabled(self):
+        r"""<p>是否启用SQS。</p><p>默认值：false</p><p>仅允许 TaskType=2是为true。</p>
+        :rtype: bool
+        """
+        return self._SQSEnabled
+
+    @SQSEnabled.setter
+    def SQSEnabled(self, SQSEnabled):
+        self._SQSEnabled = SQSEnabled
+
+    @property
+    def SQSUrl(self):
+        r"""<p>SQS队列URL。SqsEnabled=true 时必填非空标准队列 URL；默认空字符串，不隐式开启 SQS，关闭时不生效。</p>
+        :rtype: str
+        """
+        return self._SQSUrl
+
+    @SQSUrl.setter
+    def SQSUrl(self, SQSUrl):
+        self._SQSUrl = SQSUrl
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -15517,6 +15545,8 @@ class CreateS3RechargeRequest(AbstractModel):
             self._ExtractRuleInfo = ExtractRuleInfo()
             self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
         self._TaskType = params.get("TaskType")
+        self._SQSEnabled = params.get("SQSEnabled")
+        self._SQSUrl = params.get("SQSUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18538,6 +18568,8 @@ class DataTransformTaskInfo(AbstractModel):
         :type DataTransformSqlDataSources: list of DataTransformSqlDataSource
         :param _EnvInfos: <p>环境变量</p>
         :type EnvInfos: list of EnvInfo
+        :param _Describe: <p>前置加工任务源主题、目标主题说明</p>
+        :type Describe: str
         """
         self._Name = None
         self._TaskId = None
@@ -18563,6 +18595,7 @@ class DataTransformTaskInfo(AbstractModel):
         self._ProcessToTimestamp = None
         self._DataTransformSqlDataSources = None
         self._EnvInfos = None
+        self._Describe = None
 
     @property
     def Name(self):
@@ -18828,6 +18861,17 @@ class DataTransformTaskInfo(AbstractModel):
     def EnvInfos(self, EnvInfos):
         self._EnvInfos = EnvInfos
 
+    @property
+    def Describe(self):
+        r"""<p>前置加工任务源主题、目标主题说明</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -18869,6 +18913,7 @@ class DataTransformTaskInfo(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self._EnvInfos.append(obj)
+        self._Describe = params.get("Describe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48915,6 +48960,10 @@ class ModifyS3RechargeRequest(AbstractModel):
         :type Compress: str
         :param _ExtractRuleInfo: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _SQSEnabled: <p>是否启用SQS。不传保持原配置； 开启开关仅对增量数据生效。</p>
+        :type SQSEnabled: bool
+        :param _SQSUrl: <p>SQS队列URL。开启开关后仅对增量数据生效。</p>
+        :type SQSUrl: str
         """
         self._TaskId = None
         self._TopicId = None
@@ -48930,6 +48979,8 @@ class ModifyS3RechargeRequest(AbstractModel):
         self._Prefix = None
         self._Compress = None
         self._ExtractRuleInfo = None
+        self._SQSEnabled = None
+        self._SQSUrl = None
 
     @property
     def TaskId(self):
@@ -49085,6 +49136,28 @@ class ModifyS3RechargeRequest(AbstractModel):
     def ExtractRuleInfo(self, ExtractRuleInfo):
         self._ExtractRuleInfo = ExtractRuleInfo
 
+    @property
+    def SQSEnabled(self):
+        r"""<p>是否启用SQS。不传保持原配置； 开启开关仅对增量数据生效。</p>
+        :rtype: bool
+        """
+        return self._SQSEnabled
+
+    @SQSEnabled.setter
+    def SQSEnabled(self, SQSEnabled):
+        self._SQSEnabled = SQSEnabled
+
+    @property
+    def SQSUrl(self):
+        r"""<p>SQS队列URL。开启开关后仅对增量数据生效。</p>
+        :rtype: str
+        """
+        return self._SQSUrl
+
+    @SQSUrl.setter
+    def SQSUrl(self, SQSUrl):
+        self._SQSUrl = SQSUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -49103,6 +49176,8 @@ class ModifyS3RechargeRequest(AbstractModel):
         if params.get("ExtractRuleInfo") is not None:
             self._ExtractRuleInfo = ExtractRuleInfo()
             self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        self._SQSEnabled = params.get("SQSEnabled")
+        self._SQSUrl = params.get("SQSUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56378,6 +56453,10 @@ class S3RechargeInfo(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
         :type UpdateTime: int
+        :param _SQSEnabled: <p>是否启用SQS。</p>
+        :type SQSEnabled: bool
+        :param _SQSUrl: <p>SQS队列URL。</p>
+        :type SQSUrl: str
         """
         self._TaskId = None
         self._TopicId = None
@@ -56398,6 +56477,8 @@ class S3RechargeInfo(AbstractModel):
         self._Progress = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._SQSEnabled = None
+        self._SQSUrl = None
 
     @property
     def TaskId(self):
@@ -56608,6 +56689,28 @@ class S3RechargeInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def SQSEnabled(self):
+        r"""<p>是否启用SQS。</p>
+        :rtype: bool
+        """
+        return self._SQSEnabled
+
+    @SQSEnabled.setter
+    def SQSEnabled(self, SQSEnabled):
+        self._SQSEnabled = SQSEnabled
+
+    @property
+    def SQSUrl(self):
+        r"""<p>SQS队列URL。</p>
+        :rtype: str
+        """
+        return self._SQSUrl
+
+    @SQSUrl.setter
+    def SQSUrl(self, SQSUrl):
+        self._SQSUrl = SQSUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -56631,6 +56734,8 @@ class S3RechargeInfo(AbstractModel):
         self._Progress = params.get("Progress")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._SQSEnabled = params.get("SQSEnabled")
+        self._SQSUrl = params.get("SQSUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

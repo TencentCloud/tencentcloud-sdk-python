@@ -18,6 +18,117 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    r"""子账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。</p>
+        :type InstanceId: str
+        :param _AccountName: <p>账号名称。</p>
+        :type AccountName: str
+        :param _Remark: <p>账号描述信息。</p>
+        :type Remark: str
+        :param _Privilege: <p>读写权限策略。</p><p>枚举值：</p><ul><li>r： 只读。</li><li>rw： 读写。</li></ul>
+        :type Privilege: str
+        :param _ReadonlyPolicy: <p>只读路由策略。</p><p>枚举值：</p><ul><li>master： 主节点。</li><li>replication： 从节点。</li></ul>
+        :type ReadonlyPolicy: list of str
+        :param _Status: <p>子账号状态。</p><p>枚举值：</p><ul><li>1： 账号变更中。</li><li>2： 账号有效。</li><li>4： 账号已删除。</li></ul>
+        :type Status: int
+        """
+        self._InstanceId = None
+        self._AccountName = None
+        self._Remark = None
+        self._Privilege = None
+        self._ReadonlyPolicy = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AccountName(self):
+        r"""<p>账号名称。</p>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Remark(self):
+        r"""<p>账号描述信息。</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Privilege(self):
+        r"""<p>读写权限策略。</p><p>枚举值：</p><ul><li>r： 只读。</li><li>rw： 读写。</li></ul>
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def ReadonlyPolicy(self):
+        r"""<p>只读路由策略。</p><p>枚举值：</p><ul><li>master： 主节点。</li><li>replication： 从节点。</li></ul>
+        :rtype: list of str
+        """
+        return self._ReadonlyPolicy
+
+    @ReadonlyPolicy.setter
+    def ReadonlyPolicy(self, ReadonlyPolicy):
+        self._ReadonlyPolicy = ReadonlyPolicy
+
+    @property
+    def Status(self):
+        r"""<p>子账号状态。</p><p>枚举值：</p><ul><li>1： 账号变更中。</li><li>2： 账号有效。</li><li>4： 账号已删除。</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AccountName = params.get("AccountName")
+        self._Remark = params.get("Remark")
+        self._Privilege = params.get("Privilege")
+        self._ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     r"""AssociateSecurityGroups请求参数结构体
 
@@ -712,6 +823,160 @@ class CreateBackupManuallyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInstanceAccountRequest(AbstractModel):
+    r"""CreateInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _AccountName: <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
+        :type AccountName: str
+        :param _AccountPassword: <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
+        :type AccountPassword: str
+        :param _ReadonlyPolicy: <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。 </p><p>枚举值：</p><ul><li>master： 主节点</li><li>replication： 副本节点</li></ul>
+        :type ReadonlyPolicy: list of str
+        :param _Privilege: <p>账户读写权限，支持选择只读与读写权限。</p><p>枚举值：</p><ul><li>rw： 读写</li><li>r： 只读</li></ul>
+        :type Privilege: str
+        :param _Remark: <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._AccountName = None
+        self._AccountPassword = None
+        self._ReadonlyPolicy = None
+        self._Privilege = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AccountName(self):
+        r"""<p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountPassword(self):
+        r"""<p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
+        :rtype: str
+        """
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def ReadonlyPolicy(self):
+        r"""<p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。 </p><p>枚举值：</p><ul><li>master： 主节点</li><li>replication： 副本节点</li></ul>
+        :rtype: list of str
+        """
+        return self._ReadonlyPolicy
+
+    @ReadonlyPolicy.setter
+    def ReadonlyPolicy(self, ReadonlyPolicy):
+        self._ReadonlyPolicy = ReadonlyPolicy
+
+    @property
+    def Privilege(self):
+        r"""<p>账户读写权限，支持选择只读与读写权限。</p><p>枚举值：</p><ul><li>rw： 读写</li><li>r： 只读</li></ul>
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def Remark(self):
+        r"""<p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AccountName = params.get("AccountName")
+        self._AccountPassword = params.get("AccountPassword")
+        self._ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self._Privilege = params.get("Privilege")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceAccountResponse(AbstractModel):
+    r"""CreateInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInstancesRequest(AbstractModel):
     r"""CreateInstances请求参数结构体
 
@@ -1180,6 +1445,100 @@ class CreateInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInstanceAccountRequest(AbstractModel):
+    r"""DeleteInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _AccountName: <p>指定需删除的账号名称。</p>
+        :type AccountName: str
+        """
+        self._InstanceId = None
+        self._AccountName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AccountName(self):
+        r"""<p>指定需删除的账号名称。</p>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AccountName = params.get("AccountName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstanceAccountResponse(AbstractModel):
+    r"""DeleteInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAutoBackupConfigRequest(AbstractModel):
     r"""DescribeAutoBackupConfig请求参数结构体
 
@@ -1569,6 +1928,135 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 self._Groups.append(obj)
         self._VIP = params.get("VIP")
         self._VPort = params.get("VPort")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceAccountRequest(AbstractModel):
+    r"""DescribeInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Limit: <p>分页大小。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceAccountResponse(AbstractModel):
+    r"""DescribeInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Accounts: <p>账号详细信息。</p>
+        :type Accounts: list of Account
+        :param _TotalCount: <p>账号个数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Accounts = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Accounts(self):
+        r"""<p>账号详细信息。</p>
+        :rtype: list of Account
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def TotalCount(self):
+        r"""<p>账号个数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -6704,6 +7192,160 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceAccountRequest(AbstractModel):
+    r"""ModifyInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _AccountName: <p>指定需修改的账号。</p><ul><li>root：指在创建 KeeWiDB 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
+        :type AccountName: str
+        :param _AccountPassword: <p>指定所修改账号访问的密码。</p>
+        :type AccountPassword: str
+        :param _Remark: <p>账号描述信息</p>
+        :type Remark: str
+        :param _ReadonlyPolicy: <p>指定所修改账号读写请求路由的策略。</p><p>枚举值：</p><ul><li>master： 表示读写请求路由至主节点。</li><li>replication： 表示读写请求路由至从节点。</li></ul>
+        :type ReadonlyPolicy: list of str
+        :param _Privilege: <p>指定所修改账号的读写权限。</p><p>枚举值：</p><ul><li>rw： 读写。</li><li>r： 只读。</li></ul>
+        :type Privilege: str
+        """
+        self._InstanceId = None
+        self._AccountName = None
+        self._AccountPassword = None
+        self._Remark = None
+        self._ReadonlyPolicy = None
+        self._Privilege = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AccountName(self):
+        r"""<p>指定需修改的账号。</p><ul><li>root：指在创建 KeeWiDB 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountPassword(self):
+        r"""<p>指定所修改账号访问的密码。</p>
+        :rtype: str
+        """
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def Remark(self):
+        r"""<p>账号描述信息</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ReadonlyPolicy(self):
+        r"""<p>指定所修改账号读写请求路由的策略。</p><p>枚举值：</p><ul><li>master： 表示读写请求路由至主节点。</li><li>replication： 表示读写请求路由至从节点。</li></ul>
+        :rtype: list of str
+        """
+        return self._ReadonlyPolicy
+
+    @ReadonlyPolicy.setter
+    def ReadonlyPolicy(self, ReadonlyPolicy):
+        self._ReadonlyPolicy = ReadonlyPolicy
+
+    @property
+    def Privilege(self):
+        r"""<p>指定所修改账号的读写权限。</p><p>枚举值：</p><ul><li>rw： 读写。</li><li>r： 只读。</li></ul>
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AccountName = params.get("AccountName")
+        self._AccountPassword = params.get("AccountPassword")
+        self._Remark = params.get("Remark")
+        self._ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self._Privilege = params.get("Privilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceAccountResponse(AbstractModel):
+    r"""ModifyInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

@@ -2402,6 +2402,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcWhitelist(self, request):
+        r"""查询AIGC白名单配置
+
+        :param request: Request instance for DescribeAigcWhitelist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcWhitelistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcWhitelistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllClass(self, request):
         r"""* 获得用户的所有分类信息。
 
@@ -5627,6 +5650,29 @@ class VodClient(AbstractClient):
             body = self.call("SearchMediaBySemantics", params, headers=headers)
             response = json.loads(body)
             model = models.SearchMediaBySemanticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetAigcWhitelist(self, request):
+        r"""修改AIGC白名单设置
+
+        :param request: Request instance for SetAigcWhitelist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetAigcWhitelistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetAigcWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetAigcWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetAigcWhitelistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

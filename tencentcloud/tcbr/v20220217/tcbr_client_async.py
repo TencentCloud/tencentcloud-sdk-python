@@ -295,6 +295,24 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyStableIPStatus(
+            self,
+            request: models.ModifyStableIPStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStableIPStatusResponse:
+        """
+        本接口 ModifyStableIPStatus 用于修改固定 IP 状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStableIPStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStableIPStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OperateServerManage(
             self,
             request: models.OperateServerManageRequest,

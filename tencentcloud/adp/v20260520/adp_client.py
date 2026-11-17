@@ -2603,6 +2603,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMessageRecordFeedback(self, request):
+        r"""修改消息记录反馈
+
+        :param request: Request instance for ModifyMessageRecordFeedback.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyMessageRecordFeedbackRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyMessageRecordFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMessageRecordFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMessageRecordFeedbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMsgRecordCategory(self, request):
         r"""修改指定消息记录分类的名称
 

@@ -3230,11 +3230,11 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 拉取页号
+        :param _PageNumber: <p>拉取页号</p>
         :type PageNumber: int
-        :param _PageSize: 每页拉取个数
+        :param _PageSize: <p>每页拉取个数</p>
         :type PageSize: int
-        :param _Filters: Name取值范围："InstanceId"      按照云桌面ID搜索，云桌面ID示例：cdi-l0dfy594htvbn37"Name"     按照云桌面名称搜索 "Region"     按照云桌面所在地域搜索，目前云桌面所支持的地域：        ap-beijing：北京        ap-shanghai：上海        ap-guangzhou：广州        ap-shanghai-adc：上海自动驾驶云"Type"    按照云桌面类型搜索，类型取值：        S3L.MEDIUM4：云桌面-标准S3_2核4G        S3L.LARGE8：云桌面-标准S3_4核8G        S3L.LARGE16：云桌面-标准S3_4核16G        S3L.2XLARGE16：云桌面-标准S3_8核16G        S1L.LARGE8：云桌面-标准S1_4核8G        S1L.LARGE16：云桌面-标准S1_4核16G        S2L.2XLARGE16：云桌面-标准S2_8核16G        G1L.LARGE16：云桌面-图形G1_4核16G        G1L.2XLARGE32：云桌面-图形G1_8核32G        G1L.4XLARGE64：云桌面-图形G1_16核64G        G2L.LARGE24：云桌面-图形G2_6核24G        G2L.3XLARGE58：云桌面-图形G2_14核58G	        G2L.3XLARGE44：云桌面-图形G2_12核44G         G3L.LARGE16：云桌面-图形G3_4核16G	        G3L.5XMEDIUM40：云桌面-图形G3_10核40G	        G3L.5XLARGE80：云桌面-图形G3_20核80G        G4L.5XMEDIUM40：云桌面-图形G4_10核40G        G4L.11XMEDIUM80：云桌面-图形G4_22核80G        G4L.11XLARGE160：云桌面-图形G4_44核160G        G5L.5XMEDIUM40：云桌面-图形G5_10核40G	        G5L.5XLARGE80：云桌面-图形G5_22核80G        G5L.21XMEDIUM160：云桌面-图形G5_42核160G        G5L.21XLARGE320：云桌面-图形G5_84核320G	"ImageId"    按照镜像ID搜索，镜像ID示例：img-ed892xcd2"ChargeType"    按着计费模式搜索，目前支持的计费模式为：         PREPAID：包年包月        POSTPAID_BY_HOUR：按量计费 "HostName"    按照云桌面机器名称搜索，云桌面机器名示例：l0dfy594htvbn37"Status"    按照桌面状态搜索，云桌面状态：        PENDING：创建中        STARTING：开机中        REBOOTING：重启中        ROLLBACKING：回滚中        RESETTING：重置中        STOPPING：关机中        TERMINATING：销毁中        RUNNING：运行中        USING：使用中        STOPPED：关机        ISOLATING ：隔离中，只返回最近24小时数据        SHUTDOWN：销毁，只返回最近24小时数据        DELETED：销毁和SHUTDOWN意义一致，只返回最近24小时数据        LAUNCH_FAILED：创建失败，只返回最近24小时数据"UserId"    按照绑定的用户ID搜索，用户ID示例: us-6b36f283c302481bb83bsdswdefqdqwerqw"UserVpcId"    按照云桌面所属vpc搜索，VPCID示例: vpc-0ji679xf"UserSubnetId"    按照云桌面所属子网搜索，SubnetID示例: subnet-0ji679xf"UserPrivateIp"    按照云桌面IP搜索"Keyword"    按照云桌面绑定的用户名搜索，Values每次只取第一个值"SecurityGroupId"    按照云桌面关联安全组搜索，Values每次只取第一个值,安全组ID实例：sg-0ji679xf"AssociateSG"    按照可以关联安全组搜索，Values每次只取第一个值,安全组ID实例：sg-0ji679xf"DomainControlPolicyId"    按照云桌面关联域名管控策略搜索，Values每次只取第一个值,安全组ID实例：domain-0ji679xf "AssociateDomainControlPolicy"    按照可以关联域名策略搜索        ①若已有域名策略关联桌面情况：Values每次只取第一个值,安全组ID实例：domain-0ji679xf         ②若新建域名策略关联桌面情况，Values传空"Uin"    外部租户请勿使用"AppId"    外部租户请勿使用"ImageName"    废弃
+        :param _Filters: <p>云桌面查询接口 Name 过滤参数取值说明</p><p>一、基础属性</p><p>InstanceId 按云桌面 ID 搜索，示例：cdi-l0dfy594htvbn37<br>Name 按云桌面名称搜索<br>HostName 按云桌面机器名称搜索，示例：l0dfy594htvbn37<br>ImageId 按镜像 ID 搜索，示例：img-ed892xcd2<br>ImageName 按镜像名称搜索（已废弃）</p><p>二、地域 Region</p><p>ap-beijing 北京<br>ap-shanghai 上海<br>ap-guangzhou 广州<br>ap-shanghai-adc 上海自动驾驶云</p><p>三、计费模式 ChargeType</p><p>PREPAID 包年包月<br>POSTPAID_BY_HOUR 按量计费</p><p>四、桌面状态 Status</p><p>PENDING 创建中<br>STARTING 开机中<br>REBOOTING 重启中<br>ROLLBACKING 回滚中<br>RESETTING 重置中<br>STOPPING 关机中<br>TERMINATING 销毁中<br>RUNNING 运行中<br>USING 使用中<br>STOPPED 关机<br>ISOLATING 隔离中（只返回最近 24 小时数据）<br>SHUTDOWN 销毁（只返回最近 24 小时数据）<br>DELETED 销毁，与 SHUTDOWN 意义一致（只返回最近 24 小时数据）<br>LAUNCH_FAILED 创建失败（只返回最近 24 小时数据）</p><p>五、云桌面类型 Type</p><p>标准型：<br>S3L.MEDIUM4 标准 S3_2 核 4G<br>S3L.LARGE8 标准 S3_4 核 8G<br>S3L.LARGE16 标准 S3_4 核 16G<br>S3L.2XLARGE16 标准 S3_8 核 16G<br>S1L.LARGE8 标准 S1_4 核 8G<br>S1L.LARGE16 标准 S1_4 核 16G<br>S2L.2XLARGE16 标准 S2_8 核 16G</p><p>图形型：<br>G1L.LARGE16 图形 G1_4 核 16G<br>G1L.2XLARGE32 图形 G1_8 核 32G<br>G1L.4XLARGE64 图形 G1_16 核 64G<br>G2L.LARGE24 图形 G2_6 核 24G<br>G2L.3XLARGE44 图形 G2_12 核 44G<br>G2L.3XLARGE58 图形 G2_14 核 58G<br>G3L.LARGE16 图形 G3_4 核 16G<br>G3L.5XMEDIUM40 图形 G3_10 核 40G<br>G3L.5XLARGE80 图形 G3_20 核 80G<br>G4L.5XMEDIUM40 图形 G4_10 核 40G<br>G4L.11XMEDIUM80 图形 G4_22 核 80G<br>G4L.11XLARGE160 图形 G4_44 核 160G<br>G5L.5XMEDIUM40 图形 G5_10 核 40G<br>G5L.5XLARGE80 图形 G5_22 核 80G<br>G5L.21XMEDIUM160 图形 G5_42 核 160G<br>G5L.21XLARGE320 图形 G5_84 核 320G</p><p>六、网络相关</p><p>UserVpcId 按云桌面所属 VPC 搜索，示例：vpc-0ji679xf<br>UserSubnetId 按云桌面所属子网搜索，示例：subnet-0ji679xf<br>UserPrivateIp 按云桌面 IP 搜索</p><p>七、用户绑定</p><p>UserId 按绑定的用户 ID 搜索，示例：us-6b36f283c302481bb83b...<br>Keyword 按绑定的用户名搜索，Values 每次只取第一个值</p><p>八、安全组与策略</p><p>SecurityGroupId 按关联安全组搜索，Values 每次只取第一个值，示例：sg-0ji679xf<br>AssociateSG 按可关联安全组搜索，Values 每次只取第一个值，示例：sg-0ji679xf<br>DomainControlPolicyId 按关联域名管控策略搜索，Values 每次只取第一个值，示例：domain-0ji679xf<br>AssociateDomainControlPolicy 按可关联域名策略搜索<br>① 已有域名策略关联桌面：Values 每次只取第一个值，示例：domain-0ji679xf<br>② 新建域名策略关联桌面：Values 传空<br>PowerPolicyId 按关联电源管理策略搜索，Values 每次只取第一个值，示例：power-0ji679xf<br>AssociatePowerPolicy 按可关联电源管理策略搜索<br>① 已有电源管理策略关联桌面：Values 每次只取第一个值，示例：power-0ji679xf<br>② 新建电源管理策略关联桌面：Values 传空<br>WaterMarkPolicy 按关联水印策略搜索, Values 每次只取第一个值，示例：watermark-0ji679xf<br>AssociateWaterMarkPolicy 按可关联水印策略搜索<br>① 已有水印策略关联桌面：Values 每次只取第一个值，示例：watermark-0ji679xf<br>② 新建水印策略关联桌面：Values 传空<br>RunControlPolicyId 按关联运行管控策略搜索, Values 每次只取第一个值，示例：appctl-run-0ji679xf<br>AssociateRunControlPolicy 按可关联运行管控策略搜索<br>① 已有运行管控策略关联桌面：Values 每次只取第一个值，示例：appctl-run-0ji679xf<br>② 新建运行管控策略关联桌面：Values 传空</p><p>九、内部参数（外部租户请勿使用）</p><p>Uin 外部租户请勿使用<br>AppId 外部租户请勿使用</p>
         :type Filters: list of Filter
         """
         self._PageNumber = None
@@ -3243,7 +3243,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""拉取页号
+        r"""<p>拉取页号</p>
         :rtype: int
         """
         return self._PageNumber
@@ -3254,7 +3254,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页拉取个数
+        r"""<p>每页拉取个数</p>
         :rtype: int
         """
         return self._PageSize
@@ -3265,7 +3265,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Name取值范围："InstanceId"      按照云桌面ID搜索，云桌面ID示例：cdi-l0dfy594htvbn37"Name"     按照云桌面名称搜索 "Region"     按照云桌面所在地域搜索，目前云桌面所支持的地域：        ap-beijing：北京        ap-shanghai：上海        ap-guangzhou：广州        ap-shanghai-adc：上海自动驾驶云"Type"    按照云桌面类型搜索，类型取值：        S3L.MEDIUM4：云桌面-标准S3_2核4G        S3L.LARGE8：云桌面-标准S3_4核8G        S3L.LARGE16：云桌面-标准S3_4核16G        S3L.2XLARGE16：云桌面-标准S3_8核16G        S1L.LARGE8：云桌面-标准S1_4核8G        S1L.LARGE16：云桌面-标准S1_4核16G        S2L.2XLARGE16：云桌面-标准S2_8核16G        G1L.LARGE16：云桌面-图形G1_4核16G        G1L.2XLARGE32：云桌面-图形G1_8核32G        G1L.4XLARGE64：云桌面-图形G1_16核64G        G2L.LARGE24：云桌面-图形G2_6核24G        G2L.3XLARGE58：云桌面-图形G2_14核58G	        G2L.3XLARGE44：云桌面-图形G2_12核44G         G3L.LARGE16：云桌面-图形G3_4核16G	        G3L.5XMEDIUM40：云桌面-图形G3_10核40G	        G3L.5XLARGE80：云桌面-图形G3_20核80G        G4L.5XMEDIUM40：云桌面-图形G4_10核40G        G4L.11XMEDIUM80：云桌面-图形G4_22核80G        G4L.11XLARGE160：云桌面-图形G4_44核160G        G5L.5XMEDIUM40：云桌面-图形G5_10核40G	        G5L.5XLARGE80：云桌面-图形G5_22核80G        G5L.21XMEDIUM160：云桌面-图形G5_42核160G        G5L.21XLARGE320：云桌面-图形G5_84核320G	"ImageId"    按照镜像ID搜索，镜像ID示例：img-ed892xcd2"ChargeType"    按着计费模式搜索，目前支持的计费模式为：         PREPAID：包年包月        POSTPAID_BY_HOUR：按量计费 "HostName"    按照云桌面机器名称搜索，云桌面机器名示例：l0dfy594htvbn37"Status"    按照桌面状态搜索，云桌面状态：        PENDING：创建中        STARTING：开机中        REBOOTING：重启中        ROLLBACKING：回滚中        RESETTING：重置中        STOPPING：关机中        TERMINATING：销毁中        RUNNING：运行中        USING：使用中        STOPPED：关机        ISOLATING ：隔离中，只返回最近24小时数据        SHUTDOWN：销毁，只返回最近24小时数据        DELETED：销毁和SHUTDOWN意义一致，只返回最近24小时数据        LAUNCH_FAILED：创建失败，只返回最近24小时数据"UserId"    按照绑定的用户ID搜索，用户ID示例: us-6b36f283c302481bb83bsdswdefqdqwerqw"UserVpcId"    按照云桌面所属vpc搜索，VPCID示例: vpc-0ji679xf"UserSubnetId"    按照云桌面所属子网搜索，SubnetID示例: subnet-0ji679xf"UserPrivateIp"    按照云桌面IP搜索"Keyword"    按照云桌面绑定的用户名搜索，Values每次只取第一个值"SecurityGroupId"    按照云桌面关联安全组搜索，Values每次只取第一个值,安全组ID实例：sg-0ji679xf"AssociateSG"    按照可以关联安全组搜索，Values每次只取第一个值,安全组ID实例：sg-0ji679xf"DomainControlPolicyId"    按照云桌面关联域名管控策略搜索，Values每次只取第一个值,安全组ID实例：domain-0ji679xf "AssociateDomainControlPolicy"    按照可以关联域名策略搜索        ①若已有域名策略关联桌面情况：Values每次只取第一个值,安全组ID实例：domain-0ji679xf         ②若新建域名策略关联桌面情况，Values传空"Uin"    外部租户请勿使用"AppId"    外部租户请勿使用"ImageName"    废弃
+        r"""<p>云桌面查询接口 Name 过滤参数取值说明</p><p>一、基础属性</p><p>InstanceId 按云桌面 ID 搜索，示例：cdi-l0dfy594htvbn37<br>Name 按云桌面名称搜索<br>HostName 按云桌面机器名称搜索，示例：l0dfy594htvbn37<br>ImageId 按镜像 ID 搜索，示例：img-ed892xcd2<br>ImageName 按镜像名称搜索（已废弃）</p><p>二、地域 Region</p><p>ap-beijing 北京<br>ap-shanghai 上海<br>ap-guangzhou 广州<br>ap-shanghai-adc 上海自动驾驶云</p><p>三、计费模式 ChargeType</p><p>PREPAID 包年包月<br>POSTPAID_BY_HOUR 按量计费</p><p>四、桌面状态 Status</p><p>PENDING 创建中<br>STARTING 开机中<br>REBOOTING 重启中<br>ROLLBACKING 回滚中<br>RESETTING 重置中<br>STOPPING 关机中<br>TERMINATING 销毁中<br>RUNNING 运行中<br>USING 使用中<br>STOPPED 关机<br>ISOLATING 隔离中（只返回最近 24 小时数据）<br>SHUTDOWN 销毁（只返回最近 24 小时数据）<br>DELETED 销毁，与 SHUTDOWN 意义一致（只返回最近 24 小时数据）<br>LAUNCH_FAILED 创建失败（只返回最近 24 小时数据）</p><p>五、云桌面类型 Type</p><p>标准型：<br>S3L.MEDIUM4 标准 S3_2 核 4G<br>S3L.LARGE8 标准 S3_4 核 8G<br>S3L.LARGE16 标准 S3_4 核 16G<br>S3L.2XLARGE16 标准 S3_8 核 16G<br>S1L.LARGE8 标准 S1_4 核 8G<br>S1L.LARGE16 标准 S1_4 核 16G<br>S2L.2XLARGE16 标准 S2_8 核 16G</p><p>图形型：<br>G1L.LARGE16 图形 G1_4 核 16G<br>G1L.2XLARGE32 图形 G1_8 核 32G<br>G1L.4XLARGE64 图形 G1_16 核 64G<br>G2L.LARGE24 图形 G2_6 核 24G<br>G2L.3XLARGE44 图形 G2_12 核 44G<br>G2L.3XLARGE58 图形 G2_14 核 58G<br>G3L.LARGE16 图形 G3_4 核 16G<br>G3L.5XMEDIUM40 图形 G3_10 核 40G<br>G3L.5XLARGE80 图形 G3_20 核 80G<br>G4L.5XMEDIUM40 图形 G4_10 核 40G<br>G4L.11XMEDIUM80 图形 G4_22 核 80G<br>G4L.11XLARGE160 图形 G4_44 核 160G<br>G5L.5XMEDIUM40 图形 G5_10 核 40G<br>G5L.5XLARGE80 图形 G5_22 核 80G<br>G5L.21XMEDIUM160 图形 G5_42 核 160G<br>G5L.21XLARGE320 图形 G5_84 核 320G</p><p>六、网络相关</p><p>UserVpcId 按云桌面所属 VPC 搜索，示例：vpc-0ji679xf<br>UserSubnetId 按云桌面所属子网搜索，示例：subnet-0ji679xf<br>UserPrivateIp 按云桌面 IP 搜索</p><p>七、用户绑定</p><p>UserId 按绑定的用户 ID 搜索，示例：us-6b36f283c302481bb83b...<br>Keyword 按绑定的用户名搜索，Values 每次只取第一个值</p><p>八、安全组与策略</p><p>SecurityGroupId 按关联安全组搜索，Values 每次只取第一个值，示例：sg-0ji679xf<br>AssociateSG 按可关联安全组搜索，Values 每次只取第一个值，示例：sg-0ji679xf<br>DomainControlPolicyId 按关联域名管控策略搜索，Values 每次只取第一个值，示例：domain-0ji679xf<br>AssociateDomainControlPolicy 按可关联域名策略搜索<br>① 已有域名策略关联桌面：Values 每次只取第一个值，示例：domain-0ji679xf<br>② 新建域名策略关联桌面：Values 传空<br>PowerPolicyId 按关联电源管理策略搜索，Values 每次只取第一个值，示例：power-0ji679xf<br>AssociatePowerPolicy 按可关联电源管理策略搜索<br>① 已有电源管理策略关联桌面：Values 每次只取第一个值，示例：power-0ji679xf<br>② 新建电源管理策略关联桌面：Values 传空<br>WaterMarkPolicy 按关联水印策略搜索, Values 每次只取第一个值，示例：watermark-0ji679xf<br>AssociateWaterMarkPolicy 按可关联水印策略搜索<br>① 已有水印策略关联桌面：Values 每次只取第一个值，示例：watermark-0ji679xf<br>② 新建水印策略关联桌面：Values 传空<br>RunControlPolicyId 按关联运行管控策略搜索, Values 每次只取第一个值，示例：appctl-run-0ji679xf<br>AssociateRunControlPolicy 按可关联运行管控策略搜索<br>① 已有运行管控策略关联桌面：Values 每次只取第一个值，示例：appctl-run-0ji679xf<br>② 新建运行管控策略关联桌面：Values 传空</p><p>九、内部参数（外部租户请勿使用）</p><p>Uin 外部租户请勿使用<br>AppId 外部租户请勿使用</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -3301,10 +3301,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: 返回查询到的所有实例信息
+        :param _InstanceList: <p>返回查询到的所有实例信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of InstanceInfo
-        :param _Total: 返回当前查询到的实例总数
+        :param _Total: <p>返回当前查询到的实例总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3316,7 +3316,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        r"""返回查询到的所有实例信息
+        r"""<p>返回查询到的所有实例信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceInfo
         """
@@ -3328,7 +3328,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""返回当前查询到的实例总数
+        r"""<p>返回当前查询到的实例总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5157,6 +5157,8 @@ class InstanceInfo(AbstractModel):
         :param _Tags: <p>实例绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _UnderwriteDeadline: <p>包销到期时间</p>
+        :type UnderwriteDeadline: str
         """
         self._InstanceId = None
         self._Name = None
@@ -5198,6 +5200,7 @@ class InstanceInfo(AbstractModel):
         self._InstallControlPolicy = None
         self._AnonymousAccess = None
         self._Tags = None
+        self._UnderwriteDeadline = None
 
     @property
     def InstanceId(self):
@@ -5669,6 +5672,17 @@ class InstanceInfo(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def UnderwriteDeadline(self):
+        r"""<p>包销到期时间</p>
+        :rtype: str
+        """
+        return self._UnderwriteDeadline
+
+    @UnderwriteDeadline.setter
+    def UnderwriteDeadline(self, UnderwriteDeadline):
+        self._UnderwriteDeadline = UnderwriteDeadline
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5723,6 +5737,7 @@ class InstanceInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._UnderwriteDeadline = params.get("UnderwriteDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9060,6 +9075,8 @@ class User(AbstractModel):
         :type StrategyName: str
         :param _BindStatus: <p>当前用户是否绑定桌面，true：绑定，false：未绑定任何桌面</p>
         :type BindStatus: bool
+        :param _LockRemainMs: <p>用户登录锁定剩余时间</p>
+        :type LockRemainMs: int
         """
         self._Id = None
         self._Name = None
@@ -9071,6 +9088,7 @@ class User(AbstractModel):
         self._StrategyId = None
         self._StrategyName = None
         self._BindStatus = None
+        self._LockRemainMs = None
 
     @property
     def Id(self):
@@ -9182,6 +9200,17 @@ class User(AbstractModel):
     def BindStatus(self, BindStatus):
         self._BindStatus = BindStatus
 
+    @property
+    def LockRemainMs(self):
+        r"""<p>用户登录锁定剩余时间</p>
+        :rtype: int
+        """
+        return self._LockRemainMs
+
+    @LockRemainMs.setter
+    def LockRemainMs(self, LockRemainMs):
+        self._LockRemainMs = LockRemainMs
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9194,6 +9223,7 @@ class User(AbstractModel):
         self._StrategyId = params.get("StrategyId")
         self._StrategyName = params.get("StrategyName")
         self._BindStatus = params.get("BindStatus")
+        self._LockRemainMs = params.get("LockRemainMs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

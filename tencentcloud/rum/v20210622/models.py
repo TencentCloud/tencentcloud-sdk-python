@@ -37800,12 +37800,15 @@ class DialTrendPoint(AbstractModel):
         :type FailCount: int
         :param _AvgDuration: <p>平均时延，单位毫秒</p>
         :type AvgDuration: float
+        :param _Datetime: <p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+        :type Datetime: str
         """
         self._Time = None
         self._ExecutionCount = None
         self._SuccessCount = None
         self._FailCount = None
         self._AvgDuration = None
+        self._Datetime = None
 
     @property
     def Time(self):
@@ -37862,6 +37865,17 @@ class DialTrendPoint(AbstractModel):
     def AvgDuration(self, AvgDuration):
         self._AvgDuration = AvgDuration
 
+    @property
+    def Datetime(self):
+        r"""<p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+        :rtype: str
+        """
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -37869,6 +37883,7 @@ class DialTrendPoint(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailCount = params.get("FailCount")
         self._AvgDuration = params.get("AvgDuration")
+        self._Datetime = params.get("Datetime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47768,9 +47783,12 @@ class UsageTimePoint(AbstractModel):
         :type Time: str
         :param _ReportVolume: <p>上报量</p>
         :type ReportVolume: int
+        :param _Datetime: <p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+        :type Datetime: str
         """
         self._Time = None
         self._ReportVolume = None
+        self._Datetime = None
 
     @property
     def Time(self):
@@ -47794,10 +47812,22 @@ class UsageTimePoint(AbstractModel):
     def ReportVolume(self, ReportVolume):
         self._ReportVolume = ReportVolume
 
+    @property
+    def Datetime(self):
+        r"""<p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+        :rtype: str
+        """
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._ReportVolume = params.get("ReportVolume")
+        self._Datetime = params.get("Datetime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -95,6 +95,31 @@ class DbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBackupPlan(self, request):
+        r"""删除备份计划。
+
+        仅已下线的备份计划支持删除，删除后不可恢复。已隔离（isolated）的备份计划请先调用 DestroyBackupPlanByUser 完成下线，再进行删除。调用接口后，若通过 DescribeBackupPlans 接口查询不到对应的备份计划，则表示删除成功。
+
+        :param request: Request instance for DeleteBackupPlan.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DeleteBackupPlanRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DeleteBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupCheckJob(self, request):
         r"""本接口（DescribeBackupCheckJob）用于查询备份计划预校验任务的结果。仅对于预校验通过的任务，才能启动备份计划。
 
@@ -109,6 +134,30 @@ class DbsClient(AbstractClient):
             body = self.call("DescribeBackupCheckJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupPlanDetail(self, request):
+        r"""查询备份计划详情。
+        返回备份计划的基本信息、源库信息、备份对象、备份策略、备份进度和付费信息。
+
+        :param request: Request instance for DescribeBackupPlanDetail.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeBackupPlanDetailRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeBackupPlanDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupPlanDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupPlanDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -164,6 +213,152 @@ class DbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFullBackupSetDetail(self, request):
+        r"""查询全量备份集详情。
+
+        返回全量备份集的基本信息、源库信息、备份对象、备份进度和加密信息。
+
+        :param request: Request instance for DescribeFullBackupSetDetail.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeFullBackupSetDetailRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeFullBackupSetDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFullBackupSetDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFullBackupSetDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIncrementBackupSetFiles(self, request):
+        r"""查询增量备份集文件列表。
+
+        文件按最后修改时间倒序返回，支持分页。
+
+        :param request: Request instance for DescribeIncrementBackupSetFiles.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeIncrementBackupSetFilesRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeIncrementBackupSetFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIncrementBackupSetFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIncrementBackupSetFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIncrementBackupSets(self, request):
+        r"""本接口（DescribeIncrementBackupSets）用于查询增量备份集列表。
+
+        :param request: Request instance for DescribeIncrementBackupSets.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeIncrementBackupSetsRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeIncrementBackupSetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIncrementBackupSets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIncrementBackupSetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyBackupPlanByUser(self, request):
+        r"""立即下线已隔离的备份计划。
+
+        下线后备份计划不可恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 offlined，则表示下线成功。
+
+        :param request: Request instance for DestroyBackupPlanByUser.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DestroyBackupPlanByUserRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DestroyBackupPlanByUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyBackupPlanByUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyBackupPlanByUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupPlanSourceInfo(self, request):
+        r"""本接口（ModifyBackupPlanSourceInfo）用于修改备份计划的源实例信息、备份对象信息等。注意，调用该接口后，原有备份计划任务将立即停止，您可以在修改完源信息后重新启动备份任务。
+
+        :param request: Request instance for ModifyBackupPlanSourceInfo.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.ModifyBackupPlanSourceInfoRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.ModifyBackupPlanSourceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupPlanSourceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupPlanSourceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeBackupPlan(self, request):
+        r"""恢复已暂停的备份计划。
+
+        仅已暂停的备份计划支持恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 running，则表示恢复成功。
+
+        :param request: Request instance for ResumeBackupPlan.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.ResumeBackupPlanRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.ResumeBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartBackupCheckJob(self, request):
         r"""本接口（StartBackupCheckJob）用于创建备份计划预校验任务。
 
@@ -201,6 +396,31 @@ class DbsClient(AbstractClient):
             body = self.call("StartBackupPlan", params, headers=headers)
             response = json.loads(body)
             model = models.StartBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopBackupPlan(self, request):
+        r"""暂停备份计划。
+
+        仅运行中的备份计划支持暂停。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 paused，则表示暂停成功。
+
+        :param request: Request instance for StopBackupPlan.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.StopBackupPlanRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.StopBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopBackupPlanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

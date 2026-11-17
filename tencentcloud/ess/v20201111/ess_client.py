@@ -883,6 +883,8 @@ class EssClient(AbstractClient):
         5. 预览模板
         6. 预览合同流程
 
+        更多类型见：EmbedType
+
 
         预览模板的嵌入页面长相如下：
         ![image](https://qcloudimg.tencent-cloud.cn/raw/57bdda4a884e3f5b2de12d5a282a3651.png)
@@ -4430,7 +4432,7 @@ class EssClient(AbstractClient):
         3. 延长整个签署流程时，新的签署截止日期应晚于已设定的签署截止日期和当前日期。
         4. 延长签署方截止时间时，<font  color="red">签署方不能处于流程完结或已终止状态</font>（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
         5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
-        6. <font  color="red">不支持操作合同组合同</font>。
+        6. <font  color="red">不支持操作合同组，支持合同组里边的各个子合同单独修改</font>。
 
         合同（流程）层面 截止时间控制台展示的位置：
         ![image](https://qcloudimg.tencent-cloud.cn/raw/265b130136bf6e8f01f5880438467dfb.png)

@@ -20917,11 +20917,11 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。本接口目前仅支持每次操作1个实例。
+        :param _InstanceIds: <p>一个或多个待操作的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> 接口返回值中的<code>InstanceId</code>获取。本接口目前仅支持每次操作1个实例。</p>
         :type InstanceIds: list of str
-        :param _InstanceType: 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[ DescribeInstanceTypeConfigs ](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+        :param _InstanceType: <p>调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749"> DescribeInstanceTypeConfigs </a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。</p>
         :type InstanceType: str
-        :param _ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+        :param _ForceStop: <p>是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。</p>
         :type ForceStop: bool
         """
         self._InstanceIds = None
@@ -20930,7 +20930,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。本接口目前仅支持每次操作1个实例。
+        r"""<p>一个或多个待操作的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> 接口返回值中的<code>InstanceId</code>获取。本接口目前仅支持每次操作1个实例。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -20941,7 +20941,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[ DescribeInstanceTypeConfigs ](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+        r"""<p>调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749"> DescribeInstanceTypeConfigs </a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -20952,7 +20952,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        r"""是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+        r"""<p>是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。</p>
         :rtype: bool
         """
         return self._ForceStop

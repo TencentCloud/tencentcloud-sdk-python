@@ -839,8 +839,16 @@ class CreateRecTaskRequest(AbstractModel):
         :type KeyWordLibIdList: list of str
         :param _ReplaceTextId: <p>替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考<a href="https://console.cloud.tencent.com/asr/replaceword">配置控制台</a>;强制替换功能可能会影响正常识别结果，请谨慎使用</p><p>注意：</p><ol><li>本功能配置完成后，预计在10分钟后生效</li></ol>
         :type ReplaceTextId: str
-        :param _SpeakerRoles: <p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>ASR增值服务，<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
+        :param _SpeakerRoles: <p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>此为ASR增值服务<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
         :type SpeakerRoles: list of SpeakerRoleInfo
+        :param _ContextData: <p>上下文数据，支持文本输入，可输入历史对话上下文、关键词集合等。(支持引擎： 16k_zh_en_meeting)</p>
+        :type ContextData: str
+        :param _SentenceStrategy: <p>分句策略：<br>0 - 默认分句，句子短。<br>1 - 段落分句，可将同一说话人连续转写结果中相邻几句聚合成一个小段落，句子更长，仅当ResTextFormat &gt; 0可配合使用。<br>默认值：0</p>
+        :type SentenceStrategy: int
+        :param _EnableSpeakerContext: <p>是否开启断点续传能力，需配合说话人分离能力使用（SpeakerDiarization为1或3）：<br>0：关闭，<br>1：开启。(支持引擎： 16k_zh_en_meeting)<br>若开启断点续传能力，会返回说话人上下文SpeakerContextId（24h 有效），下一次识别时传入 SpeakerContextId，可以沿用本次识别保存的说话人信息，让两次识别中<strong>同一说话人的 SpeakerId 保持一致</strong>。</p>
+        :type EnableSpeakerContext: int
+        :param _SpeakerContextId: <p>说话人上下文ID。传入后，本次话者分离说话人 ID 会与上次的话者分离任务保持一致。(支持引擎： 16k_zh_en_meeting)</p>
+        :type SpeakerContextId: str
         """
         self._EngineModelType = None
         self._ChannelNum = None
@@ -867,6 +875,10 @@ class CreateRecTaskRequest(AbstractModel):
         self._KeyWordLibIdList = None
         self._ReplaceTextId = None
         self._SpeakerRoles = None
+        self._ContextData = None
+        self._SentenceStrategy = None
+        self._EnableSpeakerContext = None
+        self._SpeakerContextId = None
 
     @property
     def EngineModelType(self):
@@ -1138,7 +1150,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SpeakerRoles(self):
-        r"""<p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>ASR增值服务，<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
+        r"""<p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>此为ASR增值服务<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
         :rtype: list of SpeakerRoleInfo
         """
         return self._SpeakerRoles
@@ -1146,6 +1158,50 @@ class CreateRecTaskRequest(AbstractModel):
     @SpeakerRoles.setter
     def SpeakerRoles(self, SpeakerRoles):
         self._SpeakerRoles = SpeakerRoles
+
+    @property
+    def ContextData(self):
+        r"""<p>上下文数据，支持文本输入，可输入历史对话上下文、关键词集合等。(支持引擎： 16k_zh_en_meeting)</p>
+        :rtype: str
+        """
+        return self._ContextData
+
+    @ContextData.setter
+    def ContextData(self, ContextData):
+        self._ContextData = ContextData
+
+    @property
+    def SentenceStrategy(self):
+        r"""<p>分句策略：<br>0 - 默认分句，句子短。<br>1 - 段落分句，可将同一说话人连续转写结果中相邻几句聚合成一个小段落，句子更长，仅当ResTextFormat &gt; 0可配合使用。<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._SentenceStrategy
+
+    @SentenceStrategy.setter
+    def SentenceStrategy(self, SentenceStrategy):
+        self._SentenceStrategy = SentenceStrategy
+
+    @property
+    def EnableSpeakerContext(self):
+        r"""<p>是否开启断点续传能力，需配合说话人分离能力使用（SpeakerDiarization为1或3）：<br>0：关闭，<br>1：开启。(支持引擎： 16k_zh_en_meeting)<br>若开启断点续传能力，会返回说话人上下文SpeakerContextId（24h 有效），下一次识别时传入 SpeakerContextId，可以沿用本次识别保存的说话人信息，让两次识别中<strong>同一说话人的 SpeakerId 保持一致</strong>。</p>
+        :rtype: int
+        """
+        return self._EnableSpeakerContext
+
+    @EnableSpeakerContext.setter
+    def EnableSpeakerContext(self, EnableSpeakerContext):
+        self._EnableSpeakerContext = EnableSpeakerContext
+
+    @property
+    def SpeakerContextId(self):
+        r"""<p>说话人上下文ID。传入后，本次话者分离说话人 ID 会与上次的话者分离任务保持一致。(支持引擎： 16k_zh_en_meeting)</p>
+        :rtype: str
+        """
+        return self._SpeakerContextId
+
+    @SpeakerContextId.setter
+    def SpeakerContextId(self, SpeakerContextId):
+        self._SpeakerContextId = SpeakerContextId
 
 
     def _deserialize(self, params):
@@ -1179,6 +1235,10 @@ class CreateRecTaskRequest(AbstractModel):
                 obj = SpeakerRoleInfo()
                 obj._deserialize(item)
                 self._SpeakerRoles.append(obj)
+        self._ContextData = params.get("ContextData")
+        self._SentenceStrategy = params.get("SentenceStrategy")
+        self._EnableSpeakerContext = params.get("EnableSpeakerContext")
+        self._SpeakerContextId = params.get("SpeakerContextId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3316,6 +3376,8 @@ class SentenceDetail(AbstractModel):
         :type LangType: str
         :param _SpeakerRoleName: <p>说话人角色名称</p>
         :type SpeakerRoleName: str
+        :param _SpeakerVoicePrintId: <p>说话人的声纹 ID</p>
+        :type SpeakerVoicePrintId: str
         """
         self._FinalSentence = None
         self._SliceSentence = None
@@ -3332,6 +3394,7 @@ class SentenceDetail(AbstractModel):
         self._KeyWordResults = None
         self._LangType = None
         self._SpeakerRoleName = None
+        self._SpeakerVoicePrintId = None
 
     @property
     def FinalSentence(self):
@@ -3511,6 +3574,17 @@ class SentenceDetail(AbstractModel):
     def SpeakerRoleName(self, SpeakerRoleName):
         self._SpeakerRoleName = SpeakerRoleName
 
+    @property
+    def SpeakerVoicePrintId(self):
+        r"""<p>说话人的声纹 ID</p>
+        :rtype: str
+        """
+        return self._SpeakerVoicePrintId
+
+    @SpeakerVoicePrintId.setter
+    def SpeakerVoicePrintId(self, SpeakerVoicePrintId):
+        self._SpeakerVoicePrintId = SpeakerVoicePrintId
+
 
     def _deserialize(self, params):
         self._FinalSentence = params.get("FinalSentence")
@@ -3538,6 +3612,7 @@ class SentenceDetail(AbstractModel):
                 self._KeyWordResults.append(obj)
         self._LangType = params.get("LangType")
         self._SpeakerRoleName = params.get("SpeakerRoleName")
+        self._SpeakerVoicePrintId = params.get("SpeakerVoicePrintId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4295,11 +4370,11 @@ class SpeakerRoleInfo(AbstractModel):
         r"""
         :param _RoleAudioUrl: <p>音频url地址，建议不超过30秒，最大45秒（配合RoleName字段一起使用，仅限16k_zh_en、16k_zh_en_2.0引擎）</p>
         :type RoleAudioUrl: str
-        :param _RoleName: <p>不超过30字节（配合RoleAudioUrl字段一起使用，仅限16k_zh_en、16k_zh_en_2.0引擎）</p>
+        :param _RoleName: <p>不超过32字节（配合RoleAudioUrl字段一起使用，仅限16k_zh_en、16k_zh_en_2.0引擎）</p>
         :type RoleName: str
         :param _VoicePrintId: <p>声纹 ID（与SpeakerNick配合使用，仅限16k_zh_en_meeting引擎支持），注意：- 传入未注册或不属于本 AppId 的声纹 ID，该 ID 会被跳过（不报错，相当于没有传入这个说话人信息）</p>
         :type VoicePrintId: str
-        :param _SpeakerNick: <p>角色昵称（与VoicePrintId配合使用，仅限16k_zh_en_meeting引擎支持），注意：- 传空字符串或者不传入则使用声纹注册时指定的角色名- 否则将覆盖声纹注册时指定的角色名- 角色名不超过 30 字节，仅支持字母、数字、下划线和中文。- 这里指定的角色名只影响本次识别，不影响声纹库中注册的角色名</p>
+        :param _SpeakerNick: <p>角色昵称（与VoicePrintId配合使用，仅限16k_zh_en_meeting引擎支持），注意：- 传空字符串或者不传入则使用声纹注册时指定的角色名- 否则将覆盖声纹注册时指定的角色名- 角色名不超过 32 字节。- 这里指定的角色名只影响本次识别，不影响声纹库中注册的角色名</p>
         :type SpeakerNick: str
         """
         self._RoleAudioUrl = None
@@ -4320,7 +4395,7 @@ class SpeakerRoleInfo(AbstractModel):
 
     @property
     def RoleName(self):
-        r"""<p>不超过30字节（配合RoleAudioUrl字段一起使用，仅限16k_zh_en、16k_zh_en_2.0引擎）</p>
+        r"""<p>不超过32字节（配合RoleAudioUrl字段一起使用，仅限16k_zh_en、16k_zh_en_2.0引擎）</p>
         :rtype: str
         """
         return self._RoleName
@@ -4342,7 +4417,7 @@ class SpeakerRoleInfo(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        r"""<p>角色昵称（与VoicePrintId配合使用，仅限16k_zh_en_meeting引擎支持），注意：- 传空字符串或者不传入则使用声纹注册时指定的角色名- 否则将覆盖声纹注册时指定的角色名- 角色名不超过 30 字节，仅支持字母、数字、下划线和中文。- 这里指定的角色名只影响本次识别，不影响声纹库中注册的角色名</p>
+        r"""<p>角色昵称（与VoicePrintId配合使用，仅限16k_zh_en_meeting引擎支持），注意：- 传空字符串或者不传入则使用声纹注册时指定的角色名- 否则将覆盖声纹注册时指定的角色名- 角色名不超过 32 字节。- 这里指定的角色名只影响本次识别，不影响声纹库中注册的角色名</p>
         :rtype: str
         """
         return self._SpeakerNick
@@ -4412,24 +4487,26 @@ class TaskStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务标识。注意：TaskId数据类型为uint64。
+        :param _TaskId: <p>任务标识。注意：TaskId数据类型为uint64。</p>
         :type TaskId: int
-        :param _Status: 任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
+        :param _Status: <p>任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。</p>
         :type Status: int
-        :param _StatusStr: 任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
+        :param _StatusStr: <p>任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。</p>
         :type StatusStr: str
-        :param _Result: 识别结果。
+        :param _Result: <p>识别结果。</p>
         :type Result: str
-        :param _ErrorMsg: 失败原因说明。
+        :param _ErrorMsg: <p>失败原因说明。</p>
         :type ErrorMsg: str
-        :param _ResultDetail: 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
+        :param _ResultDetail: <p>识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultDetail: list of SentenceDetail
-        :param _AudioDuration: 音频时长(秒)。
+        :param _AudioDuration: <p>音频时长(秒)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioDuration: float
-        :param _LlmResults: 大模型后处理结果
+        :param _LlmResults: <p>大模型后处理结果</p>
         :type LlmResults: list of LlmResult
+        :param _SpeakerContextId: <p>说话人上下文 ID</p>
+        :type SpeakerContextId: str
         """
         self._TaskId = None
         self._Status = None
@@ -4439,10 +4516,11 @@ class TaskStatus(AbstractModel):
         self._ResultDetail = None
         self._AudioDuration = None
         self._LlmResults = None
+        self._SpeakerContextId = None
 
     @property
     def TaskId(self):
-        r"""任务标识。注意：TaskId数据类型为uint64。
+        r"""<p>任务标识。注意：TaskId数据类型为uint64。</p>
         :rtype: int
         """
         return self._TaskId
@@ -4453,7 +4531,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
+        r"""<p>任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。</p>
         :rtype: int
         """
         return self._Status
@@ -4464,7 +4542,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def StatusStr(self):
-        r"""任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
+        r"""<p>任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。</p>
         :rtype: str
         """
         return self._StatusStr
@@ -4475,7 +4553,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Result(self):
-        r"""识别结果。
+        r"""<p>识别结果。</p>
         :rtype: str
         """
         return self._Result
@@ -4486,7 +4564,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""失败原因说明。
+        r"""<p>失败原因说明。</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -4497,7 +4575,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def ResultDetail(self):
-        r"""识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
+        r"""<p>识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SentenceDetail
         """
@@ -4509,7 +4587,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def AudioDuration(self):
-        r"""音频时长(秒)。
+        r"""<p>音频时长(秒)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4521,7 +4599,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def LlmResults(self):
-        r"""大模型后处理结果
+        r"""<p>大模型后处理结果</p>
         :rtype: list of LlmResult
         """
         return self._LlmResults
@@ -4529,6 +4607,17 @@ class TaskStatus(AbstractModel):
     @LlmResults.setter
     def LlmResults(self, LlmResults):
         self._LlmResults = LlmResults
+
+    @property
+    def SpeakerContextId(self):
+        r"""<p>说话人上下文 ID</p>
+        :rtype: str
+        """
+        return self._SpeakerContextId
+
+    @SpeakerContextId.setter
+    def SpeakerContextId(self, SpeakerContextId):
+        self._SpeakerContextId = SpeakerContextId
 
 
     def _deserialize(self, params):
@@ -4550,6 +4639,7 @@ class TaskStatus(AbstractModel):
                 obj = LlmResult()
                 obj._deserialize(item)
                 self._LlmResults.append(obj)
+        self._SpeakerContextId = params.get("SpeakerContextId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

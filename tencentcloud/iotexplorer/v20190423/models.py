@@ -16493,6 +16493,150 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeviceCloudStoragePackagesRequest(AbstractModel):
+    r"""DescribeDeviceCloudStoragePackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品id</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _ChannelId: <p>通道id</p>
+        :type ChannelId: int
+        :param _MediaType: <p>云存类别</p><p>枚举值：</p><ul><li>video： 视频云存</li><li>image： 图片云存</li></ul>
+        :type MediaType: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._MediaType = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品id</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道id</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def MediaType(self):
+        r"""<p>云存类别</p><p>枚举值：</p><ul><li>video： 视频云存</li><li>image： 图片云存</li></ul>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._MediaType = params.get("MediaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceCloudStoragePackagesResponse(AbstractModel):
+    r"""DescribeDeviceCloudStoragePackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Packages: <p>套餐包相关数据</p>
+        :type Packages: list of NewCloudStoragePackage
+        :param _TotalCount: <p>套餐总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Packages = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Packages(self):
+        r"""<p>套餐包相关数据</p>
+        :rtype: list of NewCloudStoragePackage
+        """
+        return self._Packages
+
+    @Packages.setter
+    def Packages(self, Packages):
+        self._Packages = Packages
+
+    @property
+    def TotalCount(self):
+        r"""<p>套餐总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Packages") is not None:
+            self._Packages = []
+            for item in params.get("Packages"):
+                obj = NewCloudStoragePackage()
+                obj._deserialize(item)
+                self._Packages.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceDataHistoryRequest(AbstractModel):
     r"""DescribeDeviceDataHistory请求参数结构体
 
@@ -38396,6 +38540,222 @@ class ModifyTopicRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NewCloudStoragePackage(AbstractModel):
+    r"""新云存套餐相关参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>资源id</p>
+        :type ResourceId: str
+        :param _MediaType: <p>媒体类型</p><p>枚举值：</p><ul><li>image： 图片套餐</li><li>video： 视频套餐</li></ul>
+        :type MediaType: str
+        :param _RetentionDays: <p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :type RetentionDays: int
+        :param _RecordingMode: <p>录制模式</p><p>枚举值：</p><ul><li>low_power：  2小时/日</li><li>event：  8小时/日</li><li>full_time：  24小时/日</li></ul>
+        :type RecordingMode: str
+        :param _Bitrate: <p>码率</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+        :type Bitrate: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _ExpireTime: <p>过期时间</p>
+        :type ExpireTime: int
+        :param _Status: <p>套餐状态</p><p>枚举值：</p><ul><li>active： 生效中</li><li>queued： 排队中</li></ul>
+        :type Status: str
+        :param _ReportEnabled: <p>启停状态</p><p>枚举值：</p><ul><li>0： 停用</li><li>1： 启用</li></ul>
+        :type ReportEnabled: int
+        :param _OrderId: <p>订单id</p>
+        :type OrderId: str
+        :param _BigDealId: <p>大订单号</p>
+        :type BigDealId: str
+        :param _ValidityPeriod: <p>卡有效期类型</p><p>枚举值：</p><ul><li>monthly_card： 月卡</li><li>annual_card： 年卡</li></ul>
+        :type ValidityPeriod: str
+        :param _ImageCapacity: <p>图片档位</p><p>枚举值：</p><ul><li>300： 300张/日</li><li>1000： 1000张/日</li></ul>
+        :type ImageCapacity: str
+        """
+        self._ResourceId = None
+        self._MediaType = None
+        self._RetentionDays = None
+        self._RecordingMode = None
+        self._Bitrate = None
+        self._StartTime = None
+        self._ExpireTime = None
+        self._Status = None
+        self._ReportEnabled = None
+        self._OrderId = None
+        self._BigDealId = None
+        self._ValidityPeriod = None
+        self._ImageCapacity = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def MediaType(self):
+        r"""<p>媒体类型</p><p>枚举值：</p><ul><li>image： 图片套餐</li><li>video： 视频套餐</li></ul>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+    @property
+    def RetentionDays(self):
+        r"""<p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :rtype: int
+        """
+        return self._RetentionDays
+
+    @RetentionDays.setter
+    def RetentionDays(self, RetentionDays):
+        self._RetentionDays = RetentionDays
+
+    @property
+    def RecordingMode(self):
+        r"""<p>录制模式</p><p>枚举值：</p><ul><li>low_power：  2小时/日</li><li>event：  8小时/日</li><li>full_time：  24小时/日</li></ul>
+        :rtype: str
+        """
+        return self._RecordingMode
+
+    @RecordingMode.setter
+    def RecordingMode(self, RecordingMode):
+        self._RecordingMode = RecordingMode
+
+    @property
+    def Bitrate(self):
+        r"""<p>码率</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+        :rtype: str
+        """
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        r"""<p>套餐状态</p><p>枚举值：</p><ul><li>active： 生效中</li><li>queued： 排队中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReportEnabled(self):
+        r"""<p>启停状态</p><p>枚举值：</p><ul><li>0： 停用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._ReportEnabled
+
+    @ReportEnabled.setter
+    def ReportEnabled(self, ReportEnabled):
+        self._ReportEnabled = ReportEnabled
+
+    @property
+    def OrderId(self):
+        r"""<p>订单id</p>
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BigDealId(self):
+        r"""<p>大订单号</p>
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def ValidityPeriod(self):
+        r"""<p>卡有效期类型</p><p>枚举值：</p><ul><li>monthly_card： 月卡</li><li>annual_card： 年卡</li></ul>
+        :rtype: str
+        """
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def ImageCapacity(self):
+        r"""<p>图片档位</p><p>枚举值：</p><ul><li>300： 300张/日</li><li>1000： 1000张/日</li></ul>
+        :rtype: str
+        """
+        return self._ImageCapacity
+
+    @ImageCapacity.setter
+    def ImageCapacity(self, ImageCapacity):
+        self._ImageCapacity = ImageCapacity
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._MediaType = params.get("MediaType")
+        self._RetentionDays = params.get("RetentionDays")
+        self._RecordingMode = params.get("RecordingMode")
+        self._Bitrate = params.get("Bitrate")
+        self._StartTime = params.get("StartTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        self._ReportEnabled = params.get("ReportEnabled")
+        self._OrderId = params.get("OrderId")
+        self._BigDealId = params.get("BigDealId")
+        self._ValidityPeriod = params.get("ValidityPeriod")
+        self._ImageCapacity = params.get("ImageCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OperateTWeSeeDirectUploadObjectRequest(AbstractModel):
