@@ -7735,22 +7735,26 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID，例如：cql-6v1jkxrn
+        :param _JobId: <p>作业ID，例如：cql-6v1jkxrn</p>
         :type JobId: str
-        :param _StartTime: 起始时间，unix时间戳，毫秒级，例如：1611754219108
+        :param _StartTime: <p>起始时间，unix时间戳，毫秒级，例如：1611754219108</p>
         :type StartTime: int
-        :param _EndTime: 结束时间，unix时间戳，毫秒级，例如：1611754219108
+        :param _EndTime: <p>结束时间，unix时间戳，毫秒级，例如：1611754219108</p>
         :type EndTime: int
-        :param _RunningOrderId: 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+        :param _RunningOrderId: <p>作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志</p>
         :type RunningOrderId: int
-        :param _Keyword: 日志搜索的关键词，默认为空
+        :param _Keyword: <p>日志搜索的关键词，默认为空</p>
         :type Keyword: str
-        :param _Cursor: 日志搜索的游标，可透传上次返回的值，默认为空
+        :param _Cursor: <p>日志搜索的游标，可透传上次返回的值，默认为空</p>
         :type Cursor: str
-        :param _OrderType: 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+        :param _OrderType: <p>时间戳排序规则，asc - 升序，desc - 降序。默认为升序</p>
         :type OrderType: str
-        :param _Limit: 搜索的日志条数上限值，最大为100
+        :param _Limit: <p>搜索的日志条数上限值，最大为100</p>
         :type Limit: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _Filters: <p>过滤</p>
+        :type Filters: list of Filter
         """
         self._JobId = None
         self._StartTime = None
@@ -7760,10 +7764,12 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
         self._Cursor = None
         self._OrderType = None
         self._Limit = None
+        self._Offset = None
+        self._Filters = None
 
     @property
     def JobId(self):
-        r"""作业ID，例如：cql-6v1jkxrn
+        r"""<p>作业ID，例如：cql-6v1jkxrn</p>
         :rtype: str
         """
         return self._JobId
@@ -7774,7 +7780,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间，unix时间戳，毫秒级，例如：1611754219108
+        r"""<p>起始时间，unix时间戳，毫秒级，例如：1611754219108</p>
         :rtype: int
         """
         return self._StartTime
@@ -7785,7 +7791,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，unix时间戳，毫秒级，例如：1611754219108
+        r"""<p>结束时间，unix时间戳，毫秒级，例如：1611754219108</p>
         :rtype: int
         """
         return self._EndTime
@@ -7796,7 +7802,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def RunningOrderId(self):
-        r"""作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+        r"""<p>作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志</p>
         :rtype: int
         """
         return self._RunningOrderId
@@ -7807,7 +7813,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""日志搜索的关键词，默认为空
+        r"""<p>日志搜索的关键词，默认为空</p>
         :rtype: str
         """
         return self._Keyword
@@ -7818,7 +7824,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        r"""日志搜索的游标，可透传上次返回的值，默认为空
+        r"""<p>日志搜索的游标，可透传上次返回的值，默认为空</p>
         :rtype: str
         """
         return self._Cursor
@@ -7829,7 +7835,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+        r"""<p>时间戳排序规则，asc - 升序，desc - 降序。默认为升序</p>
         :rtype: str
         """
         return self._OrderType
@@ -7840,7 +7846,7 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""搜索的日志条数上限值，最大为100
+        r"""<p>搜索的日志条数上限值，最大为100</p>
         :rtype: int
         """
         return self._Limit
@@ -7848,6 +7854,28 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
@@ -7859,6 +7887,13 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
         self._Cursor = params.get("Cursor")
         self._OrderType = params.get("OrderType")
         self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7876,22 +7911,24 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cursor: 日志搜索的游标，需要搜索更多时透传这个值
+        :param _Cursor: <p>日志搜索的游标，需要搜索更多时透传这个值</p>
         :type Cursor: str
-        :param _ListOver: 是否返回了所有的日志记录
+        :param _ListOver: <p>是否返回了所有的日志记录</p>
         :type ListOver: bool
-        :param _JobRequestId: 作业启动的requestId
+        :param _JobRequestId: <p>作业启动的requestId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobRequestId: str
-        :param _JobInstanceList: 该时间段内符合关键字的所有的作业实例列表
+        :param _JobInstanceList: <p>该时间段内符合关键字的所有的作业实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobInstanceList: list of JobInstanceForSubmissionLog
-        :param _LogList: 废弃，请使用LogContentList
+        :param _LogList: <p>废弃，请使用LogContentList</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogList: list of str
-        :param _LogContentList: 日志列表
+        :param _LogContentList: <p>日志列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogContentList: list of LogContent
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7901,11 +7938,12 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
         self._JobInstanceList = None
         self._LogList = None
         self._LogContentList = None
+        self._Offset = None
         self._RequestId = None
 
     @property
     def Cursor(self):
-        r"""日志搜索的游标，需要搜索更多时透传这个值
+        r"""<p>日志搜索的游标，需要搜索更多时透传这个值</p>
         :rtype: str
         """
         return self._Cursor
@@ -7916,7 +7954,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        r"""是否返回了所有的日志记录
+        r"""<p>是否返回了所有的日志记录</p>
         :rtype: bool
         """
         return self._ListOver
@@ -7927,7 +7965,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def JobRequestId(self):
-        r"""作业启动的requestId
+        r"""<p>作业启动的requestId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7939,7 +7977,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def JobInstanceList(self):
-        r"""该时间段内符合关键字的所有的作业实例列表
+        r"""<p>该时间段内符合关键字的所有的作业实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of JobInstanceForSubmissionLog
         """
@@ -7951,7 +7989,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def LogList(self):
-        r"""废弃，请使用LogContentList
+        r"""<p>废弃，请使用LogContentList</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7963,7 +8001,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def LogContentList(self):
-        r"""日志列表
+        r"""<p>日志列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogContent
         """
@@ -7972,6 +8010,17 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
     @LogContentList.setter
     def LogContentList(self, LogContentList):
         self._LogContentList = LogContentList
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def RequestId(self):
@@ -8002,6 +8051,7 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
                 obj = LogContent()
                 obj._deserialize(item)
                 self._LogContentList.append(obj)
+        self._Offset = params.get("Offset")
         self._RequestId = params.get("RequestId")
 
 

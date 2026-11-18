@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
+# 请求未授权。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -41,11 +47,23 @@ INVALIDPARAMETER_JSONPARSEERROR = 'InvalidParameter.JsonParseError'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# MCP Token 数量超过配额限制。
+LIMITEXCEEDED_MCPTOKEN = 'LimitExceeded.MCPToken'
+
 # 【多人互动】对应的角色人数超过限制。
 LIMITEXCEEDED_ROLE = 'LimitExceeded.Role'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
+
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 没有空闲并发。
 RESOURCENOTFOUND_NOIDLE = 'ResourceNotFound.NoIdle'
@@ -58,6 +76,9 @@ RESOURCEUNAVAILABLE_ACCESSFAILED = 'ResourceUnavailable.AccessFailed'
 
 # 初始化中。
 RESOURCEUNAVAILABLE_INITIALIZATION = 'ResourceUnavailable.Initialization'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # 销毁会话中。
 UNSUPPORTEDOPERATION_STOPPING = 'UnsupportedOperation.Stopping'

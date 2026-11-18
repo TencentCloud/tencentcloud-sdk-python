@@ -124,6 +124,162 @@ class ApplyPathLifecyclePolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AutoDeletePolicy(AbstractModel):
+    r"""自动删除策略配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        :param _FileSystemId: <p>文件系统Id</p>
+        :type FileSystemId: str
+        :param _PolicyName: <p>自动清理策略名称</p>
+        :type PolicyName: str
+        :param _Paths: <p>待清理的路径</p>
+        :type Paths: list of str
+        :param _Status: <p>自动清理策略状态</p><p>枚举值：</p><ul><li>enabling： 启用中</li><li>enabled： 已启用</li><li>disabling： 禁用中</li><li>disabed： 已禁用</li><li>deleting： 删除中</li><li>failed： 失败</li><li>creating： 创建中</li><li>updating： 修改中</li></ul>
+        :type Status: str
+        :param _CreateTime: <p>清理策略创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>策略更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type UpdateTime: str
+        :param _Region: <p>策略所属地域</p>
+        :type Region: str
+        :param _ErrMsg: <p>错误信息</p>
+        :type ErrMsg: str
+        """
+        self._PolicyId = None
+        self._FileSystemId = None
+        self._PolicyName = None
+        self._Paths = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Region = None
+        self._ErrMsg = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统Id</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def PolicyName(self):
+        r"""<p>自动清理策略名称</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Paths(self):
+        r"""<p>待清理的路径</p>
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Status(self):
+        r"""<p>自动清理策略状态</p><p>枚举值：</p><ul><li>enabling： 启用中</li><li>enabled： 已启用</li><li>disabling： 禁用中</li><li>disabed： 已禁用</li><li>deleting： 删除中</li><li>failed： 失败</li><li>creating： 创建中</li><li>updating： 修改中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>清理策略创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>策略更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Region(self):
+        r"""<p>策略所属地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._FileSystemId = params.get("FileSystemId")
+        self._PolicyName = params.get("PolicyName")
+        self._Paths = params.get("Paths")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Region = params.get("Region")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScaleUpRule(AbstractModel):
     r"""自动扩容规则
 
@@ -1158,6 +1314,115 @@ class CreateAccessCertResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAutoDeletePolicyRequest(AbstractModel):
+    r"""CreateAutoDeletePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统 ID</p>
+        :type FileSystemId: str
+        :param _PolicyName: <p>自动清理策略名称</p>
+        :type PolicyName: str
+        :param _Paths: <p>自动清理策略路径列表</p>
+        :type Paths: list of str
+        """
+        self._FileSystemId = None
+        self._PolicyName = None
+        self._Paths = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统 ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def PolicyName(self):
+        r"""<p>自动清理策略名称</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Paths(self):
+        r"""<p>自动清理策略路径列表</p>
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._PolicyName = params.get("PolicyName")
+        self._Paths = params.get("Paths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoDeletePolicyResponse(AbstractModel):
+    r"""CreateAutoDeletePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>自动清理策略ID</p>
+        :type PolicyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>自动清理策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4028,6 +4293,85 @@ class DataRetrievalTaskInfo(AbstractModel):
         
 
 
+class DeleteAutoDeletePolicyRequest(AbstractModel):
+    r"""DeleteAutoDeletePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统 ID</p>
+        :type FileSystemId: str
+        :param _PolicyId: <p>自动清理策略ID</p>
+        :type PolicyId: str
+        """
+        self._FileSystemId = None
+        self._PolicyId = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统 ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def PolicyId(self):
+        r"""<p>自动清理策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoDeletePolicyResponse(AbstractModel):
+    r"""DeleteAutoDeletePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAutoSnapshotPolicyRequest(AbstractModel):
     r"""DeleteAutoSnapshotPolicy请求参数结构体
 
@@ -4847,6 +5191,135 @@ class DeleteUserQuotaResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAutoDeletePoliciesRequest(AbstractModel):
+    r"""DescribeAutoDeletePolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统 ID</p>
+        :type FileSystemId: str
+        :param _Offset: <p>分页偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>分页大小</p>
+        :type Limit: int
+        """
+        self._FileSystemId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统 ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoDeletePoliciesResponse(AbstractModel):
+    r"""DescribeAutoDeletePolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Policies: <p>自动清理策略列表</p>
+        :type Policies: list of AutoDeletePolicy
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Policies = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Policies(self):
+        r"""<p>自动清理策略列表</p>
+        :rtype: list of AutoDeletePolicy
+        """
+        return self._Policies
+
+    @Policies.setter
+    def Policies(self, Policies):
+        self._Policies = Policies
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Policies") is not None:
+            self._Policies = []
+            for item in params.get("Policies"):
+                obj = AutoDeletePolicy()
+                obj._deserialize(item)
+                self._Policies.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9546,6 +10019,130 @@ class MigrationTaskInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAutoDeletePolicyRequest(AbstractModel):
+    r"""ModifyAutoDeletePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统 ID</p>
+        :type FileSystemId: str
+        :param _PolicyId: <p>自动清理策略 ID</p>
+        :type PolicyId: str
+        :param _Paths: <p>自动清理路径列表</p>
+        :type Paths: list of str
+        :param _PolicyName: <p>自动清理策略名称</p>
+        :type PolicyName: str
+        :param _Status: <p>策略状态</p><p>枚举值：</p><ul><li>enabled： 启用</li><li>disabled： 禁用</li></ul>
+        :type Status: str
+        """
+        self._FileSystemId = None
+        self._PolicyId = None
+        self._Paths = None
+        self._PolicyName = None
+        self._Status = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统 ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def PolicyId(self):
+        r"""<p>自动清理策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Paths(self):
+        r"""<p>自动清理路径列表</p>
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def PolicyName(self):
+        r"""<p>自动清理策略名称</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Status(self):
+        r"""<p>策略状态</p><p>枚举值：</p><ul><li>enabled： 启用</li><li>disabled： 禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._PolicyId = params.get("PolicyId")
+        self._Paths = params.get("Paths")
+        self._PolicyName = params.get("PolicyName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoDeletePolicyResponse(AbstractModel):
+    r"""ModifyAutoDeletePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDataFlowRequest(AbstractModel):

@@ -13704,7 +13704,7 @@ class DescribeHealthScoreRequest(AbstractModel):
         :type InstanceId: str
         :param _Time: <p>获取健康得分的时间，时间格式如：2019-09-10 12:13:14。</p>
         :type Time: str
-        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
+        :param _Product: <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;tdstore&quot; - 云数据库 TDSQL TDStore 版，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，&quot;postgres&quot; - 云数据库 PostgreSQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
         :type Product: str
         """
         self._InstanceId = None
@@ -13735,7 +13735,7 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
+        r"""<p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;tdstore&quot; - 云数据库 TDSQL TDStore 版，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，&quot;postgres&quot; - 云数据库 PostgreSQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -14242,6 +14242,57 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
         self._Level = params.get("Level")
         self._Optimized = params.get("Optimized")
         self._OptimizedCount = params.get("OptimizedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInterfaceEncryptKeyV2Request(AbstractModel):
+    r"""DescribeInterfaceEncryptKeyV2请求参数结构体
+
+    """
+
+
+class DescribeInterfaceEncryptKeyV2Response(AbstractModel):
+    r"""DescribeInterfaceEncryptKeyV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicKey: <p>RSA 公钥，Base64 编码格式，用于前端加密敏感数据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PublicKey = None
+        self._RequestId = None
+
+    @property
+    def PublicKey(self):
+        r"""<p>RSA 公钥，Base64 编码格式，用于前端加密敏感数据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PublicKey = params.get("PublicKey")
         self._RequestId = params.get("RequestId")
 
 

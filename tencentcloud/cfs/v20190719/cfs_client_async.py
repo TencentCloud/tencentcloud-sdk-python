@@ -79,6 +79,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAutoDeletePolicy(
+            self,
+            request: models.CreateAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateAutoDeletePolicyResponse:
+        """
+        为指定 CFS 文件系统创建一条数据自动删除策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAutoDeletePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAutoSnapshotPolicy(
             self,
             request: models.CreateAutoSnapshotPolicyRequest,
@@ -277,6 +295,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAutoDeletePolicy(
+            self,
+            request: models.DeleteAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAutoDeletePolicyResponse:
+        """
+        删除指定自动删除策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAutoDeletePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAutoSnapshotPolicy(
             self,
             request: models.DeleteAutoSnapshotPolicyRequest,
@@ -454,6 +490,24 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "DeleteUserQuota"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUserQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAutoDeletePolicies(
+            self,
+            request: models.DescribeAutoDeletePoliciesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoDeletePoliciesResponse:
+        """
+        查询数据自动删除策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoDeletePolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoDeletePoliciesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -817,6 +871,24 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "DoDirectoryOperation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DoDirectoryOperationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoDeletePolicy(
+            self,
+            request: models.ModifyAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoDeletePolicyResponse:
+        """
+        修改自动删除策略名称或清理路径
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoDeletePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

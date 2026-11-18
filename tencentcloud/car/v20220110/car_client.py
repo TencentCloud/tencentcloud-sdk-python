@@ -49,6 +49,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMCPToken(self, request):
+        r"""创建 MCP Token（签发令牌）
+
+        :param request: Request instance for CreateMCPToken.
+        :type request: :class:`tencentcloud.car.v20220110.models.CreateMCPTokenRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.CreateMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMCPTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSession(self, request):
         r"""本接口用于创建会话。接口超时时间：5秒。
 
@@ -95,6 +118,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMCPTokens(self, request):
+        r"""查询 MCP Token 列表
+
+        :param request: Request instance for DescribeMCPTokens.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeMCPTokensRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeMCPTokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMCPTokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMCPTokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroySession(self, request):
         r"""销毁会话。如果该会话开启了云端推流，那么销毁会话时会结束云端推流。
 
@@ -109,6 +155,29 @@ class CarClient(AbstractClient):
             body = self.call("DestroySession", params, headers=headers)
             response = json.loads(body)
             model = models.DestroySessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewMCPToken(self, request):
+        r"""续期 MCP Token（续期令牌）
+
+        :param request: Request instance for RenewMCPToken.
+        :type request: :class:`tencentcloud.car.v20220110.models.RenewMCPTokenRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.RenewMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewMCPTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

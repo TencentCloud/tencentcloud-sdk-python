@@ -3670,6 +3670,12 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
         :type PolicyId: str
         :param _NotifyId: <p>详情页展示所需id</p>
         :type NotifyId: str
+        :param _ChannelNames: <p>通知渠道多选。按渠道过滤通知历史，多个取值之间为或关系。</p>
+        :type ChannelNames: list of str
+        :param _PolicyIds: <p>告警策略多选。按策略 ID 精确过滤通知历史，多个 ID 之间为或关系。</p>
+        :type PolicyIds: list of str
+        :param _NoticeIds: <p>字符串数组。每项为告警策略 ID，形如 policy- 开头。</p>
+        :type NoticeIds: list of str
         """
         self._MonitorType = None
         self._QueryBaseTime = None
@@ -3679,6 +3685,9 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
         self._ModelName = None
         self._PolicyId = None
         self._NotifyId = None
+        self._ChannelNames = None
+        self._PolicyIds = None
+        self._NoticeIds = None
 
     @property
     def MonitorType(self):
@@ -3768,6 +3777,39 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
     def NotifyId(self, NotifyId):
         self._NotifyId = NotifyId
 
+    @property
+    def ChannelNames(self):
+        r"""<p>通知渠道多选。按渠道过滤通知历史，多个取值之间为或关系。</p>
+        :rtype: list of str
+        """
+        return self._ChannelNames
+
+    @ChannelNames.setter
+    def ChannelNames(self, ChannelNames):
+        self._ChannelNames = ChannelNames
+
+    @property
+    def PolicyIds(self):
+        r"""<p>告警策略多选。按策略 ID 精确过滤通知历史，多个 ID 之间为或关系。</p>
+        :rtype: list of str
+        """
+        return self._PolicyIds
+
+    @PolicyIds.setter
+    def PolicyIds(self, PolicyIds):
+        self._PolicyIds = PolicyIds
+
+    @property
+    def NoticeIds(self):
+        r"""<p>字符串数组。每项为告警策略 ID，形如 policy- 开头。</p>
+        :rtype: list of str
+        """
+        return self._NoticeIds
+
+    @NoticeIds.setter
+    def NoticeIds(self, NoticeIds):
+        self._NoticeIds = NoticeIds
+
 
     def _deserialize(self, params):
         self._MonitorType = params.get("MonitorType")
@@ -3780,6 +3822,9 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
         self._ModelName = params.get("ModelName")
         self._PolicyId = params.get("PolicyId")
         self._NotifyId = params.get("NotifyId")
+        self._ChannelNames = params.get("ChannelNames")
+        self._PolicyIds = params.get("PolicyIds")
+        self._NoticeIds = params.get("NoticeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

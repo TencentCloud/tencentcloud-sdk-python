@@ -165,7 +165,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniResult(self, request):
-        r"""核查验证码票据结果(小程序插件)
+        r"""核查验证码票据结果(小程序插件），包含微信小程序和支付宝小程序。
 
         :param request: Request instance for DescribeCaptchaMiniResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniResultRequest`

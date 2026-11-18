@@ -139,7 +139,7 @@ class CaptchaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCaptchaMiniResultResponse:
         """
-        核查验证码票据结果(小程序插件)
+        核查验证码票据结果(小程序插件），包含微信小程序和支付宝小程序。
         """
         
         kwargs = {}

@@ -1268,6 +1268,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInterfaceEncryptKeyV2(self, request):
+        r"""查询接口加密 RSA 公钥，前端用于加密敏感数据。
+
+        :param request: Request instance for DescribeInterfaceEncryptKeyV2.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeInterfaceEncryptKeyV2Request`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeInterfaceEncryptKeyV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInterfaceEncryptKeyV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInterfaceEncryptKeyV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMailProfile(self, request):
         r"""获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。
 

@@ -398,6 +398,104 @@ class AIModelStatus(AbstractModel):
         
 
 
+class AccessSourceSetting(AbstractModel):
+    r"""域名访问来源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceType: <p>来源类型</p><p>枚举值：</p><ul><li>PUBLIC： 公网请求</li><li>VPC： VPC 请求</li><li>WOA： 办公网请求</li></ul>
+        :type SourceType: str
+        :param _Action: <p>来源请求状态</p><p>枚举值：</p><ul><li>OPEN： 放通</li><li>CLOSE： 拦截</li></ul>
+        :type Action: str
+        :param _WOAAuth: <p>是否开启 WOA 鉴权</p><p>枚举值：</p><ul><li>FORCE_AUTH： 强制鉴权</li><li>NO_AUTH： 不鉴权</li></ul><p>默认值：NO_AUTH</p><p>仅 SourceType = WOA 且 Action= OPEN 时生效</p>
+        :type WOAAuth: str
+        :param _AuthToken: <p>WOA 鉴权需要的 Token</p><p>仅 Source Type=WOA 且 WOAAuth = FORCE_AUTH 时必填</p>
+        :type AuthToken: str
+        :param _VPCWhiteList: <p>VPC 白名单信息</p><p>仅 SourceType = VPC 时有效; 不传表示不修改</p>
+        :type VPCWhiteList: :class:`tencentcloud.tcb.v20180608.models.VPCWhiteListConfig`
+        """
+        self._SourceType = None
+        self._Action = None
+        self._WOAAuth = None
+        self._AuthToken = None
+        self._VPCWhiteList = None
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型</p><p>枚举值：</p><ul><li>PUBLIC： 公网请求</li><li>VPC： VPC 请求</li><li>WOA： 办公网请求</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Action(self):
+        r"""<p>来源请求状态</p><p>枚举值：</p><ul><li>OPEN： 放通</li><li>CLOSE： 拦截</li></ul>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def WOAAuth(self):
+        r"""<p>是否开启 WOA 鉴权</p><p>枚举值：</p><ul><li>FORCE_AUTH： 强制鉴权</li><li>NO_AUTH： 不鉴权</li></ul><p>默认值：NO_AUTH</p><p>仅 SourceType = WOA 且 Action= OPEN 时生效</p>
+        :rtype: str
+        """
+        return self._WOAAuth
+
+    @WOAAuth.setter
+    def WOAAuth(self, WOAAuth):
+        self._WOAAuth = WOAAuth
+
+    @property
+    def AuthToken(self):
+        r"""<p>WOA 鉴权需要的 Token</p><p>仅 Source Type=WOA 且 WOAAuth = FORCE_AUTH 时必填</p>
+        :rtype: str
+        """
+        return self._AuthToken
+
+    @AuthToken.setter
+    def AuthToken(self, AuthToken):
+        self._AuthToken = AuthToken
+
+    @property
+    def VPCWhiteList(self):
+        r"""<p>VPC 白名单信息</p><p>仅 SourceType = VPC 时有效; 不传表示不修改</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VPCWhiteListConfig`
+        """
+        return self._VPCWhiteList
+
+    @VPCWhiteList.setter
+    def VPCWhiteList(self, VPCWhiteList):
+        self._VPCWhiteList = VPCWhiteList
+
+
+    def _deserialize(self, params):
+        self._SourceType = params.get("SourceType")
+        self._Action = params.get("Action")
+        self._WOAAuth = params.get("WOAAuth")
+        self._AuthToken = params.get("AuthToken")
+        if params.get("VPCWhiteList") is not None:
+            self._VPCWhiteList = VPCWhiteListConfig()
+            self._VPCWhiteList._deserialize(params.get("VPCWhiteList"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddProviderRequest(AbstractModel):
     r"""AddProvider请求参数结构体
 
@@ -12292,6 +12390,36 @@ class DescribeEnvAccessControlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeEnvAccessControlResponse(AbstractModel):
     r"""DescribeEnvAccessControl返回参数结构体
@@ -12300,10 +12428,24 @@ class DescribeEnvAccessControlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Current: <p>修改之后，当前的生效的配置</p>
+        :type Current: list of AccessSourceSetting
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Current = None
         self._RequestId = None
+
+    @property
+    def Current(self):
+        r"""<p>修改之后，当前的生效的配置</p>
+        :rtype: list of AccessSourceSetting
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
 
     @property
     def RequestId(self):
@@ -12318,6 +12460,12 @@ class DescribeEnvAccessControlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Current") is not None:
+            self._Current = []
+            for item in params.get("Current"):
+                obj = AccessSourceSetting()
+                obj._deserialize(item)
+                self._Current.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25003,6 +25151,56 @@ class ModifyEnvAccessControlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        :param _Sources: <p>本次要设置的来源集合</p><p>入参限制：SourceType = PUBLIC 时，标识操作公网开关<br>SourceType = VPC 时，通过配置 VPCWhiteList，开启/关闭 VPC 白名单<br>SourceType = WOA 时，通过配置 WOAAuth，开启/关闭鉴权校验，开启鉴权时，AuthToken 字段为填</p>
+        :type Sources: list of AccessSourceSetting
+        """
+        self._EnvId = None
+        self._Sources = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Sources(self):
+        r"""<p>本次要设置的来源集合</p><p>入参限制：SourceType = PUBLIC 时，标识操作公网开关<br>SourceType = VPC 时，通过配置 VPCWhiteList，开启/关闭 VPC 白名单<br>SourceType = WOA 时，通过配置 WOAAuth，开启/关闭鉴权校验，开启鉴权时，AuthToken 字段为填</p>
+        :rtype: list of AccessSourceSetting
+        """
+        return self._Sources
+
+    @Sources.setter
+    def Sources(self, Sources):
+        self._Sources = Sources
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Sources") is not None:
+            self._Sources = []
+            for item in params.get("Sources"):
+                obj = AccessSourceSetting()
+                obj._deserialize(item)
+                self._Sources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyEnvAccessControlResponse(AbstractModel):
     r"""ModifyEnvAccessControl返回参数结构体
@@ -25011,10 +25209,38 @@ class ModifyEnvAccessControlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AffectedRows: <p>本次请求影响的权限数量</p>
+        :type AffectedRows: int
+        :param _Current: <p>修改之后，当前的生效的配置</p><p>SourceType = PUBLIC 表示公网链路访问配置<br>SourceType = VPC 表示 VPC 链路访问配置<br>SourceType = WOA 表示办公网链路访问配置</p>
+        :type Current: list of AccessSourceSetting
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AffectedRows = None
+        self._Current = None
         self._RequestId = None
+
+    @property
+    def AffectedRows(self):
+        r"""<p>本次请求影响的权限数量</p>
+        :rtype: int
+        """
+        return self._AffectedRows
+
+    @AffectedRows.setter
+    def AffectedRows(self, AffectedRows):
+        self._AffectedRows = AffectedRows
+
+    @property
+    def Current(self):
+        r"""<p>修改之后，当前的生效的配置</p><p>SourceType = PUBLIC 表示公网链路访问配置<br>SourceType = VPC 表示 VPC 链路访问配置<br>SourceType = WOA 表示办公网链路访问配置</p>
+        :rtype: list of AccessSourceSetting
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
 
     @property
     def RequestId(self):
@@ -25029,6 +25255,13 @@ class ModifyEnvAccessControlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AffectedRows = params.get("AffectedRows")
+        if params.get("Current") is not None:
+            self._Current = []
+            for item in params.get("Current"):
+                obj = AccessSourceSetting()
+                obj._deserialize(item)
+                self._Current.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -33685,6 +33918,113 @@ class User(AbstractModel):
         self._Email = params.get("Email")
         self._AvatarUrl = params.get("AvatarUrl")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPCInfo(AbstractModel):
+    r"""VPC信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqVpcId: <p>VPC 唯一 ID</p><p>参数格式：vpc-xxxxx</p>
+        :type UniqVpcId: str
+        :param _Region: <p>VPC 所在地域</p><p>参数格式：ap-xxxx</p>
+        :type Region: str
+        """
+        self._UniqVpcId = None
+        self._Region = None
+
+    @property
+    def UniqVpcId(self):
+        r"""<p>VPC 唯一 ID</p><p>参数格式：vpc-xxxxx</p>
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Region(self):
+        r"""<p>VPC 所在地域</p><p>参数格式：ap-xxxx</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPCWhiteListConfig(AbstractModel):
+    r"""VPC 白名单列表配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>VPC 白名单配置状态</p><p>枚举值：</p><ul><li>OPEN： 开启白名单，VPCs 必填，覆盖写入</li><li>CLOSE： 关闭白名单，VPCs 填入时，覆盖写入</li></ul>
+        :type Action: str
+        :param _VPCs: <p>VPC 信息</p>
+        :type VPCs: list of VPCInfo
+        """
+        self._Action = None
+        self._VPCs = None
+
+    @property
+    def Action(self):
+        r"""<p>VPC 白名单配置状态</p><p>枚举值：</p><ul><li>OPEN： 开启白名单，VPCs 必填，覆盖写入</li><li>CLOSE： 关闭白名单，VPCs 填入时，覆盖写入</li></ul>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def VPCs(self):
+        r"""<p>VPC 信息</p>
+        :rtype: list of VPCInfo
+        """
+        return self._VPCs
+
+    @VPCs.setter
+    def VPCs(self, VPCs):
+        self._VPCs = VPCs
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        if params.get("VPCs") is not None:
+            self._VPCs = []
+            for item in params.get("VPCs"):
+                obj = VPCInfo()
+                obj._deserialize(item)
+                self._VPCs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

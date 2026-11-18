@@ -142,6 +142,40 @@ class ApplyConcurrentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMCPTokenRequest(AbstractModel):
+    r"""CreateMCPToken请求参数结构体
+
+    """
+
+
+class CreateMCPTokenResponse(AbstractModel):
+    r"""CreateMCPToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSessionRequest(AbstractModel):
     r"""CreateSession请求参数结构体
 
@@ -444,6 +478,40 @@ class DescribeConcurrentCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMCPTokensRequest(AbstractModel):
+    r"""DescribeMCPTokens请求参数结构体
+
+    """
+
+
+class DescribeMCPTokensResponse(AbstractModel):
+    r"""DescribeMCPTokens返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DestroySessionRequest(AbstractModel):
     r"""DestroySession请求参数结构体
 
@@ -482,6 +550,40 @@ class DestroySessionRequest(AbstractModel):
 
 class DestroySessionResponse(AbstractModel):
     r"""DestroySession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RenewMCPTokenRequest(AbstractModel):
+    r"""RenewMCPToken请求参数结构体
+
+    """
+
+
+class RenewMCPTokenResponse(AbstractModel):
+    r"""RenewMCPToken返回参数结构体
 
     """
 

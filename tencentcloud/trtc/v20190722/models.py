@@ -11181,10 +11181,16 @@ class Input(AbstractModel):
         :type Format: str
         :param _AgoraParam: <p>声网拉流进房参数</p>
         :type AgoraParam: :class:`tencentcloud.trtc.v20190722.models.AgoraParam`
+        :param _NeteaseParam: <p>网易云信(NERTC)频道拉流参数</p>
+        :type NeteaseParam: :class:`tencentcloud.trtc.v20190722.models.NeteaseParam`
+        :param _VolcParam: <p>火山(Volc)房间拉流参数</p>
+        :type VolcParam: :class:`tencentcloud.trtc.v20190722.models.VolcParam`
         """
         self._Url = None
         self._Format = None
         self._AgoraParam = None
+        self._NeteaseParam = None
+        self._VolcParam = None
 
     @property
     def Url(self):
@@ -11219,6 +11225,28 @@ class Input(AbstractModel):
     def AgoraParam(self, AgoraParam):
         self._AgoraParam = AgoraParam
 
+    @property
+    def NeteaseParam(self):
+        r"""<p>网易云信(NERTC)频道拉流参数</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.NeteaseParam`
+        """
+        return self._NeteaseParam
+
+    @NeteaseParam.setter
+    def NeteaseParam(self, NeteaseParam):
+        self._NeteaseParam = NeteaseParam
+
+    @property
+    def VolcParam(self):
+        r"""<p>火山(Volc)房间拉流参数</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VolcParam`
+        """
+        return self._VolcParam
+
+    @VolcParam.setter
+    def VolcParam(self, VolcParam):
+        self._VolcParam = VolcParam
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -11226,6 +11254,12 @@ class Input(AbstractModel):
         if params.get("AgoraParam") is not None:
             self._AgoraParam = AgoraParam()
             self._AgoraParam._deserialize(params.get("AgoraParam"))
+        if params.get("NeteaseParam") is not None:
+            self._NeteaseParam = NeteaseParam()
+            self._NeteaseParam._deserialize(params.get("NeteaseParam"))
+        if params.get("VolcParam") is not None:
+            self._VolcParam = VolcParam()
+            self._VolcParam._deserialize(params.get("VolcParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15535,6 +15569,87 @@ class ModifyVoiceConversationResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class NeteaseParam(AbstractModel):
+    r"""网易云信(NERTC)频道拉流参数。传入后表示从网易云信频道内拉流审核，此时可不填 Url。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>网易云信应用 AppKey</p><p>登陆云信侧控制台或联系云信获取</p>
+        :type AppKey: str
+        :param _Channel: <p>频道名。</p><p>非空字符串,需要和生成token使用的Channel完全一致。</p>
+        :type Channel: str
+        :param _Token: <p>用于拉流端进房安全签名</p><p>生成方式详见文档：https://doc.yunxin.163.com/nertc/server-apis/TcxNDAxMTI?platform=server#%E8%8E%B7%E5%8F%96-token，每次请求审核需要重新生成新的token。</p>
+        :type Token: str
+        :param _Uid: <p>分配进房拉流的用户ID。</p><p>和生成Token时所用 Uid 完全一致。</p>
+        :type Uid: int
+        """
+        self._AppKey = None
+        self._Channel = None
+        self._Token = None
+        self._Uid = None
+
+    @property
+    def AppKey(self):
+        r"""<p>网易云信应用 AppKey</p><p>登陆云信侧控制台或联系云信获取</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def Channel(self):
+        r"""<p>频道名。</p><p>非空字符串,需要和生成token使用的Channel完全一致。</p>
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def Token(self):
+        r"""<p>用于拉流端进房安全签名</p><p>生成方式详见文档：https://doc.yunxin.163.com/nertc/server-apis/TcxNDAxMTI?platform=server#%E8%8E%B7%E5%8F%96-token，每次请求审核需要重新生成新的token。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Uid(self):
+        r"""<p>分配进房拉流的用户ID。</p><p>和生成Token时所用 Uid 完全一致。</p>
+        :rtype: int
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._Channel = params.get("Channel")
+        self._Token = params.get("Token")
+        self._Uid = params.get("Uid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
@@ -26333,6 +26448,117 @@ class VoicePrintInfo(AbstractModel):
         self._AudioFormat = params.get("AudioFormat")
         self._AudioName = params.get("AudioName")
         self._ReqTimestamp = params.get("ReqTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolcParam(AbstractModel):
+    r"""VolcParam 火山引擎(VolcEngineRTC / ByteRTC)房间拉流参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>火山引擎 AppID。</p>
+        :type AppId: str
+        :param _RoomId: <p>房间号。</p>
+        :type RoomId: str
+        :param _Token: <p>进房 Token。</p><p>需要开启鉴权，生成 Token时，注意RoomId 、UserId 需要对应上。详见：https://www.volcengine.com/docs/6348/70121</p>
+        :type Token: str
+        :param _UserId: <p>分配给拉流端的UserId。</p>
+        :type UserId: str
+        :param _TrustedUserIdList: <p>订阅用户名单。</p><p>当前名单列表为空时，默认为全订阅；当名单列表有用户id,则只会订阅列表中用户。</p>
+        :type TrustedUserIdList: str
+        :param _UntrustedUserIdList: <p>不订阅用户名单</p>
+        :type UntrustedUserIdList: str
+        """
+        self._AppId = None
+        self._RoomId = None
+        self._Token = None
+        self._UserId = None
+        self._TrustedUserIdList = None
+        self._UntrustedUserIdList = None
+
+    @property
+    def AppId(self):
+        r"""<p>火山引擎 AppID。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间号。</p>
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Token(self):
+        r"""<p>进房 Token。</p><p>需要开启鉴权，生成 Token时，注意RoomId 、UserId 需要对应上。详见：https://www.volcengine.com/docs/6348/70121</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def UserId(self):
+        r"""<p>分配给拉流端的UserId。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TrustedUserIdList(self):
+        r"""<p>订阅用户名单。</p><p>当前名单列表为空时，默认为全订阅；当名单列表有用户id,则只会订阅列表中用户。</p>
+        :rtype: str
+        """
+        return self._TrustedUserIdList
+
+    @TrustedUserIdList.setter
+    def TrustedUserIdList(self, TrustedUserIdList):
+        self._TrustedUserIdList = TrustedUserIdList
+
+    @property
+    def UntrustedUserIdList(self):
+        r"""<p>不订阅用户名单</p>
+        :rtype: str
+        """
+        return self._UntrustedUserIdList
+
+    @UntrustedUserIdList.setter
+    def UntrustedUserIdList(self, UntrustedUserIdList):
+        self._UntrustedUserIdList = UntrustedUserIdList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RoomId = params.get("RoomId")
+        self._Token = params.get("Token")
+        self._UserId = params.get("UserId")
+        self._TrustedUserIdList = params.get("TrustedUserIdList")
+        self._UntrustedUserIdList = params.get("UntrustedUserIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -13493,6 +13493,8 @@ class AigcImageTaskInputFileInfo(AbstractModel):
         :type Text: str
         :param _ReferenceType: <p><strong>仅当 ModelName 为 OG 时有效</strong>。图片类型。</p><p>枚举值：</p><ul><li>mask： 图片蒙版。</li></ul>
         :type ReferenceType: str
+        :param _Id: <p>自定义 Id，一般用于在 Prompt 中引用参考图片。</p>
+        :type Id: str
         """
         self._Type = None
         self._FileId = None
@@ -13500,6 +13502,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
         self._Base64 = None
         self._Text = None
         self._ReferenceType = None
+        self._Id = None
 
     @property
     def Type(self):
@@ -13567,6 +13570,17 @@ class AigcImageTaskInputFileInfo(AbstractModel):
     def ReferenceType(self, ReferenceType):
         self._ReferenceType = ReferenceType
 
+    @property
+    def Id(self):
+        r"""<p>自定义 Id，一般用于在 Prompt 中引用参考图片。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -13575,6 +13589,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
         self._Base64 = params.get("Base64")
         self._Text = params.get("Text")
         self._ReferenceType = params.get("ReferenceType")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

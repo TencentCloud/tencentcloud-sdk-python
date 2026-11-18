@@ -14862,6 +14862,8 @@ class CynosdbClusterDetail(AbstractModel):
         :type StorageOverUse: str
         :param _StorageAutoExpand: <p>自动扩容开启状态</p><p>枚举值：</p><ul><li>yes： 已开启</li><li>no： 关闭</li></ul><p>默认值：no</p>
         :type StorageAutoExpand: str
+        :param _IsInInstantRollbackChain: <p>是否在秒级回档链路中</p>
+        :type IsInInstantRollbackChain: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -14924,6 +14926,7 @@ class CynosdbClusterDetail(AbstractModel):
         self._RealZone = None
         self._StorageOverUse = None
         self._StorageAutoExpand = None
+        self._IsInInstantRollbackChain = None
 
     @property
     def ClusterId(self):
@@ -15596,6 +15599,17 @@ class CynosdbClusterDetail(AbstractModel):
     def StorageAutoExpand(self, StorageAutoExpand):
         self._StorageAutoExpand = StorageAutoExpand
 
+    @property
+    def IsInInstantRollbackChain(self):
+        r"""<p>是否在秒级回档链路中</p>
+        :rtype: bool
+        """
+        return self._IsInInstantRollbackChain
+
+    @IsInInstantRollbackChain.setter
+    def IsInInstantRollbackChain(self, IsInInstantRollbackChain):
+        self._IsInInstantRollbackChain = IsInInstantRollbackChain
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -15691,6 +15705,7 @@ class CynosdbClusterDetail(AbstractModel):
         self._RealZone = params.get("RealZone")
         self._StorageOverUse = params.get("StorageOverUse")
         self._StorageAutoExpand = params.get("StorageAutoExpand")
+        self._IsInInstantRollbackChain = params.get("IsInInstantRollbackChain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

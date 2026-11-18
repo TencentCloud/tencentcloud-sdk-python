@@ -32340,32 +32340,17 @@ class OpenAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: CDB 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>CDB 实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _LogExpireDay: 审计日志保存时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _LogExpireDay: <p>审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90： 三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul>
         :type LogExpireDay: int
-        :param _HighLogExpireDay: 高频审计日志保存时长。默认值为7，此项取值需小于等于 LogExpireDay，支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _HighLogExpireDay: <p>高频审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90： 三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul><p>默认值：7</p><p>此项取值需小于等于 LogExpireDay。</p>
         :type HighLogExpireDay: int
-        :param _AuditRuleFilters: 审计规则（该参数已废弃，不再生效）。
+        :param _AuditRuleFilters: <p>审计规则（该参数已废弃，不再生效）。</p>
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: 规则模板 ID。
+        :param _RuleTemplateIds: <p>规则模板 ID。</p>
         :type RuleTemplateIds: list of str
-        :param _AuditAll: 审计类型。true - 全审计；默认 false - 规则审计。
+        :param _AuditAll: <p>审计类型。true - 全审计；默认 false - 规则审计。</p>
         :type AuditAll: bool
         """
         self._InstanceId = None
@@ -32377,7 +32362,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""CDB 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>CDB 实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -32388,14 +32373,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def LogExpireDay(self):
-        r"""审计日志保存时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90： 三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul>
         :rtype: int
         """
         return self._LogExpireDay
@@ -32406,15 +32384,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def HighLogExpireDay(self):
-        r"""高频审计日志保存时长。默认值为7，此项取值需小于等于 LogExpireDay，支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>高频审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90： 三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul><p>默认值：7</p><p>此项取值需小于等于 LogExpireDay。</p>
         :rtype: int
         """
         return self._HighLogExpireDay
@@ -32427,7 +32397,7 @@ class OpenAuditServiceRequest(AbstractModel):
     def AuditRuleFilters(self):
         warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
 
-        r"""审计规则（该参数已废弃，不再生效）。
+        r"""<p>审计规则（该参数已废弃，不再生效）。</p>
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
@@ -32440,7 +32410,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""规则模板 ID。
+        r"""<p>规则模板 ID。</p>
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -32451,7 +32421,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditAll(self):
-        r"""审计类型。true - 全审计；默认 false - 规则审计。
+        r"""<p>审计类型。true - 全审计；默认 false - 规则审计。</p>
         :rtype: bool
         """
         return self._AuditAll

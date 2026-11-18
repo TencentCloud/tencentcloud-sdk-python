@@ -65,6 +65,9 @@ FAILEDOPERATION_CREATEAUDITFAILERROR = 'FailedOperation.CreateAuditFailError'
 # 创建审计日志文件失败。
 FAILEDOPERATION_CREATEAUDITLOGFILEERROR = 'FailedOperation.CreateAuditLogFileError'
 
+# 创建计费失败，失败原因：{{1}}
+FAILEDOPERATION_CREATEBILLINGERROR = 'FailedOperation.CreateBillingError'
+
 # 申请只读实例独立VIP失败。
 FAILEDOPERATION_CREATEROVIPERROR = 'FailedOperation.CreateRoVipError'
 

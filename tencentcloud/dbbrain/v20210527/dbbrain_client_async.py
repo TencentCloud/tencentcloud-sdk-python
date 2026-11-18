@@ -997,6 +997,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInterfaceEncryptKeyV2(
+            self,
+            request: models.DescribeInterfaceEncryptKeyV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeInterfaceEncryptKeyV2Response:
+        """
+        查询接口加密 RSA 公钥，前端用于加密敏感数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInterfaceEncryptKeyV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInterfaceEncryptKeyV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMailProfile(
             self,
             request: models.DescribeMailProfileRequest,
