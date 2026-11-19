@@ -27268,57 +27268,23 @@ class ResourceConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: 角色，eg：PS、WORKER、DRIVER、EXECUTOR
+        :param _Role: <p>角色，eg：PS、WORKER、DRIVER、EXECUTOR</p>
         :type Role: str
-        :param _Cpu: cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
+        :param _Cpu: <p>cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核</p>
         :type Cpu: int
-        :param _Memory: 内存，使用资源组时需配置。单位为MB
+        :param _Memory: <p>内存，使用资源组时需配置。单位为MB</p>
         :type Memory: int
-        :param _GpuType: gpu卡类型，使用资源组时需配置
+        :param _GpuType: <p>gpu卡类型，使用资源组时需配置</p>
         :type GpuType: str
-        :param _Gpu: gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
+        :param _Gpu: <p>gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡</p>
         :type Gpu: int
-        :param _InstanceType: 算力规格ID
-计算规格 (for后付费)，可选值如下：
-TI.S.LARGE.POST: 4C8G 
-TI.S.2XLARGE16.POST:  8C16G 
-TI.S.2XLARGE32.POST:  8C32G 
-TI.S.4XLARGE32.POST:  16C32G
-TI.S.4XLARGE64.POST:  16C64G
-TI.S.6XLARGE48.POST:  24C48G
-TI.S.6XLARGE96.POST:  24C96G
-TI.S.8XLARGE64.POST:  32C64G
-TI.S.8XLARGE128.POST : 32C128G
-TI.GN10.2XLARGE40.POST: 8C40G V100*1 
-TI.GN10.5XLARGE80.POST:  18C80G V100*2 
-TI.GN10.10XLARGE160.POST :  32C160G V100*4
-TI.GN10.20XLARGE320.POST :  72C320G V100*8
-TI.GN7.8XLARGE128.POST: 32C128G T4*1 
-TI.GN7.10XLARGE160.POST: 40C160G T4*2 
-TI.GN7.20XLARGE320.POST: 80C32
+        :param _InstanceType: <p>算力规格ID<br>计算规格 (for后付费)，可选值如下：<br>TI.S.LARGE.POST: 4C8G<br>TI.S.2XLARGE16.POST:  8C16G<br>TI.S.2XLARGE32.POST:  8C32G<br>TI.S.4XLARGE32.POST:  16C32G<br>TI.S.4XLARGE64.POST:  16C64G<br>TI.S.6XLARGE48.POST:  24C48G<br>TI.S.6XLARGE96.POST:  24C96G<br>TI.S.8XLARGE64.POST:  32C64G<br>TI.S.8XLARGE128.POST : 32C128G<br>TI.GN10.2XLARGE40.POST: 8C40G V100<em>1<br>TI.GN10.5XLARGE80.POST:  18C80G V100</em>2<br>TI.GN10.10XLARGE160.POST :  32C160G V100<em>4<br>TI.GN10.20XLARGE320.POST :  72C320G V100</em>8<br>TI.GN7.8XLARGE128.POST: 32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST: 40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST: 80C32</p>
         :type InstanceType: str
-        :param _InstanceNum: 计算节点数
+        :param _InstanceNum: <p>计算节点数</p>
         :type InstanceNum: int
-        :param _InstanceTypeAlias: 算力规格名称
-计算规格 (for后付费)，可选值如下：
-4C8G 
-8C16G 
-8C32G 
-16C32G
-6C64G
-24C48G
-24C96G
-32C64G
-32C128G
-8C40G V100*1 
-8C80G V100*2 
-32C160G V100*4
-72C320G V100*8
-32C128G T4*1 
-40C160G T4*2 
-80C32
+        :param _InstanceTypeAlias: <p>算力规格名称<br>计算规格 (for后付费)，可选值如下：<br>4C8G<br>8C16G<br>8C32G<br>16C32G<br>6C64G<br>24C48G<br>24C96G<br>32C64G<br>32C128G<br>8C40G V100<em>1<br>8C80G V100</em>2<br>32C160G V100<em>4<br>72C320G V100</em>8<br>32C128G T4<em>1<br>40C160G T4</em>2<br>80C32</p>
         :type InstanceTypeAlias: str
-        :param _RDMAConfig: RDMA配置
+        :param _RDMAConfig: <p>RDMA配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RDMAConfig: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
         """
@@ -27334,7 +27300,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Role(self):
-        r"""角色，eg：PS、WORKER、DRIVER、EXECUTOR
+        r"""<p>角色，eg：PS、WORKER、DRIVER、EXECUTOR</p>
         :rtype: str
         """
         return self._Role
@@ -27345,7 +27311,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Cpu(self):
-        r"""cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
+        r"""<p>cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核</p>
         :rtype: int
         """
         return self._Cpu
@@ -27356,7 +27322,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Memory(self):
-        r"""内存，使用资源组时需配置。单位为MB
+        r"""<p>内存，使用资源组时需配置。单位为MB</p>
         :rtype: int
         """
         return self._Memory
@@ -27367,7 +27333,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def GpuType(self):
-        r"""gpu卡类型，使用资源组时需配置
+        r"""<p>gpu卡类型，使用资源组时需配置</p>
         :rtype: str
         """
         return self._GpuType
@@ -27378,7 +27344,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Gpu(self):
-        r"""gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
+        r"""<p>gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡</p>
         :rtype: int
         """
         return self._Gpu
@@ -27389,24 +27355,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceType(self):
-        r"""算力规格ID
-计算规格 (for后付费)，可选值如下：
-TI.S.LARGE.POST: 4C8G 
-TI.S.2XLARGE16.POST:  8C16G 
-TI.S.2XLARGE32.POST:  8C32G 
-TI.S.4XLARGE32.POST:  16C32G
-TI.S.4XLARGE64.POST:  16C64G
-TI.S.6XLARGE48.POST:  24C48G
-TI.S.6XLARGE96.POST:  24C96G
-TI.S.8XLARGE64.POST:  32C64G
-TI.S.8XLARGE128.POST : 32C128G
-TI.GN10.2XLARGE40.POST: 8C40G V100*1 
-TI.GN10.5XLARGE80.POST:  18C80G V100*2 
-TI.GN10.10XLARGE160.POST :  32C160G V100*4
-TI.GN10.20XLARGE320.POST :  72C320G V100*8
-TI.GN7.8XLARGE128.POST: 32C128G T4*1 
-TI.GN7.10XLARGE160.POST: 40C160G T4*2 
-TI.GN7.20XLARGE320.POST: 80C32
+        r"""<p>算力规格ID<br>计算规格 (for后付费)，可选值如下：<br>TI.S.LARGE.POST: 4C8G<br>TI.S.2XLARGE16.POST:  8C16G<br>TI.S.2XLARGE32.POST:  8C32G<br>TI.S.4XLARGE32.POST:  16C32G<br>TI.S.4XLARGE64.POST:  16C64G<br>TI.S.6XLARGE48.POST:  24C48G<br>TI.S.6XLARGE96.POST:  24C96G<br>TI.S.8XLARGE64.POST:  32C64G<br>TI.S.8XLARGE128.POST : 32C128G<br>TI.GN10.2XLARGE40.POST: 8C40G V100<em>1<br>TI.GN10.5XLARGE80.POST:  18C80G V100</em>2<br>TI.GN10.10XLARGE160.POST :  32C160G V100<em>4<br>TI.GN10.20XLARGE320.POST :  72C320G V100</em>8<br>TI.GN7.8XLARGE128.POST: 32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST: 40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST: 80C32</p>
         :rtype: str
         """
         return self._InstanceType
@@ -27417,7 +27366,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceNum(self):
-        r"""计算节点数
+        r"""<p>计算节点数</p>
         :rtype: int
         """
         return self._InstanceNum
@@ -27428,24 +27377,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceTypeAlias(self):
-        r"""算力规格名称
-计算规格 (for后付费)，可选值如下：
-4C8G 
-8C16G 
-8C32G 
-16C32G
-6C64G
-24C48G
-24C96G
-32C64G
-32C128G
-8C40G V100*1 
-8C80G V100*2 
-32C160G V100*4
-72C320G V100*8
-32C128G T4*1 
-40C160G T4*2 
-80C32
+        r"""<p>算力规格名称<br>计算规格 (for后付费)，可选值如下：<br>4C8G<br>8C16G<br>8C32G<br>16C32G<br>6C64G<br>24C48G<br>24C96G<br>32C64G<br>32C128G<br>8C40G V100<em>1<br>8C80G V100</em>2<br>32C160G V100<em>4<br>72C320G V100</em>8<br>32C128G T4<em>1<br>40C160G T4</em>2<br>80C32</p>
         :rtype: str
         """
         return self._InstanceTypeAlias
@@ -27456,7 +27388,7 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def RDMAConfig(self):
-        r"""RDMA配置
+        r"""<p>RDMA配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
         """

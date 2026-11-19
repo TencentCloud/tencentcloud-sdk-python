@@ -673,6 +673,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProxyEndPoints(
+            self,
+            request: models.CreateProxyEndPointsRequest,
+            opts: Dict = None,
+    ) -> models.CreateProxyEndPointsResponse:
+        """
+        本接口（CreateProxyEndPoints）用于批量创建数据库代理连接点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProxyEndPoints"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProxyEndPointsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateResourcePackage(
             self,
             request: models.CreateResourcePackageRequest,

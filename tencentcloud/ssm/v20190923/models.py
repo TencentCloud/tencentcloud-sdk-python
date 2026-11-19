@@ -1175,9 +1175,9 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定凭据名称。
+        :param _SecretName: <p>指定凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 指定该名称下需要删除的凭据的版本号。
+        :param _VersionId: <p>指定该名称下需要删除的凭据的版本号。</p><p>仅支持删除自定义凭据版本。目标版本持有 Stage_Current 标签时返回 FailedOperation，须先通过 UpdateSecret 将标签迁移到其他已有版本。存在并发写入或轮转等操作、未取得共享写锁时返回 OperationDenied。</p>
         :type VersionId: str
         """
         self._SecretName = None
@@ -1185,7 +1185,7 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""指定凭据名称。
+        r"""<p>指定凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1196,7 +1196,7 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""指定该名称下需要删除的凭据的版本号。
+        r"""<p>指定该名称下需要删除的凭据的版本号。</p><p>仅支持删除自定义凭据版本。目标版本持有 Stage_Current 标签时返回 FailedOperation，须先通过 UpdateSecret 将标签迁移到其他已有版本。存在并发写入或轮转等操作、未取得共享写锁时返回 OperationDenied。</p>
         :rtype: str
         """
         return self._VersionId
@@ -1226,9 +1226,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称。
+        :param _SecretName: <p>凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 凭据版本号。
+        :param _VersionId: <p>凭据版本号。</p>
         :type VersionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1239,7 +1239,7 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""凭据名称。
+        r"""<p>凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1250,7 +1250,7 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""凭据版本号。
+        r"""<p>凭据版本号。</p>
         :rtype: str
         """
         return self._VersionId
@@ -2484,24 +2484,26 @@ class GetSecretValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定凭据的名称。
+        :param _SecretName: <p>指定凭据的名称。</p>
         :type SecretName: str
-        :param _VersionId: 指定对应凭据的版本号。
-对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
+        :param _VersionId: <p>指定要读取的凭据版本号。仅传 VersionId 时按该版本号精确读取；云产品及 Redis/MongoDB 凭据可通过 SSM_Current 读取当前版本。</p><p>入参限制：同时指定 VersionStage 时，两者必须指向同一版本，否则返回 ResourceNotFound。</p><p>自定义、云产品及 Redis/MongoDB 凭据在 VersionId 和 VersionStage 均未指定时，默认读取 Stage_Current 标签指向的版本；未设置该标签返回 InvalidParameterValue，不回退到 SSM_Current。</p>
         :type VersionId: str
-        :param _EncryptionPublicKey: 
+        :param _EncryptionPublicKey: <p>用于加密返回凭据值的 PEM 格式公钥，支持 RSA 2048 和 SM2。未指定时，凭据值按原有方式返回。</p>
         :type EncryptionPublicKey: str
-        :param _EncryptionAlgorithm: 
+        :param _EncryptionAlgorithm: <p>非对称加密算法，仅在指定 EncryptionPublicKey 时生效。支持 SM2、SM2_C1C3C2_ASN1、RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256，默认值为 SM2。</p>
         :type EncryptionAlgorithm: str
+        :param _VersionStage: <p>用于选择凭据版本的标签。支持自定义、云产品及 Redis/MongoDB 凭据。</p><p>枚举值：</p><ul><li>Stage_Current： 读取用户设置的当前版本标签所绑定的版本。标签不会自动设置，也不会跟随账号迁移。</li></ul><p>仅支持 Stage_Current，大小写敏感。仅传标签时按绑定关系取值；与 VersionId 同时传入时必须指向同一版本。两者均不传时默认解析 Stage_Current，未设置该标签返回 InvalidParameterValue。</p>
+        :type VersionStage: str
         """
         self._SecretName = None
         self._VersionId = None
         self._EncryptionPublicKey = None
         self._EncryptionAlgorithm = None
+        self._VersionStage = None
 
     @property
     def SecretName(self):
-        r"""指定凭据的名称。
+        r"""<p>指定凭据的名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -2512,8 +2514,7 @@ class GetSecretValueRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""指定对应凭据的版本号。
-对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
+        r"""<p>指定要读取的凭据版本号。仅传 VersionId 时按该版本号精确读取；云产品及 Redis/MongoDB 凭据可通过 SSM_Current 读取当前版本。</p><p>入参限制：同时指定 VersionStage 时，两者必须指向同一版本，否则返回 ResourceNotFound。</p><p>自定义、云产品及 Redis/MongoDB 凭据在 VersionId 和 VersionStage 均未指定时，默认读取 Stage_Current 标签指向的版本；未设置该标签返回 InvalidParameterValue，不回退到 SSM_Current。</p>
         :rtype: str
         """
         return self._VersionId
@@ -2524,7 +2525,7 @@ class GetSecretValueRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
-        r"""
+        r"""<p>用于加密返回凭据值的 PEM 格式公钥，支持 RSA 2048 和 SM2。未指定时，凭据值按原有方式返回。</p>
         :rtype: str
         """
         return self._EncryptionPublicKey
@@ -2535,7 +2536,7 @@ class GetSecretValueRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
-        r"""
+        r"""<p>非对称加密算法，仅在指定 EncryptionPublicKey 时生效。支持 SM2、SM2_C1C3C2_ASN1、RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256，默认值为 SM2。</p>
         :rtype: str
         """
         return self._EncryptionAlgorithm
@@ -2544,12 +2545,24 @@ class GetSecretValueRequest(AbstractModel):
     def EncryptionAlgorithm(self, EncryptionAlgorithm):
         self._EncryptionAlgorithm = EncryptionAlgorithm
 
+    @property
+    def VersionStage(self):
+        r"""<p>用于选择凭据版本的标签。支持自定义、云产品及 Redis/MongoDB 凭据。</p><p>枚举值：</p><ul><li>Stage_Current： 读取用户设置的当前版本标签所绑定的版本。标签不会自动设置，也不会跟随账号迁移。</li></ul><p>仅支持 Stage_Current，大小写敏感。仅传标签时按绑定关系取值；与 VersionId 同时传入时必须指向同一版本。两者均不传时默认解析 Stage_Current，未设置该标签返回 InvalidParameterValue。</p>
+        :rtype: str
+        """
+        return self._VersionStage
+
+    @VersionStage.setter
+    def VersionStage(self, VersionStage):
+        self._VersionStage = VersionStage
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._VersionId = params.get("VersionId")
         self._EncryptionPublicKey = params.get("EncryptionPublicKey")
         self._EncryptionAlgorithm = params.get("EncryptionAlgorithm")
+        self._VersionStage = params.get("VersionStage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2567,15 +2580,13 @@ class GetSecretValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据的名称。
+        :param _SecretName: <p>凭据的名称。</p>
         :type SecretName: str
-        :param _VersionId: 该凭据对应的版本号。
+        :param _VersionId: <p>该凭据对应的版本号。</p>
         :type VersionId: str
-        :param _SecretBinary: 在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。
-SecretBinary和SecretString只有一个不为空。
+        :param _SecretBinary: <p>在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。<br>SecretBinary和SecretString只有一个不为空。</p>
         :type SecretBinary: str
-        :param _SecretString: 在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。
-SecretBinary和SecretString只有一个不为空。
+        :param _SecretString: <p>在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。<br>SecretBinary和SecretString只有一个不为空。</p>
         :type SecretString: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2588,7 +2599,7 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretName(self):
-        r"""凭据的名称。
+        r"""<p>凭据的名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -2599,7 +2610,7 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def VersionId(self):
-        r"""该凭据对应的版本号。
+        r"""<p>该凭据对应的版本号。</p>
         :rtype: str
         """
         return self._VersionId
@@ -2610,8 +2621,7 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretBinary(self):
-        r"""在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。
-SecretBinary和SecretString只有一个不为空。
+        r"""<p>在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。<br>SecretBinary和SecretString只有一个不为空。</p>
         :rtype: str
         """
         return self._SecretBinary
@@ -2622,8 +2632,7 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretString(self):
-        r"""在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。
-SecretBinary和SecretString只有一个不为空。
+        r"""<p>在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。<br>SecretBinary和SecretString只有一个不为空。</p>
         :rtype: str
         """
         return self._SecretString
@@ -3461,24 +3470,26 @@ class PutSecretValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定需要增加版本的凭据名称。
+        :param _SecretName: <p>指定需要增加版本的凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 指定新增加的版本号，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
+        :param _VersionId: <p>指定新增凭据版本的版本号。可选，未指定时由系统生成 UUID v4，并通过响应 VersionId 返回。</p><p>参数格式：最长64字节，使用字母、数字或 - _ . 的组合，并以字母或数字开头。</p><p>省略 VersionId 的每次调用都会生成新版本。需要识别同一版本或处理重试时，由调用方生成并复用 VersionId；已有版本号返回 ResourceInUse.VersionIdExists。</p>
         :type VersionId: str
-        :param _SecretBinary: 二进制凭据信息，使用base64编码。
-SecretBinary 和 SecretString 必须且只能设置一个。
+        :param _SecretBinary: <p>二进制凭据信息，使用base64编码。<br>SecretBinary 和 SecretString 必须且只能设置一个。</p>
         :type SecretBinary: str
-        :param _SecretString: 文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。
+        :param _SecretString: <p>文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。</p>
         :type SecretString: str
+        :param _VersionStage: <p>为新增版本设置版本标签，仅支持 Stage_Current，大小写敏感。本接口仅支持自定义凭据。</p><p>入参限制：SecretString 和 SecretBinary 必须且只能指定一个非空值。</p>
+        :type VersionStage: str
         """
         self._SecretName = None
         self._VersionId = None
         self._SecretBinary = None
         self._SecretString = None
+        self._VersionStage = None
 
     @property
     def SecretName(self):
-        r"""指定需要增加版本的凭据名称。
+        r"""<p>指定需要增加版本的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -3489,7 +3500,7 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def VersionId(self):
-        r"""指定新增加的版本号，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
+        r"""<p>指定新增凭据版本的版本号。可选，未指定时由系统生成 UUID v4，并通过响应 VersionId 返回。</p><p>参数格式：最长64字节，使用字母、数字或 - _ . 的组合，并以字母或数字开头。</p><p>省略 VersionId 的每次调用都会生成新版本。需要识别同一版本或处理重试时，由调用方生成并复用 VersionId；已有版本号返回 ResourceInUse.VersionIdExists。</p>
         :rtype: str
         """
         return self._VersionId
@@ -3500,8 +3511,7 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def SecretBinary(self):
-        r"""二进制凭据信息，使用base64编码。
-SecretBinary 和 SecretString 必须且只能设置一个。
+        r"""<p>二进制凭据信息，使用base64编码。<br>SecretBinary 和 SecretString 必须且只能设置一个。</p>
         :rtype: str
         """
         return self._SecretBinary
@@ -3512,7 +3522,7 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def SecretString(self):
-        r"""文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。
+        r"""<p>文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。</p>
         :rtype: str
         """
         return self._SecretString
@@ -3521,12 +3531,24 @@ SecretBinary 和 SecretString 必须且只能设置一个。
     def SecretString(self, SecretString):
         self._SecretString = SecretString
 
+    @property
+    def VersionStage(self):
+        r"""<p>为新增版本设置版本标签，仅支持 Stage_Current，大小写敏感。本接口仅支持自定义凭据。</p><p>入参限制：SecretString 和 SecretBinary 必须且只能指定一个非空值。</p>
+        :rtype: str
+        """
+        return self._VersionStage
+
+    @VersionStage.setter
+    def VersionStage(self, VersionStage):
+        self._VersionStage = VersionStage
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._VersionId = params.get("VersionId")
         self._SecretBinary = params.get("SecretBinary")
         self._SecretString = params.get("SecretString")
+        self._VersionStage = params.get("VersionStage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3544,9 +3566,9 @@ class PutSecretValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称。
+        :param _SecretName: <p>凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 新增加的版本号。
+        :param _VersionId: <p>新增加的版本号。</p>
         :type VersionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3557,7 +3579,7 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""凭据名称。
+        r"""<p>凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -3568,7 +3590,7 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""新增加的版本号。
+        r"""<p>新增加的版本号。</p>
         :rtype: str
         """
         return self._VersionId
@@ -4518,24 +4540,26 @@ class UpdateSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定需要更新凭据内容的名称。
+        :param _SecretName: <p>指定需要更新凭据内容的名称。</p>
         :type SecretName: str
-        :param _VersionId: 指定需要更新凭据内容的版本号。
+        :param _VersionId: <p>指定需要更新内容或设置版本标签的已有版本号，必填。</p><p>指定 VersionStage 时，将该标签迁移到此版本。目标版本不存在返回 ResourceNotFound；凭据处于 PendingCreate 或 CreateFailed 状态时返回 FailedOperation。</p>
         :type VersionId: str
-        :param _SecretBinary: 新的凭据内容为二进制的场景使用该字段，并使用base64进行编码。
-SecretBinary 和 SecretString 只能一个不为空。
+        :param _SecretBinary: <p>新的二进制凭据内容，须使用 Base64 编码，仅自定义凭据支持通过本接口更新内容。</p><p>入参限制：未指定 VersionStage 时，SecretString 和 SecretBinary 必须且只能一个非空；指定 VersionStage 时可均不传以仅迁移标签，但不能同时非空。云产品及 Redis/MongoDB 凭据须省略两项内容。</p>
         :type SecretBinary: str
-        :param _SecretString: 新的凭据内容为文本的场景使用该字段，不需要base64编码SecretBinary 和 SecretString 只能一个不为空。
+        :param _SecretString: <p>新的文本凭据内容，无需 Base64 编码，仅自定义凭据支持通过本接口更新内容。</p><p>入参限制：未指定 VersionStage 时，SecretString 和 SecretBinary 必须且只能一个非空；指定 VersionStage 时可均不传以仅迁移标签，但不能同时非空。云产品及 Redis/MongoDB 凭据须省略两项内容。</p>
         :type SecretString: str
+        :param _VersionStage: <p>将 Stage_Current 标签设置或迁移到 VersionId 指定的已有版本，大小写敏感。</p><p>入参限制：支持自定义、云产品及 Redis/MongoDB 凭据；VersionId 必填。</p><p>自定义凭据可仅设置标签，也可同时更新内容；SecretString 和 SecretBinary 不能同时非空。云产品及 Redis/MongoDB 仅支持标签操作，两项内容均须省略。标签绑定版本号，原轮转流程保持不变；绑定历史版本不保证账密仍有效。</p>
+        :type VersionStage: str
         """
         self._SecretName = None
         self._VersionId = None
         self._SecretBinary = None
         self._SecretString = None
+        self._VersionStage = None
 
     @property
     def SecretName(self):
-        r"""指定需要更新凭据内容的名称。
+        r"""<p>指定需要更新凭据内容的名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -4546,7 +4570,7 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def VersionId(self):
-        r"""指定需要更新凭据内容的版本号。
+        r"""<p>指定需要更新内容或设置版本标签的已有版本号，必填。</p><p>指定 VersionStage 时，将该标签迁移到此版本。目标版本不存在返回 ResourceNotFound；凭据处于 PendingCreate 或 CreateFailed 状态时返回 FailedOperation。</p>
         :rtype: str
         """
         return self._VersionId
@@ -4557,8 +4581,7 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def SecretBinary(self):
-        r"""新的凭据内容为二进制的场景使用该字段，并使用base64进行编码。
-SecretBinary 和 SecretString 只能一个不为空。
+        r"""<p>新的二进制凭据内容，须使用 Base64 编码，仅自定义凭据支持通过本接口更新内容。</p><p>入参限制：未指定 VersionStage 时，SecretString 和 SecretBinary 必须且只能一个非空；指定 VersionStage 时可均不传以仅迁移标签，但不能同时非空。云产品及 Redis/MongoDB 凭据须省略两项内容。</p>
         :rtype: str
         """
         return self._SecretBinary
@@ -4569,7 +4592,7 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def SecretString(self):
-        r"""新的凭据内容为文本的场景使用该字段，不需要base64编码SecretBinary 和 SecretString 只能一个不为空。
+        r"""<p>新的文本凭据内容，无需 Base64 编码，仅自定义凭据支持通过本接口更新内容。</p><p>入参限制：未指定 VersionStage 时，SecretString 和 SecretBinary 必须且只能一个非空；指定 VersionStage 时可均不传以仅迁移标签，但不能同时非空。云产品及 Redis/MongoDB 凭据须省略两项内容。</p>
         :rtype: str
         """
         return self._SecretString
@@ -4578,12 +4601,24 @@ SecretBinary 和 SecretString 只能一个不为空。
     def SecretString(self, SecretString):
         self._SecretString = SecretString
 
+    @property
+    def VersionStage(self):
+        r"""<p>将 Stage_Current 标签设置或迁移到 VersionId 指定的已有版本，大小写敏感。</p><p>入参限制：支持自定义、云产品及 Redis/MongoDB 凭据；VersionId 必填。</p><p>自定义凭据可仅设置标签，也可同时更新内容；SecretString 和 SecretBinary 不能同时非空。云产品及 Redis/MongoDB 仅支持标签操作，两项内容均须省略。标签绑定版本号，原轮转流程保持不变；绑定历史版本不保证账密仍有效。</p>
+        :rtype: str
+        """
+        return self._VersionStage
+
+    @VersionStage.setter
+    def VersionStage(self, VersionStage):
+        self._VersionStage = VersionStage
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._VersionId = params.get("VersionId")
         self._SecretBinary = params.get("SecretBinary")
         self._SecretString = params.get("SecretString")
+        self._VersionStage = params.get("VersionStage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4601,9 +4636,9 @@ class UpdateSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称。
+        :param _SecretName: <p>凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 凭据版本号。
+        :param _VersionId: <p>凭据版本号。</p>
         :type VersionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4614,7 +4649,7 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""凭据名称。
+        r"""<p>凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -4625,7 +4660,7 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""凭据版本号。
+        r"""<p>凭据版本号。</p>
         :rtype: str
         """
         return self._VersionId
@@ -4659,17 +4694,20 @@ class VersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionId: 版本号
+        :param _VersionId: <p>版本号</p>
         :type VersionId: str
-        :param _CreateTime: 创建时间，unix时间戳。
+        :param _CreateTime: <p>创建时间，unix时间戳。</p>
         :type CreateTime: int
+        :param _VersionStages: <p>该版本持有的公开版本标签列表，用于查看标签指向。</p><p>自定义、云产品及 Redis/MongoDB 凭据在版本列表中返回此字段，仅包含 Stage_Current；无标签时返回空数组 []。</p>
+        :type VersionStages: list of str
         """
         self._VersionId = None
         self._CreateTime = None
+        self._VersionStages = None
 
     @property
     def VersionId(self):
-        r"""版本号
+        r"""<p>版本号</p>
         :rtype: str
         """
         return self._VersionId
@@ -4680,7 +4718,7 @@ class VersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，unix时间戳。
+        r"""<p>创建时间，unix时间戳。</p>
         :rtype: int
         """
         return self._CreateTime
@@ -4689,10 +4727,22 @@ class VersionInfo(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def VersionStages(self):
+        r"""<p>该版本持有的公开版本标签列表，用于查看标签指向。</p><p>自定义、云产品及 Redis/MongoDB 凭据在版本列表中返回此字段，仅包含 Stage_Current；无标签时返回空数组 []。</p>
+        :rtype: list of str
+        """
+        return self._VersionStages
+
+    @VersionStages.setter
+    def VersionStages(self, VersionStages):
+        self._VersionStages = VersionStages
+
 
     def _deserialize(self, params):
         self._VersionId = params.get("VersionId")
         self._CreateTime = params.get("CreateTime")
+        self._VersionStages = params.get("VersionStages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -630,6 +630,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFinanceCloudRoomUsage(
+            self,
+            request: models.DescribeFinanceCloudRoomUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFinanceCloudRoomUsageResponse:
+        """
+        本接口（DescribeFinanceCloudRoomUsage）用于查询金融云 TRTC 房间维度用量。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFinanceCloudRoomUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFinanceCloudRoomUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLiveStreamModeration(
             self,
             request: models.DescribeLiveStreamModerationRequest,

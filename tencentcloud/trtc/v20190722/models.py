@@ -6389,6 +6389,100 @@ class DescribeCloudTranscriptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFinanceCloudRoomUsageRequest(AbstractModel):
+    r"""DescribeFinanceCloudRoomUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>与房间对应的 TRTC SdkAppId，必须是金融云应用。</p>
+        :type SdkAppId: int
+        :param _StartTime: <p>查询开始时间，格式为 YYYY-MM-DD HH:MM，精确到分钟级。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，格式为 YYYY-MM-DD HH:MM，单次查询不超过 24 小时。</p>
+        :type EndTime: str
+        """
+        self._SdkAppId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>与房间对应的 TRTC SdkAppId，必须是金融云应用。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间，格式为 YYYY-MM-DD HH:MM，精确到分钟级。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，格式为 YYYY-MM-DD HH:MM，单次查询不超过 24 小时。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFinanceCloudRoomUsageResponse(AbstractModel):
+    r"""DescribeFinanceCloudRoomUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLiveStreamModerationRequest(AbstractModel):
     r"""DescribeLiveStreamModeration请求参数结构体
 

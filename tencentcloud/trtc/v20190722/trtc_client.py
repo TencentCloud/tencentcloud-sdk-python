@@ -786,6 +786,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFinanceCloudRoomUsage(self, request):
+        r"""本接口（DescribeFinanceCloudRoomUsage）用于查询金融云 TRTC 房间维度用量。
+
+        :param request: Request instance for DescribeFinanceCloudRoomUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeFinanceCloudRoomUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeFinanceCloudRoomUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFinanceCloudRoomUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFinanceCloudRoomUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLiveStreamModeration(self, request):
         r"""成功开启直播流AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态，仅在任务进行时有效，任务退出后查询将会返回错误。
 

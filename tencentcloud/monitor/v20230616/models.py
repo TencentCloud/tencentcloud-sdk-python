@@ -11420,8 +11420,17 @@ class TriggerAIWorkbenchTaskRequest(AbstractModel):
         r"""
         :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
+        :param _SessionId: <p>session会话ID</p>
+        :type SessionId: str
+        :param _Content: <p>输入内容</p>
+        :type Content: str
+        :param _IdempotencyKey: <p>幂等键，调用方保证同一事件重试时携带同一 key</p>
+        :type IdempotencyKey: str
         """
         self._TaskId = None
+        self._SessionId = None
+        self._Content = None
+        self._IdempotencyKey = None
 
     @property
     def TaskId(self):
@@ -11434,9 +11443,45 @@ class TriggerAIWorkbenchTaskRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def SessionId(self):
+        r"""<p>session会话ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Content(self):
+        r"""<p>输入内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def IdempotencyKey(self):
+        r"""<p>幂等键，调用方保证同一事件重试时携带同一 key</p>
+        :rtype: str
+        """
+        return self._IdempotencyKey
+
+    @IdempotencyKey.setter
+    def IdempotencyKey(self, IdempotencyKey):
+        self._IdempotencyKey = IdempotencyKey
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        self._Content = params.get("Content")
+        self._IdempotencyKey = params.get("IdempotencyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11457,10 +11502,18 @@ class TriggerAIWorkbenchTaskResponse(AbstractModel):
         :param _ExecutionId: <p>执行 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionId: str
+        :param _SessionId: <p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _RunId: <p>运行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExecutionId = None
+        self._SessionId = None
+        self._RunId = None
         self._RequestId = None
 
     @property
@@ -11476,6 +11529,30 @@ class TriggerAIWorkbenchTaskResponse(AbstractModel):
         self._ExecutionId = ExecutionId
 
     @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RunId(self):
+        r"""<p>运行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11489,6 +11566,8 @@ class TriggerAIWorkbenchTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ExecutionId = params.get("ExecutionId")
+        self._SessionId = params.get("SessionId")
+        self._RunId = params.get("RunId")
         self._RequestId = params.get("RequestId")
 
 

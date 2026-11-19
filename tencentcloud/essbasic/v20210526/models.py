@@ -6493,49 +6493,27 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: 资源类型，取值有：
-<ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li>
-<li> **3**：草稿</li>
-</ul>
+        :param _ResourceType: <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
         :type ResourceType: int
-        :param _FlowInfo: 要创建的合同信息
+        :param _FlowInfo: <p>要创建的合同信息</p>
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
-<ul>
-<li>文件Id（通过UploadFiles获取文件资源Id）</li>
-<li>模板Id（通过控制台创建模板后获取模板Id）</li>
-<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
-</ul>
-注意：需要同时设置 ResourceType 参数指定资源类型
+        :param _ResourceId: <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
         :type ResourceId: str
-        :param _FlowOption: 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
+        :param _FlowOption: <p>合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑</p>
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
-        :param _FlowApproverList: 已废弃，请用FlowInfo.Approvers
+        :param _FlowApproverList: <p>已废弃，请用FlowInfo.Approvers</p>
         :type FlowApproverList: list of CommonFlowApprover
-        :param _FlowId: 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
-注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
+        :param _FlowId: <p>合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接<br>注: <code>该参数必须是一个待发起审核的合同id，并且还未审核通过</code></p>
         :type FlowId: str
-        :param _NeedPreview: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        :param _NeedPreview: <p>该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL</p>
         :type NeedPreview: bool
-        :param _Organization: 企业机构信息，不用传
+        :param _Organization: <p>企业机构信息，不用传</p>
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
-        :param _Operator: 操作人（用户）信息，不用传
+        :param _Operator: <p>操作人（用户）信息，不用传</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _SignComponentConfig: <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
-签署控件的配置信息，用在嵌入式发起的页面配置，包括
-
-- 签署控件 是否默认展示日期.
+        :param _SignComponentConfig: <p><font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font><br>签署控件的配置信息，用在嵌入式发起的页面配置，包括</p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
         """
         self._ResourceType = None
@@ -6552,11 +6530,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型，取值有：
-<ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li>
-<li> **3**：草稿</li>
-</ul>
+        r"""<p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
         :rtype: int
         """
         return self._ResourceType
@@ -6567,7 +6541,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowInfo(self):
-        r"""要创建的合同信息
+        r"""<p>要创建的合同信息</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
         """
         return self._FlowInfo
@@ -6578,15 +6552,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -6597,13 +6563,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源id，与ResourceType相对应，取值范围：
-<ul>
-<li>文件Id（通过UploadFiles获取文件资源Id）</li>
-<li>模板Id（通过控制台创建模板后获取模板Id）</li>
-<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
-</ul>
-注意：需要同时设置 ResourceType 参数指定资源类型
+        r"""<p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
         :rtype: str
         """
         return self._ResourceId
@@ -6614,7 +6574,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowOption(self):
-        r"""合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
+        r"""<p>合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
         """
         return self._FlowOption
@@ -6627,7 +6587,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def FlowApproverList(self):
         warnings.warn("parameter `FlowApproverList` is deprecated", DeprecationWarning) 
 
-        r"""已废弃，请用FlowInfo.Approvers
+        r"""<p>已废弃，请用FlowInfo.Approvers</p>
         :rtype: list of CommonFlowApprover
         """
         return self._FlowApproverList
@@ -6640,8 +6600,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
-注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
+        r"""<p>合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接<br>注: <code>该参数必须是一个待发起审核的合同id，并且还未审核通过</code></p>
         :rtype: str
         """
         return self._FlowId
@@ -6654,7 +6613,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def NeedPreview(self):
         warnings.warn("parameter `NeedPreview` is deprecated", DeprecationWarning) 
 
-        r"""该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        r"""<p>该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL</p>
         :rtype: bool
         """
         return self._NeedPreview
@@ -6669,7 +6628,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        r"""企业机构信息，不用传
+        r"""<p>企业机构信息，不用传</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -6684,7 +6643,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""操作人（用户）信息，不用传
+        r"""<p>操作人（用户）信息，不用传</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -6699,10 +6658,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def SignComponentConfig(self):
         warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
 
-        r"""<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
-签署控件的配置信息，用在嵌入式发起的页面配置，包括
-
-- 签署控件 是否默认展示日期.
+        r"""<p><font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font><br>签署控件的配置信息，用在嵌入式发起的页面配置，包括</p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
         """
         return self._SignComponentConfig
@@ -6760,13 +6716,13 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PrepareFlowUrl: 发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
+        :param _PrepareFlowUrl: <p>发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟</p>
         :type PrepareFlowUrl: str
-        :param _PreviewFlowUrl: 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
+        :param _PreviewFlowUrl: <p>合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟</p>
         :type PreviewFlowUrl: str
-        :param _FlowId: 发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
+        :param _FlowId: <p>发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效</p>
         :type FlowId: str
-        :param _DraftId: 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        :param _DraftId: <p>临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。</p>
         :type DraftId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6779,7 +6735,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def PrepareFlowUrl(self):
-        r"""发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
+        r"""<p>发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟</p>
         :rtype: str
         """
         return self._PrepareFlowUrl
@@ -6790,7 +6746,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def PreviewFlowUrl(self):
-        r"""合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
+        r"""<p>合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟</p>
         :rtype: str
         """
         return self._PreviewFlowUrl
@@ -6801,7 +6757,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
+        r"""<p>发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效</p>
         :rtype: str
         """
         return self._FlowId
@@ -6812,7 +6768,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def DraftId(self):
-        r"""临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        r"""<p>临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。</p>
         :rtype: str
         """
         return self._DraftId
@@ -13590,40 +13546,23 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SubOrganizationOpenIds: 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+        :param _SubOrganizationOpenIds: <p>要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。</p>
         :type SubOrganizationOpenIds: list of str
-        :param _Renew: 操作类型，可以选择如下：
-
-**false**：（默认）激活子客企业
-**true**：续期子客企业
-
+        :param _Renew: <p>操作类型，可以选择如下：</p><p><strong>false</strong>：（默认）激活子客企业<br><strong>true</strong>：续期子客企业</p>
         :type Renew: bool
+        :param _Unbind: <p>是否解绑子企业</p><p>枚举值：</p><ul><li>false： 否</li><li>true： 是：解绑后，份额将会返还，但是该子企业无法再次被激活</li></ul><p>默认值：false</p>
+        :type Unbind: bool
         """
         self._Agent = None
         self._SubOrganizationOpenIds = None
         self._Renew = None
+        self._Unbind = None
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -13634,7 +13573,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     @property
     def SubOrganizationOpenIds(self):
-        r"""要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+        r"""<p>要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。</p>
         :rtype: list of str
         """
         return self._SubOrganizationOpenIds
@@ -13645,11 +13584,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     @property
     def Renew(self):
-        r"""操作类型，可以选择如下：
-
-**false**：（默认）激活子客企业
-**true**：续期子客企业
-
+        r"""<p>操作类型，可以选择如下：</p><p><strong>false</strong>：（默认）激活子客企业<br><strong>true</strong>：续期子客企业</p>
         :rtype: bool
         """
         return self._Renew
@@ -13658,6 +13593,17 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
     def Renew(self, Renew):
         self._Renew = Renew
 
+    @property
+    def Unbind(self):
+        r"""<p>是否解绑子企业</p><p>枚举值：</p><ul><li>false： 否</li><li>true： 是：解绑后，份额将会返还，但是该子企业无法再次被激活</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Unbind
+
+    @Unbind.setter
+    def Unbind(self, Unbind):
+        self._Unbind = Unbind
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -13665,6 +13611,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._SubOrganizationOpenIds = params.get("SubOrganizationOpenIds")
         self._Renew = params.get("Renew")
+        self._Unbind = params.get("Unbind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15224,7 +15171,7 @@ class CreateFlowOption(AbstractModel):
         :type PreviewAfterStart: bool
         :param _SignAfterStart: <p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效</p><ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
         :type SignAfterStart: bool
-        :param _HideOperationSteps: <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        :param _HideOperationSteps: <p>隐藏操作步骤: 具体类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :type HideOperationSteps: list of int non-negative
         :param _SelfName: <p>本企业简称，注：仅对新版页面生效</p>
         :type SelfName: str
@@ -15244,6 +15191,8 @@ class CreateFlowOption(AbstractModel):
         :type ResultPageConfig: :class:`tencentcloud.essbasic.v20210526.models.CreateResultPageConfig`
         :param _CcInfoVisibility: <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
         :type CcInfoVisibility: int
+        :param _SignComponentLimits: <p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :type SignComponentLimits: list of EmbedSignComponentLimit
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -15268,6 +15217,7 @@ class CreateFlowOption(AbstractModel):
         self._ForbidEditFlowProperties = None
         self._ResultPageConfig = None
         self._CcInfoVisibility = None
+        self._SignComponentLimits = None
 
     @property
     def CanEditFlow(self):
@@ -15414,7 +15364,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideOperationSteps(self):
-        r"""<p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        r"""<p>隐藏操作步骤: 具体类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :rtype: list of int non-negative
         """
         return self._HideOperationSteps
@@ -15522,6 +15472,17 @@ class CreateFlowOption(AbstractModel):
     def CcInfoVisibility(self, CcInfoVisibility):
         self._CcInfoVisibility = CcInfoVisibility
 
+    @property
+    def SignComponentLimits(self):
+        r"""<p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :rtype: list of EmbedSignComponentLimit
+        """
+        return self._SignComponentLimits
+
+    @SignComponentLimits.setter
+    def SignComponentLimits(self, SignComponentLimits):
+        self._SignComponentLimits = SignComponentLimits
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -15551,6 +15512,12 @@ class CreateFlowOption(AbstractModel):
             self._ResultPageConfig = CreateResultPageConfig()
             self._ResultPageConfig._deserialize(params.get("ResultPageConfig"))
         self._CcInfoVisibility = params.get("CcInfoVisibility")
+        if params.get("SignComponentLimits") is not None:
+            self._SignComponentLimits = []
+            for item in params.get("SignComponentLimits"):
+                obj = EmbedSignComponentLimit()
+                obj._deserialize(item)
+                self._SignComponentLimits.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20530,6 +20497,57 @@ class DynamicSignOption(AbstractModel):
         
 
 
+class EmbedSignComponentLimit(AbstractModel):
+    r"""签署控件的类型和范围限制条件，用于控制文件发起后签署人拖拽签署区时可使用的控件类型和具体的印章或签名方式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentType: <p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+        :type ComponentType: str
+        :param _ComponentValue: <p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+        :type ComponentValue: list of str
+        """
+        self._ComponentType = None
+        self._ComponentValue = None
+
+    @property
+    def ComponentType(self):
+        r"""<p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+        :rtype: str
+        """
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentValue(self):
+        r"""<p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+        :rtype: list of str
+        """
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+
+    def _deserialize(self, params):
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentValue = params.get("ComponentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbedUrlOption(AbstractModel):
     r"""创建嵌入式页面url个性化参数
 
@@ -23015,6 +23033,10 @@ class FlowGroupOptions(AbstractModel):
         :type SignAfterStart: bool
         :param _PreviewAfterStart: <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
         :type PreviewAfterStart: bool
+        :param _SignComponentLimits: <p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :type SignComponentLimits: list of EmbedSignComponentLimit
+        :param _HideOperationSteps: <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        :type HideOperationSteps: list of int non-negative
         """
         self._SelfOrganizationApproverSignEach = None
         self._OtherApproverSignEach = None
@@ -23026,6 +23048,8 @@ class FlowGroupOptions(AbstractModel):
         self._HideSignCodeAfterStart = None
         self._SignAfterStart = None
         self._PreviewAfterStart = None
+        self._SignComponentLimits = None
+        self._HideOperationSteps = None
 
     @property
     def SelfOrganizationApproverSignEach(self):
@@ -23137,6 +23161,28 @@ class FlowGroupOptions(AbstractModel):
     def PreviewAfterStart(self, PreviewAfterStart):
         self._PreviewAfterStart = PreviewAfterStart
 
+    @property
+    def SignComponentLimits(self):
+        r"""<p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :rtype: list of EmbedSignComponentLimit
+        """
+        return self._SignComponentLimits
+
+    @SignComponentLimits.setter
+    def SignComponentLimits(self, SignComponentLimits):
+        self._SignComponentLimits = SignComponentLimits
+
+    @property
+    def HideOperationSteps(self):
+        r"""<p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        :rtype: list of int non-negative
+        """
+        return self._HideOperationSteps
+
+    @HideOperationSteps.setter
+    def HideOperationSteps(self, HideOperationSteps):
+        self._HideOperationSteps = HideOperationSteps
+
 
     def _deserialize(self, params):
         self._SelfOrganizationApproverSignEach = params.get("SelfOrganizationApproverSignEach")
@@ -23151,6 +23197,13 @@ class FlowGroupOptions(AbstractModel):
         self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         self._SignAfterStart = params.get("SignAfterStart")
         self._PreviewAfterStart = params.get("PreviewAfterStart")
+        if params.get("SignComponentLimits") is not None:
+            self._SignComponentLimits = []
+            for item in params.get("SignComponentLimits"):
+                obj = EmbedSignComponentLimit()
+                obj._deserialize(item)
+                self._SignComponentLimits.append(obj)
+        self._HideOperationSteps = params.get("HideOperationSteps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

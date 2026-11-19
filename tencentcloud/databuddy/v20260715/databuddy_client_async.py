@@ -1100,6 +1100,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListScheduledTasks(
+            self,
+            request: models.ListScheduledTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListScheduledTasksResponse:
+        """
+        分页查询工作空间下的定时任务列表；支持按 SessionType、AnalysisSpaceId、TaskName 过滤。返回内容包含任务的完整详情，含 SkillIds 与 MCPIds。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListScheduledTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListScheduledTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListSchemaNames(
             self,
             request: models.ListSchemaNamesRequest,

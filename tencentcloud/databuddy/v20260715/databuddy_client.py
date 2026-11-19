@@ -1386,6 +1386,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListScheduledTasks(self, request):
+        r"""分页查询工作空间下的定时任务列表；支持按 SessionType、AnalysisSpaceId、TaskName 过滤。返回内容包含任务的完整详情，含 SkillIds 与 MCPIds。
+
+        :param request: Request instance for ListScheduledTasks.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListScheduledTasksRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListScheduledTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListScheduledTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListScheduledTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListSchemaNames(self, request):
         r"""分页查询数据库名称列表
 

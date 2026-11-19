@@ -11797,6 +11797,8 @@ class CreateFlowOption(AbstractModel):
         :type NeedFlowDraft: bool
         :param _CcInfoVisibility: <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
         :type CcInfoVisibility: int
+        :param _SignComponentLimits: <p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :type SignComponentLimits: list of EmbedSignComponentLimit
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -11823,6 +11825,7 @@ class CreateFlowOption(AbstractModel):
         self._SignAfterStart = None
         self._NeedFlowDraft = None
         self._CcInfoVisibility = None
+        self._SignComponentLimits = None
 
     @property
     def CanEditFlow(self):
@@ -12103,6 +12106,17 @@ class CreateFlowOption(AbstractModel):
     def CcInfoVisibility(self, CcInfoVisibility):
         self._CcInfoVisibility = CcInfoVisibility
 
+    @property
+    def SignComponentLimits(self):
+        r"""<p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :rtype: list of EmbedSignComponentLimit
+        """
+        return self._SignComponentLimits
+
+    @SignComponentLimits.setter
+    def SignComponentLimits(self, SignComponentLimits):
+        self._SignComponentLimits = SignComponentLimits
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -12137,6 +12151,12 @@ class CreateFlowOption(AbstractModel):
         self._SignAfterStart = params.get("SignAfterStart")
         self._NeedFlowDraft = params.get("NeedFlowDraft")
         self._CcInfoVisibility = params.get("CcInfoVisibility")
+        if params.get("SignComponentLimits") is not None:
+            self._SignComponentLimits = []
+            for item in params.get("SignComponentLimits"):
+                obj = EmbedSignComponentLimit()
+                obj._deserialize(item)
+                self._SignComponentLimits.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30311,6 +30331,57 @@ class DynamicSignOption(AbstractModel):
         
 
 
+class EmbedSignComponentLimit(AbstractModel):
+    r"""签署控件的类型和范围限制条件，用于控制**嵌入式文件**发起页面上，拖拽签署区时可使用的控件类型和具体的印章或签名方式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentType: <p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+        :type ComponentType: str
+        :param _ComponentValue: <p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+        :type ComponentValue: list of str
+        """
+        self._ComponentType = None
+        self._ComponentValue = None
+
+    @property
+    def ComponentType(self):
+        r"""<p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+        :rtype: str
+        """
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentValue(self):
+        r"""<p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+        :rtype: list of str
+        """
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+
+    def _deserialize(self, params):
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentValue = params.get("ComponentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbedUrlOption(AbstractModel):
     r"""个性化参数
 
@@ -34369,6 +34440,10 @@ class FlowGroupOptions(AbstractModel):
         :type SignAfterStart: bool
         :param _PreviewAfterStart: <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
         :type PreviewAfterStart: bool
+        :param _SignComponentLimits: <p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :type SignComponentLimits: list of EmbedSignComponentLimit
+        :param _HideOperationSteps: <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        :type HideOperationSteps: list of int non-negative
         """
         self._ApproverVerifyType = None
         self._SelfOrganizationApproverNotifyType = None
@@ -34382,6 +34457,8 @@ class FlowGroupOptions(AbstractModel):
         self._HideSignCodeAfterStart = None
         self._SignAfterStart = None
         self._PreviewAfterStart = None
+        self._SignComponentLimits = None
+        self._HideOperationSteps = None
 
     @property
     def ApproverVerifyType(self):
@@ -34515,6 +34592,28 @@ class FlowGroupOptions(AbstractModel):
     def PreviewAfterStart(self, PreviewAfterStart):
         self._PreviewAfterStart = PreviewAfterStart
 
+    @property
+    def SignComponentLimits(self):
+        r"""<p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+        :rtype: list of EmbedSignComponentLimit
+        """
+        return self._SignComponentLimits
+
+    @SignComponentLimits.setter
+    def SignComponentLimits(self, SignComponentLimits):
+        self._SignComponentLimits = SignComponentLimits
+
+    @property
+    def HideOperationSteps(self):
+        r"""<p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+        :rtype: list of int non-negative
+        """
+        return self._HideOperationSteps
+
+    @HideOperationSteps.setter
+    def HideOperationSteps(self, HideOperationSteps):
+        self._HideOperationSteps = HideOperationSteps
+
 
     def _deserialize(self, params):
         self._ApproverVerifyType = params.get("ApproverVerifyType")
@@ -34531,6 +34630,13 @@ class FlowGroupOptions(AbstractModel):
         self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         self._SignAfterStart = params.get("SignAfterStart")
         self._PreviewAfterStart = params.get("PreviewAfterStart")
+        if params.get("SignComponentLimits") is not None:
+            self._SignComponentLimits = []
+            for item in params.get("SignComponentLimits"):
+                obj = EmbedSignComponentLimit()
+                obj._deserialize(item)
+                self._SignComponentLimits.append(obj)
+        self._HideOperationSteps = params.get("HideOperationSteps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

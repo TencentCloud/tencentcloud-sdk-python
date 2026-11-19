@@ -20109,6 +20109,8 @@ class MultimodalDocParseRequest(AbstractModel):
         :type PageRange: str
         :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
         :type TaskType: int
+        :param _EnableTableCellCoord: <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+        :type EnableTableCellCoord: bool
         """
         self._FileUrl = None
         self._FileType = None
@@ -20116,6 +20118,7 @@ class MultimodalDocParseRequest(AbstractModel):
         self._EnableSubImg = None
         self._PageRange = None
         self._TaskType = None
+        self._EnableTableCellCoord = None
 
     @property
     def FileUrl(self):
@@ -20183,6 +20186,17 @@ class MultimodalDocParseRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def EnableTableCellCoord(self):
+        r"""<p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableTableCellCoord
+
+    @EnableTableCellCoord.setter
+    def EnableTableCellCoord(self, EnableTableCellCoord):
+        self._EnableTableCellCoord = EnableTableCellCoord
+
 
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
@@ -20191,6 +20205,7 @@ class MultimodalDocParseRequest(AbstractModel):
         self._EnableSubImg = params.get("EnableSubImg")
         self._PageRange = params.get("PageRange")
         self._TaskType = params.get("TaskType")
+        self._EnableTableCellCoord = params.get("EnableTableCellCoord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31881,6 +31896,8 @@ class SubmitMultimodalDocParseJobRequest(AbstractModel):
         :type FileEndPageNumber: int
         :param _TaskType: <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
         :type TaskType: int
+        :param _EnableTableCellCoord: <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+        :type EnableTableCellCoord: bool
         """
         self._FileType = None
         self._FileUrl = None
@@ -31890,6 +31907,7 @@ class SubmitMultimodalDocParseJobRequest(AbstractModel):
         self._FileStartPageNumber = None
         self._FileEndPageNumber = None
         self._TaskType = None
+        self._EnableTableCellCoord = None
 
     @property
     def FileType(self):
@@ -31979,6 +31997,17 @@ class SubmitMultimodalDocParseJobRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def EnableTableCellCoord(self):
+        r"""<p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableTableCellCoord
+
+    @EnableTableCellCoord.setter
+    def EnableTableCellCoord(self, EnableTableCellCoord):
+        self._EnableTableCellCoord = EnableTableCellCoord
+
 
     def _deserialize(self, params):
         self._FileType = params.get("FileType")
@@ -31989,6 +32018,7 @@ class SubmitMultimodalDocParseJobRequest(AbstractModel):
         self._FileStartPageNumber = params.get("FileStartPageNumber")
         self._FileEndPageNumber = params.get("FileEndPageNumber")
         self._TaskType = params.get("TaskType")
+        self._EnableTableCellCoord = params.get("EnableTableCellCoord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

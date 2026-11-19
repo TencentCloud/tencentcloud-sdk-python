@@ -854,6 +854,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProxyEndPoints(self, request):
+        r"""本接口（CreateProxyEndPoints）用于批量创建数据库代理连接点。
+
+        :param request: Request instance for CreateProxyEndPoints.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyEndPointsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyEndPointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProxyEndPoints", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProxyEndPointsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateResourcePackage(self, request):
         r"""本接口（CreateResourcePackage）用于新购资源包。
 

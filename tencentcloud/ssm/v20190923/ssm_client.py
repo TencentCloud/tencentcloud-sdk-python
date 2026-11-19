@@ -142,8 +142,7 @@ class SsmClient(AbstractClient):
 
 
     def DeleteSecretVersion(self, request):
-        r"""该接口用于直接删除指定凭据下的单个版本凭据，删除操作立即生效，对所有状态下的凭据版本都可以删除。
-        本接口仅适用于用户自定义凭据，本接口不能对云产品凭据进行操作。
+        r"""删除指定的自定义凭据版本，删除操作立即生效。绑定 Stage_Current 标签的版本不能删除，请先通过 UpdateSecret 将该标签迁移到其他版本。
 
         :param request: Request instance for DeleteSecretVersion.
         :type request: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretVersionRequest`
@@ -468,8 +467,8 @@ class SsmClient(AbstractClient):
 
 
     def PutSecretValue(self, request):
-        r"""该接口在指定名称的凭据下增加新版本的凭据内容，一个凭据下最多可以支持10个版本。只能对处于Enabled 和 Disabled 状态的凭据添加新的版本。
-        本接口仅适用于用户自定义凭据，对云产品凭据不能操作。
+        r"""该接口用于在指定凭据下新增版本，支持自定义凭据。未指定 VersionId 时，系统生成版本号并在响应中返回。可指定 Stage_Current，将标签绑定到新版本。
+        一个凭据下最多支持 10 个版本。SecretBinary 和 SecretString 必须且只能指定一个。
 
         :param request: Request instance for PutSecretValue.
         :type request: :class:`tencentcloud.ssm.v20190923.models.PutSecretValueRequest`
@@ -588,8 +587,8 @@ class SsmClient(AbstractClient):
 
 
     def UpdateSecret(self, request):
-        r"""该接口用于更新指定凭据名称和版本号的内容，调用该接口会对新的凭据内容加密后覆盖旧的内容。仅允许更新Enabled 和 Disabled 状态的凭据。
-        本接口仅适用于用户自定义凭据，不能对云产品凭据操作。
+        r"""本接口用于更新指定凭据版本的内容，或设置、迁移已有版本的 Stage_Current 标签。
+        更新凭据内容支持自定义凭据，新的内容加密后覆盖原内容。设置版本标签支持自定义、云产品及 Redis/MongoDB 凭据；云产品及 Redis/MongoDB 凭据仅支持设置或迁移标签。
 
         :param request: Request instance for UpdateSecret.
         :type request: :class:`tencentcloud.ssm.v20190923.models.UpdateSecretRequest`

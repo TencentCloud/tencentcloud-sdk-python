@@ -13285,6 +13285,120 @@ class CreateProxyEndPointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProxyEndPointsRequest(AbstractModel):
+    r"""CreateProxyEndPoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。</p>
+        :type ClusterId: str
+        :param _ProxyEndPointItems: <p>proxyEndPoint的参数配置</p>
+        :type ProxyEndPointItems: list of ProxyEndPointItem
+        """
+        self._ClusterId = None
+        self._ProxyEndPointItems = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyEndPointItems(self):
+        r"""<p>proxyEndPoint的参数配置</p>
+        :rtype: list of ProxyEndPointItem
+        """
+        return self._ProxyEndPointItems
+
+    @ProxyEndPointItems.setter
+    def ProxyEndPointItems(self, ProxyEndPointItems):
+        self._ProxyEndPointItems = ProxyEndPointItems
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ProxyEndPointItems") is not None:
+            self._ProxyEndPointItems = []
+            for item in params.get("ProxyEndPointItems"):
+                obj = ProxyEndPointItem()
+                obj._deserialize(item)
+                self._ProxyEndPointItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProxyEndPointsResponse(AbstractModel):
+    r"""CreateProxyEndPoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步流程 ID。</p>
+        :type FlowId: int
+        :param _TaskId: <p>异步任务 ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步流程 ID。</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务 ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateProxyRequest(AbstractModel):
     r"""CreateProxy请求参数结构体
 
@@ -53210,6 +53324,287 @@ class ProxyEndPointConfigInfo(AbstractModel):
                 obj = InstanceNameWeight()
                 obj._deserialize(item)
                 self._InstanceNameWeights.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyEndPointItem(AbstractModel):
+    r"""批量proxy接入点配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqueVpcId: <p>vpc id</p>
+        :type UniqueVpcId: str
+        :param _UniqueSubnetId: <p>子网ID</p>
+        :type UniqueSubnetId: str
+        :param _SecurityGroupIds: <p>安全组列表</p>
+        :type SecurityGroupIds: list of str
+        :param _WeightMode: <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统分配</li><li>custom： 自定义</li></ul>
+        :type WeightMode: str
+        :param _AutoAddRo: <p>是否自动添加只读实例</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :type AutoAddRo: str
+        :param _RwType: <p>读写类型</p><p>枚举值：</p><ul><li>READWRITE： 读写</li><li>READONLY： 只读</li></ul>
+        :type RwType: str
+        :param _FailOver: <p>是否开启故障转移</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :type FailOver: str
+        :param _ConsistencyTimeOut: <p>一致性超时时间</p>
+        :type ConsistencyTimeOut: int
+        :param _ConsistencyType: <p>一致性类型。</p><p>枚举值：</p><ul><li>eventual： 最终一致性</li><li>global： 全局一致性</li><li>session： 会话一致性</li></ul><p>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
+        :type ConsistencyType: str
+        :param _TransSplit: <p>是否开启事务拆分。</p><p>开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
+        :type TransSplit: bool
+        :param _AccessMode: <p>接入模式</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li></ul>
+        :type AccessMode: str
+        :param _InstanceWeights: <p>实例及权重</p>
+        :type InstanceWeights: list of ProxyInstanceWeight
+        :param _Description: <p>描述信息</p>
+        :type Description: str
+        :param _LoadBalanceMode: <p>自动负载模式</p><p>枚举值：</p><ul><li>static： 静态</li><li>dynamic： 自适应</li></ul>
+        :type LoadBalanceMode: str
+        :param _OpenConnectionPool: <p>是否开启连接池</p><p>枚举值：</p><ul><li>yes： 打开</li><li>no： 不打开</li></ul>
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolType: <p>连接池类型</p><p>枚举值：</p><ul><li>SessionConnectionPool： 会话级连接池</li><li>TransactionConnectionPool： 事物级连接池</li></ul>
+        :type ConnectionPoolType: str
+        :param _ConnectionPoolTimeOut: <p>连接池阀值</p>
+        :type ConnectionPoolTimeOut: int
+        """
+        self._UniqueVpcId = None
+        self._UniqueSubnetId = None
+        self._SecurityGroupIds = None
+        self._WeightMode = None
+        self._AutoAddRo = None
+        self._RwType = None
+        self._FailOver = None
+        self._ConsistencyTimeOut = None
+        self._ConsistencyType = None
+        self._TransSplit = None
+        self._AccessMode = None
+        self._InstanceWeights = None
+        self._Description = None
+        self._LoadBalanceMode = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolType = None
+        self._ConnectionPoolTimeOut = None
+
+    @property
+    def UniqueVpcId(self):
+        r"""<p>vpc id</p>
+        :rtype: str
+        """
+        return self._UniqueVpcId
+
+    @UniqueVpcId.setter
+    def UniqueVpcId(self, UniqueVpcId):
+        self._UniqueVpcId = UniqueVpcId
+
+    @property
+    def UniqueSubnetId(self):
+        r"""<p>子网ID</p>
+        :rtype: str
+        """
+        return self._UniqueSubnetId
+
+    @UniqueSubnetId.setter
+    def UniqueSubnetId(self, UniqueSubnetId):
+        self._UniqueSubnetId = UniqueSubnetId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def WeightMode(self):
+        r"""<p>权重模式</p><p>枚举值：</p><ul><li>system： 系统分配</li><li>custom： 自定义</li></ul>
+        :rtype: str
+        """
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def AutoAddRo(self):
+        r"""<p>是否自动添加只读实例</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :rtype: str
+        """
+        return self._AutoAddRo
+
+    @AutoAddRo.setter
+    def AutoAddRo(self, AutoAddRo):
+        self._AutoAddRo = AutoAddRo
+
+    @property
+    def RwType(self):
+        r"""<p>读写类型</p><p>枚举值：</p><ul><li>READWRITE： 读写</li><li>READONLY： 只读</li></ul>
+        :rtype: str
+        """
+        return self._RwType
+
+    @RwType.setter
+    def RwType(self, RwType):
+        self._RwType = RwType
+
+    @property
+    def FailOver(self):
+        r"""<p>是否开启故障转移</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :rtype: str
+        """
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
+
+    @property
+    def ConsistencyTimeOut(self):
+        r"""<p>一致性超时时间</p>
+        :rtype: int
+        """
+        return self._ConsistencyTimeOut
+
+    @ConsistencyTimeOut.setter
+    def ConsistencyTimeOut(self, ConsistencyTimeOut):
+        self._ConsistencyTimeOut = ConsistencyTimeOut
+
+    @property
+    def ConsistencyType(self):
+        r"""<p>一致性类型。</p><p>枚举值：</p><ul><li>eventual： 最终一致性</li><li>global： 全局一致性</li><li>session： 会话一致性</li></ul><p>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
+        :rtype: str
+        """
+        return self._ConsistencyType
+
+    @ConsistencyType.setter
+    def ConsistencyType(self, ConsistencyType):
+        self._ConsistencyType = ConsistencyType
+
+    @property
+    def TransSplit(self):
+        r"""<p>是否开启事务拆分。</p><p>开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
+        :rtype: bool
+        """
+        return self._TransSplit
+
+    @TransSplit.setter
+    def TransSplit(self, TransSplit):
+        self._TransSplit = TransSplit
+
+    @property
+    def AccessMode(self):
+        r"""<p>接入模式</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li></ul>
+        :rtype: str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def InstanceWeights(self):
+        r"""<p>实例及权重</p>
+        :rtype: list of ProxyInstanceWeight
+        """
+        return self._InstanceWeights
+
+    @InstanceWeights.setter
+    def InstanceWeights(self, InstanceWeights):
+        self._InstanceWeights = InstanceWeights
+
+    @property
+    def Description(self):
+        r"""<p>描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LoadBalanceMode(self):
+        r"""<p>自动负载模式</p><p>枚举值：</p><ul><li>static： 静态</li><li>dynamic： 自适应</li></ul>
+        :rtype: str
+        """
+        return self._LoadBalanceMode
+
+    @LoadBalanceMode.setter
+    def LoadBalanceMode(self, LoadBalanceMode):
+        self._LoadBalanceMode = LoadBalanceMode
+
+    @property
+    def OpenConnectionPool(self):
+        r"""<p>是否开启连接池</p><p>枚举值：</p><ul><li>yes： 打开</li><li>no： 不打开</li></ul>
+        :rtype: str
+        """
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolType(self):
+        r"""<p>连接池类型</p><p>枚举值：</p><ul><li>SessionConnectionPool： 会话级连接池</li><li>TransactionConnectionPool： 事物级连接池</li></ul>
+        :rtype: str
+        """
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        r"""<p>连接池阀值</p>
+        :rtype: int
+        """
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+
+    def _deserialize(self, params):
+        self._UniqueVpcId = params.get("UniqueVpcId")
+        self._UniqueSubnetId = params.get("UniqueSubnetId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._WeightMode = params.get("WeightMode")
+        self._AutoAddRo = params.get("AutoAddRo")
+        self._RwType = params.get("RwType")
+        self._FailOver = params.get("FailOver")
+        self._ConsistencyTimeOut = params.get("ConsistencyTimeOut")
+        self._ConsistencyType = params.get("ConsistencyType")
+        self._TransSplit = params.get("TransSplit")
+        self._AccessMode = params.get("AccessMode")
+        if params.get("InstanceWeights") is not None:
+            self._InstanceWeights = []
+            for item in params.get("InstanceWeights"):
+                obj = ProxyInstanceWeight()
+                obj._deserialize(item)
+                self._InstanceWeights.append(obj)
+        self._Description = params.get("Description")
+        self._LoadBalanceMode = params.get("LoadBalanceMode")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

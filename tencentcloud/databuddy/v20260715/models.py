@@ -8118,6 +8118,8 @@ class FetchOption(AbstractModel):
         :type FetchTags: bool
         :param _FetchDimensions: <p>是否返回字段关联的字典维度信息，默认不传，不返回</p>
         :type FetchDimensions: bool
+        :param _FetchTableFilesInfo: <p>是否获取tclake表的snapshots文件信息（文件大小、文件数量、最后修改时间）<br>各接口默认行为不同：</p><ul><li>GetTable：不传或未设置时默认获取（true），显式传 false 时跳过</li><li>GetTables：不传或未设置时默认不获取（false），显式传 true 时获取；获取会显著增加接口耗时</li></ul>
+        :type FetchTableFilesInfo: bool
         """
         self._FetchPermissions = None
         self._FetchFeatureTableDetail = None
@@ -8127,6 +8129,7 @@ class FetchOption(AbstractModel):
         self._FetchMask = None
         self._FetchTags = None
         self._FetchDimensions = None
+        self._FetchTableFilesInfo = None
 
     @property
     def FetchPermissions(self):
@@ -8216,6 +8219,17 @@ class FetchOption(AbstractModel):
     def FetchDimensions(self, FetchDimensions):
         self._FetchDimensions = FetchDimensions
 
+    @property
+    def FetchTableFilesInfo(self):
+        r"""<p>是否获取tclake表的snapshots文件信息（文件大小、文件数量、最后修改时间）<br>各接口默认行为不同：</p><ul><li>GetTable：不传或未设置时默认获取（true），显式传 false 时跳过</li><li>GetTables：不传或未设置时默认不获取（false），显式传 true 时获取；获取会显著增加接口耗时</li></ul>
+        :rtype: bool
+        """
+        return self._FetchTableFilesInfo
+
+    @FetchTableFilesInfo.setter
+    def FetchTableFilesInfo(self, FetchTableFilesInfo):
+        self._FetchTableFilesInfo = FetchTableFilesInfo
+
 
     def _deserialize(self, params):
         self._FetchPermissions = params.get("FetchPermissions")
@@ -8226,6 +8240,7 @@ class FetchOption(AbstractModel):
         self._FetchMask = params.get("FetchMask")
         self._FetchTags = params.get("FetchTags")
         self._FetchDimensions = params.get("FetchDimensions")
+        self._FetchTableFilesInfo = params.get("FetchTableFilesInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18109,6 +18124,183 @@ class ListPartitioning(AbstractModel):
         
 
 
+class ListScheduledTasksRequest(AbstractModel):
+    r"""ListScheduledTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间 ID</p>
+        :type WorkspaceId: str
+        """
+        self._WorkspaceId = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListScheduledTasksResponse(AbstractModel):
+    r"""ListScheduledTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 定时任务列表分页结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListScheduledTasksRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""定时任务列表分页结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListScheduledTasksRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListScheduledTasksRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListScheduledTasksRsp(AbstractModel):
+    r"""定时任务列表分页结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: <p>当前页任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ScheduledTaskDetail
+        :param _Total: <p>符合筛选条件的任务总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Page: <p>当前页码（从 1 开始）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
+        :param _PageSize: <p>实际生效的每页数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        """
+        self._Tasks = None
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Tasks(self):
+        r"""<p>当前页任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScheduledTaskDetail
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Total(self):
+        r"""<p>符合筛选条件的任务总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从 1 开始）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>实际生效的每页数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ScheduledTaskDetail()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListSchemaNamesRequest(AbstractModel):
     r"""ListSchemaNames请求参数结构体
 
@@ -25519,6 +25711,297 @@ class ScheduleBizEnumBrief(AbstractModel):
         self._LabelKey = params.get("LabelKey")
         self._LabelValue = params.get("LabelValue")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledTaskDetail(AbstractModel):
+    r"""定时任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduledTaskId: <p>定时任务唯一标识</p>
+        :type ScheduledTaskId: str
+        :param _Name: <p>任务名称</p>
+        :type Name: str
+        :param _Prompt: <p>任务提示词</p>
+        :type Prompt: str
+        :param _Schedule: <p>六段 cron 表达式</p>
+        :type Schedule: str
+        :param _Status: <p>任务状态：1=ACTIVE，2=PAUSED</p>
+        :type Status: int
+        :param _SessionType: <p>会话类型：1=数据分析，2=数据工程</p>
+        :type SessionType: int
+        :param _AnalysisSpaceId: <p>分析空间 ID</p>
+        :type AnalysisSpaceId: str
+        :param _WorkspaceId: <p>工作空间 ID</p>
+        :type WorkspaceId: str
+        :param _CreateUserUin: <p>创建人 UIN</p>
+        :type CreateUserUin: str
+        :param _CreateTime: <p>创建时间，毫秒级 Unix 时间戳字符串</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>最近修改时间，毫秒级 Unix 时间戳字符串</p>
+        :type ModifyTime: str
+        :param _StartTime: <p>生效开始时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+        :type StartTime: str
+        :param _EndTime: <p>生效结束时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+        :type EndTime: str
+        :param _SkillIds: <p>技能 ID 列表</p>
+        :type SkillIds: str
+        :param _ModelId: <p>模型 ID</p>
+        :type ModelId: str
+        :param _ScheduleType: <p>调度类型：1=每天，2=间隔，3=单次</p>
+        :type ScheduleType: int
+        :param _UpdateUserUin: <p>最近修改人 UIN</p>
+        :type UpdateUserUin: str
+        :param _MCPIds: <p>mcpId列表（逗号分隔）</p>
+        :type MCPIds: str
+        """
+        self._ScheduledTaskId = None
+        self._Name = None
+        self._Prompt = None
+        self._Schedule = None
+        self._Status = None
+        self._SessionType = None
+        self._AnalysisSpaceId = None
+        self._WorkspaceId = None
+        self._CreateUserUin = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SkillIds = None
+        self._ModelId = None
+        self._ScheduleType = None
+        self._UpdateUserUin = None
+        self._MCPIds = None
+
+    @property
+    def ScheduledTaskId(self):
+        r"""<p>定时任务唯一标识</p>
+        :rtype: str
+        """
+        return self._ScheduledTaskId
+
+    @ScheduledTaskId.setter
+    def ScheduledTaskId(self, ScheduledTaskId):
+        self._ScheduledTaskId = ScheduledTaskId
+
+    @property
+    def Name(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Prompt(self):
+        r"""<p>任务提示词</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Schedule(self):
+        r"""<p>六段 cron 表达式</p>
+        :rtype: str
+        """
+        return self._Schedule
+
+    @Schedule.setter
+    def Schedule(self, Schedule):
+        self._Schedule = Schedule
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：1=ACTIVE，2=PAUSED</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SessionType(self):
+        r"""<p>会话类型：1=数据分析，2=数据工程</p>
+        :rtype: int
+        """
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def AnalysisSpaceId(self):
+        r"""<p>分析空间 ID</p>
+        :rtype: str
+        """
+        return self._AnalysisSpaceId
+
+    @AnalysisSpaceId.setter
+    def AnalysisSpaceId(self, AnalysisSpaceId):
+        self._AnalysisSpaceId = AnalysisSpaceId
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def CreateUserUin(self):
+        r"""<p>创建人 UIN</p>
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，毫秒级 Unix 时间戳字符串</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>最近修改时间，毫秒级 Unix 时间戳字符串</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def StartTime(self):
+        r"""<p>生效开始时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>生效结束时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SkillIds(self):
+        r"""<p>技能 ID 列表</p>
+        :rtype: str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ScheduleType(self):
+        r"""<p>调度类型：1=每天，2=间隔，3=单次</p>
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def UpdateUserUin(self):
+        r"""<p>最近修改人 UIN</p>
+        :rtype: str
+        """
+        return self._UpdateUserUin
+
+    @UpdateUserUin.setter
+    def UpdateUserUin(self, UpdateUserUin):
+        self._UpdateUserUin = UpdateUserUin
+
+    @property
+    def MCPIds(self):
+        r"""<p>mcpId列表（逗号分隔）</p>
+        :rtype: str
+        """
+        return self._MCPIds
+
+    @MCPIds.setter
+    def MCPIds(self, MCPIds):
+        self._MCPIds = MCPIds
+
+
+    def _deserialize(self, params):
+        self._ScheduledTaskId = params.get("ScheduledTaskId")
+        self._Name = params.get("Name")
+        self._Prompt = params.get("Prompt")
+        self._Schedule = params.get("Schedule")
+        self._Status = params.get("Status")
+        self._SessionType = params.get("SessionType")
+        self._AnalysisSpaceId = params.get("AnalysisSpaceId")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SkillIds = params.get("SkillIds")
+        self._ModelId = params.get("ModelId")
+        self._ScheduleType = params.get("ScheduleType")
+        self._UpdateUserUin = params.get("UpdateUserUin")
+        self._MCPIds = params.get("MCPIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
