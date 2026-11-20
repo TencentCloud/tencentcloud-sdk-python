@@ -16489,6 +16489,8 @@ class UpdateSandboxToolRequest(AbstractModel):
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         :param _ComputerConfiguration: <p>桌面电脑环境类沙箱配置</p>
         :type ComputerConfiguration: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
+        :param _StorageMounts: <p>按挂载名称更新沙箱工具已有镜像卷的镜像来源和镜像内目录。</p><p>入参限制：每项须提供已有镜像卷的 Name，以及 StorageSource.Image 中的 Reference 和 ImageRegistryType。同一请求中的 Name 须唯一。Reference 须包含镜像标签或 SHA-256 摘要。</p><p>取值参考：[{&quot;Name&quot;:&quot;runtime&quot;,&quot;StorageSource&quot;:{&quot;Image&quot;:{&quot;Reference&quot;:&quot;ccr.ccs.tencentyun.com/example/runtime:v2&quot;,&quot;ImageRegistryType&quot;:&quot;personal&quot;,&quot;SubPath&quot;:&quot;assets&quot;}}}]</p><p>省略本参数或传空数组时保留原配置。SubPath 省略时保留原目录，传空字符串时使用镜像根目录，传非空路径时使用指定目录。工具沿用原有 MountPath 和 ReadOnly，镜像摘要由服务解析。</p>
+        :type StorageMounts: list of StorageMount
         """
         self._ToolId = None
         self._Description = None
@@ -16496,6 +16498,7 @@ class UpdateSandboxToolRequest(AbstractModel):
         self._Tags = None
         self._CustomConfiguration = None
         self._ComputerConfiguration = None
+        self._StorageMounts = None
 
     @property
     def ToolId(self):
@@ -16563,6 +16566,17 @@ class UpdateSandboxToolRequest(AbstractModel):
     def ComputerConfiguration(self, ComputerConfiguration):
         self._ComputerConfiguration = ComputerConfiguration
 
+    @property
+    def StorageMounts(self):
+        r"""<p>按挂载名称更新沙箱工具已有镜像卷的镜像来源和镜像内目录。</p><p>入参限制：每项须提供已有镜像卷的 Name，以及 StorageSource.Image 中的 Reference 和 ImageRegistryType。同一请求中的 Name 须唯一。Reference 须包含镜像标签或 SHA-256 摘要。</p><p>取值参考：[{&quot;Name&quot;:&quot;runtime&quot;,&quot;StorageSource&quot;:{&quot;Image&quot;:{&quot;Reference&quot;:&quot;ccr.ccs.tencentyun.com/example/runtime:v2&quot;,&quot;ImageRegistryType&quot;:&quot;personal&quot;,&quot;SubPath&quot;:&quot;assets&quot;}}}]</p><p>省略本参数或传空数组时保留原配置。SubPath 省略时保留原目录，传空字符串时使用镜像根目录，传非空路径时使用指定目录。工具沿用原有 MountPath 和 ReadOnly，镜像摘要由服务解析。</p>
+        :rtype: list of StorageMount
+        """
+        return self._StorageMounts
+
+    @StorageMounts.setter
+    def StorageMounts(self, StorageMounts):
+        self._StorageMounts = StorageMounts
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -16582,6 +16596,12 @@ class UpdateSandboxToolRequest(AbstractModel):
         if params.get("ComputerConfiguration") is not None:
             self._ComputerConfiguration = ComputerConfiguration()
             self._ComputerConfiguration._deserialize(params.get("ComputerConfiguration"))
+        if params.get("StorageMounts") is not None:
+            self._StorageMounts = []
+            for item in params.get("StorageMounts"):
+                obj = StorageMount()
+                obj._deserialize(item)
+                self._StorageMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
