@@ -3205,6 +3205,147 @@ class CreateDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePreCacheImageCleanupPolicyRequest(AbstractModel):
+    r"""CreatePreCacheImageCleanupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>策略名</p>
+        :type Name: str
+        :param _IdleTTL: <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+        :type IdleTTL: str
+        :param _RegistryHost: <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+        :type RegistryHost: str
+        :param _RepoPattern: <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280；不传或空串表示全部 Repo</p>
+        :type RepoPattern: str
+        :param _Enabled: <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._IdleTTL = None
+        self._RegistryHost = None
+        self._RepoPattern = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        r"""<p>策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdleTTL(self):
+        r"""<p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+        :rtype: str
+        """
+        return self._IdleTTL
+
+    @IdleTTL.setter
+    def IdleTTL(self, IdleTTL):
+        self._IdleTTL = IdleTTL
+
+    @property
+    def RegistryHost(self):
+        r"""<p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+        :rtype: str
+        """
+        return self._RegistryHost
+
+    @RegistryHost.setter
+    def RegistryHost(self, RegistryHost):
+        self._RegistryHost = RegistryHost
+
+    @property
+    def RepoPattern(self):
+        r"""<p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280；不传或空串表示全部 Repo</p>
+        :rtype: str
+        """
+        return self._RepoPattern
+
+    @RepoPattern.setter
+    def RepoPattern(self, RepoPattern):
+        self._RepoPattern = RepoPattern
+
+    @property
+    def Enabled(self):
+        r"""<p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._IdleTTL = params.get("IdleTTL")
+        self._RegistryHost = params.get("RegistryHost")
+        self._RepoPattern = params.get("RepoPattern")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePreCacheImageCleanupPolicyResponse(AbstractModel):
+    r"""CreatePreCacheImageCleanupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicy: <p>清理策略详情</p>
+        :type CleanupPolicy: :class:`tencentcloud.ags.v20250920.models.PreCacheImageCleanupPolicy`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CleanupPolicy = None
+        self._RequestId = None
+
+    @property
+    def CleanupPolicy(self):
+        r"""<p>清理策略详情</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.PreCacheImageCleanupPolicy`
+        """
+        return self._CleanupPolicy
+
+    @CleanupPolicy.setter
+    def CleanupPolicy(self, CleanupPolicy):
+        self._CleanupPolicy = CleanupPolicy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CleanupPolicy") is not None:
+            self._CleanupPolicy = PreCacheImageCleanupPolicy()
+            self._CleanupPolicy._deserialize(params.get("CleanupPolicy"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePreCacheImageTaskRequest(AbstractModel):
     r"""CreatePreCacheImageTask请求参数结构体
 
@@ -5226,6 +5367,70 @@ class DeleteGPUResourceGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeletePreCacheImageCleanupPolicyRequest(AbstractModel):
+    r"""DeletePreCacheImageCleanupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicyId: <p>清理策略ID</p>
+        :type CleanupPolicyId: str
+        """
+        self._CleanupPolicyId = None
+
+    @property
+    def CleanupPolicyId(self):
+        r"""<p>清理策略ID</p>
+        :rtype: str
+        """
+        return self._CleanupPolicyId
+
+    @CleanupPolicyId.setter
+    def CleanupPolicyId(self, CleanupPolicyId):
+        self._CleanupPolicyId = CleanupPolicyId
+
+
+    def _deserialize(self, params):
+        self._CleanupPolicyId = params.get("CleanupPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePreCacheImageCleanupPolicyResponse(AbstractModel):
+    r"""DeletePreCacheImageCleanupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeletePreCacheImageRequest(AbstractModel):
     r"""DeletePreCacheImage请求参数结构体
 
@@ -7219,6 +7424,155 @@ class DescribeGPUResourcesResponse(AbstractModel):
                 obj = GPUResource()
                 obj._deserialize(item)
                 self._Resources.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePreCacheImageCleanupPolicyListRequest(AbstractModel):
+    r"""DescribePreCacheImageCleanupPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicyIds: <p>策略 ID 列表</p><p>入参限制：最多 100 个，每个 1～64 字符；指定时 Offset、Limit、Filters 不生效，不存在或已删除的 ID 被忽略</p>
+        :type CleanupPolicyIds: list of str
+        :param _Filters: <p>过滤器</p><p>入参限制：Filter={Name:String,Values:String[]}；最多 10 个 Filter，每个 Filter 的 Name 和 Values 必填，Values 最多 10 个、每个最多 255 字符</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移值</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._CleanupPolicyIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CleanupPolicyIds(self):
+        r"""<p>策略 ID 列表</p><p>入参限制：最多 100 个，每个 1～64 字符；指定时 Offset、Limit、Filters 不生效，不存在或已删除的 ID 被忽略</p>
+        :rtype: list of str
+        """
+        return self._CleanupPolicyIds
+
+    @CleanupPolicyIds.setter
+    def CleanupPolicyIds(self, CleanupPolicyIds):
+        self._CleanupPolicyIds = CleanupPolicyIds
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器</p><p>入参限制：Filter={Name:String,Values:String[]}；最多 10 个 Filter，每个 Filter 的 Name 和 Values 必填，Values 最多 10 个、每个最多 255 字符</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移值</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CleanupPolicyIds = params.get("CleanupPolicyIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePreCacheImageCleanupPolicyListResponse(AbstractModel):
+    r"""DescribePreCacheImageCleanupPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicySet: <p>清理策略集合</p>
+        :type CleanupPolicySet: list of PreCacheImageCleanupPolicy
+        :param _TotalCount: <p>返回策略数</p><p>单位：个</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CleanupPolicySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CleanupPolicySet(self):
+        r"""<p>清理策略集合</p>
+        :rtype: list of PreCacheImageCleanupPolicy
+        """
+        return self._CleanupPolicySet
+
+    @CleanupPolicySet.setter
+    def CleanupPolicySet(self, CleanupPolicySet):
+        self._CleanupPolicySet = CleanupPolicySet
+
+    @property
+    def TotalCount(self):
+        r"""<p>返回策略数</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CleanupPolicySet") is not None:
+            self._CleanupPolicySet = []
+            for item in params.get("CleanupPolicySet"):
+                obj = PreCacheImageCleanupPolicy()
+                obj._deserialize(item)
+                self._CleanupPolicySet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -13149,6 +13503,147 @@ class PreCacheImage(AbstractModel):
         
 
 
+class PreCacheImageCleanupPolicy(AbstractModel):
+    r"""预热镜像自动清理策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicyId: <p>自动清理策略ID</p>
+        :type CleanupPolicyId: str
+        :param _Name: <p>自动清理策略名</p>
+        :type Name: str
+        :param _Enabled: <p>策略启用配置</p>
+        :type Enabled: bool
+        :param _RegistryHost: <p>镜像仓库地址</p><p>精准匹配，空串表示不限域名</p>
+        :type RegistryHost: str
+        :param _RepoPattern: <p>镜像仓库名</p><p>正则匹配，匹配 命名空间/仓库 完整路径，非锚定子串匹配，语法与 TCR 预热触发器一致；空串表示全部 Repo</p>
+        :type RepoPattern: str
+        :param _IdleTTL: <p>闲置过期清理时间</p><p>规范化正数时长，例如 7d</p>
+        :type IdleTTL: str
+        :param _CreateTime: <p>策略创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>策略最近更新时间</p>
+        :type UpdateTime: str
+        """
+        self._CleanupPolicyId = None
+        self._Name = None
+        self._Enabled = None
+        self._RegistryHost = None
+        self._RepoPattern = None
+        self._IdleTTL = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def CleanupPolicyId(self):
+        r"""<p>自动清理策略ID</p>
+        :rtype: str
+        """
+        return self._CleanupPolicyId
+
+    @CleanupPolicyId.setter
+    def CleanupPolicyId(self, CleanupPolicyId):
+        self._CleanupPolicyId = CleanupPolicyId
+
+    @property
+    def Name(self):
+        r"""<p>自动清理策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enabled(self):
+        r"""<p>策略启用配置</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RegistryHost(self):
+        r"""<p>镜像仓库地址</p><p>精准匹配，空串表示不限域名</p>
+        :rtype: str
+        """
+        return self._RegistryHost
+
+    @RegistryHost.setter
+    def RegistryHost(self, RegistryHost):
+        self._RegistryHost = RegistryHost
+
+    @property
+    def RepoPattern(self):
+        r"""<p>镜像仓库名</p><p>正则匹配，匹配 命名空间/仓库 完整路径，非锚定子串匹配，语法与 TCR 预热触发器一致；空串表示全部 Repo</p>
+        :rtype: str
+        """
+        return self._RepoPattern
+
+    @RepoPattern.setter
+    def RepoPattern(self, RepoPattern):
+        self._RepoPattern = RepoPattern
+
+    @property
+    def IdleTTL(self):
+        r"""<p>闲置过期清理时间</p><p>规范化正数时长，例如 7d</p>
+        :rtype: str
+        """
+        return self._IdleTTL
+
+    @IdleTTL.setter
+    def IdleTTL(self, IdleTTL):
+        self._IdleTTL = IdleTTL
+
+    @property
+    def CreateTime(self):
+        r"""<p>策略创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>策略最近更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CleanupPolicyId = params.get("CleanupPolicyId")
+        self._Name = params.get("Name")
+        self._Enabled = params.get("Enabled")
+        self._RegistryHost = params.get("RegistryHost")
+        self._RepoPattern = params.get("RepoPattern")
+        self._IdleTTL = params.get("IdleTTL")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PreviewRegistryRecordRequest(AbstractModel):
     r"""PreviewRegistryRecord请求参数结构体
 
@@ -15137,6 +15632,8 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type AuthMode: str
         :param _Metadata: <p>沙箱元数据</p>
         :type Metadata: list of MetadataVar
+        :param _StorageMounts: <p>启动沙箱实例时追加挂载规则，仅支持 volume、cfs、cos、image</p>
+        :type StorageMounts: list of StorageMount
         :param _StartMode: <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
         :type StartMode: str
         """
@@ -15150,6 +15647,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._CustomConfiguration = None
         self._AuthMode = None
         self._Metadata = None
+        self._StorageMounts = None
         self._StartMode = None
 
     @property
@@ -15263,6 +15761,17 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._Metadata = Metadata
 
     @property
+    def StorageMounts(self):
+        r"""<p>启动沙箱实例时追加挂载规则，仅支持 volume、cfs、cos、image</p>
+        :rtype: list of StorageMount
+        """
+        return self._StorageMounts
+
+    @StorageMounts.setter
+    def StorageMounts(self, StorageMounts):
+        self._StorageMounts = StorageMounts
+
+    @property
     def StartMode(self):
         r"""<p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
         :rtype: str
@@ -15297,6 +15806,12 @@ class StartSandboxInstanceRequest(AbstractModel):
                 obj = MetadataVar()
                 obj._deserialize(item)
                 self._Metadata.append(obj)
+        if params.get("StorageMounts") is not None:
+            self._StorageMounts = []
+            for item in params.get("StorageMounts"):
+                obj = StorageMount()
+                obj._deserialize(item)
+                self._StorageMounts.append(obj)
         self._StartMode = params.get("StartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15921,6 +16436,162 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdatePreCacheImageCleanupPolicyRequest(AbstractModel):
+    r"""UpdatePreCacheImageCleanupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicyId: <p>清理策略ID</p>
+        :type CleanupPolicyId: str
+        :param _Name: <p>清理策略名</p>
+        :type Name: str
+        :param _RegistryHost: <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+        :type RegistryHost: str
+        :param _RepoPattern: <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280。不传或空串表示全部 Repo。</p>
+        :type RepoPattern: str
+        :param _IdleTTL: <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+        :type IdleTTL: str
+        :param _Enabled: <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+        :type Enabled: bool
+        """
+        self._CleanupPolicyId = None
+        self._Name = None
+        self._RegistryHost = None
+        self._RepoPattern = None
+        self._IdleTTL = None
+        self._Enabled = None
+
+    @property
+    def CleanupPolicyId(self):
+        r"""<p>清理策略ID</p>
+        :rtype: str
+        """
+        return self._CleanupPolicyId
+
+    @CleanupPolicyId.setter
+    def CleanupPolicyId(self, CleanupPolicyId):
+        self._CleanupPolicyId = CleanupPolicyId
+
+    @property
+    def Name(self):
+        r"""<p>清理策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RegistryHost(self):
+        r"""<p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+        :rtype: str
+        """
+        return self._RegistryHost
+
+    @RegistryHost.setter
+    def RegistryHost(self, RegistryHost):
+        self._RegistryHost = RegistryHost
+
+    @property
+    def RepoPattern(self):
+        r"""<p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280。不传或空串表示全部 Repo。</p>
+        :rtype: str
+        """
+        return self._RepoPattern
+
+    @RepoPattern.setter
+    def RepoPattern(self, RepoPattern):
+        self._RepoPattern = RepoPattern
+
+    @property
+    def IdleTTL(self):
+        r"""<p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+        :rtype: str
+        """
+        return self._IdleTTL
+
+    @IdleTTL.setter
+    def IdleTTL(self, IdleTTL):
+        self._IdleTTL = IdleTTL
+
+    @property
+    def Enabled(self):
+        r"""<p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._CleanupPolicyId = params.get("CleanupPolicyId")
+        self._Name = params.get("Name")
+        self._RegistryHost = params.get("RegistryHost")
+        self._RepoPattern = params.get("RepoPattern")
+        self._IdleTTL = params.get("IdleTTL")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePreCacheImageCleanupPolicyResponse(AbstractModel):
+    r"""UpdatePreCacheImageCleanupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CleanupPolicy: <p>清理策略详情</p>
+        :type CleanupPolicy: :class:`tencentcloud.ags.v20250920.models.PreCacheImageCleanupPolicy`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CleanupPolicy = None
+        self._RequestId = None
+
+    @property
+    def CleanupPolicy(self):
+        r"""<p>清理策略详情</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.PreCacheImageCleanupPolicy`
+        """
+        return self._CleanupPolicy
+
+    @CleanupPolicy.setter
+    def CleanupPolicy(self, CleanupPolicy):
+        self._CleanupPolicy = CleanupPolicy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CleanupPolicy") is not None:
+            self._CleanupPolicy = PreCacheImageCleanupPolicy()
+            self._CleanupPolicy._deserialize(params.get("CleanupPolicy"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRegistryRecordRequest(AbstractModel):

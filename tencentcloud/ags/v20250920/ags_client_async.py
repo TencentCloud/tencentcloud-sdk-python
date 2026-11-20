@@ -154,6 +154,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePreCacheImageCleanupPolicy(
+            self,
+            request: models.CreatePreCacheImageCleanupPolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreatePreCacheImageCleanupPolicyResponse:
+        """
+        创建镜像预热自动清理策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePreCacheImageCleanupPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePreCacheImageCleanupPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePreCacheImageTask(
             self,
             request: models.CreatePreCacheImageTaskRequest,
@@ -351,6 +369,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DeletePreCacheImage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePreCacheImageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePreCacheImageCleanupPolicy(
+            self,
+            request: models.DeletePreCacheImageCleanupPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeletePreCacheImageCleanupPolicyResponse:
+        """
+        删除镜像预热自动卸载策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePreCacheImageCleanupPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePreCacheImageCleanupPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -607,6 +643,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeGPUResources"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeGPUResourcesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePreCacheImageCleanupPolicyList(
+            self,
+            request: models.DescribePreCacheImageCleanupPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePreCacheImageCleanupPolicyListResponse:
+        """
+        查询镜像预热自动卸载策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePreCacheImageCleanupPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePreCacheImageCleanupPolicyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1152,6 +1206,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "SyncRegistryRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncRegistryRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdatePreCacheImageCleanupPolicy(
+            self,
+            request: models.UpdatePreCacheImageCleanupPolicyRequest,
+            opts: Dict = None,
+    ) -> models.UpdatePreCacheImageCleanupPolicyResponse:
+        """
+        更新镜像预热自动卸载策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdatePreCacheImageCleanupPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdatePreCacheImageCleanupPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

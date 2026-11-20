@@ -190,6 +190,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePreCacheImageCleanupPolicy(self, request):
+        r"""创建镜像预热自动清理策略
+
+        :param request: Request instance for CreatePreCacheImageCleanupPolicy.
+        :type request: :class:`tencentcloud.ags.v20250920.models.CreatePreCacheImageCleanupPolicyRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CreatePreCacheImageCleanupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePreCacheImageCleanupPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePreCacheImageCleanupPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePreCacheImageTask(self, request):
         r"""创建镜像预热任务
 
@@ -438,6 +461,29 @@ class AgsClient(AbstractClient):
             body = self.call("DeletePreCacheImage", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePreCacheImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePreCacheImageCleanupPolicy(self, request):
+        r"""删除镜像预热自动卸载策略
+
+        :param request: Request instance for DeletePreCacheImageCleanupPolicy.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DeletePreCacheImageCleanupPolicyRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DeletePreCacheImageCleanupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePreCacheImageCleanupPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePreCacheImageCleanupPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -764,6 +810,29 @@ class AgsClient(AbstractClient):
             body = self.call("DescribeGPUResources", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGPUResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePreCacheImageCleanupPolicyList(self, request):
+        r"""查询镜像预热自动卸载策略
+
+        :param request: Request instance for DescribePreCacheImageCleanupPolicyList.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribePreCacheImageCleanupPolicyListRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribePreCacheImageCleanupPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePreCacheImageCleanupPolicyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePreCacheImageCleanupPolicyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1459,6 +1528,29 @@ class AgsClient(AbstractClient):
             body = self.call("SyncRegistryRecord", params, headers=headers)
             response = json.loads(body)
             model = models.SyncRegistryRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePreCacheImageCleanupPolicy(self, request):
+        r"""更新镜像预热自动卸载策略
+
+        :param request: Request instance for UpdatePreCacheImageCleanupPolicy.
+        :type request: :class:`tencentcloud.ags.v20250920.models.UpdatePreCacheImageCleanupPolicyRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.UpdatePreCacheImageCleanupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePreCacheImageCleanupPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePreCacheImageCleanupPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
