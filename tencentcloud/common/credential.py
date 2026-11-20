@@ -313,6 +313,7 @@ class ProfileCredential(object):
             file_path = "/etc/tencentcloud/credentials"
         else:
             file_path = ""
+        client_config = {}
         if file_path:
             # loads config
             conf = configparser.ConfigParser()
@@ -323,16 +324,11 @@ class ProfileCredential(object):
                 for key, value in dict(ini_map[k]).items():
                     option[key] = value.strip()
                 ini_map[k] = option
-            if "default" in ini_map:
-                client_config = ini_map.get("default")
-                self.secret_id = client_config.get('secret_id', None)
-                self.secret_key = client_config.get('secret_key', None)
-                self.role_arn = client_config.get('role_arn', None)
-        else:
-            self.secret_id = None
-            self.secret_key = None
-            self.role_arn = None
+            client_config = ini_map.get("default", {})
 
+        self.secret_id = client_config.get('secret_id')
+        self.secret_key = client_config.get('secret_key')
+        self.role_arn = client_config.get('role_arn')
         if self.secret_id is None or self.secret_key is None:
             return None
         if len(self.secret_id) == 0 or len(self.secret_key) == 0:
