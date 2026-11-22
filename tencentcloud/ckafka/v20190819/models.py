@@ -5115,7 +5115,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)，可通过接口DescribeAppInfo获取。</p>
+        :param _Name: <p>名称，字符串长度不超过 128 个字符。必须以当前用户的实际 AppId 和连字符（-）开头，其余部分仅支持字母、数字和连字符（-）。AppId 可通过 GetUserAppId 接口获取。</p>
         :type Name: str
         :param _PartitionNum: <p>Partition个数，最大值为500，大于0</p>
         :type PartitionNum: int
@@ -5134,7 +5134,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)，可通过接口DescribeAppInfo获取。</p>
+        r"""<p>名称，字符串长度不超过 128 个字符。必须以当前用户的实际 AppId 和连字符（-）开头，其余部分仅支持字母、数字和连字符（-）。AppId 可通过 GetUserAppId 接口获取。</p>
         :rtype: str
         """
         return self._Name
@@ -26167,7 +26167,7 @@ class ModifyAclRuleRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
         :type InstanceId: str
-        :param _RuleName: <p>ACL规则名</p>
+        :param _RuleName: <p>ACL规则名</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/89217">DescribeAclRule</a></p>
         :type RuleName: str
         :param _IsApplied: <p>修改预设规则时传入,是否应用到新增的Topic</p><p>枚举值：</p><ul><li>0： 不允许应用到新增的topic</li><li>1： 允许应用到新增的topic</li></ul><p>默认值：0</p>
         :type IsApplied: int
@@ -26189,7 +26189,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""<p>ACL规则名</p>
+        r"""<p>ACL规则名</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/89217">DescribeAclRule</a></p>
         :rtype: str
         """
         return self._RuleName

@@ -2053,6 +2053,72 @@ class AIGWLLMHealthCheckSetting(AbstractModel):
         
 
 
+class AIGWLLMIPRestrictionResult(AbstractModel):
+    r"""IP 黑白名单配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否开启</p>
+        :type Enable: bool
+        :param _RestrictionType: <p>限制类型</p><p>枚举值：</p><ul><li>whiteList： 白名单</li><li>blackList： 黑名单</li></ul>
+        :type RestrictionType: str
+        :param _AddressList: <p>IP 或 CIDR 列表，每项须为合法 IP/CIDR（支持 IPv4/IPv6）</p>
+        :type AddressList: list of str
+        """
+        self._Enable = None
+        self._RestrictionType = None
+        self._AddressList = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def RestrictionType(self):
+        r"""<p>限制类型</p><p>枚举值：</p><ul><li>whiteList： 白名单</li><li>blackList： 黑名单</li></ul>
+        :rtype: str
+        """
+        return self._RestrictionType
+
+    @RestrictionType.setter
+    def RestrictionType(self, RestrictionType):
+        self._RestrictionType = RestrictionType
+
+    @property
+    def AddressList(self):
+        r"""<p>IP 或 CIDR 列表，每项须为合法 IP/CIDR（支持 IPv4/IPv6）</p>
+        :rtype: list of str
+        """
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._RestrictionType = params.get("RestrictionType")
+        self._AddressList = params.get("AddressList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWLLMModelServiceSubRoute(AbstractModel):
     r"""模型服务二级路由配置
 
@@ -21340,6 +21406,102 @@ class DescribeAIGWCustomGuardrailPolicyResult(AbstractModel):
         
 
 
+class DescribeAIGWLLMModelAPIIPRestrictionRequest(AbstractModel):
+    r"""DescribeAIGWLLMModelAPIIPRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例id</p>
+        :type GatewayId: str
+        :param _ModelAPIId: <p>模型API ID</p>
+        :type ModelAPIId: str
+        """
+        self._GatewayId = None
+        self._ModelAPIId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ModelAPIId(self):
+        r"""<p>模型API ID</p>
+        :rtype: str
+        """
+        return self._ModelAPIId
+
+    @ModelAPIId.setter
+    def ModelAPIId(self, ModelAPIId):
+        self._ModelAPIId = ModelAPIId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ModelAPIId = params.get("ModelAPIId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWLLMModelAPIIPRestrictionResponse(AbstractModel):
+    r"""DescribeAIGWLLMModelAPIIPRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>IP 黑白名单配置</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMIPRestrictionResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>IP 黑白名单配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMIPRestrictionResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWLLMIPRestrictionResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCNGWServicesWithRoutesRequest(AbstractModel):
     r"""DescribeCNGWServicesWithRoutes请求参数结构体
 
@@ -27198,6 +27360,145 @@ class ModifyAIGWCustomGuardrailPolicyResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAIGWLLMModelAPIIPRestrictionRequest(AbstractModel):
+    r"""ModifyAIGWLLMModelAPIIPRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例id</p>
+        :type GatewayId: str
+        :param _ModelAPIId: <p>模型 API ID</p>
+        :type ModelAPIId: str
+        :param _Enable: <p>是否启用 IP 黑白名单</p>
+        :type Enable: bool
+        :param _RestrictionType: <p>限制类型</p><p>枚举值：</p><ul><li>whiteList： 白名单</li><li>blackList： 黑名单</li></ul>
+        :type RestrictionType: str
+        :param _AddressList: <p>IP 或 CIDR 列表，每项须为合法 IP/CIDR（支持 IPv4/IPv6），长度 [1,400]</p>
+        :type AddressList: list of str
+        """
+        self._GatewayId = None
+        self._ModelAPIId = None
+        self._Enable = None
+        self._RestrictionType = None
+        self._AddressList = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ModelAPIId(self):
+        r"""<p>模型 API ID</p>
+        :rtype: str
+        """
+        return self._ModelAPIId
+
+    @ModelAPIId.setter
+    def ModelAPIId(self, ModelAPIId):
+        self._ModelAPIId = ModelAPIId
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用 IP 黑白名单</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def RestrictionType(self):
+        r"""<p>限制类型</p><p>枚举值：</p><ul><li>whiteList： 白名单</li><li>blackList： 黑名单</li></ul>
+        :rtype: str
+        """
+        return self._RestrictionType
+
+    @RestrictionType.setter
+    def RestrictionType(self, RestrictionType):
+        self._RestrictionType = RestrictionType
+
+    @property
+    def AddressList(self):
+        r"""<p>IP 或 CIDR 列表，每项须为合法 IP/CIDR（支持 IPv4/IPv6），长度 [1,400]</p>
+        :rtype: list of str
+        """
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ModelAPIId = params.get("ModelAPIId")
+        self._Enable = params.get("Enable")
+        self._RestrictionType = params.get("RestrictionType")
+        self._AddressList = params.get("AddressList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAIGWLLMModelAPIIPRestrictionResponse(AbstractModel):
+    r"""ModifyAIGWLLMModelAPIIPRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCloudNativeAPIGatewayAIServiceSourceRequest(AbstractModel):

@@ -16133,11 +16133,14 @@ class AigcVideoTaskOutput(AbstractModel):
         :type FileInfos: list of AigcVideoTaskOutputFileInfo
         :param _ProcedureTaskIds: <p>任务类型为 Procedure 的任务 ID。若发起<a href="https://cloud.tencent.com/document/product/266/126239">创建 AIGC 生视频任务</a>时指定了任务流模板(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :type ProcedureTaskIds: list of str
+        :param _TotalInputVideoDuration: <p>输入视频时长。</p>
+        :type TotalInputVideoDuration: int
         :param _Usage: <p>AIGC 生视频任务的用量信息。</p>
         :type Usage: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
         """
         self._FileInfos = None
         self._ProcedureTaskIds = None
+        self._TotalInputVideoDuration = None
         self._Usage = None
 
     @property
@@ -16163,6 +16166,17 @@ class AigcVideoTaskOutput(AbstractModel):
         self._ProcedureTaskIds = ProcedureTaskIds
 
     @property
+    def TotalInputVideoDuration(self):
+        r"""<p>输入视频时长。</p>
+        :rtype: int
+        """
+        return self._TotalInputVideoDuration
+
+    @TotalInputVideoDuration.setter
+    def TotalInputVideoDuration(self, TotalInputVideoDuration):
+        self._TotalInputVideoDuration = TotalInputVideoDuration
+
+    @property
     def Usage(self):
         r"""<p>AIGC 生视频任务的用量信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
@@ -16182,6 +16196,7 @@ class AigcVideoTaskOutput(AbstractModel):
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
         self._ProcedureTaskIds = params.get("ProcedureTaskIds")
+        self._TotalInputVideoDuration = params.get("TotalInputVideoDuration")
         if params.get("Usage") is not None:
             self._Usage = AigcVideoTaskUsage()
             self._Usage._deserialize(params.get("Usage"))
@@ -82307,9 +82322,9 @@ class ProcessImageAsyncTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 图片异步处理模板ID。
+        :param _Definition: <p>图片异步处理模板ID。可使用自定义模板ID，也可使用下列预制模板：</p><table><thead><tr><th align="right">模板编号（Definition）</th><th>模板名称</th><th>功能说明</th></tr></thead><tbody><tr><td align="right">14</td><td>图片理解</td><td>图片内容分析、辅助分类与检索</td></tr><tr><td align="right">15</td><td>AI擦除</td><td>图片中文字或水印的擦除</td></tr><tr><td align="right">16</td><td>图片修复</td><td>图片修复与瑕疵处理，老照片修复</td></tr><tr><td align="right">17</td><td>AI抠图</td><td>主体抠图、背景替换前的素材准备</td></tr><tr><td align="right">19</td><td>图片美颜</td><td>人像照片美化</td></tr><tr><td align="right">20</td><td>通用抠图</td><td>商品或主体前景提取、素材合成</td></tr><tr><td align="right">22</td><td>图片超分至4K</td><td>图片超分-超分至4K-ultra（短边2160，长边自适应），可用于优化图片清晰度、高分辨率展示、大屏素材准备</td></tr><tr><td align="right">23</td><td>图片超分至2K</td><td>图片超分-超分至2K-ultra（短边1440，长边自适应），可用于优化图片清晰度、高分辨率图片展示、素材清晰度提升</td></tr><tr><td align="right">25</td><td>图片压缩75质量</td><td>图片压缩-75%质量-JPEG，可用于网页配图、缩略图等需要控制文件体积的场景</td></tr><tr><td align="right">27</td><td>图片超分两倍超分</td><td>图片超分-两倍超分-ultra，可用于小尺寸图片放大、提高展示分辨率与清晰度</td></tr></tbody></table>
         :type Definition: int
-        :param _ExtendedParameter: 图片异步处理扩展参数。
+        :param _ExtendedParameter: <p>图片异步处理扩展参数。</p>
         :type ExtendedParameter: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInputExtendedParameter`
         """
         self._Definition = None
@@ -82317,7 +82332,7 @@ class ProcessImageAsyncTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""图片异步处理模板ID。
+        r"""<p>图片异步处理模板ID。可使用自定义模板ID，也可使用下列预制模板：</p><table><thead><tr><th align="right">模板编号（Definition）</th><th>模板名称</th><th>功能说明</th></tr></thead><tbody><tr><td align="right">14</td><td>图片理解</td><td>图片内容分析、辅助分类与检索</td></tr><tr><td align="right">15</td><td>AI擦除</td><td>图片中文字或水印的擦除</td></tr><tr><td align="right">16</td><td>图片修复</td><td>图片修复与瑕疵处理，老照片修复</td></tr><tr><td align="right">17</td><td>AI抠图</td><td>主体抠图、背景替换前的素材准备</td></tr><tr><td align="right">19</td><td>图片美颜</td><td>人像照片美化</td></tr><tr><td align="right">20</td><td>通用抠图</td><td>商品或主体前景提取、素材合成</td></tr><tr><td align="right">22</td><td>图片超分至4K</td><td>图片超分-超分至4K-ultra（短边2160，长边自适应），可用于优化图片清晰度、高分辨率展示、大屏素材准备</td></tr><tr><td align="right">23</td><td>图片超分至2K</td><td>图片超分-超分至2K-ultra（短边1440，长边自适应），可用于优化图片清晰度、高分辨率图片展示、素材清晰度提升</td></tr><tr><td align="right">25</td><td>图片压缩75质量</td><td>图片压缩-75%质量-JPEG，可用于网页配图、缩略图等需要控制文件体积的场景</td></tr><tr><td align="right">27</td><td>图片超分两倍超分</td><td>图片超分-两倍超分-ultra，可用于小尺寸图片放大、提高展示分辨率与清晰度</td></tr></tbody></table>
         :rtype: int
         """
         return self._Definition
@@ -82328,7 +82343,7 @@ class ProcessImageAsyncTaskInput(AbstractModel):
 
     @property
     def ExtendedParameter(self):
-        r"""图片异步处理扩展参数。
+        r"""<p>图片异步处理扩展参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInputExtendedParameter`
         """
         return self._ExtendedParameter

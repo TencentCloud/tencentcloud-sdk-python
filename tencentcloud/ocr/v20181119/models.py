@@ -23486,7 +23486,7 @@ class QuestionInfo(AbstractModel):
         :type ImageBase64: str
         :param _ReturnImageUrl: <p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
         :type ReturnImageUrl: str
-        :param _ClassName: <p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 时生效。其他模型类型不支持该能力。</p>
+        :param _ClassName: <p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 且快速模式下生效。其他模型类型不支持该能力。</p>
         :type ClassName: str
         :param _PageIndex: <p>文档所在页</p>
         :type PageIndex: int
@@ -23593,7 +23593,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ClassName(self):
-        r"""<p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 时生效。其他模型类型不支持该能力。</p>
+        r"""<p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 且快速模式下生效。其他模型类型不支持该能力。</p>
         :rtype: str
         """
         return self._ClassName
@@ -28821,10 +28821,12 @@ class ResultList(AbstractModel):
         :type Subject: str
         :param _KnowledgePoints: <p>返回题目的知识点内容</p>
         :type KnowledgePoints: list of str
-        :param _AnswerAnalysis: <p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，通过该字段返回题目维度的答案解析<br>当ModelType= youtu_correction_model，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</p>
+        :param _AnswerAnalysis: <p>【批改 API 专属特性】</p><ol><li>当ModelType= yuanbao_correction_model 且快速模式下，通过该字段返回题目维度的答案解析</li><li>其他批改配置参数情况，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</li></ol>
         :type AnswerAnalysis: str
         :param _Grade: <p>年级：小学/初中/高中</p>
         :type Grade: str
+        :param _Confidence: <p>【批改 API专属特性】返回题目维度的批改置信度（0-100）值越高表示答案准确度越高<br>备注：仅有ModelType=youtu_correction_model模型且非快速模式支持返回。</p>
+        :type Confidence: int
         """
         self._Question = None
         self._Option = None
@@ -28839,6 +28841,7 @@ class ResultList(AbstractModel):
         self._KnowledgePoints = None
         self._AnswerAnalysis = None
         self._Grade = None
+        self._Confidence = None
 
     @property
     def Question(self):
@@ -28969,7 +28972,7 @@ class ResultList(AbstractModel):
 
     @property
     def AnswerAnalysis(self):
-        r"""<p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，通过该字段返回题目维度的答案解析<br>当ModelType= youtu_correction_model，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</p>
+        r"""<p>【批改 API 专属特性】</p><ol><li>当ModelType= yuanbao_correction_model 且快速模式下，通过该字段返回题目维度的答案解析</li><li>其他批改配置参数情况，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</li></ol>
         :rtype: str
         """
         return self._AnswerAnalysis
@@ -28988,6 +28991,17 @@ class ResultList(AbstractModel):
     @Grade.setter
     def Grade(self, Grade):
         self._Grade = Grade
+
+    @property
+    def Confidence(self):
+        r"""<p>【批改 API专属特性】返回题目维度的批改置信度（0-100）值越高表示答案准确度越高<br>备注：仅有ModelType=youtu_correction_model模型且非快速模式支持返回。</p>
+        :rtype: int
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
 
 
     def _deserialize(self, params):
@@ -29039,6 +29053,7 @@ class ResultList(AbstractModel):
         self._KnowledgePoints = params.get("KnowledgePoints")
         self._AnswerAnalysis = params.get("AnswerAnalysis")
         self._Grade = params.get("Grade")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -561,9 +561,11 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type AutomationService: bool
         :param _Password: <p>原生节点池密码</p>
         :type Password: str
+        :param _Registry: <p>原生节点池 containerd 镜像仓库定制（仅 containerd 生效）；非 containerd 节点池携带本字段会被消费侧忽略</p>
+        :type Registry: :class:`tencentcloud.tke.v20220501.models.RegistryConfig`
         :param _CustomImage: <p>自定义镜像 ID</p>
         :type CustomImage: str
-        :param _RuntimeVersion: 原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。
+        :param _RuntimeVersion: <p>原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。</p>
         :type RuntimeVersion: str
         """
         self._Scaling = None
@@ -591,6 +593,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._MachineType = None
         self._AutomationService = None
         self._Password = None
+        self._Registry = None
         self._CustomImage = None
         self._RuntimeVersion = None
 
@@ -870,6 +873,17 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._Password = Password
 
     @property
+    def Registry(self):
+        r"""<p>原生节点池 containerd 镜像仓库定制（仅 containerd 生效）；非 containerd 节点池携带本字段会被消费侧忽略</p>
+        :rtype: :class:`tencentcloud.tke.v20220501.models.RegistryConfig`
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
+
+    @property
     def CustomImage(self):
         r"""<p>自定义镜像 ID</p>
         :rtype: str
@@ -882,7 +896,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。
+        r"""<p>原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。</p>
         :rtype: str
         """
         return self._RuntimeVersion
@@ -942,6 +956,9 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._MachineType = params.get("MachineType")
         self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
+        if params.get("Registry") is not None:
+            self._Registry = RegistryConfig()
+            self._Registry._deserialize(params.get("Registry"))
         self._CustomImage = params.get("CustomImage")
         self._RuntimeVersion = params.get("RuntimeVersion")
         memeber_set = set(params.keys())
@@ -7246,6 +7263,128 @@ class RebootMachinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RegistryConfig(AbstractModel):
+    r"""containerd 镜像仓库定制（仅 containerd 1.6+ 生效）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mirrors: <p>镜像加速站点列表，按 registry 维度渲染独立的 hosts.toml</p>
+        :type Mirrors: list of RegistryMirror
+        :param _InsecureRegistries: <p>不安全镜像仓库（跳过证书校验）</p>
+        :type InsecureRegistries: list of str
+        """
+        self._Mirrors = None
+        self._InsecureRegistries = None
+
+    @property
+    def Mirrors(self):
+        r"""<p>镜像加速站点列表，按 registry 维度渲染独立的 hosts.toml</p>
+        :rtype: list of RegistryMirror
+        """
+        return self._Mirrors
+
+    @Mirrors.setter
+    def Mirrors(self, Mirrors):
+        self._Mirrors = Mirrors
+
+    @property
+    def InsecureRegistries(self):
+        r"""<p>不安全镜像仓库（跳过证书校验）</p>
+        :rtype: list of str
+        """
+        return self._InsecureRegistries
+
+    @InsecureRegistries.setter
+    def InsecureRegistries(self, InsecureRegistries):
+        self._InsecureRegistries = InsecureRegistries
+
+
+    def _deserialize(self, params):
+        if params.get("Mirrors") is not None:
+            self._Mirrors = []
+            for item in params.get("Mirrors"):
+                obj = RegistryMirror()
+                obj._deserialize(item)
+                self._Mirrors.append(obj)
+        self._InsecureRegistries = params.get("InsecureRegistries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegistryMirror(AbstractModel):
+    r"""containerd 镜像加速站点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Registry: <p>源仓库，例如 docker.io / registry.k8s.io</p>
+        :type Registry: str
+        :param _Endpoints: <p>镜像加速地址列表，按顺序写入 hosts.toml</p>
+        :type Endpoints: list of str
+        :param _OverridePath: <p>是否在 hosts.toml 中写入 override_path，为 true 时镜像 endpoints 路径不再追加 namespace 后缀</p>
+        :type OverridePath: bool
+        """
+        self._Registry = None
+        self._Endpoints = None
+        self._OverridePath = None
+
+    @property
+    def Registry(self):
+        r"""<p>源仓库，例如 docker.io / registry.k8s.io</p>
+        :rtype: str
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
+
+    @property
+    def Endpoints(self):
+        r"""<p>镜像加速地址列表，按顺序写入 hosts.toml</p>
+        :rtype: list of str
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def OverridePath(self):
+        r"""<p>是否在 hosts.toml 中写入 override_path，为 true 时镜像 endpoints 路径不再追加 namespace 后缀</p>
+        :rtype: bool
+        """
+        return self._OverridePath
+
+    @OverridePath.setter
+    def OverridePath(self, OverridePath):
+        self._OverridePath = OverridePath
+
+
+    def _deserialize(self, params):
+        self._Registry = params.get("Registry")
+        self._Endpoints = params.get("Endpoints")
+        self._OverridePath = params.get("OverridePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegularNodeInfo(AbstractModel):
     r"""普通节点信息
 
@@ -8584,6 +8723,8 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type AutomationService: bool
         :param _Password: <p>原生节点池密码</p>
         :type Password: str
+        :param _Registry: <p>节点的 containerd 镜像仓库定制（仅 containerd 运行时生效）</p>
+        :type Registry: :class:`tencentcloud.tke.v20220501.models.RegistryConfig`
         :param _CustomImage: <p>自定义镜像 ID</p>
         :type CustomImage: str
         """
@@ -8612,6 +8753,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._GPUConfigs = None
         self._AutomationService = None
         self._Password = None
+        self._Registry = None
         self._CustomImage = None
 
     @property
@@ -8890,6 +9032,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._Password = Password
 
     @property
+    def Registry(self):
+        r"""<p>节点的 containerd 镜像仓库定制（仅 containerd 运行时生效）</p>
+        :rtype: :class:`tencentcloud.tke.v20220501.models.RegistryConfig`
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
+
+    @property
     def CustomImage(self):
         r"""<p>自定义镜像 ID</p>
         :rtype: str
@@ -8949,6 +9102,9 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 self._GPUConfigs.append(obj)
         self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
+        if params.get("Registry") is not None:
+            self._Registry = RegistryConfig()
+            self._Registry._deserialize(params.get("Registry"))
         self._CustomImage = params.get("CustomImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

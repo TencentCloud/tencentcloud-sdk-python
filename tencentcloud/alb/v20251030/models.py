@@ -304,18 +304,15 @@ class AssociateListenerAdditionalCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateIds: 扩展证书 ID 列表。
+        :param _CertificateIds: <p>扩展证书 ID 列表。</p>
         :type CertificateIds: list of str
-        :param _ListenerId: 监听器 ID，格式为 lst- 后接 8 位字母数字。
+        :param _ListenerId: <p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :type ListenerId: str
-        :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        :param _LoadBalancerId: <p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :type LoadBalancerId: str
-        :param _ClientToken: 客户端 Token，用于保证请求的幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken 只支持 ASCII 字符。
-若您未指定，则系统自动使用 API 请求的 RequestId 作为 ClientToken 标识。每次 API 请求的 RequestId 不一样。
+        :param _ClientToken: <p>客户端 Token，用于保证请求的幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken 只支持 ASCII 字符。<br>若您未指定，则系统自动使用 API 请求的 RequestId 作为 ClientToken 标识。每次 API 请求的 RequestId 不一样。</p>
         :type ClientToken: str
-        :param _DryRun: 是否只预检此次请求，取值：
-true：发送检查请求，不会为HTTPS和QUIC监听器添加扩展证书。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码DryRunOperation。
-false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态码并直接进行操作。
+        :param _DryRun: <p>是否只预检此次请求，取值：true：发送检查请求，不会为HTTPS监听器添加扩展证书。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码DryRunOperation。false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态码并直接进行操作。</p>
         :type DryRun: str
         """
         self._CertificateIds = None
@@ -326,7 +323,7 @@ false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态�
 
     @property
     def CertificateIds(self):
-        r"""扩展证书 ID 列表。
+        r"""<p>扩展证书 ID 列表。</p>
         :rtype: list of str
         """
         return self._CertificateIds
@@ -337,7 +334,7 @@ false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态�
 
     @property
     def ListenerId(self):
-        r"""监听器 ID，格式为 lst- 后接 8 位字母数字。
+        r"""<p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -348,7 +345,7 @@ false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态�
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        r"""<p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -359,8 +356,7 @@ false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态�
 
     @property
     def ClientToken(self):
-        r"""客户端 Token，用于保证请求的幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken 只支持 ASCII 字符。
-若您未指定，则系统自动使用 API 请求的 RequestId 作为 ClientToken 标识。每次 API 请求的 RequestId 不一样。
+        r"""<p>客户端 Token，用于保证请求的幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken 只支持 ASCII 字符。<br>若您未指定，则系统自动使用 API 请求的 RequestId 作为 ClientToken 标识。每次 API 请求的 RequestId 不一样。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -371,9 +367,7 @@ false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态�
 
     @property
     def DryRun(self):
-        r"""是否只预检此次请求，取值：
-true：发送检查请求，不会为HTTPS和QUIC监听器添加扩展证书。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码DryRunOperation。
-false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态码并直接进行操作。
+        r"""<p>是否只预检此次请求，取值：true：发送检查请求，不会为HTTPS监听器添加扩展证书。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码DryRunOperation。false（默认值）：发送正常请求，通过检查后返回HTTP2xx状态码并直接进行操作。</p>
         :rtype: str
         """
         return self._DryRun
@@ -879,7 +873,7 @@ class CreateListenerRequest(AbstractModel):
         :type DefaultActions: list of DefaultAction
         :param _ListenerPort: <p>负载均衡实例前端使用的端口。  取值：1~65535。</p>
         :type ListenerPort: int
-        :param _ListenerProtocol: <p>监听协议。  取值：HTTP、HTTPS 或 QUIC。</p>
+        :param _ListenerProtocol: <p>监听协议。  取值：HTTP、HTTPS。</p>
         :type ListenerProtocol: str
         :param _LoadBalancerId: <p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :type LoadBalancerId: str
@@ -949,7 +943,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ListenerProtocol(self):
-        r"""<p>监听协议。  取值：HTTP、HTTPS 或 QUIC。</p>
+        r"""<p>监听协议。  取值：HTTP、HTTPS。</p>
         :rtype: str
         """
         return self._ListenerProtocol

@@ -1809,24 +1809,6 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeRumLogExportV2(
-            self,
-            request: models.DescribeRumLogExportV2Request,
-            opts: Dict = None,
-    ) -> models.DescribeRumLogExportV2Response:
-        """
-        创建日志导出
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRumLogExportV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRumLogExportV2Response
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeRumLogExports(
             self,
             request: models.DescribeRumLogExportsRequest,
@@ -1840,24 +1822,6 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeRumLogExports"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRumLogExportsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeRumLogExportsV2(
-            self,
-            request: models.DescribeRumLogExportsV2Request,
-            opts: Dict = None,
-    ) -> models.DescribeRumLogExportsV2Response:
-        """
-        获取日志导出列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRumLogExportsV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRumLogExportsV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

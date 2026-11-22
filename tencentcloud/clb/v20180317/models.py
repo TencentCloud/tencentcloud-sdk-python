@@ -20200,7 +20200,7 @@ class IdleLoadBalancer(AbstractModel):
 
 
 class ImageConfig(AbstractModel):
-    r"""video配置。
+    r"""image配置。
 
     """
 
@@ -20215,7 +20215,7 @@ class ImageConfig(AbstractModel):
         :param _NumRetries: <p>同一模型请求重试次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRetries: int
-        :param _WaitSeconds: <p>同步超时时间</p><p>取值范围：[0, 60]</p><p>单位：秒</p>
+        :param _WaitSeconds: <p>同步超时时间</p><p>取值范围：[0, 300]</p><p>单位：秒</p><p>默认值：15</p>
         :type WaitSeconds: int
         """
         self._RoutingStrategy = None
@@ -20261,7 +20261,7 @@ class ImageConfig(AbstractModel):
 
     @property
     def WaitSeconds(self):
-        r"""<p>同步超时时间</p><p>取值范围：[0, 60]</p><p>单位：秒</p>
+        r"""<p>同步超时时间</p><p>取值范围：[0, 300]</p><p>单位：秒</p><p>默认值：15</p>
         :rtype: int
         """
         return self._WaitSeconds

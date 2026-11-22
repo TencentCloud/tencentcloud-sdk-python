@@ -35,6 +35,8 @@ class SearchProRequest(AbstractModel):
         :type Cnt: int
         :param _Industry: <p>垂直领域搜索。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>gov： 政府</li><li>news： 新闻</li><li>acad： 学术</li><li>finance： 财经</li></ul>
         :type Industry: str
+        :param _Switch: <p>取值为open_summary 时，passage摘要字段升级为模型友好摘要，提供经过模型提炼的与query更加相关的内容片段（当前仅旗舰版支持该参数）</p>
+        :type Switch: str
         :param _Freshness: <p>搜索时效范围，以下五种入参形态不支持混合使用。</p><ul><li><p>d[N]：最近N天，N取值1-30整数，N值为空时默认N=1。</p></li><li><p>m[N]：最近N月，N取值1-12整数，N值为空时默认N=1。</p></li><li><p>y[N]：最近N年，N取值1-5整数，N值为空时默认N=1。</p></li><li><p>yyyy-mm-dd：指定某一日。（不得早于1970-01-01，不得晚于请求当天日期）</p></li><li><p>yyyy-mm-dd,yyyy-mm-dd：从日期A至日期B，包含AB。（日期B不得晚于日期A；二者均不得早于1970-01-01，不得晚于请求当天日期）</p></li></ul><p>示例：2026.6.15分别传参d2/m2/y2进行搜索，则搜索结果的时间范围分别为“2026.6.15、2026.6.14”/“2026.6、2026.5”/“2026、2025”，以此类推。</p><p>枚举值：</p><ul><li>d7： 最近七天</li><li>m3： 最近三月</li><li>y2： 最近两年</li><li>2026-08-20： 2026-08-20当天</li><li>2026-08-20,2026-08-30： 2026-08-20至2026-08-30</li></ul>
         :type Freshness: str
         :param _Deeplinks: <p>返回附件子链信息（<strong>仅旗舰版支持该参数</strong>）</p><p>附件子链信息包括&quot;子链标题&quot;和&quot;子链URL&quot;，单个doc最多返回10条子链信息。</p><ul><li>true：返回</li><li>false：不返回</li><li>未传参时默认不返回</li></ul>
@@ -45,6 +47,7 @@ class SearchProRequest(AbstractModel):
         self._Site = None
         self._Cnt = None
         self._Industry = None
+        self._Switch = None
         self._Freshness = None
         self._Deeplinks = None
 
@@ -104,6 +107,17 @@ class SearchProRequest(AbstractModel):
         self._Industry = Industry
 
     @property
+    def Switch(self):
+        r"""<p>取值为open_summary 时，passage摘要字段升级为模型友好摘要，提供经过模型提炼的与query更加相关的内容片段（当前仅旗舰版支持该参数）</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
     def Freshness(self):
         r"""<p>搜索时效范围，以下五种入参形态不支持混合使用。</p><ul><li><p>d[N]：最近N天，N取值1-30整数，N值为空时默认N=1。</p></li><li><p>m[N]：最近N月，N取值1-12整数，N值为空时默认N=1。</p></li><li><p>y[N]：最近N年，N取值1-5整数，N值为空时默认N=1。</p></li><li><p>yyyy-mm-dd：指定某一日。（不得早于1970-01-01，不得晚于请求当天日期）</p></li><li><p>yyyy-mm-dd,yyyy-mm-dd：从日期A至日期B，包含AB。（日期B不得晚于日期A；二者均不得早于1970-01-01，不得晚于请求当天日期）</p></li></ul><p>示例：2026.6.15分别传参d2/m2/y2进行搜索，则搜索结果的时间范围分别为“2026.6.15、2026.6.14”/“2026.6、2026.5”/“2026、2025”，以此类推。</p><p>枚举值：</p><ul><li>d7： 最近七天</li><li>m3： 最近三月</li><li>y2： 最近两年</li><li>2026-08-20： 2026-08-20当天</li><li>2026-08-20,2026-08-30： 2026-08-20至2026-08-30</li></ul>
         :rtype: str
@@ -132,6 +146,7 @@ class SearchProRequest(AbstractModel):
         self._Site = params.get("Site")
         self._Cnt = params.get("Cnt")
         self._Industry = params.get("Industry")
+        self._Switch = params.get("Switch")
         self._Freshness = params.get("Freshness")
         self._Deeplinks = params.get("Deeplinks")
         memeber_set = set(params.keys())

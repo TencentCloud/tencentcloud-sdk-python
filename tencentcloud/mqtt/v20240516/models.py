@@ -386,47 +386,39 @@ class AuthorizationPolicyItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 策略规则ID
+        :param _Id: <p>策略规则ID</p>
         :type Id: int
-        :param _InstanceId: MQTT集群ID
+        :param _InstanceId: <p>MQTT集群ID</p>
         :type InstanceId: str
-        :param _PolicyName: 策略规则名
+        :param _PolicyName: <p>策略规则名</p>
         :type PolicyName: str
-        :param _Version: 规则语法版本，当前仅支持1，默认为1
+        :param _Version: <p>规则语法版本，当前仅支持1，默认为1</p>
         :type Version: int
-        :param _Priority: 策略优先级，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Priority: <p>策略优先级，优先级ID越小表示策略越优先检查生效。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Priority: int
-        :param _Effect: 决策
-allow：允许符合该策略的设备的访问请求。
-deny：拒绝覆盖该策略的设备的访问请求。
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Effect: <p>决策<br>allow：允许符合该策略的设备的访问请求。<br>deny：拒绝覆盖该策略的设备的访问请求。<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Effect: str
-        :param _Actions: 操作
-connect：连接
-pub：发布mqtt消息
-sub：订阅mqtt消息
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Actions: <p>操作<br>connect：连接<br>pub：发布mqtt消息<br>sub：订阅mqtt消息<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Actions: str
-        :param _Resources: 资源，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Resources: <p>资源，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Resources: str
-        :param _ClientId: 条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _ClientId: <p>条件-连接设备ID，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type ClientId: str
-        :param _Username: 条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _ResourceItems: <p>授权资源，支持函数表达式</p>
+        :type ResourceItems: list of str
+        :param _Username: <p>条件-用户名，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Username: str
-        :param _Ip: 条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Ip: <p>条件-客户端IP地址，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Ip: str
-        :param _Qos: 条件-服务质量，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Qos: <p>条件-服务质量，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Qos: str
-        :param _Retain: 条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-1：表示匹配retain消息
-2：表示匹配非retain消息
-3：表示匹配retain和非retain消息
+        :param _Retain: <p>条件-保留消息，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>1：表示匹配retain消息<br>2：表示匹配非retain消息<br>3：表示匹配retain和非retain消息</p>
         :type Retain: int
-        :param _Remark: 备注，长度不超过128个字符。
+        :param _Remark: <p>备注，长度不超过128个字符。</p>
         :type Remark: str
-        :param _CreatedTime: 创建时间。毫秒级时间戳 。
+        :param _CreatedTime: <p>创建时间。毫秒级时间戳 。</p>
         :type CreatedTime: int
-        :param _UpdateTime: 更新时间。毫秒级时间戳 。
+        :param _UpdateTime: <p>更新时间。毫秒级时间戳 。</p>
         :type UpdateTime: int
         """
         self._Id = None
@@ -438,6 +430,7 @@ sub：订阅mqtt消息
         self._Actions = None
         self._Resources = None
         self._ClientId = None
+        self._ResourceItems = None
         self._Username = None
         self._Ip = None
         self._Qos = None
@@ -448,7 +441,7 @@ sub：订阅mqtt消息
 
     @property
     def Id(self):
-        r"""策略规则ID
+        r"""<p>策略规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -459,7 +452,7 @@ sub：订阅mqtt消息
 
     @property
     def InstanceId(self):
-        r"""MQTT集群ID
+        r"""<p>MQTT集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -470,7 +463,7 @@ sub：订阅mqtt消息
 
     @property
     def PolicyName(self):
-        r"""策略规则名
+        r"""<p>策略规则名</p>
         :rtype: str
         """
         return self._PolicyName
@@ -481,7 +474,7 @@ sub：订阅mqtt消息
 
     @property
     def Version(self):
-        r"""规则语法版本，当前仅支持1，默认为1
+        r"""<p>规则语法版本，当前仅支持1，默认为1</p>
         :rtype: int
         """
         return self._Version
@@ -492,7 +485,7 @@ sub：订阅mqtt消息
 
     @property
     def Priority(self):
-        r"""策略优先级，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>策略优先级，优先级ID越小表示策略越优先检查生效。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: int
         """
         return self._Priority
@@ -503,10 +496,7 @@ sub：订阅mqtt消息
 
     @property
     def Effect(self):
-        r"""决策
-allow：允许符合该策略的设备的访问请求。
-deny：拒绝覆盖该策略的设备的访问请求。
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>决策<br>allow：允许符合该策略的设备的访问请求。<br>deny：拒绝覆盖该策略的设备的访问请求。<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Effect
@@ -517,11 +507,7 @@ deny：拒绝覆盖该策略的设备的访问请求。
 
     @property
     def Actions(self):
-        r"""操作
-connect：连接
-pub：发布mqtt消息
-sub：订阅mqtt消息
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>操作<br>connect：连接<br>pub：发布mqtt消息<br>sub：订阅mqtt消息<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Actions
@@ -532,7 +518,7 @@ sub：订阅mqtt消息
 
     @property
     def Resources(self):
-        r"""资源，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>资源，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Resources
@@ -543,7 +529,7 @@ sub：订阅mqtt消息
 
     @property
     def ClientId(self):
-        r"""条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件-连接设备ID，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._ClientId
@@ -553,8 +539,19 @@ sub：订阅mqtt消息
         self._ClientId = ClientId
 
     @property
+    def ResourceItems(self):
+        r"""<p>授权资源，支持函数表达式</p>
+        :rtype: list of str
+        """
+        return self._ResourceItems
+
+    @ResourceItems.setter
+    def ResourceItems(self, ResourceItems):
+        self._ResourceItems = ResourceItems
+
+    @property
     def Username(self):
-        r"""条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件-用户名，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Username
@@ -565,7 +562,7 @@ sub：订阅mqtt消息
 
     @property
     def Ip(self):
-        r"""条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件-客户端IP地址，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Ip
@@ -576,7 +573,7 @@ sub：订阅mqtt消息
 
     @property
     def Qos(self):
-        r"""条件-服务质量，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件-服务质量，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Qos
@@ -587,10 +584,7 @@ sub：订阅mqtt消息
 
     @property
     def Retain(self):
-        r"""条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-1：表示匹配retain消息
-2：表示匹配非retain消息
-3：表示匹配retain和非retain消息
+        r"""<p>条件-保留消息，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>1：表示匹配retain消息<br>2：表示匹配非retain消息<br>3：表示匹配retain和非retain消息</p>
         :rtype: int
         """
         return self._Retain
@@ -601,7 +595,7 @@ sub：订阅mqtt消息
 
     @property
     def Remark(self):
-        r"""备注，长度不超过128个字符。
+        r"""<p>备注，长度不超过128个字符。</p>
         :rtype: str
         """
         return self._Remark
@@ -612,7 +606,7 @@ sub：订阅mqtt消息
 
     @property
     def CreatedTime(self):
-        r"""创建时间。毫秒级时间戳 。
+        r"""<p>创建时间。毫秒级时间戳 。</p>
         :rtype: int
         """
         return self._CreatedTime
@@ -623,7 +617,7 @@ sub：订阅mqtt消息
 
     @property
     def UpdateTime(self):
-        r"""更新时间。毫秒级时间戳 。
+        r"""<p>更新时间。毫秒级时间戳 。</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -643,6 +637,7 @@ sub：订阅mqtt消息
         self._Actions = params.get("Actions")
         self._Resources = params.get("Resources")
         self._ClientId = params.get("ClientId")
+        self._ResourceItems = params.get("ResourceItems")
         self._Username = params.get("Username")
         self._Ip = params.get("Ip")
         self._Qos = params.get("Qos")
@@ -1134,46 +1129,34 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _PolicyName: 策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        :param _PolicyName: <p>策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。</p>
         :type PolicyName: str
-        :param _PolicyVersion: 策略版本,默认为1，当前仅支持1
+        :param _PolicyVersion: <p>策略版本,默认为1，当前仅支持1</p>
         :type PolicyVersion: int
-        :param _Priority: 策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Priority: <p>策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Priority: int
-        :param _Effect: 决策：
-allow：允许符合该策略的设备的访问请求。
-deny：拒绝覆盖该策略的设备的访问请求。
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Effect: <p>决策：<br>allow：允许符合该策略的设备的访问请求。<br>deny：拒绝覆盖该策略的设备的访问请求。<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Effect: str
-        :param _Actions: 操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-connect：连接
-pub：发布
-sub：订阅
+        :param _Actions: <p>操作,支持多选，多个操作用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>connect：连接<br>pub：发布<br>sub：订阅</p>
         :type Actions: str
-        :param _Retain: 条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-1,匹配保留消息；
-2,匹配非保留消息，
-3.匹配保留和非保留消息
+        :param _Retain: <p>条件-保留消息，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>1,匹配保留消息；<br>2,匹配非保留消息，<br>3.匹配保留和非保留消息</p>
         :type Retain: int
-        :param _Qos: 条件：服务质量
-0：最多一次
-1：最少一次
-2：精确一次
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Qos: <p>条件：服务质量<br>0：最多一次<br>1：最少一次<br>2：精确一次<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Qos: str
-        :param _Resources: 资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
+        :param _Resources: <p>资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Resources: str
-        :param _Username: 条件-用户名
+        :param _Username: <p>条件-用户名</p>
         :type Username: str
-        :param _ClientId: 条件：客户端ID，支持正则
+        :param _ClientId: <p>条件：客户端ID，支持正则</p>
         :type ClientId: str
-        :param _Ip: 条件：客户端IP地址，支持IP或者CIDR，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        :param _Ip: <p>条件：客户端IP地址，支持IP或者CIDR，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Ip: str
-        :param _Remark: 备注信息，最长 128 字符
+        :param _Remark: <p>备注信息，最长 128 字符</p>
         :type Remark: str
+        :param _ResourceItems: <p>授权资源，支持函数表达式</p>
+        :type ResourceItems: list of str
         """
         self._InstanceId = None
         self._PolicyName = None
@@ -1188,10 +1171,11 @@ sub：订阅
         self._ClientId = None
         self._Ip = None
         self._Remark = None
+        self._ResourceItems = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1202,7 +1186,7 @@ sub：订阅
 
     @property
     def PolicyName(self):
-        r"""策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        r"""<p>策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。</p>
         :rtype: str
         """
         return self._PolicyName
@@ -1213,7 +1197,7 @@ sub：订阅
 
     @property
     def PolicyVersion(self):
-        r"""策略版本,默认为1，当前仅支持1
+        r"""<p>策略版本,默认为1，当前仅支持1</p>
         :rtype: int
         """
         return self._PolicyVersion
@@ -1224,7 +1208,7 @@ sub：订阅
 
     @property
     def Priority(self):
-        r"""策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: int
         """
         return self._Priority
@@ -1235,10 +1219,7 @@ sub：订阅
 
     @property
     def Effect(self):
-        r"""决策：
-allow：允许符合该策略的设备的访问请求。
-deny：拒绝覆盖该策略的设备的访问请求。
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>决策：<br>allow：允许符合该策略的设备的访问请求。<br>deny：拒绝覆盖该策略的设备的访问请求。<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Effect
@@ -1249,10 +1230,7 @@ deny：拒绝覆盖该策略的设备的访问请求。
 
     @property
     def Actions(self):
-        r"""操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-connect：连接
-pub：发布
-sub：订阅
+        r"""<p>操作,支持多选，多个操作用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>connect：连接<br>pub：发布<br>sub：订阅</p>
         :rtype: str
         """
         return self._Actions
@@ -1263,10 +1241,7 @@ sub：订阅
 
     @property
     def Retain(self):
-        r"""条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-1,匹配保留消息；
-2,匹配非保留消息，
-3.匹配保留和非保留消息
+        r"""<p>条件-保留消息，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>1,匹配保留消息；<br>2,匹配非保留消息，<br>3.匹配保留和非保留消息</p>
         :rtype: int
         """
         return self._Retain
@@ -1277,11 +1252,7 @@ sub：订阅
 
     @property
     def Qos(self):
-        r"""条件：服务质量
-0：最多一次
-1：最少一次
-2：精确一次
-可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件：服务质量<br>0：最多一次<br>1：最少一次<br>2：精确一次<br>可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Qos
@@ -1292,8 +1263,7 @@ sub：订阅
 
     @property
     def Resources(self):
-        r"""资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
+        r"""<p>资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Resources
@@ -1304,7 +1274,7 @@ sub：订阅
 
     @property
     def Username(self):
-        r"""条件-用户名
+        r"""<p>条件-用户名</p>
         :rtype: str
         """
         return self._Username
@@ -1315,7 +1285,7 @@ sub：订阅
 
     @property
     def ClientId(self):
-        r"""条件：客户端ID，支持正则
+        r"""<p>条件：客户端ID，支持正则</p>
         :rtype: str
         """
         return self._ClientId
@@ -1326,7 +1296,7 @@ sub：订阅
 
     @property
     def Ip(self):
-        r"""条件：客户端IP地址，支持IP或者CIDR，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""<p>条件：客户端IP地址，支持IP或者CIDR，可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Ip
@@ -1337,7 +1307,7 @@ sub：订阅
 
     @property
     def Remark(self):
-        r"""备注信息，最长 128 字符
+        r"""<p>备注信息，最长 128 字符</p>
         :rtype: str
         """
         return self._Remark
@@ -1345,6 +1315,17 @@ sub：订阅
     @Remark.setter
     def Remark(self, Remark):
         self._Remark = Remark
+
+    @property
+    def ResourceItems(self):
+        r"""<p>授权资源，支持函数表达式</p>
+        :rtype: list of str
+        """
+        return self._ResourceItems
+
+    @ResourceItems.setter
+    def ResourceItems(self, ResourceItems):
+        self._ResourceItems = ResourceItems
 
 
     def _deserialize(self, params):
@@ -1361,6 +1342,7 @@ sub：订阅
         self._ClientId = params.get("ClientId")
         self._Ip = params.get("Ip")
         self._Remark = params.get("Remark")
+        self._ResourceItems = params.get("ResourceItems")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1378,9 +1360,9 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群Id
+        :param _InstanceId: <p>集群Id</p>
         :type InstanceId: str
-        :param _Id: 策略id
+        :param _Id: <p>策略id</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1391,7 +1373,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群Id
+        r"""<p>集群Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1402,7 +1384,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""策略id
+        r"""<p>策略id</p>
         :rtype: int
         """
         return self._Id
@@ -4337,14 +4319,14 @@ class DescribeAuthorizationPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4373,7 +4355,7 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 规则
+        :param _Data: <p>规则</p>
         :type Data: list of AuthorizationPolicyItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4383,7 +4365,7 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""规则
+        r"""<p>规则</p>
         :rtype: list of AuthorizationPolicyItem
         """
         return self._Data
@@ -12307,47 +12289,36 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 授权策略ID，从 [查询授权策略](https://cloud.tencent.com/document/product/1778/111074) 接口获取
+        :param _Id: <p>授权策略ID，从 <a href="https://cloud.tencent.com/document/product/1778/111074">查询授权策略</a> 接口获取</p>
         :type Id: int
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
-
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _PolicyName: 策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        :param _PolicyName: <p>策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。</p>
         :type PolicyName: str
-        :param _PolicyVersion: 策略版本,默认为1，当前仅支持1
+        :param _PolicyVersion: <p>策略版本,默认为1，当前仅支持1</p>
         :type PolicyVersion: int
-        :param _Priority: 策略优先级，越小越优先，不能重复
+        :param _Priority: <p>策略优先级，越小越优先，不能重复</p>
         :type Priority: int
-        :param _Effect: 决策：
-allow 允许
-deny 拒绝
+        :param _Effect: <p>决策：<br>allow 允许<br>deny 拒绝</p>
         :type Effect: str
-        :param _Actions: 操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-connect：连接
-pub：发布
-sub：订阅
+        :param _Actions: <p>操作,支持多选，多个操作用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>connect：连接<br>pub：发布<br>sub：订阅</p>
         :type Actions: str
-        :param _Resources: 资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
+        :param _Resources: <p>资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :type Resources: str
-        :param _Username: 条件-用户名
+        :param _Username: <p>条件-用户名</p>
         :type Username: str
-        :param _Retain: 条件-保留消息
-1,匹配保留消息；
-2,匹配非保留消息，
-3.匹配保留和非保留消息
+        :param _Retain: <p>条件-保留消息<br>1,匹配保留消息；<br>2,匹配非保留消息，<br>3.匹配保留和非保留消息</p>
         :type Retain: int
-        :param _ClientId: 条件：客户端ID，支持正则
+        :param _ClientId: <p>条件：客户端ID，支持正则</p>
         :type ClientId: str
-        :param _Ip: 条件：客户端IP地址，支持IP或者CIDR
+        :param _Ip: <p>条件：客户端IP地址，支持IP或者CIDR</p>
         :type Ip: str
-        :param _Qos: 条件：服务质量
-0：最多一次
-1：最少一次
-2：精确一次
+        :param _Qos: <p>条件：服务质量<br>0：最多一次<br>1：最少一次<br>2：精确一次</p>
         :type Qos: str
-        :param _Remark: 备注信息，最长 128 字符
+        :param _Remark: <p>备注信息，最长 128 字符</p>
         :type Remark: str
+        :param _ResourceItems: <p>授权资源列表，支持函数表达式</p>
+        :type ResourceItems: list of str
         """
         self._Id = None
         self._InstanceId = None
@@ -12363,10 +12334,11 @@ sub：订阅
         self._Ip = None
         self._Qos = None
         self._Remark = None
+        self._ResourceItems = None
 
     @property
     def Id(self):
-        r"""授权策略ID，从 [查询授权策略](https://cloud.tencent.com/document/product/1778/111074) 接口获取
+        r"""<p>授权策略ID，从 <a href="https://cloud.tencent.com/document/product/1778/111074">查询授权策略</a> 接口获取</p>
         :rtype: int
         """
         return self._Id
@@ -12377,8 +12349,7 @@ sub：订阅
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
-
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12389,7 +12360,7 @@ sub：订阅
 
     @property
     def PolicyName(self):
-        r"""策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        r"""<p>策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。</p>
         :rtype: str
         """
         return self._PolicyName
@@ -12400,7 +12371,7 @@ sub：订阅
 
     @property
     def PolicyVersion(self):
-        r"""策略版本,默认为1，当前仅支持1
+        r"""<p>策略版本,默认为1，当前仅支持1</p>
         :rtype: int
         """
         return self._PolicyVersion
@@ -12411,7 +12382,7 @@ sub：订阅
 
     @property
     def Priority(self):
-        r"""策略优先级，越小越优先，不能重复
+        r"""<p>策略优先级，越小越优先，不能重复</p>
         :rtype: int
         """
         return self._Priority
@@ -12422,9 +12393,7 @@ sub：订阅
 
     @property
     def Effect(self):
-        r"""决策：
-allow 允许
-deny 拒绝
+        r"""<p>决策：<br>allow 允许<br>deny 拒绝</p>
         :rtype: str
         """
         return self._Effect
@@ -12435,10 +12404,7 @@ deny 拒绝
 
     @property
     def Actions(self):
-        r"""操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-connect：连接
-pub：发布
-sub：订阅
+        r"""<p>操作,支持多选，多个操作用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。<br>connect：连接<br>pub：发布<br>sub：订阅</p>
         :rtype: str
         """
         return self._Actions
@@ -12449,8 +12415,7 @@ sub：订阅
 
     @property
     def Resources(self):
-        r"""资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
+        r"""<p>资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 <a href="https://cloud.tencent.com/document/product/1778/109715">数据面授权策略说明</a>。</p>
         :rtype: str
         """
         return self._Resources
@@ -12461,7 +12426,7 @@ sub：订阅
 
     @property
     def Username(self):
-        r"""条件-用户名
+        r"""<p>条件-用户名</p>
         :rtype: str
         """
         return self._Username
@@ -12472,10 +12437,7 @@ sub：订阅
 
     @property
     def Retain(self):
-        r"""条件-保留消息
-1,匹配保留消息；
-2,匹配非保留消息，
-3.匹配保留和非保留消息
+        r"""<p>条件-保留消息<br>1,匹配保留消息；<br>2,匹配非保留消息，<br>3.匹配保留和非保留消息</p>
         :rtype: int
         """
         return self._Retain
@@ -12486,7 +12448,7 @@ sub：订阅
 
     @property
     def ClientId(self):
-        r"""条件：客户端ID，支持正则
+        r"""<p>条件：客户端ID，支持正则</p>
         :rtype: str
         """
         return self._ClientId
@@ -12497,7 +12459,7 @@ sub：订阅
 
     @property
     def Ip(self):
-        r"""条件：客户端IP地址，支持IP或者CIDR
+        r"""<p>条件：客户端IP地址，支持IP或者CIDR</p>
         :rtype: str
         """
         return self._Ip
@@ -12508,10 +12470,7 @@ sub：订阅
 
     @property
     def Qos(self):
-        r"""条件：服务质量
-0：最多一次
-1：最少一次
-2：精确一次
+        r"""<p>条件：服务质量<br>0：最多一次<br>1：最少一次<br>2：精确一次</p>
         :rtype: str
         """
         return self._Qos
@@ -12522,7 +12481,7 @@ sub：订阅
 
     @property
     def Remark(self):
-        r"""备注信息，最长 128 字符
+        r"""<p>备注信息，最长 128 字符</p>
         :rtype: str
         """
         return self._Remark
@@ -12530,6 +12489,17 @@ sub：订阅
     @Remark.setter
     def Remark(self, Remark):
         self._Remark = Remark
+
+    @property
+    def ResourceItems(self):
+        r"""<p>授权资源列表，支持函数表达式</p>
+        :rtype: list of str
+        """
+        return self._ResourceItems
+
+    @ResourceItems.setter
+    def ResourceItems(self, ResourceItems):
+        self._ResourceItems = ResourceItems
 
 
     def _deserialize(self, params):
@@ -12547,6 +12517,7 @@ sub：订阅
         self._Ip = params.get("Ip")
         self._Qos = params.get("Qos")
         self._Remark = params.get("Remark")
+        self._ResourceItems = params.get("ResourceItems")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

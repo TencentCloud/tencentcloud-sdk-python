@@ -3293,6 +3293,8 @@ class CreateInstanceNewRequest(AbstractModel):
         :type CacheDiskSize: str
         :param _CacheDataDiskSize: <p>缓存盘大小</p>
         :type CacheDataDiskSize: int
+        :param _CacheDiskType: <p>缓存盘介质，仅存算分离（IsSSC=true）时有效：CLOUD_HSSD=增强型SSD，ELASTIC_REMOTE_SSD=单副本SSD</p>
+        :type CacheDiskType: str
         :param _DiskEncrypt: <p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
         :type DiskEncrypt: int
         """
@@ -3316,6 +3318,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._SSCCU = None
         self._CacheDiskSize = None
         self._CacheDataDiskSize = None
+        self._CacheDiskType = None
         self._DiskEncrypt = None
 
     @property
@@ -3547,6 +3550,17 @@ class CreateInstanceNewRequest(AbstractModel):
         self._CacheDataDiskSize = CacheDataDiskSize
 
     @property
+    def CacheDiskType(self):
+        r"""<p>缓存盘介质，仅存算分离（IsSSC=true）时有效：CLOUD_HSSD=增强型SSD，ELASTIC_REMOTE_SSD=单副本SSD</p>
+        :rtype: str
+        """
+        return self._CacheDiskType
+
+    @CacheDiskType.setter
+    def CacheDiskType(self, CacheDiskType):
+        self._CacheDiskType = CacheDiskType
+
+    @property
     def DiskEncrypt(self):
         r"""<p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
         :rtype: int
@@ -3597,6 +3611,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._SSCCU = params.get("SSCCU")
         self._CacheDiskSize = params.get("CacheDiskSize")
         self._CacheDataDiskSize = params.get("CacheDataDiskSize")
+        self._CacheDiskType = params.get("CacheDiskType")
         self._DiskEncrypt = params.get("DiskEncrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4235,17 +4250,20 @@ class DeleteWorkloadGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
-        :param _WorkloadGroupName: 需要删除的资源组名称
+        :param _WorkloadGroupName: <p>需要删除的资源组名称</p>
         :type WorkloadGroupName: str
+        :param _ComputeGroup: <p>资源组归属的计算组ID</p>
+        :type ComputeGroup: str
         """
         self._InstanceId = None
         self._WorkloadGroupName = None
+        self._ComputeGroup = None
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4256,7 +4274,7 @@ class DeleteWorkloadGroupRequest(AbstractModel):
 
     @property
     def WorkloadGroupName(self):
-        r"""需要删除的资源组名称
+        r"""<p>需要删除的资源组名称</p>
         :rtype: str
         """
         return self._WorkloadGroupName
@@ -4265,10 +4283,22 @@ class DeleteWorkloadGroupRequest(AbstractModel):
     def WorkloadGroupName(self, WorkloadGroupName):
         self._WorkloadGroupName = WorkloadGroupName
 
+    @property
+    def ComputeGroup(self):
+        r"""<p>资源组归属的计算组ID</p>
+        :rtype: str
+        """
+        return self._ComputeGroup
+
+    @ComputeGroup.setter
+    def ComputeGroup(self, ComputeGroup):
+        self._ComputeGroup = ComputeGroup
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._WorkloadGroupName = params.get("WorkloadGroupName")
+        self._ComputeGroup = params.get("ComputeGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4286,7 +4316,7 @@ class DeleteWorkloadGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorMsg: 错误信息
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4296,7 +4326,7 @@ class DeleteWorkloadGroupResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -9684,6 +9714,8 @@ class DescribeWorkloadGroupResponse(AbstractModel):
         :type WorkloadGroups: list of WorkloadGroupConfig
         :param _Status: <p>是否开启资源组：开启-open、关闭-close</p>
         :type Status: str
+        :param _NeedPodRebuild: <p>是否需要重建</p>
+        :type NeedPodRebuild: bool
         :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
         :param _MonitorStatus: <p>是否开启监控，0：未开启，1：开启</p>
@@ -9693,6 +9725,7 @@ class DescribeWorkloadGroupResponse(AbstractModel):
         """
         self._WorkloadGroups = None
         self._Status = None
+        self._NeedPodRebuild = None
         self._ErrorMsg = None
         self._MonitorStatus = None
         self._RequestId = None
@@ -9718,6 +9751,17 @@ class DescribeWorkloadGroupResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def NeedPodRebuild(self):
+        r"""<p>是否需要重建</p>
+        :rtype: bool
+        """
+        return self._NeedPodRebuild
+
+    @NeedPodRebuild.setter
+    def NeedPodRebuild(self, NeedPodRebuild):
+        self._NeedPodRebuild = NeedPodRebuild
 
     @property
     def ErrorMsg(self):
@@ -9761,6 +9805,7 @@ class DescribeWorkloadGroupResponse(AbstractModel):
                 obj._deserialize(item)
                 self._WorkloadGroups.append(obj)
         self._Status = params.get("Status")
+        self._NeedPodRebuild = params.get("NeedPodRebuild")
         self._ErrorMsg = params.get("ErrorMsg")
         self._MonitorStatus = params.get("MonitorStatus")
         self._RequestId = params.get("RequestId")
@@ -12957,17 +13002,20 @@ class ModifyWorkloadGroupStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
-        :param _OperationType: 是否开启资源组：open-开启、close-关闭
+        :param _OperationType: <p>是否开启资源组：open-开启、close-关闭</p>
         :type OperationType: str
+        :param _RestartType: <p>rolling_restart滚动\restart立即，存算分离开通时的Pod重建方式，默认滚动</p>
+        :type RestartType: str
         """
         self._InstanceId = None
         self._OperationType = None
+        self._RestartType = None
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12978,7 +13026,7 @@ class ModifyWorkloadGroupStatusRequest(AbstractModel):
 
     @property
     def OperationType(self):
-        r"""是否开启资源组：open-开启、close-关闭
+        r"""<p>是否开启资源组：open-开启、close-关闭</p>
         :rtype: str
         """
         return self._OperationType
@@ -12987,10 +13035,22 @@ class ModifyWorkloadGroupStatusRequest(AbstractModel):
     def OperationType(self, OperationType):
         self._OperationType = OperationType
 
+    @property
+    def RestartType(self):
+        r"""<p>rolling_restart滚动\restart立即，存算分离开通时的Pod重建方式，默认滚动</p>
+        :rtype: str
+        """
+        return self._RestartType
+
+    @RestartType.setter
+    def RestartType(self, RestartType):
+        self._RestartType = RestartType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._OperationType = params.get("OperationType")
+        self._RestartType = params.get("RestartType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13008,7 +13068,7 @@ class ModifyWorkloadGroupStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorMsg: 错误信息	
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13018,7 +13078,7 @@ class ModifyWorkloadGroupStatusResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息	
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -17207,6 +17267,8 @@ class WorkloadGroupConfig(AbstractModel):
         :type EnableMemoryOverCommit: bool
         :param _CpuHardLimit: <p>cpu硬限制</p>
         :type CpuHardLimit: str
+        :param _ComputeGroup: <p>资源组归属的计算组ID</p>
+        :type ComputeGroup: str
         :param _MinCpuPercent: <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
         :type MinCpuPercent: int
         :param _MinMemoryPercent: <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
@@ -17223,6 +17285,7 @@ class WorkloadGroupConfig(AbstractModel):
         self._MemoryLimit = None
         self._EnableMemoryOverCommit = None
         self._CpuHardLimit = None
+        self._ComputeGroup = None
         self._MinCpuPercent = None
         self._MinMemoryPercent = None
         self._MaxConcurrencyNum = None
@@ -17283,6 +17346,17 @@ class WorkloadGroupConfig(AbstractModel):
     @CpuHardLimit.setter
     def CpuHardLimit(self, CpuHardLimit):
         self._CpuHardLimit = CpuHardLimit
+
+    @property
+    def ComputeGroup(self):
+        r"""<p>资源组归属的计算组ID</p>
+        :rtype: str
+        """
+        return self._ComputeGroup
+
+    @ComputeGroup.setter
+    def ComputeGroup(self, ComputeGroup):
+        self._ComputeGroup = ComputeGroup
 
     @property
     def MinCpuPercent(self):
@@ -17346,6 +17420,7 @@ class WorkloadGroupConfig(AbstractModel):
         self._MemoryLimit = params.get("MemoryLimit")
         self._EnableMemoryOverCommit = params.get("EnableMemoryOverCommit")
         self._CpuHardLimit = params.get("CpuHardLimit")
+        self._ComputeGroup = params.get("ComputeGroup")
         self._MinCpuPercent = params.get("MinCpuPercent")
         self._MinMemoryPercent = params.get("MinMemoryPercent")
         self._MaxConcurrencyNum = params.get("MaxConcurrencyNum")

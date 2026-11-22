@@ -2305,29 +2305,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRumLogExportV2(self, request):
-        r"""创建日志导出
-
-        :param request: Request instance for DescribeRumLogExportV2.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportV2Request`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportV2Response`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRumLogExportV2", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRumLogExportV2Response()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeRumLogExports(self, request):
         r"""获取项目下的日志导出列表
 
@@ -2342,29 +2319,6 @@ class RumClient(AbstractClient):
             body = self.call("DescribeRumLogExports", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRumLogExportsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeRumLogExportsV2(self, request):
-        r"""获取日志导出列表
-
-        :param request: Request instance for DescribeRumLogExportsV2.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsV2Request`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsV2Response`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRumLogExportsV2", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRumLogExportsV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

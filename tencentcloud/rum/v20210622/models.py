@@ -23545,13 +23545,13 @@ class DescribePvListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: ID
+        :param _ProjectId: <p>ID</p>
         :type ProjectId: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>查询结束时间（必填）。</p><p>参数格式：日维度继续支持 YYYYMMDD，也支持带时区的 RFC3339。</p><p>入参限制：仅 Dimension=d 支持 RFC3339，须等于北京时间 00:00:00。</p><p>等价日期的查询结果和返回字段一致。</p>
         :type EndTime: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>查询开始时间（必填）。</p><p>参数格式：日维度继续支持 YYYYMMDD，也支持带时区的 RFC3339。</p><p>入参限制：仅 Dimension=d 支持 RFC3339，须等于北京时间 00:00:00。</p><p>等价日期的查询结果和返回字段一致。</p>
         :type StartTime: str
-        :param _Dimension: 对PV指标的查询维度。获取day：d，   获取min则不填。
+        :param _Dimension: <p>对PV指标的查询维度。获取day：d，   获取min则不填。</p>
         :type Dimension: str
         """
         self._ProjectId = None
@@ -23561,7 +23561,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""ID
+        r"""<p>ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -23572,7 +23572,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>查询结束时间（必填）。</p><p>参数格式：日维度继续支持 YYYYMMDD，也支持带时区的 RFC3339。</p><p>入参限制：仅 Dimension=d 支持 RFC3339，须等于北京时间 00:00:00。</p><p>等价日期的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._EndTime
@@ -23583,7 +23583,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>查询开始时间（必填）。</p><p>参数格式：日维度继续支持 YYYYMMDD，也支持带时区的 RFC3339。</p><p>入参限制：仅 Dimension=d 支持 RFC3339，须等于北京时间 00:00:00。</p><p>等价日期的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -23594,7 +23594,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""对PV指标的查询维度。获取day：d，   获取min则不填。
+        r"""<p>对PV指标的查询维度。获取day：d，   获取min则不填。</p>
         :rtype: str
         """
         return self._Dimension
@@ -23626,7 +23626,7 @@ class DescribePvListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectPvSet: pv列表
+        :param _ProjectPvSet: <p>pv列表</p>
         :type ProjectPvSet: list of RumPvInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23636,7 +23636,7 @@ class DescribePvListResponse(AbstractModel):
 
     @property
     def ProjectPvSet(self):
-        r"""pv列表
+        r"""<p>pv列表</p>
         :rtype: list of RumPvInfo
         """
         return self._ProjectPvSet
@@ -24496,7 +24496,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
         r"""
         :param _OrderBy: <p>排序方式  desc  asc（必填）</p>
         :type OrderBy: str
-        :param _StartTime: <p>开始时间（必填）</p>
+        :param _StartTime: <p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type StartTime: str
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
@@ -24504,7 +24504,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
         :type Page: int
         :param _Query: <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :type Query: str
-        :param _EndTime: <p>结束时间（必填）</p>
+        :param _EndTime: <p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type EndTime: str
         :param _ID: <p>项目ID（必填）</p>
         :type ID: int
@@ -24533,7 +24533,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>开始时间（必填）</p>
+        r"""<p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -24577,7 +24577,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>结束时间（必填）</p>
+        r"""<p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._EndTime
@@ -24864,20 +24864,24 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
         r"""
         :param _OrderBy: <p>排序方式 desc asc</p>
         :type OrderBy: str
-        :param _StartTime: <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
+        :param _StartTime: <p>Unix纳秒开始时间，包含该时刻；不猜测时间单位。</p>
         :type StartTime: int
-        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
+        :param _Limit: <p>CLS路径单次返回1～1000条；旧路径保留原行为。短页不表示结束，以ListOver为准。</p>
         :type Limit: int
         :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
-        :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
+        :param _EndTime: <p>Unix纳秒结束时间，不包含该时刻。</p>
         :type EndTime: int
         :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _LastTime: <p>上次查询的最后一个日志的时间戳</p>
+        :param _LastTime: <p>旧游标参数已废弃，请迁移至Offset或Context。LastTime和LastRowId均为0或缺省视为未传；非零旧游标在cls下拒绝，off/window且不带新分页参数时保留旧行为。</p>
         :type LastTime: int
-        :param _LastRowId: <p>上次查询的最后一个日志的rowId</p>
+        :param _LastRowId: <p>旧游标参数已废弃，请迁移至Offset或Context。LastTime和LastRowId均为0或缺省视为未传；非零旧游标在cls下拒绝，off/window且不带新分页参数时保留旧行为。</p>
         :type LastRowId: int
+        :param _Offset: <p>从0开始的非负偏移量；保留缺省与显式0的差别。不能与非空Context同时使用，Context续页时删除Offset。</p>
+        :type Offset: int
+        :param _Context: <p>原样回传上次非空Context，续页时删除Offset，其余有效查询条件保持不变；空串视为缺省。不保证快照或重放同一页。</p>
+        :type Context: str
         """
         self._OrderBy = None
         self._StartTime = None
@@ -24887,6 +24891,8 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
         self._ID = None
         self._LastTime = None
         self._LastRowId = None
+        self._Offset = None
+        self._Context = None
 
     @property
     def OrderBy(self):
@@ -24901,7 +24907,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
+        r"""<p>Unix纳秒开始时间，包含该时刻；不猜测时间单位。</p>
         :rtype: int
         """
         return self._StartTime
@@ -24912,7 +24918,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
+        r"""<p>CLS路径单次返回1～1000条；旧路径保留原行为。短页不表示结束，以ListOver为准。</p>
         :rtype: int
         """
         return self._Limit
@@ -24934,7 +24940,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
+        r"""<p>Unix纳秒结束时间，不包含该时刻。</p>
         :rtype: int
         """
         return self._EndTime
@@ -24956,7 +24962,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""<p>上次查询的最后一个日志的时间戳</p>
+        r"""<p>旧游标参数已废弃，请迁移至Offset或Context。LastTime和LastRowId均为0或缺省视为未传；非零旧游标在cls下拒绝，off/window且不带新分页参数时保留旧行为。</p>
         :rtype: int
         """
         return self._LastTime
@@ -24967,7 +24973,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def LastRowId(self):
-        r"""<p>上次查询的最后一个日志的rowId</p>
+        r"""<p>旧游标参数已废弃，请迁移至Offset或Context。LastTime和LastRowId均为0或缺省视为未传；非零旧游标在cls下拒绝，off/window且不带新分页参数时保留旧行为。</p>
         :rtype: int
         """
         return self._LastRowId
@@ -24975,6 +24981,28 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
     @LastRowId.setter
     def LastRowId(self, LastRowId):
         self._LastRowId = LastRowId
+
+    @property
+    def Offset(self):
+        r"""<p>从0开始的非负偏移量；保留缺省与显式0的差别。不能与非空Context同时使用，Context续页时删除Offset。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Context(self):
+        r"""<p>原样回传上次非空Context，续页时删除Offset，其余有效查询条件保持不变；空串视为缺省。不保证快照或重放同一页。</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
 
 
     def _deserialize(self, params):
@@ -24986,6 +25014,8 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
         self._ID = params.get("ID")
         self._LastTime = params.get("LastTime")
         self._LastRowId = params.get("LastRowId")
+        self._Offset = params.get("Offset")
+        self._Context = params.get("Context")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25003,17 +25033,23 @@ class DescribeRumLogDetailsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: <p>日志明细</p>
+        :param _Result: <p>日志明细JSON字符串，内部Result数组结构不变。CLS路径row_id为0，ts为毫秒精度但单位仍为纳秒，字符串字段完整。</p>
         :type Result: str
+        :param _Context: <p>CLS续读令牌；ListOver为true时为空。仅CLS路径返回，可缺省。</p>
+        :type Context: str
+        :param _ListOver: <p>当前条件的日志是否全部返回；预算短页不表示结束。仅CLS路径返回，可缺省。</p>
+        :type ListOver: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._Context = None
+        self._ListOver = None
         self._RequestId = None
 
     @property
     def Result(self):
-        r"""<p>日志明细</p>
+        r"""<p>日志明细JSON字符串，内部Result数组结构不变。CLS路径row_id为0，ts为毫秒精度但单位仍为纳秒，字符串字段完整。</p>
         :rtype: str
         """
         return self._Result
@@ -25021,6 +25057,28 @@ class DescribeRumLogDetailsV2Response(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def Context(self):
+        r"""<p>CLS续读令牌；ListOver为true时为空。仅CLS路径返回，可缺省。</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""<p>当前条件的日志是否全部返回；预算短页不表示结束。仅CLS路径返回，可缺省。</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
 
     @property
     def RequestId(self):
@@ -25036,6 +25094,8 @@ class DescribeRumLogDetailsV2Response(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
         self._RequestId = params.get("RequestId")
 
 
@@ -25046,17 +25106,17 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 导出标识name
+        :param _Name: <p>导出标识name</p>
         :type Name: str
-        :param _StartTime: 开始时间（必填）
+        :param _StartTime: <p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间格式对应同一导出范围，返回字段一致。</p>
         :type StartTime: str
-        :param _Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :param _Query: <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :type Query: str
-        :param _EndTime: 结束时间（必填）
+        :param _EndTime: <p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间格式对应同一导出范围，返回字段一致。</p>
         :type EndTime: str
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _Fields: field条件
+        :param _Fields: <p>field条件</p>
         :type Fields: list of str
         """
         self._Name = None
@@ -25068,7 +25128,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""导出标识name
+        r"""<p>导出标识name</p>
         :rtype: str
         """
         return self._Name
@@ -25079,7 +25139,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）
+        r"""<p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间格式对应同一导出范围，返回字段一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -25090,7 +25150,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        r"""<p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :rtype: str
         """
         return self._Query
@@ -25101,7 +25161,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）
+        r"""<p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间格式对应同一导出范围，返回字段一致。</p>
         :rtype: str
         """
         return self._EndTime
@@ -25112,7 +25172,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -25123,7 +25183,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Fields(self):
-        r"""field条件
+        r"""<p>field条件</p>
         :rtype: list of str
         """
         return self._Fields
@@ -25157,7 +25217,7 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回字符串
+        :param _Result: <p>返回字符串</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25167,161 +25227,7 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回字符串
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Result = params.get("Result")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeRumLogExportV2Request(AbstractModel):
-    r"""DescribeRumLogExportV2请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: <p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
-        :type Name: str
-        :param _StartTime: <p>查询日志开始时间(必填)</p>
-        :type StartTime: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
-        :type Filter: str
-        :param _EndTime: <p>查询日志结束时间(必填)</p>
-        :type EndTime: int
-        :param _ID: <p>项目ID</p>
-        :type ID: int
-        :param _Fields: <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
-        :type Fields: list of str
-        """
-        self._Name = None
-        self._StartTime = None
-        self._Filter = None
-        self._EndTime = None
-        self._ID = None
-        self._Fields = None
-
-    @property
-    def Name(self):
-        r"""<p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def StartTime(self):
-        r"""<p>查询日志开始时间(必填)</p>
-        :rtype: int
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
-        :rtype: str
-        """
-        return self._Filter
-
-    @Filter.setter
-    def Filter(self, Filter):
-        self._Filter = Filter
-
-    @property
-    def EndTime(self):
-        r"""<p>查询日志结束时间(必填)</p>
-        :rtype: int
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ID(self):
-        r"""<p>项目ID</p>
-        :rtype: int
-        """
-        return self._ID
-
-    @ID.setter
-    def ID(self, ID):
-        self._ID = ID
-
-    @property
-    def Fields(self):
-        r"""<p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
-        :rtype: list of str
-        """
-        return self._Fields
-
-    @Fields.setter
-    def Fields(self, Fields):
-        self._Fields = Fields
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._StartTime = params.get("StartTime")
-        self._Filter = params.get("Filter")
-        self._EndTime = params.get("EndTime")
-        self._ID = params.get("ID")
-        self._Fields = params.get("Fields")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRumLogExportV2Response(AbstractModel):
-    r"""DescribeRumLogExportV2返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: <p>日志导出任务TaskId</p>
-        :type Result: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""<p>日志导出任务TaskId</p>
+        r"""<p>返回字符串</p>
         :rtype: str
         """
         return self._Result
@@ -25456,115 +25362,6 @@ class DescribeRumLogExportsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeRumLogExportsV2Request(AbstractModel):
-    r"""DescribeRumLogExportsV2请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PageSize: <p>每页返回任务数</p>
-        :type PageSize: int
-        :param _PageNum: <p>当前页码</p>
-        :type PageNum: int
-        :param _ID: <p>项目ID</p>
-        :type ID: int
-        """
-        self._PageSize = None
-        self._PageNum = None
-        self._ID = None
-
-    @property
-    def PageSize(self):
-        r"""<p>每页返回任务数</p>
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def PageNum(self):
-        r"""<p>当前页码</p>
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def ID(self):
-        r"""<p>项目ID</p>
-        :rtype: int
-        """
-        return self._ID
-
-    @ID.setter
-    def ID(self, ID):
-        self._ID = ID
-
-
-    def _deserialize(self, params):
-        self._PageSize = params.get("PageSize")
-        self._PageNum = params.get("PageNum")
-        self._ID = params.get("ID")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRumLogExportsV2Response(AbstractModel):
-    r"""DescribeRumLogExportsV2返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: <p>日志导出列表</p>
-        :type Result: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""<p>日志导出列表</p>
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Result = params.get("Result")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeRumLogListRequest(AbstractModel):
     r"""DescribeRumLogList请求参数结构体
 
@@ -25572,19 +25369,19 @@ class DescribeRumLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 排序方式  desc  asc（必填）
+        :param _OrderBy: <p>排序方式  desc  asc（必填）</p>
         :type OrderBy: str
-        :param _StartTime: 开始时间（必填）格式为时间戳 毫秒
+        :param _StartTime: <p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type StartTime: str
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Page: 页数，第几页
+        :param _Page: <p>页数，第几页</p>
         :type Page: int
-        :param _Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :param _Query: <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :type Query: str
-        :param _EndTime: 结束时间（必填）格式为时间戳 毫秒
+        :param _EndTime: <p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type EndTime: str
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
         """
         self._OrderBy = None
@@ -25597,7 +25394,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式  desc  asc（必填）
+        r"""<p>排序方式  desc  asc（必填）</p>
         :rtype: str
         """
         return self._OrderBy
@@ -25608,7 +25405,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）格式为时间戳 毫秒
+        r"""<p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -25619,7 +25416,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -25630,7 +25427,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页数，第几页
+        r"""<p>页数，第几页</p>
         :rtype: int
         """
         return self._Page
@@ -25641,7 +25438,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        r"""<p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :rtype: str
         """
         return self._Query
@@ -25652,7 +25449,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）格式为时间戳 毫秒
+        r"""<p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._EndTime
@@ -25663,7 +25460,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -25698,7 +25495,7 @@ class DescribeRumLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回字符串
+        :param _Result: <p>返回字符串</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25708,7 +25505,7 @@ class DescribeRumLogListResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回字符串
+        r"""<p>返回字符串</p>
         :rtype: str
         """
         return self._Result
@@ -25743,13 +25540,13 @@ class DescribeRumLogTotalV2Request(AbstractModel):
         r"""
         :param _OrderBy: <p>排序方式 desc asc</p>
         :type OrderBy: str
-        :param _StartTime: <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
+        :param _StartTime: <p>Unix纳秒开始时间，包含该时刻；不猜测时间单位。</p>
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
         :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
-        :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
+        :param _EndTime: <p>Unix纳秒结束时间，不包含该时刻。</p>
         :type EndTime: int
         :param _ID: <p>项目ID（必填）</p>
         :type ID: int
@@ -25780,7 +25577,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
+        r"""<p>Unix纳秒开始时间，包含该时刻；不猜测时间单位。</p>
         :rtype: int
         """
         return self._StartTime
@@ -25813,7 +25610,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
+        r"""<p>Unix纳秒结束时间，不包含该时刻。</p>
         :rtype: int
         """
         return self._EndTime
@@ -25882,7 +25679,7 @@ class DescribeRumLogTotalV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: <p>日志总量</p>
+        :param _Result: <p>日志总量JSON字符串，内部Total结构不变。总量与明细为独立查询，不保证同一快照；window迁移期间总量仍走旧后端，带新分页参数的明细可走CLS。旧游标继续忽略。</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25892,7 +25689,7 @@ class DescribeRumLogTotalV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""<p>日志总量</p>
+        r"""<p>日志总量JSON字符串，内部Total结构不变。总量与明细为独立查询，不保证同一快照；window迁移期间总量仍走旧后端，带新分页参数的明细可走CLS。旧游标继续忽略。</p>
         :rtype: str
         """
         return self._Result
@@ -25925,15 +25722,15 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间（必填）
+        :param _StartTime: <p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type StartTime: str
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :param _Query: <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :type Query: str
-        :param _EndTime: 结束时间（必填）
+        :param _EndTime: <p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :type EndTime: str
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
         """
         self._StartTime = None
@@ -25944,7 +25741,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）
+        r"""<p>查询开始时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -25955,7 +25752,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -25966,7 +25763,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        r"""<p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :rtype: str
         """
         return self._Query
@@ -25977,7 +25774,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）
+        r"""<p>查询结束时间（必填）。</p><p>参数格式：支持旧 Unix 毫秒字符串或新 RFC3339（需带时区）。</p><p>入参限制：RFC3339 最多 3 位小数秒，须对应非负毫秒。</p><p>等价时间范围的查询结果和返回字段一致。</p>
         :rtype: str
         """
         return self._EndTime
@@ -25988,7 +25785,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -26021,7 +25818,7 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回字符串
+        :param _Result: <p>返回字符串</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26031,7 +25828,7 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回字符串
+        r"""<p>返回字符串</p>
         :rtype: str
         """
         return self._Result
@@ -47845,22 +47642,24 @@ class Whitelist(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _Ttl: 截止时间
+        :param _Ttl: <p>截止时间</p>
         :type Ttl: str
-        :param _ID: 白名单自增ID
+        :param _ID: <p>白名单自增ID</p>
         :type ID: str
-        :param _WhitelistUin: 业务唯一标识
+        :param _WhitelistUin: <p>业务唯一标识</p>
         :type WhitelistUin: str
-        :param _CreateUser: 创建者ID
+        :param _CreateUser: <p>创建者ID</p>
         :type CreateUser: str
-        :param _Aid: aid标识
+        :param _Aid: <p>aid标识</p>
         :type Aid: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
+        :param _CreateDatetime: <p>白名单创建时刻。由原始time.Time同源生成带偏移RFC3339，旧CreateTime原值及十二小时显示格式保持；缺失原始时刻时省略本成员。</p>
+        :type CreateDatetime: str
         """
         self._Remark = None
         self._InstanceID = None
@@ -47870,10 +47669,11 @@ class Whitelist(AbstractModel):
         self._CreateUser = None
         self._Aid = None
         self._CreateTime = None
+        self._CreateDatetime = None
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -47884,7 +47684,7 @@ class Whitelist(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -47895,7 +47695,7 @@ class Whitelist(AbstractModel):
 
     @property
     def Ttl(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: str
         """
         return self._Ttl
@@ -47906,7 +47706,7 @@ class Whitelist(AbstractModel):
 
     @property
     def ID(self):
-        r"""白名单自增ID
+        r"""<p>白名单自增ID</p>
         :rtype: str
         """
         return self._ID
@@ -47917,7 +47717,7 @@ class Whitelist(AbstractModel):
 
     @property
     def WhitelistUin(self):
-        r"""业务唯一标识
+        r"""<p>业务唯一标识</p>
         :rtype: str
         """
         return self._WhitelistUin
@@ -47928,7 +47728,7 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""创建者ID
+        r"""<p>创建者ID</p>
         :rtype: str
         """
         return self._CreateUser
@@ -47939,7 +47739,7 @@ class Whitelist(AbstractModel):
 
     @property
     def Aid(self):
-        r"""aid标识
+        r"""<p>aid标识</p>
         :rtype: str
         """
         return self._Aid
@@ -47950,7 +47750,7 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -47958,6 +47758,17 @@ class Whitelist(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def CreateDatetime(self):
+        r"""<p>白名单创建时刻。由原始time.Time同源生成带偏移RFC3339，旧CreateTime原值及十二小时显示格式保持；缺失原始时刻时省略本成员。</p>
+        :rtype: str
+        """
+        return self._CreateDatetime
+
+    @CreateDatetime.setter
+    def CreateDatetime(self, CreateDatetime):
+        self._CreateDatetime = CreateDatetime
 
 
     def _deserialize(self, params):
@@ -47969,6 +47780,7 @@ class Whitelist(AbstractModel):
         self._CreateUser = params.get("CreateUser")
         self._Aid = params.get("Aid")
         self._CreateTime = params.get("CreateTime")
+        self._CreateDatetime = params.get("CreateDatetime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

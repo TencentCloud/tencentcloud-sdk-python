@@ -829,6 +829,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIGWLLMModelAPIIPRestriction(self, request):
+        r"""查询指定模型 API 的 IP 黑白名单配置。
+
+        :param request: Request instance for DescribeAIGWLLMModelAPIIPRestriction.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWLLMModelAPIIPRestrictionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWLLMModelAPIIPRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIGWLLMModelAPIIPRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIGWLLMModelAPIIPRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCNGWServicesWithRoutes(self, request):
         r"""查询云原生网关服务和路由列表
 
@@ -1528,6 +1551,29 @@ class CngwClient(AbstractClient):
             body = self.call("ModifyAIGWCustomGuardrailPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAIGWCustomGuardrailPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAIGWLLMModelAPIIPRestriction(self, request):
+        r"""创建或整体覆盖指定模型 API 的 IP 黑白名单配置。PUT 覆盖语义（每次以请求值为最终态）。
+
+        :param request: Request instance for ModifyAIGWLLMModelAPIIPRestriction.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.ModifyAIGWLLMModelAPIIPRestrictionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ModifyAIGWLLMModelAPIIPRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAIGWLLMModelAPIIPRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAIGWLLMModelAPIIPRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

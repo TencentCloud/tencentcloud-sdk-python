@@ -44,8 +44,14 @@ FAILEDOPERATION_CLSCALLFAIL = 'FailedOperation.ClsCallFail'
 # 数据操作异常
 FAILEDOPERATION_DATABASEEXCEPTION = 'FailedOperation.DataBaseException'
 
+# 查询开始时间早于当前可查询的历史起点。
+FAILEDOPERATION_HISTORYNOTCOVERED = 'FailedOperation.HistoryNotCovered'
+
 # 第三方依赖异常。
 FAILEDOPERATION_INFRASTRUCTUREERROR = 'FailedOperation.InfrastructureError'
+
+# 分页游标无效、失效，或与当前查询条件、权限、配置不匹配。
+FAILEDOPERATION_INVALIDCONTEXT = 'FailedOperation.InvalidContext'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -55,6 +61,9 @@ INVALIDFILTER = 'InvalidFilter'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 不再支持LastTime/LastRowId旧游标分页，请迁移至Offset或Context。
+INVALIDPARAMETER_LEGACYCURSORUNSUPPORTED = 'InvalidParameter.LegacyCursorUnsupported'
 
 # 无效参数组合
 INVALIDPARAMETERCOMBINATION = 'InvalidParameterCombination'

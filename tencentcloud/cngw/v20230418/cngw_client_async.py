@@ -658,6 +658,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAIGWLLMModelAPIIPRestriction(
+            self,
+            request: models.DescribeAIGWLLMModelAPIIPRestrictionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIGWLLMModelAPIIPRestrictionResponse:
+        """
+        查询指定模型 API 的 IP 黑白名单配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIGWLLMModelAPIIPRestriction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIGWLLMModelAPIIPRestrictionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCNGWServicesWithRoutes(
             self,
             request: models.DescribeCNGWServicesWithRoutesRequest,
@@ -1211,6 +1229,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "ModifyAIGWCustomGuardrailPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAIGWCustomGuardrailPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAIGWLLMModelAPIIPRestriction(
+            self,
+            request: models.ModifyAIGWLLMModelAPIIPRestrictionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAIGWLLMModelAPIIPRestrictionResponse:
+        """
+        创建或整体覆盖指定模型 API 的 IP 黑白名单配置。PUT 覆盖语义（每次以请求值为最终态）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAIGWLLMModelAPIIPRestriction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAIGWLLMModelAPIIPRestrictionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -25041,6 +25041,8 @@ class VoiceCloneRequest(AbstractModel):
         :type Language: str
         :param _ExtraParams: <p>拓展参数</p>
         :type ExtraParams: str
+        :param _PreviewText: <p>试听文本</p>
+        :type PreviewText: str
         """
         self._SdkAppId = None
         self._VoiceName = None
@@ -25050,6 +25052,7 @@ class VoiceCloneRequest(AbstractModel):
         self._Model = None
         self._Language = None
         self._ExtraParams = None
+        self._PreviewText = None
 
     @property
     def SdkAppId(self):
@@ -25143,6 +25146,17 @@ class VoiceCloneRequest(AbstractModel):
     def ExtraParams(self, ExtraParams):
         self._ExtraParams = ExtraParams
 
+    @property
+    def PreviewText(self):
+        r"""<p>试听文本</p>
+        :rtype: str
+        """
+        return self._PreviewText
+
+    @PreviewText.setter
+    def PreviewText(self, PreviewText):
+        self._PreviewText = PreviewText
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -25153,6 +25167,7 @@ class VoiceCloneRequest(AbstractModel):
         self._Model = params.get("Model")
         self._Language = params.get("Language")
         self._ExtraParams = params.get("ExtraParams")
+        self._PreviewText = params.get("PreviewText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25172,10 +25187,13 @@ class VoiceCloneResponse(AbstractModel):
         r"""
         :param _VoiceId: <p>克隆出的音色ID，可以用此id进行语音合成</p>
         :type VoiceId: str
+        :param _PreviewUrl: <p>试听音频url,请于24小时内尽快下载</p>
+        :type PreviewUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VoiceId = None
+        self._PreviewUrl = None
         self._RequestId = None
 
     @property
@@ -25188,6 +25206,17 @@ class VoiceCloneResponse(AbstractModel):
     @VoiceId.setter
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
+
+    @property
+    def PreviewUrl(self):
+        r"""<p>试听音频url,请于24小时内尽快下载</p>
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
 
     @property
     def RequestId(self):
@@ -25203,6 +25232,7 @@ class VoiceCloneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
+        self._PreviewUrl = params.get("PreviewUrl")
         self._RequestId = params.get("RequestId")
 
 

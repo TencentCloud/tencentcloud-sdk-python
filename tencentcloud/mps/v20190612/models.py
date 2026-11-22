@@ -101546,6 +101546,10 @@ class VoiceInfo(AbstractModel):
         :type Scenes: list of str
         :param _Engine: <p>音色所属引擎</p>
         :type Engine: str
+        :param _CreatedAt: <p>音色创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>音色信息更新时间</p>
+        :type UpdatedAt: str
         """
         self._VoiceId = None
         self._Name = None
@@ -101558,6 +101562,8 @@ class VoiceInfo(AbstractModel):
         self._Labels = None
         self._Scenes = None
         self._Engine = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
 
     @property
     def VoiceId(self):
@@ -101680,6 +101686,28 @@ class VoiceInfo(AbstractModel):
     def Engine(self, Engine):
         self._Engine = Engine
 
+    @property
+    def CreatedAt(self):
+        r"""<p>音色创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>音色信息更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
@@ -101693,6 +101721,8 @@ class VoiceInfo(AbstractModel):
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
         self._Engine = params.get("Engine")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

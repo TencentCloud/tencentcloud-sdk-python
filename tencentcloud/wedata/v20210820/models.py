@@ -66844,37 +66844,40 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogInfo: 实例运行日志
+        :param _LogInfo: <p>实例运行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogInfo: str
-        :param _YarnLogInfo: 实例运行提交的yarn日志地址
+        :param _YarnLogInfo: <p>实例运行提交的yarn日志地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type YarnLogInfo: list of str
-        :param _DataLogInfo: 实例运行产生的datax日志
+        :param _DataLogInfo: <p>实例运行产生的datax日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataLogInfo: str
-        :param _ThirdTaskRunLogInfo: 第三方任务运行日志
+        :param _ThirdTaskRunLogInfo: <p>第三方任务运行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdTaskRunLogInfo: str
-        :param _ThirdTaskLogUrlDesc: 第三方任务日志链接描述
+        :param _ThirdTaskLogUrlDesc: <p>第三方任务日志链接描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdTaskLogUrlDesc: str
-        :param _LineCount: 日志行数
+        :param _LineCount: <p>日志行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LineCount: int
-        :param _ExtInfo: 统一执行平台日志分页查询参数
+        :param _ExtInfo: <p>统一执行平台日志分页查询参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
-        :param _IsEnd: 日志分页查询，是否最后一页
+        :param _IsEnd: <p>日志分页查询，是否最后一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsEnd: bool
-        :param _FileSize: 文件大小
+        :param _FileSize: <p>文件大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: str
-        :param _MatchedBrokerIp: 日志匹配节点信息
+        :param _MatchedBrokerIp: <p>日志匹配节点信息</p>
         :type MatchedBrokerIp: str
-        :param _ExecutionExtendedProps: 执行平台通用协议
+        :param _ExecutionExtendedProps: <p>执行平台通用协议</p>
         :type ExecutionExtendedProps: list of PairDto
+        :param _LogDiagnosisRules: <p>日志诊断规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogDiagnosisRules: :class:`tencentcloud.wedata.v20210820.models.LogDiagnosisRules`
         """
         self._LogInfo = None
         self._YarnLogInfo = None
@@ -66887,10 +66890,11 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._FileSize = None
         self._MatchedBrokerIp = None
         self._ExecutionExtendedProps = None
+        self._LogDiagnosisRules = None
 
     @property
     def LogInfo(self):
-        r"""实例运行日志
+        r"""<p>实例运行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66902,7 +66906,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def YarnLogInfo(self):
-        r"""实例运行提交的yarn日志地址
+        r"""<p>实例运行提交的yarn日志地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -66914,7 +66918,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def DataLogInfo(self):
-        r"""实例运行产生的datax日志
+        r"""<p>实例运行产生的datax日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66926,7 +66930,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def ThirdTaskRunLogInfo(self):
-        r"""第三方任务运行日志
+        r"""<p>第三方任务运行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66938,7 +66942,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def ThirdTaskLogUrlDesc(self):
-        r"""第三方任务日志链接描述
+        r"""<p>第三方任务日志链接描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66950,7 +66954,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def LineCount(self):
-        r"""日志行数
+        r"""<p>日志行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -66962,7 +66966,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""统一执行平台日志分页查询参数
+        r"""<p>统一执行平台日志分页查询参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66974,7 +66978,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def IsEnd(self):
-        r"""日志分页查询，是否最后一页
+        r"""<p>日志分页查询，是否最后一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -66986,7 +66990,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小
+        r"""<p>文件大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66998,7 +67002,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def MatchedBrokerIp(self):
-        r"""日志匹配节点信息
+        r"""<p>日志匹配节点信息</p>
         :rtype: str
         """
         return self._MatchedBrokerIp
@@ -67009,7 +67013,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
 
     @property
     def ExecutionExtendedProps(self):
-        r"""执行平台通用协议
+        r"""<p>执行平台通用协议</p>
         :rtype: list of PairDto
         """
         return self._ExecutionExtendedProps
@@ -67017,6 +67021,22 @@ class InstanceLogInfoOpsDto(AbstractModel):
     @ExecutionExtendedProps.setter
     def ExecutionExtendedProps(self, ExecutionExtendedProps):
         self._ExecutionExtendedProps = ExecutionExtendedProps
+
+    @property
+    def LogDiagnosisRules(self):
+        warnings.warn("parameter `LogDiagnosisRules` is deprecated", DeprecationWarning) 
+
+        r"""<p>日志诊断规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LogDiagnosisRules`
+        """
+        return self._LogDiagnosisRules
+
+    @LogDiagnosisRules.setter
+    def LogDiagnosisRules(self, LogDiagnosisRules):
+        warnings.warn("parameter `LogDiagnosisRules` is deprecated", DeprecationWarning) 
+
+        self._LogDiagnosisRules = LogDiagnosisRules
 
 
     def _deserialize(self, params):
@@ -67036,6 +67056,9 @@ class InstanceLogInfoOpsDto(AbstractModel):
                 obj = PairDto()
                 obj._deserialize(item)
                 self._ExecutionExtendedProps.append(obj)
+        if params.get("LogDiagnosisRules") is not None:
+            self._LogDiagnosisRules = LogDiagnosisRules()
+            self._LogDiagnosisRules._deserialize(params.get("LogDiagnosisRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75264,6 +75287,299 @@ class LogContentInfo(AbstractModel):
         self._PkgLogId = params.get("PkgLogId")
         self._Time = params.get("Time")
         self._ContainerName = params.get("ContainerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogDiagnosisRules(AbstractModel):
+    r"""LogDiagnosisRules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _ErrorCode: <p>errorCode</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param _CreateTime: <p>createTime</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _LastUpdate: <p>lastUpdate</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdate: str
+        :param _Owner: <p>owner</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _ErrorTitle: <p>异常概要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorTitle: str
+        :param _ErrorMessage: <p>异常关键字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _ErrorReason: <p>异常原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorReason: str
+        :param _ErrorSolution: <p>解决办法</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorSolution: str
+        :param _ErrorOrder: <p>展示顺序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorOrder: str
+        :param _ErrorExample: <p>例子</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorExample: str
+        :param _ExtToolsUrl: <p>扩展说明</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtToolsUrl: str
+        :param _ErrorLevel: <p>异常级别</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorLevel: str
+        :param _ErrorTypeAggregation: <p>异常类型：用户/系统</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorTypeAggregation: str
+        :param _ErrorSystem: <p>异常系统类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorSystem: str
+        :param _ErrorLogSystem: <p>异常日志来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorLogSystem: str
+        """
+        self._Id = None
+        self._ErrorCode = None
+        self._CreateTime = None
+        self._LastUpdate = None
+        self._Owner = None
+        self._ErrorTitle = None
+        self._ErrorMessage = None
+        self._ErrorReason = None
+        self._ErrorSolution = None
+        self._ErrorOrder = None
+        self._ErrorExample = None
+        self._ExtToolsUrl = None
+        self._ErrorLevel = None
+        self._ErrorTypeAggregation = None
+        self._ErrorSystem = None
+        self._ErrorLogSystem = None
+
+    @property
+    def Id(self):
+        r"""<p>id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ErrorCode(self):
+        r"""<p>errorCode</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def CreateTime(self):
+        r"""<p>createTime</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastUpdate(self):
+        r"""<p>lastUpdate</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdate
+
+    @LastUpdate.setter
+    def LastUpdate(self, LastUpdate):
+        self._LastUpdate = LastUpdate
+
+    @property
+    def Owner(self):
+        r"""<p>owner</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def ErrorTitle(self):
+        r"""<p>异常概要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorTitle
+
+    @ErrorTitle.setter
+    def ErrorTitle(self, ErrorTitle):
+        self._ErrorTitle = ErrorTitle
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>异常关键字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ErrorReason(self):
+        r"""<p>异常原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorReason
+
+    @ErrorReason.setter
+    def ErrorReason(self, ErrorReason):
+        self._ErrorReason = ErrorReason
+
+    @property
+    def ErrorSolution(self):
+        r"""<p>解决办法</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorSolution
+
+    @ErrorSolution.setter
+    def ErrorSolution(self, ErrorSolution):
+        self._ErrorSolution = ErrorSolution
+
+    @property
+    def ErrorOrder(self):
+        r"""<p>展示顺序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorOrder
+
+    @ErrorOrder.setter
+    def ErrorOrder(self, ErrorOrder):
+        self._ErrorOrder = ErrorOrder
+
+    @property
+    def ErrorExample(self):
+        r"""<p>例子</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorExample
+
+    @ErrorExample.setter
+    def ErrorExample(self, ErrorExample):
+        self._ErrorExample = ErrorExample
+
+    @property
+    def ExtToolsUrl(self):
+        r"""<p>扩展说明</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtToolsUrl
+
+    @ExtToolsUrl.setter
+    def ExtToolsUrl(self, ExtToolsUrl):
+        self._ExtToolsUrl = ExtToolsUrl
+
+    @property
+    def ErrorLevel(self):
+        r"""<p>异常级别</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorLevel
+
+    @ErrorLevel.setter
+    def ErrorLevel(self, ErrorLevel):
+        self._ErrorLevel = ErrorLevel
+
+    @property
+    def ErrorTypeAggregation(self):
+        r"""<p>异常类型：用户/系统</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorTypeAggregation
+
+    @ErrorTypeAggregation.setter
+    def ErrorTypeAggregation(self, ErrorTypeAggregation):
+        self._ErrorTypeAggregation = ErrorTypeAggregation
+
+    @property
+    def ErrorSystem(self):
+        r"""<p>异常系统类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorSystem
+
+    @ErrorSystem.setter
+    def ErrorSystem(self, ErrorSystem):
+        self._ErrorSystem = ErrorSystem
+
+    @property
+    def ErrorLogSystem(self):
+        r"""<p>异常日志来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorLogSystem
+
+    @ErrorLogSystem.setter
+    def ErrorLogSystem(self, ErrorLogSystem):
+        self._ErrorLogSystem = ErrorLogSystem
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ErrorCode = params.get("ErrorCode")
+        self._CreateTime = params.get("CreateTime")
+        self._LastUpdate = params.get("LastUpdate")
+        self._Owner = params.get("Owner")
+        self._ErrorTitle = params.get("ErrorTitle")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ErrorReason = params.get("ErrorReason")
+        self._ErrorSolution = params.get("ErrorSolution")
+        self._ErrorOrder = params.get("ErrorOrder")
+        self._ErrorExample = params.get("ErrorExample")
+        self._ExtToolsUrl = params.get("ExtToolsUrl")
+        self._ErrorLevel = params.get("ErrorLevel")
+        self._ErrorTypeAggregation = params.get("ErrorTypeAggregation")
+        self._ErrorSystem = params.get("ErrorSystem")
+        self._ErrorLogSystem = params.get("ErrorLogSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

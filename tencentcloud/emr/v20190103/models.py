@@ -7675,77 +7675,53 @@ class CreateSLInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称。
-        :type InstanceName: str
-        :param _PayMode: 实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
-        :type PayMode: int
-        :param _DiskType: 实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
-        :type DiskType: str
-        :param _DiskSize: 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。
+        :param _DiskSize: <p>实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。</p>
         :type DiskSize: int
-        :param _NodeType: 实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+        :param _DiskType: <p>实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。</p>
+        :type DiskType: str
+        :param _InstanceName: <p>实例名称。</p>
+        :type InstanceName: str
+        :param _NodeType: <p>实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。</p>
         :type NodeType: str
-        :param _ZoneSettings: 实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+        :param _PayMode: <p>实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。</p>
+        :type PayMode: int
+        :param _ZoneSettings: <p>实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。</p>
         :type ZoneSettings: list of ZoneSetting
-        :param _Tags: 实例要绑定的标签列表。
-        :type Tags: list of Tag
-        :param _PrePaySetting: 预付费参数
-        :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
-        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :param _ClientToken: <p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
         :type ClientToken: str
-        :param _DeploymentMode: 部署模式
+        :param _DeploymentMode: <p>部署模式</p>
         :type DeploymentMode: str
-        :param _UserName: 服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+        :param _EnablePublicIP: <p>是否开启公网 IP 访问，默认 false。TCBase 开启后会创建并绑定 EIP；内网 CLB 绑定 EIP 后，CLB 安全组对来自 EIP 的流量不生效，对来自内网 CLB 的流量生效。</p>
+        :type EnablePublicIP: bool
+        :param _PrePaySetting: <p>预付费参数</p>
+        :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        :param _SecurityGroupIds: <p>TCBase 实例 CLB 绑定的安全组 ID 列表，形如 sg-xxxxxxxx，可通过 DescribeSecurityGroups 获取。绑定后管控侧会尝试补充 TCP 80、5432、5433 入站放通规则。</p>
+        :type SecurityGroupIds: list of str
+        :param _Tags: <p>实例要绑定的标签列表。</p>
+        :type Tags: list of Tag
+        :param _TerminateProtection: <p>是否开启实例销毁保护，默认 false；true 表示开启，开启后不允许销毁实例。</p>
+        :type TerminateProtection: bool
+        :param _UserName: <p>服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字</p>
         :type UserName: str
         """
-        self._InstanceName = None
-        self._PayMode = None
-        self._DiskType = None
         self._DiskSize = None
+        self._DiskType = None
+        self._InstanceName = None
         self._NodeType = None
+        self._PayMode = None
         self._ZoneSettings = None
-        self._Tags = None
-        self._PrePaySetting = None
         self._ClientToken = None
         self._DeploymentMode = None
+        self._EnablePublicIP = None
+        self._PrePaySetting = None
+        self._SecurityGroupIds = None
+        self._Tags = None
+        self._TerminateProtection = None
         self._UserName = None
 
     @property
-    def InstanceName(self):
-        r"""实例名称。
-        :rtype: str
-        """
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
-
-    @property
-    def PayMode(self):
-        r"""实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
-        :rtype: int
-        """
-        return self._PayMode
-
-    @PayMode.setter
-    def PayMode(self, PayMode):
-        self._PayMode = PayMode
-
-    @property
-    def DiskType(self):
-        r"""实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
-        :rtype: str
-        """
-        return self._DiskType
-
-    @DiskType.setter
-    def DiskType(self, DiskType):
-        self._DiskType = DiskType
-
-    @property
     def DiskSize(self):
-        r"""实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。
+        r"""<p>实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -7755,8 +7731,30 @@ class CreateSLInstanceRequest(AbstractModel):
         self._DiskSize = DiskSize
 
     @property
+    def DiskType(self):
+        r"""<p>实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。</p>
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称。</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
     def NodeType(self):
-        r"""实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+        r"""<p>实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。</p>
         :rtype: str
         """
         return self._NodeType
@@ -7766,8 +7764,19 @@ class CreateSLInstanceRequest(AbstractModel):
         self._NodeType = NodeType
 
     @property
+    def PayMode(self):
+        r"""<p>实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
     def ZoneSettings(self):
-        r"""实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+        r"""<p>实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。</p>
         :rtype: list of ZoneSetting
         """
         return self._ZoneSettings
@@ -7777,30 +7786,8 @@ class CreateSLInstanceRequest(AbstractModel):
         self._ZoneSettings = ZoneSettings
 
     @property
-    def Tags(self):
-        r"""实例要绑定的标签列表。
-        :rtype: list of Tag
-        """
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-    @property
-    def PrePaySetting(self):
-        r"""预付费参数
-        :rtype: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
-        """
-        return self._PrePaySetting
-
-    @PrePaySetting.setter
-    def PrePaySetting(self, PrePaySetting):
-        self._PrePaySetting = PrePaySetting
-
-    @property
     def ClientToken(self):
-        r"""唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        r"""<p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
         :rtype: str
         """
         return self._ClientToken
@@ -7811,7 +7798,7 @@ class CreateSLInstanceRequest(AbstractModel):
 
     @property
     def DeploymentMode(self):
-        r"""部署模式
+        r"""<p>部署模式</p>
         :rtype: str
         """
         return self._DeploymentMode
@@ -7821,8 +7808,63 @@ class CreateSLInstanceRequest(AbstractModel):
         self._DeploymentMode = DeploymentMode
 
     @property
+    def EnablePublicIP(self):
+        r"""<p>是否开启公网 IP 访问，默认 false。TCBase 开启后会创建并绑定 EIP；内网 CLB 绑定 EIP 后，CLB 安全组对来自 EIP 的流量不生效，对来自内网 CLB 的流量生效。</p>
+        :rtype: bool
+        """
+        return self._EnablePublicIP
+
+    @EnablePublicIP.setter
+    def EnablePublicIP(self, EnablePublicIP):
+        self._EnablePublicIP = EnablePublicIP
+
+    @property
+    def PrePaySetting(self):
+        r"""<p>预付费参数</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        """
+        return self._PrePaySetting
+
+    @PrePaySetting.setter
+    def PrePaySetting(self, PrePaySetting):
+        self._PrePaySetting = PrePaySetting
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>TCBase 实例 CLB 绑定的安全组 ID 列表，形如 sg-xxxxxxxx，可通过 DescribeSecurityGroups 获取。绑定后管控侧会尝试补充 TCP 80、5432、5433 入站放通规则。</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Tags(self):
+        r"""<p>实例要绑定的标签列表。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def TerminateProtection(self):
+        r"""<p>是否开启实例销毁保护，默认 false；true 表示开启，开启后不允许销毁实例。</p>
+        :rtype: bool
+        """
+        return self._TerminateProtection
+
+    @TerminateProtection.setter
+    def TerminateProtection(self, TerminateProtection):
+        self._TerminateProtection = TerminateProtection
+
+    @property
     def UserName(self):
-        r"""服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+        r"""<p>服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字</p>
         :rtype: str
         """
         return self._UserName
@@ -7833,28 +7875,31 @@ class CreateSLInstanceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceName = params.get("InstanceName")
-        self._PayMode = params.get("PayMode")
-        self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._InstanceName = params.get("InstanceName")
         self._NodeType = params.get("NodeType")
+        self._PayMode = params.get("PayMode")
         if params.get("ZoneSettings") is not None:
             self._ZoneSettings = []
             for item in params.get("ZoneSettings"):
                 obj = ZoneSetting()
                 obj._deserialize(item)
                 self._ZoneSettings.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        self._DeploymentMode = params.get("DeploymentMode")
+        self._EnablePublicIP = params.get("EnablePublicIP")
+        if params.get("PrePaySetting") is not None:
+            self._PrePaySetting = PrePaySetting()
+            self._PrePaySetting._deserialize(params.get("PrePaySetting"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
-        if params.get("PrePaySetting") is not None:
-            self._PrePaySetting = PrePaySetting()
-            self._PrePaySetting._deserialize(params.get("PrePaySetting"))
-        self._ClientToken = params.get("ClientToken")
-        self._DeploymentMode = params.get("DeploymentMode")
+        self._TerminateProtection = params.get("TerminateProtection")
         self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7873,7 +7918,7 @@ class CreateSLInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :param _InstanceId: <p>实例唯一标识符（字符串表示）</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7883,7 +7928,7 @@ class CreateSLInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例唯一标识符（字符串表示）
+        r"""<p>实例唯一标识符（字符串表示）</p>
         :rtype: str
         """
         return self._InstanceId
@@ -37782,14 +37827,25 @@ class PrePaySetting(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AutoRenewFlag: 自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
+        :type AutoRenewFlag: int
         :param _Period: 时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Period: :class:`tencentcloud.emr.v20190103.models.Period`
-        :param _AutoRenewFlag: 自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
-        :type AutoRenewFlag: int
         """
-        self._Period = None
         self._AutoRenewFlag = None
+        self._Period = None
+
+    @property
+    def AutoRenewFlag(self):
+        r"""自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
 
     @property
     def Period(self):
@@ -37803,23 +37859,12 @@ class PrePaySetting(AbstractModel):
     def Period(self, Period):
         self._Period = Period
 
-    @property
-    def AutoRenewFlag(self):
-        r"""自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
-        :rtype: int
-        """
-        return self._AutoRenewFlag
-
-    @AutoRenewFlag.setter
-    def AutoRenewFlag(self, AutoRenewFlag):
-        self._AutoRenewFlag = AutoRenewFlag
-
 
     def _deserialize(self, params):
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         if params.get("Period") is not None:
             self._Period = Period()
             self._Period._deserialize(params.get("Period"))
-        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47711,24 +47756,13 @@ class VPCSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC ID
-        :type VpcId: str
         :param _SubnetId: Subnet ID
         :type SubnetId: str
+        :param _VpcId: VPC ID
+        :type VpcId: str
         """
-        self._VpcId = None
         self._SubnetId = None
-
-    @property
-    def VpcId(self):
-        r"""VPC ID
-        :rtype: str
-        """
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
+        self._VpcId = None
 
     @property
     def SubnetId(self):
@@ -47741,10 +47775,21 @@ class VPCSettings(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def VpcId(self):
+        r"""VPC ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
 
     def _deserialize(self, params):
-        self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49059,27 +49104,27 @@ class ZoneSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区名称
-        :type Zone: str
-        :param _VPCSettings: 可用区VPC和子网
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
         :param _NodeNum: 可用区节点数量
         :type NodeNum: int
+        :param _VPCSettings: 可用区VPC和子网
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param _Zone: 可用区名称
+        :type Zone: str
         """
-        self._Zone = None
-        self._VPCSettings = None
         self._NodeNum = None
+        self._VPCSettings = None
+        self._Zone = None
 
     @property
-    def Zone(self):
-        r"""可用区名称
-        :rtype: str
+    def NodeNum(self):
+        r"""可用区节点数量
+        :rtype: int
         """
-        return self._Zone
+        return self._NodeNum
 
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
 
     @property
     def VPCSettings(self):
@@ -49093,23 +49138,23 @@ class ZoneSetting(AbstractModel):
         self._VPCSettings = VPCSettings
 
     @property
-    def NodeNum(self):
-        r"""可用区节点数量
-        :rtype: int
+    def Zone(self):
+        r"""可用区名称
+        :rtype: str
         """
-        return self._NodeNum
+        return self._Zone
 
-    @NodeNum.setter
-    def NodeNum(self, NodeNum):
-        self._NodeNum = NodeNum
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
 
     def _deserialize(self, params):
-        self._Zone = params.get("Zone")
+        self._NodeNum = params.get("NodeNum")
         if params.get("VPCSettings") is not None:
             self._VPCSettings = VPCSettings()
             self._VPCSettings._deserialize(params.get("VPCSettings"))
-        self._NodeNum = params.get("NodeNum")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
