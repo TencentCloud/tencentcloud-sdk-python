@@ -1,4 +1,4 @@
-# Release 3.1.212
+# Release 3.1.213
 
 ## Agent 沙箱服务(ags) 版本：2025-09-20
 
@@ -27,6 +27,110 @@
 新增数据结构：
 
 * [PreCacheImageCleanupPolicy](https://cloud.tencent.com/document/api/1814/124823#PreCacheImageCleanupPolicy)
+
+
+
+## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 75 次发布
+
+发布时间：2026-11-24 01:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApmPrometheusRule](https://cloud.tencent.com/document/api/1463/125082)
+
+	* 新增入参：AssociationId
+
+* [DescribeApmPrometheusRule](https://cloud.tencent.com/document/api/1463/125078)
+
+	* 新增入参：AssociationId
+
+* [ModifyApmPrometheusRule](https://cloud.tencent.com/document/api/1463/125075)
+
+	* 新增入参：AssociationId
+
+
+修改数据结构：
+
+* [ApmPrometheusRules](https://cloud.tencent.com/document/api/1463/64927#ApmPrometheusRules)
+
+	* 新增成员：AssociationId
+
+
+
+
+## 运维安全中心（堡垒机）(bh) 版本：2023-04-18
+
+### 第 41 次发布
+
+发布时间：2026-11-24 01:10:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckLDAPConnection](https://cloud.tencent.com/document/api/1025/120145)
+
+	* 新增入参：ResourceId
+
+* [DescribeLDAPUnitSet](https://cloud.tencent.com/document/api/1025/120144)
+
+	* 新增入参：ResourceId
+
+* [ModifyLDAPSetting](https://cloud.tencent.com/document/api/1025/120143)
+
+	* 新增入参：ResourceId
+
+
+修改数据结构：
+
+* [LoginSetting](https://cloud.tencent.com/document/api/1025/74416#LoginSetting)
+
+	* 新增成员：EnableDeviceFingerprintVerify
+
+
+
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 12 次发布
+
+发布时间：2026-11-24 01:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMCPToken](https://cloud.tencent.com/document/api/1547/141104)
+
+	* 新增入参：ExpireSeconds, TokenName, UserId
+
+	* 新增出参：TokenId, Token
+
+* [DescribeMCPTokens](https://cloud.tencent.com/document/api/1547/141103)
+
+	* 新增入参：Offset, Limit, Filters
+
+	* 新增出参：Tokens, TotalCount
+
+* [RenewMCPToken](https://cloud.tencent.com/document/api/1547/141102)
+
+	* 新增入参：TokenId, ExpireSeconds
+
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1547/141275#Filter)
+* [MCPTokenInfo](https://cloud.tencent.com/document/api/1547/141275#MCPTokenInfo)
 
 
 
@@ -89,6 +193,25 @@
 
 
 
+## 数据安全治理中心(dsgc) 版本：2019-07-23
+
+### 第 36 次发布
+
+发布时间：2026-11-24 02:00:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDSPACategories](https://cloud.tencent.com/document/api/1087/97224)
+
+	* 新增入参：Filters, Keyword
+
+
+
+
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
 ### 第 162 次发布
@@ -105,6 +228,72 @@
 
 	* 新增入参：EnablePublicIP, SecurityGroupIds, TerminateProtection
 
+
+
+
+## Elasticsearch Service(es) 版本：2025-01-01
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 114 次发布
+
+发布时间：2026-11-24 02:10:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：EnableLvm
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：LvmStatus, LvmSwitchFlowId
+
+
+
+
+## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
+
+### 第 50 次发布
+
+发布时间：2026-11-24 02:29:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeviceSecurityInfo](https://cloud.tencent.com/document/api/1092/138821)
+
+	* 新增入参：DomainInstanceId
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 195 次发布
+
+发布时间：2026-11-24 02:47:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartLiveSubtitle](https://cloud.tencent.com/document/api/267/141278)
+* [StopLiveSubtitle](https://cloud.tencent.com/document/api/267/141277)
 
 
 
@@ -176,6 +365,56 @@
 
 
 
+## 风险识别 RCE(rce) 版本：2026-01-30
+
+### 第 10 次发布
+
+发布时间：2026-11-24 03:19:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssessRisk](https://cloud.tencent.com/document/api/1343/135880)
+
+	* <font color="#dd0000">**修改入参**：</font>EventDetail
+
+* [ReportEvent](https://cloud.tencent.com/document/api/1343/135879)
+
+	* <font color="#dd0000">**修改入参**：</font>EventDetail
+
+
+修改数据结构：
+
+* [AddFriendEvent](https://cloud.tencent.com/document/api/1343/134560#AddFriendEvent)
+
+	* 新增成员：Cust
+
+* [ChatEvent](https://cloud.tencent.com/document/api/1343/134560#ChatEvent)
+
+	* 新增成员：Cust
+
+* [ModifyGuildEvent](https://cloud.tencent.com/document/api/1343/134560#ModifyGuildEvent)
+
+	* 新增成员：Cust
+
+* [ModifyRoleEvent](https://cloud.tencent.com/document/api/1343/134560#ModifyRoleEvent)
+
+	* 新增成员：Cust
+
+
+
+
+## 风险识别 RCE(rce) 版本：2025-04-25
+
+
+
+## 风险识别 RCE(rce) 版本：2020-11-03
+
+
+
 ## 前端性能监控(rum) 版本：2021-06-22
 
 ### 第 57 次发布
@@ -206,6 +445,81 @@
 
 	* 新增成员：CreateDatetime
 
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 181 次发布
+
+发布时间：2026-11-24 03:35:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFunction](https://cloud.tencent.com/document/api/876/137948)
+
+	* 新增出参：Environment, ClsLogsetId, ClsTopicId, EipConfig
+
+* [ModifyPGInstanceSpec](https://cloud.tencent.com/document/api/876/137349)
+
+	* 新增入参：CpuCores
+
+
+新增数据结构：
+
+* [EipOutConfig](https://cloud.tencent.com/document/api/876/34822#EipOutConfig)
+* [EnvironmentOut](https://cloud.tencent.com/document/api/876/34822#EnvironmentOut)
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 33 次发布
+
+发布时间：2026-11-24 03:38:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeStableIPTask](https://cloud.tencent.com/document/api/1243/141279)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 174 次发布
+
+发布时间：2026-11-24 03:50:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomGroup](https://cloud.tencent.com/document/api/1552/141285)
+* [DeleteCustomGroup](https://cloud.tencent.com/document/api/1552/141284)
+* [DescribeCustomGroup](https://cloud.tencent.com/document/api/1552/141283)
+* [DescribeCustomGroupReferences](https://cloud.tencent.com/document/api/1552/141282)
+* [DescribeCustomGroups](https://cloud.tencent.com/document/api/1552/141281)
+* [ModifyCustomGroup](https://cloud.tencent.com/document/api/1552/141280)
+
+新增数据结构：
+
+* [CustomGroup](https://cloud.tencent.com/document/api/1552/80721#CustomGroup)
+* [CustomGroupItem](https://cloud.tencent.com/document/api/1552/80721#CustomGroupItem)
+* [CustomGroupReference](https://cloud.tencent.com/document/api/1552/80721#CustomGroupReference)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -285,6 +599,25 @@
 
 
 
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 316 次发布
+
+发布时间：2026-11-24 04:23:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecurityGroup](https://cloud.tencent.com/document/api/215/15824#SecurityGroup)
+
+	* 新增成员：ServiceManaged
+
+
+
+
 ## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
 
 
@@ -309,6 +642,47 @@
 
 	* 新增成员：LogDiagnosisRules
 
+
+
+
+## WorkBuddy Enterprise(workbuddyenterprise) 版本：2026-07-09
+
+### 第 10 次发布
+
+发布时间：2026-11-24 04:45:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAgentSession](https://cloud.tencent.com/document/api/1831/138630)
+
+	* 新增入参：MetricEntry
+
+* [DeleteSessionArtifactList](https://cloud.tencent.com/document/api/1831/140523)
+
+	* 新增入参：SessionId, ArtifactIds
+
+	* 新增出参：DeletedCount
+
+* [DescribeSessionArtifactDownloadUrl](https://cloud.tencent.com/document/api/1831/140522)
+
+	* 新增入参：ArtifactId, ExpiredSeconds
+
+	* 新增出参：DownloadUrl, ExpiredTime, FileName, FileSizeBytes, FileSha256
+
+* [DescribeSessionArtifactList](https://cloud.tencent.com/document/api/1831/140521)
+
+	* 新增入参：SessionId, Offset, Limit, Filters
+
+	* 新增出参：TotalCount, ArtifactSet
+
+
+新增数据结构：
+
+* [SessionArtifactDetail](https://cloud.tencent.com/document/api/1831/138580#SessionArtifactDetail)
 
 
 

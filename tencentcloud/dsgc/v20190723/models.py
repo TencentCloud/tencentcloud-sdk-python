@@ -13949,12 +13949,18 @@ class DescribeDSPACategoriesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
         :type Limit: int
+        :param _Filters: 过滤条件（Id:分类id,Name:分类名称）
+        :type Filters: list of Filter
+        :param _Keyword: 关键字
+        :type Keyword: str
         """
         self._DspaId = None
         self._CategoryId = None
         self._Name = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
+        self._Keyword = None
 
     @property
     def DspaId(self):
@@ -13969,6 +13975,8 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        warnings.warn("parameter `CategoryId` is deprecated", DeprecationWarning) 
+
         r"""数据分类ID
         :rtype: int
         """
@@ -13976,10 +13984,14 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @CategoryId.setter
     def CategoryId(self, CategoryId):
+        warnings.warn("parameter `CategoryId` is deprecated", DeprecationWarning) 
+
         self._CategoryId = CategoryId
 
     @property
     def Name(self):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
         r"""敏感数据分类名称
         :rtype: str
         """
@@ -13987,6 +13999,8 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @Name.setter
     def Name(self, Name):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
         self._Name = Name
 
     @property
@@ -14011,6 +14025,28 @@ class DescribeDSPACategoriesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""过滤条件（Id:分类id,Name:分类名称）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Keyword(self):
+        r"""关键字
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -14018,6 +14054,13 @@ class DescribeDSPACategoriesRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

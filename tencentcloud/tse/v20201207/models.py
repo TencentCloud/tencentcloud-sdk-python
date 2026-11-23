@@ -9283,43 +9283,43 @@ class ConfigFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 配置文件id
+        :param _Id: <p>配置文件id</p>
         :type Id: int
-        :param _Name: 配置文件名称
+        :param _Name: <p>配置文件名称</p>
         :type Name: str
-        :param _Namespace: 配置文件命名空间
+        :param _Namespace: <p>配置文件命名空间</p>
         :type Namespace: str
-        :param _Group: 配置文件组
+        :param _Group: <p>配置文件组</p>
         :type Group: str
-        :param _Content: 配置文件内容
+        :param _Content: <p>配置文件内容</p>
         :type Content: str
-        :param _Format: 配置文件格式
+        :param _Format: <p>配置文件格式</p>
         :type Format: str
-        :param _Comment: 配置文件注释
+        :param _Comment: <p>配置文件注释</p>
         :type Comment: str
-        :param _Status: 配置文件状态
+        :param _Status: <p>配置文件状态</p>
         :type Status: str
-        :param _Tags: 配置文件标签数组
+        :param _Tags: <p>配置文件标签数组</p>
         :type Tags: list of ConfigFileTag
-        :param _CreateTime: 配置文件创建时间
+        :param _CreateTime: <p>配置文件创建时间</p>
         :type CreateTime: str
-        :param _CreateBy: 配置文件创建者
+        :param _CreateBy: <p>配置文件创建者</p>
         :type CreateBy: str
-        :param _ModifyTime: 配置文件修改时间
+        :param _ModifyTime: <p>配置文件修改时间</p>
         :type ModifyTime: str
-        :param _ModifyBy: 配置文件修改者
+        :param _ModifyBy: <p>配置文件修改者</p>
         :type ModifyBy: str
-        :param _ReleaseTime: 配置文件发布时间
+        :param _ReleaseTime: <p>配置文件发布时间</p>
         :type ReleaseTime: str
-        :param _ReleaseBy: 配置文件发布者
+        :param _ReleaseBy: <p>配置文件发布者</p>
         :type ReleaseBy: str
-        :param _ConfigFileSupportedClient: 配置文件类型
+        :param _ConfigFileSupportedClient: <p>配置文件类型</p>
         :type ConfigFileSupportedClient: int
-        :param _ConfigFilePersistent: 配置文件持久化
+        :param _ConfigFilePersistent: <p>配置文件持久化</p>
         :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
-        :param _Encrypted: 是否开启加密算法
+        :param _Encrypted: <p>是否开启加密算法</p>
         :type Encrypted: bool
-        :param _EncryptAlgo: 加密算法
+        :param _EncryptAlgo: <p>加密算法</p>
         :type EncryptAlgo: str
         """
         self._Id = None
@@ -9344,7 +9344,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Id(self):
-        r"""配置文件id
+        r"""<p>配置文件id</p>
         :rtype: int
         """
         return self._Id
@@ -9355,7 +9355,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Name(self):
-        r"""配置文件名称
+        r"""<p>配置文件名称</p>
         :rtype: str
         """
         return self._Name
@@ -9366,7 +9366,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""配置文件命名空间
+        r"""<p>配置文件命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -9377,7 +9377,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Group(self):
-        r"""配置文件组
+        r"""<p>配置文件组</p>
         :rtype: str
         """
         return self._Group
@@ -9388,7 +9388,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Content(self):
-        r"""配置文件内容
+        r"""<p>配置文件内容</p>
         :rtype: str
         """
         return self._Content
@@ -9399,7 +9399,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Format(self):
-        r"""配置文件格式
+        r"""<p>配置文件格式</p>
         :rtype: str
         """
         return self._Format
@@ -9410,7 +9410,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Comment(self):
-        r"""配置文件注释
+        r"""<p>配置文件注释</p>
         :rtype: str
         """
         return self._Comment
@@ -9421,7 +9421,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Status(self):
-        r"""配置文件状态
+        r"""<p>配置文件状态</p>
         :rtype: str
         """
         return self._Status
@@ -9432,7 +9432,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Tags(self):
-        r"""配置文件标签数组
+        r"""<p>配置文件标签数组</p>
         :rtype: list of ConfigFileTag
         """
         return self._Tags
@@ -9443,7 +9443,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""配置文件创建时间
+        r"""<p>配置文件创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9454,7 +9454,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def CreateBy(self):
-        r"""配置文件创建者
+        r"""<p>配置文件创建者</p>
         :rtype: str
         """
         return self._CreateBy
@@ -9465,7 +9465,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""配置文件修改时间
+        r"""<p>配置文件修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -9476,7 +9476,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ModifyBy(self):
-        r"""配置文件修改者
+        r"""<p>配置文件修改者</p>
         :rtype: str
         """
         return self._ModifyBy
@@ -9487,7 +9487,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ReleaseTime(self):
-        r"""配置文件发布时间
+        r"""<p>配置文件发布时间</p>
         :rtype: str
         """
         return self._ReleaseTime
@@ -9498,7 +9498,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ReleaseBy(self):
-        r"""配置文件发布者
+        r"""<p>配置文件发布者</p>
         :rtype: str
         """
         return self._ReleaseBy
@@ -9509,7 +9509,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ConfigFileSupportedClient(self):
-        r"""配置文件类型
+        r"""<p>配置文件类型</p>
         :rtype: int
         """
         return self._ConfigFileSupportedClient
@@ -9520,7 +9520,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def ConfigFilePersistent(self):
-        r"""配置文件持久化
+        r"""<p>配置文件持久化</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         return self._ConfigFilePersistent
@@ -9531,7 +9531,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def Encrypted(self):
-        r"""是否开启加密算法
+        r"""<p>是否开启加密算法</p>
         :rtype: bool
         """
         return self._Encrypted
@@ -9542,7 +9542,7 @@ class ConfigFile(AbstractModel):
 
     @property
     def EncryptAlgo(self):
-        r"""加密算法
+        r"""<p>加密算法</p>
         :rtype: str
         """
         return self._EncryptAlgo
@@ -10624,46 +10624,45 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 配置文件发布历史记录id
+        :param _Id: <p>配置文件发布历史记录id</p>
         :type Id: int
-        :param _Name: 配置文件发布历史名称
+        :param _Name: <p>配置文件发布历史名称</p>
         :type Name: str
-        :param _Namespace: 配置文件发布历史命名空间
+        :param _Namespace: <p>配置文件发布历史命名空间</p>
         :type Namespace: str
-        :param _Group: 配置文件发布历史组
+        :param _Group: <p>配置文件发布历史组</p>
         :type Group: str
-        :param _FileName: 配置文件发布历史名称
+        :param _FileName: <p>配置文件发布历史名称</p>
         :type FileName: str
-        :param _Content: 配置文件发布历史内容
+        :param _Content: <p>配置文件发布历史内容</p>
         :type Content: str
-        :param _Format: 配置文件发布历史格式
+        :param _Format: <p>配置文件发布历史格式</p>
         :type Format: str
-        :param _Comment: 配置文件发布历史注释
+        :param _Comment: <p>配置文件发布历史注释</p>
         :type Comment: str
-        :param _Md5: 配置文件发布历史Md5
+        :param _Md5: <p>配置文件发布历史Md5</p>
         :type Md5: str
-        :param _Type: 配置文件发布历史类型
+        :param _Type: <p>配置文件发布历史类型</p>
         :type Type: str
-        :param _Status: 配置文件发布历史状态
+        :param _Status: <p>配置文件发布历史状态</p>
         :type Status: str
-        :param _Tags: 配置文件发布历史标签组
+        :param _Tags: <p>配置文件发布历史标签组</p>
         :type Tags: list of ConfigFileTag
-        :param _CreateTime: 配置文件发布创建时间
+        :param _CreateTime: <p>配置文件发布创建时间</p>
         :type CreateTime: str
-        :param _CreateBy: 配置文件发布创建者
+        :param _CreateBy: <p>配置文件发布创建者</p>
         :type CreateBy: str
-        :param _ModifyTime: 配置文件发布修改时间
+        :param _ModifyTime: <p>配置文件发布修改时间</p>
         :type ModifyTime: str
-        :param _ModifyBy: 配置文件发布修改者
+        :param _ModifyBy: <p>配置文件发布修改者</p>
         :type ModifyBy: str
-        :param _ReleaseDescription: 发布描述
+        :param _ReleaseDescription: <p>发布描述</p>
         :type ReleaseDescription: str
-        :param _ReleaseReason: 原因，用于失败时原因展示
+        :param _ReleaseReason: <p>原因，用于失败时原因展示</p>
         :type ReleaseReason: str
-        :param _ConfigFileSupportedClient: 配置文件类型
-
+        :param _ConfigFileSupportedClient: <p>配置文件类型</p>
         :type ConfigFileSupportedClient: int
-        :param _ConfigFilePersistent: 配置文件持久化
+        :param _ConfigFilePersistent: <p>配置文件持久化</p>
         :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         self._Id = None
@@ -10689,7 +10688,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Id(self):
-        r"""配置文件发布历史记录id
+        r"""<p>配置文件发布历史记录id</p>
         :rtype: int
         """
         return self._Id
@@ -10700,7 +10699,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Name(self):
-        r"""配置文件发布历史名称
+        r"""<p>配置文件发布历史名称</p>
         :rtype: str
         """
         return self._Name
@@ -10711,7 +10710,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""配置文件发布历史命名空间
+        r"""<p>配置文件发布历史命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -10722,7 +10721,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Group(self):
-        r"""配置文件发布历史组
+        r"""<p>配置文件发布历史组</p>
         :rtype: str
         """
         return self._Group
@@ -10733,7 +10732,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def FileName(self):
-        r"""配置文件发布历史名称
+        r"""<p>配置文件发布历史名称</p>
         :rtype: str
         """
         return self._FileName
@@ -10744,7 +10743,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Content(self):
-        r"""配置文件发布历史内容
+        r"""<p>配置文件发布历史内容</p>
         :rtype: str
         """
         return self._Content
@@ -10755,7 +10754,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Format(self):
-        r"""配置文件发布历史格式
+        r"""<p>配置文件发布历史格式</p>
         :rtype: str
         """
         return self._Format
@@ -10766,7 +10765,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Comment(self):
-        r"""配置文件发布历史注释
+        r"""<p>配置文件发布历史注释</p>
         :rtype: str
         """
         return self._Comment
@@ -10777,7 +10776,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Md5(self):
-        r"""配置文件发布历史Md5
+        r"""<p>配置文件发布历史Md5</p>
         :rtype: str
         """
         return self._Md5
@@ -10788,7 +10787,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Type(self):
-        r"""配置文件发布历史类型
+        r"""<p>配置文件发布历史类型</p>
         :rtype: str
         """
         return self._Type
@@ -10799,7 +10798,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Status(self):
-        r"""配置文件发布历史状态
+        r"""<p>配置文件发布历史状态</p>
         :rtype: str
         """
         return self._Status
@@ -10810,7 +10809,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def Tags(self):
-        r"""配置文件发布历史标签组
+        r"""<p>配置文件发布历史标签组</p>
         :rtype: list of ConfigFileTag
         """
         return self._Tags
@@ -10821,7 +10820,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""配置文件发布创建时间
+        r"""<p>配置文件发布创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10832,7 +10831,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def CreateBy(self):
-        r"""配置文件发布创建者
+        r"""<p>配置文件发布创建者</p>
         :rtype: str
         """
         return self._CreateBy
@@ -10843,7 +10842,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""配置文件发布修改时间
+        r"""<p>配置文件发布修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -10854,7 +10853,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ModifyBy(self):
-        r"""配置文件发布修改者
+        r"""<p>配置文件发布修改者</p>
         :rtype: str
         """
         return self._ModifyBy
@@ -10865,7 +10864,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ReleaseDescription(self):
-        r"""发布描述
+        r"""<p>发布描述</p>
         :rtype: str
         """
         return self._ReleaseDescription
@@ -10876,7 +10875,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ReleaseReason(self):
-        r"""原因，用于失败时原因展示
+        r"""<p>原因，用于失败时原因展示</p>
         :rtype: str
         """
         return self._ReleaseReason
@@ -10887,8 +10886,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ConfigFileSupportedClient(self):
-        r"""配置文件类型
-
+        r"""<p>配置文件类型</p>
         :rtype: int
         """
         return self._ConfigFileSupportedClient
@@ -10899,7 +10897,7 @@ class ConfigFileReleaseHistory(AbstractModel):
 
     @property
     def ConfigFilePersistent(self):
-        r"""配置文件持久化
+        r"""<p>配置文件持久化</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         return self._ConfigFilePersistent
@@ -11005,23 +11003,23 @@ class ConfigFileTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 配置文件模板id
+        :param _Id: <p>配置文件模板id</p>
         :type Id: int
-        :param _Name: 配置文件模板名称
+        :param _Name: <p>配置文件模板名称</p>
         :type Name: str
-        :param _Content: 配置文件模板内容
+        :param _Content: <p>配置文件模板内容</p>
         :type Content: str
-        :param _Format: 配置文件模板格式
+        :param _Format: <p>配置文件模板格式</p>
         :type Format: str
-        :param _Comment: 配置文件模板注释
+        :param _Comment: <p>配置文件模板注释</p>
         :type Comment: str
-        :param _CreateTime: 配置文件模板创建时间
+        :param _CreateTime: <p>配置文件模板创建时间</p>
         :type CreateTime: str
-        :param _CreateBy: 配置文件模板创建者
+        :param _CreateBy: <p>配置文件模板创建者</p>
         :type CreateBy: str
-        :param _ModifyTime: 配置文件模板修改时间
+        :param _ModifyTime: <p>配置文件模板修改时间</p>
         :type ModifyTime: str
-        :param _ModifyBy: 配置文件模板修改者
+        :param _ModifyBy: <p>配置文件模板修改者</p>
         :type ModifyBy: str
         """
         self._Id = None
@@ -11036,7 +11034,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def Id(self):
-        r"""配置文件模板id
+        r"""<p>配置文件模板id</p>
         :rtype: int
         """
         return self._Id
@@ -11047,7 +11045,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def Name(self):
-        r"""配置文件模板名称
+        r"""<p>配置文件模板名称</p>
         :rtype: str
         """
         return self._Name
@@ -11058,7 +11056,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def Content(self):
-        r"""配置文件模板内容
+        r"""<p>配置文件模板内容</p>
         :rtype: str
         """
         return self._Content
@@ -11069,7 +11067,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def Format(self):
-        r"""配置文件模板格式
+        r"""<p>配置文件模板格式</p>
         :rtype: str
         """
         return self._Format
@@ -11080,7 +11078,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def Comment(self):
-        r"""配置文件模板注释
+        r"""<p>配置文件模板注释</p>
         :rtype: str
         """
         return self._Comment
@@ -11091,7 +11089,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""配置文件模板创建时间
+        r"""<p>配置文件模板创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11102,7 +11100,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def CreateBy(self):
-        r"""配置文件模板创建者
+        r"""<p>配置文件模板创建者</p>
         :rtype: str
         """
         return self._CreateBy
@@ -11113,7 +11111,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""配置文件模板修改时间
+        r"""<p>配置文件模板修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -11124,7 +11122,7 @@ class ConfigFileTemplate(AbstractModel):
 
     @property
     def ModifyBy(self):
-        r"""配置文件模板修改者
+        r"""<p>配置文件模板修改者</p>
         :rtype: str
         """
         return self._ModifyBy
@@ -16029,9 +16027,9 @@ class CreateGovernanceInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tse实例id。
+        :param _InstanceId: <p>tse实例id。</p>
         :type InstanceId: str
-        :param _GovernanceInstances: 服务实例信息。
+        :param _GovernanceInstances: <p>服务实例信息。</p>
         :type GovernanceInstances: list of GovernanceInstanceInput
         """
         self._InstanceId = None
@@ -16039,7 +16037,7 @@ class CreateGovernanceInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tse实例id。
+        r"""<p>tse实例id。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16050,7 +16048,7 @@ class CreateGovernanceInstancesRequest(AbstractModel):
 
     @property
     def GovernanceInstances(self):
-        r"""服务实例信息。
+        r"""<p>服务实例信息。</p>
         :rtype: list of GovernanceInstanceInput
         """
         return self._GovernanceInstances
@@ -16085,7 +16083,7 @@ class CreateGovernanceInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 创建是否成功。
+        :param _Result: <p>创建是否成功。</p>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16095,7 +16093,7 @@ class CreateGovernanceInstancesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""创建是否成功。
+        r"""<p>创建是否成功。</p>
         :rtype: bool
         """
         return self._Result
@@ -30326,21 +30324,21 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: TSE实例id
+        :param _InstanceId: <p>TSE实例id</p>
         :type InstanceId: str
-        :param _Namespace: 命名空间
+        :param _Namespace: <p>命名空间</p>
         :type Namespace: str
-        :param _Group: 组
+        :param _Group: <p>组</p>
         :type Group: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _EndId: 发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
+        :param _EndId: <p>发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续</p>
         :type EndId: int
-        :param _ConfigFileId: 配置文件ID
+        :param _ConfigFileId: <p>配置文件ID</p>
         :type ConfigFileId: str
-        :param _Limit: 返回数量，默认为20，最大值为100。	
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。	
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
         """
         self._InstanceId = None
@@ -30354,7 +30352,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""TSE实例id
+        r"""<p>TSE实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -30365,7 +30363,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间
+        r"""<p>命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -30376,7 +30374,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""组
+        r"""<p>组</p>
         :rtype: str
         """
         return self._Group
@@ -30387,7 +30385,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -30398,7 +30396,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def EndId(self):
-        r"""发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
+        r"""<p>发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续</p>
         :rtype: int
         """
         return self._EndId
@@ -30409,7 +30407,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def ConfigFileId(self):
-        r"""配置文件ID
+        r"""<p>配置文件ID</p>
         :rtype: str
         """
         return self._ConfigFileId
@@ -30420,7 +30418,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。	
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -30431,7 +30429,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。	
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -30467,9 +30465,9 @@ class DescribeConfigFileReleaseHistoriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数据总数量
+        :param _TotalCount: <p>数据总数量</p>
         :type TotalCount: int
-        :param _ConfigFileReleaseHistories: 配置文件发布历史列表
+        :param _ConfigFileReleaseHistories: <p>配置文件发布历史列表</p>
         :type ConfigFileReleaseHistories: list of ConfigFileReleaseHistory
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30480,7 +30478,7 @@ class DescribeConfigFileReleaseHistoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数据总数量
+        r"""<p>数据总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -30491,7 +30489,7 @@ class DescribeConfigFileReleaseHistoriesResponse(AbstractModel):
 
     @property
     def ConfigFileReleaseHistories(self):
-        r"""配置文件发布历史列表
+        r"""<p>配置文件发布历史列表</p>
         :rtype: list of ConfigFileReleaseHistory
         """
         return self._ConfigFileReleaseHistories
@@ -31850,29 +31848,29 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Service: 实例所在的服务名。
+        :param _Service: <p>实例所在的服务名。</p>
         :type Service: str
-        :param _Namespace: 实例所在命名空间名。
+        :param _Namespace: <p>实例所在命名空间名。</p>
         :type Namespace: str
-        :param _InstanceId: tse实例id。
+        :param _InstanceId: <p>tse实例id。</p>
         :type InstanceId: str
-        :param _Host: 根据实例ip过滤，多个ip使用英文逗号分隔。
+        :param _Host: <p>根据实例ip过滤，多个ip使用英文逗号分隔。</p>
         :type Host: str
-        :param _InstanceVersion: 根据实例版本过滤。
+        :param _InstanceVersion: <p>根据实例版本过滤。</p>
         :type InstanceVersion: str
-        :param _Protocol: 根据实例协议过滤。
+        :param _Protocol: <p>根据实例协议过滤。</p>
         :type Protocol: str
-        :param _HealthStatus: 根据实例健康状态过滤。false：表示不健康，true：表示健康。
+        :param _HealthStatus: <p>根据实例健康状态过滤。false：表示不健康，true：表示健康。</p>
         :type HealthStatus: bool
-        :param _Isolate: 根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。
+        :param _Isolate: <p>根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。</p>
         :type Isolate: bool
-        :param _Metadatas: 根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。
+        :param _Metadatas: <p>根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。</p>
         :type Metadatas: list of Metadata
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Location: 地域
+        :param _Location: <p>地域</p>
         :type Location: :class:`tencentcloud.tse.v20201207.models.Location`
         """
         self._Service = None
@@ -31890,7 +31888,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Service(self):
-        r"""实例所在的服务名。
+        r"""<p>实例所在的服务名。</p>
         :rtype: str
         """
         return self._Service
@@ -31901,7 +31899,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""实例所在命名空间名。
+        r"""<p>实例所在命名空间名。</p>
         :rtype: str
         """
         return self._Namespace
@@ -31912,7 +31910,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tse实例id。
+        r"""<p>tse实例id。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31923,7 +31921,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""根据实例ip过滤，多个ip使用英文逗号分隔。
+        r"""<p>根据实例ip过滤，多个ip使用英文逗号分隔。</p>
         :rtype: str
         """
         return self._Host
@@ -31934,7 +31932,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""根据实例版本过滤。
+        r"""<p>根据实例版本过滤。</p>
         :rtype: str
         """
         return self._InstanceVersion
@@ -31945,7 +31943,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""根据实例协议过滤。
+        r"""<p>根据实例协议过滤。</p>
         :rtype: str
         """
         return self._Protocol
@@ -31956,7 +31954,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def HealthStatus(self):
-        r"""根据实例健康状态过滤。false：表示不健康，true：表示健康。
+        r"""<p>根据实例健康状态过滤。false：表示不健康，true：表示健康。</p>
         :rtype: bool
         """
         return self._HealthStatus
@@ -31967,7 +31965,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Isolate(self):
-        r"""根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。
+        r"""<p>根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。</p>
         :rtype: bool
         """
         return self._Isolate
@@ -31978,7 +31976,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。
+        r"""<p>根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。</p>
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -31989,7 +31987,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -32000,7 +31998,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -32011,7 +32009,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
 
     @property
     def Location(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.Location`
         """
         return self._Location
@@ -32058,11 +32056,11 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 服务实例总数量。
+        :param _TotalCount: <p>服务实例总数量。</p>
         :type TotalCount: int
-        :param _Content: 服务里实例列表。
+        :param _Content: <p>服务里实例列表。</p>
         :type Content: list of GovernanceInstance
-        :param _Location: 地域
+        :param _Location: <p>地域</p>
         :type Location: :class:`tencentcloud.tse.v20201207.models.Location`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32074,7 +32072,7 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""服务实例总数量。
+        r"""<p>服务实例总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -32085,7 +32083,7 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
 
     @property
     def Content(self):
-        r"""服务里实例列表。
+        r"""<p>服务里实例列表。</p>
         :rtype: list of GovernanceInstance
         """
         return self._Content
@@ -32096,7 +32094,7 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
 
     @property
     def Location(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.Location`
         """
         return self._Location
@@ -38462,37 +38460,37 @@ class GovernanceNamespace(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 命名空间名称。
+        :param _Name: <p>命名空间名称。</p>
         :type Name: str
-        :param _Comment: 命名空间描述信息。
+        :param _Comment: <p>命名空间描述信息。</p>
         :type Comment: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _ModifyTime: 修改时间。
+        :param _ModifyTime: <p>修改时间。</p>
         :type ModifyTime: str
-        :param _TotalServiceCount: 命名空间下总服务数据量
+        :param _TotalServiceCount: <p>命名空间下总服务数据量</p>
         :type TotalServiceCount: int
-        :param _TotalHealthInstanceCount: 命名空间下总健康实例数量
+        :param _TotalHealthInstanceCount: <p>命名空间下总健康实例数量</p>
         :type TotalHealthInstanceCount: int
-        :param _TotalInstanceCount: 命名空间下总实例数量
+        :param _TotalInstanceCount: <p>命名空间下总实例数量</p>
         :type TotalInstanceCount: int
-        :param _Id: 命名空间ID
+        :param _Id: <p>命名空间ID</p>
         :type Id: str
-        :param _Editable: 是否可以编辑
+        :param _Editable: <p>是否可以编辑</p>
         :type Editable: bool
-        :param _UserIds: 可以操作此命名空间的用户ID列表
+        :param _UserIds: <p>可以操作此命名空间的用户ID列表</p>
         :type UserIds: list of str
-        :param _GroupIds: 可以操作此命名空间的用户组ID列表
+        :param _GroupIds: <p>可以操作此命名空间的用户组ID列表</p>
         :type GroupIds: list of str
-        :param _RemoveUserIds: 移除可以操作此命名空间的用户ID列表
+        :param _RemoveUserIds: <p>移除可以操作此命名空间的用户ID列表</p>
         :type RemoveUserIds: list of str
-        :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
+        :param _RemoveGroupIds: <p>移除可以操作此命名空间的用户组ID列表</p>
         :type RemoveGroupIds: list of str
-        :param _ServiceExportTo: 该命名空间下的服务对哪些命名空间可见
+        :param _ServiceExportTo: <p>该命名空间下的服务对哪些命名空间可见</p>
         :type ServiceExportTo: list of str
-        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
+        :param _SyncToGlobalRegistry: <p>是否开启同步到全局注册中心</p>
         :type SyncToGlobalRegistry: bool
-        :param _Metadatas: 元数据
+        :param _Metadatas: <p>元数据</p>
         :type Metadatas: list of Metadata
         """
         self._Name = None
@@ -38514,7 +38512,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def Name(self):
-        r"""命名空间名称。
+        r"""<p>命名空间名称。</p>
         :rtype: str
         """
         return self._Name
@@ -38525,7 +38523,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def Comment(self):
-        r"""命名空间描述信息。
+        r"""<p>命名空间描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -38536,7 +38534,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -38547,7 +38545,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间。
+        r"""<p>修改时间。</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -38558,7 +38556,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def TotalServiceCount(self):
-        r"""命名空间下总服务数据量
+        r"""<p>命名空间下总服务数据量</p>
         :rtype: int
         """
         return self._TotalServiceCount
@@ -38569,7 +38567,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def TotalHealthInstanceCount(self):
-        r"""命名空间下总健康实例数量
+        r"""<p>命名空间下总健康实例数量</p>
         :rtype: int
         """
         return self._TotalHealthInstanceCount
@@ -38580,7 +38578,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def TotalInstanceCount(self):
-        r"""命名空间下总实例数量
+        r"""<p>命名空间下总实例数量</p>
         :rtype: int
         """
         return self._TotalInstanceCount
@@ -38591,7 +38589,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def Id(self):
-        r"""命名空间ID
+        r"""<p>命名空间ID</p>
         :rtype: str
         """
         return self._Id
@@ -38602,7 +38600,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def Editable(self):
-        r"""是否可以编辑
+        r"""<p>是否可以编辑</p>
         :rtype: bool
         """
         return self._Editable
@@ -38613,7 +38611,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""可以操作此命名空间的用户ID列表
+        r"""<p>可以操作此命名空间的用户ID列表</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -38624,7 +38622,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""可以操作此命名空间的用户组ID列表
+        r"""<p>可以操作此命名空间的用户组ID列表</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -38635,7 +38633,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def RemoveUserIds(self):
-        r"""移除可以操作此命名空间的用户ID列表
+        r"""<p>移除可以操作此命名空间的用户ID列表</p>
         :rtype: list of str
         """
         return self._RemoveUserIds
@@ -38646,7 +38644,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def RemoveGroupIds(self):
-        r"""移除可以操作此命名空间的用户组ID列表
+        r"""<p>移除可以操作此命名空间的用户组ID列表</p>
         :rtype: list of str
         """
         return self._RemoveGroupIds
@@ -38657,7 +38655,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def ServiceExportTo(self):
-        r"""该命名空间下的服务对哪些命名空间可见
+        r"""<p>该命名空间下的服务对哪些命名空间可见</p>
         :rtype: list of str
         """
         return self._ServiceExportTo
@@ -38668,7 +38666,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def SyncToGlobalRegistry(self):
-        r"""是否开启同步到全局注册中心	
+        r"""<p>是否开启同步到全局注册中心</p>
         :rtype: bool
         """
         return self._SyncToGlobalRegistry
@@ -38679,7 +38677,7 @@ class GovernanceNamespace(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""元数据
+        r"""<p>元数据</p>
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -38728,24 +38726,21 @@ class GovernanceNamespaceInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 命名空间名。
+        :param _Name: <p>命名空间名。</p>
         :type Name: str
-        :param _Comment: 描述信息。
+        :param _Comment: <p>描述信息。</p>
         :type Comment: str
-        :param _UserIds: 新增的可以操作此命名空间的用户ID列表
+        :param _UserIds: <p>新增的可以操作此命名空间的用户ID列表</p>
         :type UserIds: list of str
-        :param _GroupIds: 新增的可以操作此命名空间的用户组ID列表
+        :param _GroupIds: <p>新增的可以操作此命名空间的用户组ID列表</p>
         :type GroupIds: list of str
-        :param _RemoveUserIds: 移除可以操作此命名空间的用户ID列表
+        :param _RemoveUserIds: <p>移除可以操作此命名空间的用户ID列表</p>
         :type RemoveUserIds: list of str
-        :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
+        :param _RemoveGroupIds: <p>移除可以操作此命名空间的用户组ID列表</p>
         :type RemoveGroupIds: list of str
-        :param _ServiceExportTo: 该命名空间下的服务对哪些命名空间下可见，
-1、为空或者不填写，表示仅当前命名空间可见
-2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
-3、列表内容为部份命名空间名称，则只对这些命名空间下可见
+        :param _ServiceExportTo: <p>该命名空间下的服务对哪些命名空间下可见，<br>1、为空或者不填写，表示仅当前命名空间可见<br>2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）<br>3、列表内容为部份命名空间名称，则只对这些命名空间下可见</p>
         :type ServiceExportTo: list of str
-        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心
+        :param _SyncToGlobalRegistry: <p>是否开启同步到全局注册中心</p>
         :type SyncToGlobalRegistry: bool
         """
         self._Name = None
@@ -38759,7 +38754,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def Name(self):
-        r"""命名空间名。
+        r"""<p>命名空间名。</p>
         :rtype: str
         """
         return self._Name
@@ -38770,7 +38765,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def Comment(self):
-        r"""描述信息。
+        r"""<p>描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -38781,7 +38776,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""新增的可以操作此命名空间的用户ID列表
+        r"""<p>新增的可以操作此命名空间的用户ID列表</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -38792,7 +38787,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""新增的可以操作此命名空间的用户组ID列表
+        r"""<p>新增的可以操作此命名空间的用户组ID列表</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -38803,7 +38798,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def RemoveUserIds(self):
-        r"""移除可以操作此命名空间的用户ID列表
+        r"""<p>移除可以操作此命名空间的用户ID列表</p>
         :rtype: list of str
         """
         return self._RemoveUserIds
@@ -38814,7 +38809,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def RemoveGroupIds(self):
-        r"""移除可以操作此命名空间的用户组ID列表
+        r"""<p>移除可以操作此命名空间的用户组ID列表</p>
         :rtype: list of str
         """
         return self._RemoveGroupIds
@@ -38825,10 +38820,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def ServiceExportTo(self):
-        r"""该命名空间下的服务对哪些命名空间下可见，
-1、为空或者不填写，表示仅当前命名空间可见
-2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
-3、列表内容为部份命名空间名称，则只对这些命名空间下可见
+        r"""<p>该命名空间下的服务对哪些命名空间下可见，<br>1、为空或者不填写，表示仅当前命名空间可见<br>2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）<br>3、列表内容为部份命名空间名称，则只对这些命名空间下可见</p>
         :rtype: list of str
         """
         return self._ServiceExportTo
@@ -38839,7 +38831,7 @@ class GovernanceNamespaceInput(AbstractModel):
 
     @property
     def SyncToGlobalRegistry(self):
-        r"""是否开启同步到全局注册中心
+        r"""<p>是否开启同步到全局注册中心</p>
         :rtype: bool
         """
         return self._SyncToGlobalRegistry
@@ -46878,9 +46870,9 @@ class ModifyGovernanceInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tse实例id。
+        :param _InstanceId: <p>tse实例id。</p>
         :type InstanceId: str
-        :param _GovernanceInstances: 服务实例信息。
+        :param _GovernanceInstances: <p>服务实例信息。</p>
         :type GovernanceInstances: list of GovernanceInstanceUpdate
         """
         self._InstanceId = None
@@ -46888,7 +46880,7 @@ class ModifyGovernanceInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tse实例id。
+        r"""<p>tse实例id。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -46899,7 +46891,7 @@ class ModifyGovernanceInstancesRequest(AbstractModel):
 
     @property
     def GovernanceInstances(self):
-        r"""服务实例信息。
+        r"""<p>服务实例信息。</p>
         :rtype: list of GovernanceInstanceUpdate
         """
         return self._GovernanceInstances
@@ -46934,7 +46926,7 @@ class ModifyGovernanceInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 修改是否成功。
+        :param _Result: <p>修改是否成功。</p>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46944,7 +46936,7 @@ class ModifyGovernanceInstancesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""修改是否成功。
+        r"""<p>修改是否成功。</p>
         :rtype: bool
         """
         return self._Result

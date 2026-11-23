@@ -17178,6 +17178,61 @@ class DropIndex(AbstractModel):
         
 
 
+class EipOutConfig(AbstractModel):
+    r"""同[EipOutConfig](https://document.capi.woa.com/document/product/583/17244#EipOutConfig)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EipFixed: <p>是否固定 EIP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipFixed: str
+        :param _Eips: <p>EIP 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Eips: list of str
+        """
+        self._EipFixed = None
+        self._Eips = None
+
+    @property
+    def EipFixed(self):
+        r"""<p>是否固定 EIP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EipFixed
+
+    @EipFixed.setter
+    def EipFixed(self, EipFixed):
+        self._EipFixed = EipFixed
+
+    @property
+    def Eips(self):
+        r"""<p>EIP 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Eips
+
+    @Eips.setter
+    def Eips(self, Eips):
+        self._Eips = Eips
+
+
+    def _deserialize(self, params):
+        self._EipFixed = params.get("EipFixed")
+        self._Eips = params.get("Eips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmailProviderConfig(AbstractModel):
     r"""邮箱登录配置
 
@@ -18369,6 +18424,49 @@ class EnvPkgCreditsUsage(AbstractModel):
         self._DeductValue = params.get("DeductValue")
         self._PackageDeductValue = params.get("PackageDeductValue")
         self._ReportValue = params.get("ReportValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentOut(AbstractModel):
+    r"""同[Environment](https://document.capi.woa.com/document/product/583/17244#Environment)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Variables: <p>环境变量数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Variables: list of Variable
+        """
+        self._Variables = None
+
+    @property
+    def Variables(self):
+        r"""<p>环境变量数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+
+    def _deserialize(self, params):
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19700,6 +19798,9 @@ class GetFunctionResponse(AbstractModel):
         :type VpcConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
         :param _UseGpu: <p>是否使用 GPU (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
         :type UseGpu: str
+        :param _Environment: <p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: :class:`tencentcloud.tcb.v20180608.models.EnvironmentOut`
         :param _CodeResult: <p>代码校验结果 (&quot;success&quot;/&quot;failed&quot;)</p>
         :type CodeResult: str
         :param _ErrNo: <p>代码错误码</p>
@@ -19712,11 +19813,18 @@ class GetFunctionResponse(AbstractModel):
         :type InstallDependency: str
         :param _Status: <p>函数状态 (&quot;Active&quot;, &quot;Inactive&quot; 等)</p>
         :type Status: str
+        :param _ClsLogsetId: <p>CLS 日志集 ID</p>
+        :type ClsLogsetId: str
+        :param _ClsTopicId: <p>CLS Topic ID</p>
+        :type ClsTopicId: str
         :param _FunctionId: <p>函数 ID</p>
         :type FunctionId: str
         :param _Tags: <p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _EipConfig: <p>EIP 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipConfig: :class:`tencentcloud.tcb.v20180608.models.EipOutConfig`
         :param _Type: <p>函数类型 (&quot;HTTP&quot; 或 &quot;Event&quot;)</p>
         :type Type: str
         :param _L5Enable: <p>是否启用 L5 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
@@ -19754,14 +19862,18 @@ class GetFunctionResponse(AbstractModel):
         self._FunctionName = None
         self._VpcConfig = None
         self._UseGpu = None
+        self._Environment = None
         self._CodeResult = None
         self._ErrNo = None
         self._Namespace = None
         self._Role = None
         self._InstallDependency = None
         self._Status = None
+        self._ClsLogsetId = None
+        self._ClsTopicId = None
         self._FunctionId = None
         self._Tags = None
+        self._EipConfig = None
         self._Type = None
         self._L5Enable = None
         self._AddTime = None
@@ -19920,6 +20032,18 @@ class GetFunctionResponse(AbstractModel):
         self._UseGpu = UseGpu
 
     @property
+    def Environment(self):
+        r"""<p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EnvironmentOut`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
     def CodeResult(self):
         r"""<p>代码校验结果 (&quot;success&quot;/&quot;failed&quot;)</p>
         :rtype: str
@@ -19986,6 +20110,28 @@ class GetFunctionResponse(AbstractModel):
         self._Status = Status
 
     @property
+    def ClsLogsetId(self):
+        r"""<p>CLS 日志集 ID</p>
+        :rtype: str
+        """
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def ClsTopicId(self):
+        r"""<p>CLS Topic ID</p>
+        :rtype: str
+        """
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
     def FunctionId(self):
         r"""<p>函数 ID</p>
         :rtype: str
@@ -20007,6 +20153,18 @@ class GetFunctionResponse(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def EipConfig(self):
+        r"""<p>EIP 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EipOutConfig`
+        """
+        return self._EipConfig
+
+    @EipConfig.setter
+    def EipConfig(self, EipConfig):
+        self._EipConfig = EipConfig
 
     @property
     def Type(self):
@@ -20152,12 +20310,17 @@ class GetFunctionResponse(AbstractModel):
             self._VpcConfig = FunctionVpcConfig()
             self._VpcConfig._deserialize(params.get("VpcConfig"))
         self._UseGpu = params.get("UseGpu")
+        if params.get("Environment") is not None:
+            self._Environment = EnvironmentOut()
+            self._Environment._deserialize(params.get("Environment"))
         self._CodeResult = params.get("CodeResult")
         self._ErrNo = params.get("ErrNo")
         self._Namespace = params.get("Namespace")
         self._Role = params.get("Role")
         self._InstallDependency = params.get("InstallDependency")
         self._Status = params.get("Status")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        self._ClsTopicId = params.get("ClsTopicId")
         self._FunctionId = params.get("FunctionId")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -20165,6 +20328,9 @@ class GetFunctionResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("EipConfig") is not None:
+            self._EipConfig = EipOutConfig()
+            self._EipConfig._deserialize(params.get("EipConfig"))
         self._Type = params.get("Type")
         self._L5Enable = params.get("L5Enable")
         self._AddTime = params.get("AddTime")
@@ -25813,6 +25979,8 @@ class ModifyPGInstanceSpecRequest(AbstractModel):
         :type SwitchEndTime: str
         :param _DryRun: <p>预检</p>
         :type DryRun: bool
+        :param _CpuCores: <p>实例Cpu 核数</p><p>取值范围：[0.1, 1024]</p><p>单位：核数</p><p>当 CpuCores 和 Cpu 共存时，优先 CpuCores 生效</p>
+        :type CpuCores: float
         """
         self._EnvId = None
         self._Cpu = None
@@ -25822,6 +25990,7 @@ class ModifyPGInstanceSpecRequest(AbstractModel):
         self._SwitchStartTime = None
         self._SwitchEndTime = None
         self._DryRun = None
+        self._CpuCores = None
 
     @property
     def EnvId(self):
@@ -25911,6 +26080,17 @@ class ModifyPGInstanceSpecRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
+    @property
+    def CpuCores(self):
+        r"""<p>实例Cpu 核数</p><p>取值范围：[0.1, 1024]</p><p>单位：核数</p><p>当 CpuCores 和 Cpu 共存时，优先 CpuCores 生效</p>
+        :rtype: float
+        """
+        return self._CpuCores
+
+    @CpuCores.setter
+    def CpuCores(self, CpuCores):
+        self._CpuCores = CpuCores
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -25921,6 +26101,7 @@ class ModifyPGInstanceSpecRequest(AbstractModel):
         self._SwitchStartTime = params.get("SwitchStartTime")
         self._SwitchEndTime = params.get("SwitchEndTime")
         self._DryRun = params.get("DryRun")
+        self._CpuCores = params.get("CpuCores")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

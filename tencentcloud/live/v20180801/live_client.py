@@ -5937,6 +5937,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartLiveSubtitle(self, request):
+        r"""使用该接口启动直播字幕。
+
+        :param request: Request instance for StartLiveSubtitle.
+        :type request: :class:`tencentcloud.live.v20180801.models.StartLiveSubtitleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StartLiveSubtitleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartLiveSubtitle", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartLiveSubtitleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAvatarEditingLive(self, request):
         r"""调用该接口，用于停止数字人直播间。
 
@@ -6090,6 +6113,29 @@ class LiveClient(AbstractClient):
             body = self.call("StopLiveStreamMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.StopLiveStreamMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopLiveSubtitle(self, request):
+        r"""使用该接口将停止直播字幕。
+
+        :param request: Request instance for StopLiveSubtitle.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopLiveSubtitleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopLiveSubtitleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLiveSubtitle", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLiveSubtitleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

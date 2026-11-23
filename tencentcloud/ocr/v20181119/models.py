@@ -32104,7 +32104,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type BoolSingleQuestion: bool
         :param _EnableDeepThink: <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
         :type EnableDeepThink: bool
-        :param _QuestionConfigMap: <p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
+        :param _QuestionConfigMap: <p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标、知识点<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p><p><em>备注：可通过ModelType切换模型体验不同模型的<strong>快速模式</strong>，速度都是8s左右，效果各有优劣</em></p>
         :type QuestionConfigMap: str
         :param _ReferenceAnswer: <p>【废弃字段】</p>
         :type ReferenceAnswer: str
@@ -32112,13 +32112,13 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type ImageBase64List: list of str
         :param _ImageUrlList: <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入含正确解析试卷，最多1张</li><li>当AssistMarkType为1时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
         :type ImageUrlList: list of str
-        :param _AssistMarkType: <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+        :param _AssistMarkType: <p>辅助批改类型，默认0</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul>
         :type AssistMarkType: int
         :param _AnswerAssistMap: <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
         :type AnswerAssistMap: str
         :param _EnableImageCrop: <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUrl中,默认为false不开启</p>
         :type EnableImageCrop: bool
-        :param _ModelType: <p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+        :param _ModelType: <p>批改模型选择，默认：yuanbao_correction_model</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持，<strong>精度更高，并且支持题目级置信度返回</strong>。</li></ul>
         :type ModelType: str
         """
         self._ImageBase64 = None
@@ -32200,7 +32200,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def QuestionConfigMap(self):
-        r"""<p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
+        r"""<p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标、知识点<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p><p><em>备注：可通过ModelType切换模型体验不同模型的<strong>快速模式</strong>，速度都是8s左右，效果各有优劣</em></p>
         :rtype: str
         """
         return self._QuestionConfigMap
@@ -32248,7 +32248,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def AssistMarkType(self):
-        r"""<p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+        r"""<p>辅助批改类型，默认0</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul>
         :rtype: int
         """
         return self._AssistMarkType
@@ -32281,7 +32281,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        r"""<p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+        r"""<p>批改模型选择，默认：yuanbao_correction_model</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持，<strong>精度更高，并且支持题目级置信度返回</strong>。</li></ul>
         :rtype: str
         """
         return self._ModelType

@@ -147,6 +147,66 @@ class CreateMCPTokenRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ExpireSeconds: <p>Token 过期时间</p><p>取值范围：[0, 2592000]</p><p>单位：秒</p><p>默认值：86400</p><p>不填的话，默认为 1 天超时；过期时间为当前时间 + 超时时间</p>
+        :type ExpireSeconds: int
+        :param _TokenName: <p>Token 名称（注释）</p><p>参数格式：只支持：中英文、数字、连字符 &quot;-&quot; 的组合</p><p>长度不得超过 16 个字符</p>
+        :type TokenName: str
+        :param _UserId: <p>用户 Id</p><p>参数格式：只支持：字母（A-Za-z）、数字（0-9）、下划线（_）的组合</p><p>固定使用这个 UserId  来操作云渲染并发资源，长度不能超过 64 个字符</p>
+        :type UserId: str
+        """
+        self._ExpireSeconds = None
+        self._TokenName = None
+        self._UserId = None
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>Token 过期时间</p><p>取值范围：[0, 2592000]</p><p>单位：秒</p><p>默认值：86400</p><p>不填的话，默认为 1 天超时；过期时间为当前时间 + 超时时间</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+    @property
+    def TokenName(self):
+        r"""<p>Token 名称（注释）</p><p>参数格式：只支持：中英文、数字、连字符 &quot;-&quot; 的组合</p><p>长度不得超过 16 个字符</p>
+        :rtype: str
+        """
+        return self._TokenName
+
+    @TokenName.setter
+    def TokenName(self, TokenName):
+        self._TokenName = TokenName
+
+    @property
+    def UserId(self):
+        r"""<p>用户 Id</p><p>参数格式：只支持：字母（A-Za-z）、数字（0-9）、下划线（_）的组合</p><p>固定使用这个 UserId  来操作云渲染并发资源，长度不能超过 64 个字符</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        self._TokenName = params.get("TokenName")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateMCPTokenResponse(AbstractModel):
     r"""CreateMCPToken返回参数结构体
@@ -155,10 +215,38 @@ class CreateMCPTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TokenId: <p>TokenId</p>
+        :type TokenId: str
+        :param _Token: <p>MCP Token </p><p>当前值请妥善保存，后续需要使用该 Token 和 MCP Server 进行通信操作，丢失后无法再查看</p>
+        :type Token: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TokenId = None
+        self._Token = None
         self._RequestId = None
+
+    @property
+    def TokenId(self):
+        r"""<p>TokenId</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def Token(self):
+        r"""<p>MCP Token </p><p>当前值请妥善保存，后续需要使用该 Token 和 MCP Server 进行通信操作，丢失后无法再查看</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
 
     @property
     def RequestId(self):
@@ -173,6 +261,8 @@ class CreateMCPTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._Token = params.get("Token")
         self._RequestId = params.get("RequestId")
 
 
@@ -483,6 +573,71 @@ class DescribeMCPTokensRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>单页数量</p><p>取值范围：[0, 200]</p><p>默认值：20</p><p>如果传入 0 会使用默认值</p>
+        :type Limit: int
+        :param _Filters: <p>过滤器列表</p><p>只支持 TokenId 和 TokenName 过滤，Filters 数量不能超过 10、每个 Filter 的 Values 个数不能超过 20、单个 Value 长度不能超过 64 个字符、不允许同名 Filter 出现</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单页数量</p><p>取值范围：[0, 200]</p><p>默认值：20</p><p>如果传入 0 会使用默认值</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器列表</p><p>只支持 TokenId 和 TokenName 过滤，Filters 数量不能超过 10、每个 Filter 的 Values 个数不能超过 20、单个 Value 长度不能超过 64 个字符、不允许同名 Filter 出现</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeMCPTokensResponse(AbstractModel):
     r"""DescribeMCPTokens返回参数结构体
@@ -491,10 +646,38 @@ class DescribeMCPTokensResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Tokens: <p>Token 列表</p>
+        :type Tokens: list of MCPTokenInfo
+        :param _TotalCount: <p>Token 数量</p><p>单位：个</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Tokens = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def Tokens(self):
+        r"""<p>Token 列表</p>
+        :rtype: list of MCPTokenInfo
+        """
+        return self._Tokens
+
+    @Tokens.setter
+    def Tokens(self, Tokens):
+        self._Tokens = Tokens
+
+    @property
+    def TotalCount(self):
+        r"""<p>Token 数量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -509,6 +692,13 @@ class DescribeMCPTokensResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Tokens") is not None:
+            self._Tokens = []
+            for item in params.get("Tokens"):
+                obj = MCPTokenInfo()
+                obj._deserialize(item)
+                self._Tokens.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -576,10 +766,232 @@ class DestroySessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Filter(AbstractModel):
+    r"""查询过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤字段名（ApplicationId 应用Id、ApplicationName 应用名称、ApplicationRunStatus 运行状态、ApplicationUpdateStatus 更新状态）
+        :type Name: str
+        :param _Values: 过滤值集合（当过滤 Name 为 ApplicationRunStatus 时，Values 取值为 [ApplicationDeleting 应用删除中、ApplicationCreateFail 应用创建失败、ApplicationCreating 应用创建中、ApplicationRunning 正常运行、ApplicationNoConfigured 主执行程序路径未配置 ]。当过滤 Name 为 ApplicationUpdateStatus 时，Values 取值 [ApplicationUpdateCreating 版本创建中、ApplicationUpdateCreateFail 版本创建失败、ApplicationUpdateNoReleased 版本待发布、ApplicationUpdateReleased 版本发布完成、ApplicationUpdateNormal 无]）
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""过滤字段名（ApplicationId 应用Id、ApplicationName 应用名称、ApplicationRunStatus 运行状态、ApplicationUpdateStatus 更新状态）
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""过滤值集合（当过滤 Name 为 ApplicationRunStatus 时，Values 取值为 [ApplicationDeleting 应用删除中、ApplicationCreateFail 应用创建失败、ApplicationCreating 应用创建中、ApplicationRunning 正常运行、ApplicationNoConfigured 主执行程序路径未配置 ]。当过滤 Name 为 ApplicationUpdateStatus 时，Values 取值 [ApplicationUpdateCreating 版本创建中、ApplicationUpdateCreateFail 版本创建失败、ApplicationUpdateNoReleased 版本待发布、ApplicationUpdateReleased 版本发布完成、ApplicationUpdateNormal 无]）
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MCPTokenInfo(AbstractModel):
+    r"""MCP Token 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenId: <p>TokenId</p><p>用于管理 Token 数据，可用来延长对应 Token 有效时间</p>
+        :type TokenId: str
+        :param _TokenName: <p>Token 名称（注释）</p>
+        :type TokenName: str
+        :param _UserId: <p>用户 Id</p><p>固定使用这个 UserId  来操作云渲染并发资源（为空不限制）</p>
+        :type UserId: str
+        :param _Scopes: <p>权限范围</p><p>默认值：[&quot;*&quot;]</p><p>用于指定操作权限，默认拥有全部权限</p>
+        :type Scopes: list of str
+        :param _Status: <p>Token 状态</p><p>枚举值：</p><ul><li>ACTIVE： 正常状态，未被吊销。不代表还在有效期内</li><li>REVOKED： 已被吊销，永久失效</li></ul><p>默认值：ACTIVE</p>
+        :type Status: str
+        :param _CreatedTime: <p>Token 创建时间</p>
+        :type CreatedTime: str
+        :param _ExpiresTime: <p>Token 过期时间</p>
+        :type ExpiresTime: str
+        """
+        self._TokenId = None
+        self._TokenName = None
+        self._UserId = None
+        self._Scopes = None
+        self._Status = None
+        self._CreatedTime = None
+        self._ExpiresTime = None
+
+    @property
+    def TokenId(self):
+        r"""<p>TokenId</p><p>用于管理 Token 数据，可用来延长对应 Token 有效时间</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def TokenName(self):
+        r"""<p>Token 名称（注释）</p>
+        :rtype: str
+        """
+        return self._TokenName
+
+    @TokenName.setter
+    def TokenName(self, TokenName):
+        self._TokenName = TokenName
+
+    @property
+    def UserId(self):
+        r"""<p>用户 Id</p><p>固定使用这个 UserId  来操作云渲染并发资源（为空不限制）</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Scopes(self):
+        r"""<p>权限范围</p><p>默认值：[&quot;*&quot;]</p><p>用于指定操作权限，默认拥有全部权限</p>
+        :rtype: list of str
+        """
+        return self._Scopes
+
+    @Scopes.setter
+    def Scopes(self, Scopes):
+        self._Scopes = Scopes
+
+    @property
+    def Status(self):
+        r"""<p>Token 状态</p><p>枚举值：</p><ul><li>ACTIVE： 正常状态，未被吊销。不代表还在有效期内</li><li>REVOKED： 已被吊销，永久失效</li></ul><p>默认值：ACTIVE</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""<p>Token 创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ExpiresTime(self):
+        r"""<p>Token 过期时间</p>
+        :rtype: str
+        """
+        return self._ExpiresTime
+
+    @ExpiresTime.setter
+    def ExpiresTime(self, ExpiresTime):
+        self._ExpiresTime = ExpiresTime
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._TokenName = params.get("TokenName")
+        self._UserId = params.get("UserId")
+        self._Scopes = params.get("Scopes")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ExpiresTime = params.get("ExpiresTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RenewMCPTokenRequest(AbstractModel):
     r"""RenewMCPToken请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _TokenId: <p>TokenId</p>
+        :type TokenId: str
+        :param _ExpireSeconds: <p>Token 过期时间</p><p>取值范围：[0, 2592000]</p><p>默认值：86400</p><p>单位 秒、不填的话，默认为 1 天；新的超时时间为，当前时刻 + ExpireSeconds</p>
+        :type ExpireSeconds: int
+        """
+        self._TokenId = None
+        self._ExpireSeconds = None
+
+    @property
+    def TokenId(self):
+        r"""<p>TokenId</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>Token 过期时间</p><p>取值范围：[0, 2592000]</p><p>默认值：86400</p><p>单位 秒、不填的话，默认为 1 天；新的超时时间为，当前时刻 + ExpireSeconds</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RenewMCPTokenResponse(AbstractModel):

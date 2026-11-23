@@ -15360,13 +15360,13 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _GroupName: <p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :type GroupName: str
-        :param _GroupDescription: 安全组备注，最多100个字符。
+        :param _GroupDescription: <p>安全组备注，最多100个字符。</p>
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
+        :param _ProjectId: <p>项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。</p>
         :type ProjectId: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :type Tags: list of Tag
         """
         self._GroupName = None
@@ -15376,7 +15376,7 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""安全组名称，可任意命名，但不得超过60个字符。
+        r"""<p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._GroupName
@@ -15387,7 +15387,7 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
-        r"""安全组备注，最多100个字符。
+        r"""<p>安全组备注，最多100个字符。</p>
         :rtype: str
         """
         return self._GroupDescription
@@ -15398,7 +15398,7 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
+        r"""<p>项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。</p>
         :rtype: str
         """
         return self._ProjectId
@@ -15409,7 +15409,7 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -15446,7 +15446,7 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroup: 安全组对象。
+        :param _SecurityGroup: <p>安全组对象。</p>
         :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15456,7 +15456,7 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""安全组对象。
+        r"""<p>安全组对象。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         """
         return self._SecurityGroup
@@ -15491,15 +15491,15 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _GroupName: <p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :type GroupName: str
-        :param _GroupDescription: 安全组备注，最多100个字符。
+        :param _GroupDescription: <p>安全组备注，最多100个字符。</p>
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
+        :param _ProjectId: <p>项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。</p>
         :type ProjectId: str
-        :param _SecurityGroupPolicySet: 安全组规则集合。
+        :param _SecurityGroupPolicySet: <p>安全组规则集合。</p>
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :type Tags: list of Tag
         """
         self._GroupName = None
@@ -15510,7 +15510,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""安全组名称，可任意命名，但不得超过60个字符。
+        r"""<p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._GroupName
@@ -15521,7 +15521,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
-        r"""安全组备注，最多100个字符。
+        r"""<p>安全组备注，最多100个字符。</p>
         :rtype: str
         """
         return self._GroupDescription
@@ -15532,7 +15532,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
+        r"""<p>项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。</p>
         :rtype: str
         """
         return self._ProjectId
@@ -15543,7 +15543,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
-        r"""安全组规则集合。
+        r"""<p>安全组规则集合。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
         """
         return self._SecurityGroupPolicySet
@@ -15554,7 +15554,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -15594,7 +15594,7 @@ class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroup: 安全组对象。
+        :param _SecurityGroup: <p>安全组对象。</p>
         :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15604,7 +15604,7 @@ class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""安全组对象。
+        r"""<p>安全组对象。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         """
         return self._SecurityGroup
@@ -69063,22 +69063,24 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
+        :param _SecurityGroupId: <p>安全组实例ID，例如：sg-ohuuioma。</p>
         :type SecurityGroupId: str
-        :param _SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _SecurityGroupName: <p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :type SecurityGroupName: str
-        :param _SecurityGroupDesc: 安全组备注，最多100个字符。
+        :param _SecurityGroupDesc: <p>安全组备注，最多100个字符。</p>
         :type SecurityGroupDesc: str
-        :param _ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        :param _ProjectId: <p>项目id，默认0。可在qcloud控制台项目管理页面查询到。</p>
         :type ProjectId: str
-        :param _IsDefault: 是否是默认安全组，默认安全组不支持删除。
+        :param _IsDefault: <p>是否是默认安全组，默认安全组不支持删除。</p>
         :type IsDefault: bool
-        :param _CreatedTime: 安全组创建时间。
+        :param _CreatedTime: <p>安全组创建时间。</p>
         :type CreatedTime: str
-        :param _TagSet: 标签键值对。
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
-        :param _UpdateTime: 安全组更新时间。
+        :param _UpdateTime: <p>安全组更新时间。</p>
         :type UpdateTime: str
+        :param _ServiceManaged: <p>是否为托管安全组</p>
+        :type ServiceManaged: bool
         """
         self._SecurityGroupId = None
         self._SecurityGroupName = None
@@ -69088,10 +69090,11 @@ class SecurityGroup(AbstractModel):
         self._CreatedTime = None
         self._TagSet = None
         self._UpdateTime = None
+        self._ServiceManaged = None
 
     @property
     def SecurityGroupId(self):
-        r"""安全组实例ID，例如：sg-ohuuioma。
+        r"""<p>安全组实例ID，例如：sg-ohuuioma。</p>
         :rtype: str
         """
         return self._SecurityGroupId
@@ -69102,7 +69105,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        r"""安全组名称，可任意命名，但不得超过60个字符。
+        r"""<p>安全组名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._SecurityGroupName
@@ -69113,7 +69116,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupDesc(self):
-        r"""安全组备注，最多100个字符。
+        r"""<p>安全组备注，最多100个字符。</p>
         :rtype: str
         """
         return self._SecurityGroupDesc
@@ -69124,7 +69127,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        r"""<p>项目id，默认0。可在qcloud控制台项目管理页面查询到。</p>
         :rtype: str
         """
         return self._ProjectId
@@ -69135,7 +69138,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否是默认安全组，默认安全组不支持删除。
+        r"""<p>是否是默认安全组，默认安全组不支持删除。</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -69146,7 +69149,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""安全组创建时间。
+        r"""<p>安全组创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -69157,7 +69160,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对。
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -69168,7 +69171,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""安全组更新时间。
+        r"""<p>安全组更新时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -69176,6 +69179,17 @@ class SecurityGroup(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def ServiceManaged(self):
+        r"""<p>是否为托管安全组</p>
+        :rtype: bool
+        """
+        return self._ServiceManaged
+
+    @ServiceManaged.setter
+    def ServiceManaged(self, ServiceManaged):
+        self._ServiceManaged = ServiceManaged
 
 
     def _deserialize(self, params):
@@ -69192,6 +69206,7 @@ class SecurityGroup(AbstractModel):
                 obj._deserialize(item)
                 self._TagSet.append(obj)
         self._UpdateTime = params.get("UpdateTime")
+        self._ServiceManaged = params.get("ServiceManaged")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -387,6 +387,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomGroup(self, request):
+        r"""创建自定义组。自定义组用于集中管理一组可复用的匹配条目，例如可以将多个 JA3/JA4 TLS 指纹保存为一个 TLS 指纹组，并在安全规则中直接引用该组，从而避免在多条规则中重复维护相同的指纹列表。
+
+        :param request: Request instance for CreateCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomizeErrorPage(self, request):
         r"""创建自定义响应页面。
 
@@ -1317,6 +1340,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomGroup(self, request):
+        r"""删除指定自定义组。若该组已被规则引用，则不允许删除，请先解除引用关系。
+
+        :param request: Request instance for DeleteCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDnsRecords(self, request):
         r"""您可以用本接口批量删除 DNS 记录。
 
@@ -2177,6 +2223,75 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeCustomErrorPages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCustomErrorPagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroup(self, request):
+        r"""查询单个自定义组的详细信息，包含组内全量条目（通过 Limit/Offset 分页返回）。DescribeCustomGroups 列表接口每组最多返回前 500 个条目，如需获取全量条目，请使用本接口。GroupId 可通过 CreateCustomGroup 创建时返回或 DescribeCustomGroups 查询获取。
+
+        :param request: Request instance for DescribeCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroupReferences(self, request):
+        r"""获取使用自定义组的安全策略配置。
+
+        :param request: Request instance for DescribeCustomGroupReferences.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupReferencesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupReferencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroupReferences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupReferencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroups(self, request):
+        r"""查询指定站点下的自定义组列表。本接口只返回每个自定义组前 500 个条目，如需查询组内完整条目请使用 DescribeSecurityCustomGroup 接口查询。
+
+        :param request: Request instance for DescribeCustomGroups.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4536,6 +4651,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCustomGroup(self, request):
+        r"""修改自定义组内容。GroupType 创建后不可修改，修改组内条目时，可通过 GroupItemOperation 指定替换、追加或移除操作。
+
+        :param request: Request instance for ModifyCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

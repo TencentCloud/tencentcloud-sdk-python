@@ -3418,6 +3418,8 @@ class CreateInstanceRequest(AbstractModel):
         :type EnableKibanaPublicAccess: str
         :param _AlarmPolicyIds: <p>已有的云监控告警策略 ID</p>
         :type AlarmPolicyIds: list of str
+        :param _EnableLvm: <p>LVM 控制台开关，0/不开，1/显式开启</p>
+        :type EnableLvm: int
         """
         self._Zone = None
         self._EsVersion = None
@@ -3463,6 +3465,7 @@ class CreateInstanceRequest(AbstractModel):
         self._AutoScaleDiskInfoList = None
         self._EnableKibanaPublicAccess = None
         self._AlarmPolicyIds = None
+        self._EnableLvm = None
 
     @property
     def Zone(self):
@@ -3948,6 +3951,17 @@ class CreateInstanceRequest(AbstractModel):
     def AlarmPolicyIds(self, AlarmPolicyIds):
         self._AlarmPolicyIds = AlarmPolicyIds
 
+    @property
+    def EnableLvm(self):
+        r"""<p>LVM 控制台开关，0/不开，1/显式开启</p>
+        :rtype: int
+        """
+        return self._EnableLvm
+
+    @EnableLvm.setter
+    def EnableLvm(self, EnableLvm):
+        self._EnableLvm = EnableLvm
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -4020,6 +4034,7 @@ class CreateInstanceRequest(AbstractModel):
                 self._AutoScaleDiskInfoList.append(obj)
         self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
         self._AlarmPolicyIds = params.get("AlarmPolicyIds")
+        self._EnableLvm = params.get("EnableLvm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16159,6 +16174,10 @@ class InstanceInfo(AbstractModel):
         :type OldEsPrivateTcpUrl: str
         :param _NeedOfflineOldNodesNotify: <p>是否需要从VIP下线旧节点</p>
         :type NeedOfflineOldNodesNotify: bool
+        :param _LvmStatus: <p>0 未开启 / 1 已开启 / 2 切换中</p>
+        :type LvmStatus: int
+        :param _LvmSwitchFlowId: <p>仅 LvmStatus=2 时返回，值为流程id</p>
+        :type LvmSwitchFlowId: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -16268,6 +16287,8 @@ class InstanceInfo(AbstractModel):
         self._OldEsVip = None
         self._OldEsPrivateTcpUrl = None
         self._NeedOfflineOldNodesNotify = None
+        self._LvmStatus = None
+        self._LvmSwitchFlowId = None
 
     @property
     def InstanceId(self):
@@ -17516,6 +17537,28 @@ class InstanceInfo(AbstractModel):
     def NeedOfflineOldNodesNotify(self, NeedOfflineOldNodesNotify):
         self._NeedOfflineOldNodesNotify = NeedOfflineOldNodesNotify
 
+    @property
+    def LvmStatus(self):
+        r"""<p>0 未开启 / 1 已开启 / 2 切换中</p>
+        :rtype: int
+        """
+        return self._LvmStatus
+
+    @LvmStatus.setter
+    def LvmStatus(self, LvmStatus):
+        self._LvmStatus = LvmStatus
+
+    @property
+    def LvmSwitchFlowId(self):
+        r"""<p>仅 LvmStatus=2 时返回，值为流程id</p>
+        :rtype: int
+        """
+        return self._LvmSwitchFlowId
+
+    @LvmSwitchFlowId.setter
+    def LvmSwitchFlowId(self, LvmSwitchFlowId):
+        self._LvmSwitchFlowId = LvmSwitchFlowId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17674,6 +17717,8 @@ class InstanceInfo(AbstractModel):
         self._OldEsVip = params.get("OldEsVip")
         self._OldEsPrivateTcpUrl = params.get("OldEsPrivateTcpUrl")
         self._NeedOfflineOldNodesNotify = params.get("NeedOfflineOldNodesNotify")
+        self._LvmStatus = params.get("LvmStatus")
+        self._LvmSwitchFlowId = params.get("LvmSwitchFlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

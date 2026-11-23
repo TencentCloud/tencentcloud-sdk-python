@@ -48957,6 +48957,115 @@ class StartLiveStreamMonitorResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartLiveSubtitleRequest(AbstractModel):
+    r"""StartLiveSubtitle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Operator = None
+
+    @property
+    def AppName(self):
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        r"""您的推流域名。
+        :rtype: str
+        """
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        r"""流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Operator(self):
+        r"""操作人备注信息。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLiveSubtitleResponse(AbstractModel):
+    r"""StartLiveSubtitle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopAvatarEditingLiveRequest(AbstractModel):
     r"""StopAvatarEditingLive请求参数结构体
 
@@ -49484,6 +49593,115 @@ class StopLiveStreamMonitorRequest(AbstractModel):
 
 class StopLiveStreamMonitorResponse(AbstractModel):
     r"""StopLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopLiveSubtitleRequest(AbstractModel):
+    r"""StopLiveSubtitle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Operator = None
+
+    @property
+    def AppName(self):
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        r"""您的推流域名。
+        :rtype: str
+        """
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        r"""流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Operator(self):
+        r"""操作人备注信息。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLiveSubtitleResponse(AbstractModel):
+    r"""StopLiveSubtitle返回参数结构体
 
     """
 

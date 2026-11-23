@@ -11093,6 +11093,185 @@ class CreateContentIdentifierResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCustomGroupRequest(AbstractModel):
+    r"""CreateCustomGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupName: <p>自定义组名称。</p>
+        :type GroupName: str
+        :param _GroupType: <p>自定义组类型。创建后不可修改，不同类型的自定义组支持的条目类型不同。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组，支持 JA3、JA4 类型的条目</li><li>UA： UA 组，支持 UA 类型的条目</li><li>Referer： Referer 组，支持 Referer 类型的条目</li></ul>
+        :type GroupType: str
+        :param _GroupItems: <p>自定义组条目列表。</p>
+        :type GroupItems: list of CustomGroupItem
+        """
+        self._ZoneId = None
+        self._GroupName = None
+        self._GroupType = None
+        self._GroupItems = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupName(self):
+        r"""<p>自定义组名称。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupType(self):
+        r"""<p>自定义组类型。创建后不可修改，不同类型的自定义组支持的条目类型不同。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组，支持 JA3、JA4 类型的条目</li><li>UA： UA 组，支持 UA 类型的条目</li><li>Referer： Referer 组，支持 Referer 类型的条目</li></ul>
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupItems(self):
+        r"""<p>自定义组条目列表。</p>
+        :rtype: list of CustomGroupItem
+        """
+        return self._GroupItems
+
+    @GroupItems.setter
+    def GroupItems(self, GroupItems):
+        self._GroupItems = GroupItems
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupName = params.get("GroupName")
+        self._GroupType = params.get("GroupType")
+        if params.get("GroupItems") is not None:
+            self._GroupItems = []
+            for item in params.get("GroupItems"):
+                obj = CustomGroupItem()
+                obj._deserialize(item)
+                self._GroupItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomGroupResponse(AbstractModel):
+    r"""CreateCustomGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>自定义组唯一标识 ID。</p>
+        :type GroupId: str
+        :param _GroupName: <p>自定义组名称。</p>
+        :type GroupName: str
+        :param _GroupType: <p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :type GroupType: str
+        :param _GroupItems: <p>自定义组条目列表。</p>
+        :type GroupItems: list of CustomGroupItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupType = None
+        self._GroupItems = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>自定义组名称。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupType(self):
+        r"""<p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupItems(self):
+        r"""<p>自定义组条目列表。</p>
+        :rtype: list of CustomGroupItem
+        """
+        return self._GroupItems
+
+    @GroupItems.setter
+    def GroupItems(self, GroupItems):
+        self._GroupItems = GroupItems
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupType = params.get("GroupType")
+        if params.get("GroupItems") is not None:
+            self._GroupItems = []
+            for item in params.get("GroupItems"):
+                obj = CustomGroupItem()
+                obj._deserialize(item)
+                self._GroupItems.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomizeErrorPageRequest(AbstractModel):
     r"""CreateCustomizeErrorPage请求参数结构体
 
@@ -16747,6 +16926,299 @@ class CustomField(AbstractModel):
         
 
 
+class CustomGroup(AbstractModel):
+    r"""安全自定义组用于集中管理一组可复用的安全匹配条目，例如可以将多个 JA3/JA4 TLS 指纹保存为一个 TLS 指纹组，并在安全规则中直接引用该组，从而避免在多条规则中重复维护相同的指纹列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>自定义组的唯一标识 ID。</p>
+        :type GroupId: str
+        :param _GroupName: <p>自定义组名称。</p>
+        :type GroupName: str
+        :param _GroupType: <p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :type GroupType: str
+        :param _GroupItems: <p>自定义组条目列表。</p>
+        :type GroupItems: list of CustomGroupItem
+        :param _GroupItemTotalCount: <p>自定义组条目总数量。</p>
+        :type GroupItemTotalCount: int
+        :param _RefCount: <p>自定义组被引用的次数。</p>
+        :type RefCount: int
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupType = None
+        self._GroupItems = None
+        self._GroupItemTotalCount = None
+        self._RefCount = None
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组的唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>自定义组名称。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupType(self):
+        r"""<p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupItems(self):
+        r"""<p>自定义组条目列表。</p>
+        :rtype: list of CustomGroupItem
+        """
+        return self._GroupItems
+
+    @GroupItems.setter
+    def GroupItems(self, GroupItems):
+        self._GroupItems = GroupItems
+
+    @property
+    def GroupItemTotalCount(self):
+        r"""<p>自定义组条目总数量。</p>
+        :rtype: int
+        """
+        return self._GroupItemTotalCount
+
+    @GroupItemTotalCount.setter
+    def GroupItemTotalCount(self, GroupItemTotalCount):
+        self._GroupItemTotalCount = GroupItemTotalCount
+
+    @property
+    def RefCount(self):
+        r"""<p>自定义组被引用的次数。</p>
+        :rtype: int
+        """
+        return self._RefCount
+
+    @RefCount.setter
+    def RefCount(self, RefCount):
+        self._RefCount = RefCount
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupType = params.get("GroupType")
+        if params.get("GroupItems") is not None:
+            self._GroupItems = []
+            for item in params.get("GroupItems"):
+                obj = CustomGroupItem()
+                obj._deserialize(item)
+                self._GroupItems.append(obj)
+        self._GroupItemTotalCount = params.get("GroupItemTotalCount")
+        self._RefCount = params.get("RefCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGroupItem(AbstractModel):
+    r"""自定义组条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>条目内容。</p>
+        :type Content: str
+        :param _ItemType: <p>条目类型。</p><p>枚举值：</p><ul><li>JA3： JA3 指纹，仅当所属组 GroupType 为 TLSFingerprint 时可用</li><li>JA4： JA4 指纹，仅当所属组 GroupType 为 TLSFingerprint 时可用</li><li>UA： UA 值，仅当所属组 GroupType 为 UA 时可用</li><li>Referer： Referer 值，仅当所属组 GroupType 为 Referer 时可用</li></ul>
+        :type ItemType: str
+        """
+        self._Content = None
+        self._ItemType = None
+
+    @property
+    def Content(self):
+        r"""<p>条目内容。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ItemType(self):
+        r"""<p>条目类型。</p><p>枚举值：</p><ul><li>JA3： JA3 指纹，仅当所属组 GroupType 为 TLSFingerprint 时可用</li><li>JA4： JA4 指纹，仅当所属组 GroupType 为 TLSFingerprint 时可用</li><li>UA： UA 值，仅当所属组 GroupType 为 UA 时可用</li><li>Referer： Referer 值，仅当所属组 GroupType 为 Referer 时可用</li></ul>
+        :rtype: str
+        """
+        return self._ItemType
+
+    @ItemType.setter
+    def ItemType(self, ItemType):
+        self._ItemType = ItemType
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._ItemType = params.get("ItemType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGroupReference(AbstractModel):
+    r"""引用自定义组的安全模块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _EntityType: <p>实体类型。</p><p>枚举值：</p><ul><li>WebSec.ZonePolicy： 站点级防护策略</li><li>WebSec.HostPolicy： 域名级防护策略</li><li>WebSec.Template： 策略模板</li><li>WebSec.APIResource： API 资源</li><li>WebSec.JSInjectionRule： 注入规则</li><li>DDoS.L4Proxy： 四层代理 DDoS 防护</li><li>DDoS.L3Transit： 三层代播 DDoS 防护</li></ul>
+        :type EntityType: str
+        :param _EntityId: <p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：站点 ID</li><li>WebSec.HostPolicy：域名</li><li>WebSec.Template：模板 ID</li><li>WebSec.APIResource：API 资源 ID</li><li>WebSec.JSInjectionRule：JavaScript 注入规则 ID</li><li>DDoS.L4Proxy：实例 ID</li><li>DDoS.L3Transit：实例 ID</li></ul>
+        :type EntityId: str
+        :param _EntityName: <p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：空</li><li>WebSec.HostPolicy：空</li><li>WebSec.Template：模板名称</li><li>WebSec.APIResource：API 资源名称</li><li>WebSec.JSInjectionRule：JavaScript 注入规则名称</li><li>DDoS.L4Proxy：空</li><li>DDoS.L3Transit：空</li></ul>
+        :type EntityName: str
+        :param _SubEntityType: <p>子实体类型。</p><p>枚举值：</p><ul><li>WebSec.ExceptionRule： 防护例外规则</li><li>WebSec.BasicAccessRule： 基础访问管控</li><li>WebSec.PreciseMatchRule： 精确匹配规则</li><li>WebSec.RateLimitRule： 精准速率限制</li><li>WebSec.BotCustomRule： 高级 Bot 管理 - 自定义规则</li><li>DDoS.L4Proxy.IpAccessControl： 四层代理 DDoS 防护 - IP 黑白名单</li><li>DDoS.L3Transit.IpAccessControl： 三层代播 DDoS 防护 - IP 黑白名单</li></ul>
+        :type SubEntityType: str
+        :param _SubEntityId: <p>子实体标识，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则 ID</li><li>WebSec.BasicAccessRule：规则 ID</li><li>WebSec.PreciseMatchRule：规则 ID</li><li>WebSec.RateLimitRule：规则 ID</li><li>WebSec.BotCustomRule：规则 ID</li><li>DDoS.L4Proxy.IpAccessControl：空</li><li>DDoS.L3Transit.IpAccessControl：空</li></ul><p>EntityType 与 SubEntityType 为对应关系，不同的 EntityType 支持不同的 SubEntityType。<br>WebSec.ZonePolicy，WebSec.HostPolicy 和 WebSec.Template 支持如下 SubEntityType：</p><ul><li>WebSec.ExceptionRule</li><li>WebSec.BasicAccessRule</li><li>WebSec.PreciseMatchRule</li><li>WebSec.RateLimitRule</li><li>WebSec.BotCustomRule</li></ul>DDoS.L4Proxy 支持如下 SubEntityType：<ul><li>DDoS.L4Proxy.IpAccessControl</li></ul>DDoS.L3Transit 支持如下 SubEntityType：<ul><li>DDoS.L3Transit.IpAccessControl</li></ul>
+        :type SubEntityId: str
+        :param _SubEntityName: <p>子实体名称，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则名称</li><li>WebSec.BasicAccessRule：规则名称</li><li>WebSec.PreciseMatchRule：规则名称</li><li>WebSec.RateLimitRule：规则名称</li><li>WebSec.BotCustomRule：规则名称</li><li>DDoS.L4Proxy.IpAccessControl：空</li><li>DDoS.L3Transit.IpAccessControl：空</li></ul>
+        :type SubEntityName: str
+        """
+        self._ZoneId = None
+        self._EntityType = None
+        self._EntityId = None
+        self._EntityName = None
+        self._SubEntityType = None
+        self._SubEntityId = None
+        self._SubEntityName = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EntityType(self):
+        r"""<p>实体类型。</p><p>枚举值：</p><ul><li>WebSec.ZonePolicy： 站点级防护策略</li><li>WebSec.HostPolicy： 域名级防护策略</li><li>WebSec.Template： 策略模板</li><li>WebSec.APIResource： API 资源</li><li>WebSec.JSInjectionRule： 注入规则</li><li>DDoS.L4Proxy： 四层代理 DDoS 防护</li><li>DDoS.L3Transit： 三层代播 DDoS 防护</li></ul>
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def EntityId(self):
+        r"""<p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：站点 ID</li><li>WebSec.HostPolicy：域名</li><li>WebSec.Template：模板 ID</li><li>WebSec.APIResource：API 资源 ID</li><li>WebSec.JSInjectionRule：JavaScript 注入规则 ID</li><li>DDoS.L4Proxy：实例 ID</li><li>DDoS.L3Transit：实例 ID</li></ul>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityName(self):
+        r"""<p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：空</li><li>WebSec.HostPolicy：空</li><li>WebSec.Template：模板名称</li><li>WebSec.APIResource：API 资源名称</li><li>WebSec.JSInjectionRule：JavaScript 注入规则名称</li><li>DDoS.L4Proxy：空</li><li>DDoS.L3Transit：空</li></ul>
+        :rtype: str
+        """
+        return self._EntityName
+
+    @EntityName.setter
+    def EntityName(self, EntityName):
+        self._EntityName = EntityName
+
+    @property
+    def SubEntityType(self):
+        r"""<p>子实体类型。</p><p>枚举值：</p><ul><li>WebSec.ExceptionRule： 防护例外规则</li><li>WebSec.BasicAccessRule： 基础访问管控</li><li>WebSec.PreciseMatchRule： 精确匹配规则</li><li>WebSec.RateLimitRule： 精准速率限制</li><li>WebSec.BotCustomRule： 高级 Bot 管理 - 自定义规则</li><li>DDoS.L4Proxy.IpAccessControl： 四层代理 DDoS 防护 - IP 黑白名单</li><li>DDoS.L3Transit.IpAccessControl： 三层代播 DDoS 防护 - IP 黑白名单</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityType
+
+    @SubEntityType.setter
+    def SubEntityType(self, SubEntityType):
+        self._SubEntityType = SubEntityType
+
+    @property
+    def SubEntityId(self):
+        r"""<p>子实体标识，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则 ID</li><li>WebSec.BasicAccessRule：规则 ID</li><li>WebSec.PreciseMatchRule：规则 ID</li><li>WebSec.RateLimitRule：规则 ID</li><li>WebSec.BotCustomRule：规则 ID</li><li>DDoS.L4Proxy.IpAccessControl：空</li><li>DDoS.L3Transit.IpAccessControl：空</li></ul><p>EntityType 与 SubEntityType 为对应关系，不同的 EntityType 支持不同的 SubEntityType。<br>WebSec.ZonePolicy，WebSec.HostPolicy 和 WebSec.Template 支持如下 SubEntityType：</p><ul><li>WebSec.ExceptionRule</li><li>WebSec.BasicAccessRule</li><li>WebSec.PreciseMatchRule</li><li>WebSec.RateLimitRule</li><li>WebSec.BotCustomRule</li></ul>DDoS.L4Proxy 支持如下 SubEntityType：<ul><li>DDoS.L4Proxy.IpAccessControl</li></ul>DDoS.L3Transit 支持如下 SubEntityType：<ul><li>DDoS.L3Transit.IpAccessControl</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityId
+
+    @SubEntityId.setter
+    def SubEntityId(self, SubEntityId):
+        self._SubEntityId = SubEntityId
+
+    @property
+    def SubEntityName(self):
+        r"""<p>子实体名称，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则名称</li><li>WebSec.BasicAccessRule：规则名称</li><li>WebSec.PreciseMatchRule：规则名称</li><li>WebSec.RateLimitRule：规则名称</li><li>WebSec.BotCustomRule：规则名称</li><li>DDoS.L4Proxy.IpAccessControl：空</li><li>DDoS.L3Transit.IpAccessControl：空</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityName
+
+    @SubEntityName.setter
+    def SubEntityName(self, SubEntityName):
+        self._SubEntityName = SubEntityName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EntityType = params.get("EntityType")
+        self._EntityId = params.get("EntityId")
+        self._EntityName = params.get("EntityName")
+        self._SubEntityType = params.get("SubEntityType")
+        self._SubEntityId = params.get("SubEntityId")
+        self._SubEntityName = params.get("SubEntityName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomRule(AbstractModel):
     r"""Web 防护功能下的自定义规则。
 
@@ -18597,6 +19069,85 @@ class DeleteCustomErrorPageRequest(AbstractModel):
 
 class DeleteCustomErrorPageResponse(AbstractModel):
     r"""DeleteCustomErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCustomGroupRequest(AbstractModel):
+    r"""DeleteCustomGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupId: <p>自定义组唯一标识 ID。</p>
+        :type GroupId: str
+        """
+        self._ZoneId = None
+        self._GroupId = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomGroupResponse(AbstractModel):
+    r"""DeleteCustomGroup返回参数结构体
 
     """
 
@@ -22735,6 +23286,498 @@ class DescribeCustomErrorPagesResponse(AbstractModel):
                 obj = CustomErrorPage()
                 obj._deserialize(item)
                 self._ErrorPages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomGroupReferencesRequest(AbstractModel):
+    r"""DescribeCustomGroupReferences请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupId: <p>自定义组 ID。</p>
+        :type GroupId: str
+        :param _Offset: <p>分页偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询引用自定义组的配置条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询引用自定义组的配置条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomGroupReferencesResponse(AbstractModel):
+    r"""DescribeCustomGroupReferences返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _References: <p>引用对应自定义组的配置信息。</p>
+        :type References: list of CustomGroupReference
+        :param _TotalCount: <p>查询结果总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._References = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def References(self):
+        r"""<p>引用对应自定义组的配置信息。</p>
+        :rtype: list of CustomGroupReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询结果总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = CustomGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomGroupRequest(AbstractModel):
+    r"""DescribeCustomGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupId: <p>自定义组唯一标识 ID。</p>
+        :type GroupId: str
+        :param _Limit: <p>GroupItems 分页查询限制数目。</p><p>取值范围：[1, 50000]</p><p>默认值：500</p>
+        :type Limit: int
+        :param _Offset: <p>GroupItems 分页查询偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Limit(self):
+        r"""<p>GroupItems 分页查询限制数目。</p><p>取值范围：[1, 50000]</p><p>默认值：500</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>GroupItems 分页查询偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomGroupResponse(AbstractModel):
+    r"""DescribeCustomGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>自定义组唯一标识 ID。</p>
+        :type GroupId: str
+        :param _GroupName: <p>自定义组名称。</p>
+        :type GroupName: str
+        :param _GroupType: <p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :type GroupType: str
+        :param _GroupItems: <p>自定义组条目列表。</p>
+        :type GroupItems: list of CustomGroupItem
+        :param _GroupItemTotalCount: <p>自定义组条目总数量。</p>
+        :type GroupItemTotalCount: int
+        :param _RefCount: <p>自定义组被引用的次数。</p>
+        :type RefCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupType = None
+        self._GroupItems = None
+        self._GroupItemTotalCount = None
+        self._RefCount = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>自定义组名称。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupType(self):
+        r"""<p>自定义组类型。</p><p>枚举值：</p><ul><li>TLSFingerprint： TLS 指纹组</li><li>UA： UA 组</li><li>Referer： Referer 组</li></ul>
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupItems(self):
+        r"""<p>自定义组条目列表。</p>
+        :rtype: list of CustomGroupItem
+        """
+        return self._GroupItems
+
+    @GroupItems.setter
+    def GroupItems(self, GroupItems):
+        self._GroupItems = GroupItems
+
+    @property
+    def GroupItemTotalCount(self):
+        r"""<p>自定义组条目总数量。</p>
+        :rtype: int
+        """
+        return self._GroupItemTotalCount
+
+    @GroupItemTotalCount.setter
+    def GroupItemTotalCount(self, GroupItemTotalCount):
+        self._GroupItemTotalCount = GroupItemTotalCount
+
+    @property
+    def RefCount(self):
+        r"""<p>自定义组被引用的次数。</p>
+        :rtype: int
+        """
+        return self._RefCount
+
+    @RefCount.setter
+    def RefCount(self, RefCount):
+        self._RefCount = RefCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupType = params.get("GroupType")
+        if params.get("GroupItems") is not None:
+            self._GroupItems = []
+            for item in params.get("GroupItems"):
+                obj = CustomGroupItem()
+                obj._deserialize(item)
+                self._GroupItems.append(obj)
+        self._GroupItemTotalCount = params.get("GroupItemTotalCount")
+        self._RefCount = params.get("RefCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomGroupsRequest(AbstractModel):
+    r"""DescribeCustomGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupTypes: <p>自定义组类型列表。不传则查询所有类型的列表。</p>
+        :type GroupTypes: list of str
+        :param _Limit: <p>分页查询限制数目。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页查询偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._GroupTypes = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupTypes(self):
+        r"""<p>自定义组类型列表。不传则查询所有类型的列表。</p>
+        :rtype: list of str
+        """
+        return self._GroupTypes
+
+    @GroupTypes.setter
+    def GroupTypes(self, GroupTypes):
+        self._GroupTypes = GroupTypes
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupTypes = params.get("GroupTypes")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomGroupsResponse(AbstractModel):
+    r"""DescribeCustomGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupTotalCount: <p>满足类型列表条件的自定义组总数量。</p>
+        :type GroupTotalCount: int
+        :param _CustomGroups: <p>满足类型列表条件的自定义组列表。</p>
+        :type CustomGroups: list of CustomGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupTotalCount = None
+        self._CustomGroups = None
+        self._RequestId = None
+
+    @property
+    def GroupTotalCount(self):
+        r"""<p>满足类型列表条件的自定义组总数量。</p>
+        :rtype: int
+        """
+        return self._GroupTotalCount
+
+    @GroupTotalCount.setter
+    def GroupTotalCount(self, GroupTotalCount):
+        self._GroupTotalCount = GroupTotalCount
+
+    @property
+    def CustomGroups(self):
+        r"""<p>满足类型列表条件的自定义组列表。</p>
+        :rtype: list of CustomGroup
+        """
+        return self._CustomGroups
+
+    @CustomGroups.setter
+    def CustomGroups(self, CustomGroups):
+        self._CustomGroups = CustomGroups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupTotalCount = params.get("GroupTotalCount")
+        if params.get("CustomGroups") is not None:
+            self._CustomGroups = []
+            for item in params.get("CustomGroups"):
+                obj = CustomGroup()
+                obj._deserialize(item)
+                self._CustomGroups.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -49237,6 +50280,135 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
 class ModifyCustomErrorPageResponse(AbstractModel):
     r"""ModifyCustomErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCustomGroupRequest(AbstractModel):
+    r"""ModifyCustomGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupId: <p>自定义组唯一标识 ID。</p>
+        :type GroupId: str
+        :param _GroupName: <p>自定义组名称。该字段不填时则保留原值。</p>
+        :type GroupName: str
+        :param _GroupItemOperation: <p>指定本次对 GroupItems 的更新方式。</p><p>枚举值：</p><ul><li>Replace： 使用 GroupItems 全量替换原有条目列表</li><li>Append： 追加 GroupItems 到组条目列表中</li><li>Remove： 从原有条目列表中移除与 GroupItems 中 Content 和 ItemType 均相同的条目。若指定条目不存在，则忽略该条目</li></ul><p>默认值：Replace</p>
+        :type GroupItemOperation: str
+        :param _GroupItems: <p>自定义组条目列表。该字段不填时则保留原值。</p>
+        :type GroupItems: list of CustomGroupItem
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupItemOperation = None
+        self._GroupItems = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        r"""<p>自定义组唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>自定义组名称。该字段不填时则保留原值。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupItemOperation(self):
+        r"""<p>指定本次对 GroupItems 的更新方式。</p><p>枚举值：</p><ul><li>Replace： 使用 GroupItems 全量替换原有条目列表</li><li>Append： 追加 GroupItems 到组条目列表中</li><li>Remove： 从原有条目列表中移除与 GroupItems 中 Content 和 ItemType 均相同的条目。若指定条目不存在，则忽略该条目</li></ul><p>默认值：Replace</p>
+        :rtype: str
+        """
+        return self._GroupItemOperation
+
+    @GroupItemOperation.setter
+    def GroupItemOperation(self, GroupItemOperation):
+        self._GroupItemOperation = GroupItemOperation
+
+    @property
+    def GroupItems(self):
+        r"""<p>自定义组条目列表。该字段不填时则保留原值。</p>
+        :rtype: list of CustomGroupItem
+        """
+        return self._GroupItems
+
+    @GroupItems.setter
+    def GroupItems(self, GroupItems):
+        self._GroupItems = GroupItems
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupItemOperation = params.get("GroupItemOperation")
+        if params.get("GroupItems") is not None:
+            self._GroupItems = []
+            for item in params.get("GroupItems"):
+                obj = CustomGroupItem()
+                obj._deserialize(item)
+                self._GroupItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomGroupResponse(AbstractModel):
+    r"""ModifyCustomGroup返回参数结构体
 
     """
 

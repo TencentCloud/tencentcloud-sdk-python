@@ -1988,9 +1988,12 @@ class CreateAgentSessionRequest(AbstractModel):
         :type AgentId: str
         :param _VersionId: <p>指定版本 ID（可选）。非空且合法时固定使用该版本，跳过 routing_config 权重挑选；指定版本需归属同一 Agent 且未被废弃</p>
         :type VersionId: str
+        :param _MetricEntry: <p>会话创建来源，仅用于监控统计，不参与鉴权。</p><p>page 表示页面端，adk 表示 ADK/API；不传或无法识别时统计为 unknown。</p>
+        :type MetricEntry: str
         """
         self._AgentId = None
         self._VersionId = None
+        self._MetricEntry = None
 
     @property
     def AgentId(self):
@@ -2014,10 +2017,22 @@ class CreateAgentSessionRequest(AbstractModel):
     def VersionId(self, VersionId):
         self._VersionId = VersionId
 
+    @property
+    def MetricEntry(self):
+        r"""<p>会话创建来源，仅用于监控统计，不参与鉴权。</p><p>page 表示页面端，adk 表示 ADK/API；不传或无法识别时统计为 unknown。</p>
+        :rtype: str
+        """
+        return self._MetricEntry
+
+    @MetricEntry.setter
+    def MetricEntry(self, MetricEntry):
+        self._MetricEntry = MetricEntry
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
         self._VersionId = params.get("VersionId")
+        self._MetricEntry = params.get("MetricEntry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3053,6 +3068,51 @@ class DeleteSessionArtifactListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话ID</p>
+        :type SessionId: str
+        :param _ArtifactIds: <p>需要删除的物料ID集合</p>
+        :type ArtifactIds: list of str
+        """
+        self._SessionId = None
+        self._ArtifactIds = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ArtifactIds(self):
+        r"""<p>需要删除的物料ID集合</p>
+        :rtype: list of str
+        """
+        return self._ArtifactIds
+
+    @ArtifactIds.setter
+    def ArtifactIds(self, ArtifactIds):
+        self._ArtifactIds = ArtifactIds
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._ArtifactIds = params.get("ArtifactIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteSessionArtifactListResponse(AbstractModel):
     r"""DeleteSessionArtifactList返回参数结构体
@@ -3061,10 +3121,24 @@ class DeleteSessionArtifactListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeletedCount: <p>删除的物料数量</p>
+        :type DeletedCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DeletedCount = None
         self._RequestId = None
+
+    @property
+    def DeletedCount(self):
+        r"""<p>删除的物料数量</p>
+        :rtype: int
+        """
+        return self._DeletedCount
+
+    @DeletedCount.setter
+    def DeletedCount(self, DeletedCount):
+        self._DeletedCount = DeletedCount
 
     @property
     def RequestId(self):
@@ -3079,6 +3153,7 @@ class DeleteSessionArtifactListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DeletedCount = params.get("DeletedCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -6421,6 +6496,51 @@ class DescribeSessionArtifactDownloadUrlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ArtifactId: <p>物料ID</p>
+        :type ArtifactId: str
+        :param _ExpiredSeconds: <p>产物过期时间</p><p>单位：s</p>
+        :type ExpiredSeconds: int
+        """
+        self._ArtifactId = None
+        self._ExpiredSeconds = None
+
+    @property
+    def ArtifactId(self):
+        r"""<p>物料ID</p>
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+    @property
+    def ExpiredSeconds(self):
+        r"""<p>产物过期时间</p><p>单位：s</p>
+        :rtype: int
+        """
+        return self._ExpiredSeconds
+
+    @ExpiredSeconds.setter
+    def ExpiredSeconds(self, ExpiredSeconds):
+        self._ExpiredSeconds = ExpiredSeconds
+
+
+    def _deserialize(self, params):
+        self._ArtifactId = params.get("ArtifactId")
+        self._ExpiredSeconds = params.get("ExpiredSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeSessionArtifactDownloadUrlResponse(AbstractModel):
     r"""DescribeSessionArtifactDownloadUrl返回参数结构体
@@ -6429,10 +6549,80 @@ class DescribeSessionArtifactDownloadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DownloadUrl: <p>产物下载地址</p>
+        :type DownloadUrl: str
+        :param _ExpiredTime: <p>产物过期时间</p>
+        :type ExpiredTime: str
+        :param _FileName: <p>产物对应文件名</p>
+        :type FileName: str
+        :param _FileSizeBytes: <p>产物文件大小</p>
+        :type FileSizeBytes: int
+        :param _FileSha256: <p>文件摘要</p>
+        :type FileSha256: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DownloadUrl = None
+        self._ExpiredTime = None
+        self._FileName = None
+        self._FileSizeBytes = None
+        self._FileSha256 = None
         self._RequestId = None
+
+    @property
+    def DownloadUrl(self):
+        r"""<p>产物下载地址</p>
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>产物过期时间</p>
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def FileName(self):
+        r"""<p>产物对应文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSizeBytes(self):
+        r"""<p>产物文件大小</p>
+        :rtype: int
+        """
+        return self._FileSizeBytes
+
+    @FileSizeBytes.setter
+    def FileSizeBytes(self, FileSizeBytes):
+        self._FileSizeBytes = FileSizeBytes
+
+    @property
+    def FileSha256(self):
+        r"""<p>文件摘要</p>
+        :rtype: str
+        """
+        return self._FileSha256
+
+    @FileSha256.setter
+    def FileSha256(self, FileSha256):
+        self._FileSha256 = FileSha256
 
     @property
     def RequestId(self):
@@ -6447,6 +6637,11 @@ class DescribeSessionArtifactDownloadUrlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._FileName = params.get("FileName")
+        self._FileSizeBytes = params.get("FileSizeBytes")
+        self._FileSha256 = params.get("FileSha256")
         self._RequestId = params.get("RequestId")
 
 
@@ -6454,6 +6649,86 @@ class DescribeSessionArtifactListRequest(AbstractModel):
     r"""DescribeSessionArtifactList请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话ID</p>
+        :type SessionId: str
+        :param _Offset: <p>偏移量，从 0 开始，默认 0（按 ID 批量查询时忽略）</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，最大 200（按 ID 批量查询时忽略）</p>
+        :type Limit: int
+        :param _Filters: <p>标准过滤条件：ArtifactId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+        :type Filters: list of Filter
+        """
+        self._SessionId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，从 0 开始，默认 0（按 ID 批量查询时忽略）</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，最大 200（按 ID 批量查询时忽略）</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>标准过滤条件：ArtifactId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeSessionArtifactListResponse(AbstractModel):
@@ -6463,10 +6738,38 @@ class DescribeSessionArtifactListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: <p>符合条件的物料总数（按 ID 批量时为实际命中数）</p>
+        :type TotalCount: int
+        :param _ArtifactSet: <p>返回的物料集合</p>
+        :type ArtifactSet: list of SessionArtifactDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._ArtifactSet = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的物料总数（按 ID 批量时为实际命中数）</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ArtifactSet(self):
+        r"""<p>返回的物料集合</p>
+        :rtype: list of SessionArtifactDetail
+        """
+        return self._ArtifactSet
+
+    @ArtifactSet.setter
+    def ArtifactSet(self, ArtifactSet):
+        self._ArtifactSet = ArtifactSet
 
     @property
     def RequestId(self):
@@ -6481,6 +6784,13 @@ class DescribeSessionArtifactListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ArtifactSet") is not None:
+            self._ArtifactSet = []
+            for item in params.get("ArtifactSet"):
+                obj = SessionArtifactDetail()
+                obj._deserialize(item)
+                self._ArtifactSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9684,6 +9994,192 @@ class ScheduledTaskSummary(AbstractModel):
         if params.get("AgentConfig") is not None:
             self._AgentConfig = AgentConfig()
             self._AgentConfig._deserialize(params.get("AgentConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionArtifactDetail(AbstractModel):
+    r"""会话物料结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ArtifactId: <p>物料ID</p>
+        :type ArtifactId: str
+        :param _SessionId: <p>会话ID</p>
+        :type SessionId: str
+        :param _AgentId: <p>AgentID</p>
+        :type AgentId: str
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _FilePath: <p>文件沙箱内路径</p>
+        :type FilePath: str
+        :param _FileSizeBytes: <p>文件字节数</p>
+        :type FileSizeBytes: int
+        :param _FileSha256: <p>文件摘要值(Sha256)</p>
+        :type FileSha256: str
+        :param _Status: <p>物料状态</p><p>枚举值：</p><ul><li>PENDING： 处理中</li><li>READY： 准备完毕</li><li>FAILED： 失败</li></ul>
+        :type Status: str
+        :param _CreatedTime: <p>创建时间</p><p>参数格式：RFC3339 UTC</p>
+        :type CreatedTime: str
+        :param _UploadedTime: <p>更新时间</p><p>参数格式：RFC3339 UTC</p>
+        :type UploadedTime: str
+        :param _ExpiredTime: <p>过期时间</p><p>参数格式：RFC3339 UTC</p>
+        :type ExpiredTime: str
+        """
+        self._ArtifactId = None
+        self._SessionId = None
+        self._AgentId = None
+        self._FileName = None
+        self._FilePath = None
+        self._FileSizeBytes = None
+        self._FileSha256 = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UploadedTime = None
+        self._ExpiredTime = None
+
+    @property
+    def ArtifactId(self):
+        r"""<p>物料ID</p>
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def AgentId(self):
+        r"""<p>AgentID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FilePath(self):
+        r"""<p>文件沙箱内路径</p>
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileSizeBytes(self):
+        r"""<p>文件字节数</p>
+        :rtype: int
+        """
+        return self._FileSizeBytes
+
+    @FileSizeBytes.setter
+    def FileSizeBytes(self, FileSizeBytes):
+        self._FileSizeBytes = FileSizeBytes
+
+    @property
+    def FileSha256(self):
+        r"""<p>文件摘要值(Sha256)</p>
+        :rtype: str
+        """
+        return self._FileSha256
+
+    @FileSha256.setter
+    def FileSha256(self, FileSha256):
+        self._FileSha256 = FileSha256
+
+    @property
+    def Status(self):
+        r"""<p>物料状态</p><p>枚举值：</p><ul><li>PENDING： 处理中</li><li>READY： 准备完毕</li><li>FAILED： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p><p>参数格式：RFC3339 UTC</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UploadedTime(self):
+        r"""<p>更新时间</p><p>参数格式：RFC3339 UTC</p>
+        :rtype: str
+        """
+        return self._UploadedTime
+
+    @UploadedTime.setter
+    def UploadedTime(self, UploadedTime):
+        self._UploadedTime = UploadedTime
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>过期时间</p><p>参数格式：RFC3339 UTC</p>
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._ArtifactId = params.get("ArtifactId")
+        self._SessionId = params.get("SessionId")
+        self._AgentId = params.get("AgentId")
+        self._FileName = params.get("FileName")
+        self._FilePath = params.get("FilePath")
+        self._FileSizeBytes = params.get("FileSizeBytes")
+        self._FileSha256 = params.get("FileSha256")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UploadedTime = params.get("UploadedTime")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

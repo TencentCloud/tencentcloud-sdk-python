@@ -72,10 +72,13 @@ class AddFriendEvent(AbstractModel):
         :type Sender: :class:`tencentcloud.rce.v20260130.models.Sender`
         :param _Receiver: <p>接收者信息</p>
         :type Receiver: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
         """
         self._ServerId = None
         self._Sender = None
         self._Receiver = None
+        self._Cust = None
 
     @property
     def ServerId(self):
@@ -110,6 +113,17 @@ class AddFriendEvent(AbstractModel):
     def Receiver(self, Receiver):
         self._Receiver = Receiver
 
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
 
     def _deserialize(self, params):
         self._ServerId = params.get("ServerId")
@@ -119,6 +133,12 @@ class AddFriendEvent(AbstractModel):
         if params.get("Receiver") is not None:
             self._Receiver = Receiver()
             self._Receiver._deserialize(params.get("Receiver"))
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1114,7 +1134,7 @@ class AssessRiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
+        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li> <li>account_security： 账号安全 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
         :type EventCode: str
         :param _EventTime: <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
         :type EventTime: str
@@ -1124,7 +1144,7 @@ class AssessRiskRequest(AbstractModel):
         :type DeviceToken: str
         :param _UserIp: <p>客户端 IP 地址（IPv4或IPv6）</p>
         :type UserIp: str
-        :param _EventDetail: <p>事件详情，根据您输入的事件码传入对应的事件信息</p>
+        :param _EventDetail: <p>事件详情，根据您输入的事件码传入对应的事件信息。 注意：除&quot;account_security&quot;事件外，其他事件中该字段必填。</p>
         :type EventDetail: :class:`tencentcloud.rce.v20260130.models.EventDetail`
         :param _UserId: <p>用户在您系统中的唯一ID</p>
         :type UserId: str
@@ -1169,7 +1189,7 @@ class AssessRiskRequest(AbstractModel):
 
     @property
     def EventCode(self):
-        r"""<p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
+        r"""<p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li> <li>account_security： 账号安全 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
         :rtype: str
         """
         return self._EventCode
@@ -1224,7 +1244,7 @@ class AssessRiskRequest(AbstractModel):
 
     @property
     def EventDetail(self):
-        r"""<p>事件详情，根据您输入的事件码传入对应的事件信息</p>
+        r"""<p>事件详情，根据您输入的事件码传入对应的事件信息。 注意：除&quot;account_security&quot;事件外，其他事件中该字段必填。</p>
         :rtype: :class:`tencentcloud.rce.v20260130.models.EventDetail`
         """
         return self._EventDetail
@@ -2309,11 +2329,14 @@ class ChatEvent(AbstractModel):
         :type Sender: :class:`tencentcloud.rce.v20260130.models.Sender`
         :param _Receiver: <p>接收者信息</p>
         :type Receiver: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
         """
         self._ChatInfo = None
         self._ServerId = None
         self._Sender = None
         self._Receiver = None
+        self._Cust = None
 
     @property
     def ChatInfo(self):
@@ -2359,6 +2382,17 @@ class ChatEvent(AbstractModel):
     def Receiver(self, Receiver):
         self._Receiver = Receiver
 
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
 
     def _deserialize(self, params):
         if params.get("ChatInfo") is not None:
@@ -2371,6 +2405,12 @@ class ChatEvent(AbstractModel):
         if params.get("Receiver") is not None:
             self._Receiver = Receiver()
             self._Receiver._deserialize(params.get("Receiver"))
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5838,12 +5878,15 @@ class ModifyGuildEvent(AbstractModel):
         :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
         :param _Guild: <p>公会信息</p>
         :type Guild: :class:`tencentcloud.rce.v20260130.models.Guild`
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
         """
         self._GuildNameAfter = None
         self._GuildSignatureAfter = None
         self._ServerId = None
         self._UserInfo = None
         self._Guild = None
+        self._Cust = None
 
     @property
     def GuildNameAfter(self):
@@ -5900,6 +5943,17 @@ class ModifyGuildEvent(AbstractModel):
     def Guild(self, Guild):
         self._Guild = Guild
 
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
 
     def _deserialize(self, params):
         self._GuildNameAfter = params.get("GuildNameAfter")
@@ -5911,6 +5965,12 @@ class ModifyGuildEvent(AbstractModel):
         if params.get("Guild") is not None:
             self._Guild = Guild()
             self._Guild._deserialize(params.get("Guild"))
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5994,12 +6054,15 @@ class ModifyRoleEvent(AbstractModel):
         :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
         :param _RoleInfo: <p>角色信息</p>
         :type RoleInfo: :class:`tencentcloud.rce.v20260130.models.Role`
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
         """
         self._RoleNameAfter = None
         self._RoleSignatureAfter = None
         self._ServerId = None
         self._UserInfo = None
         self._RoleInfo = None
+        self._Cust = None
 
     @property
     def RoleNameAfter(self):
@@ -6056,6 +6119,17 @@ class ModifyRoleEvent(AbstractModel):
     def RoleInfo(self, RoleInfo):
         self._RoleInfo = RoleInfo
 
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
 
     def _deserialize(self, params):
         self._RoleNameAfter = params.get("RoleNameAfter")
@@ -6067,6 +6141,12 @@ class ModifyRoleEvent(AbstractModel):
         if params.get("RoleInfo") is not None:
             self._RoleInfo = Role()
             self._RoleInfo._deserialize(params.get("RoleInfo"))
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7047,7 +7127,7 @@ class ReportEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
+        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>account_security： 账号安全 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
         :type EventCode: str
         :param _EventTime: <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
         :type EventTime: str
@@ -7057,7 +7137,7 @@ class ReportEventRequest(AbstractModel):
         :type DeviceToken: str
         :param _UserIp: <p>客户端 IP 地址（IPv4或IPv6）</p>
         :type UserIp: str
-        :param _EventDetail: <p>事件详情，根据您输入的事件码传入对应的事件信息</p>
+        :param _EventDetail: <p>事件详情，根据您输入的事件码传入对应的事件信息。 注意：除&quot;account_security&quot;事件外，其他事件中该字段必填。</p>
         :type EventDetail: :class:`tencentcloud.rce.v20260130.models.EventDetail`
         :param _UserId: <p>用户在您系统中的唯一ID</p>
         :type UserId: str
@@ -7102,7 +7182,7 @@ class ReportEventRequest(AbstractModel):
 
     @property
     def EventCode(self):
-        r"""<p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
+        r"""<p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>account_security： 账号安全 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
         :rtype: str
         """
         return self._EventCode
@@ -7157,7 +7237,7 @@ class ReportEventRequest(AbstractModel):
 
     @property
     def EventDetail(self):
-        r"""<p>事件详情，根据您输入的事件码传入对应的事件信息</p>
+        r"""<p>事件详情，根据您输入的事件码传入对应的事件信息。 注意：除&quot;account_security&quot;事件外，其他事件中该字段必填。</p>
         :rtype: :class:`tencentcloud.rce.v20260130.models.EventDetail`
         """
         return self._EventDetail

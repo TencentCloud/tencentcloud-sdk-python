@@ -3557,6 +3557,9 @@ class ApmPrometheusRules(AbstractModel):
         :type MetricMatchType: int
         :param _AppendResourceAttributes: <p>是否追加资源属性</p>
         :type AppendResourceAttributes: bool
+        :param _AssociationId: 实际生效的关联记录 ID（存量 0 解析为默认关联）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociationId: int
         """
         self._Id = None
         self._Name = None
@@ -3565,6 +3568,7 @@ class ApmPrometheusRules(AbstractModel):
         self._MetricNameRule = None
         self._MetricMatchType = None
         self._AppendResourceAttributes = None
+        self._AssociationId = None
 
     @property
     def Id(self):
@@ -3648,6 +3652,18 @@ class ApmPrometheusRules(AbstractModel):
     def AppendResourceAttributes(self, AppendResourceAttributes):
         self._AppendResourceAttributes = AppendResourceAttributes
 
+    @property
+    def AssociationId(self):
+        r"""实际生效的关联记录 ID（存量 0 解析为默认关联）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssociationId
+
+    @AssociationId.setter
+    def AssociationId(self, AssociationId):
+        self._AssociationId = AssociationId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3657,6 +3673,7 @@ class ApmPrometheusRules(AbstractModel):
         self._MetricNameRule = params.get("MetricNameRule")
         self._MetricMatchType = params.get("MetricMatchType")
         self._AppendResourceAttributes = params.get("AppendResourceAttributes")
+        self._AssociationId = params.get("AssociationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4577,6 +4594,8 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
         :type InstanceId: str
         :param _AppendResourceAttributes: <p>是否追加资源属性</p>
         :type AppendResourceAttributes: bool
+        :param _AssociationId: 归属的关联记录 ID，0 或不传表示跟随默认关联
+        :type AssociationId: int
         """
         self._Name = None
         self._ServiceName = None
@@ -4584,6 +4603,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
         self._MetricNameRule = None
         self._InstanceId = None
         self._AppendResourceAttributes = None
+        self._AssociationId = None
 
     @property
     def Name(self):
@@ -4651,6 +4671,17 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
     def AppendResourceAttributes(self, AppendResourceAttributes):
         self._AppendResourceAttributes = AppendResourceAttributes
 
+    @property
+    def AssociationId(self):
+        r"""归属的关联记录 ID，0 或不传表示跟随默认关联
+        :rtype: int
+        """
+        return self._AssociationId
+
+    @AssociationId.setter
+    def AssociationId(self, AssociationId):
+        self._AssociationId = AssociationId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4659,6 +4690,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
         self._MetricNameRule = params.get("MetricNameRule")
         self._InstanceId = params.get("InstanceId")
         self._AppendResourceAttributes = params.get("AppendResourceAttributes")
+        self._AssociationId = params.get("AssociationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5927,8 +5959,11 @@ class DescribeApmPrometheusRuleRequest(AbstractModel):
         r"""
         :param _InstanceId: 业务系统ID
         :type InstanceId: str
+        :param _AssociationId: 按有效关联过滤，0 或不传表示不过滤
+        :type AssociationId: int
         """
         self._InstanceId = None
+        self._AssociationId = None
 
     @property
     def InstanceId(self):
@@ -5941,9 +5976,21 @@ class DescribeApmPrometheusRuleRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def AssociationId(self):
+        r"""按有效关联过滤，0 或不传表示不过滤
+        :rtype: int
+        """
+        return self._AssociationId
+
+    @AssociationId.setter
+    def AssociationId(self, AssociationId):
+        self._AssociationId = AssociationId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._AssociationId = params.get("AssociationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11946,6 +11993,8 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
         :type MetricNameRule: str
         :param _AppendResourceAttributes: <p>是否追加资源属性</p>
         :type AppendResourceAttributes: bool
+        :param _AssociationId: 修改归属目标 ID，0 或不传表示不改变原归属
+        :type AssociationId: int
         """
         self._Id = None
         self._InstanceId = None
@@ -11955,6 +12004,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
         self._MetricMatchType = None
         self._MetricNameRule = None
         self._AppendResourceAttributes = None
+        self._AssociationId = None
 
     @property
     def Id(self):
@@ -12044,6 +12094,17 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
     def AppendResourceAttributes(self, AppendResourceAttributes):
         self._AppendResourceAttributes = AppendResourceAttributes
 
+    @property
+    def AssociationId(self):
+        r"""修改归属目标 ID，0 或不传表示不改变原归属
+        :rtype: int
+        """
+        return self._AssociationId
+
+    @AssociationId.setter
+    def AssociationId(self, AssociationId):
+        self._AssociationId = AssociationId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12054,6 +12115,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
         self._MetricMatchType = params.get("MetricMatchType")
         self._MetricNameRule = params.get("MetricNameRule")
         self._AppendResourceAttributes = params.get("AppendResourceAttributes")
+        self._AssociationId = params.get("AssociationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

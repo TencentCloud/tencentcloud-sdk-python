@@ -21546,7 +21546,7 @@ class FlowApproverInfo(AbstractModel):
     **注1**: `使用模板发起合同时，RecipientId（模板发起合同时）必传`
 
     RecipientId参数获取：
-    从<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates" target="_blank">DescribeFlowTemplates接口</a>接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId。
+    从<a href="https://qian.tencent.com/developers/partnerApis/templates/DescribeTemplates/" target="_blank">DescribeTemplates</a>接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId。
 
     **注2**:  `如果发起的是动态签署方（即ApproverOption.FillType指定为1），可以不指定具体签署人信息`,  动态签署方可以参考<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">此文档</a>
 

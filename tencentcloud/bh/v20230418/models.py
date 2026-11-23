@@ -3113,26 +3113,28 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 是否开启LDAP认证，必须为true
+        :param _Enable: <p>是否开启LDAP认证，必须为true</p>
         :type Enable: bool
-        :param _Ip: 服务器地址
+        :param _Ip: <p>服务器地址</p>
         :type Ip: str
-        :param _Port: 服务端口
+        :param _Port: <p>服务端口</p>
         :type Port: int
-        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :param _EnableSSL: <p>是否开启SSL，false-不开启，true-开启</p>
         :type EnableSSL: bool
-        :param _BaseDN: Base DN
+        :param _BaseDN: <p>Base DN</p>
         :type BaseDN: str
-        :param _AdminAccount: 管理员账号
+        :param _AdminAccount: <p>管理员账号</p>
         :type AdminAccount: str
-        :param _AdminPassword: 管理员密码
+        :param _AdminPassword: <p>管理员密码</p>
         :type AdminPassword: str
-        :param _IpBackup: 备用服务器地址
+        :param _IpBackup: <p>备用服务器地址</p>
         :type IpBackup: str
-        :param _DomainId: 网络域id
+        :param _DomainId: <p>网络域id</p>
         :type DomainId: str
-        :param _AttributeUserName: 用户名称映射属性
+        :param _AttributeUserName: <p>用户名称映射属性</p>
         :type AttributeUserName: str
+        :param _ResourceId: <p>堡垒机实例ID</p>
+        :type ResourceId: str
         """
         self._Enable = None
         self._Ip = None
@@ -3144,10 +3146,11 @@ class CheckLDAPConnectionRequest(AbstractModel):
         self._IpBackup = None
         self._DomainId = None
         self._AttributeUserName = None
+        self._ResourceId = None
 
     @property
     def Enable(self):
-        r"""是否开启LDAP认证，必须为true
+        r"""<p>是否开启LDAP认证，必须为true</p>
         :rtype: bool
         """
         return self._Enable
@@ -3158,7 +3161,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""服务器地址
+        r"""<p>服务器地址</p>
         :rtype: str
         """
         return self._Ip
@@ -3169,7 +3172,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""服务端口
+        r"""<p>服务端口</p>
         :rtype: int
         """
         return self._Port
@@ -3180,7 +3183,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def EnableSSL(self):
-        r"""是否开启SSL，false-不开启，true-开启
+        r"""<p>是否开启SSL，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._EnableSSL
@@ -3191,7 +3194,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def BaseDN(self):
-        r"""Base DN
+        r"""<p>Base DN</p>
         :rtype: str
         """
         return self._BaseDN
@@ -3202,7 +3205,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def AdminAccount(self):
-        r"""管理员账号
+        r"""<p>管理员账号</p>
         :rtype: str
         """
         return self._AdminAccount
@@ -3213,7 +3216,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def AdminPassword(self):
-        r"""管理员密码
+        r"""<p>管理员密码</p>
         :rtype: str
         """
         return self._AdminPassword
@@ -3224,7 +3227,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def IpBackup(self):
-        r"""备用服务器地址
+        r"""<p>备用服务器地址</p>
         :rtype: str
         """
         return self._IpBackup
@@ -3235,7 +3238,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""网络域id
+        r"""<p>网络域id</p>
         :rtype: str
         """
         return self._DomainId
@@ -3246,7 +3249,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
 
     @property
     def AttributeUserName(self):
-        r"""用户名称映射属性
+        r"""<p>用户名称映射属性</p>
         :rtype: str
         """
         return self._AttributeUserName
@@ -3254,6 +3257,17 @@ class CheckLDAPConnectionRequest(AbstractModel):
     @AttributeUserName.setter
     def AttributeUserName(self, AttributeUserName):
         self._AttributeUserName = AttributeUserName
+
+    @property
+    def ResourceId(self):
+        r"""<p>堡垒机实例ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
@@ -3267,6 +3281,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
         self._IpBackup = params.get("IpBackup")
         self._DomainId = params.get("DomainId")
         self._AttributeUserName = params.get("AttributeUserName")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7017,13 +7032,13 @@ class Department(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 部门ID
+        :param _Id: <p>部门ID</p>
         :type Id: str
-        :param _Name: 部门名称，1 - 256个字符
+        :param _Name: <p>部门名称，1 - 256个字符</p>
         :type Name: str
-        :param _Managers: 部门管理员账号ID
+        :param _Managers: <p>部门管理员账号ID</p>
         :type Managers: list of str
-        :param _ManagerUsers: 管理员用户
+        :param _ManagerUsers: <p>管理员用户</p>
         :type ManagerUsers: list of DepartmentManagerUser
         """
         self._Id = None
@@ -7033,7 +7048,7 @@ class Department(AbstractModel):
 
     @property
     def Id(self):
-        r"""部门ID
+        r"""<p>部门ID</p>
         :rtype: str
         """
         return self._Id
@@ -7044,7 +7059,7 @@ class Department(AbstractModel):
 
     @property
     def Name(self):
-        r"""部门名称，1 - 256个字符
+        r"""<p>部门名称，1 - 256个字符</p>
         :rtype: str
         """
         return self._Name
@@ -7055,7 +7070,7 @@ class Department(AbstractModel):
 
     @property
     def Managers(self):
-        r"""部门管理员账号ID
+        r"""<p>部门管理员账号ID</p>
         :rtype: list of str
         """
         return self._Managers
@@ -7066,7 +7081,7 @@ class Department(AbstractModel):
 
     @property
     def ManagerUsers(self):
-        r"""管理员用户
+        r"""<p>管理员用户</p>
         :rtype: list of DepartmentManagerUser
         """
         return self._ManagerUsers
@@ -10174,28 +10189,30 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 是否开启LDAP认证，true-开启
+        :param _Enable: <p>是否开启LDAP认证，true-开启</p>
         :type Enable: bool
-        :param _Ip: 服务器地址
+        :param _Ip: <p>服务器地址</p>
         :type Ip: str
-        :param _Port: 服务端口
+        :param _Port: <p>服务端口</p>
         :type Port: int
-        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :param _EnableSSL: <p>是否开启SSL，false-不开启，true-开启</p>
         :type EnableSSL: bool
-        :param _BaseDN: Base DN
+        :param _BaseDN: <p>Base DN</p>
         :type BaseDN: str
-        :param _AdminAccount: 管理员账号
+        :param _AdminAccount: <p>管理员账号</p>
         :type AdminAccount: str
-        :param _AdminPassword: 管理员密码
+        :param _AdminPassword: <p>管理员密码</p>
         :type AdminPassword: str
-        :param _AttributeUserName: 用户名映射属性
+        :param _AttributeUserName: <p>用户名映射属性</p>
         :type AttributeUserName: str
-        :param _AttributeUnit: 部门过滤
+        :param _AttributeUnit: <p>部门过滤</p>
         :type AttributeUnit: str
-        :param _IpBackup: 备用服务器地址
+        :param _IpBackup: <p>备用服务器地址</p>
         :type IpBackup: str
-        :param _DomainId: 网络域Id
+        :param _DomainId: <p>网络域Id</p>
         :type DomainId: str
+        :param _ResourceId: <p>堡垒机实例ID</p>
+        :type ResourceId: str
         """
         self._Enable = None
         self._Ip = None
@@ -10208,10 +10225,11 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
         self._AttributeUnit = None
         self._IpBackup = None
         self._DomainId = None
+        self._ResourceId = None
 
     @property
     def Enable(self):
-        r"""是否开启LDAP认证，true-开启
+        r"""<p>是否开启LDAP认证，true-开启</p>
         :rtype: bool
         """
         return self._Enable
@@ -10222,7 +10240,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""服务器地址
+        r"""<p>服务器地址</p>
         :rtype: str
         """
         return self._Ip
@@ -10233,7 +10251,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""服务端口
+        r"""<p>服务端口</p>
         :rtype: int
         """
         return self._Port
@@ -10244,7 +10262,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def EnableSSL(self):
-        r"""是否开启SSL，false-不开启，true-开启
+        r"""<p>是否开启SSL，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._EnableSSL
@@ -10255,7 +10273,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def BaseDN(self):
-        r"""Base DN
+        r"""<p>Base DN</p>
         :rtype: str
         """
         return self._BaseDN
@@ -10266,7 +10284,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def AdminAccount(self):
-        r"""管理员账号
+        r"""<p>管理员账号</p>
         :rtype: str
         """
         return self._AdminAccount
@@ -10277,7 +10295,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def AdminPassword(self):
-        r"""管理员密码
+        r"""<p>管理员密码</p>
         :rtype: str
         """
         return self._AdminPassword
@@ -10288,7 +10306,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def AttributeUserName(self):
-        r"""用户名映射属性
+        r"""<p>用户名映射属性</p>
         :rtype: str
         """
         return self._AttributeUserName
@@ -10299,7 +10317,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def AttributeUnit(self):
-        r"""部门过滤
+        r"""<p>部门过滤</p>
         :rtype: str
         """
         return self._AttributeUnit
@@ -10310,7 +10328,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def IpBackup(self):
-        r"""备用服务器地址
+        r"""<p>备用服务器地址</p>
         :rtype: str
         """
         return self._IpBackup
@@ -10321,7 +10339,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""网络域Id
+        r"""<p>网络域Id</p>
         :rtype: str
         """
         return self._DomainId
@@ -10329,6 +10347,17 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
     @DomainId.setter
     def DomainId(self, DomainId):
         self._DomainId = DomainId
+
+    @property
+    def ResourceId(self):
+        r"""<p>堡垒机实例ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
@@ -10343,6 +10372,7 @@ class DescribeLDAPUnitSetRequest(AbstractModel):
         self._AttributeUnit = params.get("AttributeUnit")
         self._IpBackup = params.get("IpBackup")
         self._DomainId = params.get("DomainId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10360,7 +10390,7 @@ class DescribeLDAPUnitSetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitSet: ou 列表
+        :param _UnitSet: <p>ou 列表</p>
         :type UnitSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10370,7 +10400,7 @@ class DescribeLDAPUnitSetResponse(AbstractModel):
 
     @property
     def UnitSet(self):
-        r"""ou 列表
+        r"""<p>ou 列表</p>
         :rtype: list of str
         """
         return self._UnitSet
@@ -14036,13 +14066,13 @@ class Group(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 组ID
+        :param _Id: <p>组ID</p>
         :type Id: int
-        :param _Name: 组名称
+        :param _Name: <p>组名称</p>
         :type Name: str
-        :param _Department: 所属部门信息
+        :param _Department: <p>所属部门信息</p>
         :type Department: :class:`tencentcloud.bh.v20230418.models.Department`
-        :param _Count: 个数
+        :param _Count: <p>个数</p>
         :type Count: int
         """
         self._Id = None
@@ -14052,7 +14082,7 @@ class Group(AbstractModel):
 
     @property
     def Id(self):
-        r"""组ID
+        r"""<p>组ID</p>
         :rtype: int
         """
         return self._Id
@@ -14063,7 +14093,7 @@ class Group(AbstractModel):
 
     @property
     def Name(self):
-        r"""组名称
+        r"""<p>组名称</p>
         :rtype: str
         """
         return self._Name
@@ -14074,7 +14104,7 @@ class Group(AbstractModel):
 
     @property
     def Department(self):
-        r"""所属部门信息
+        r"""<p>所属部门信息</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Department`
         """
         return self._Department
@@ -14085,7 +14115,7 @@ class Group(AbstractModel):
 
     @property
     def Count(self):
-        r"""个数
+        r"""<p>个数</p>
         :rtype: int
         """
         return self._Count
@@ -14775,12 +14805,15 @@ class LoginSetting(AbstractModel):
         :type InactiveUserLock: int
         :param _EnableSingleLogin: <p>运维账号单点登录开关：0-关闭，1-开启</p>
         :type EnableSingleLogin: int
+        :param _EnableDeviceFingerprintVerify: <p>主机指纹校验开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type EnableDeviceFingerprintVerify: int
         """
         self._TimeOut = None
         self._LockThreshold = None
         self._LockTime = None
         self._InactiveUserLock = None
         self._EnableSingleLogin = None
+        self._EnableDeviceFingerprintVerify = None
 
     @property
     def TimeOut(self):
@@ -14837,6 +14870,17 @@ class LoginSetting(AbstractModel):
     def EnableSingleLogin(self, EnableSingleLogin):
         self._EnableSingleLogin = EnableSingleLogin
 
+    @property
+    def EnableDeviceFingerprintVerify(self):
+        r"""<p>主机指纹校验开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._EnableDeviceFingerprintVerify
+
+    @EnableDeviceFingerprintVerify.setter
+    def EnableDeviceFingerprintVerify(self, EnableDeviceFingerprintVerify):
+        self._EnableDeviceFingerprintVerify = EnableDeviceFingerprintVerify
+
 
     def _deserialize(self, params):
         self._TimeOut = params.get("TimeOut")
@@ -14844,6 +14888,7 @@ class LoginSetting(AbstractModel):
         self._LockTime = params.get("LockTime")
         self._InactiveUserLock = params.get("InactiveUserLock")
         self._EnableSingleLogin = params.get("EnableSingleLogin")
+        self._EnableDeviceFingerprintVerify = params.get("EnableDeviceFingerprintVerify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16518,46 +16563,48 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 是否开启LDAP认证，false-不开启，true-开启
+        :param _Enable: <p>是否开启LDAP认证，false-不开启，true-开启</p>
         :type Enable: bool
-        :param _Ip: 服务器地址
+        :param _Ip: <p>服务器地址</p>
         :type Ip: str
-        :param _IpBackup: 备用服务器地址
+        :param _IpBackup: <p>备用服务器地址</p>
         :type IpBackup: str
-        :param _Port: 服务端口
+        :param _Port: <p>服务端口</p>
         :type Port: int
-        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :param _EnableSSL: <p>是否开启SSL，false-不开启，true-开启</p>
         :type EnableSSL: bool
-        :param _BaseDN: Base DN
+        :param _BaseDN: <p>Base DN</p>
         :type BaseDN: str
-        :param _AdminAccount: 管理员账号
+        :param _AdminAccount: <p>管理员账号</p>
         :type AdminAccount: str
-        :param _AdminPassword: 管理员密码
+        :param _AdminPassword: <p>管理员密码</p>
         :type AdminPassword: str
-        :param _AttributeUser: 用户属性
+        :param _AttributeUser: <p>用户属性</p>
         :type AttributeUser: str
-        :param _AttributeUserName: 用户名属性
+        :param _AttributeUserName: <p>用户名属性</p>
         :type AttributeUserName: str
-        :param _AutoSync: 自动同步，false-不开启，true-开启
+        :param _AutoSync: <p>自动同步，false-不开启，true-开启</p>
         :type AutoSync: bool
-        :param _Overwrite: 覆盖用户信息，false-不开启，true-开启
+        :param _Overwrite: <p>覆盖用户信息，false-不开启，true-开启</p>
         :type Overwrite: bool
-        :param _SyncPeriod: 同步周期，30～60000之间的整数
+        :param _SyncPeriod: <p>同步周期，30～60000之间的整数</p>
         :type SyncPeriod: int
-        :param _SyncAll: 是否同步全部，false-不开启，true-开启
+        :param _SyncAll: <p>是否同步全部，false-不开启，true-开启</p>
         :type SyncAll: bool
-        :param _SyncUnitSet: 同步OU列表，SyncAll为false时必传
+        :param _SyncUnitSet: <p>同步OU列表，SyncAll为false时必传</p>
         :type SyncUnitSet: list of str
-        :param _AttributeUnit: 组织单元属性
+        :param _AttributeUnit: <p>组织单元属性</p>
         :type AttributeUnit: str
-        :param _AttributeRealName: 用户姓名属性
+        :param _AttributeRealName: <p>用户姓名属性</p>
         :type AttributeRealName: str
-        :param _AttributePhone: 手机号属性
+        :param _AttributePhone: <p>手机号属性</p>
         :type AttributePhone: str
-        :param _AttributeEmail: 邮箱属性
+        :param _AttributeEmail: <p>邮箱属性</p>
         :type AttributeEmail: str
-        :param _DomainId: 网络域Id
+        :param _DomainId: <p>网络域Id</p>
         :type DomainId: str
+        :param _ResourceId: <p>堡垒机实例ID</p>
+        :type ResourceId: str
         """
         self._Enable = None
         self._Ip = None
@@ -16579,10 +16626,11 @@ class ModifyLDAPSettingRequest(AbstractModel):
         self._AttributePhone = None
         self._AttributeEmail = None
         self._DomainId = None
+        self._ResourceId = None
 
     @property
     def Enable(self):
-        r"""是否开启LDAP认证，false-不开启，true-开启
+        r"""<p>是否开启LDAP认证，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._Enable
@@ -16593,7 +16641,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""服务器地址
+        r"""<p>服务器地址</p>
         :rtype: str
         """
         return self._Ip
@@ -16604,7 +16652,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def IpBackup(self):
-        r"""备用服务器地址
+        r"""<p>备用服务器地址</p>
         :rtype: str
         """
         return self._IpBackup
@@ -16615,7 +16663,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""服务端口
+        r"""<p>服务端口</p>
         :rtype: int
         """
         return self._Port
@@ -16626,7 +16674,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def EnableSSL(self):
-        r"""是否开启SSL，false-不开启，true-开启
+        r"""<p>是否开启SSL，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._EnableSSL
@@ -16637,7 +16685,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def BaseDN(self):
-        r"""Base DN
+        r"""<p>Base DN</p>
         :rtype: str
         """
         return self._BaseDN
@@ -16648,7 +16696,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AdminAccount(self):
-        r"""管理员账号
+        r"""<p>管理员账号</p>
         :rtype: str
         """
         return self._AdminAccount
@@ -16659,7 +16707,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AdminPassword(self):
-        r"""管理员密码
+        r"""<p>管理员密码</p>
         :rtype: str
         """
         return self._AdminPassword
@@ -16670,7 +16718,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributeUser(self):
-        r"""用户属性
+        r"""<p>用户属性</p>
         :rtype: str
         """
         return self._AttributeUser
@@ -16681,7 +16729,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributeUserName(self):
-        r"""用户名属性
+        r"""<p>用户名属性</p>
         :rtype: str
         """
         return self._AttributeUserName
@@ -16692,7 +16740,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AutoSync(self):
-        r"""自动同步，false-不开启，true-开启
+        r"""<p>自动同步，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._AutoSync
@@ -16703,7 +16751,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def Overwrite(self):
-        r"""覆盖用户信息，false-不开启，true-开启
+        r"""<p>覆盖用户信息，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._Overwrite
@@ -16714,7 +16762,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def SyncPeriod(self):
-        r"""同步周期，30～60000之间的整数
+        r"""<p>同步周期，30～60000之间的整数</p>
         :rtype: int
         """
         return self._SyncPeriod
@@ -16725,7 +16773,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def SyncAll(self):
-        r"""是否同步全部，false-不开启，true-开启
+        r"""<p>是否同步全部，false-不开启，true-开启</p>
         :rtype: bool
         """
         return self._SyncAll
@@ -16736,7 +16784,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def SyncUnitSet(self):
-        r"""同步OU列表，SyncAll为false时必传
+        r"""<p>同步OU列表，SyncAll为false时必传</p>
         :rtype: list of str
         """
         return self._SyncUnitSet
@@ -16747,7 +16795,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributeUnit(self):
-        r"""组织单元属性
+        r"""<p>组织单元属性</p>
         :rtype: str
         """
         return self._AttributeUnit
@@ -16758,7 +16806,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributeRealName(self):
-        r"""用户姓名属性
+        r"""<p>用户姓名属性</p>
         :rtype: str
         """
         return self._AttributeRealName
@@ -16769,7 +16817,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributePhone(self):
-        r"""手机号属性
+        r"""<p>手机号属性</p>
         :rtype: str
         """
         return self._AttributePhone
@@ -16780,7 +16828,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def AttributeEmail(self):
-        r"""邮箱属性
+        r"""<p>邮箱属性</p>
         :rtype: str
         """
         return self._AttributeEmail
@@ -16791,7 +16839,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""网络域Id
+        r"""<p>网络域Id</p>
         :rtype: str
         """
         return self._DomainId
@@ -16799,6 +16847,17 @@ class ModifyLDAPSettingRequest(AbstractModel):
     @DomainId.setter
     def DomainId(self, DomainId):
         self._DomainId = DomainId
+
+    @property
+    def ResourceId(self):
+        r"""<p>堡垒机实例ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
@@ -16822,6 +16881,7 @@ class ModifyLDAPSettingRequest(AbstractModel):
         self._AttributePhone = params.get("AttributePhone")
         self._AttributeEmail = params.get("AttributeEmail")
         self._DomainId = params.get("DomainId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

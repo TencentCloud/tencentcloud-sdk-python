@@ -659,7 +659,7 @@ class TextToVoiceRequest(AbstractModel):
         :type ProjectId: int
         :param _ModelType: <p>模型类型，1-默认模型。</p>
         :type ModelType: int
-        :param _VoiceType: <p>音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。<br>若使用一句话版声音复刻，请填入固定值“200000000”。</p>
+        :param _VoiceType: <p>音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。<br>若使用一句话版声音复刻1.0(EngineType=WXZL)，请填入固定值“200000000”；<br>若使用一句话版声音复刻2.0(EngineType=YTLX_V2)，请填入固定值“200000400”。</p>
         :type VoiceType: int
         :param _FastVoiceType: <p>一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。</p>
         :type FastVoiceType: str
@@ -765,7 +765,7 @@ class TextToVoiceRequest(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""<p>音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。<br>若使用一句话版声音复刻，请填入固定值“200000000”。</p>
+        r"""<p>音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。<br>若使用一句话版声音复刻1.0(EngineType=WXZL)，请填入固定值“200000000”；<br>若使用一句话版声音复刻2.0(EngineType=YTLX_V2)，请填入固定值“200000400”。</p>
         :rtype: int
         """
         return self._VoiceType

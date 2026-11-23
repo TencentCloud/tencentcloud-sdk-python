@@ -4681,6 +4681,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartLiveSubtitle(
+            self,
+            request: models.StartLiveSubtitleRequest,
+            opts: Dict = None,
+    ) -> models.StartLiveSubtitleResponse:
+        """
+        使用该接口启动直播字幕。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartLiveSubtitle"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartLiveSubtitleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopAvatarEditingLive(
             self,
             request: models.StopAvatarEditingLiveRequest,
@@ -4803,6 +4821,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "StopLiveStreamMonitor"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopLiveStreamMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopLiveSubtitle(
+            self,
+            request: models.StopLiveSubtitleRequest,
+            opts: Dict = None,
+    ) -> models.StopLiveSubtitleResponse:
+        """
+        使用该接口将停止直播字幕。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopLiveSubtitle"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopLiveSubtitleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

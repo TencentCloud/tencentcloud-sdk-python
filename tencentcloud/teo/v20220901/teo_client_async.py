@@ -311,6 +311,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCustomGroup(
+            self,
+            request: models.CreateCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateCustomGroupResponse:
+        """
+        创建自定义组。自定义组用于集中管理一组可复用的匹配条目，例如可以将多个 JA3/JA4 TLS 指纹保存为一个 TLS 指纹组，并在安全规则中直接引用该组，从而避免在多条规则中重复维护相同的指纹列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCustomizeErrorPage(
             self,
             request: models.CreateCustomizeErrorPageRequest,
@@ -1046,6 +1064,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCustomGroup(
+            self,
+            request: models.DeleteCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCustomGroupResponse:
+        """
+        删除指定自定义组。若该组已被规则引用，则不允许删除，请先解除引用关系。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDnsRecords(
             self,
             request: models.DeleteDnsRecordsRequest,
@@ -1725,6 +1761,60 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeCustomErrorPages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCustomErrorPagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroup(
+            self,
+            request: models.DescribeCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupResponse:
+        """
+        查询单个自定义组的详细信息，包含组内全量条目（通过 Limit/Offset 分页返回）。DescribeCustomGroups 列表接口每组最多返回前 500 个条目，如需获取全量条目，请使用本接口。GroupId 可通过 CreateCustomGroup 创建时返回或 DescribeCustomGroups 查询获取。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroupReferences(
+            self,
+            request: models.DescribeCustomGroupReferencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupReferencesResponse:
+        """
+        获取使用自定义组的安全策略配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroupReferences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupReferencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroups(
+            self,
+            request: models.DescribeCustomGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupsResponse:
+        """
+        查询指定站点下的自定义组列表。本接口只返回每个自定义组前 500 个条目，如需查询组内完整条目请使用 DescribeSecurityCustomGroup 接口查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3579,6 +3669,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyCustomErrorPage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCustomErrorPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCustomGroup(
+            self,
+            request: models.ModifyCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCustomGroupResponse:
+        """
+        修改自定义组内容。GroupType 创建后不可修改，修改组内条目时，可通过 GroupItemOperation 指定替换、追加或移除操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCustomGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

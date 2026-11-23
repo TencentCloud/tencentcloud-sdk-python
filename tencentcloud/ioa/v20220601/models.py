@@ -9755,8 +9755,11 @@ class DescribeDeviceSecurityInfoRequest(AbstractModel):
         r"""
         :param _Mid: <p>设备唯一标识符</p>
         :type Mid: str
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
         """
         self._Mid = None
+        self._DomainInstanceId = None
 
     @property
     def Mid(self):
@@ -9769,9 +9772,21 @@ class DescribeDeviceSecurityInfoRequest(AbstractModel):
     def Mid(self, Mid):
         self._Mid = Mid
 
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
 
     def _deserialize(self, params):
         self._Mid = params.get("Mid")
+        self._DomainInstanceId = params.get("DomainInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

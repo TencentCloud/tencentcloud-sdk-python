@@ -38,6 +38,9 @@ INVALIDFILTER = 'InvalidFilter'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 参数取值冲突。
+INVALIDPARAMETER_CONFLICTONPARAMETERVALUE = 'InvalidParameter.ConflictOnParameterValue'
+
 # 参数冲突。
 INVALIDPARAMETER_CONFLICTPARAMETER = 'InvalidParameter.ConflictParameter'
 
