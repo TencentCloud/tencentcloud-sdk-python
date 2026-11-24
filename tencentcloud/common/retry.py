@@ -38,6 +38,7 @@ class StandardRetryer(object):
         err = None
 
         for n in range(self._max_attempts):
+            err = None
             try:
                 resp = fn()
             except TencentCloudSDKException as e:

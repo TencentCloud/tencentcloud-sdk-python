@@ -48,3 +48,19 @@ def test_std_retry_err_code():
         assert isinstance(err, TencentCloudSDKException)
         assert err.get_code() == ec
         assert stats["attempts"] == max_attempts + 1
+
+
+def test_std_retry_recovers_after_failure():
+    max_attempts = 5
+    retryer = StandardRetryer(max_attempts=max_attempts, backoff_fn=lambda n: 0)
+
+    stats = {"attempts": 0}
+
+    def request_func():
+        stats["attempts"] += 1
+        if stats["attempts"] < 3:
+            raise TencentCloudSDKException("ClientNetworkError", "")
+        return "ok"
+
+    assert retryer.send_request(request_func) == "ok"
+    assert stats["attempts"] == 3
