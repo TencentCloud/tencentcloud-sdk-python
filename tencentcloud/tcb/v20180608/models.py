@@ -6353,10 +6353,13 @@ class CreatePlatformEnvRequest(AbstractModel):
         :type PlatformId: str
         :param _ReqKey: <p>幂等键</p>
         :type ReqKey: str
+        :param _PGConfig: <p>postgresql可选参数配置，不传默认发货1c2g独享pg</p>
+        :type PGConfig: :class:`tencentcloud.tcb.v20180608.models.PGConfig`
         """
         self._Alias = None
         self._PlatformId = None
         self._ReqKey = None
+        self._PGConfig = None
 
     @property
     def Alias(self):
@@ -6391,11 +6394,25 @@ class CreatePlatformEnvRequest(AbstractModel):
     def ReqKey(self, ReqKey):
         self._ReqKey = ReqKey
 
+    @property
+    def PGConfig(self):
+        r"""<p>postgresql可选参数配置，不传默认发货1c2g独享pg</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PGConfig`
+        """
+        return self._PGConfig
+
+    @PGConfig.setter
+    def PGConfig(self, PGConfig):
+        self._PGConfig = PGConfig
+
 
     def _deserialize(self, params):
         self._Alias = params.get("Alias")
         self._PlatformId = params.get("PlatformId")
         self._ReqKey = params.get("ReqKey")
+        if params.get("PGConfig") is not None:
+            self._PGConfig = PGConfig()
+            self._PGConfig._deserialize(params.get("PGConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11988,7 +12005,7 @@ class DescribeCurveDataRequest(AbstractModel):
         r"""
         :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _MetricName: <h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li>
+        :param _MetricName: <h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li><h4>PostgreSQL相关指标</h4><li>PostgreSQLCpu：CPU使用率，单位%</li><li>PostgreSQLMemory：内存使用量，独享单位MB，共享单位字节</li><li>PostgreSQLStorageCurve：存储使用量，独享单位GB，共享单位字节</li><li>PostgreSQLConnections：总连接数</li><li>PostgreSQLActiveConns：活跃连接数</li><li>PostgreSQLIdleConns：空闲连接数</li><li>PostgreSQLMemoryRate：内存使用率，单位%，仅独享</li><li>PostgreSQLStorageRate：存储使用率，单位%，仅独享</li><li>PostgreSQLQps：QPS，单位次/秒，仅独享</li><li>PostgreSQLTps：TPS，单位次/秒，仅独享</li><li>PostgreSQLReadWriteCalls：读写次数，仅独享</li><li>PostgreSQLReadCalls：读次数，仅独享</li><li>PostgreSQLWriteCalls：写次数，仅独享</li><li>PostgreSQLSqlRuntimeAvg：SQL平均执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSqlRuntimeMax：SQL最大执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSqlRuntimeMin：SQL最小执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSlowQueryCnt：慢查询数，仅独享</li><li>PostgreSQLLongQuery：长查询数，仅独享</li><li>PostgreSQLLongXact：长事务数，仅独享</li><li>PostgreSQLLongWaiting：长等待数，仅独享</li><li>PostgreSQLDeadlocks：死锁数，仅独享</li><h4>实时推送相关指标</h4><li> RealtimeConnectionsCluster: 并发客户端数 </li><li> RealtimeChannelJoins: 频道加入次数 </li><li> RealtimeBroadcastEvents: 广播事件数 </li><li> RealtimePresenceEvents: Presence 事件数 </li><li> RealtimeDbEvents: 数据库变更（Postgres Changes）事件数 </li><li> RealtimePayloadSizeP50: 消息负载大小 P50，单位byte </li><li> RealtimeDbBroadcastLagP50: 数据库变更广播延迟 P50，单位ms </li><li> RealtimeReadRlsP50: 私有频道订阅 RLS 鉴权耗时 P50，单位ms </li><li> RealtimeWriteRlsP50: 私有频道发布 RLS 鉴权耗时 P50，单位ms</li>
         :type MetricName: str
         :param _StartTime: <p>开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟)</p>
         :type StartTime: str
@@ -12028,7 +12045,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""<h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li>
+        r"""<h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li><h4>PostgreSQL相关指标</h4><li>PostgreSQLCpu：CPU使用率，单位%</li><li>PostgreSQLMemory：内存使用量，独享单位MB，共享单位字节</li><li>PostgreSQLStorageCurve：存储使用量，独享单位GB，共享单位字节</li><li>PostgreSQLConnections：总连接数</li><li>PostgreSQLActiveConns：活跃连接数</li><li>PostgreSQLIdleConns：空闲连接数</li><li>PostgreSQLMemoryRate：内存使用率，单位%，仅独享</li><li>PostgreSQLStorageRate：存储使用率，单位%，仅独享</li><li>PostgreSQLQps：QPS，单位次/秒，仅独享</li><li>PostgreSQLTps：TPS，单位次/秒，仅独享</li><li>PostgreSQLReadWriteCalls：读写次数，仅独享</li><li>PostgreSQLReadCalls：读次数，仅独享</li><li>PostgreSQLWriteCalls：写次数，仅独享</li><li>PostgreSQLSqlRuntimeAvg：SQL平均执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSqlRuntimeMax：SQL最大执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSqlRuntimeMin：SQL最小执行耗时，单位毫秒，仅独享</li><li>PostgreSQLSlowQueryCnt：慢查询数，仅独享</li><li>PostgreSQLLongQuery：长查询数，仅独享</li><li>PostgreSQLLongXact：长事务数，仅独享</li><li>PostgreSQLLongWaiting：长等待数，仅独享</li><li>PostgreSQLDeadlocks：死锁数，仅独享</li><h4>实时推送相关指标</h4><li> RealtimeConnectionsCluster: 并发客户端数 </li><li> RealtimeChannelJoins: 频道加入次数 </li><li> RealtimeBroadcastEvents: 广播事件数 </li><li> RealtimePresenceEvents: Presence 事件数 </li><li> RealtimeDbEvents: 数据库变更（Postgres Changes）事件数 </li><li> RealtimePayloadSizeP50: 消息负载大小 P50，单位byte </li><li> RealtimeDbBroadcastLagP50: 数据库变更广播延迟 P50，单位ms </li><li> RealtimeReadRlsP50: 私有频道订阅 RLS 鉴权耗时 P50，单位ms </li><li> RealtimeWriteRlsP50: 私有频道发布 RLS 鉴权耗时 P50，单位ms</li>
         :rtype: str
         """
         return self._MetricName
@@ -12152,11 +12169,11 @@ class DescribeCurveDataResponse(AbstractModel):
         :type Period: int
         :param _Values: <p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :type Values: list of int
-        :param _Time: <p>各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应</p>
+        :param _Time: <p>各数据点的时间戳数组（Unix 时间戳，秒级），与  Values  一一对应</p>
         :type Time: list of int
         :param _NewValues: <p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :type NewValues: list of float
-        :param _Statistics: <p>聚合方式， ⁠&quot;last&quot;⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
+        :param _Statistics: <p>聚合方式， &quot;last&quot;  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
         :type Statistics: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12228,7 +12245,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Time(self):
-        r"""<p>各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应</p>
+        r"""<p>各数据点的时间戳数组（Unix 时间戳，秒级），与  Values  一一对应</p>
         :rtype: list of int
         """
         return self._Time
@@ -12250,7 +12267,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Statistics(self):
-        r"""<p>聚合方式， ⁠&quot;last&quot;⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
+        r"""<p>聚合方式， &quot;last&quot;  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
         :rtype: str
         """
         return self._Statistics
@@ -28044,6 +28061,72 @@ class OwnershipVerificationInfo(AbstractModel):
                 obj = OwnershipVerificationFileInfo()
                 obj._deserialize(item)
                 self._FileVerification.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PGConfig(AbstractModel):
+    r"""postgresql可选参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PGSpec: <p>规格</p>
+        :type PGSpec: str
+        :param _PGStorage: <p>磁盘大小</p><p>单位：GB</p>
+        :type PGStorage: int
+        :param _TenantType: <p>实例类型（独享/共享）</p><p>参数格式：SHARED：共享，DEDICATED：独享； 仅满足要求的套餐支持独享；仅有独享pg支持指定pg参数（如规格、磁盘）</p>
+        :type TenantType: str
+        """
+        self._PGSpec = None
+        self._PGStorage = None
+        self._TenantType = None
+
+    @property
+    def PGSpec(self):
+        r"""<p>规格</p>
+        :rtype: str
+        """
+        return self._PGSpec
+
+    @PGSpec.setter
+    def PGSpec(self, PGSpec):
+        self._PGSpec = PGSpec
+
+    @property
+    def PGStorage(self):
+        r"""<p>磁盘大小</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._PGStorage
+
+    @PGStorage.setter
+    def PGStorage(self, PGStorage):
+        self._PGStorage = PGStorage
+
+    @property
+    def TenantType(self):
+        r"""<p>实例类型（独享/共享）</p><p>参数格式：SHARED：共享，DEDICATED：独享； 仅满足要求的套餐支持独享；仅有独享pg支持指定pg参数（如规格、磁盘）</p>
+        :rtype: str
+        """
+        return self._TenantType
+
+    @TenantType.setter
+    def TenantType(self, TenantType):
+        self._TenantType = TenantType
+
+
+    def _deserialize(self, params):
+        self._PGSpec = params.get("PGSpec")
+        self._PGStorage = params.get("PGStorage")
+        self._TenantType = params.get("TenantType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

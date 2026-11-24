@@ -22700,6 +22700,117 @@ class ModifyServiceGroupWeightsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTrainingTaskSchedulingPolicyRequest(AbstractModel):
+    r"""ModifyTrainingTaskSchedulingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrainingTaskId: <p>训练任务 id</p>
+        :type TrainingTaskId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _CrossResourceGroupScheduling: <p>是否开启跨资源组调度。缺省为 false，仅改优先级时若任务已开启需显式传 true，否则会被关闭。</p>
+        :type CrossResourceGroupScheduling: bool
+        :param _SchedulePolicy: <p>调度策略</p>
+        :type SchedulePolicy: :class:`tencentcloud.tione.v20211111.models.SchedulePolicy`
+        """
+        self._TrainingTaskId = None
+        self._TiProjectId = None
+        self._CrossResourceGroupScheduling = None
+        self._SchedulePolicy = None
+
+    @property
+    def TrainingTaskId(self):
+        r"""<p>训练任务 id</p>
+        :rtype: str
+        """
+        return self._TrainingTaskId
+
+    @TrainingTaskId.setter
+    def TrainingTaskId(self, TrainingTaskId):
+        self._TrainingTaskId = TrainingTaskId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def CrossResourceGroupScheduling(self):
+        r"""<p>是否开启跨资源组调度。缺省为 false，仅改优先级时若任务已开启需显式传 true，否则会被关闭。</p>
+        :rtype: bool
+        """
+        return self._CrossResourceGroupScheduling
+
+    @CrossResourceGroupScheduling.setter
+    def CrossResourceGroupScheduling(self, CrossResourceGroupScheduling):
+        self._CrossResourceGroupScheduling = CrossResourceGroupScheduling
+
+    @property
+    def SchedulePolicy(self):
+        r"""<p>调度策略</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SchedulePolicy`
+        """
+        return self._SchedulePolicy
+
+    @SchedulePolicy.setter
+    def SchedulePolicy(self, SchedulePolicy):
+        self._SchedulePolicy = SchedulePolicy
+
+
+    def _deserialize(self, params):
+        self._TrainingTaskId = params.get("TrainingTaskId")
+        self._TiProjectId = params.get("TiProjectId")
+        self._CrossResourceGroupScheduling = params.get("CrossResourceGroupScheduling")
+        if params.get("SchedulePolicy") is not None:
+            self._SchedulePolicy = SchedulePolicy()
+            self._SchedulePolicy._deserialize(params.get("SchedulePolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTrainingTaskSchedulingPolicyResponse(AbstractModel):
+    r"""ModifyTrainingTaskSchedulingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserGrantRequest(AbstractModel):
     r"""ModifyUserGrant请求参数结构体
 
@@ -28644,6 +28755,44 @@ class SSHConfig(AbstractModel):
         if params.get("PodSSHInfo") is not None:
             self._PodSSHInfo = PodSSHInfo()
             self._PodSSHInfo._deserialize(params.get("PodSSHInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulePolicy(AbstractModel):
+    r"""任务调度策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PriorityClass: <p>任务优先级，取值 p0~p9，p0 最高、p9 最低</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriorityClass: str
+        """
+        self._PriorityClass = None
+
+    @property
+    def PriorityClass(self):
+        r"""<p>任务优先级，取值 p0~p9，p0 最高、p9 最低</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PriorityClass
+
+    @PriorityClass.setter
+    def PriorityClass(self, PriorityClass):
+        self._PriorityClass = PriorityClass
+
+
+    def _deserialize(self, params):
+        self._PriorityClass = params.get("PriorityClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

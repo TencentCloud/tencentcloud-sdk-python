@@ -27681,20 +27681,20 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
 
 class ReconstructDocumentFailedPage(AbstractModel):
-    r"""解析失败的页数
+    r"""解析失败的页码
 
     """
 
     def __init__(self):
         r"""
-        :param _PageNumber: <p>解析失败页数。</p>
+        :param _PageNumber: <p>解析失败页码。</p>
         :type PageNumber: int
         """
         self._PageNumber = None
 
     @property
     def PageNumber(self):
-        r"""<p>解析失败页数。</p>
+        r"""<p>解析失败页码。</p>
         :rtype: int
         """
         return self._PageNumber

@@ -2145,6 +2145,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyTrainingTaskSchedulingPolicy(self, request):
+        r"""更新训练任务的调度策略
+
+        :param request: Request instance for ModifyTrainingTaskSchedulingPolicy.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyTrainingTaskSchedulingPolicyRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyTrainingTaskSchedulingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTrainingTaskSchedulingPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTrainingTaskSchedulingPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserGrant(self, request):
         r"""更新用户授权
 

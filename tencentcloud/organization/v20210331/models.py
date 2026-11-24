@@ -7691,9 +7691,9 @@ class DescribeOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Lang: 国际站：en，国内站：zh
+        :param _Lang: <p>国际站：en，国内站：zh</p>
         :type Lang: str
-        :param _Product: 可信服务产品简称。查询是否该可信服务管理员时必须指定
+        :param _Product: <p>可信服务产品简称。查询是否该可信服务管理员时必须指定</p>
         :type Product: str
         """
         self._Lang = None
@@ -7701,7 +7701,7 @@ class DescribeOrganizationRequest(AbstractModel):
 
     @property
     def Lang(self):
-        r"""国际站：en，国内站：zh
+        r"""<p>国际站：en，国内站：zh</p>
         :rtype: str
         """
         return self._Lang
@@ -7712,7 +7712,7 @@ class DescribeOrganizationRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""可信服务产品简称。查询是否该可信服务管理员时必须指定
+        r"""<p>可信服务产品简称。查询是否该可信服务管理员时必须指定</p>
         :rtype: str
         """
         return self._Product
@@ -7742,38 +7742,42 @@ class DescribeOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrgId: 企业组织ID。
+        :param _OrgId: <p>企业组织ID。</p>
         :type OrgId: int
-        :param _HostUin: 创建者UIN。
+        :param _HostUin: <p>创建者UIN。</p>
         :type HostUin: int
-        :param _NickName: 创建者昵称。
+        :param _NickName: <p>创建者昵称。</p>
         :type NickName: str
-        :param _OrgType: 企业组织类型。
+        :param _OrgType: <p>企业组织类型。</p>
         :type OrgType: int
-        :param _IsManager: 是否组织管理员。是：true ，否：false
+        :param _IsManager: <p>是否组织管理员。是：true ，否：false</p>
         :type IsManager: bool
-        :param _OrgPolicyType: 策略类型。财务管理：Financial
+        :param _OrgPolicyType: <p>策略类型。财务管理：Financial</p>
         :type OrgPolicyType: str
-        :param _OrgPolicyName: 策略名。
+        :param _OrgPolicyName: <p>策略名。</p>
         :type OrgPolicyName: str
-        :param _OrgPermission: 成员财务权限列表。
+        :param _OrgPermission: <p>成员财务权限列表。</p>
         :type OrgPermission: list of OrgPermission
-        :param _RootNodeId: 组织根节点ID。
+        :param _RootNodeId: <p>组织根节点ID。</p>
         :type RootNodeId: int
-        :param _CreateTime: 组织创建时间。
+        :param _CreateTime: <p>组织创建时间。</p>
         :type CreateTime: str
-        :param _JoinTime: 成员加入时间。
+        :param _JoinTime: <p>成员加入时间。</p>
         :type JoinTime: str
-        :param _IsAllowQuit: 成员是否允许退出。允许：Allow，不允许：Denied
+        :param _IsAllowQuit: <p>成员是否允许退出。允许：Allow，不允许：Denied</p>
         :type IsAllowQuit: str
-        :param _PayUin: 代付者Uin。
+        :param _PayUin: <p>代付者Uin。</p>
         :type PayUin: str
-        :param _PayName: 代付者名称。
+        :param _PayName: <p>代付者名称。</p>
         :type PayName: str
-        :param _IsAssignManager: 是否可信服务管理员。是：true，否：false
+        :param _IsAssignManager: <p>是否可信服务管理员。是：true，否：false</p>
         :type IsAssignManager: bool
-        :param _IsAuthManager: 是否实名主体管理员。是：true，否：false
+        :param _IsAuthManager: <p>是否实名主体管理员。是：true，否：false</p>
         :type IsAuthManager: bool
+        :param _MemberPermissionOptions: <p>创建/邀请成员时可设置的财务权限列表</p>
+        :type MemberPermissionOptions: list of MemberPermissionOption
+        :param _DefaultPayType: <p>创建/邀请成员时的默认付费方式。</p><p>枚举值：</p><ul><li>SelfPay： 自付</li><li>BehalfPay： 代付</li></ul>
+        :type DefaultPayType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7793,11 +7797,13 @@ class DescribeOrganizationResponse(AbstractModel):
         self._PayName = None
         self._IsAssignManager = None
         self._IsAuthManager = None
+        self._MemberPermissionOptions = None
+        self._DefaultPayType = None
         self._RequestId = None
 
     @property
     def OrgId(self):
-        r"""企业组织ID。
+        r"""<p>企业组织ID。</p>
         :rtype: int
         """
         return self._OrgId
@@ -7808,7 +7814,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def HostUin(self):
-        r"""创建者UIN。
+        r"""<p>创建者UIN。</p>
         :rtype: int
         """
         return self._HostUin
@@ -7819,7 +7825,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def NickName(self):
-        r"""创建者昵称。
+        r"""<p>创建者昵称。</p>
         :rtype: str
         """
         return self._NickName
@@ -7830,7 +7836,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
-        r"""企业组织类型。
+        r"""<p>企业组织类型。</p>
         :rtype: int
         """
         return self._OrgType
@@ -7841,7 +7847,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsManager(self):
-        r"""是否组织管理员。是：true ，否：false
+        r"""<p>是否组织管理员。是：true ，否：false</p>
         :rtype: bool
         """
         return self._IsManager
@@ -7852,7 +7858,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPolicyType(self):
-        r"""策略类型。财务管理：Financial
+        r"""<p>策略类型。财务管理：Financial</p>
         :rtype: str
         """
         return self._OrgPolicyType
@@ -7863,7 +7869,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPolicyName(self):
-        r"""策略名。
+        r"""<p>策略名。</p>
         :rtype: str
         """
         return self._OrgPolicyName
@@ -7874,7 +7880,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPermission(self):
-        r"""成员财务权限列表。
+        r"""<p>成员财务权限列表。</p>
         :rtype: list of OrgPermission
         """
         return self._OrgPermission
@@ -7885,7 +7891,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def RootNodeId(self):
-        r"""组织根节点ID。
+        r"""<p>组织根节点ID。</p>
         :rtype: int
         """
         return self._RootNodeId
@@ -7896,7 +7902,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""组织创建时间。
+        r"""<p>组织创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7907,7 +7913,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def JoinTime(self):
-        r"""成员加入时间。
+        r"""<p>成员加入时间。</p>
         :rtype: str
         """
         return self._JoinTime
@@ -7918,7 +7924,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAllowQuit(self):
-        r"""成员是否允许退出。允许：Allow，不允许：Denied
+        r"""<p>成员是否允许退出。允许：Allow，不允许：Denied</p>
         :rtype: str
         """
         return self._IsAllowQuit
@@ -7929,7 +7935,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def PayUin(self):
-        r"""代付者Uin。
+        r"""<p>代付者Uin。</p>
         :rtype: str
         """
         return self._PayUin
@@ -7940,7 +7946,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def PayName(self):
-        r"""代付者名称。
+        r"""<p>代付者名称。</p>
         :rtype: str
         """
         return self._PayName
@@ -7951,7 +7957,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAssignManager(self):
-        r"""是否可信服务管理员。是：true，否：false
+        r"""<p>是否可信服务管理员。是：true，否：false</p>
         :rtype: bool
         """
         return self._IsAssignManager
@@ -7962,7 +7968,7 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAuthManager(self):
-        r"""是否实名主体管理员。是：true，否：false
+        r"""<p>是否实名主体管理员。是：true，否：false</p>
         :rtype: bool
         """
         return self._IsAuthManager
@@ -7970,6 +7976,28 @@ class DescribeOrganizationResponse(AbstractModel):
     @IsAuthManager.setter
     def IsAuthManager(self, IsAuthManager):
         self._IsAuthManager = IsAuthManager
+
+    @property
+    def MemberPermissionOptions(self):
+        r"""<p>创建/邀请成员时可设置的财务权限列表</p>
+        :rtype: list of MemberPermissionOption
+        """
+        return self._MemberPermissionOptions
+
+    @MemberPermissionOptions.setter
+    def MemberPermissionOptions(self, MemberPermissionOptions):
+        self._MemberPermissionOptions = MemberPermissionOptions
+
+    @property
+    def DefaultPayType(self):
+        r"""<p>创建/邀请成员时的默认付费方式。</p><p>枚举值：</p><ul><li>SelfPay： 自付</li><li>BehalfPay： 代付</li></ul>
+        :rtype: str
+        """
+        return self._DefaultPayType
+
+    @DefaultPayType.setter
+    def DefaultPayType(self, DefaultPayType):
+        self._DefaultPayType = DefaultPayType
 
     @property
     def RequestId(self):
@@ -8005,6 +8033,13 @@ class DescribeOrganizationResponse(AbstractModel):
         self._PayName = params.get("PayName")
         self._IsAssignManager = params.get("IsAssignManager")
         self._IsAuthManager = params.get("IsAuthManager")
+        if params.get("MemberPermissionOptions") is not None:
+            self._MemberPermissionOptions = []
+            for item in params.get("MemberPermissionOptions"):
+                obj = MemberPermissionOption()
+                obj._deserialize(item)
+                self._MemberPermissionOptions.append(obj)
+        self._DefaultPayType = params.get("DefaultPayType")
         self._RequestId = params.get("RequestId")
 
 
@@ -16092,6 +16127,102 @@ class MemberMainInfo(AbstractModel):
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
         self._MemberName = params.get("MemberName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MemberPermissionOption(AbstractModel):
+    r"""创建/邀请成员时可设置的财务权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>权限 ID</p>
+        :type Id: int
+        :param _Name: <p>权限名</p>
+        :type Name: str
+        :param _Status: <p>展示状态</p><p>枚举值：</p><ul><li>FIXED： 已勾选且置灰，不可修改</li><li>OPTIONAL： 正常可选</li><li>DISABLE： 置灰不可选，悬浮展示原因</li></ul><p>默认值：OPTIONAL</p>
+        :type Status: str
+        :param _DefaultChecked: <p>是否默认勾选</p>
+        :type DefaultChecked: bool
+        :param _DisabledCode: <p>置灰原因码</p><p>枚举值：</p><ul><li>TransferNotAllowAdd： 资金划拨权限未命中白名单</li><li>CreditAmountsNotAllowAdd： 信用额度设置权限未命中白名单</li><li>AddDiscountInheritNotAllow： 校验不通过或异常</li></ul>
+        :type DisabledCode: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Status = None
+        self._DefaultChecked = None
+        self._DisabledCode = None
+
+    @property
+    def Id(self):
+        r"""<p>权限 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>权限名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>展示状态</p><p>枚举值：</p><ul><li>FIXED： 已勾选且置灰，不可修改</li><li>OPTIONAL： 正常可选</li><li>DISABLE： 置灰不可选，悬浮展示原因</li></ul><p>默认值：OPTIONAL</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DefaultChecked(self):
+        r"""<p>是否默认勾选</p>
+        :rtype: bool
+        """
+        return self._DefaultChecked
+
+    @DefaultChecked.setter
+    def DefaultChecked(self, DefaultChecked):
+        self._DefaultChecked = DefaultChecked
+
+    @property
+    def DisabledCode(self):
+        r"""<p>置灰原因码</p><p>枚举值：</p><ul><li>TransferNotAllowAdd： 资金划拨权限未命中白名单</li><li>CreditAmountsNotAllowAdd： 信用额度设置权限未命中白名单</li><li>AddDiscountInheritNotAllow： 校验不通过或异常</li></ul>
+        :rtype: str
+        """
+        return self._DisabledCode
+
+    @DisabledCode.setter
+    def DisabledCode(self, DisabledCode):
+        self._DisabledCode = DisabledCode
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._DefaultChecked = params.get("DefaultChecked")
+        self._DisabledCode = params.get("DisabledCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

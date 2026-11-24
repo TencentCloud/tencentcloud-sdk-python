@@ -24550,21 +24550,13 @@ class Intention(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IntentionType: 视频认证类型，支持以下类型
-<ul><li>1 : 问答模式</li>
-<li>2 : 点头模式</li></ul>
-
-注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+        :param _IntentionType: <p>视频认证类型，支持以下类型</p><ul><li>1 : 问答模式</li><li>2 : 点头模式</li></ul><p>注: <code>视频认证为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type IntentionType: int
-        :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多支持10轮。
-
-注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
+        :param _IntentionQuestions: <p>意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～9轮问答，最多支持9轮。注：<code>选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。</code></p>
         :type IntentionQuestions: list of IntentionQuestion
-        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
-
-注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
+        :param _IntentionActions: <p>意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～9轮点头确认文本，最多支持9轮。注：<code>选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。</code></p>
         :type IntentionActions: list of IntentionAction
-        :param _RuleIdConfig: 视频核身相关配置
+        :param _RuleIdConfig: <p>视频核身相关配置</p>
         :type RuleIdConfig: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
         """
         self._IntentionType = None
@@ -24574,11 +24566,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionType(self):
-        r"""视频认证类型，支持以下类型
-<ul><li>1 : 问答模式</li>
-<li>2 : 点头模式</li></ul>
-
-注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+        r"""<p>视频认证类型，支持以下类型</p><ul><li>1 : 问答模式</li><li>2 : 点头模式</li></ul><p>注: <code>视频认证为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: int
         """
         return self._IntentionType
@@ -24589,9 +24577,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionQuestions(self):
-        r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多支持10轮。
-
-注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
+        r"""<p>意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～9轮问答，最多支持9轮。注：<code>选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。</code></p>
         :rtype: list of IntentionQuestion
         """
         return self._IntentionQuestions
@@ -24602,9 +24588,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionActions(self):
-        r"""意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
-
-注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
+        r"""<p>意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～9轮点头确认文本，最多支持9轮。注：<code>选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。</code></p>
         :rtype: list of IntentionAction
         """
         return self._IntentionActions
@@ -24615,7 +24599,7 @@ class Intention(AbstractModel):
 
     @property
     def RuleIdConfig(self):
-        r"""视频核身相关配置
+        r"""<p>视频核身相关配置</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
         """
         return self._RuleIdConfig
@@ -24766,7 +24750,7 @@ class IntentionActionResultDetail(AbstractModel):
 
 
 class IntentionQuestion(AbstractModel):
-    r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+    r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持9轮问答。
 
     """
 
@@ -25972,52 +25956,23 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识: Agent.AppId</li>
-</ul>
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识: Agent.AppId</li></ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _OperateType: 操作类型，可取值如下:
-<ul>
-<li>SELECT:  查询</li>
-<li>DELETE:  删除</li>
-<li>UPDATE: 更新</li>
-</ul>
+        :param _OperateType: <p>操作类型，可取值如下:</p><ul><li>SELECT:  查询</li><li>DELETE:  删除</li><li>UPDATE: 更新</li><li> DELETETEMPLATE: 删除指定的模板</li></ul>
         :type OperateType: str
-        :param _TemplateId: 合同模板ID，为32位字符串。
-注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
+        :param _TemplateId: <p>合同模板ID，为32位字符串。<br>注: <code>此处为第三方应用平台模板库模板ID，非子客模板ID</code></p>
         :type TemplateId: str
-        :param _ProxyOrganizationOpenIds: 第三方平台子客企业的唯一标识，支持批量(用,分割) 
-一次批量操作最多支持100个第三方平台子客
+        :param _ProxyOrganizationOpenIds: <p>第三方平台子客企业的唯一标识，支持批量(用,分割)<br>一次批量操作最多支持100个第三方平台子客</p>
         :type ProxyOrganizationOpenIds: str
-        :param _AuthTag: 模板可见范围, 可以设置的值如下:
-
-**all**: 所有本第三方应用合作企业可见
-**part**: 指定的本第三方应用合作企业
-
-对应控制台的位置
-![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
-
+        :param _AuthTag: <p>模板可见范围, 可以设置的值如下:</p><p><strong>all</strong>: 所有本第三方应用合作企业可见<br><strong>part</strong>: 指定的本第三方应用合作企业</p><p>对应控制台的位置<br><img src="https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png" alt="image"></p>
         :type AuthTag: str
-        :param _Available: 当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
-<ul>
-<li>0: 不修改模板可用状态</li>
-<li>1:  启用模板</li>
-<li>2: 停用模板</li>
-</ul>
-启用后模板可以正常领取。
-
-停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
-如果Available更新失败，会直接返回错误。
+        :param _Available: <p>当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。</p><ul><li>0: 不修改模板可用状态</li><li>1:  启用模板</li><li>2: 停用模板</li></ul>启用后模板可以正常领取。<p>停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。<br>如果Available更新失败，会直接返回错误。</p>
         :type Available: int
-        :param _Operator: 暂未开放
+        :param _Operator: <p>暂未开放</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。
-不传默认值为 20
+        :param _Limit: <p>指定分页每页返回的数据条数，单页最大支持 100。<br>不传默认值为 20</p>
         :type Limit: int
-        :param _Offset: 分页查询偏移量，默认为0
+        :param _Offset: <p>分页查询偏移量，默认为0</p>
         :type Offset: int
         """
         self._Agent = None
@@ -26032,12 +25987,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识: Agent.AppId</li>
-</ul>
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识: Agent.AppId</li></ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -26048,12 +25998,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        r"""操作类型，可取值如下:
-<ul>
-<li>SELECT:  查询</li>
-<li>DELETE:  删除</li>
-<li>UPDATE: 更新</li>
-</ul>
+        r"""<p>操作类型，可取值如下:</p><ul><li>SELECT:  查询</li><li>DELETE:  删除</li><li>UPDATE: 更新</li><li> DELETETEMPLATE: 删除指定的模板</li></ul>
         :rtype: str
         """
         return self._OperateType
@@ -26064,8 +26009,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""合同模板ID，为32位字符串。
-注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
+        r"""<p>合同模板ID，为32位字符串。<br>注: <code>此处为第三方应用平台模板库模板ID，非子客模板ID</code></p>
         :rtype: str
         """
         return self._TemplateId
@@ -26076,8 +26020,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        r"""第三方平台子客企业的唯一标识，支持批量(用,分割) 
-一次批量操作最多支持100个第三方平台子客
+        r"""<p>第三方平台子客企业的唯一标识，支持批量(用,分割)<br>一次批量操作最多支持100个第三方平台子客</p>
         :rtype: str
         """
         return self._ProxyOrganizationOpenIds
@@ -26088,14 +26031,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def AuthTag(self):
-        r"""模板可见范围, 可以设置的值如下:
-
-**all**: 所有本第三方应用合作企业可见
-**part**: 指定的本第三方应用合作企业
-
-对应控制台的位置
-![image](https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png)
-
+        r"""<p>模板可见范围, 可以设置的值如下:</p><p><strong>all</strong>: 所有本第三方应用合作企业可见<br><strong>part</strong>: 指定的本第三方应用合作企业</p><p>对应控制台的位置<br><img src="https://qcloudimg.tencent-cloud.cn/raw/68b97812c68d6af77a5991e3bff5c790.png" alt="image"></p>
         :rtype: str
         """
         return self._AuthTag
@@ -26106,16 +26042,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Available(self):
-        r"""当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
-<ul>
-<li>0: 不修改模板可用状态</li>
-<li>1:  启用模板</li>
-<li>2: 停用模板</li>
-</ul>
-启用后模板可以正常领取。
-
-停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。
-如果Available更新失败，会直接返回错误。
+        r"""<p>当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。</p><ul><li>0: 不修改模板可用状态</li><li>1:  启用模板</li><li>2: 停用模板</li></ul>启用后模板可以正常领取。<p>停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。<br>如果Available更新失败，会直接返回错误。</p>
         :rtype: int
         """
         return self._Available
@@ -26128,7 +26055,7 @@ class OperateChannelTemplateRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -26141,8 +26068,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大支持 100。
-不传默认值为 20
+        r"""<p>指定分页每页返回的数据条数，单页最大支持 100。<br>不传默认值为 20</p>
         :rtype: int
         """
         return self._Limit
@@ -26153,7 +26079,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询偏移量，默认为0
+        r"""<p>分页查询偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -26194,26 +26120,19 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 第三方应用平台的应用ID
+        :param _AppId: <p>第三方应用平台的应用ID</p>
         :type AppId: str
-        :param _TemplateId: 合同模板ID
+        :param _TemplateId: <p>合同模板ID</p>
         :type TemplateId: str
-        :param _OperateResult: 描述模板可见性更改的结果。
-<ul>
-<li>all-success: 全部成功</li>
-<li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
-<li>fail:全部失败, 失败的会在FailMessageList中展示</li>
-</ul>
+        :param _OperateResult: <p>描述模板可见性更改的结果。</p><ul><li>all-success: 全部成功</li><li>part-success: 部分成功,失败的会在FailMessageList中展示</li><li>fail:全部失败, 失败的会在FailMessageList中展示</li></ul>
         :type OperateResult: str
-        :param _AuthTag: 模板可见范围:
-**all**: 所有本第三方应用合作企业可见
-**part**: 指定的本第三方应用合作企业
+        :param _AuthTag: <p>模板可见范围:<br><strong>all</strong>: 所有本第三方应用合作企业可见<br><strong>part</strong>: 指定的本第三方应用合作企业</p>
         :type AuthTag: str
-        :param _ProxyOrganizationOpenIds: 第三方平台子客企业标识列表，仅在select 模式下返回
+        :param _ProxyOrganizationOpenIds: <p>第三方平台子客企业标识列表，仅在select 模式下返回</p>
         :type ProxyOrganizationOpenIds: list of str
-        :param _FailMessageList: 操作失败信息数组
+        :param _FailMessageList: <p>操作失败信息数组</p>
         :type FailMessageList: list of AuthFailMessage
-        :param _Total: 授权的平台子企业数量，OperateType 为select 时返回。
+        :param _Total: <p>授权的平台子企业数量，OperateType 为select 时返回。</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26229,7 +26148,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""第三方应用平台的应用ID
+        r"""<p>第三方应用平台的应用ID</p>
         :rtype: str
         """
         return self._AppId
@@ -26240,7 +26159,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""合同模板ID
+        r"""<p>合同模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -26251,12 +26170,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def OperateResult(self):
-        r"""描述模板可见性更改的结果。
-<ul>
-<li>all-success: 全部成功</li>
-<li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
-<li>fail:全部失败, 失败的会在FailMessageList中展示</li>
-</ul>
+        r"""<p>描述模板可见性更改的结果。</p><ul><li>all-success: 全部成功</li><li>part-success: 部分成功,失败的会在FailMessageList中展示</li><li>fail:全部失败, 失败的会在FailMessageList中展示</li></ul>
         :rtype: str
         """
         return self._OperateResult
@@ -26267,9 +26181,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def AuthTag(self):
-        r"""模板可见范围:
-**all**: 所有本第三方应用合作企业可见
-**part**: 指定的本第三方应用合作企业
+        r"""<p>模板可见范围:<br><strong>all</strong>: 所有本第三方应用合作企业可见<br><strong>part</strong>: 指定的本第三方应用合作企业</p>
         :rtype: str
         """
         return self._AuthTag
@@ -26280,7 +26192,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        r"""第三方平台子客企业标识列表，仅在select 模式下返回
+        r"""<p>第三方平台子客企业标识列表，仅在select 模式下返回</p>
         :rtype: list of str
         """
         return self._ProxyOrganizationOpenIds
@@ -26291,7 +26203,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def FailMessageList(self):
-        r"""操作失败信息数组
+        r"""<p>操作失败信息数组</p>
         :rtype: list of AuthFailMessage
         """
         return self._FailMessageList
@@ -26302,7 +26214,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""授权的平台子企业数量，OperateType 为select 时返回。
+        r"""<p>授权的平台子企业数量，OperateType 为select 时返回。</p>
         :rtype: int
         """
         return self._Total

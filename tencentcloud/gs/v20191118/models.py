@@ -438,45 +438,45 @@ class AndroidInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidInstanceId: 实例 ID
+        :param _AndroidInstanceId: <p>实例 ID</p>
         :type AndroidInstanceId: str
-        :param _AndroidInstanceRegion: 实例所在区域
+        :param _AndroidInstanceRegion: <p>实例所在区域</p>
         :type AndroidInstanceRegion: str
-        :param _AndroidInstanceZone: 实例可用区
+        :param _AndroidInstanceZone: <p>实例可用区</p>
         :type AndroidInstanceZone: str
-        :param _State: 实例状态：INITIALIZING，NORMAL，PROCESSING
+        :param _State: <p>实例状态：INITIALIZING，NORMAL，PROCESSING</p>
         :type State: str
-        :param _AndroidInstanceType: 实例规格
+        :param _AndroidInstanceType: <p>实例规格</p>
         :type AndroidInstanceType: str
-        :param _AndroidInstanceImageId: 实例镜像 ID
+        :param _AndroidInstanceImageId: <p>实例镜像 ID</p>
         :type AndroidInstanceImageId: str
-        :param _Width: 分辨率宽度
+        :param _Width: <p>分辨率宽度</p>
         :type Width: int
-        :param _Height: 分辨率高度
+        :param _Height: <p>分辨率高度</p>
         :type Height: int
-        :param _HostSerialNumber: 宿主机 ID
+        :param _DPI: <p>每英寸像素点。</p>
+        :type DPI: int
+        :param _FPS: <p>帧率</p>
+        :type FPS: int
+        :param _HostSerialNumber: <p>宿主机 ID</p>
         :type HostSerialNumber: str
-        :param _AndroidInstanceGroupId: 分组 ID
+        :param _AndroidInstanceGroupId: <p>分组 ID</p>
         :type AndroidInstanceGroupId: str
-        :param _AndroidInstanceLabels: 标签列表
+        :param _AndroidInstanceLabels: <p>标签列表</p>
         :type AndroidInstanceLabels: list of AndroidInstanceLabel
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _PrivateIP: 内网 IP
+        :param _PrivateIP: <p>内网 IP</p>
         :type PrivateIP: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _HostServerSerialNumber: 机箱 ID
+        :param _HostServerSerialNumber: <p>机箱 ID</p>
         :type HostServerSerialNumber: str
-        :param _ServiceStatus: 服务状态。
-IDLE：未连接
-ESTABLISHED：连接中
+        :param _ServiceStatus: <p>服务状态。<br>IDLE：未连接<br>ESTABLISHED：连接中</p>
         :type ServiceStatus: str
-        :param _AndroidInstanceModel: 安卓实例型号。
-YS1：默认值，基础型云手机
-GC0、GC1、GC2：三种性能型云手机
+        :param _AndroidInstanceModel: <p>安卓实例型号。<br>YS1：默认值，基础型云手机<br>GC0、GC1、GC2：三种性能型云手机</p>
         :type AndroidInstanceModel: str
         """
         self._AndroidInstanceId = None
@@ -487,6 +487,8 @@ GC0、GC1、GC2：三种性能型云手机
         self._AndroidInstanceImageId = None
         self._Width = None
         self._Height = None
+        self._DPI = None
+        self._FPS = None
         self._HostSerialNumber = None
         self._AndroidInstanceGroupId = None
         self._AndroidInstanceLabels = None
@@ -500,7 +502,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -511,7 +513,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceRegion(self):
-        r"""实例所在区域
+        r"""<p>实例所在区域</p>
         :rtype: str
         """
         return self._AndroidInstanceRegion
@@ -522,7 +524,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceZone(self):
-        r"""实例可用区
+        r"""<p>实例可用区</p>
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -533,7 +535,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def State(self):
-        r"""实例状态：INITIALIZING，NORMAL，PROCESSING
+        r"""<p>实例状态：INITIALIZING，NORMAL，PROCESSING</p>
         :rtype: str
         """
         return self._State
@@ -544,7 +546,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceType(self):
-        r"""实例规格
+        r"""<p>实例规格</p>
         :rtype: str
         """
         return self._AndroidInstanceType
@@ -555,7 +557,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceImageId(self):
-        r"""实例镜像 ID
+        r"""<p>实例镜像 ID</p>
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -566,7 +568,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def Width(self):
-        r"""分辨率宽度
+        r"""<p>分辨率宽度</p>
         :rtype: int
         """
         return self._Width
@@ -577,7 +579,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def Height(self):
-        r"""分辨率高度
+        r"""<p>分辨率高度</p>
         :rtype: int
         """
         return self._Height
@@ -587,8 +589,30 @@ GC0、GC1、GC2：三种性能型云手机
         self._Height = Height
 
     @property
+    def DPI(self):
+        r"""<p>每英寸像素点。</p>
+        :rtype: int
+        """
+        return self._DPI
+
+    @DPI.setter
+    def DPI(self, DPI):
+        self._DPI = DPI
+
+    @property
+    def FPS(self):
+        r"""<p>帧率</p>
+        :rtype: int
+        """
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
     def HostSerialNumber(self):
-        r"""宿主机 ID
+        r"""<p>宿主机 ID</p>
         :rtype: str
         """
         return self._HostSerialNumber
@@ -599,7 +623,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceGroupId(self):
-        r"""分组 ID
+        r"""<p>分组 ID</p>
         :rtype: str
         """
         return self._AndroidInstanceGroupId
@@ -610,7 +634,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def AndroidInstanceLabels(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of AndroidInstanceLabel
         """
         return self._AndroidInstanceLabels
@@ -621,7 +645,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -632,7 +656,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -643,7 +667,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def PrivateIP(self):
-        r"""内网 IP
+        r"""<p>内网 IP</p>
         :rtype: str
         """
         return self._PrivateIP
@@ -654,7 +678,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -665,7 +689,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def HostServerSerialNumber(self):
-        r"""机箱 ID
+        r"""<p>机箱 ID</p>
         :rtype: str
         """
         return self._HostServerSerialNumber
@@ -676,9 +700,7 @@ GC0、GC1、GC2：三种性能型云手机
 
     @property
     def ServiceStatus(self):
-        r"""服务状态。
-IDLE：未连接
-ESTABLISHED：连接中
+        r"""<p>服务状态。<br>IDLE：未连接<br>ESTABLISHED：连接中</p>
         :rtype: str
         """
         return self._ServiceStatus
@@ -689,9 +711,7 @@ ESTABLISHED：连接中
 
     @property
     def AndroidInstanceModel(self):
-        r"""安卓实例型号。
-YS1：默认值，基础型云手机
-GC0、GC1、GC2：三种性能型云手机
+        r"""<p>安卓实例型号。<br>YS1：默认值，基础型云手机<br>GC0、GC1、GC2：三种性能型云手机</p>
         :rtype: str
         """
         return self._AndroidInstanceModel
@@ -710,6 +730,8 @@ GC0、GC1、GC2：三种性能型云手机
         self._AndroidInstanceImageId = params.get("AndroidInstanceImageId")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        self._DPI = params.get("DPI")
+        self._FPS = params.get("FPS")
         self._HostSerialNumber = params.get("HostSerialNumber")
         self._AndroidInstanceGroupId = params.get("AndroidInstanceGroupId")
         if params.get("AndroidInstanceLabels") is not None:

@@ -37845,28 +37845,17 @@ class EnableOriginACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _L7EnableMode: 站点首次开启源站防护时，为七层加速域名配置特定回源 IP 网段的模式。
-<li>all：针对当前站点下的所有七层加速域名开启，当域名数量超过 200 时，请先通过 specific 模式启用 200 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
-<li>specific：针对站点下指定的七层加速域名开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
+        :param _L7EnableMode: <p>七层加速域名源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有七层加速域名将自动加入到源站防护列表中，包含后续新增的七层加速域名；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的七层加速域名（通过 L7Hosts 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L7Hosts 请保留为空；当站点下七层加速域名数量超过 200 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
         :type L7EnableMode: str
-        :param _L7Hosts: 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
+        :param _L7Hosts: <p>需要开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。本字段最多支持一次开启 200 个七层加速域名；当期望开启的域名个数超过 200 时，请联合使用 ModifyOriginACL 接口进行分片配置。</p>
         :type L7Hosts: list of str
-        :param _L4EnableMode: 站点首次开启源站防护时，为四层代理实例配置特定回源 IP 网段的模式。
-<li>all：针对当前站点下的所有四层代理实例开启，当实例数量超过 100 时，请先通过 specific 模式启用 100 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
-<li>specific：针对站点下指定的四层代理实例开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
+        :param _L4EnableMode: <p>四层代理实例源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有四层代理实例将自动加入到源站防护列表中，包含后续新增的四层代理实例资源；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的四层代理实例（通过 L4ProxyIds 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L4ProxyIds 请保留为空；当站点下四层代理实例数量超过 100 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
         :type L4EnableMode: str
-        :param _L4ProxyIds: 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
+        :param _L4ProxyIds: <p>需要开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。本字段最多支持一次开启 100 个四层代理实例；当期望开启的四层代理实例个数超过 100 时，请联合使用 ModifyOriginACL 接口进行分片配置。</p>
         :type L4ProxyIds: list of str
-        :param _OriginACLFamily: 源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
-具体取值说明如下：
-<li>gaz：标准全球可用区控制域；</li>
-<li>mlc：标准中国大陆可用区控制域；</li>
-<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
-<li>plat-gaz：精简全球可用区控制域；</li>
-<li>plat-mlc：精简中国大陆可用区控制域；</li>
-<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :param _OriginACLFamily: <p>源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。<br>具体取值说明如下：</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
         :type OriginACLFamily: str
         """
         self._ZoneId = None
@@ -37878,7 +37867,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -37889,9 +37878,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7EnableMode(self):
-        r"""站点首次开启源站防护时，为七层加速域名配置特定回源 IP 网段的模式。
-<li>all：针对当前站点下的所有七层加速域名开启，当域名数量超过 200 时，请先通过 specific 模式启用 200 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
-<li>specific：针对站点下指定的七层加速域名开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
+        r"""<p>七层加速域名源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有七层加速域名将自动加入到源站防护列表中，包含后续新增的七层加速域名；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的七层加速域名（通过 L7Hosts 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L7Hosts 请保留为空；当站点下七层加速域名数量超过 200 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
         :rtype: str
         """
         return self._L7EnableMode
@@ -37902,7 +37889,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7Hosts(self):
-        r"""开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
+        r"""<p>需要开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。本字段最多支持一次开启 200 个七层加速域名；当期望开启的域名个数超过 200 时，请联合使用 ModifyOriginACL 接口进行分片配置。</p>
         :rtype: list of str
         """
         return self._L7Hosts
@@ -37913,9 +37900,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4EnableMode(self):
-        r"""站点首次开启源站防护时，为四层代理实例配置特定回源 IP 网段的模式。
-<li>all：针对当前站点下的所有四层代理实例开启，当实例数量超过 100 时，请先通过 specific 模式启用 100 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
-<li>specific：针对站点下指定的四层代理实例开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
+        r"""<p>四层代理实例源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有四层代理实例将自动加入到源站防护列表中，包含后续新增的四层代理实例资源；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的四层代理实例（通过 L4ProxyIds 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L4ProxyIds 请保留为空；当站点下四层代理实例数量超过 100 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
         :rtype: str
         """
         return self._L4EnableMode
@@ -37926,7 +37911,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4ProxyIds(self):
-        r"""开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
+        r"""<p>需要开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。本字段最多支持一次开启 100 个四层代理实例；当期望开启的四层代理实例个数超过 100 时，请联合使用 ModifyOriginACL 接口进行分片配置。</p>
         :rtype: list of str
         """
         return self._L4ProxyIds
@@ -37937,14 +37922,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def OriginACLFamily(self):
-        r"""源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
-具体取值说明如下：
-<li>gaz：标准全球可用区控制域；</li>
-<li>mlc：标准中国大陆可用区控制域；</li>
-<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
-<li>plat-gaz：精简全球可用区控制域；</li>
-<li>plat-mlc：精简中国大陆可用区控制域；</li>
-<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        r"""<p>源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。<br>具体取值说明如下：</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
         :rtype: str
         """
         return self._OriginACLFamily
@@ -53084,27 +53062,26 @@ class ModifyOriginACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _OriginACLEntities: 需要启用/关闭特定回源 IP 网段回源的实例。
+        :param _L7EnableMode: <p>七层加速域名源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有七层加速域名将自动加入到源站防护列表中，包含后续新增的七层加速域名；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的七层加速域名（通过 L7Hosts 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L7Hosts 请保留为空；当站点下七层加速域名数量超过 200 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
+        :type L7EnableMode: str
+        :param _L4EnableMode: <p>四层代理实例源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有四层代理实例将自动加入到源站防护列表中，包含后续新增的四层代理实例资源；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的四层代理实例（通过 L4ProxyIds 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L4ProxyIds 请保留为空；当站点下四层代理实例数量超过 100 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
+        :type L4EnableMode: str
+        :param _OriginACLEntities: <p>需要启用/关闭特定回源 IP 网段回源的实例。<br>注意：本参数仅适用于 <strong>指定加入防护模式</strong> 下的资源调整；当对应层级的源站防护模式为 all 时，该类型的资源列表由系统自动维护，本参数中请勿包含该类型的资源，如需手动调整，请先通过 L7EnableMode/L4EnableMode 将对应层级切换为 specific。</p>
         :type OriginACLEntities: list of OriginACLEntity
-        :param _OriginACLFamily: 源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
-具体取值说明如下：
-<li>gaz：标准全球可用区控制域；</li>
-<li>mlc：标准中国大陆可用区控制域；</li>
-<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
-<li>plat-gaz：精简全球可用区控制域；</li>
-<li>plat-mlc：精简中国大陆可用区控制域；</li>
-<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :param _OriginACLFamily: <p>源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。<br>具体取值说明如下：</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
         :type OriginACLFamily: str
         """
         self._ZoneId = None
+        self._L7EnableMode = None
+        self._L4EnableMode = None
         self._OriginACLEntities = None
         self._OriginACLFamily = None
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -53114,8 +53091,30 @@ class ModifyOriginACLRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
+    def L7EnableMode(self):
+        r"""<p>七层加速域名源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有七层加速域名将自动加入到源站防护列表中，包含后续新增的七层加速域名；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的七层加速域名（通过 L7Hosts 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L7Hosts 请保留为空；当站点下七层加速域名数量超过 200 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
+        :rtype: str
+        """
+        return self._L7EnableMode
+
+    @L7EnableMode.setter
+    def L7EnableMode(self, L7EnableMode):
+        self._L7EnableMode = L7EnableMode
+
+    @property
+    def L4EnableMode(self):
+        r"""<p>四层代理实例源站防护模式，默认值: specific。<li>all：<strong>自动纳入防护模式</strong>，站点内所有四层代理实例将自动加入到源站防护列表中，包含后续新增的四层代理实例资源；</li><li>specific：<strong>指定加入防护模式</strong>，需要人工指定期望加入到源站防护的四层代理实例（通过 L4ProxyIds 参数指定），未指定的资源不会加入到源站防护列表中，后续的防护资源调整可通过 ModifyOriginACL 接口进行。</li>注意：取值为 all 时，L4ProxyIds 请保留为空；当站点下四层代理实例数量超过 100 时，请先通过 specific 模式启用，剩余资源通过 ModifyOriginACL 接口启用后，再通过 ModifyOriginACL 接口切换为 all。</p>
+        :rtype: str
+        """
+        return self._L4EnableMode
+
+    @L4EnableMode.setter
+    def L4EnableMode(self, L4EnableMode):
+        self._L4EnableMode = L4EnableMode
+
+    @property
     def OriginACLEntities(self):
-        r"""需要启用/关闭特定回源 IP 网段回源的实例。
+        r"""<p>需要启用/关闭特定回源 IP 网段回源的实例。<br>注意：本参数仅适用于 <strong>指定加入防护模式</strong> 下的资源调整；当对应层级的源站防护模式为 all 时，该类型的资源列表由系统自动维护，本参数中请勿包含该类型的资源，如需手动调整，请先通过 L7EnableMode/L4EnableMode 将对应层级切换为 specific。</p>
         :rtype: list of OriginACLEntity
         """
         return self._OriginACLEntities
@@ -53126,14 +53125,7 @@ class ModifyOriginACLRequest(AbstractModel):
 
     @property
     def OriginACLFamily(self):
-        r"""源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
-具体取值说明如下：
-<li>gaz：标准全球可用区控制域；</li>
-<li>mlc：标准中国大陆可用区控制域；</li>
-<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
-<li>plat-gaz：精简全球可用区控制域；</li>
-<li>plat-mlc：精简中国大陆可用区控制域；</li>
-<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        r"""<p>源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。<br>具体取值说明如下：</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
         :rtype: str
         """
         return self._OriginACLFamily
@@ -53145,6 +53137,8 @@ class ModifyOriginACLRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        self._L7EnableMode = params.get("L7EnableMode")
+        self._L4EnableMode = params.get("L4EnableMode")
         if params.get("OriginACLEntities") is not None:
             self._OriginACLEntities = []
             for item in params.get("OriginACLEntities"):
@@ -57617,25 +57611,28 @@ class OriginACLInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _L7Hosts: 启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。
+        :param _L7EnableMode: <p>七层加速域名源站防护模式，取值有：<li>all：自动纳入防护模式，站点内所有七层加速域名已纳入源站防护列表，包含后续新增的七层加速域名；</li><li>specific：指定加入防护模式，仅防护已绑定的七层加速域名。</li></p>
+        :type L7EnableMode: str
+        :param _L7Hosts: <p>启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。</p>
         :type L7Hosts: list of str
-        :param _L4ProxyIds: 启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。
+        :param _L4EnableMode: <p>四层代理实例源站防护模式，取值有：<li>all：自动纳入防护模式，站点内所有四层代理实例已纳入源站防护列表，包含后续新增的四层代理实例；</li><li>specific：指定加入防护模式，仅防护已绑定的四层代理实例。</li></p>
+        :type L4EnableMode: str
+        :param _L4ProxyIds: <p>启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。</p>
         :type L4ProxyIds: list of str
-        :param _CurrentOriginACL: 当前生效的回源 IP 网段。源站防护未开启时为空。
+        :param _CurrentOriginACL: <p>当前生效的回源 IP 网段。源站防护未开启时为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentOriginACL: :class:`tencentcloud.teo.v20220901.models.CurrentOriginACL`
-        :param _NextOriginACL: 当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。
+        :param _NextOriginACL: <p>当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextOriginACL: :class:`tencentcloud.teo.v20220901.models.NextOriginACL`
-        :param _Status: 源站防护状态，取值有：
-<li>online：已生效；</li>
-<li>offline：已停用；</li>
-<li>updating: 配置部署中。</li>
+        :param _Status: <p>源站防护状态，取值有：</p><li>online：已生效；</li><li>offline：已停用；</li><li>updating: 配置部署中。</li>
         :type Status: str
-        :param _OriginACLFamily: 源站防护回源ACL控制域。
+        :param _OriginACLFamily: <p>源站防护回源ACL控制域。</p>
         :type OriginACLFamily: str
         """
+        self._L7EnableMode = None
         self._L7Hosts = None
+        self._L4EnableMode = None
         self._L4ProxyIds = None
         self._CurrentOriginACL = None
         self._NextOriginACL = None
@@ -57643,8 +57640,19 @@ class OriginACLInfo(AbstractModel):
         self._OriginACLFamily = None
 
     @property
+    def L7EnableMode(self):
+        r"""<p>七层加速域名源站防护模式，取值有：<li>all：自动纳入防护模式，站点内所有七层加速域名已纳入源站防护列表，包含后续新增的七层加速域名；</li><li>specific：指定加入防护模式，仅防护已绑定的七层加速域名。</li></p>
+        :rtype: str
+        """
+        return self._L7EnableMode
+
+    @L7EnableMode.setter
+    def L7EnableMode(self, L7EnableMode):
+        self._L7EnableMode = L7EnableMode
+
+    @property
     def L7Hosts(self):
-        r"""启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。
+        r"""<p>启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。</p>
         :rtype: list of str
         """
         return self._L7Hosts
@@ -57654,8 +57662,19 @@ class OriginACLInfo(AbstractModel):
         self._L7Hosts = L7Hosts
 
     @property
+    def L4EnableMode(self):
+        r"""<p>四层代理实例源站防护模式，取值有：<li>all：自动纳入防护模式，站点内所有四层代理实例已纳入源站防护列表，包含后续新增的四层代理实例；</li><li>specific：指定加入防护模式，仅防护已绑定的四层代理实例。</li></p>
+        :rtype: str
+        """
+        return self._L4EnableMode
+
+    @L4EnableMode.setter
+    def L4EnableMode(self, L4EnableMode):
+        self._L4EnableMode = L4EnableMode
+
+    @property
     def L4ProxyIds(self):
-        r"""启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。
+        r"""<p>启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。</p>
         :rtype: list of str
         """
         return self._L4ProxyIds
@@ -57666,7 +57685,7 @@ class OriginACLInfo(AbstractModel):
 
     @property
     def CurrentOriginACL(self):
-        r"""当前生效的回源 IP 网段。源站防护未开启时为空。
+        r"""<p>当前生效的回源 IP 网段。源站防护未开启时为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CurrentOriginACL`
         """
@@ -57678,7 +57697,7 @@ class OriginACLInfo(AbstractModel):
 
     @property
     def NextOriginACL(self):
-        r"""当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。
+        r"""<p>当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.NextOriginACL`
         """
@@ -57690,10 +57709,7 @@ class OriginACLInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""源站防护状态，取值有：
-<li>online：已生效；</li>
-<li>offline：已停用；</li>
-<li>updating: 配置部署中。</li>
+        r"""<p>源站防护状态，取值有：</p><li>online：已生效；</li><li>offline：已停用；</li><li>updating: 配置部署中。</li>
         :rtype: str
         """
         return self._Status
@@ -57704,7 +57720,7 @@ class OriginACLInfo(AbstractModel):
 
     @property
     def OriginACLFamily(self):
-        r"""源站防护回源ACL控制域。
+        r"""<p>源站防护回源ACL控制域。</p>
         :rtype: str
         """
         return self._OriginACLFamily
@@ -57715,7 +57731,9 @@ class OriginACLInfo(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._L7EnableMode = params.get("L7EnableMode")
         self._L7Hosts = params.get("L7Hosts")
+        self._L4EnableMode = params.get("L4EnableMode")
         self._L4ProxyIds = params.get("L4ProxyIds")
         if params.get("CurrentOriginACL") is not None:
             self._CurrentOriginACL = CurrentOriginACL()
@@ -71120,12 +71138,12 @@ class WebSecurity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneDefaultPolicy: 站点级策略的配置详情。
+        :param _ZoneDefaultPolicy: <p>站点级策略的配置详情。</p>
         :type ZoneDefaultPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
-        :param _HostPolicy: 域名级策略的配置详情。
-        :type HostPolicy: :class:`tencentcloud.teo.v20220901.models.HostPolicy`
-        :param _Templates: 策略模板的配置详情。
-        :type Templates: :class:`tencentcloud.teo.v20220901.models.WebSecurityTemplates`
+        :param _HostPolicy: <p>域名级策略的配置详情。</p>
+        :type HostPolicy: list of HostPolicy
+        :param _Templates: <p>策略模板的配置详情。</p>
+        :type Templates: list of WebSecurityTemplates
         """
         self._ZoneDefaultPolicy = None
         self._HostPolicy = None
@@ -71133,7 +71151,7 @@ class WebSecurity(AbstractModel):
 
     @property
     def ZoneDefaultPolicy(self):
-        r"""站点级策略的配置详情。
+        r"""<p>站点级策略的配置详情。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
         """
         return self._ZoneDefaultPolicy
@@ -71144,8 +71162,8 @@ class WebSecurity(AbstractModel):
 
     @property
     def HostPolicy(self):
-        r"""域名级策略的配置详情。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.HostPolicy`
+        r"""<p>域名级策略的配置详情。</p>
+        :rtype: list of HostPolicy
         """
         return self._HostPolicy
 
@@ -71155,8 +71173,8 @@ class WebSecurity(AbstractModel):
 
     @property
     def Templates(self):
-        r"""策略模板的配置详情。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSecurityTemplates`
+        r"""<p>策略模板的配置详情。</p>
+        :rtype: list of WebSecurityTemplates
         """
         return self._Templates
 
@@ -71170,11 +71188,17 @@ class WebSecurity(AbstractModel):
             self._ZoneDefaultPolicy = SecurityPolicy()
             self._ZoneDefaultPolicy._deserialize(params.get("ZoneDefaultPolicy"))
         if params.get("HostPolicy") is not None:
-            self._HostPolicy = HostPolicy()
-            self._HostPolicy._deserialize(params.get("HostPolicy"))
+            self._HostPolicy = []
+            for item in params.get("HostPolicy"):
+                obj = HostPolicy()
+                obj._deserialize(item)
+                self._HostPolicy.append(obj)
         if params.get("Templates") is not None:
-            self._Templates = WebSecurityTemplates()
-            self._Templates._deserialize(params.get("Templates"))
+            self._Templates = []
+            for item in params.get("Templates"):
+                obj = WebSecurityTemplates()
+                obj._deserialize(item)
+                self._Templates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

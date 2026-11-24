@@ -1147,24 +1147,24 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: 套餐 ID。可通过DescribeTokenPlanList接口获取。
+        :param _TeamId: <p>套餐 ID。可通过DescribeTokenPlanList接口获取。</p>
         :type TeamId: str
-        :param _ApiKeyName: API Key 名称，最大 128 字符。如果创建 API Key 的数量超过1个，实际名称格式为 {ApiKeyName}-{序号}（如 mykey-1, mykey-2）。
+        :param _ApiKeyName: <p>API Key 名称，最大 128 字符。如果创建 API Key 的数量超过1个，实际名称格式为 {ApiKeyName}-{序号}（如 mykey-1, mykey-2）。</p>
         :type ApiKeyName: str
-        :param _Count: 创建数量。取值范围：1 ~ 10。
+        :param _Count: <p>创建数量。取值范围：1 ~ 10。</p>
         :type Count: int
-        :param _AllowedModels: 可用模型列表。如果套餐类型为企业版专业套餐，可以指定模型，也可以传入“all”，传入 “all“表示可以使用套餐支持的所有模型，如果要指定具体模型，传入 Model ID，“all“和具体的 Model ID 不能同时传入，如果不传则表示该API Key不支持任何模型，从而影响API Key的正常使用。如果套餐类型为企业版轻享套餐，则无论是否传入该字段，以及该字段传入什么值，都会被强制覆盖为["auto"]。
+        :param _AllowedModels: <p>可用模型列表。如果套餐类型为企业版专业套餐，该字段必传！可以指定模型，也可以传入“all”，传入 “all“表示可以使用套餐支持的所有模型，如果要指定具体模型，传入 Model ID，“all“和具体的 Model ID 不能同时传入。如果套餐类型为企业版轻享套餐，则无论是否传入该字段，以及该字段传入什么值，都会被强制覆盖为[&quot;auto&quot;]。</p>
         :type AllowedModels: list of str
-        :param _ExclusiveQuota: 独占额度。不传则为0，代表该 API Key 不被分配任何独占配额。单位说明如下：
-- 套餐类型为专业，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _ExclusiveQuota: <p>独占额度。不传则为0，代表该 API Key 不被分配任何独占配额。单位说明如下：</p><ul><li>套餐类型为专业，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type ExclusiveQuota: int
-        :param _TotalQuota: 总额度上限。-1 表示不限，必须为 -1 或 >= API Key 当前的 ExclusiveQuota（独占额度）。不传表示不设置上限。单位说明如下：
-- 套餐类型为专业，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _TotalQuota: <p>总额度上限。-1 表示不限，必须为 -1 或 &gt;= API Key 当前的 ExclusiveQuota（独占额度）。不传表示不设置上限。单位说明如下：</p><ul><li>套餐类型为专业，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type TotalQuota: int
-        :param _TPM: TPM（Tokens Per Minute）限制。不传使用套餐级别 TPM。必须 >= 0 且 <= 套餐 TPM。
+        :param _TPM: <p>TPM（Tokens Per Minute）限制。不传使用套餐级别 TPM。必须 &gt;= 0 且 &lt;= 套餐 TPM。</p>
         :type TPM: int
+        :param _IpWhitelist: <p>IP 白名单列表。支持 IPv4 单地址（如 1.2.3.4）和 IPv4 CIDR（如 10.0.0.0/24）格式。最多 50 个条目，不允许重复；不支持 IPv6 与 IP 范围。不传或传空数组表示不限制。批量创建时所有 APIKey 共用同一份白名单。</p>
+        :type IpWhitelist: list of str
+        :param _OverageEnabled: <p>是否开启超额按量计费。默认值为 false。开启后，若 APIKey 用量达到总额度上限，并且使用的模型已开启按量计费，将自动切换至按量计费模式，该部分将按所用模型的按量计费定价额外计费；未开启时用量达上限后调用报错。</p>
+        :type OverageEnabled: bool
         """
         self._TeamId = None
         self._ApiKeyName = None
@@ -1173,10 +1173,12 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
         self._ExclusiveQuota = None
         self._TotalQuota = None
         self._TPM = None
+        self._IpWhitelist = None
+        self._OverageEnabled = None
 
     @property
     def TeamId(self):
-        r"""套餐 ID。可通过DescribeTokenPlanList接口获取。
+        r"""<p>套餐 ID。可通过DescribeTokenPlanList接口获取。</p>
         :rtype: str
         """
         return self._TeamId
@@ -1187,7 +1189,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def ApiKeyName(self):
-        r"""API Key 名称，最大 128 字符。如果创建 API Key 的数量超过1个，实际名称格式为 {ApiKeyName}-{序号}（如 mykey-1, mykey-2）。
+        r"""<p>API Key 名称，最大 128 字符。如果创建 API Key 的数量超过1个，实际名称格式为 {ApiKeyName}-{序号}（如 mykey-1, mykey-2）。</p>
         :rtype: str
         """
         return self._ApiKeyName
@@ -1198,7 +1200,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def Count(self):
-        r"""创建数量。取值范围：1 ~ 10。
+        r"""<p>创建数量。取值范围：1 ~ 10。</p>
         :rtype: int
         """
         return self._Count
@@ -1209,7 +1211,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def AllowedModels(self):
-        r"""可用模型列表。如果套餐类型为企业版专业套餐，可以指定模型，也可以传入“all”，传入 “all“表示可以使用套餐支持的所有模型，如果要指定具体模型，传入 Model ID，“all“和具体的 Model ID 不能同时传入，如果不传则表示该API Key不支持任何模型，从而影响API Key的正常使用。如果套餐类型为企业版轻享套餐，则无论是否传入该字段，以及该字段传入什么值，都会被强制覆盖为["auto"]。
+        r"""<p>可用模型列表。如果套餐类型为企业版专业套餐，该字段必传！可以指定模型，也可以传入“all”，传入 “all“表示可以使用套餐支持的所有模型，如果要指定具体模型，传入 Model ID，“all“和具体的 Model ID 不能同时传入。如果套餐类型为企业版轻享套餐，则无论是否传入该字段，以及该字段传入什么值，都会被强制覆盖为[&quot;auto&quot;]。</p>
         :rtype: list of str
         """
         return self._AllowedModels
@@ -1220,9 +1222,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def ExclusiveQuota(self):
-        r"""独占额度。不传则为0，代表该 API Key 不被分配任何独占配额。单位说明如下：
-- 套餐类型为专业，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>独占额度。不传则为0，代表该 API Key 不被分配任何独占配额。单位说明如下：</p><ul><li>套餐类型为专业，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: int
         """
         return self._ExclusiveQuota
@@ -1233,9 +1233,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def TotalQuota(self):
-        r"""总额度上限。-1 表示不限，必须为 -1 或 >= API Key 当前的 ExclusiveQuota（独占额度）。不传表示不设置上限。单位说明如下：
-- 套餐类型为专业，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>总额度上限。-1 表示不限，必须为 -1 或 &gt;= API Key 当前的 ExclusiveQuota（独占额度）。不传表示不设置上限。单位说明如下：</p><ul><li>套餐类型为专业，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: int
         """
         return self._TotalQuota
@@ -1246,7 +1244,7 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
 
     @property
     def TPM(self):
-        r"""TPM（Tokens Per Minute）限制。不传使用套餐级别 TPM。必须 >= 0 且 <= 套餐 TPM。
+        r"""<p>TPM（Tokens Per Minute）限制。不传使用套餐级别 TPM。必须 &gt;= 0 且 &lt;= 套餐 TPM。</p>
         :rtype: int
         """
         return self._TPM
@@ -1254,6 +1252,28 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
     @TPM.setter
     def TPM(self, TPM):
         self._TPM = TPM
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP 白名单列表。支持 IPv4 单地址（如 1.2.3.4）和 IPv4 CIDR（如 10.0.0.0/24）格式。最多 50 个条目，不允许重复；不支持 IPv6 与 IP 范围。不传或传空数组表示不限制。批量创建时所有 APIKey 共用同一份白名单。</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def OverageEnabled(self):
+        r"""<p>是否开启超额按量计费。默认值为 false。开启后，若 APIKey 用量达到总额度上限，并且使用的模型已开启按量计费，将自动切换至按量计费模式，该部分将按所用模型的按量计费定价额外计费；未开启时用量达上限后调用报错。</p>
+        :rtype: bool
+        """
+        return self._OverageEnabled
+
+    @OverageEnabled.setter
+    def OverageEnabled(self, OverageEnabled):
+        self._OverageEnabled = OverageEnabled
 
 
     def _deserialize(self, params):
@@ -1264,6 +1284,8 @@ class CreateTokenPlanApiKeysRequest(AbstractModel):
         self._ExclusiveQuota = params.get("ExclusiveQuota")
         self._TotalQuota = params.get("TotalQuota")
         self._TPM = params.get("TPM")
+        self._IpWhitelist = params.get("IpWhitelist")
+        self._OverageEnabled = params.get("OverageEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1281,9 +1303,9 @@ class CreateTokenPlanApiKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 成功创建的项列表。
+        :param _Items: <p>成功创建的项列表。</p>
         :type Items: list of CreateApiKeysResultItem
-        :param _FailedItems: 创建失败的项列表。
+        :param _FailedItems: <p>创建失败的项列表。</p>
         :type FailedItems: list of BatchCreateFailedItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1294,7 +1316,7 @@ class CreateTokenPlanApiKeysResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""成功创建的项列表。
+        r"""<p>成功创建的项列表。</p>
         :rtype: list of CreateApiKeysResultItem
         """
         return self._Items
@@ -1305,7 +1327,7 @@ class CreateTokenPlanApiKeysResponse(AbstractModel):
 
     @property
     def FailedItems(self):
-        r"""创建失败的项列表。
+        r"""<p>创建失败的项列表。</p>
         :rtype: list of BatchCreateFailedItem
         """
         return self._FailedItems
@@ -5167,14 +5189,14 @@ class EndpointCreateDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PreResourceId: 预付费包 id
+        :param _PreResourceId: <p>预付费包 id</p>
         :type PreResourceId: str
         """
         self._PreResourceId = None
 
     @property
     def PreResourceId(self):
-        r"""预付费包 id
+        r"""<p>预付费包 id</p>
         :rtype: str
         """
         return self._PreResourceId
@@ -5205,6 +5227,10 @@ class EndpointDetail(AbstractModel):
         r"""
         :param _EndpointId: <p>推理服务 ID。</p>
         :type EndpointId: str
+        :param _WorkspaceId: <p>所属企业空间 ID。</p>
+        :type WorkspaceId: str
+        :param _OriginEndpointId: <p>跨空间展开时的原始推理服务 ID；未展开时与 EndpointId 相同。</p>
+        :type OriginEndpointId: str
         :param _EndpointName: <p>服务名称。</p>
         :type EndpointName: str
         :param _ModelName: <p>模型名称。</p>
@@ -5231,8 +5257,12 @@ class EndpointDetail(AbstractModel):
         :type RPM: int
         :param _ModelStatus: <p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护</li><li>offline： 下线</li></ul>
         :type ModelStatus: str
+        :param _NightDiscountEnabled: <p>是否参与夜间折扣。true 表示该接入点参与夜间时段折扣计费，false 表示不参与。</p>
+        :type NightDiscountEnabled: bool
         """
         self._EndpointId = None
+        self._WorkspaceId = None
+        self._OriginEndpointId = None
         self._EndpointName = None
         self._ModelName = None
         self._ModelId = None
@@ -5246,6 +5276,7 @@ class EndpointDetail(AbstractModel):
         self._AutoAdjustQuota = None
         self._RPM = None
         self._ModelStatus = None
+        self._NightDiscountEnabled = None
 
     @property
     def EndpointId(self):
@@ -5257,6 +5288,28 @@ class EndpointDetail(AbstractModel):
     @EndpointId.setter
     def EndpointId(self, EndpointId):
         self._EndpointId = EndpointId
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>所属企业空间 ID。</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def OriginEndpointId(self):
+        r"""<p>跨空间展开时的原始推理服务 ID；未展开时与 EndpointId 相同。</p>
+        :rtype: str
+        """
+        return self._OriginEndpointId
+
+    @OriginEndpointId.setter
+    def OriginEndpointId(self, OriginEndpointId):
+        self._OriginEndpointId = OriginEndpointId
 
     @property
     def EndpointName(self):
@@ -5401,9 +5454,22 @@ class EndpointDetail(AbstractModel):
     def ModelStatus(self, ModelStatus):
         self._ModelStatus = ModelStatus
 
+    @property
+    def NightDiscountEnabled(self):
+        r"""<p>是否参与夜间折扣。true 表示该接入点参与夜间时段折扣计费，false 表示不参与。</p>
+        :rtype: bool
+        """
+        return self._NightDiscountEnabled
+
+    @NightDiscountEnabled.setter
+    def NightDiscountEnabled(self, NightDiscountEnabled):
+        self._NightDiscountEnabled = NightDiscountEnabled
+
 
     def _deserialize(self, params):
         self._EndpointId = params.get("EndpointId")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._OriginEndpointId = params.get("OriginEndpointId")
         self._EndpointName = params.get("EndpointName")
         self._ModelName = params.get("ModelName")
         self._ModelId = params.get("ModelId")
@@ -5417,6 +5483,7 @@ class EndpointDetail(AbstractModel):
         self._AutoAdjustQuota = params.get("AutoAdjustQuota")
         self._RPM = params.get("RPM")
         self._ModelStatus = params.get("ModelStatus")
+        self._NightDiscountEnabled = params.get("NightDiscountEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6353,6 +6420,8 @@ class ModelEndpointView(AbstractModel):
         :type Status: str
         :param _ModelStatus: <p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li><li>offline： 下线</li></ul>
         :type ModelStatus: str
+        :param _ModelChargeUnit: <p>模型计费单位（模型维度属性，区别于计费方式 ChargeType）。取值：TOKEN（词元）、COUNT（次）、CREDIT（积分）、PICTURE（张）。未激活时为空。</p>
+        :type ModelChargeUnit: str
         :param _ServiceType: <p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
         :type ServiceType: str
         :param _ChargeType: <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）。未激活时为空。</p>
@@ -6367,6 +6436,14 @@ class ModelEndpointView(AbstractModel):
         :type RPM: int
         :param _TPM: <p>推理服务的tpm 限制，没设置就按模型维度 tpm 限制展示</p>
         :type TPM: int
+        :param _ModelImage: <p>模型图标。</p>
+        :type ModelImage: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
+        :param _OfflineAt: <p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
+        :type OfflineAt: str
+        :param _DiscontinuedAt: <p>停止新购时间</p>
+        :type DiscontinuedAt: str
+        :param _NightDiscountEnabled: <p>是否参与夜间折扣。true 表示该接入点参与夜间时段折扣计费，false 表示不参与。</p>
+        :type NightDiscountEnabled: bool
         """
         self._EndpointId = None
         self._EndpointName = None
@@ -6375,6 +6452,7 @@ class ModelEndpointView(AbstractModel):
         self._ModelName = None
         self._Status = None
         self._ModelStatus = None
+        self._ModelChargeUnit = None
         self._ServiceType = None
         self._ChargeType = None
         self._PaymentEnabled = None
@@ -6382,6 +6460,10 @@ class ModelEndpointView(AbstractModel):
         self._StopReason = None
         self._RPM = None
         self._TPM = None
+        self._ModelImage = None
+        self._OfflineAt = None
+        self._DiscontinuedAt = None
+        self._NightDiscountEnabled = None
 
     @property
     def EndpointId(self):
@@ -6461,6 +6543,17 @@ class ModelEndpointView(AbstractModel):
         self._ModelStatus = ModelStatus
 
     @property
+    def ModelChargeUnit(self):
+        r"""<p>模型计费单位（模型维度属性，区别于计费方式 ChargeType）。取值：TOKEN（词元）、COUNT（次）、CREDIT（积分）、PICTURE（张）。未激活时为空。</p>
+        :rtype: str
+        """
+        return self._ModelChargeUnit
+
+    @ModelChargeUnit.setter
+    def ModelChargeUnit(self, ModelChargeUnit):
+        self._ModelChargeUnit = ModelChargeUnit
+
+    @property
     def ServiceType(self):
         r"""<p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
         :rtype: str
@@ -6537,6 +6630,50 @@ class ModelEndpointView(AbstractModel):
     def TPM(self, TPM):
         self._TPM = TPM
 
+    @property
+    def ModelImage(self):
+        r"""<p>模型图标。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
+        """
+        return self._ModelImage
+
+    @ModelImage.setter
+    def ModelImage(self, ModelImage):
+        self._ModelImage = ModelImage
+
+    @property
+    def OfflineAt(self):
+        r"""<p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
+        :rtype: str
+        """
+        return self._OfflineAt
+
+    @OfflineAt.setter
+    def OfflineAt(self, OfflineAt):
+        self._OfflineAt = OfflineAt
+
+    @property
+    def DiscontinuedAt(self):
+        r"""<p>停止新购时间</p>
+        :rtype: str
+        """
+        return self._DiscontinuedAt
+
+    @DiscontinuedAt.setter
+    def DiscontinuedAt(self, DiscontinuedAt):
+        self._DiscontinuedAt = DiscontinuedAt
+
+    @property
+    def NightDiscountEnabled(self):
+        r"""<p>是否参与夜间折扣。true 表示该接入点参与夜间时段折扣计费，false 表示不参与。</p>
+        :rtype: bool
+        """
+        return self._NightDiscountEnabled
+
+    @NightDiscountEnabled.setter
+    def NightDiscountEnabled(self, NightDiscountEnabled):
+        self._NightDiscountEnabled = NightDiscountEnabled
+
 
     def _deserialize(self, params):
         self._EndpointId = params.get("EndpointId")
@@ -6546,6 +6683,7 @@ class ModelEndpointView(AbstractModel):
         self._ModelName = params.get("ModelName")
         self._Status = params.get("Status")
         self._ModelStatus = params.get("ModelStatus")
+        self._ModelChargeUnit = params.get("ModelChargeUnit")
         self._ServiceType = params.get("ServiceType")
         self._ChargeType = params.get("ChargeType")
         self._PaymentEnabled = params.get("PaymentEnabled")
@@ -6553,6 +6691,12 @@ class ModelEndpointView(AbstractModel):
         self._StopReason = params.get("StopReason")
         self._RPM = params.get("RPM")
         self._TPM = params.get("TPM")
+        if params.get("ModelImage") is not None:
+            self._ModelImage = ModelImage()
+            self._ModelImage._deserialize(params.get("ModelImage"))
+        self._OfflineAt = params.get("OfflineAt")
+        self._DiscontinuedAt = params.get("DiscontinuedAt")
+        self._NightDiscountEnabled = params.get("NightDiscountEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7450,29 +7594,20 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiKeyId: API Key ID。
+        :param _ApiKeyId: <p>API Key ID。</p>
         :type ApiKeyId: str
-        :param _AllowedModels: 可用模型列表。不传则不修改。
-
-- 如果套餐类型为企业版专业套餐：
-1）传入“all“ ：使用套餐支持的所有模型
-2）传入 Model ID：指定具体模型。“all“和具体的 Model ID 不能同时传入。
-
-- 如果套餐类型为企业版轻享套餐，不允许传该参数。
+        :param _AllowedModels: <p>可用模型列表。不传则不修改。</p><ul><li><p>如果套餐类型为企业版专业套餐：<br>1）传入“all“ ：使用套餐支持的所有模型<br>2）传入 Model ID：指定具体模型。“all“和具体的 Model ID 不能同时传入。</p></li><li><p>如果套餐类型为企业版轻享套餐，不允许传该参数。</p></li></ul>
         :type AllowedModels: list of str
-        :param _ExclusiveQuota: 独占额度，不传则不修改。单位说明：
-
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _ExclusiveQuota: <p>独占额度，不传则不修改。单位说明：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type ExclusiveQuota: int
-        :param _TotalQuota: 总额度上限。-1 表示不限，必须为 -1 或 >= API Key 当前的 ExclusiveQuota（独占额度），不传则不修改。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _TotalQuota: <p>总额度上限。-1 表示不限，必须为 -1 或 &gt;= API Key 当前的 ExclusiveQuota（独占额度），不传则不修改。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type TotalQuota: int
-        :param _UseStatus: 是否启用该 API Key。取值：enable（启用）、disable（停用），不传则不修改。
+        :param _UseStatus: <p>是否启用该 API Key。取值：enable（启用）、disable（停用），不传则不修改。</p>
         :type UseStatus: str
-        :param _TPM: TPM（Tokens Per Minute）限制。不传则不修改。必须 >= 0 且 <= 套餐 TPM。
+        :param _TPM: <p>TPM（Tokens Per Minute）限制。不传则不修改。必须 &gt;= 0 且 &lt;= 套餐 TPM。</p>
         :type TPM: int
+        :param _IpWhitelist: <p>IP 白名单列表。不传则不修改；传空数组表示清空（不限制 IP）；传非空数组表示覆盖。支持 IPv4 单地址（如 1.2.3.4）和 IPv4 CIDR（如 10.0.0.0/24）格式，最多 50 个条目，不允许重复；不支持 IPv6 与 IP 范围。</p>
+        :type IpWhitelist: list of str
         """
         self._ApiKeyId = None
         self._AllowedModels = None
@@ -7480,10 +7615,11 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
         self._TotalQuota = None
         self._UseStatus = None
         self._TPM = None
+        self._IpWhitelist = None
 
     @property
     def ApiKeyId(self):
-        r"""API Key ID。
+        r"""<p>API Key ID。</p>
         :rtype: str
         """
         return self._ApiKeyId
@@ -7494,13 +7630,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     @property
     def AllowedModels(self):
-        r"""可用模型列表。不传则不修改。
-
-- 如果套餐类型为企业版专业套餐：
-1）传入“all“ ：使用套餐支持的所有模型
-2）传入 Model ID：指定具体模型。“all“和具体的 Model ID 不能同时传入。
-
-- 如果套餐类型为企业版轻享套餐，不允许传该参数。
+        r"""<p>可用模型列表。不传则不修改。</p><ul><li><p>如果套餐类型为企业版专业套餐：<br>1）传入“all“ ：使用套餐支持的所有模型<br>2）传入 Model ID：指定具体模型。“all“和具体的 Model ID 不能同时传入。</p></li><li><p>如果套餐类型为企业版轻享套餐，不允许传该参数。</p></li></ul>
         :rtype: list of str
         """
         return self._AllowedModels
@@ -7511,10 +7641,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     @property
     def ExclusiveQuota(self):
-        r"""独占额度，不传则不修改。单位说明：
-
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>独占额度，不传则不修改。单位说明：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: int
         """
         return self._ExclusiveQuota
@@ -7525,9 +7652,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     @property
     def TotalQuota(self):
-        r"""总额度上限。-1 表示不限，必须为 -1 或 >= API Key 当前的 ExclusiveQuota（独占额度），不传则不修改。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>总额度上限。-1 表示不限，必须为 -1 或 &gt;= API Key 当前的 ExclusiveQuota（独占额度），不传则不修改。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: int
         """
         return self._TotalQuota
@@ -7538,7 +7663,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     @property
     def UseStatus(self):
-        r"""是否启用该 API Key。取值：enable（启用）、disable（停用），不传则不修改。
+        r"""<p>是否启用该 API Key。取值：enable（启用）、disable（停用），不传则不修改。</p>
         :rtype: str
         """
         return self._UseStatus
@@ -7549,7 +7674,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
 
     @property
     def TPM(self):
-        r"""TPM（Tokens Per Minute）限制。不传则不修改。必须 >= 0 且 <= 套餐 TPM。
+        r"""<p>TPM（Tokens Per Minute）限制。不传则不修改。必须 &gt;= 0 且 &lt;= 套餐 TPM。</p>
         :rtype: int
         """
         return self._TPM
@@ -7557,6 +7682,17 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
     @TPM.setter
     def TPM(self, TPM):
         self._TPM = TPM
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP 白名单列表。不传则不修改；传空数组表示清空（不限制 IP）；传非空数组表示覆盖。支持 IPv4 单地址（如 1.2.3.4）和 IPv4 CIDR（如 10.0.0.0/24）格式，最多 50 个条目，不允许重复；不支持 IPv6 与 IP 范围。</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
 
 
     def _deserialize(self, params):
@@ -7566,6 +7702,7 @@ class ModifyTokenPlanApiKeyRequest(AbstractModel):
         self._TotalQuota = params.get("TotalQuota")
         self._UseStatus = params.get("UseStatus")
         self._TPM = params.get("TPM")
+        self._IpWhitelist = params.get("IpWhitelist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8591,40 +8728,44 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiKeyId: API Key ID。
+        :param _ApiKeyId: <p>API Key ID。</p>
         :type ApiKeyId: str
-        :param _ApiKey: API Key 密钥值（脱敏）。
+        :param _ApiKey: <p>API Key 密钥值（脱敏）。</p>
         :type ApiKey: str
-        :param _Name: API Key 名称。
+        :param _Name: <p>API Key 名称。</p>
         :type Name: str
-        :param _TeamId: 所属套餐 ID。
+        :param _TeamId: <p>所属套餐 ID。</p>
         :type TeamId: str
-        :param _AppId: 账号APP ID。
+        :param _AppId: <p>账号APP ID。</p>
         :type AppId: str
-        :param _Uin: 主账号 UIN。最大 128 字符。
+        :param _Uin: <p>主账号 UIN。最大 128 字符。</p>
         :type Uin: str
-        :param _AllowedModels: API Key 可用模型列表（JSON 数组字符串）。
+        :param _AllowedModels: <p>API Key 可用模型列表（JSON 数组字符串）。</p>
         :type AllowedModels: str
-        :param _Status: API Key 是否可用。取值：enable（启用）、disable（停用）。
+        :param _Status: <p>API Key 是否可用。取值：enable（启用）、disable（停用）。</p>
         :type Status: str
-        :param _StopReason: API Key 停用原因。取值：NORMAL（正常，默认值），QUOTA_EXHAUSTED（API Key额度包耗尽），ABNORMAL（异常，需人工介入）
+        :param _StopReason: <p>API Key 停用原因。取值：NORMAL（正常，默认值），QUOTA_EXHAUSTED（API Key额度包耗尽），ABNORMAL（异常，需人工介入）</p>
         :type StopReason: str
-        :param _UseStatus: 用户侧开关。取值：enable（启用）、disable（停用）。
+        :param _UseStatus: <p>用户侧开关。取值：enable（启用）、disable（停用）。</p>
         :type UseStatus: str
-        :param _KeyVersion: 密钥版本号。
+        :param _KeyVersion: <p>密钥版本号。</p>
         :type KeyVersion: int
-        :param _LastRotatedAt: 最近一次重置时间。（ISO 8601）
+        :param _LastRotatedAt: <p>最近一次重置时间。（ISO 8601）</p>
         :type LastRotatedAt: str
-        :param _Creator: 创建人，如果是子账号创建，则该值为子账号UIN。
+        :param _Creator: <p>创建人，如果是子账号创建，则该值为子账号UIN。</p>
         :type Creator: str
-        :param _CreatedAt: 创建时间。
+        :param _CreatedAt: <p>创建时间。</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 更新时间。
+        :param _UpdatedAt: <p>更新时间。</p>
         :type UpdatedAt: str
-        :param _Balance: API Key 额度用量信息
+        :param _Balance: <p>API Key 额度用量信息</p>
         :type Balance: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
-        :param _ProductType: 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。
+        :param _ProductType: <p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。</p>
         :type ProductType: str
+        :param _IpWhitelist: <p>IP 白名单列表。支持 IPv4 单地址与 IPv4 CIDR 格式，空数组表示不限制。</p>
+        :type IpWhitelist: list of str
+        :param _OverageEnabled: <p>是否开启超额按量计费。开启后，若 APIKey 用量达到总额度上限，并且使用的模型已开启按量计费，将自动切换至按量计费模式；未开启时用量达上限后调用报错。</p>
+        :type OverageEnabled: bool
         """
         self._ApiKeyId = None
         self._ApiKey = None
@@ -8643,10 +8784,12 @@ class TokenPlanApiKeyListItem(AbstractModel):
         self._UpdatedAt = None
         self._Balance = None
         self._ProductType = None
+        self._IpWhitelist = None
+        self._OverageEnabled = None
 
     @property
     def ApiKeyId(self):
-        r"""API Key ID。
+        r"""<p>API Key ID。</p>
         :rtype: str
         """
         return self._ApiKeyId
@@ -8657,7 +8800,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def ApiKey(self):
-        r"""API Key 密钥值（脱敏）。
+        r"""<p>API Key 密钥值（脱敏）。</p>
         :rtype: str
         """
         return self._ApiKey
@@ -8668,7 +8811,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""API Key 名称。
+        r"""<p>API Key 名称。</p>
         :rtype: str
         """
         return self._Name
@@ -8679,7 +8822,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""所属套餐 ID。
+        r"""<p>所属套餐 ID。</p>
         :rtype: str
         """
         return self._TeamId
@@ -8690,7 +8833,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号APP ID。
+        r"""<p>账号APP ID。</p>
         :rtype: str
         """
         return self._AppId
@@ -8701,7 +8844,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def Uin(self):
-        r"""主账号 UIN。最大 128 字符。
+        r"""<p>主账号 UIN。最大 128 字符。</p>
         :rtype: str
         """
         return self._Uin
@@ -8712,7 +8855,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def AllowedModels(self):
-        r"""API Key 可用模型列表（JSON 数组字符串）。
+        r"""<p>API Key 可用模型列表（JSON 数组字符串）。</p>
         :rtype: str
         """
         return self._AllowedModels
@@ -8723,7 +8866,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""API Key 是否可用。取值：enable（启用）、disable（停用）。
+        r"""<p>API Key 是否可用。取值：enable（启用）、disable（停用）。</p>
         :rtype: str
         """
         return self._Status
@@ -8734,7 +8877,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def StopReason(self):
-        r"""API Key 停用原因。取值：NORMAL（正常，默认值），QUOTA_EXHAUSTED（API Key额度包耗尽），ABNORMAL（异常，需人工介入）
+        r"""<p>API Key 停用原因。取值：NORMAL（正常，默认值），QUOTA_EXHAUSTED（API Key额度包耗尽），ABNORMAL（异常，需人工介入）</p>
         :rtype: str
         """
         return self._StopReason
@@ -8745,7 +8888,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def UseStatus(self):
-        r"""用户侧开关。取值：enable（启用）、disable（停用）。
+        r"""<p>用户侧开关。取值：enable（启用）、disable（停用）。</p>
         :rtype: str
         """
         return self._UseStatus
@@ -8756,7 +8899,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def KeyVersion(self):
-        r"""密钥版本号。
+        r"""<p>密钥版本号。</p>
         :rtype: int
         """
         return self._KeyVersion
@@ -8767,7 +8910,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def LastRotatedAt(self):
-        r"""最近一次重置时间。（ISO 8601）
+        r"""<p>最近一次重置时间。（ISO 8601）</p>
         :rtype: str
         """
         return self._LastRotatedAt
@@ -8778,7 +8921,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建人，如果是子账号创建，则该值为子账号UIN。
+        r"""<p>创建人，如果是子账号创建，则该值为子账号UIN。</p>
         :rtype: str
         """
         return self._Creator
@@ -8789,7 +8932,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -8800,7 +8943,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更新时间。
+        r"""<p>更新时间。</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -8811,7 +8954,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def Balance(self):
-        r"""API Key 额度用量信息
+        r"""<p>API Key 额度用量信息</p>
         :rtype: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
         """
         return self._Balance
@@ -8822,7 +8965,7 @@ class TokenPlanApiKeyListItem(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。
+        r"""<p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。</p>
         :rtype: str
         """
         return self._ProductType
@@ -8830,6 +8973,28 @@ class TokenPlanApiKeyListItem(AbstractModel):
     @ProductType.setter
     def ProductType(self, ProductType):
         self._ProductType = ProductType
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP 白名单列表。支持 IPv4 单地址与 IPv4 CIDR 格式，空数组表示不限制。</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def OverageEnabled(self):
+        r"""<p>是否开启超额按量计费。开启后，若 APIKey 用量达到总额度上限，并且使用的模型已开启按量计费，将自动切换至按量计费模式；未开启时用量达上限后调用报错。</p>
+        :rtype: bool
+        """
+        return self._OverageEnabled
+
+    @OverageEnabled.setter
+    def OverageEnabled(self, OverageEnabled):
+        self._OverageEnabled = OverageEnabled
 
 
     def _deserialize(self, params):
@@ -8852,6 +9017,8 @@ class TokenPlanApiKeyListItem(AbstractModel):
             self._Balance = SubPackageBalance()
             self._Balance._deserialize(params.get("Balance"))
         self._ProductType = params.get("ProductType")
+        self._IpWhitelist = params.get("IpWhitelist")
+        self._OverageEnabled = params.get("OverageEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

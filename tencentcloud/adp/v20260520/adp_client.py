@@ -348,6 +348,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePromptTemplate(self, request):
+        r"""创建提示词模板
+
+        :param request: Request instance for CreatePromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreatePromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreatePromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePromptTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePromptTemplateLabel(self, request):
+        r"""创建提示词模板标签
+
+        :param request: Request instance for CreatePromptTemplateLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreatePromptTemplateLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreatePromptTemplateLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePromptTemplateLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePromptTemplateLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQAGenerationTask(self, request):
         r"""创建 QA 生成任务
 
@@ -869,6 +915,52 @@ class AdpClient(AbstractClient):
             body = self.call("DeletePlugin", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePromptTemplate(self, request):
+        r"""删除提示词模板
+
+        :param request: Request instance for DeletePromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeletePromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeletePromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePromptTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePromptTemplateLabel(self, request):
+        r"""删除提示词模板标签
+
+        :param request: Request instance for DeletePromptTemplateLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeletePromptTemplateLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeletePromptTemplateLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePromptTemplateLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePromptTemplateLabelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1867,6 +1959,98 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePromptTemplate(self, request):
+        r"""查询提示词模板详情
+
+        :param request: Request instance for DescribePromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePromptTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePromptTemplateCategoryList(self, request):
+        r"""查询提示词模板分类列表
+
+        :param request: Request instance for DescribePromptTemplateCategoryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateCategoryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePromptTemplateCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePromptTemplateCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePromptTemplateLabelList(self, request):
+        r"""查询提示词模板标签列表
+
+        :param request: Request instance for DescribePromptTemplateLabelList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateLabelListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateLabelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePromptTemplateLabelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePromptTemplateLabelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePromptTemplateSummaryList(self, request):
+        r"""查询提示词模板摘要列表
+
+        :param request: Request instance for DescribePromptTemplateSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribePromptTemplateSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePromptTemplateSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePromptTemplateSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQA(self, request):
         r"""查询 QA 详情
 
@@ -2304,6 +2488,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FavoritePromptTemplate(self, request):
+        r"""收藏提示词模板
+
+        :param request: Request instance for FavoritePromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.FavoritePromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FavoritePromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FavoritePromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.FavoritePromptTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def FavoriteSkill(self, request):
         r"""收藏skill
 
@@ -2663,6 +2870,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyPlugin", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPromptTemplate(self, request):
+        r"""修改提示词模板
+
+        :param request: Request instance for ModifyPromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyPromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyPromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPromptTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3100,6 +3330,29 @@ class AdpClient(AbstractClient):
             body = self.call("UnfavoritePlugin", params, headers=headers)
             response = json.loads(body)
             model = models.UnfavoritePluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnfavoritePromptTemplate(self, request):
+        r"""取消收藏提示词模板
+
+        :param request: Request instance for UnfavoritePromptTemplate.
+        :type request: :class:`tencentcloud.adp.v20260520.models.UnfavoritePromptTemplateRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UnfavoritePromptTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnfavoritePromptTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnfavoritePromptTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

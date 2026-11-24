@@ -2844,24 +2844,13 @@ class AccurateQpsThreshold(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
-        :type Unit: str
         :param _GlobalConfigId: 全局配置ID
         :type GlobalConfigId: str
+        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :type Unit: str
         """
-        self._Unit = None
         self._GlobalConfigId = None
-
-    @property
-    def Unit(self):
-        r"""qps阈值控制维度,包含:second、minute、hour、day、month、year
-        :rtype: str
-        """
-        return self._Unit
-
-    @Unit.setter
-    def Unit(self, Unit):
-        self._Unit = Unit
+        self._Unit = None
 
     @property
     def GlobalConfigId(self):
@@ -2874,10 +2863,21 @@ class AccurateQpsThreshold(AbstractModel):
     def GlobalConfigId(self, GlobalConfigId):
         self._GlobalConfigId = GlobalConfigId
 
+    @property
+    def Unit(self):
+        r"""qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
 
     def _deserialize(self, params):
-        self._Unit = params.get("Unit")
         self._GlobalConfigId = params.get("GlobalConfigId")
+        self._Unit = params.get("Unit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28874,6 +28874,8 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>翻页单页偏移量，默认值0</p>
         :type Offset: int
+        :param _ServiceId: <p>按服务 ID 查询路由。</p>
+        :type ServiceId: str
         :param _ServiceName: <p>服务的名字，精确匹配</p>
         :type ServiceName: str
         :param _RouteName: <p>路由的名字，精确匹配</p>
@@ -28896,6 +28898,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         self._GatewayId = None
         self._Limit = None
         self._Offset = None
+        self._ServiceId = None
         self._ServiceName = None
         self._RouteName = None
         self._Filters = None
@@ -28938,6 +28941,17 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def ServiceId(self):
+        r"""<p>按服务 ID 查询路由。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
     @property
     def ServiceName(self):
@@ -29043,6 +29057,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         self._GatewayId = params.get("GatewayId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
         self._ServiceName = params.get("ServiceName")
         self._RouteName = params.get("RouteName")
         if params.get("Filters") is not None:
@@ -41780,9 +41795,9 @@ class KongServiceWithRoutes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceList: 
+        :param _ServiceList: <p>服务及路由列表</p>
         :type ServiceList: list of KongServiceRoute
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
         """
         self._ServiceList = None
@@ -41790,7 +41805,7 @@ class KongServiceWithRoutes(AbstractModel):
 
     @property
     def ServiceList(self):
-        r"""
+        r"""<p>服务及路由列表</p>
         :rtype: list of KongServiceRoute
         """
         return self._ServiceList
@@ -41801,7 +41816,7 @@ class KongServiceWithRoutes(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -42764,19 +42779,33 @@ class LimitRule(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AccurateQpsThresholds: 精确限流阈值
+        :type AccurateQpsThresholds: list of AccurateQpsThreshold
         :param _Filters: 请求匹配条件
         :type Filters: list of RuleFilter
         :param _LimitBy: 参数限流依据组合
         :type LimitBy: list of KeyValue
         :param _QpsThresholds: 限流阈值
         :type QpsThresholds: list of QpsThreshold
-        :param _AccurateQpsThresholds: 精确限流阈值
-        :type AccurateQpsThresholds: list of AccurateQpsThreshold
+        :param _Enabled: 是否启用该条参数限流规则。不传或 true 表示启用；false 表示禁用，配置保留但不对流量生效。与 LimitDetail.Enabled（整个限流插件开关）相互独立。
+        :type Enabled: bool
         """
+        self._AccurateQpsThresholds = None
         self._Filters = None
         self._LimitBy = None
         self._QpsThresholds = None
-        self._AccurateQpsThresholds = None
+        self._Enabled = None
+
+    @property
+    def AccurateQpsThresholds(self):
+        r"""精确限流阈值
+        :rtype: list of AccurateQpsThreshold
+        """
+        return self._AccurateQpsThresholds
+
+    @AccurateQpsThresholds.setter
+    def AccurateQpsThresholds(self, AccurateQpsThresholds):
+        self._AccurateQpsThresholds = AccurateQpsThresholds
 
     @property
     def Filters(self):
@@ -42812,18 +42841,24 @@ class LimitRule(AbstractModel):
         self._QpsThresholds = QpsThresholds
 
     @property
-    def AccurateQpsThresholds(self):
-        r"""精确限流阈值
-        :rtype: list of AccurateQpsThreshold
+    def Enabled(self):
+        r"""是否启用该条参数限流规则。不传或 true 表示启用；false 表示禁用，配置保留但不对流量生效。与 LimitDetail.Enabled（整个限流插件开关）相互独立。
+        :rtype: bool
         """
-        return self._AccurateQpsThresholds
+        return self._Enabled
 
-    @AccurateQpsThresholds.setter
-    def AccurateQpsThresholds(self, AccurateQpsThresholds):
-        self._AccurateQpsThresholds = AccurateQpsThresholds
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
+        if params.get("AccurateQpsThresholds") is not None:
+            self._AccurateQpsThresholds = []
+            for item in params.get("AccurateQpsThresholds"):
+                obj = AccurateQpsThreshold()
+                obj._deserialize(item)
+                self._AccurateQpsThresholds.append(obj)
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -42842,12 +42877,7 @@ class LimitRule(AbstractModel):
                 obj = QpsThreshold()
                 obj._deserialize(item)
                 self._QpsThresholds.append(obj)
-        if params.get("AccurateQpsThresholds") is not None:
-            self._AccurateQpsThresholds = []
-            for item in params.get("AccurateQpsThresholds"):
-                obj = AccurateQpsThreshold()
-                obj._deserialize(item)
-                self._AccurateQpsThresholds.append(obj)
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49096,24 +49126,13 @@ class QpsThreshold(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
-        :type Unit: str
         :param _Max: 阈值
         :type Max: int
+        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :type Unit: str
         """
-        self._Unit = None
         self._Max = None
-
-    @property
-    def Unit(self):
-        r"""qps阈值控制维度,包含:second、minute、hour、day、month、year
-        :rtype: str
-        """
-        return self._Unit
-
-    @Unit.setter
-    def Unit(self, Unit):
-        self._Unit = Unit
+        self._Unit = None
 
     @property
     def Max(self):
@@ -49126,10 +49145,21 @@ class QpsThreshold(AbstractModel):
     def Max(self, Max):
         self._Max = Max
 
+    @property
+    def Unit(self):
+        r"""qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
 
     def _deserialize(self, params):
-        self._Unit = params.get("Unit")
         self._Max = params.get("Max")
+        self._Unit = params.get("Unit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49972,17 +50002,17 @@ class RuleFilter(AbstractModel):
         r"""
         :param _Key: 限流条件的Key
         :type Key: str
-        :param _Values: 限流条件的Values
-        :type Values: list of str
-        :param _Operator: 操作符
-        :type Operator: str
         :param _Name: header或query对应的name
         :type Name: str
+        :param _Operator: 操作符
+        :type Operator: str
+        :param _Values: 限流条件的Values
+        :type Values: list of str
         """
         self._Key = None
-        self._Values = None
-        self._Operator = None
         self._Name = None
+        self._Operator = None
+        self._Values = None
 
     @property
     def Key(self):
@@ -49996,15 +50026,15 @@ class RuleFilter(AbstractModel):
         self._Key = Key
 
     @property
-    def Values(self):
-        r"""限流条件的Values
-        :rtype: list of str
+    def Name(self):
+        r"""header或query对应的name
+        :rtype: str
         """
-        return self._Values
+        return self._Name
 
-    @Values.setter
-    def Values(self, Values):
-        self._Values = Values
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def Operator(self):
@@ -50018,22 +50048,22 @@ class RuleFilter(AbstractModel):
         self._Operator = Operator
 
     @property
-    def Name(self):
-        r"""header或query对应的name
-        :rtype: str
+    def Values(self):
+        r"""限流条件的Values
+        :rtype: list of str
         """
-        return self._Name
+        return self._Values
 
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
-        self._Values = params.get("Values")
-        self._Operator = params.get("Operator")
         self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

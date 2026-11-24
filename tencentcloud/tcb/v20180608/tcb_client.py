@@ -1280,6 +1280,11 @@ class TcbClient(AbstractClient):
 
     def DescribeCurveData(self, request):
         r"""根据指定指标名称，查询某环境在指定时间范围内的监控数据，返回按统计粒度聚合后的时序数据。
+        指标时效性说明：
+        本接口返回的指标均为基于采集上报的准实时监控数据，最小统计粒度 5 分钟，单点上报延迟一般为分钟级，并非按天或按小时结算的用量账单，二者口径不可混用。
+        请求数、调用次数、流量、QPS、响应时间、错误数、并发与资源用量等运行类指标（如数据库读写、云函数调用、云托管服务、身份认证与网关调用、大模型 Token 消耗、环境总 QPS 等），均为运行时实时计数或采样，按 5 分钟粒度聚合上报，延迟通常为分钟级。
+        容量类指标（如数据库容量、关系型数据库容量、内存使用量、存储容量、知识库容量等）为当前占用的准实时快照，反映的是周期内的资源占用情况。
+        用户登录日活（DayActive* 系列）为按天聚合指标，当天数值随登录行为持续累积，跨天后趋于稳定，不以 5 分钟粒度细分为瞬时值。
 
         :param request: Request instance for DescribeCurveData.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataRequest`

@@ -124062,6 +124062,9 @@ class WorkflowDsDTO(AbstractModel):
         :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Privilege: str
+        :param _WorkflowLabels: <p>工作流标签列表，仅工作流调度模式返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowLabels: list of WorkflowLabel
         """
         self._WorkflowId = None
         self._Owner = None
@@ -124084,6 +124087,7 @@ class WorkflowDsDTO(AbstractModel):
         self._ExecuteUserUin = None
         self._ExecuteUserName = None
         self._Privilege = None
+        self._WorkflowLabels = None
 
     @property
     def WorkflowId(self):
@@ -124337,6 +124341,18 @@ class WorkflowDsDTO(AbstractModel):
     def Privilege(self, Privilege):
         self._Privilege = Privilege
 
+    @property
+    def WorkflowLabels(self):
+        r"""<p>工作流标签列表，仅工作流调度模式返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkflowLabel
+        """
+        return self._WorkflowLabels
+
+    @WorkflowLabels.setter
+    def WorkflowLabels(self, WorkflowLabels):
+        self._WorkflowLabels = WorkflowLabels
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -124375,6 +124391,12 @@ class WorkflowDsDTO(AbstractModel):
         self._ExecuteUserUin = params.get("ExecuteUserUin")
         self._ExecuteUserName = params.get("ExecuteUserName")
         self._Privilege = params.get("Privilege")
+        if params.get("WorkflowLabels") is not None:
+            self._WorkflowLabels = []
+            for item in params.get("WorkflowLabels"):
+                obj = WorkflowLabel()
+                obj._deserialize(item)
+                self._WorkflowLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -124792,6 +124814,95 @@ class WorkflowExtOpsDtoPage(AbstractModel):
                 obj = WorkflowExtOpsDto()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowLabel(AbstractModel):
+    r"""工作流标签（K-V），标签字典与数据资产标签一致
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: <p>标签ID，入参时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelId: int
+        :param _LabelName: <p>标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelName: str
+        :param _LabelValueId: <p>标签值ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValueId: int
+        :param _LabelValue: <p>标签值名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        """
+        self._LabelId = None
+        self._LabelName = None
+        self._LabelValueId = None
+        self._LabelValue = None
+
+    @property
+    def LabelId(self):
+        r"""<p>标签ID，入参时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        r"""<p>标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def LabelValueId(self):
+        r"""<p>标签值ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LabelValueId
+
+    @LabelValueId.setter
+    def LabelValueId(self, LabelValueId):
+        self._LabelValueId = LabelValueId
+
+    @property
+    def LabelValue(self):
+        r"""<p>标签值名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._LabelValueId = params.get("LabelValueId")
+        self._LabelValue = params.get("LabelValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

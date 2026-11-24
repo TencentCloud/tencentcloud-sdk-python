@@ -4918,27 +4918,33 @@ class AppModelConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AiOptimizeModel: AI一键优化模型
+        :param _AiOptimizeModel: <p>AI一键优化模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiOptimizeModel: :class:`tencentcloud.adp.v20260520.models.AIOptimizeModel`
-        :param _FileParseModel: 实时文件解析模型
+        :param _FileParseModel: <p>实时文件解析模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileParseModel: :class:`tencentcloud.adp.v20260520.models.FileParseModel`
-        :param _GenerateModel: 生成模型配置
+        :param _GenerateModel: <p>生成模型配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GenerateModel: :class:`tencentcloud.adp.v20260520.models.GenerateModel`
-        :param _MultiModalQaModel: 多模态问答模型
+        :param _MultiModalQaModel: <p>多模态问答模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiModalQaModel: :class:`tencentcloud.adp.v20260520.models.MultiModalQAModel`
-        :param _MultiModalUnderstandingModel: 多模态理解模型
+        :param _MultiModalUnderstandingModel: <p>多模态理解模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiModalUnderstandingModel: :class:`tencentcloud.adp.v20260520.models.MultiModalUnderstandingModel`
-        :param _PromptRewriteModel: Prompt改写模型
+        :param _PromptRewriteModel: <p>Prompt改写模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromptRewriteModel: :class:`tencentcloud.adp.v20260520.models.PromptRewriteModel`
-        :param _ThinkModel: 思考模型配置
+        :param _ThinkModel: <p>思考模型配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThinkModel: :class:`tencentcloud.adp.v20260520.models.ThinkModel`
+        :param _FileSplitModel: <p>实时文档切分模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSplitModel: :class:`tencentcloud.adp.v20260520.models.FileSplitModel`
+        :param _HeaderExtractModel: <p>表头拆分模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderExtractModel: :class:`tencentcloud.adp.v20260520.models.HeaderExtractModel`
         """
         self._AiOptimizeModel = None
         self._FileParseModel = None
@@ -4947,10 +4953,12 @@ class AppModelConfig(AbstractModel):
         self._MultiModalUnderstandingModel = None
         self._PromptRewriteModel = None
         self._ThinkModel = None
+        self._FileSplitModel = None
+        self._HeaderExtractModel = None
 
     @property
     def AiOptimizeModel(self):
-        r"""AI一键优化模型
+        r"""<p>AI一键优化模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AIOptimizeModel`
         """
@@ -4962,7 +4970,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def FileParseModel(self):
-        r"""实时文件解析模型
+        r"""<p>实时文件解析模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.FileParseModel`
         """
@@ -4974,7 +4982,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def GenerateModel(self):
-        r"""生成模型配置
+        r"""<p>生成模型配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.GenerateModel`
         """
@@ -4986,7 +4994,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def MultiModalQaModel(self):
-        r"""多模态问答模型
+        r"""<p>多模态问答模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.MultiModalQAModel`
         """
@@ -4998,7 +5006,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def MultiModalUnderstandingModel(self):
-        r"""多模态理解模型
+        r"""<p>多模态理解模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.MultiModalUnderstandingModel`
         """
@@ -5010,7 +5018,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def PromptRewriteModel(self):
-        r"""Prompt改写模型
+        r"""<p>Prompt改写模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.PromptRewriteModel`
         """
@@ -5022,7 +5030,7 @@ class AppModelConfig(AbstractModel):
 
     @property
     def ThinkModel(self):
-        r"""思考模型配置
+        r"""<p>思考模型配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ThinkModel`
         """
@@ -5031,6 +5039,30 @@ class AppModelConfig(AbstractModel):
     @ThinkModel.setter
     def ThinkModel(self, ThinkModel):
         self._ThinkModel = ThinkModel
+
+    @property
+    def FileSplitModel(self):
+        r"""<p>实时文档切分模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FileSplitModel`
+        """
+        return self._FileSplitModel
+
+    @FileSplitModel.setter
+    def FileSplitModel(self, FileSplitModel):
+        self._FileSplitModel = FileSplitModel
+
+    @property
+    def HeaderExtractModel(self):
+        r"""<p>表头拆分模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.HeaderExtractModel`
+        """
+        return self._HeaderExtractModel
+
+    @HeaderExtractModel.setter
+    def HeaderExtractModel(self, HeaderExtractModel):
+        self._HeaderExtractModel = HeaderExtractModel
 
 
     def _deserialize(self, params):
@@ -5055,6 +5087,12 @@ class AppModelConfig(AbstractModel):
         if params.get("ThinkModel") is not None:
             self._ThinkModel = ThinkModel()
             self._ThinkModel._deserialize(params.get("ThinkModel"))
+        if params.get("FileSplitModel") is not None:
+            self._FileSplitModel = FileSplitModel()
+            self._FileSplitModel._deserialize(params.get("FileSplitModel"))
+        if params.get("HeaderExtractModel") is not None:
+            self._HeaderExtractModel = HeaderExtractModel()
+            self._HeaderExtractModel._deserialize(params.get("HeaderExtractModel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5829,6 +5867,8 @@ class AppTrigger(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AgentId: <p>Agent ID，scope=USER 时可选。</p>
+        :type AgentId: str
         :param _AppId: <p>应用ID</p>
         :type AppId: str
         :param _ExecuteConfig: <p>执行配置</p>
@@ -5858,6 +5898,7 @@ class AppTrigger(AbstractModel):
         :param _UserId: <p>访客ID</p>
         :type UserId: str
         """
+        self._AgentId = None
         self._AppId = None
         self._ExecuteConfig = None
         self._ExecuteType = None
@@ -5872,6 +5913,17 @@ class AppTrigger(AbstractModel):
         self._TriggerStatus = None
         self._TriggerType = None
         self._UserId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID，scope=USER 时可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
 
     @property
     def AppId(self):
@@ -6029,6 +6081,7 @@ class AppTrigger(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
         self._AppId = params.get("AppId")
         if params.get("ExecuteConfig") is not None:
             self._ExecuteConfig = ExecuteConfig()
@@ -6051,6 +6104,87 @@ class AppTrigger(AbstractModel):
             self._TriggerStatus._deserialize(params.get("TriggerStatus"))
         self._TriggerType = params.get("TriggerType")
         self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerGongfengWebhookConfig(AbstractModel):
+    r"""工蜂 Webhook 来源配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventList: 监听的工蜂事件标识，原值传递，1 至 20 个，如 push、merge_request。
+        :type EventList: list of str
+        :param _ProjectId: 工蜂项目 ID 或项目路径，不能为空。
+        :type ProjectId: str
+        :param _BranchRuleList: 分支规则列表，最多 20 个；空表示全部分支。
+        :type BranchRuleList: list of str
+        :param _MRActionList: 合并请求动作标识，最多 20 个；监听 merge_request 时必填，如 open、merge。
+        :type MRActionList: list of str
+        """
+        self._EventList = None
+        self._ProjectId = None
+        self._BranchRuleList = None
+        self._MRActionList = None
+
+    @property
+    def EventList(self):
+        r"""监听的工蜂事件标识，原值传递，1 至 20 个，如 push、merge_request。
+        :rtype: list of str
+        """
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def ProjectId(self):
+        r"""工蜂项目 ID 或项目路径，不能为空。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def BranchRuleList(self):
+        r"""分支规则列表，最多 20 个；空表示全部分支。
+        :rtype: list of str
+        """
+        return self._BranchRuleList
+
+    @BranchRuleList.setter
+    def BranchRuleList(self, BranchRuleList):
+        self._BranchRuleList = BranchRuleList
+
+    @property
+    def MRActionList(self):
+        r"""合并请求动作标识，最多 20 个；监听 merge_request 时必填，如 open、merge。
+        :rtype: list of str
+        """
+        return self._MRActionList
+
+    @MRActionList.setter
+    def MRActionList(self, MRActionList):
+        self._MRActionList = MRActionList
+
+
+    def _deserialize(self, params):
+        self._EventList = params.get("EventList")
+        self._ProjectId = params.get("ProjectId")
+        self._BranchRuleList = params.get("BranchRuleList")
+        self._MRActionList = params.get("MRActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7049,6 +7183,8 @@ class AppTriggerSummary(AbstractModel):
         :type UnreadRunLogCount: str
         :param _UserId: <p>访客ID</p>
         :type UserId: str
+        :param _WebhookProvider: Webhook 来源。0：未指定，兼容通用 Webhook；1：工蜂；2：TAPD。
+        :type WebhookProvider: int
         """
         self._AppId = None
         self._ExecuteType = None
@@ -7063,6 +7199,7 @@ class AppTriggerSummary(AbstractModel):
         self._TriggerType = None
         self._UnreadRunLogCount = None
         self._UserId = None
+        self._WebhookProvider = None
 
     @property
     def AppId(self):
@@ -7207,6 +7344,17 @@ class AppTriggerSummary(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def WebhookProvider(self):
+        r"""Webhook 来源。0：未指定，兼容通用 Webhook；1：工蜂；2：TAPD。
+        :rtype: int
+        """
+        return self._WebhookProvider
+
+    @WebhookProvider.setter
+    def WebhookProvider(self, WebhookProvider):
+        self._WebhookProvider = WebhookProvider
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -7224,6 +7372,58 @@ class AppTriggerSummary(AbstractModel):
         self._TriggerType = params.get("TriggerType")
         self._UnreadRunLogCount = params.get("UnreadRunLogCount")
         self._UserId = params.get("UserId")
+        self._WebhookProvider = params.get("WebhookProvider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerTAPDWebhookConfig(AbstractModel):
+    r"""TAPD Webhook 来源配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventList: 监听的 TAPD 事件标识，原值传递，1 至 20 个，如 story::create、bug::update。
+        :type EventList: list of str
+        :param _ProjectId: TAPD 项目 ID，不能为空。
+        :type ProjectId: str
+        """
+        self._EventList = None
+        self._ProjectId = None
+
+    @property
+    def EventList(self):
+        r"""监听的 TAPD 事件标识，原值传递，1 至 20 个，如 story::create、bug::update。
+        :rtype: list of str
+        """
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def ProjectId(self):
+        r"""TAPD 项目 ID，不能为空。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._EventList = params.get("EventList")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7243,15 +7443,22 @@ class AppTriggerWebhookConfig(AbstractModel):
         r"""
         :param _ParamSchemaConfig: <p>触发器webhook参数配置</p>
         :type ParamSchemaConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookParamSchemaConfig`
+        :param _WebhookConfigExt: Webhook 来源扩展配置。通用 Webhook 不传；工蜂/TAPD 传对应配置及 OAuth 凭证，GongfengConfig 与 TAPDConfig 互斥且须与 WebhookProvider 一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebhookConfigExt: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookConfigExt`
         :param _WebhookKey: <p>webhook的key</p>
         :type WebhookKey: str
+        :param _WebhookProvider: Webhook 来源。0：未指定，兼容通用 Webhook；1：工蜂；2：TAPD。
+        :type WebhookProvider: int
         :param _WebhookToken: <p>webhook的密钥</p>
         :type WebhookToken: str
         :param _WebhookUrl: <p>webhook的地址</p>
         :type WebhookUrl: str
         """
         self._ParamSchemaConfig = None
+        self._WebhookConfigExt = None
         self._WebhookKey = None
+        self._WebhookProvider = None
         self._WebhookToken = None
         self._WebhookUrl = None
 
@@ -7267,6 +7474,18 @@ class AppTriggerWebhookConfig(AbstractModel):
         self._ParamSchemaConfig = ParamSchemaConfig
 
     @property
+    def WebhookConfigExt(self):
+        r"""Webhook 来源扩展配置。通用 Webhook 不传；工蜂/TAPD 传对应配置及 OAuth 凭证，GongfengConfig 与 TAPDConfig 互斥且须与 WebhookProvider 一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookConfigExt`
+        """
+        return self._WebhookConfigExt
+
+    @WebhookConfigExt.setter
+    def WebhookConfigExt(self, WebhookConfigExt):
+        self._WebhookConfigExt = WebhookConfigExt
+
+    @property
     def WebhookKey(self):
         r"""<p>webhook的key</p>
         :rtype: str
@@ -7276,6 +7495,17 @@ class AppTriggerWebhookConfig(AbstractModel):
     @WebhookKey.setter
     def WebhookKey(self, WebhookKey):
         self._WebhookKey = WebhookKey
+
+    @property
+    def WebhookProvider(self):
+        r"""Webhook 来源。0：未指定，兼容通用 Webhook；1：工蜂；2：TAPD。
+        :rtype: int
+        """
+        return self._WebhookProvider
+
+    @WebhookProvider.setter
+    def WebhookProvider(self, WebhookProvider):
+        self._WebhookProvider = WebhookProvider
 
     @property
     def WebhookToken(self):
@@ -7304,9 +7534,166 @@ class AppTriggerWebhookConfig(AbstractModel):
         if params.get("ParamSchemaConfig") is not None:
             self._ParamSchemaConfig = AppTriggerWebhookParamSchemaConfig()
             self._ParamSchemaConfig._deserialize(params.get("ParamSchemaConfig"))
+        if params.get("WebhookConfigExt") is not None:
+            self._WebhookConfigExt = AppTriggerWebhookConfigExt()
+            self._WebhookConfigExt._deserialize(params.get("WebhookConfigExt"))
         self._WebhookKey = params.get("WebhookKey")
+        self._WebhookProvider = params.get("WebhookProvider")
         self._WebhookToken = params.get("WebhookToken")
         self._WebhookUrl = params.get("WebhookUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWebhookConfigExt(AbstractModel):
+    r"""Webhook 来源扩展配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialId: 访问外部平台的 OAuth 凭证 ID，不能为空。
+        :type CredentialId: str
+        :param _Credential: <p>绑定凭证的只读摘要；创建和修改时忽略</p>
+        :type Credential: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookCredential`
+        :param _GongfengConfig: 工蜂配置，仅 WebhookProvider=1 时使用，与 TAPDConfig 互斥。
+        :type GongfengConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerGongfengWebhookConfig`
+        :param _TAPDConfig: TAPD 配置，仅 WebhookProvider=2 时使用，与 GongfengConfig 互斥。
+        :type TAPDConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerTAPDWebhookConfig`
+        """
+        self._CredentialId = None
+        self._Credential = None
+        self._GongfengConfig = None
+        self._TAPDConfig = None
+
+    @property
+    def CredentialId(self):
+        r"""访问外部平台的 OAuth 凭证 ID，不能为空。
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def Credential(self):
+        r"""<p>绑定凭证的只读摘要；创建和修改时忽略</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookCredential`
+        """
+        return self._Credential
+
+    @Credential.setter
+    def Credential(self, Credential):
+        self._Credential = Credential
+
+    @property
+    def GongfengConfig(self):
+        r"""工蜂配置，仅 WebhookProvider=1 时使用，与 TAPDConfig 互斥。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerGongfengWebhookConfig`
+        """
+        return self._GongfengConfig
+
+    @GongfengConfig.setter
+    def GongfengConfig(self, GongfengConfig):
+        self._GongfengConfig = GongfengConfig
+
+    @property
+    def TAPDConfig(self):
+        r"""TAPD 配置，仅 WebhookProvider=2 时使用，与 GongfengConfig 互斥。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerTAPDWebhookConfig`
+        """
+        return self._TAPDConfig
+
+    @TAPDConfig.setter
+    def TAPDConfig(self, TAPDConfig):
+        self._TAPDConfig = TAPDConfig
+
+
+    def _deserialize(self, params):
+        self._CredentialId = params.get("CredentialId")
+        if params.get("Credential") is not None:
+            self._Credential = AppTriggerWebhookCredential()
+            self._Credential._deserialize(params.get("Credential"))
+        if params.get("GongfengConfig") is not None:
+            self._GongfengConfig = AppTriggerGongfengWebhookConfig()
+            self._GongfengConfig._deserialize(params.get("GongfengConfig"))
+        if params.get("TAPDConfig") is not None:
+            self._TAPDConfig = AppTriggerTAPDWebhookConfig()
+            self._TAPDConfig._deserialize(params.get("TAPDConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWebhookCredential(AbstractModel):
+    r"""<p>触发器绑定凭证的摘要，不包含授权密钥</p>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialId: <p>凭证ID</p>
+        :type CredentialId: str
+        :param _Name: <p>凭证名称；凭证不存在时为空</p>
+        :type Name: str
+        :param _Status: <p>授权状态；0：未指定，凭证不存在或状态未知；1：未授权；2：已授权；3：已失效</p>
+        :type Status: int
+        """
+        self._CredentialId = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def CredentialId(self):
+        r"""<p>凭证ID</p>
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def Name(self):
+        r"""<p>凭证名称；凭证不存在时为空</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>授权状态；0：未指定，凭证不存在或状态未知；1：未授权；2：已授权；3：已失效</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CredentialId = params.get("CredentialId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7733,6 +8120,117 @@ class AppealingStatus(AbstractModel):
         self._GreetingInAppeal = params.get("GreetingInAppeal")
         self._NameInAppeal = params.get("NameInAppeal")
         self._RoleInAppeal = params.get("RoleInAppeal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Audit(AbstractModel):
+    r"""通用审计信息（创建/修改人 + 时间）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _Creator: <p>创建人</p>
+        :type Creator: str
+        :param _CreatorName: <p>创建人姓名</p>
+        :type CreatorName: str
+        :param _Operator: <p>最近修改人</p>
+        :type Operator: str
+        :param _OperatorName: <p>最近修改人姓名</p>
+        :type OperatorName: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        """
+        self._CreateTime = None
+        self._Creator = None
+        self._CreatorName = None
+        self._Operator = None
+        self._OperatorName = None
+        self._UpdateTime = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorName(self):
+        r"""<p>创建人姓名</p>
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def Operator(self):
+        r"""<p>最近修改人</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperatorName(self):
+        r"""<p>最近修改人姓名</p>
+        :rtype: str
+        """
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._Creator = params.get("Creator")
+        self._CreatorName = params.get("CreatorName")
+        self._Operator = params.get("Operator")
+        self._OperatorName = params.get("OperatorName")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14093,6 +14591,8 @@ class CreateAppTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AgentId: <p>Agent ID，scope=USER 时可选。</p>
+        :type AgentId: str
         :param _AppId: <p>应用ID</p>
         :type AppId: str
         :param _ExecuteConfig: <p>应用触发器执行配置</p>
@@ -14112,6 +14612,7 @@ class CreateAppTriggerRequest(AbstractModel):
         :param _UserId: <p>访客ID</p>
         :type UserId: str
         """
+        self._AgentId = None
         self._AppId = None
         self._ExecuteConfig = None
         self._ExecuteType = None
@@ -14121,6 +14622,17 @@ class CreateAppTriggerRequest(AbstractModel):
         self._TriggerName = None
         self._TriggerType = None
         self._UserId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID，scope=USER 时可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
 
     @property
     def AppId(self):
@@ -14223,6 +14735,7 @@ class CreateAppTriggerRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
         self._AppId = params.get("AppId")
         if params.get("ExecuteConfig") is not None:
             self._ExecuteConfig = ExecuteConfig()
@@ -15239,6 +15752,185 @@ class CreatePluginResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePromptTemplateLabelRequest(AbstractModel):
+    r"""CreatePromptTemplateLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>标签内容</p>
+        :type Content: str
+        """
+        self._Content = None
+
+    @property
+    def Content(self):
+        r"""<p>标签内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePromptTemplateLabelResponse(AbstractModel):
+    r"""CreatePromptTemplateLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateLabelId: <p>提示词模板标签ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTemplateLabelId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptTemplateLabelId = None
+        self._RequestId = None
+
+    @property
+    def PromptTemplateLabelId(self):
+        r"""<p>提示词模板标签ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PromptTemplateLabelId
+
+    @PromptTemplateLabelId.setter
+    def PromptTemplateLabelId(self, PromptTemplateLabelId):
+        self._PromptTemplateLabelId = PromptTemplateLabelId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PromptTemplateLabelId = params.get("PromptTemplateLabelId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePromptTemplateRequest(AbstractModel):
+    r"""CreatePromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _Spec: <p>提示词内容</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.PromptTemplateSpec`
+        """
+        self._SpaceId = None
+        self._Spec = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Spec(self):
+        r"""<p>提示词内容</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplateSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        if params.get("Spec") is not None:
+            self._Spec = PromptTemplateSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePromptTemplateResponse(AbstractModel):
+    r"""CreatePromptTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTemplateId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptTemplateId = None
+        self._RequestId = None
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PromptTemplateId = params.get("PromptTemplateId")
         self._RequestId = params.get("RequestId")
 
 
@@ -18227,6 +18919,149 @@ class DeletePluginRequest(AbstractModel):
 
 class DeletePluginResponse(AbstractModel):
     r"""DeletePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePromptTemplateLabelRequest(AbstractModel):
+    r"""DeletePromptTemplateLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateLabelId: 标签ID
+        :type PromptTemplateLabelId: str
+        """
+        self._PromptTemplateLabelId = None
+
+    @property
+    def PromptTemplateLabelId(self):
+        r"""标签ID
+        :rtype: str
+        """
+        return self._PromptTemplateLabelId
+
+    @PromptTemplateLabelId.setter
+    def PromptTemplateLabelId(self, PromptTemplateLabelId):
+        self._PromptTemplateLabelId = PromptTemplateLabelId
+
+
+    def _deserialize(self, params):
+        self._PromptTemplateLabelId = params.get("PromptTemplateLabelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePromptTemplateLabelResponse(AbstractModel):
+    r"""DeletePromptTemplateLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePromptTemplateRequest(AbstractModel):
+    r"""DeletePromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        """
+        self._SpaceId = None
+        self._PromptTemplateId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePromptTemplateResponse(AbstractModel):
+    r"""DeletePromptTemplate返回参数结构体
 
     """
 
@@ -25090,6 +25925,466 @@ class DescribePluginSummaryListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePromptTemplateCategoryListRequest(AbstractModel):
+    r"""DescribePromptTemplateCategoryList请求参数结构体
+
+    """
+
+
+class DescribePromptTemplateCategoryListResponse(AbstractModel):
+    r"""DescribePromptTemplateCategoryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryGroupList: <p>分类分组列表</p>
+        :type CategoryGroupList: list of PromptTemplateCategoryGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryGroupList = None
+        self._RequestId = None
+
+    @property
+    def CategoryGroupList(self):
+        r"""<p>分类分组列表</p>
+        :rtype: list of PromptTemplateCategoryGroup
+        """
+        return self._CategoryGroupList
+
+    @CategoryGroupList.setter
+    def CategoryGroupList(self, CategoryGroupList):
+        self._CategoryGroupList = CategoryGroupList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryGroupList") is not None:
+            self._CategoryGroupList = []
+            for item in params.get("CategoryGroupList"):
+                obj = PromptTemplateCategoryGroup()
+                obj._deserialize(item)
+                self._CategoryGroupList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePromptTemplateLabelListRequest(AbstractModel):
+    r"""DescribePromptTemplateLabelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码，从0开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目，最大100</p>
+        :type PageSize: int
+        :param _Query: <p>关键词模糊搜索</p>
+        :type Query: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从0开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目，最大100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>关键词模糊搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePromptTemplateLabelListResponse(AbstractModel):
+    r"""DescribePromptTemplateLabelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateLabelList: <p>标签列表</p>
+        :type PromptTemplateLabelList: list of PromptTemplateLabel
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptTemplateLabelList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PromptTemplateLabelList(self):
+        r"""<p>标签列表</p>
+        :rtype: list of PromptTemplateLabel
+        """
+        return self._PromptTemplateLabelList
+
+    @PromptTemplateLabelList.setter
+    def PromptTemplateLabelList(self, PromptTemplateLabelList):
+        self._PromptTemplateLabelList = PromptTemplateLabelList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PromptTemplateLabelList") is not None:
+            self._PromptTemplateLabelList = []
+            for item in params.get("PromptTemplateLabelList"):
+                obj = PromptTemplateLabel()
+                obj._deserialize(item)
+                self._PromptTemplateLabelList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePromptTemplateRequest(AbstractModel):
+    r"""DescribePromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        """
+        self._PromptTemplateId = None
+        self._SpaceId = None
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePromptTemplateResponse(AbstractModel):
+    r"""DescribePromptTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplate: <p>提示词模板完整信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTemplate: :class:`tencentcloud.adp.v20260520.models.PromptTemplate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptTemplate = None
+        self._RequestId = None
+
+    @property
+    def PromptTemplate(self):
+        r"""<p>提示词模板完整信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplate`
+        """
+        return self._PromptTemplate
+
+    @PromptTemplate.setter
+    def PromptTemplate(self, PromptTemplate):
+        self._PromptTemplate = PromptTemplate
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PromptTemplate") is not None:
+            self._PromptTemplate = PromptTemplate()
+            self._PromptTemplate._deserialize(params.get("PromptTemplate"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePromptTemplateSummaryListRequest(AbstractModel):
+    r"""DescribePromptTemplateSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码，从0开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目，最大100</p>
+        :type PageSize: int
+        :param _FilterList: <p>过滤条件列表</p>
+        :type FilterList: list of Filter
+        :param _IsFavorite: <p>是否只查询收藏的模板</p>
+        :type IsFavorite: bool
+        :param _Query: <p>关键词模糊搜索</p>
+        :type Query: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._FilterList = None
+        self._IsFavorite = None
+        self._Query = None
+        self._SpaceId = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从0开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目，最大100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件列表</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def IsFavorite(self):
+        r"""<p>是否只查询收藏的模板</p>
+        :rtype: bool
+        """
+        return self._IsFavorite
+
+    @IsFavorite.setter
+    def IsFavorite(self, IsFavorite):
+        self._IsFavorite = IsFavorite
+
+    @property
+    def Query(self):
+        r"""<p>关键词模糊搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._IsFavorite = params.get("IsFavorite")
+        self._Query = params.get("Query")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePromptTemplateSummaryListResponse(AbstractModel):
+    r"""DescribePromptTemplateSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTemplateSummaryList: <p>提示词模板摘要列表</p>
+        :type PromptTemplateSummaryList: list of PromptTemplateSummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptTemplateSummaryList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PromptTemplateSummaryList(self):
+        r"""<p>提示词模板摘要列表</p>
+        :rtype: list of PromptTemplateSummary
+        """
+        return self._PromptTemplateSummaryList
+
+    @PromptTemplateSummaryList.setter
+    def PromptTemplateSummaryList(self, PromptTemplateSummaryList):
+        self._PromptTemplateSummaryList = PromptTemplateSummaryList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PromptTemplateSummaryList") is not None:
+            self._PromptTemplateSummaryList = []
+            for item in params.get("PromptTemplateSummaryList"):
+                obj = PromptTemplateSummary()
+                obj._deserialize(item)
+                self._PromptTemplateSummaryList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQARequest(AbstractModel):
     r"""DescribeQA请求参数结构体
 
@@ -29781,6 +31076,85 @@ class FavoritePluginResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FavoritePromptTemplateRequest(AbstractModel):
+    r"""FavoritePromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        """
+        self._SpaceId = None
+        self._PromptTemplateId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FavoritePromptTemplateResponse(AbstractModel):
+    r"""FavoritePromptTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class FavoriteSkillRequest(AbstractModel):
     r"""FavoriteSkill请求参数结构体
 
@@ -30053,6 +31427,46 @@ class FileParseModel(AbstractModel):
                 obj = SupportedFileType()
                 obj._deserialize(item)
                 self._SupportedFileList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileSplitModel(AbstractModel):
+    r"""实时文档切分模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>实时文档解析模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""<p>实时文档解析模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = ModelDetailInfo()
+            self._Model._deserialize(params.get("Model"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30342,6 +31756,46 @@ class GraphRAG(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeaderExtractModel(AbstractModel):
+    r"""表头拆分模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>实时文档解析模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""<p>实时文档解析模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = ModelDetailInfo()
+            self._Model._deserialize(params.get("Model"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35207,7 +36661,7 @@ class ModifyAppRequest(AbstractModel):
         :type SharedKbIdList: list of str
         :param _FileVolumeMountList: <p>应用挂载云盘</p>
         :type FileVolumeMountList: list of AppFileVolumeMount
-        :param _UpdateMask: <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList, FileVolumeMountList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig,Config.Mode.ClawAgentConfig<br> 【Mode.ClawAgentConfig】 Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig, Config.Mode.ClawAgentConfig.ChannelContextTimeoutConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch,Config.Experience.Conversation.NewMessageInterrupt<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
+        :param _UpdateMask: <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList, FileVolumeMountList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel,Config.Model.FileSplitModel,Config.Model.HeaderExtractModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig,Config.Mode.ClawAgentConfig<br> 【Mode.ClawAgentConfig】 Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig, Config.Mode.ClawAgentConfig.ChannelContextTimeoutConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch,Config.Experience.Conversation.NewMessageInterrupt<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
         :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._AppId = None
@@ -35310,7 +36764,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def UpdateMask(self):
-        r"""<p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList, FileVolumeMountList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig,Config.Mode.ClawAgentConfig<br> 【Mode.ClawAgentConfig】 Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig, Config.Mode.ClawAgentConfig.ChannelContextTimeoutConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch,Config.Experience.Conversation.NewMessageInterrupt<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
+        r"""<p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList, FileVolumeMountList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel,Config.Model.FileSplitModel,Config.Model.HeaderExtractModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig,Config.Mode.ClawAgentConfig<br> 【Mode.ClawAgentConfig】 Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig, Config.Mode.ClawAgentConfig.ChannelContextTimeoutConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch,Config.Experience.Conversation.NewMessageInterrupt<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._UpdateMask
@@ -35529,10 +36983,24 @@ class ModifyAppTriggerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Credential: <p>工蜂/TAPD 触发器绑定的凭证；其他触发器不返回</p>
+        :type Credential: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookCredential`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Credential = None
         self._RequestId = None
+
+    @property
+    def Credential(self):
+        r"""<p>工蜂/TAPD 触发器绑定的凭证；其他触发器不返回</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookCredential`
+        """
+        return self._Credential
+
+    @Credential.setter
+    def Credential(self, Credential):
+        self._Credential = Credential
 
     @property
     def RequestId(self):
@@ -35547,6 +37015,9 @@ class ModifyAppTriggerResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Credential") is not None:
+            self._Credential = AppTriggerWebhookCredential()
+            self._Credential._deserialize(params.get("Credential"))
         self._RequestId = params.get("RequestId")
 
 
@@ -37059,6 +38530,119 @@ class ModifyPluginRequest(AbstractModel):
 
 class ModifyPluginResponse(AbstractModel):
     r"""ModifyPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPromptTemplateRequest(AbstractModel):
+    r"""ModifyPromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        :param _UpdateMask: <p>要更新的字段掩码</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _Spec: <p>提示词规格</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.PromptTemplateSpec`
+        """
+        self._SpaceId = None
+        self._PromptTemplateId = None
+        self._UpdateMask = None
+        self._Spec = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>要更新的字段掩码</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+    @property
+    def Spec(self):
+        r"""<p>提示词规格</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplateSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        if params.get("Spec") is not None:
+            self._Spec = PromptTemplateSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPromptTemplateResponse(AbstractModel):
+    r"""ModifyPromptTemplate返回参数结构体
 
     """
 
@@ -40555,6 +42139,602 @@ class PromptRewriteModel(AbstractModel):
         if params.get("Model") is not None:
             self._Model = ModelDetailInfo()
             self._Model._deserialize(params.get("Model"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplate(AbstractModel):
+    r"""提示词模板完整信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Profile: <p>提示词模板Profile</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.PromptTemplateProfile`
+        :param _CustomVariableList: <p>自定义变量列表</p>
+        :type CustomVariableList: list of str
+        :param _LabelList: <p>标签列表</p>
+        :type LabelList: list of PromptTemplateLabel
+        :param _PromptContent: <p>提示词内容</p>
+        :type PromptContent: str
+        """
+        self._Profile = None
+        self._CustomVariableList = None
+        self._LabelList = None
+        self._PromptContent = None
+
+    @property
+    def Profile(self):
+        r"""<p>提示词模板Profile</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplateProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def CustomVariableList(self):
+        r"""<p>自定义变量列表</p>
+        :rtype: list of str
+        """
+        return self._CustomVariableList
+
+    @CustomVariableList.setter
+    def CustomVariableList(self, CustomVariableList):
+        self._CustomVariableList = CustomVariableList
+
+    @property
+    def LabelList(self):
+        r"""<p>标签列表</p>
+        :rtype: list of PromptTemplateLabel
+        """
+        return self._LabelList
+
+    @LabelList.setter
+    def LabelList(self, LabelList):
+        self._LabelList = LabelList
+
+    @property
+    def PromptContent(self):
+        r"""<p>提示词内容</p>
+        :rtype: str
+        """
+        return self._PromptContent
+
+    @PromptContent.setter
+    def PromptContent(self, PromptContent):
+        self._PromptContent = PromptContent
+
+
+    def _deserialize(self, params):
+        if params.get("Profile") is not None:
+            self._Profile = PromptTemplateProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        self._CustomVariableList = params.get("CustomVariableList")
+        if params.get("LabelList") is not None:
+            self._LabelList = []
+            for item in params.get("LabelList"):
+                obj = PromptTemplateLabel()
+                obj._deserialize(item)
+                self._LabelList.append(obj)
+        self._PromptContent = params.get("PromptContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateCategory(AbstractModel):
+    r"""提示词模板分类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 分类标识
+        :type Key: str
+        :param _Name: 分类名称
+        :type Name: str
+        """
+        self._Key = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        r"""分类标识
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""分类名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateCategoryGroup(AbstractModel):
+    r"""提示词模板分类分组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryList: 分类列表
+        :type CategoryList: list of PromptTemplateCategory
+        :param _Module: 模块标识
+        :type Module: str
+        """
+        self._CategoryList = None
+        self._Module = None
+
+    @property
+    def CategoryList(self):
+        r"""分类列表
+        :rtype: list of PromptTemplateCategory
+        """
+        return self._CategoryList
+
+    @CategoryList.setter
+    def CategoryList(self, CategoryList):
+        self._CategoryList = CategoryList
+
+    @property
+    def Module(self):
+        r"""模块标识
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryList") is not None:
+            self._CategoryList = []
+            for item in params.get("CategoryList"):
+                obj = PromptTemplateCategory()
+                obj._deserialize(item)
+                self._CategoryList.append(obj)
+        self._Module = params.get("Module")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateLabel(AbstractModel):
+    r"""提示词模板标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 标签内容
+        :type Content: str
+        :param _PromptTemplateLabelId: 标签ID
+        :type PromptTemplateLabelId: str
+        :param _PromptTemplateLabelType: 标签类型。1-系统标签, 2-自定义标签
+        :type PromptTemplateLabelType: int
+        """
+        self._Content = None
+        self._PromptTemplateLabelId = None
+        self._PromptTemplateLabelType = None
+
+    @property
+    def Content(self):
+        r"""标签内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def PromptTemplateLabelId(self):
+        r"""标签ID
+        :rtype: str
+        """
+        return self._PromptTemplateLabelId
+
+    @PromptTemplateLabelId.setter
+    def PromptTemplateLabelId(self, PromptTemplateLabelId):
+        self._PromptTemplateLabelId = PromptTemplateLabelId
+
+    @property
+    def PromptTemplateLabelType(self):
+        r"""标签类型。1-系统标签, 2-自定义标签
+        :rtype: int
+        """
+        return self._PromptTemplateLabelType
+
+    @PromptTemplateLabelType.setter
+    def PromptTemplateLabelType(self, PromptTemplateLabelType):
+        self._PromptTemplateLabelType = PromptTemplateLabelType
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._PromptTemplateLabelId = params.get("PromptTemplateLabelId")
+        self._PromptTemplateLabelType = params.get("PromptTemplateLabelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateProfile(AbstractModel):
+    r"""提示词模板基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>分类</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: :class:`tencentcloud.adp.v20260520.models.PromptTemplateCategory`
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Name: <p>模板名称</p>
+        :type Name: str
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        :param _PromptTemplateType: <p>模板类型。1-预置模板, 2-自定义模板</p>
+        :type PromptTemplateType: int
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _Audit: <p>审计信息</p>
+        :type Audit: :class:`tencentcloud.adp.v20260520.models.Audit`
+        """
+        self._Category = None
+        self._Description = None
+        self._Name = None
+        self._PromptTemplateId = None
+        self._PromptTemplateType = None
+        self._SpaceId = None
+        self._Audit = None
+
+    @property
+    def Category(self):
+        r"""<p>分类</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplateCategory`
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        r"""<p>模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+    @property
+    def PromptTemplateType(self):
+        r"""<p>模板类型。1-预置模板, 2-自定义模板</p>
+        :rtype: int
+        """
+        return self._PromptTemplateType
+
+    @PromptTemplateType.setter
+    def PromptTemplateType(self, PromptTemplateType):
+        self._PromptTemplateType = PromptTemplateType
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Audit(self):
+        r"""<p>审计信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+
+    def _deserialize(self, params):
+        if params.get("Category") is not None:
+            self._Category = PromptTemplateCategory()
+            self._Category._deserialize(params.get("Category"))
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        self._PromptTemplateType = params.get("PromptTemplateType")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateSpec(AbstractModel):
+    r"""提示词模板规格参数（创建/修改）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryKey: 分类标识
+        :type CategoryKey: str
+        :param _CustomVariableList: 自定义变量列表
+        :type CustomVariableList: list of str
+        :param _Description: 描述
+        :type Description: str
+        :param _LabelIdList: 标签ID列表
+        :type LabelIdList: list of str
+        :param _Name: 模板名称
+        :type Name: str
+        :param _PromptContent: 提示词内容
+        :type PromptContent: str
+        """
+        self._CategoryKey = None
+        self._CustomVariableList = None
+        self._Description = None
+        self._LabelIdList = None
+        self._Name = None
+        self._PromptContent = None
+
+    @property
+    def CategoryKey(self):
+        r"""分类标识
+        :rtype: str
+        """
+        return self._CategoryKey
+
+    @CategoryKey.setter
+    def CategoryKey(self, CategoryKey):
+        self._CategoryKey = CategoryKey
+
+    @property
+    def CustomVariableList(self):
+        r"""自定义变量列表
+        :rtype: list of str
+        """
+        return self._CustomVariableList
+
+    @CustomVariableList.setter
+    def CustomVariableList(self, CustomVariableList):
+        self._CustomVariableList = CustomVariableList
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LabelIdList(self):
+        r"""标签ID列表
+        :rtype: list of str
+        """
+        return self._LabelIdList
+
+    @LabelIdList.setter
+    def LabelIdList(self, LabelIdList):
+        self._LabelIdList = LabelIdList
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PromptContent(self):
+        r"""提示词内容
+        :rtype: str
+        """
+        return self._PromptContent
+
+    @PromptContent.setter
+    def PromptContent(self, PromptContent):
+        self._PromptContent = PromptContent
+
+
+    def _deserialize(self, params):
+        self._CategoryKey = params.get("CategoryKey")
+        self._CustomVariableList = params.get("CustomVariableList")
+        self._Description = params.get("Description")
+        self._LabelIdList = params.get("LabelIdList")
+        self._Name = params.get("Name")
+        self._PromptContent = params.get("PromptContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTemplateSummary(AbstractModel):
+    r"""提示词模板摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Profile: <p>提示词模板Profile</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.PromptTemplateProfile`
+        :param _LabelList: <p>标签列表</p>
+        :type LabelList: list of PromptTemplateLabel
+        :param _IsFavorite: <p>是否已收藏</p>
+        :type IsFavorite: bool
+        :param _PermissionIdList: <p>权限列表</p>
+        :type PermissionIdList: list of str
+        """
+        self._Profile = None
+        self._LabelList = None
+        self._IsFavorite = None
+        self._PermissionIdList = None
+
+    @property
+    def Profile(self):
+        r"""<p>提示词模板Profile</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PromptTemplateProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def LabelList(self):
+        r"""<p>标签列表</p>
+        :rtype: list of PromptTemplateLabel
+        """
+        return self._LabelList
+
+    @LabelList.setter
+    def LabelList(self, LabelList):
+        self._LabelList = LabelList
+
+    @property
+    def IsFavorite(self):
+        r"""<p>是否已收藏</p>
+        :rtype: bool
+        """
+        return self._IsFavorite
+
+    @IsFavorite.setter
+    def IsFavorite(self, IsFavorite):
+        self._IsFavorite = IsFavorite
+
+    @property
+    def PermissionIdList(self):
+        r"""<p>权限列表</p>
+        :rtype: list of str
+        """
+        return self._PermissionIdList
+
+    @PermissionIdList.setter
+    def PermissionIdList(self, PermissionIdList):
+        self._PermissionIdList = PermissionIdList
+
+
+    def _deserialize(self, params):
+        if params.get("Profile") is not None:
+            self._Profile = PromptTemplateProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        if params.get("LabelList") is not None:
+            self._LabelList = []
+            for item in params.get("LabelList"):
+                obj = PromptTemplateLabel()
+                obj._deserialize(item)
+                self._LabelList.append(obj)
+        self._IsFavorite = params.get("IsFavorite")
+        self._PermissionIdList = params.get("PermissionIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48304,6 +50484,85 @@ class UnfavoritePluginResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UnfavoritePromptTemplateRequest(AbstractModel):
+    r"""UnfavoritePromptTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _PromptTemplateId: <p>提示词模板ID</p>
+        :type PromptTemplateId: str
+        """
+        self._SpaceId = None
+        self._PromptTemplateId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def PromptTemplateId(self):
+        r"""<p>提示词模板ID</p>
+        :rtype: str
+        """
+        return self._PromptTemplateId
+
+    @PromptTemplateId.setter
+    def PromptTemplateId(self, PromptTemplateId):
+        self._PromptTemplateId = PromptTemplateId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._PromptTemplateId = params.get("PromptTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfavoritePromptTemplateResponse(AbstractModel):
+    r"""UnfavoritePromptTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UnfavoriteSkillRequest(AbstractModel):
     r"""UnfavoriteSkill请求参数结构体
 
@@ -48780,6 +51039,8 @@ class Variable(AbstractModel):
         :type IsBuiltin: bool
         :param _EnableSandbox: <p>是否可注入到沙箱环境</p>
         :type EnableSandbox: bool
+        :param _ValueScope: <p>值作用域</p><p>枚举值：</p><ul><li>0： 同一用户跨会话(默认): 同一用户的所有会话共用一份变量值</li><li>1： 仅当前会话: 变量值按会话隔离, 各会话互不影响</li></ul>
+        :type ValueScope: int
         """
         self._DefaultFileName = None
         self._DefaultValue = None
@@ -48792,6 +51053,7 @@ class Variable(AbstractModel):
         self._EndpointList = None
         self._IsBuiltin = None
         self._EnableSandbox = None
+        self._ValueScope = None
 
     @property
     def DefaultFileName(self):
@@ -48914,6 +51176,17 @@ class Variable(AbstractModel):
     def EnableSandbox(self, EnableSandbox):
         self._EnableSandbox = EnableSandbox
 
+    @property
+    def ValueScope(self):
+        r"""<p>值作用域</p><p>枚举值：</p><ul><li>0： 同一用户跨会话(默认): 同一用户的所有会话共用一份变量值</li><li>1： 仅当前会话: 变量值按会话隔离, 各会话互不影响</li></ul>
+        :rtype: int
+        """
+        return self._ValueScope
+
+    @ValueScope.setter
+    def ValueScope(self, ValueScope):
+        self._ValueScope = ValueScope
+
 
     def _deserialize(self, params):
         self._DefaultFileName = params.get("DefaultFileName")
@@ -48927,6 +51200,7 @@ class Variable(AbstractModel):
         self._EndpointList = params.get("EndpointList")
         self._IsBuiltin = params.get("IsBuiltin")
         self._EnableSandbox = params.get("EnableSandbox")
+        self._ValueScope = params.get("ValueScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

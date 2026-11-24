@@ -27,6 +27,8 @@ class AcceleratorAreas(AbstractModel):
         r"""
         :param _AccelerateRegion: <p>加速地域。</p>
         :type AccelerateRegion: str
+        :param _AccelerateRegionName: <p>加速地域名称。</p>
+        :type AccelerateRegionName: str
         :param _Bandwidth: <p>带宽。</p>
         :type Bandwidth: int
         :param _IspType: <p>支持&#39;BGP&#39;, &#39;QUALITY_BGP&#39;, &#39;STATIC_IP&#39;，默认BGP。</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>STATIC_IP： 三网</li><li>QUALITY_BGP： 精品BGP</li></ul>
@@ -42,6 +44,7 @@ class AcceleratorAreas(AbstractModel):
         :type IpAddressInfoSet: list of IpAddressInfoSet
         """
         self._AccelerateRegion = None
+        self._AccelerateRegionName = None
         self._Bandwidth = None
         self._IspType = None
         self._IpVersion = None
@@ -59,6 +62,17 @@ class AcceleratorAreas(AbstractModel):
     @AccelerateRegion.setter
     def AccelerateRegion(self, AccelerateRegion):
         self._AccelerateRegion = AccelerateRegion
+
+    @property
+    def AccelerateRegionName(self):
+        r"""<p>加速地域名称。</p>
+        :rtype: str
+        """
+        return self._AccelerateRegionName
+
+    @AccelerateRegionName.setter
+    def AccelerateRegionName(self, AccelerateRegionName):
+        self._AccelerateRegionName = AccelerateRegionName
 
     @property
     def Bandwidth(self):
@@ -130,6 +144,7 @@ class AcceleratorAreas(AbstractModel):
 
     def _deserialize(self, params):
         self._AccelerateRegion = params.get("AccelerateRegion")
+        self._AccelerateRegionName = params.get("AccelerateRegionName")
         self._Bandwidth = params.get("Bandwidth")
         self._IspType = params.get("IspType")
         self._IpVersion = params.get("IpVersion")

@@ -1986,6 +1986,430 @@ class AppAsset(AbstractModel):
         
 
 
+class ApproveTicketRequest(AbstractModel):
+    r"""ApproveTicket请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 工单唯一id，数据库索引id
+        :type Id: int
+        :param _Status: 2-审批通过，4-审批驳回
+        :type Status: int
+        :param _ApproveDesc: 审批意见
+        :type ApproveDesc: str
+        :param _ApplyTimeVersion: 申请时间戳，单位微妙
+        :type ApplyTimeVersion: int
+        :param _StartTime: 审批权限工单时，设置的有效期开始时间，默认为当前时间
+        :type StartTime: str
+        :param _EndTime: 审批权限工单时，设置的有效期的结束时间，默认有限期为1天
+        :type EndTime: str
+        :param _AllowDiskRedirect: 是否开启磁盘映射
+        :type AllowDiskRedirect: bool
+        :param _AllowClipFileUp: 是否开启剪贴板文件上行
+        :type AllowClipFileUp: bool
+        :param _AllowClipFileDown: 是否开启剪贴板文件下行
+        :type AllowClipFileDown: bool
+        :param _AllowClipTextUp: 是否开启剪贴板文本（含图片）上行
+        :type AllowClipTextUp: bool
+        :param _AllowClipTextDown: 是否开启剪贴板文本（含图片）下行
+        :type AllowClipTextDown: bool
+        :param _AllowFileUp: 是否开启 SFTP 文件上传
+        :type AllowFileUp: bool
+        :param _MaxFileUpSize: 文件传输上传大小限制（预留参数，目前暂未使用）
+        :type MaxFileUpSize: int
+        :param _AllowFileDown: 是否开启 SFTP 文件下载
+        :type AllowFileDown: bool
+        :param _MaxFileDownSize: 文件传输下载大小限制（预留参数，目前暂未使用）
+        :type MaxFileDownSize: int
+        :param _AllowDiskFileUp: 是否开启rdp磁盘映射文件上传
+        :type AllowDiskFileUp: bool
+        :param _AllowDiskFileDown: 是否开启rdp磁盘映射文件下载
+        :type AllowDiskFileDown: bool
+        :param _AllowShellFileUp: 是否开启rz sz文件上传
+        :type AllowShellFileUp: bool
+        :param _AllowShellFileDown: 是否开启rz sz文件下载
+        :type AllowShellFileDown: bool
+        :param _AllowFileDel: 是否开启 SFTP 文件删除
+        :type AllowFileDel: bool
+        :param _AllowAccessCredential: 是否允许使用访问串，默认允许
+        :type AllowAccessCredential: bool
+        :param _CmdTemplateIdSet: 关联的高危命令模板ID
+        :type CmdTemplateIdSet: list of int non-negative
+        :param _ACTemplateIdSet: 关联高危DB模板ID
+        :type ACTemplateIdSet: list of str
+        :param _DepartmentId: 部门id
+        :type DepartmentId: str
+        :param _AllowKeyboardLogger: 是否允许键盘记录
+        :type AllowKeyboardLogger: bool
+        """
+        self._Id = None
+        self._Status = None
+        self._ApproveDesc = None
+        self._ApplyTimeVersion = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AllowDiskRedirect = None
+        self._AllowClipFileUp = None
+        self._AllowClipFileDown = None
+        self._AllowClipTextUp = None
+        self._AllowClipTextDown = None
+        self._AllowFileUp = None
+        self._MaxFileUpSize = None
+        self._AllowFileDown = None
+        self._MaxFileDownSize = None
+        self._AllowDiskFileUp = None
+        self._AllowDiskFileDown = None
+        self._AllowShellFileUp = None
+        self._AllowShellFileDown = None
+        self._AllowFileDel = None
+        self._AllowAccessCredential = None
+        self._CmdTemplateIdSet = None
+        self._ACTemplateIdSet = None
+        self._DepartmentId = None
+        self._AllowKeyboardLogger = None
+
+    @property
+    def Id(self):
+        r"""工单唯一id，数据库索引id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        r"""2-审批通过，4-审批驳回
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApproveDesc(self):
+        r"""审批意见
+        :rtype: str
+        """
+        return self._ApproveDesc
+
+    @ApproveDesc.setter
+    def ApproveDesc(self, ApproveDesc):
+        self._ApproveDesc = ApproveDesc
+
+    @property
+    def ApplyTimeVersion(self):
+        r"""申请时间戳，单位微妙
+        :rtype: int
+        """
+        return self._ApplyTimeVersion
+
+    @ApplyTimeVersion.setter
+    def ApplyTimeVersion(self, ApplyTimeVersion):
+        self._ApplyTimeVersion = ApplyTimeVersion
+
+    @property
+    def StartTime(self):
+        r"""审批权限工单时，设置的有效期开始时间，默认为当前时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""审批权限工单时，设置的有效期的结束时间，默认有限期为1天
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AllowDiskRedirect(self):
+        r"""是否开启磁盘映射
+        :rtype: bool
+        """
+        return self._AllowDiskRedirect
+
+    @AllowDiskRedirect.setter
+    def AllowDiskRedirect(self, AllowDiskRedirect):
+        self._AllowDiskRedirect = AllowDiskRedirect
+
+    @property
+    def AllowClipFileUp(self):
+        r"""是否开启剪贴板文件上行
+        :rtype: bool
+        """
+        return self._AllowClipFileUp
+
+    @AllowClipFileUp.setter
+    def AllowClipFileUp(self, AllowClipFileUp):
+        self._AllowClipFileUp = AllowClipFileUp
+
+    @property
+    def AllowClipFileDown(self):
+        r"""是否开启剪贴板文件下行
+        :rtype: bool
+        """
+        return self._AllowClipFileDown
+
+    @AllowClipFileDown.setter
+    def AllowClipFileDown(self, AllowClipFileDown):
+        self._AllowClipFileDown = AllowClipFileDown
+
+    @property
+    def AllowClipTextUp(self):
+        r"""是否开启剪贴板文本（含图片）上行
+        :rtype: bool
+        """
+        return self._AllowClipTextUp
+
+    @AllowClipTextUp.setter
+    def AllowClipTextUp(self, AllowClipTextUp):
+        self._AllowClipTextUp = AllowClipTextUp
+
+    @property
+    def AllowClipTextDown(self):
+        r"""是否开启剪贴板文本（含图片）下行
+        :rtype: bool
+        """
+        return self._AllowClipTextDown
+
+    @AllowClipTextDown.setter
+    def AllowClipTextDown(self, AllowClipTextDown):
+        self._AllowClipTextDown = AllowClipTextDown
+
+    @property
+    def AllowFileUp(self):
+        r"""是否开启 SFTP 文件上传
+        :rtype: bool
+        """
+        return self._AllowFileUp
+
+    @AllowFileUp.setter
+    def AllowFileUp(self, AllowFileUp):
+        self._AllowFileUp = AllowFileUp
+
+    @property
+    def MaxFileUpSize(self):
+        r"""文件传输上传大小限制（预留参数，目前暂未使用）
+        :rtype: int
+        """
+        return self._MaxFileUpSize
+
+    @MaxFileUpSize.setter
+    def MaxFileUpSize(self, MaxFileUpSize):
+        self._MaxFileUpSize = MaxFileUpSize
+
+    @property
+    def AllowFileDown(self):
+        r"""是否开启 SFTP 文件下载
+        :rtype: bool
+        """
+        return self._AllowFileDown
+
+    @AllowFileDown.setter
+    def AllowFileDown(self, AllowFileDown):
+        self._AllowFileDown = AllowFileDown
+
+    @property
+    def MaxFileDownSize(self):
+        r"""文件传输下载大小限制（预留参数，目前暂未使用）
+        :rtype: int
+        """
+        return self._MaxFileDownSize
+
+    @MaxFileDownSize.setter
+    def MaxFileDownSize(self, MaxFileDownSize):
+        self._MaxFileDownSize = MaxFileDownSize
+
+    @property
+    def AllowDiskFileUp(self):
+        r"""是否开启rdp磁盘映射文件上传
+        :rtype: bool
+        """
+        return self._AllowDiskFileUp
+
+    @AllowDiskFileUp.setter
+    def AllowDiskFileUp(self, AllowDiskFileUp):
+        self._AllowDiskFileUp = AllowDiskFileUp
+
+    @property
+    def AllowDiskFileDown(self):
+        r"""是否开启rdp磁盘映射文件下载
+        :rtype: bool
+        """
+        return self._AllowDiskFileDown
+
+    @AllowDiskFileDown.setter
+    def AllowDiskFileDown(self, AllowDiskFileDown):
+        self._AllowDiskFileDown = AllowDiskFileDown
+
+    @property
+    def AllowShellFileUp(self):
+        r"""是否开启rz sz文件上传
+        :rtype: bool
+        """
+        return self._AllowShellFileUp
+
+    @AllowShellFileUp.setter
+    def AllowShellFileUp(self, AllowShellFileUp):
+        self._AllowShellFileUp = AllowShellFileUp
+
+    @property
+    def AllowShellFileDown(self):
+        r"""是否开启rz sz文件下载
+        :rtype: bool
+        """
+        return self._AllowShellFileDown
+
+    @AllowShellFileDown.setter
+    def AllowShellFileDown(self, AllowShellFileDown):
+        self._AllowShellFileDown = AllowShellFileDown
+
+    @property
+    def AllowFileDel(self):
+        r"""是否开启 SFTP 文件删除
+        :rtype: bool
+        """
+        return self._AllowFileDel
+
+    @AllowFileDel.setter
+    def AllowFileDel(self, AllowFileDel):
+        self._AllowFileDel = AllowFileDel
+
+    @property
+    def AllowAccessCredential(self):
+        r"""是否允许使用访问串，默认允许
+        :rtype: bool
+        """
+        return self._AllowAccessCredential
+
+    @AllowAccessCredential.setter
+    def AllowAccessCredential(self, AllowAccessCredential):
+        self._AllowAccessCredential = AllowAccessCredential
+
+    @property
+    def CmdTemplateIdSet(self):
+        r"""关联的高危命令模板ID
+        :rtype: list of int non-negative
+        """
+        return self._CmdTemplateIdSet
+
+    @CmdTemplateIdSet.setter
+    def CmdTemplateIdSet(self, CmdTemplateIdSet):
+        self._CmdTemplateIdSet = CmdTemplateIdSet
+
+    @property
+    def ACTemplateIdSet(self):
+        r"""关联高危DB模板ID
+        :rtype: list of str
+        """
+        return self._ACTemplateIdSet
+
+    @ACTemplateIdSet.setter
+    def ACTemplateIdSet(self, ACTemplateIdSet):
+        self._ACTemplateIdSet = ACTemplateIdSet
+
+    @property
+    def DepartmentId(self):
+        r"""部门id
+        :rtype: str
+        """
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def AllowKeyboardLogger(self):
+        r"""是否允许键盘记录
+        :rtype: bool
+        """
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._ApproveDesc = params.get("ApproveDesc")
+        self._ApplyTimeVersion = params.get("ApplyTimeVersion")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AllowDiskRedirect = params.get("AllowDiskRedirect")
+        self._AllowClipFileUp = params.get("AllowClipFileUp")
+        self._AllowClipFileDown = params.get("AllowClipFileDown")
+        self._AllowClipTextUp = params.get("AllowClipTextUp")
+        self._AllowClipTextDown = params.get("AllowClipTextDown")
+        self._AllowFileUp = params.get("AllowFileUp")
+        self._MaxFileUpSize = params.get("MaxFileUpSize")
+        self._AllowFileDown = params.get("AllowFileDown")
+        self._MaxFileDownSize = params.get("MaxFileDownSize")
+        self._AllowDiskFileUp = params.get("AllowDiskFileUp")
+        self._AllowDiskFileDown = params.get("AllowDiskFileDown")
+        self._AllowShellFileUp = params.get("AllowShellFileUp")
+        self._AllowShellFileDown = params.get("AllowShellFileDown")
+        self._AllowFileDel = params.get("AllowFileDel")
+        self._AllowAccessCredential = params.get("AllowAccessCredential")
+        self._CmdTemplateIdSet = params.get("CmdTemplateIdSet")
+        self._ACTemplateIdSet = params.get("ACTemplateIdSet")
+        self._DepartmentId = params.get("DepartmentId")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproveTicketResponse(AbstractModel):
+    r"""ApproveTicket返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssetSyncFlags(AbstractModel):
     r"""资产同步标志
 
@@ -3444,43 +3868,43 @@ class Command(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: 命令
+        :param _Cmd: <p>命令</p>
         :type Cmd: str
-        :param _Time: 命令输入的时间
+        :param _Time: <p>命令输入的时间</p>
         :type Time: str
-        :param _TimeOffset: 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        :param _TimeOffset: <p>命令执行时间相对于所属会话开始时间的偏移量，单位ms</p>
         :type TimeOffset: int
-        :param _Action: 命令执行情况，1--允许，2--拒绝，3--确认
+        :param _Action: <p>命令执行情况，1--已放行，2--已阻断，3--确认</p>
         :type Action: int
-        :param _Sid: 会话id
+        :param _Sid: <p>会话id</p>
         :type Sid: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _Account: 设备account
+        :param _Account: <p>设备account</p>
         :type Account: str
-        :param _InstanceId: 设备ip
+        :param _InstanceId: <p>设备ip</p>
         :type InstanceId: str
-        :param _FromIp: source ip
+        :param _FromIp: <p>source ip</p>
         :type FromIp: str
-        :param _SessTime: 该命令所属会话的会话开始时间
+        :param _SessTime: <p>该命令所属会话的会话开始时间</p>
         :type SessTime: str
-        :param _SessionTime: 该命令所属会话的会话开始时间
+        :param _SessionTime: <p>该命令所属会话的会话开始时间</p>
         :type SessionTime: str
-        :param _ConfirmTime: 复核时间
+        :param _ConfirmTime: <p>复核时间</p>
         :type ConfirmTime: str
-        :param _UserDepartmentId: 用户部门id
+        :param _UserDepartmentId: <p>用户部门id</p>
         :type UserDepartmentId: str
-        :param _UserDepartmentName: 用户部门name
+        :param _UserDepartmentName: <p>用户部门name</p>
         :type UserDepartmentName: str
-        :param _DeviceDepartmentId: 设备部门id
+        :param _DeviceDepartmentId: <p>设备部门id</p>
         :type DeviceDepartmentId: str
-        :param _DeviceDepartmentName: 设备部门name
+        :param _DeviceDepartmentName: <p>设备部门name</p>
         :type DeviceDepartmentName: str
-        :param _Size: 会话大小
+        :param _Size: <p>会话大小</p>
         :type Size: int
-        :param _SignValue: 签名值
+        :param _SignValue: <p>签名值</p>
         :type SignValue: str
-        :param _DeviceKind: 资产类型
+        :param _DeviceKind: <p>资产类型</p>
         :type DeviceKind: str
         """
         self._Cmd = None
@@ -3505,7 +3929,7 @@ class Command(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""命令
+        r"""<p>命令</p>
         :rtype: str
         """
         return self._Cmd
@@ -3516,7 +3940,7 @@ class Command(AbstractModel):
 
     @property
     def Time(self):
-        r"""命令输入的时间
+        r"""<p>命令输入的时间</p>
         :rtype: str
         """
         return self._Time
@@ -3527,7 +3951,7 @@ class Command(AbstractModel):
 
     @property
     def TimeOffset(self):
-        r"""命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        r"""<p>命令执行时间相对于所属会话开始时间的偏移量，单位ms</p>
         :rtype: int
         """
         return self._TimeOffset
@@ -3538,7 +3962,7 @@ class Command(AbstractModel):
 
     @property
     def Action(self):
-        r"""命令执行情况，1--允许，2--拒绝，3--确认
+        r"""<p>命令执行情况，1--已放行，2--已阻断，3--确认</p>
         :rtype: int
         """
         return self._Action
@@ -3549,7 +3973,7 @@ class Command(AbstractModel):
 
     @property
     def Sid(self):
-        r"""会话id
+        r"""<p>会话id</p>
         :rtype: str
         """
         return self._Sid
@@ -3560,7 +3984,7 @@ class Command(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -3571,7 +3995,7 @@ class Command(AbstractModel):
 
     @property
     def Account(self):
-        r"""设备account
+        r"""<p>设备account</p>
         :rtype: str
         """
         return self._Account
@@ -3582,7 +4006,7 @@ class Command(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""设备ip
+        r"""<p>设备ip</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3593,7 +4017,7 @@ class Command(AbstractModel):
 
     @property
     def FromIp(self):
-        r"""source ip
+        r"""<p>source ip</p>
         :rtype: str
         """
         return self._FromIp
@@ -3604,7 +4028,7 @@ class Command(AbstractModel):
 
     @property
     def SessTime(self):
-        r"""该命令所属会话的会话开始时间
+        r"""<p>该命令所属会话的会话开始时间</p>
         :rtype: str
         """
         return self._SessTime
@@ -3615,7 +4039,7 @@ class Command(AbstractModel):
 
     @property
     def SessionTime(self):
-        r"""该命令所属会话的会话开始时间
+        r"""<p>该命令所属会话的会话开始时间</p>
         :rtype: str
         """
         return self._SessionTime
@@ -3626,7 +4050,7 @@ class Command(AbstractModel):
 
     @property
     def ConfirmTime(self):
-        r"""复核时间
+        r"""<p>复核时间</p>
         :rtype: str
         """
         return self._ConfirmTime
@@ -3637,7 +4061,7 @@ class Command(AbstractModel):
 
     @property
     def UserDepartmentId(self):
-        r"""用户部门id
+        r"""<p>用户部门id</p>
         :rtype: str
         """
         return self._UserDepartmentId
@@ -3648,7 +4072,7 @@ class Command(AbstractModel):
 
     @property
     def UserDepartmentName(self):
-        r"""用户部门name
+        r"""<p>用户部门name</p>
         :rtype: str
         """
         return self._UserDepartmentName
@@ -3659,7 +4083,7 @@ class Command(AbstractModel):
 
     @property
     def DeviceDepartmentId(self):
-        r"""设备部门id
+        r"""<p>设备部门id</p>
         :rtype: str
         """
         return self._DeviceDepartmentId
@@ -3670,7 +4094,7 @@ class Command(AbstractModel):
 
     @property
     def DeviceDepartmentName(self):
-        r"""设备部门name
+        r"""<p>设备部门name</p>
         :rtype: str
         """
         return self._DeviceDepartmentName
@@ -3681,7 +4105,7 @@ class Command(AbstractModel):
 
     @property
     def Size(self):
-        r"""会话大小
+        r"""<p>会话大小</p>
         :rtype: int
         """
         return self._Size
@@ -3692,7 +4116,7 @@ class Command(AbstractModel):
 
     @property
     def SignValue(self):
-        r"""签名值
+        r"""<p>签名值</p>
         :rtype: str
         """
         return self._SignValue
@@ -3703,7 +4127,7 @@ class Command(AbstractModel):
 
     @property
     def DeviceKind(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._DeviceKind
@@ -11344,6 +11768,205 @@ class DescribeSourceTypesResponse(AbstractModel):
                 obj = SourceType()
                 obj._deserialize(item)
                 self._SourceTypeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTicketsRequest(AbstractModel):
+    r"""DescribeTickets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusSet: 状态：0待提交(草稿)，1待审批，2批准，3已执行，4驳回
+        :type StatusSet: list of int non-negative
+        :param _TicketType: 工单类型：0-运维工单，1-权限工单
+        :type TicketType: str
+        :param _Filters: 过滤数组
+        :type Filters: list of Filter
+        :param _DeviceFilters: 资产过滤数组
+        :type DeviceFilters: list of Filter
+        :param _DepartmentId: 部门id
+        :type DepartmentId: str
+        :param _Offset: 分页偏移位置，默认值为0
+        :type Offset: int
+        :param _Limit: 每页条目数量，默认20，最大500
+        :type Limit: int
+        """
+        self._StatusSet = None
+        self._TicketType = None
+        self._Filters = None
+        self._DeviceFilters = None
+        self._DepartmentId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def StatusSet(self):
+        r"""状态：0待提交(草稿)，1待审批，2批准，3已执行，4驳回
+        :rtype: list of int non-negative
+        """
+        return self._StatusSet
+
+    @StatusSet.setter
+    def StatusSet(self, StatusSet):
+        self._StatusSet = StatusSet
+
+    @property
+    def TicketType(self):
+        r"""工单类型：0-运维工单，1-权限工单
+        :rtype: str
+        """
+        return self._TicketType
+
+    @TicketType.setter
+    def TicketType(self, TicketType):
+        self._TicketType = TicketType
+
+    @property
+    def Filters(self):
+        r"""过滤数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DeviceFilters(self):
+        r"""资产过滤数组
+        :rtype: list of Filter
+        """
+        return self._DeviceFilters
+
+    @DeviceFilters.setter
+    def DeviceFilters(self, DeviceFilters):
+        self._DeviceFilters = DeviceFilters
+
+    @property
+    def DepartmentId(self):
+        r"""部门id
+        :rtype: str
+        """
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def Offset(self):
+        r"""分页偏移位置，默认值为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页条目数量，默认20，最大500
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._StatusSet = params.get("StatusSet")
+        self._TicketType = params.get("TicketType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("DeviceFilters") is not None:
+            self._DeviceFilters = []
+            for item in params.get("DeviceFilters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._DeviceFilters.append(obj)
+        self._DepartmentId = params.get("DepartmentId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTicketsResponse(AbstractModel):
+    r"""DescribeTickets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 运维工单总数
+        :type TotalCount: int
+        :param _TicketSet: 运维工单列表
+        :type TicketSet: list of Ticket
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TicketSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""运维工单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TicketSet(self):
+        r"""运维工单列表
+        :rtype: list of Ticket
+        """
+        return self._TicketSet
+
+    @TicketSet.setter
+    def TicketSet(self, TicketSet):
+        self._TicketSet = TicketSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TicketSet") is not None:
+            self._TicketSet = []
+            for item in params.get("TicketSet"):
+                obj = Ticket()
+                obj._deserialize(item)
+                self._TicketSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20553,18 +21176,17 @@ class SearchCommandBySidRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sid: 会话Id
+        :param _Sid: <p>会话Id</p>
         :type Sid: str
-        :param _Cmd: 命令，可模糊搜索
+        :param _Cmd: <p>命令，可模糊搜索</p>
         :type Cmd: str
-        :param _Encoding: Cmd字段是前端传值是否进行base64.
-0:否，1：是
+        :param _Encoding: <p>Cmd字段是前端传值是否进行base64.<br>0:否，1：是</p>
         :type Encoding: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 每页容量，默认20，最大200
+        :param _Limit: <p>每页容量，默认20，最大200</p>
         :type Limit: int
-        :param _AuditAction: 根据拦截状态进行过滤
+        :param _AuditAction: <p>根据拦截状态进行过滤，1-已放行，2-已阻断，3-复核</p>
         :type AuditAction: list of int non-negative
         """
         self._Sid = None
@@ -20576,7 +21198,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def Sid(self):
-        r"""会话Id
+        r"""<p>会话Id</p>
         :rtype: str
         """
         return self._Sid
@@ -20587,7 +21209,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""命令，可模糊搜索
+        r"""<p>命令，可模糊搜索</p>
         :rtype: str
         """
         return self._Cmd
@@ -20598,8 +21220,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        r"""Cmd字段是前端传值是否进行base64.
-0:否，1：是
+        r"""<p>Cmd字段是前端传值是否进行base64.<br>0:否，1：是</p>
         :rtype: int
         """
         return self._Encoding
@@ -20610,7 +21231,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -20621,7 +21242,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页容量，默认20，最大200
+        r"""<p>每页容量，默认20，最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -20632,7 +21253,7 @@ class SearchCommandBySidRequest(AbstractModel):
 
     @property
     def AuditAction(self):
-        r"""根据拦截状态进行过滤
+        r"""<p>根据拦截状态进行过滤，1-已放行，2-已阻断，3-复核</p>
         :rtype: list of int non-negative
         """
         return self._AuditAction
@@ -20666,9 +21287,9 @@ class SearchCommandBySidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总记录数
+        :param _TotalCount: <p>总记录数</p>
         :type TotalCount: int
-        :param _CommandSet: 命令列表
+        :param _CommandSet: <p>命令列表</p>
         :type CommandSet: list of Command
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20679,7 +21300,7 @@ class SearchCommandBySidResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总记录数
+        r"""<p>总记录数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -20690,7 +21311,7 @@ class SearchCommandBySidResponse(AbstractModel):
 
     @property
     def CommandSet(self):
-        r"""命令列表
+        r"""<p>命令列表</p>
         :rtype: list of Command
         """
         return self._CommandSet
@@ -20729,32 +21350,31 @@ class SearchCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 搜索区间的开始时间
+        :param _StartTime: <p>搜索区间的开始时间</p>
         :type StartTime: str
-        :param _EndTime: 搜索区间的结束时间，不填默认为开始时间到现在为止
+        :param _EndTime: <p>搜索区间的结束时间，不填默认为开始时间到现在为止</p>
         :type EndTime: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _RealName: 姓名
+        :param _RealName: <p>姓名</p>
         :type RealName: str
-        :param _InstanceId: 资产实例ID
+        :param _InstanceId: <p>资产实例ID</p>
         :type InstanceId: str
-        :param _DeviceName: 资产名称
+        :param _DeviceName: <p>资产名称</p>
         :type DeviceName: str
-        :param _PublicIp: 资产的公网IP
+        :param _PublicIp: <p>资产的公网IP</p>
         :type PublicIp: str
-        :param _PrivateIp: 资产的内网IP
+        :param _PrivateIp: <p>资产的内网IP</p>
         :type PrivateIp: str
-        :param _Cmd: 执行的命令
+        :param _Cmd: <p>执行的命令</p>
         :type Cmd: str
-        :param _Encoding: Cmd字段是前端传值是否进行base64.
-0:否，1：是
+        :param _Encoding: <p>Cmd字段是前端传值是否进行base64.<br>0:否，1：是</p>
         :type Encoding: int
-        :param _AuditAction: 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
+        :param _AuditAction: <p>根据拦截状态进行过滤：1 - 已放行，2 - 已阻断</p>
         :type AuditAction: list of int non-negative
-        :param _Limit: 每页容量，默认20，最大200
+        :param _Limit: <p>每页容量，默认20，最大200</p>
         :type Limit: int
-        :param _Offset: 分页偏移位置，默认值为0
+        :param _Offset: <p>分页偏移位置，默认值为0</p>
         :type Offset: int
         """
         self._StartTime = None
@@ -20773,7 +21393,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""搜索区间的开始时间
+        r"""<p>搜索区间的开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -20784,7 +21404,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""搜索区间的结束时间，不填默认为开始时间到现在为止
+        r"""<p>搜索区间的结束时间，不填默认为开始时间到现在为止</p>
         :rtype: str
         """
         return self._EndTime
@@ -20795,7 +21415,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -20806,7 +21426,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def RealName(self):
-        r"""姓名
+        r"""<p>姓名</p>
         :rtype: str
         """
         return self._RealName
@@ -20817,7 +21437,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""资产实例ID
+        r"""<p>资产实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -20828,7 +21448,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""资产名称
+        r"""<p>资产名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -20839,7 +21459,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""资产的公网IP
+        r"""<p>资产的公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -20850,7 +21470,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""资产的内网IP
+        r"""<p>资产的内网IP</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -20861,7 +21481,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""执行的命令
+        r"""<p>执行的命令</p>
         :rtype: str
         """
         return self._Cmd
@@ -20872,8 +21492,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        r"""Cmd字段是前端传值是否进行base64.
-0:否，1：是
+        r"""<p>Cmd字段是前端传值是否进行base64.<br>0:否，1：是</p>
         :rtype: int
         """
         return self._Encoding
@@ -20884,7 +21503,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def AuditAction(self):
-        r"""根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
+        r"""<p>根据拦截状态进行过滤：1 - 已放行，2 - 已阻断</p>
         :rtype: list of int non-negative
         """
         return self._AuditAction
@@ -20895,7 +21514,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页容量，默认20，最大200
+        r"""<p>每页容量，默认20，最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -20906,7 +21525,7 @@ class SearchCommandRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移位置，默认值为0
+        r"""<p>分页偏移位置，默认值为0</p>
         :rtype: int
         """
         return self._Offset
@@ -20947,9 +21566,9 @@ class SearchCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总记录数
+        :param _TotalCount: <p>总记录数</p>
         :type TotalCount: int
-        :param _Commands: 命令列表
+        :param _Commands: <p>命令列表</p>
         :type Commands: list of SearchCommandResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20960,7 +21579,7 @@ class SearchCommandResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总记录数
+        r"""<p>总记录数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -20971,7 +21590,7 @@ class SearchCommandResponse(AbstractModel):
 
     @property
     def Commands(self):
-        r"""命令列表
+        r"""<p>命令列表</p>
         :rtype: list of SearchCommandResult
         """
         return self._Commands
@@ -21010,51 +21629,51 @@ class SearchCommandResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: 命令输入的时间
+        :param _Time: <p>命令输入的时间</p>
         :type Time: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _RealName: 姓名
+        :param _RealName: <p>姓名</p>
         :type RealName: str
-        :param _InstanceId: 资产ID
+        :param _InstanceId: <p>资产ID</p>
         :type InstanceId: str
-        :param _DeviceName: 资产名称
+        :param _DeviceName: <p>资产名称</p>
         :type DeviceName: str
-        :param _PublicIp: 资产公网IP
+        :param _PublicIp: <p>资产公网IP</p>
         :type PublicIp: str
-        :param _PrivateIp: 资产内网IP
+        :param _PrivateIp: <p>资产内网IP</p>
         :type PrivateIp: str
-        :param _Cmd: 命令
+        :param _Cmd: <p>命令</p>
         :type Cmd: str
-        :param _Action: 命令执行情况，1--允许，2--拒绝
+        :param _Action: <p>命令执行情况，1--已放行，2--已阻断</p>
         :type Action: int
-        :param _Sid: 命令所属的会话ID
+        :param _Sid: <p>命令所属的会话ID</p>
         :type Sid: str
-        :param _TimeOffset: 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        :param _TimeOffset: <p>命令执行时间相对于所属会话开始时间的偏移量，单位ms</p>
         :type TimeOffset: int
-        :param _Account: 账号
+        :param _Account: <p>账号</p>
         :type Account: str
-        :param _FromIp: source ip
+        :param _FromIp: <p>source ip</p>
         :type FromIp: str
-        :param _SessionTime: 该命令所属会话的会话开始时间
+        :param _SessionTime: <p>该命令所属会话的会话开始时间</p>
         :type SessionTime: str
-        :param _SessTime: 该命令所属会话的会话开始时间（使用SessionTime）
+        :param _SessTime: <p>该命令所属会话的会话开始时间（使用SessionTime）</p>
         :type SessTime: str
-        :param _ConfirmTime: 复核时间
+        :param _ConfirmTime: <p>复核时间</p>
         :type ConfirmTime: str
-        :param _UserDepartmentId: 部门id
+        :param _UserDepartmentId: <p>部门id</p>
         :type UserDepartmentId: str
-        :param _UserDepartmentName: 用户部门名称
+        :param _UserDepartmentName: <p>用户部门名称</p>
         :type UserDepartmentName: str
-        :param _DeviceDepartmentId: 设备部门id
+        :param _DeviceDepartmentId: <p>设备部门id</p>
         :type DeviceDepartmentId: str
-        :param _DeviceDepartmentName: 设备部门名称
+        :param _DeviceDepartmentName: <p>设备部门名称</p>
         :type DeviceDepartmentName: str
-        :param _Size: 会话大小
+        :param _Size: <p>会话大小</p>
         :type Size: int
-        :param _SignValue: 签名值
+        :param _SignValue: <p>签名值</p>
         :type SignValue: str
-        :param _DeviceKind: 资产类型
+        :param _DeviceKind: <p>资产类型</p>
         :type DeviceKind: str
         """
         self._Time = None
@@ -21083,7 +21702,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Time(self):
-        r"""命令输入的时间
+        r"""<p>命令输入的时间</p>
         :rtype: str
         """
         return self._Time
@@ -21094,7 +21713,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -21105,7 +21724,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def RealName(self):
-        r"""姓名
+        r"""<p>姓名</p>
         :rtype: str
         """
         return self._RealName
@@ -21116,7 +21735,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21127,7 +21746,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""资产名称
+        r"""<p>资产名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -21138,7 +21757,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""资产公网IP
+        r"""<p>资产公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -21149,7 +21768,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""资产内网IP
+        r"""<p>资产内网IP</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -21160,7 +21779,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""命令
+        r"""<p>命令</p>
         :rtype: str
         """
         return self._Cmd
@@ -21171,7 +21790,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Action(self):
-        r"""命令执行情况，1--允许，2--拒绝
+        r"""<p>命令执行情况，1--已放行，2--已阻断</p>
         :rtype: int
         """
         return self._Action
@@ -21182,7 +21801,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Sid(self):
-        r"""命令所属的会话ID
+        r"""<p>命令所属的会话ID</p>
         :rtype: str
         """
         return self._Sid
@@ -21193,7 +21812,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def TimeOffset(self):
-        r"""命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        r"""<p>命令执行时间相对于所属会话开始时间的偏移量，单位ms</p>
         :rtype: int
         """
         return self._TimeOffset
@@ -21204,7 +21823,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Account(self):
-        r"""账号
+        r"""<p>账号</p>
         :rtype: str
         """
         return self._Account
@@ -21215,7 +21834,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def FromIp(self):
-        r"""source ip
+        r"""<p>source ip</p>
         :rtype: str
         """
         return self._FromIp
@@ -21226,7 +21845,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def SessionTime(self):
-        r"""该命令所属会话的会话开始时间
+        r"""<p>该命令所属会话的会话开始时间</p>
         :rtype: str
         """
         return self._SessionTime
@@ -21237,7 +21856,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def SessTime(self):
-        r"""该命令所属会话的会话开始时间（使用SessionTime）
+        r"""<p>该命令所属会话的会话开始时间（使用SessionTime）</p>
         :rtype: str
         """
         return self._SessTime
@@ -21248,7 +21867,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def ConfirmTime(self):
-        r"""复核时间
+        r"""<p>复核时间</p>
         :rtype: str
         """
         return self._ConfirmTime
@@ -21259,7 +21878,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def UserDepartmentId(self):
-        r"""部门id
+        r"""<p>部门id</p>
         :rtype: str
         """
         return self._UserDepartmentId
@@ -21270,7 +21889,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def UserDepartmentName(self):
-        r"""用户部门名称
+        r"""<p>用户部门名称</p>
         :rtype: str
         """
         return self._UserDepartmentName
@@ -21281,7 +21900,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def DeviceDepartmentId(self):
-        r"""设备部门id
+        r"""<p>设备部门id</p>
         :rtype: str
         """
         return self._DeviceDepartmentId
@@ -21292,7 +21911,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def DeviceDepartmentName(self):
-        r"""设备部门名称
+        r"""<p>设备部门名称</p>
         :rtype: str
         """
         return self._DeviceDepartmentName
@@ -21303,7 +21922,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def Size(self):
-        r"""会话大小
+        r"""<p>会话大小</p>
         :rtype: int
         """
         return self._Size
@@ -21314,7 +21933,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def SignValue(self):
-        r"""签名值
+        r"""<p>签名值</p>
         :rtype: str
         """
         return self._SignValue
@@ -21325,7 +21944,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def DeviceKind(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._DeviceKind
@@ -21376,21 +21995,21 @@ class SearchFileBySidRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sid: 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+        :param _Sid: <p>若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话</p>
         :type Sid: str
-        :param _AuditLog: 是否创建审计日志,通过查看按钮调用时为true,其他为false
+        :param _AuditLog: <p>是否创建审计日志,通过查看按钮调用时为true,其他为false</p>
         :type AuditLog: bool
-        :param _Limit: 分页的页内记录数，默认为20，最大200
+        :param _Limit: <p>分页的页内记录数，默认为20，最大200</p>
         :type Limit: int
-        :param _FileName: 可填写路径名或文件名
+        :param _FileName: <p>可填写路径名或文件名</p>
         :type FileName: str
-        :param _Offset: 分页用偏移量
+        :param _Offset: <p>分页用偏移量</p>
         :type Offset: int
-        :param _AuditAction: 1-已执行，  2-被阻断
+        :param _AuditAction: <p>1-已放行，  2-已阻断</p>
         :type AuditAction: int
-        :param _AuditActionSet: 1-已执行，  2-被阻断
+        :param _AuditActionSet: <p>1-已放行，  2-已阻断</p>
         :type AuditActionSet: list of int
-        :param _TypeFilters: 以Protocol和Method为条件查询
+        :param _TypeFilters: <p>以Protocol和Method为条件查询</p>
         :type TypeFilters: list of SearchFileTypeFilter
         """
         self._Sid = None
@@ -21404,7 +22023,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def Sid(self):
-        r"""若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+        r"""<p>若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话</p>
         :rtype: str
         """
         return self._Sid
@@ -21415,7 +22034,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def AuditLog(self):
-        r"""是否创建审计日志,通过查看按钮调用时为true,其他为false
+        r"""<p>是否创建审计日志,通过查看按钮调用时为true,其他为false</p>
         :rtype: bool
         """
         return self._AuditLog
@@ -21426,7 +22045,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页的页内记录数，默认为20，最大200
+        r"""<p>分页的页内记录数，默认为20，最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -21437,7 +22056,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""可填写路径名或文件名
+        r"""<p>可填写路径名或文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -21448,7 +22067,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页用偏移量
+        r"""<p>分页用偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -21459,7 +22078,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def AuditAction(self):
-        r"""1-已执行，  2-被阻断
+        r"""<p>1-已放行，  2-已阻断</p>
         :rtype: int
         """
         return self._AuditAction
@@ -21470,7 +22089,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def AuditActionSet(self):
-        r"""1-已执行，  2-被阻断
+        r"""<p>1-已放行，  2-已阻断</p>
         :rtype: list of int
         """
         return self._AuditActionSet
@@ -21481,7 +22100,7 @@ class SearchFileBySidRequest(AbstractModel):
 
     @property
     def TypeFilters(self):
-        r"""以Protocol和Method为条件查询
+        r"""<p>以Protocol和Method为条件查询</p>
         :rtype: list of SearchFileTypeFilter
         """
         return self._TypeFilters
@@ -21522,9 +22141,9 @@ class SearchFileBySidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数
+        :param _TotalCount: <p>记录数</p>
         :type TotalCount: int
-        :param _SearchFileBySidResult: 某会话的文件操作列表
+        :param _SearchFileBySidResult: <p>某会话的文件操作列表</p>
         :type SearchFileBySidResult: list of SearchFileBySidResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21535,7 +22154,7 @@ class SearchFileBySidResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""记录数
+        r"""<p>记录数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -21546,7 +22165,7 @@ class SearchFileBySidResponse(AbstractModel):
 
     @property
     def SearchFileBySidResult(self):
-        r"""某会话的文件操作列表
+        r"""<p>某会话的文件操作列表</p>
         :rtype: list of SearchFileBySidResult
         """
         return self._SearchFileBySidResult
@@ -21585,41 +22204,41 @@ class SearchFileBySidResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sid: 会话Id
+        :param _Sid: <p>会话Id</p>
         :type Sid: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _Account: 资产账号
+        :param _Account: <p>资产账号</p>
         :type Account: str
-        :param _FromIp: 来源Ip
+        :param _FromIp: <p>来源Ip</p>
         :type FromIp: str
-        :param _Time: 文件操作时间
+        :param _Time: <p>文件操作时间</p>
         :type Time: str
-        :param _Method: 1-上传文件 2-下载文件 3-删除文件 4-移动文件 5-重命名文件 6-新建文件夹 7-移动文件夹 8-重命名文件夹 9-删除文件夹
+        :param _Method: <p>1-上传文件 2-下载文件 3-删除文件 4-移动文件 5-重命名文件 6-新建文件夹 7-移动文件夹 8-重命名文件夹 9-删除文件夹</p>
         :type Method: int
-        :param _Protocol: 文件传输协议
+        :param _Protocol: <p>文件传输协议</p>
         :type Protocol: str
-        :param _FileCurr: method为上传、下载、删除时文件在服务器上的位置, 或重命名、移动文件前文件的位置
+        :param _FileCurr: <p>method为上传、下载、删除时文件在服务器上的位置, 或重命名、移动文件前文件的位置</p>
         :type FileCurr: str
-        :param _FileNew: method为重命名、移动文件时代表移动后的新位置.其他情况为null
+        :param _FileNew: <p>method为重命名、移动文件时代表移动后的新位置.其他情况为null</p>
         :type FileNew: str
-        :param _Size: method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null
+        :param _Size: <p>method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null</p>
         :type Size: int
-        :param _Action: 堡垒机拦截情况, 1-已执行，  2-被阻断
+        :param _Action: <p>堡垒机拦截情况, 1-已放行，  2-已阻断</p>
         :type Action: int
-        :param _ConfirmTime: 复核时间，当Action是3时，需有复核时间
+        :param _ConfirmTime: <p>复核时间，当Action是3时，需有复核时间</p>
         :type ConfirmTime: str
-        :param _UserDepartmentId: 用户部门Id
+        :param _UserDepartmentId: <p>用户部门Id</p>
         :type UserDepartmentId: str
-        :param _UserDepartmentName: 用户部门name
+        :param _UserDepartmentName: <p>用户部门name</p>
         :type UserDepartmentName: str
-        :param _DeviceDepartmentId: 设备部门id
+        :param _DeviceDepartmentId: <p>设备部门id</p>
         :type DeviceDepartmentId: str
-        :param _DeviceDepartmentName: 设备部门name
+        :param _DeviceDepartmentName: <p>设备部门name</p>
         :type DeviceDepartmentName: str
-        :param _SignValue: 签名值
+        :param _SignValue: <p>签名值</p>
         :type SignValue: str
         """
         self._Sid = None
@@ -21643,7 +22262,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Sid(self):
-        r"""会话Id
+        r"""<p>会话Id</p>
         :rtype: str
         """
         return self._Sid
@@ -21654,7 +22273,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -21665,7 +22284,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21676,7 +22295,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Account(self):
-        r"""资产账号
+        r"""<p>资产账号</p>
         :rtype: str
         """
         return self._Account
@@ -21687,7 +22306,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def FromIp(self):
-        r"""来源Ip
+        r"""<p>来源Ip</p>
         :rtype: str
         """
         return self._FromIp
@@ -21698,7 +22317,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Time(self):
-        r"""文件操作时间
+        r"""<p>文件操作时间</p>
         :rtype: str
         """
         return self._Time
@@ -21709,7 +22328,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Method(self):
-        r"""1-上传文件 2-下载文件 3-删除文件 4-移动文件 5-重命名文件 6-新建文件夹 7-移动文件夹 8-重命名文件夹 9-删除文件夹
+        r"""<p>1-上传文件 2-下载文件 3-删除文件 4-移动文件 5-重命名文件 6-新建文件夹 7-移动文件夹 8-重命名文件夹 9-删除文件夹</p>
         :rtype: int
         """
         return self._Method
@@ -21720,7 +22339,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""文件传输协议
+        r"""<p>文件传输协议</p>
         :rtype: str
         """
         return self._Protocol
@@ -21731,7 +22350,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def FileCurr(self):
-        r"""method为上传、下载、删除时文件在服务器上的位置, 或重命名、移动文件前文件的位置
+        r"""<p>method为上传、下载、删除时文件在服务器上的位置, 或重命名、移动文件前文件的位置</p>
         :rtype: str
         """
         return self._FileCurr
@@ -21742,7 +22361,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def FileNew(self):
-        r"""method为重命名、移动文件时代表移动后的新位置.其他情况为null
+        r"""<p>method为重命名、移动文件时代表移动后的新位置.其他情况为null</p>
         :rtype: str
         """
         return self._FileNew
@@ -21753,7 +22372,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Size(self):
-        r"""method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null
+        r"""<p>method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null</p>
         :rtype: int
         """
         return self._Size
@@ -21764,7 +22383,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def Action(self):
-        r"""堡垒机拦截情况, 1-已执行，  2-被阻断
+        r"""<p>堡垒机拦截情况, 1-已放行，  2-已阻断</p>
         :rtype: int
         """
         return self._Action
@@ -21775,7 +22394,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def ConfirmTime(self):
-        r"""复核时间，当Action是3时，需有复核时间
+        r"""<p>复核时间，当Action是3时，需有复核时间</p>
         :rtype: str
         """
         return self._ConfirmTime
@@ -21786,7 +22405,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def UserDepartmentId(self):
-        r"""用户部门Id
+        r"""<p>用户部门Id</p>
         :rtype: str
         """
         return self._UserDepartmentId
@@ -21797,7 +22416,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def UserDepartmentName(self):
-        r"""用户部门name
+        r"""<p>用户部门name</p>
         :rtype: str
         """
         return self._UserDepartmentName
@@ -21808,7 +22427,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def DeviceDepartmentId(self):
-        r"""设备部门id
+        r"""<p>设备部门id</p>
         :rtype: str
         """
         return self._DeviceDepartmentId
@@ -21819,7 +22438,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def DeviceDepartmentName(self):
-        r"""设备部门name
+        r"""<p>设备部门name</p>
         :rtype: str
         """
         return self._DeviceDepartmentName
@@ -21830,7 +22449,7 @@ class SearchFileBySidResult(AbstractModel):
 
     @property
     def SignValue(self):
-        r"""签名值
+        r"""<p>签名值</p>
         :rtype: str
         """
         return self._SignValue
@@ -21876,31 +22495,31 @@ class SearchFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 查询开始时间
+        :param _StartTime: <p>查询开始时间</p>
         :type StartTime: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: <p>查询结束时间</p>
         :type EndTime: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _RealName: 姓名
+        :param _RealName: <p>姓名</p>
         :type RealName: str
-        :param _InstanceId: 资产ID
+        :param _InstanceId: <p>资产ID</p>
         :type InstanceId: str
-        :param _DeviceName: 资产名称
+        :param _DeviceName: <p>资产名称</p>
         :type DeviceName: str
-        :param _PublicIp: 资产公网IP
+        :param _PublicIp: <p>资产公网IP</p>
         :type PublicIp: str
-        :param _PrivateIp: 资产内网IP
+        :param _PrivateIp: <p>资产内网IP</p>
         :type PrivateIp: str
-        :param _Method: 操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+        :param _Method: <p>操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹</p>
         :type Method: list of int non-negative
-        :param _FileName: 可填写路径名或文件（夹）名
+        :param _FileName: <p>可填写路径名或文件（夹）名</p>
         :type FileName: str
-        :param _AuditAction: 1-已执行，  2-被阻断
+        :param _AuditAction: <p>1-已放行，  2-已阻断</p>
         :type AuditAction: list of int non-negative
-        :param _Limit: 分页的页内记录数，默认为20，最大200
+        :param _Limit: <p>分页的页内记录数，默认为20，最大200</p>
         :type Limit: int
-        :param _Offset: 分页偏移位置，默认值为0
+        :param _Offset: <p>分页偏移位置，默认值为0</p>
         :type Offset: int
         """
         self._StartTime = None
@@ -21919,7 +22538,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询开始时间
+        r"""<p>查询开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -21930,7 +22549,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间
+        r"""<p>查询结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -21941,7 +22560,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -21952,7 +22571,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def RealName(self):
-        r"""姓名
+        r"""<p>姓名</p>
         :rtype: str
         """
         return self._RealName
@@ -21963,7 +22582,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21974,7 +22593,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""资产名称
+        r"""<p>资产名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -21985,7 +22604,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""资产公网IP
+        r"""<p>资产公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -21996,7 +22615,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""资产内网IP
+        r"""<p>资产内网IP</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -22007,7 +22626,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def Method(self):
-        r"""操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+        r"""<p>操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹</p>
         :rtype: list of int non-negative
         """
         return self._Method
@@ -22018,7 +22637,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""可填写路径名或文件（夹）名
+        r"""<p>可填写路径名或文件（夹）名</p>
         :rtype: str
         """
         return self._FileName
@@ -22029,7 +22648,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def AuditAction(self):
-        r"""1-已执行，  2-被阻断
+        r"""<p>1-已放行，  2-已阻断</p>
         :rtype: list of int non-negative
         """
         return self._AuditAction
@@ -22040,7 +22659,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页的页内记录数，默认为20，最大200
+        r"""<p>分页的页内记录数，默认为20，最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -22051,7 +22670,7 @@ class SearchFileRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移位置，默认值为0
+        r"""<p>分页偏移位置，默认值为0</p>
         :rtype: int
         """
         return self._Offset
@@ -22092,9 +22711,9 @@ class SearchFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数
+        :param _TotalCount: <p>记录数</p>
         :type TotalCount: int
-        :param _Files: 文件操作列表
+        :param _Files: <p>文件操作列表</p>
         :type Files: list of SearchFileResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22105,7 +22724,7 @@ class SearchFileResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""记录数
+        r"""<p>记录数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -22116,7 +22735,7 @@ class SearchFileResponse(AbstractModel):
 
     @property
     def Files(self):
-        r"""文件操作列表
+        r"""<p>文件操作列表</p>
         :rtype: list of SearchFileResult
         """
         return self._Files
@@ -22155,49 +22774,49 @@ class SearchFileResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: 文件传输的时间
+        :param _Time: <p>文件传输的时间</p>
         :type Time: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _RealName: 姓名
+        :param _RealName: <p>姓名</p>
         :type RealName: str
-        :param _InstanceId: 资产ID
+        :param _InstanceId: <p>资产ID</p>
         :type InstanceId: str
-        :param _DeviceName: 资产名称
+        :param _DeviceName: <p>资产名称</p>
         :type DeviceName: str
-        :param _PublicIp: 资产公网IP
+        :param _PublicIp: <p>资产公网IP</p>
         :type PublicIp: str
-        :param _PrivateIp: 资产内网IP
+        :param _PrivateIp: <p>资产内网IP</p>
         :type PrivateIp: str
-        :param _Action: 操作结果：1 - 已执行，2 - 已阻断
+        :param _Action: <p>操作结果：1 - 已放行，2 - 已阻断</p>
         :type Action: int
-        :param _Method: 操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+        :param _Method: <p>操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹</p>
         :type Method: int
-        :param _FileCurr: 下载的文件（夹）路径及名称
+        :param _FileCurr: <p>下载的文件（夹）路径及名称</p>
         :type FileCurr: str
-        :param _FileNew: 上传或新建文件（夹）路径及名称
+        :param _FileNew: <p>上传或新建文件（夹）路径及名称</p>
         :type FileNew: str
-        :param _Sid: 会话id
+        :param _Sid: <p>会话id</p>
         :type Sid: str
-        :param _Account: 账号
+        :param _Account: <p>账号</p>
         :type Account: str
-        :param _FromIp: 来源id
+        :param _FromIp: <p>来源id</p>
         :type FromIp: str
-        :param _Protocol: 协议
+        :param _Protocol: <p>协议</p>
         :type Protocol: str
-        :param _Size: 文件大小
+        :param _Size: <p>文件大小</p>
         :type Size: int
-        :param _ConfirmTime: 复核时间
+        :param _ConfirmTime: <p>复核时间</p>
         :type ConfirmTime: str
-        :param _UserDepartmentId: 用户部门id
+        :param _UserDepartmentId: <p>用户部门id</p>
         :type UserDepartmentId: str
-        :param _UserDepartmentName: 用户部门name
+        :param _UserDepartmentName: <p>用户部门name</p>
         :type UserDepartmentName: str
-        :param _DeviceDepartmentId: 设备部门id
+        :param _DeviceDepartmentId: <p>设备部门id</p>
         :type DeviceDepartmentId: str
-        :param _DeviceDepartmentName: 设备部门name	
+        :param _DeviceDepartmentName: <p>设备部门name</p>
         :type DeviceDepartmentName: str
-        :param _SignValue: 签名值
+        :param _SignValue: <p>签名值</p>
         :type SignValue: str
         """
         self._Time = None
@@ -22225,7 +22844,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Time(self):
-        r"""文件传输的时间
+        r"""<p>文件传输的时间</p>
         :rtype: str
         """
         return self._Time
@@ -22236,7 +22855,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -22247,7 +22866,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def RealName(self):
-        r"""姓名
+        r"""<p>姓名</p>
         :rtype: str
         """
         return self._RealName
@@ -22258,7 +22877,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -22269,7 +22888,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""资产名称
+        r"""<p>资产名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -22280,7 +22899,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""资产公网IP
+        r"""<p>资产公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -22291,7 +22910,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""资产内网IP
+        r"""<p>资产内网IP</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -22302,7 +22921,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Action(self):
-        r"""操作结果：1 - 已执行，2 - 已阻断
+        r"""<p>操作结果：1 - 已放行，2 - 已阻断</p>
         :rtype: int
         """
         return self._Action
@@ -22313,7 +22932,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Method(self):
-        r"""操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+        r"""<p>操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹</p>
         :rtype: int
         """
         return self._Method
@@ -22324,7 +22943,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def FileCurr(self):
-        r"""下载的文件（夹）路径及名称
+        r"""<p>下载的文件（夹）路径及名称</p>
         :rtype: str
         """
         return self._FileCurr
@@ -22335,7 +22954,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def FileNew(self):
-        r"""上传或新建文件（夹）路径及名称
+        r"""<p>上传或新建文件（夹）路径及名称</p>
         :rtype: str
         """
         return self._FileNew
@@ -22346,7 +22965,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Sid(self):
-        r"""会话id
+        r"""<p>会话id</p>
         :rtype: str
         """
         return self._Sid
@@ -22357,7 +22976,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Account(self):
-        r"""账号
+        r"""<p>账号</p>
         :rtype: str
         """
         return self._Account
@@ -22368,7 +22987,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def FromIp(self):
-        r"""来源id
+        r"""<p>来源id</p>
         :rtype: str
         """
         return self._FromIp
@@ -22379,7 +22998,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议
+        r"""<p>协议</p>
         :rtype: str
         """
         return self._Protocol
@@ -22390,7 +23009,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def Size(self):
-        r"""文件大小
+        r"""<p>文件大小</p>
         :rtype: int
         """
         return self._Size
@@ -22401,7 +23020,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def ConfirmTime(self):
-        r"""复核时间
+        r"""<p>复核时间</p>
         :rtype: str
         """
         return self._ConfirmTime
@@ -22412,7 +23031,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def UserDepartmentId(self):
-        r"""用户部门id
+        r"""<p>用户部门id</p>
         :rtype: str
         """
         return self._UserDepartmentId
@@ -22423,7 +23042,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def UserDepartmentName(self):
-        r"""用户部门name
+        r"""<p>用户部门name</p>
         :rtype: str
         """
         return self._UserDepartmentName
@@ -22434,7 +23053,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def DeviceDepartmentId(self):
-        r"""设备部门id
+        r"""<p>设备部门id</p>
         :rtype: str
         """
         return self._DeviceDepartmentId
@@ -22445,7 +23064,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def DeviceDepartmentName(self):
-        r"""设备部门name	
+        r"""<p>设备部门name</p>
         :rtype: str
         """
         return self._DeviceDepartmentName
@@ -22456,7 +23075,7 @@ class SearchFileResult(AbstractModel):
 
     @property
     def SignValue(self):
-        r"""签名值
+        r"""<p>签名值</p>
         :rtype: str
         """
         return self._SignValue
@@ -24801,6 +25420,379 @@ class TaskResult(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Ticket(AbstractModel):
+    r"""运维工单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据库主键</p>
+        :type Id: int
+        :param _TicketId: <p>工单ID,id-s3ed4r5e</p>
+        :type TicketId: str
+        :param _TicketType: <p>工单类型，0-运维访问工单，1-权限工单, 2-数据库变更工单,3-自动执行命令/脚本工单</p>
+        :type TicketType: int
+        :param _Acl: <p>acl权限</p>
+        :type Acl: :class:`tencentcloud.bh.v20230418.models.Acl`
+        :param _StartTime: <p>运维开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>运维结束时间</p>
+        :type EndTime: str
+        :param _Status: <p>工单状态，0待提交(草稿)，1待审批，2批准，3已执行，4驳回,5删除，6过期</p>
+        :type Status: int
+        :param _ApplyTime: <p>申请时间</p>
+        :type ApplyTime: str
+        :param _ApplyUser: <p>申请人用户Id</p>
+        :type ApplyUser: int
+        :param _ApproveUser: <p>审批人uin</p>
+        :type ApproveUser: str
+        :param _ApproveDesc: <p>工单审批备注</p>
+        :type ApproveDesc: str
+        :param _AclId: <p>acl权限Id</p>
+        :type AclId: int
+        :param _ApproveUserSet: <p>待审批状态下，可以审批的人</p>
+        :type ApproveUserSet: list of str
+        :param _ApproveUserInfoSet: <p>审批人信息</p>
+        :type ApproveUserInfoSet: list of DepartmentManagerUser
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Name: <p>申请权限</p>
+        :type Name: str
+        :param _ApproveTime: <p>审批时间</p>
+        :type ApproveTime: str
+        :param _DepartmentId: <p>部门ID</p>
+        :type DepartmentId: str
+        :param _DepartmentName: <p>部门名称</p>
+        :type DepartmentName: str
+        :param _DepartmentSequence: <p>部门Sequence</p>
+        :type DepartmentSequence: int
+        :param _ApplyUserName: <p>申请人用户名</p>
+        :type ApplyUserName: str
+        :param _ApplyRealName: <p>申请人真实姓名</p>
+        :type ApplyRealName: str
+        :param _ApplyTimeVersion: <p>申请时间戳，微妙</p>
+        :type ApplyTimeVersion: int
+        """
+        self._Id = None
+        self._TicketId = None
+        self._TicketType = None
+        self._Acl = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._ApplyTime = None
+        self._ApplyUser = None
+        self._ApproveUser = None
+        self._ApproveDesc = None
+        self._AclId = None
+        self._ApproveUserSet = None
+        self._ApproveUserInfoSet = None
+        self._UpdateTime = None
+        self._Name = None
+        self._ApproveTime = None
+        self._DepartmentId = None
+        self._DepartmentName = None
+        self._DepartmentSequence = None
+        self._ApplyUserName = None
+        self._ApplyRealName = None
+        self._ApplyTimeVersion = None
+
+    @property
+    def Id(self):
+        r"""<p>数据库主键</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TicketId(self):
+        r"""<p>工单ID,id-s3ed4r5e</p>
+        :rtype: str
+        """
+        return self._TicketId
+
+    @TicketId.setter
+    def TicketId(self, TicketId):
+        self._TicketId = TicketId
+
+    @property
+    def TicketType(self):
+        r"""<p>工单类型，0-运维访问工单，1-权限工单, 2-数据库变更工单,3-自动执行命令/脚本工单</p>
+        :rtype: int
+        """
+        return self._TicketType
+
+    @TicketType.setter
+    def TicketType(self, TicketType):
+        self._TicketType = TicketType
+
+    @property
+    def Acl(self):
+        r"""<p>acl权限</p>
+        :rtype: :class:`tencentcloud.bh.v20230418.models.Acl`
+        """
+        return self._Acl
+
+    @Acl.setter
+    def Acl(self, Acl):
+        self._Acl = Acl
+
+    @property
+    def StartTime(self):
+        r"""<p>运维开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>运维结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""<p>工单状态，0待提交(草稿)，1待审批，2批准，3已执行，4驳回,5删除，6过期</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApplyTime(self):
+        r"""<p>申请时间</p>
+        :rtype: str
+        """
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def ApplyUser(self):
+        r"""<p>申请人用户Id</p>
+        :rtype: int
+        """
+        return self._ApplyUser
+
+    @ApplyUser.setter
+    def ApplyUser(self, ApplyUser):
+        self._ApplyUser = ApplyUser
+
+    @property
+    def ApproveUser(self):
+        r"""<p>审批人uin</p>
+        :rtype: str
+        """
+        return self._ApproveUser
+
+    @ApproveUser.setter
+    def ApproveUser(self, ApproveUser):
+        self._ApproveUser = ApproveUser
+
+    @property
+    def ApproveDesc(self):
+        r"""<p>工单审批备注</p>
+        :rtype: str
+        """
+        return self._ApproveDesc
+
+    @ApproveDesc.setter
+    def ApproveDesc(self, ApproveDesc):
+        self._ApproveDesc = ApproveDesc
+
+    @property
+    def AclId(self):
+        r"""<p>acl权限Id</p>
+        :rtype: int
+        """
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def ApproveUserSet(self):
+        r"""<p>待审批状态下，可以审批的人</p>
+        :rtype: list of str
+        """
+        return self._ApproveUserSet
+
+    @ApproveUserSet.setter
+    def ApproveUserSet(self, ApproveUserSet):
+        self._ApproveUserSet = ApproveUserSet
+
+    @property
+    def ApproveUserInfoSet(self):
+        r"""<p>审批人信息</p>
+        :rtype: list of DepartmentManagerUser
+        """
+        return self._ApproveUserInfoSet
+
+    @ApproveUserInfoSet.setter
+    def ApproveUserInfoSet(self, ApproveUserInfoSet):
+        self._ApproveUserInfoSet = ApproveUserInfoSet
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Name(self):
+        r"""<p>申请权限</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ApproveTime(self):
+        r"""<p>审批时间</p>
+        :rtype: str
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def DepartmentId(self):
+        r"""<p>部门ID</p>
+        :rtype: str
+        """
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def DepartmentName(self):
+        r"""<p>部门名称</p>
+        :rtype: str
+        """
+        return self._DepartmentName
+
+    @DepartmentName.setter
+    def DepartmentName(self, DepartmentName):
+        self._DepartmentName = DepartmentName
+
+    @property
+    def DepartmentSequence(self):
+        r"""<p>部门Sequence</p>
+        :rtype: int
+        """
+        return self._DepartmentSequence
+
+    @DepartmentSequence.setter
+    def DepartmentSequence(self, DepartmentSequence):
+        self._DepartmentSequence = DepartmentSequence
+
+    @property
+    def ApplyUserName(self):
+        r"""<p>申请人用户名</p>
+        :rtype: str
+        """
+        return self._ApplyUserName
+
+    @ApplyUserName.setter
+    def ApplyUserName(self, ApplyUserName):
+        self._ApplyUserName = ApplyUserName
+
+    @property
+    def ApplyRealName(self):
+        r"""<p>申请人真实姓名</p>
+        :rtype: str
+        """
+        return self._ApplyRealName
+
+    @ApplyRealName.setter
+    def ApplyRealName(self, ApplyRealName):
+        self._ApplyRealName = ApplyRealName
+
+    @property
+    def ApplyTimeVersion(self):
+        r"""<p>申请时间戳，微妙</p>
+        :rtype: int
+        """
+        return self._ApplyTimeVersion
+
+    @ApplyTimeVersion.setter
+    def ApplyTimeVersion(self, ApplyTimeVersion):
+        self._ApplyTimeVersion = ApplyTimeVersion
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TicketId = params.get("TicketId")
+        self._TicketType = params.get("TicketType")
+        if params.get("Acl") is not None:
+            self._Acl = Acl()
+            self._Acl._deserialize(params.get("Acl"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._ApplyTime = params.get("ApplyTime")
+        self._ApplyUser = params.get("ApplyUser")
+        self._ApproveUser = params.get("ApproveUser")
+        self._ApproveDesc = params.get("ApproveDesc")
+        self._AclId = params.get("AclId")
+        self._ApproveUserSet = params.get("ApproveUserSet")
+        if params.get("ApproveUserInfoSet") is not None:
+            self._ApproveUserInfoSet = []
+            for item in params.get("ApproveUserInfoSet"):
+                obj = DepartmentManagerUser()
+                obj._deserialize(item)
+                self._ApproveUserInfoSet.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        self._Name = params.get("Name")
+        self._ApproveTime = params.get("ApproveTime")
+        self._DepartmentId = params.get("DepartmentId")
+        self._DepartmentName = params.get("DepartmentName")
+        self._DepartmentSequence = params.get("DepartmentSequence")
+        self._ApplyUserName = params.get("ApplyUserName")
+        self._ApplyRealName = params.get("ApplyRealName")
+        self._ApplyTimeVersion = params.get("ApplyTimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -25,6 +25,24 @@ class MonitorClient(AbstractClient):
     _endpoint = 'monitor.tencentcloudapi.com'
     _service = 'monitor'
 
+    async def AddSubnetToManagedCluster(
+            self,
+            request: models.AddSubnetToManagedClusterRequest,
+            opts: Dict = None,
+    ) -> models.AddSubnetToManagedClusterResponse:
+        """
+        添加子网到 Prometheus 的托管集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddSubnetToManagedCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddSubnetToManagedClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindPrometheusManagedGrafana(
             self,
             request: models.BindPrometheusManagedGrafanaRequest,

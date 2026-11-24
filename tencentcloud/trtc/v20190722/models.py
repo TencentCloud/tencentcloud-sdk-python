@@ -6462,10 +6462,24 @@ class DescribeFinanceCloudRoomUsageResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>房间维度用量数据，csv 格式，单位秒。表头固定为 RoomId,Duration。</p>
+        :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>房间维度用量数据，csv 格式，单位秒。表头固定为 RoomId,Duration。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -6480,6 +6494,7 @@ class DescribeFinanceCloudRoomUsageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -14580,7 +14595,7 @@ class ModerationParams(AbstractModel):
         :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
         :param _SaveModerationFile: <p>是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件</p>
         :type SaveModerationFile: int
-        :param _CallbackAllResults: <p>是否回调所有内容理解结果:0 默认回调所有结果 1 仅回调命中结果</p>
+        :param _CallbackAllResults: <p>是否回调所有内容理解结果: 0 默认回调所有结果 1 仅回调命中结果</p>
         :type CallbackAllResults: int
         :param _SubscribeStreamUserIds: <p>指定订阅流白名单或者黑名单。</p>
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
@@ -14674,7 +14689,7 @@ class ModerationParams(AbstractModel):
 
     @property
     def CallbackAllResults(self):
-        r"""<p>是否回调所有内容理解结果:0 默认回调所有结果 1 仅回调命中结果</p>
+        r"""<p>是否回调所有内容理解结果: 0 默认回调所有结果 1 仅回调命中结果</p>
         :rtype: int
         """
         return self._CallbackAllResults

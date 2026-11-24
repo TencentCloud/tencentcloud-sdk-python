@@ -325,6 +325,29 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStableIP(self, request):
+        r"""获取固定IP地址
+
+        :param request: Request instance for DescribeStableIP.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeStableIPRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeStableIPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStableIP", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStableIPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStableIPTask(self, request):
         r"""本接口 DescribeStableIPTask 用于修改固定 IP 任务状态
 

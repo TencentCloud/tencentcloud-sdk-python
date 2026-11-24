@@ -2049,10 +2049,12 @@ class DescribeInstanceStateResponse(AbstractModel):
         :type InstanceState: str
         :param _InstanceStateDesc: <p>集群状态描述，例如：运行中</p>
         :type InstanceStateDesc: str
-        :param _ProcessName: <p>当前步骤的名称，例如：”购买资源中“</p>
-        :type ProcessName: str
         :param _InstanceStates: <p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
         :type InstanceStates: list of InstanceStateItem
+        :param _ProcessName: <p>当前步骤的名称，例如：”购买资源中“</p>
+        :type ProcessName: str
+        :param _RecoveryState: <p>恢复状态，仅用于前端交互判断（不用于展示）。TableRecovering=表级恢复进行中；ClusterRecovering=集群恢复进行中（CBS 快照恢复/旧回档，不区分）；空字符串=无恢复进行中。批量请求时以 InstanceStates 内各项为准</p>
+        :type RecoveryState: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2064,8 +2066,9 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowProgress = None
         self._InstanceState = None
         self._InstanceStateDesc = None
-        self._ProcessName = None
         self._InstanceStates = None
+        self._ProcessName = None
+        self._RecoveryState = None
         self._RequestId = None
 
     @property
@@ -2157,6 +2160,17 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._InstanceStateDesc = InstanceStateDesc
 
     @property
+    def InstanceStates(self):
+        r"""<p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
+        :rtype: list of InstanceStateItem
+        """
+        return self._InstanceStates
+
+    @InstanceStates.setter
+    def InstanceStates(self, InstanceStates):
+        self._InstanceStates = InstanceStates
+
+    @property
     def ProcessName(self):
         r"""<p>当前步骤的名称，例如：”购买资源中“</p>
         :rtype: str
@@ -2168,15 +2182,15 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._ProcessName = ProcessName
 
     @property
-    def InstanceStates(self):
-        r"""<p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
-        :rtype: list of InstanceStateItem
+    def RecoveryState(self):
+        r"""<p>恢复状态，仅用于前端交互判断（不用于展示）。TableRecovering=表级恢复进行中；ClusterRecovering=集群恢复进行中（CBS 快照恢复/旧回档，不区分）；空字符串=无恢复进行中。批量请求时以 InstanceStates 内各项为准</p>
+        :rtype: str
         """
-        return self._InstanceStates
+        return self._RecoveryState
 
-    @InstanceStates.setter
-    def InstanceStates(self, InstanceStates):
-        self._InstanceStates = InstanceStates
+    @RecoveryState.setter
+    def RecoveryState(self, RecoveryState):
+        self._RecoveryState = RecoveryState
 
     @property
     def RequestId(self):
@@ -2199,13 +2213,14 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowProgress = params.get("FlowProgress")
         self._InstanceState = params.get("InstanceState")
         self._InstanceStateDesc = params.get("InstanceStateDesc")
-        self._ProcessName = params.get("ProcessName")
         if params.get("InstanceStates") is not None:
             self._InstanceStates = []
             for item in params.get("InstanceStates"):
                 obj = InstanceStateItem()
                 obj._deserialize(item)
                 self._InstanceStates.append(obj)
+        self._ProcessName = params.get("ProcessName")
+        self._RecoveryState = params.get("RecoveryState")
         self._RequestId = params.get("RequestId")
 
 
@@ -4876,37 +4891,106 @@ class InstanceStateItem(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BackupOpenStatus: <p>集群备份任务开启状态2</p>
+        :type BackupOpenStatus: int
+        :param _BackupStatus: <p>集群备份任务开启状态</p>
+        :type BackupStatus: int
+        :param _FlowCreateTime: <p>集群操作创建时间</p>
+        :type FlowCreateTime: str
+        :param _FlowMsg: <p>集群流程错误信息</p>
+        :type FlowMsg: str
+        :param _FlowName: <p>集群操作名称</p>
+        :type FlowName: str
+        :param _FlowProgress: <p>集群操作进度</p>
+        :type FlowProgress: float
         :param _InstanceId: <p>集群实例名称</p>
         :type InstanceId: str
         :param _InstanceState: <p>集群状态，例如：Serving</p>
         :type InstanceState: str
         :param _InstanceStateDesc: <p>集群状态描述，例如：运行中</p>
         :type InstanceStateDesc: str
-        :param _BackupStatus: <p>集群备份任务开启状态</p>
-        :type BackupStatus: int
-        :param _BackupOpenStatus: <p>集群备份任务开启状态2</p>
-        :type BackupOpenStatus: int
-        :param _FlowCreateTime: <p>集群操作创建时间</p>
-        :type FlowCreateTime: str
-        :param _FlowName: <p>集群操作名称</p>
-        :type FlowName: str
-        :param _FlowProgress: <p>集群操作进度</p>
-        :type FlowProgress: float
-        :param _FlowMsg: <p>集群流程错误信息</p>
-        :type FlowMsg: str
         :param _ProcessName: <p>当前步骤的名称</p>
         :type ProcessName: str
+        :param _RecoveryState: <p>恢复状态，仅用于前端交互判断（不用于展示）。TableRecovering=表级恢复进行中；ClusterRecovering=集群恢复进行中（CBS 快照恢复/旧回档，不区分）；空字符串=无恢复进行中</p>
+        :type RecoveryState: str
         """
+        self._BackupOpenStatus = None
+        self._BackupStatus = None
+        self._FlowCreateTime = None
+        self._FlowMsg = None
+        self._FlowName = None
+        self._FlowProgress = None
         self._InstanceId = None
         self._InstanceState = None
         self._InstanceStateDesc = None
-        self._BackupStatus = None
-        self._BackupOpenStatus = None
-        self._FlowCreateTime = None
-        self._FlowName = None
-        self._FlowProgress = None
-        self._FlowMsg = None
         self._ProcessName = None
+        self._RecoveryState = None
+
+    @property
+    def BackupOpenStatus(self):
+        r"""<p>集群备份任务开启状态2</p>
+        :rtype: int
+        """
+        return self._BackupOpenStatus
+
+    @BackupOpenStatus.setter
+    def BackupOpenStatus(self, BackupOpenStatus):
+        self._BackupOpenStatus = BackupOpenStatus
+
+    @property
+    def BackupStatus(self):
+        r"""<p>集群备份任务开启状态</p>
+        :rtype: int
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def FlowCreateTime(self):
+        r"""<p>集群操作创建时间</p>
+        :rtype: str
+        """
+        return self._FlowCreateTime
+
+    @FlowCreateTime.setter
+    def FlowCreateTime(self, FlowCreateTime):
+        self._FlowCreateTime = FlowCreateTime
+
+    @property
+    def FlowMsg(self):
+        r"""<p>集群流程错误信息</p>
+        :rtype: str
+        """
+        return self._FlowMsg
+
+    @FlowMsg.setter
+    def FlowMsg(self, FlowMsg):
+        self._FlowMsg = FlowMsg
+
+    @property
+    def FlowName(self):
+        r"""<p>集群操作名称</p>
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowProgress(self):
+        r"""<p>集群操作进度</p>
+        :rtype: float
+        """
+        return self._FlowProgress
+
+    @FlowProgress.setter
+    def FlowProgress(self, FlowProgress):
+        self._FlowProgress = FlowProgress
 
     @property
     def InstanceId(self):
@@ -4942,72 +5026,6 @@ class InstanceStateItem(AbstractModel):
         self._InstanceStateDesc = InstanceStateDesc
 
     @property
-    def BackupStatus(self):
-        r"""<p>集群备份任务开启状态</p>
-        :rtype: int
-        """
-        return self._BackupStatus
-
-    @BackupStatus.setter
-    def BackupStatus(self, BackupStatus):
-        self._BackupStatus = BackupStatus
-
-    @property
-    def BackupOpenStatus(self):
-        r"""<p>集群备份任务开启状态2</p>
-        :rtype: int
-        """
-        return self._BackupOpenStatus
-
-    @BackupOpenStatus.setter
-    def BackupOpenStatus(self, BackupOpenStatus):
-        self._BackupOpenStatus = BackupOpenStatus
-
-    @property
-    def FlowCreateTime(self):
-        r"""<p>集群操作创建时间</p>
-        :rtype: str
-        """
-        return self._FlowCreateTime
-
-    @FlowCreateTime.setter
-    def FlowCreateTime(self, FlowCreateTime):
-        self._FlowCreateTime = FlowCreateTime
-
-    @property
-    def FlowName(self):
-        r"""<p>集群操作名称</p>
-        :rtype: str
-        """
-        return self._FlowName
-
-    @FlowName.setter
-    def FlowName(self, FlowName):
-        self._FlowName = FlowName
-
-    @property
-    def FlowProgress(self):
-        r"""<p>集群操作进度</p>
-        :rtype: float
-        """
-        return self._FlowProgress
-
-    @FlowProgress.setter
-    def FlowProgress(self, FlowProgress):
-        self._FlowProgress = FlowProgress
-
-    @property
-    def FlowMsg(self):
-        r"""<p>集群流程错误信息</p>
-        :rtype: str
-        """
-        return self._FlowMsg
-
-    @FlowMsg.setter
-    def FlowMsg(self, FlowMsg):
-        self._FlowMsg = FlowMsg
-
-    @property
     def ProcessName(self):
         r"""<p>当前步骤的名称</p>
         :rtype: str
@@ -5018,18 +5036,30 @@ class InstanceStateItem(AbstractModel):
     def ProcessName(self, ProcessName):
         self._ProcessName = ProcessName
 
+    @property
+    def RecoveryState(self):
+        r"""<p>恢复状态，仅用于前端交互判断（不用于展示）。TableRecovering=表级恢复进行中；ClusterRecovering=集群恢复进行中（CBS 快照恢复/旧回档，不区分）；空字符串=无恢复进行中</p>
+        :rtype: str
+        """
+        return self._RecoveryState
+
+    @RecoveryState.setter
+    def RecoveryState(self, RecoveryState):
+        self._RecoveryState = RecoveryState
+
 
     def _deserialize(self, params):
+        self._BackupOpenStatus = params.get("BackupOpenStatus")
+        self._BackupStatus = params.get("BackupStatus")
+        self._FlowCreateTime = params.get("FlowCreateTime")
+        self._FlowMsg = params.get("FlowMsg")
+        self._FlowName = params.get("FlowName")
+        self._FlowProgress = params.get("FlowProgress")
         self._InstanceId = params.get("InstanceId")
         self._InstanceState = params.get("InstanceState")
         self._InstanceStateDesc = params.get("InstanceStateDesc")
-        self._BackupStatus = params.get("BackupStatus")
-        self._BackupOpenStatus = params.get("BackupOpenStatus")
-        self._FlowCreateTime = params.get("FlowCreateTime")
-        self._FlowName = params.get("FlowName")
-        self._FlowProgress = params.get("FlowProgress")
-        self._FlowMsg = params.get("FlowMsg")
         self._ProcessName = params.get("ProcessName")
+        self._RecoveryState = params.get("RecoveryState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

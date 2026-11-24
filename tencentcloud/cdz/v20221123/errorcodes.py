@@ -17,6 +17,9 @@
 # 方法不存在
 FAILEDOPERATION_INVALIDACTION = 'FailedOperation.InvalidAction'
 
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
 # HostUuids参数和InstancesIds参数不能同时传递。
 INVALIDPARAMETER_HOSTUUIDSANDINSIDSCANNOTAPPEARSAMETIME = 'InvalidParameter.HostUuidsAndInsIdsCannotAppearSameTime'
 

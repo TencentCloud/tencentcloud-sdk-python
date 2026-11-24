@@ -1739,6 +1739,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTrainingTaskSchedulingPolicy(
+            self,
+            request: models.ModifyTrainingTaskSchedulingPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTrainingTaskSchedulingPolicyResponse:
+        """
+        更新训练任务的调度策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTrainingTaskSchedulingPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTrainingTaskSchedulingPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserGrant(
             self,
             request: models.ModifyUserGrantRequest,

@@ -26,6 +26,29 @@ class MonitorClient(AbstractClient):
     _service = 'monitor'
 
 
+    def AddSubnetToManagedCluster(self, request):
+        r"""添加子网到 Prometheus 的托管集群
+
+        :param request: Request instance for AddSubnetToManagedCluster.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.AddSubnetToManagedClusterRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AddSubnetToManagedClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddSubnetToManagedCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddSubnetToManagedClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindPrometheusManagedGrafana(self, request):
         r"""绑定 Grafana 可视化服务实例
 

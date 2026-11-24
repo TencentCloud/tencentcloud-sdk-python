@@ -259,6 +259,24 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeStableIP(
+            self,
+            request: models.DescribeStableIPRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStableIPResponse:
+        """
+        获取固定IP地址
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStableIP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStableIPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeStableIPTask(
             self,
             request: models.DescribeStableIPTaskRequest,

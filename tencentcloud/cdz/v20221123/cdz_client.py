@@ -70,3 +70,26 @@ class CdzClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserAvailableCloudDedicatedZones(self, request):
+        r"""查询用户可使用的专属可用区列表
+
+        :param request: Request instance for DescribeUserAvailableCloudDedicatedZones.
+        :type request: :class:`tencentcloud.cdz.v20221123.models.DescribeUserAvailableCloudDedicatedZonesRequest`
+        :rtype: :class:`tencentcloud.cdz.v20221123.models.DescribeUserAvailableCloudDedicatedZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserAvailableCloudDedicatedZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserAvailableCloudDedicatedZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

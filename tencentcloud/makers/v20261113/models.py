@@ -4116,6 +4116,8 @@ class Project(AbstractModel):
         :param _ModifiedOn: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedOn: str
+        :param _BuildMachine: <p>构建规格客户契约</p><p>枚举值：</p><ul><li>standard： 4C6G，默认档，所有套餐可用</li><li>enhanced： 8C14G，专业版及以上可用；低配套餐声明时按 standard 处理并提示升级</li></ul><p>默认值：standard</p>
+        :type BuildMachine: str
         """
         self._ProjectId = None
         self._Name = None
@@ -4146,6 +4148,7 @@ class Project(AbstractModel):
         self._IsTld = None
         self._CreatedOn = None
         self._ModifiedOn = None
+        self._BuildMachine = None
 
     @property
     def ProjectId(self):
@@ -4495,6 +4498,17 @@ class Project(AbstractModel):
     def ModifiedOn(self, ModifiedOn):
         self._ModifiedOn = ModifiedOn
 
+    @property
+    def BuildMachine(self):
+        r"""<p>构建规格客户契约</p><p>枚举值：</p><ul><li>standard： 4C6G，默认档，所有套餐可用</li><li>enhanced： 8C14G，专业版及以上可用；低配套餐声明时按 standard 处理并提示升级</li></ul><p>默认值：standard</p>
+        :rtype: str
+        """
+        return self._BuildMachine
+
+    @BuildMachine.setter
+    def BuildMachine(self, BuildMachine):
+        self._BuildMachine = BuildMachine
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -4540,6 +4554,7 @@ class Project(AbstractModel):
         self._IsTld = params.get("IsTld")
         self._CreatedOn = params.get("CreatedOn")
         self._ModifiedOn = params.get("ModifiedOn")
+        self._BuildMachine = params.get("BuildMachine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -36974,21 +36974,13 @@ class Intention(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IntentionType: 视频认证类型，支持以下类型
-<ul><li>1 : 问答模式</li>
-<li>2 : 点头模式</li></ul>
-
-注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+        :param _IntentionType: <p>视频认证类型，支持以下类型</p><ul><li>1 : 问答模式</li><li>2 : 点头模式</li></ul><p>注: <code>视频认证为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type IntentionType: int
-        :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多为10轮。
-
-注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
+        :param _IntentionQuestions: <p>意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～9轮问答，最多为9轮。注：<code>选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。</code></p>
         :type IntentionQuestions: list of IntentionQuestion
-        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
-
-注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
+        :param _IntentionActions: <p>意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～9轮点头确认文本，最多支持9轮。注：<code>选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。</code></p>
         :type IntentionActions: list of IntentionAction
-        :param _RuleIdConfig: 视频核身相关配置
+        :param _RuleIdConfig: <p>视频核身相关配置</p>
         :type RuleIdConfig: :class:`tencentcloud.ess.v20201111.models.RuleIdConfig`
         """
         self._IntentionType = None
@@ -36998,11 +36990,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionType(self):
-        r"""视频认证类型，支持以下类型
-<ul><li>1 : 问答模式</li>
-<li>2 : 点头模式</li></ul>
-
-注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+        r"""<p>视频认证类型，支持以下类型</p><ul><li>1 : 问答模式</li><li>2 : 点头模式</li></ul><p>注: <code>视频认证为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: int
         """
         return self._IntentionType
@@ -37013,9 +37001,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionQuestions(self):
-        r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多为10轮。
-
-注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
+        r"""<p>意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～9轮问答，最多为9轮。注：<code>选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。</code></p>
         :rtype: list of IntentionQuestion
         """
         return self._IntentionQuestions
@@ -37026,9 +37012,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionActions(self):
-        r"""意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
-
-注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
+        r"""<p>意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～9轮点头确认文本，最多支持9轮。注：<code>选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。</code></p>
         :rtype: list of IntentionAction
         """
         return self._IntentionActions
@@ -37039,7 +37023,7 @@ class Intention(AbstractModel):
 
     @property
     def RuleIdConfig(self):
-        r"""视频核身相关配置
+        r"""<p>视频核身相关配置</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.RuleIdConfig`
         """
         return self._RuleIdConfig
@@ -37190,7 +37174,7 @@ class IntentionActionResultDetail(AbstractModel):
 
 
 class IntentionQuestion(AbstractModel):
-    r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+    r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持9轮问答。
 
     """
 

@@ -79,6 +79,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ApproveTicket(
+            self,
+            request: models.ApproveTicketRequest,
+            opts: Dict = None,
+    ) -> models.ApproveTicketResponse:
+        """
+        审批工单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ApproveTicket"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ApproveTicketResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindDeviceAccountKubeconfig(
             self,
             request: models.BindDeviceAccountKubeconfigRequest,
@@ -1064,6 +1082,24 @@ class BhClient(AbstractClient):
         kwargs["action"] = "DescribeSourceTypes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSourceTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTickets(
+            self,
+            request: models.DescribeTicketsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTicketsResponse:
+        """
+        查询运维工单列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTickets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTicketsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -95,6 +95,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApproveTicket(self, request):
+        r"""审批工单
+
+        :param request: Request instance for ApproveTicket.
+        :type request: :class:`tencentcloud.bh.v20230418.models.ApproveTicketRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ApproveTicketResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApproveTicket", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApproveTicketResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindDeviceAccountKubeconfig(self, request):
         r"""绑定容器账号凭据
 
@@ -1351,6 +1374,29 @@ class BhClient(AbstractClient):
             body = self.call("DescribeSourceTypes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSourceTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTickets(self, request):
+        r"""查询运维工单列表
+
+        :param request: Request instance for DescribeTickets.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeTicketsRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeTicketsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTickets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTicketsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

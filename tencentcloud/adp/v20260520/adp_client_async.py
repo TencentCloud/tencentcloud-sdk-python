@@ -277,6 +277,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePromptTemplate(
+            self,
+            request: models.CreatePromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreatePromptTemplateResponse:
+        """
+        创建提示词模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePromptTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePromptTemplateLabel(
+            self,
+            request: models.CreatePromptTemplateLabelRequest,
+            opts: Dict = None,
+    ) -> models.CreatePromptTemplateLabelResponse:
+        """
+        创建提示词模板标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePromptTemplateLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePromptTemplateLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateQAGenerationTask(
             self,
             request: models.CreateQAGenerationTaskRequest,
@@ -687,6 +723,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeletePlugin"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePromptTemplate(
+            self,
+            request: models.DeletePromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeletePromptTemplateResponse:
+        """
+        删除提示词模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePromptTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePromptTemplateLabel(
+            self,
+            request: models.DeletePromptTemplateLabelRequest,
+            opts: Dict = None,
+    ) -> models.DeletePromptTemplateLabelResponse:
+        """
+        删除提示词模板标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePromptTemplateLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePromptTemplateLabelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1466,6 +1538,78 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePromptTemplate(
+            self,
+            request: models.DescribePromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribePromptTemplateResponse:
+        """
+        查询提示词模板详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePromptTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePromptTemplateCategoryList(
+            self,
+            request: models.DescribePromptTemplateCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePromptTemplateCategoryListResponse:
+        """
+        查询提示词模板分类列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePromptTemplateCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePromptTemplateCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePromptTemplateLabelList(
+            self,
+            request: models.DescribePromptTemplateLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePromptTemplateLabelListResponse:
+        """
+        查询提示词模板标签列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePromptTemplateLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePromptTemplateLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePromptTemplateSummaryList(
+            self,
+            request: models.DescribePromptTemplateSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePromptTemplateSummaryListResponse:
+        """
+        查询提示词模板摘要列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePromptTemplateSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePromptTemplateSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQA(
             self,
             request: models.DescribeQARequest,
@@ -1808,6 +1952,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def FavoritePromptTemplate(
+            self,
+            request: models.FavoritePromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.FavoritePromptTemplateResponse:
+        """
+        收藏提示词模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "FavoritePromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.FavoritePromptTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FavoriteSkill(
             self,
             request: models.FavoriteSkillRequest,
@@ -2091,6 +2253,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyPlugin"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPromptTemplate(
+            self,
+            request: models.ModifyPromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPromptTemplateResponse:
+        """
+        修改提示词模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPromptTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2433,6 +2613,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "UnfavoritePlugin"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnfavoritePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnfavoritePromptTemplate(
+            self,
+            request: models.UnfavoritePromptTemplateRequest,
+            opts: Dict = None,
+    ) -> models.UnfavoritePromptTemplateResponse:
+        """
+        取消收藏提示词模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnfavoritePromptTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnfavoritePromptTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

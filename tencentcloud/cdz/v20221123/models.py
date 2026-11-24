@@ -18,6 +18,102 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CloudDedicatedZone(AbstractModel):
+    r"""专属可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 专属可用区所属的可用区
+        :type Zone: str
+        :param _ZoneId: 地域系统中的可用区ID
+        :type ZoneId: str
+        :param _ZoneName: 专属可用区名称
+        :type ZoneName: str
+        :param _IsLiteMode: 是否为轻量专属可用区
+        :type IsLiteMode: bool
+        :param _Region: 可用区所在地域
+        :type Region: str
+        """
+        self._Zone = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._IsLiteMode = None
+        self._Region = None
+
+    @property
+    def Zone(self):
+        r"""专属可用区所属的可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneId(self):
+        r"""地域系统中的可用区ID
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""专属可用区名称
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def IsLiteMode(self):
+        r"""是否为轻量专属可用区
+        :rtype: bool
+        """
+        return self._IsLiteMode
+
+    @IsLiteMode.setter
+    def IsLiteMode(self, IsLiteMode):
+        self._IsLiteMode = IsLiteMode
+
+    @property
+    def Region(self):
+        r"""可用区所在地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._IsLiteMode = params.get("IsLiteMode")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudDedicatedZoneHostsInfo(AbstractModel):
     r"""CDZ的母机和子机的对应关系
 
@@ -568,6 +664,75 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
         if params.get("ExtraInfo") is not None:
             self._ExtraInfo = ExtraInfo()
             self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserAvailableCloudDedicatedZonesRequest(AbstractModel):
+    r"""DescribeUserAvailableCloudDedicatedZones请求参数结构体
+
+    """
+
+
+class DescribeUserAvailableCloudDedicatedZonesResponse(AbstractModel):
+    r"""DescribeUserAvailableCloudDedicatedZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIdSet: 返回当前用户可使用的专属可用区 ID 
+        :type ZoneIdSet: list of str
+        :param _ZoneSet: 专属可用区列表信息。
+        :type ZoneSet: list of CloudDedicatedZone
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneIdSet = None
+        self._ZoneSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneIdSet(self):
+        r"""返回当前用户可使用的专属可用区 ID 
+        :rtype: list of str
+        """
+        return self._ZoneIdSet
+
+    @ZoneIdSet.setter
+    def ZoneIdSet(self, ZoneIdSet):
+        self._ZoneIdSet = ZoneIdSet
+
+    @property
+    def ZoneSet(self):
+        r"""专属可用区列表信息。
+        :rtype: list of CloudDedicatedZone
+        """
+        return self._ZoneSet
+
+    @ZoneSet.setter
+    def ZoneSet(self, ZoneSet):
+        self._ZoneSet = ZoneSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ZoneIdSet = params.get("ZoneIdSet")
+        if params.get("ZoneSet") is not None:
+            self._ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = CloudDedicatedZone()
+                obj._deserialize(item)
+                self._ZoneSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

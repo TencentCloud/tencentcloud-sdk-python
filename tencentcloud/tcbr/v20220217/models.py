@@ -2516,6 +2516,115 @@ class DescribeServerManageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeStableIPRequest(AbstractModel):
+    r"""DescribeStableIP请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStableIPResponse(AbstractModel):
+    r"""DescribeStableIP返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Address: <p>固定 IP 地址</p>
+        :type Address: str
+        :param _Status: <p>状态：normal 正常 isolate 隔离</p>
+        :type Status: str
+        :param _ExpireTime: <p>过期时间</p>
+        :type ExpireTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Address = None
+        self._Status = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Address(self):
+        r"""<p>固定 IP 地址</p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Status(self):
+        r"""<p>状态：normal 正常 isolate 隔离</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Address = params.get("Address")
+        self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeStableIPTaskRequest(AbstractModel):
     r"""DescribeStableIPTask请求参数结构体
 

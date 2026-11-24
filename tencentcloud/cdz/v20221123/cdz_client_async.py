@@ -60,3 +60,21 @@ class CdzClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserAvailableCloudDedicatedZones(
+            self,
+            request: models.DescribeUserAvailableCloudDedicatedZonesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserAvailableCloudDedicatedZonesResponse:
+        """
+        查询用户可使用的专属可用区列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserAvailableCloudDedicatedZones"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserAvailableCloudDedicatedZonesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
