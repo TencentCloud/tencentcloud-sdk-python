@@ -1108,13 +1108,13 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: <p>消费分组名称</p>
+        :param _GroupName: <p>消费分组名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40840">DescribeGroup</a></p>
         :type GroupName: str
         :param _InstanceId: <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
         :type InstanceId: str
         :param _Partitions: <p>partition信息</p>
         :type Partitions: list of Partitions
-        :param _TopicName: <p>指定topic，默认所有topic</p>
+        :param _TopicName: <p>指定topic，默认所有topic</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
         :type TopicName: list of str
         """
         self._GroupName = None
@@ -1124,7 +1124,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""<p>消费分组名称</p>
+        r"""<p>消费分组名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40840">DescribeGroup</a></p>
         :rtype: str
         """
         return self._GroupName
@@ -1157,7 +1157,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""<p>指定topic，默认所有topic</p>
+        r"""<p>指定topic，默认所有topic</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
         :rtype: list of str
         """
         return self._TopicName
@@ -5549,7 +5549,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type ClusterId: int
         :param _RenewFlag: <p>预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type RenewFlag: int
-        :param _KafkaVersion: <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
+        :param _KafkaVersion: <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3, 3.9.2], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
         :type KafkaVersion: str
         :param _SpecificationsType: <p>实例类型: [标准版实例]填写 &quot;standard&quot; (默认), [专业版实例]填写 &quot;profession&quot;,[高级版实例]填写&quot;premium&quot;</p>
         :type SpecificationsType: str
@@ -5706,7 +5706,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""<p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
+        r"""<p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3, 3.9.2], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
         :rtype: str
         """
         return self._KafkaVersion
@@ -6762,7 +6762,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type MsgRetentionTime: int
         :param _ClusterId: <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
         :type ClusterId: int
-        :param _KafkaVersion: <p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
+        :param _KafkaVersion: <p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;, &quot;3.9.2&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
         :type KafkaVersion: str
         :param _SpecificationsType: <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
         :type SpecificationsType: str
@@ -6886,7 +6886,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""<p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
+        r"""<p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;, &quot;3.9.2&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
         :rtype: str
         """
         return self._KafkaVersion
@@ -10914,9 +10914,9 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka 实例Id
+        :param _InstanceId: <p>ckafka 实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
         :type InstanceId: str
-        :param _TopicName: ckafka 主题名称
+        :param _TopicName: <p>ckafka 主题名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
         :type TopicName: str
         """
         self._InstanceId = None
@@ -10924,7 +10924,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka 实例Id
+        r"""<p>ckafka 实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
         :rtype: str
         """
         return self._InstanceId
@@ -10935,7 +10935,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""ckafka 主题名称
+        r"""<p>ckafka 主题名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
         :rtype: str
         """
         return self._TopicName
@@ -10965,7 +10965,7 @@ class DeleteTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回的结果集
+        :param _Result: <p>返回的结果集</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10975,7 +10975,7 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回的结果集
+        r"""<p>返回的结果集</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -14436,9 +14436,9 @@ class DescribeGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Group: 消费分组名称
+        :param _Group: <p>消费分组名称</p>
         :type Group: str
-        :param _Protocol: 该 group 使用的协议。
+        :param _Protocol: <p>该 group 使用的协议。</p>
         :type Protocol: str
         """
         self._Group = None
@@ -14446,7 +14446,7 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Group(self):
-        r"""消费分组名称
+        r"""<p>消费分组名称</p>
         :rtype: str
         """
         return self._Group
@@ -14457,7 +14457,7 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""该 group 使用的协议。
+        r"""<p>该 group 使用的协议。</p>
         :rtype: str
         """
         return self._Protocol
@@ -27094,11 +27094,11 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoCreateTopicEnable: 自动创建 true 表示开启，false 表示不开启
+        :param _AutoCreateTopicEnable: <p>自动创建 true 表示开启，false 表示不开启</p>
         :type AutoCreateTopicEnable: bool
-        :param _DefaultNumPartitions: 新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3
+        :param _DefaultNumPartitions: <p>新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3</p>
         :type DefaultNumPartitions: int
-        :param _DefaultReplicationFactor: 新创建主题的默认副本数,如果AutoCreateTopicEnable设置为true没有指定该值时默认设置为2
+        :param _DefaultReplicationFactor: <p>新创建主题的默认副本数</p><p>如果AutoCreateTopicEnable设置为true时，该值必须大于0</p>
         :type DefaultReplicationFactor: int
         """
         self._AutoCreateTopicEnable = None
@@ -27107,7 +27107,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def AutoCreateTopicEnable(self):
-        r"""自动创建 true 表示开启，false 表示不开启
+        r"""<p>自动创建 true 表示开启，false 表示不开启</p>
         :rtype: bool
         """
         return self._AutoCreateTopicEnable
@@ -27118,7 +27118,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
-        r"""新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3
+        r"""<p>新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3</p>
         :rtype: int
         """
         return self._DefaultNumPartitions
@@ -27129,7 +27129,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
-        r"""新创建主题的默认副本数,如果AutoCreateTopicEnable设置为true没有指定该值时默认设置为2
+        r"""<p>新创建主题的默认副本数</p><p>如果AutoCreateTopicEnable设置为true时，该值必须大于0</p>
         :rtype: int
         """
         return self._DefaultReplicationFactor
@@ -28152,13 +28152,13 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type MinInsyncReplicas: int
         :param _UncleanLeaderElectionEnable: <p>是否允许未同步的副本选为leader</p><p>枚举值：</p><ul><li>0： 不允许</li><li>1： 允许</li></ul><p>默认值：0</p>
         :type UncleanLeaderElectionEnable: int
-        :param _RetentionMs: <p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
+        :param _RetentionMs: <p>Segment分片滚动的时长</p><p>取值范围：[86400000, 31536000000]</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
         :type RetentionMs: int
         :param _MaxMessageBytes: <p>主题消息最大值</p><p>取值范围：[1024, 12582912]</p><p>单位：Bytes</p>
         :type MaxMessageBytes: int
         :param _SegmentMs: <p>Segment 分片滚动的时长</p><p>单位：毫秒</p><p>最小值为86400000ms（1天）</p>
         :type SegmentMs: int
-        :param _CleanUpPolicy: <p>消息删除策略，可以选择delete 或者compact</p>
+        :param _CleanUpPolicy: <p>消息删除策略，可以选择delete 或者compact</p><p>枚举值：</p><ul><li>delete： 按保留时间/大小删除旧消息</li><li>compact： 日志压缩，按 Key 保留最新值</li></ul>
         :type CleanUpPolicy: str
         :param _IpWhiteList: <p>Ip白名单列表，配额限制，enableWhileList=1时必选</p>
         :type IpWhiteList: list of str
@@ -28267,7 +28267,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
-        r"""<p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
+        r"""<p>Segment分片滚动的时长</p><p>取值范围：[86400000, 31536000000]</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
         :rtype: int
         """
         return self._RetentionMs
@@ -28300,7 +28300,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
-        r"""<p>消息删除策略，可以选择delete 或者compact</p>
+        r"""<p>消息删除策略，可以选择delete 或者compact</p><p>枚举值：</p><ul><li>delete： 按保留时间/大小删除旧消息</li><li>compact： 日志压缩，按 Key 保留最新值</li></ul>
         :rtype: str
         """
         return self._CleanUpPolicy
@@ -32848,7 +32848,7 @@ class SaleInfo(AbstractModel):
         r"""
         :param _Flag: <p>手动设置的flag标志，true表示售罄，false表示可售。</p>
         :type Flag: bool
-        :param _Version: <p>ckafka版本号(1.1.1/2.4.2/0.10.2)</p>
+        :param _Version: <p>ckafka版本号(1.1.1/2.4.2/0.10.2/3.9.2)</p>
         :type Version: str
         :param _Platform: <p>专业版、标准版标志</p>
         :type Platform: str
@@ -32873,7 +32873,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def Version(self):
-        r"""<p>ckafka版本号(1.1.1/2.4.2/0.10.2)</p>
+        r"""<p>ckafka版本号(1.1.1/2.4.2/0.10.2/3.9.2)</p>
         :rtype: str
         """
         return self._Version

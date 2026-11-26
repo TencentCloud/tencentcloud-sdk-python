@@ -134,6 +134,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 同一工作流内存在重名任务
 INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = 'InvalidParameterValue.DuplicateTaskNameError'
 
+# FieldToRemove 删除路径不合法，或未命中任何可删除字段（no-op）
+INVALIDPARAMETERVALUE_FIELDTOREMOVEPATHINVALID = 'InvalidParameterValue.FieldToRemovePathInvalid'
+
 # 当前版本不支持通过文件路径 FilePath 定位文件，请使用 FileId
 INVALIDPARAMETERVALUE_FILEPATH = 'InvalidParameterValue.FilePath'
 
@@ -226,6 +229,9 @@ INVALIDPARAMETERVALUE_TASKTYPEPROPERTYMUTUALLYEXCLUSIVEERROR = 'InvalidParameter
 
 # 用户Uin列表不能为空
 INVALIDPARAMETERVALUE_USERUINSEMPTY = 'InvalidParameterValue.UserUinsEmpty'
+
+# 工作流调度 cron 表达式配置错误：cron 表达式语法或逻辑不合法。
+INVALIDPARAMETERVALUE_WORKFLOWCRONEXPRESSIONERROR = 'InvalidParameterValue.WorkflowCronExpressionError'
 
 # 结束时间不能早于开始时间
 INVALIDPARAMETERVALUE_WORKFLOWENDTIMELESSSTARTTIME = 'InvalidParameterValue.WorkflowEndTimeLessStartTime'

@@ -924,7 +924,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        r"""删除ckafka主题
+        r"""异步删除 Ckafka 实例主题（Topic）。接口被调用后 Topic 会先进入删除中状态，之后由后台异步删。
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicRequest`

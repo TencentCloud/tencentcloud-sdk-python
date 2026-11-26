@@ -4373,17 +4373,23 @@ class ExclusiveHSM(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HsmClusterId: 独享集群Id
+        :param _HsmClusterId: <p>独享集群Id</p>
         :type HsmClusterId: str
-        :param _HsmClusterName: 独享集群名称
+        :param _HsmClusterName: <p>独享集群名称</p>
         :type HsmClusterName: str
+        :param _CmkUserCount: <p>根密钥的使用量</p><p>单位：个</p>
+        :type CmkUserCount: int
+        :param _CmkLimit: <p>根密钥的额度</p><p>单位：个</p>
+        :type CmkLimit: int
         """
         self._HsmClusterId = None
         self._HsmClusterName = None
+        self._CmkUserCount = None
+        self._CmkLimit = None
 
     @property
     def HsmClusterId(self):
-        r"""独享集群Id
+        r"""<p>独享集群Id</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -4394,7 +4400,7 @@ class ExclusiveHSM(AbstractModel):
 
     @property
     def HsmClusterName(self):
-        r"""独享集群名称
+        r"""<p>独享集群名称</p>
         :rtype: str
         """
         return self._HsmClusterName
@@ -4403,10 +4409,34 @@ class ExclusiveHSM(AbstractModel):
     def HsmClusterName(self, HsmClusterName):
         self._HsmClusterName = HsmClusterName
 
+    @property
+    def CmkUserCount(self):
+        r"""<p>根密钥的使用量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._CmkUserCount
+
+    @CmkUserCount.setter
+    def CmkUserCount(self, CmkUserCount):
+        self._CmkUserCount = CmkUserCount
+
+    @property
+    def CmkLimit(self):
+        r"""<p>根密钥的额度</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._CmkLimit
+
+    @CmkLimit.setter
+    def CmkLimit(self, CmkLimit):
+        self._CmkLimit = CmkLimit
+
 
     def _deserialize(self, params):
         self._HsmClusterId = params.get("HsmClusterId")
         self._HsmClusterName = params.get("HsmClusterName")
+        self._CmkUserCount = params.get("CmkUserCount")
+        self._CmkLimit = params.get("CmkLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18,6 +18,62 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AttackRegion(AbstractModel):
+    r"""命中的攻击区域列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Polygon: <p>攻击区域的四点坐标，固定为轴对齐矩形，按 左上 → 右上 → 右下 → 左下 顺时针顺序排列。单位为像素，坐标原点为图像左上角。数组长度固定为 4。</p>
+        :type Polygon: list of Point
+        :param _Description: <p>攻击描述，对该区域命中的可疑特征进行详细说明。</p>
+        :type Description: str
+        """
+        self._Polygon = None
+        self._Description = None
+
+    @property
+    def Polygon(self):
+        r"""<p>攻击区域的四点坐标，固定为轴对齐矩形，按 左上 → 右上 → 右下 → 左下 顺时针顺序排列。单位为像素，坐标原点为图像左上角。数组长度固定为 4。</p>
+        :rtype: list of Point
+        """
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+    @property
+    def Description(self):
+        r"""<p>攻击描述，对该区域命中的可疑特征进行详细说明。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Polygon") is not None:
+            self._Polygon = []
+            for item in params.get("Polygon"):
+                obj = Point()
+                obj._deserialize(item)
+                self._Polygon.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttackRiskDetail(AbstractModel):
     r"""疑似攻击风险详情
 
@@ -4101,6 +4157,90 @@ class GetActionSequenceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ActionSequence = params.get("ActionSequence")
+        self._RequestId = params.get("RequestId")
+
+
+class GetAttackDetailRequest(AbstractModel):
+    r"""GetAttackDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SeqId: <p>待查询的检测请求 ID，来自上游检测接口（如 <code>DetectAIFakeFaces</code>）返回的 <code>RequestId</code>。长度 32 ~ 64，仅支持数字、字母及短横线 <code>-</code>。检测结果保留期为 3 天，超期后将返回 <code>ResourceUnavailable.ResultExpired</code>。</p>
+        :type SeqId: str
+        """
+        self._SeqId = None
+
+    @property
+    def SeqId(self):
+        r"""<p>待查询的检测请求 ID，来自上游检测接口（如 <code>DetectAIFakeFaces</code>）返回的 <code>RequestId</code>。长度 32 ~ 64，仅支持数字、字母及短横线 <code>-</code>。检测结果保留期为 3 天，超期后将返回 <code>ResourceUnavailable.ResultExpired</code>。</p>
+        :rtype: str
+        """
+        return self._SeqId
+
+    @SeqId.setter
+    def SeqId(self, SeqId):
+        self._SeqId = SeqId
+
+
+    def _deserialize(self, params):
+        self._SeqId = params.get("SeqId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAttackDetailResponse(AbstractModel):
+    r"""GetAttackDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackRegionList: <p>检测命中的攻击区域列表。本次检测未命中任何攻击区域时返回空数组 []</p>
+        :type AttackRegionList: list of AttackRegion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AttackRegionList = None
+        self._RequestId = None
+
+    @property
+    def AttackRegionList(self):
+        r"""<p>检测命中的攻击区域列表。本次检测未命中任何攻击区域时返回空数组 []</p>
+        :rtype: list of AttackRegion
+        """
+        return self._AttackRegionList
+
+    @AttackRegionList.setter
+    def AttackRegionList(self, AttackRegionList):
+        self._AttackRegionList = AttackRegionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AttackRegionList") is not None:
+            self._AttackRegionList = []
+            for item in params.get("AttackRegionList"):
+                obj = AttackRegion()
+                obj._deserialize(item)
+                self._AttackRegionList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10513,6 +10653,57 @@ OtherMismatch：其他不一致。
         self._Isp = params.get("Isp")
         self._ResultDetail = params.get("ResultDetail")
         self._RequestId = params.get("RequestId")
+
+
+class Point(AbstractModel):
+    r"""图像坐标点结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: <p>横坐标，单位像素，取值范围 [0, 图像宽度]</p>
+        :type X: int
+        :param _Y: <p>纵坐标，单位像素，取值范围 [0, 图像高度]</p>
+        :type Y: int
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        r"""<p>横坐标，单位像素，取值范围 [0, 图像宽度]</p>
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""<p>纵坐标，单位像素，取值范围 [0, 图像高度]</p>
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RetrievalLivenessExtraInfo(AbstractModel):

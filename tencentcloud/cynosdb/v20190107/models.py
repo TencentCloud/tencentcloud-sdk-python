@@ -4934,7 +4934,7 @@ class BizTaskInfo(AbstractModel):
         :type Operator: str
         :param _Output: <p>任务输出信息</p>
         :type Output: str
-        :param _Status: <p>任务状态</p>
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>waiting： 等待执行</li><li>processing： 执行中</li><li>success： 执行成功</li><li>fail： 任务失败</li><li>paused： 任务暂停（存量任务状态）</li><li>undoing： 回滚中</li><li>undoed： 任务已回滚</li></ul>
         :type Status: str
         :param _TaskType: <p>任务类型</p>
         :type TaskType: str
@@ -5213,7 +5213,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>任务状态</p>
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>waiting： 等待执行</li><li>processing： 执行中</li><li>success： 执行成功</li><li>fail： 任务失败</li><li>paused： 任务暂停（存量任务状态）</li><li>undoing： 回滚中</li><li>undoed： 任务已回滚</li></ul>
         :rtype: str
         """
         return self._Status
@@ -13406,34 +13406,37 @@ class CreateProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Cpu: cpu核数
+        :param _Cpu: <p>cpu核数</p>
         :type Cpu: int
-        :param _Mem: 内存
+        :param _Mem: <p>内存</p>
         :type Mem: int
-        :param _UniqueVpcId: 私有网络ID，默认与集群私有网络ID保持一致
+        :param _ProxyVersion: <p>代理内核版本。不传时默认使用最新稳定版本（白名单用户以appoint策略为准）；显式指定时将实时校验该版本是否在当前集群支持的代理版本集合内，不在则返回错误。集群存在已开启列存索引的只读实例时，所选版本需不低于列存转发要求的最低版本（如1.4.7）</p>
+        :type ProxyVersion: str
+        :param _UniqueVpcId: <p>私有网络ID，默认与集群私有网络ID保持一致</p>
         :type UniqueVpcId: str
-        :param _UniqueSubnetId: 私有网络子网ID，默认与集群子网ID保持一致
+        :param _UniqueSubnetId: <p>私有网络子网ID，默认与集群子网ID保持一致</p>
         :type UniqueSubnetId: str
-        :param _ProxyCount: 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        :param _ProxyCount: <p>数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)</p>
         :type ProxyCount: int
-        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool(会话级别连接池 )
+        :param _ConnectionPoolType: <p>连接池类型：SessionConnectionPool(会话级别连接池 )</p>
         :type ConnectionPoolType: str
-        :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
+        :param _OpenConnectionPool: <p>是否开启连接池,yes-开启，no-不开启</p>
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
+        :param _ConnectionPoolTimeOut: <p>连接池阈值：单位（秒）</p>
         :type ConnectionPoolTimeOut: int
-        :param _SecurityGroupIds: 安全组ID数组
+        :param _SecurityGroupIds: <p>安全组ID数组</p>
         :type SecurityGroupIds: list of str
-        :param _Description: 描述说明
+        :param _Description: <p>描述说明</p>
         :type Description: str
-        :param _ProxyZones: 数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        :param _ProxyZones: <p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
         :type ProxyZones: list of ProxyZone
         """
         self._ClusterId = None
         self._Cpu = None
         self._Mem = None
+        self._ProxyVersion = None
         self._UniqueVpcId = None
         self._UniqueSubnetId = None
         self._ProxyCount = None
@@ -13446,7 +13449,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -13457,7 +13460,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""cpu核数
+        r"""<p>cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -13468,7 +13471,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def Mem(self):
-        r"""内存
+        r"""<p>内存</p>
         :rtype: int
         """
         return self._Mem
@@ -13478,8 +13481,19 @@ class CreateProxyRequest(AbstractModel):
         self._Mem = Mem
 
     @property
+    def ProxyVersion(self):
+        r"""<p>代理内核版本。不传时默认使用最新稳定版本（白名单用户以appoint策略为准）；显式指定时将实时校验该版本是否在当前集群支持的代理版本集合内，不在则返回错误。集群存在已开启列存索引的只读实例时，所选版本需不低于列存转发要求的最低版本（如1.4.7）</p>
+        :rtype: str
+        """
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
+    @property
     def UniqueVpcId(self):
-        r"""私有网络ID，默认与集群私有网络ID保持一致
+        r"""<p>私有网络ID，默认与集群私有网络ID保持一致</p>
         :rtype: str
         """
         return self._UniqueVpcId
@@ -13490,7 +13504,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def UniqueSubnetId(self):
-        r"""私有网络子网ID，默认与集群子网ID保持一致
+        r"""<p>私有网络子网ID，默认与集群子网ID保持一致</p>
         :rtype: str
         """
         return self._UniqueSubnetId
@@ -13501,7 +13515,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def ProxyCount(self):
-        r"""数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        r"""<p>数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)</p>
         :rtype: int
         """
         return self._ProxyCount
@@ -13512,7 +13526,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        r"""连接池类型：SessionConnectionPool(会话级别连接池 )
+        r"""<p>连接池类型：SessionConnectionPool(会话级别连接池 )</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -13523,7 +13537,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def OpenConnectionPool(self):
-        r"""是否开启连接池,yes-开启，no-不开启
+        r"""<p>是否开启连接池,yes-开启，no-不开启</p>
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -13534,7 +13548,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""连接池阈值：单位（秒）
+        r"""<p>连接池阈值：单位（秒）</p>
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -13545,7 +13559,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID数组
+        r"""<p>安全组ID数组</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -13556,7 +13570,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述说明
+        r"""<p>描述说明</p>
         :rtype: str
         """
         return self._Description
@@ -13567,7 +13581,7 @@ class CreateProxyRequest(AbstractModel):
 
     @property
     def ProxyZones(self):
-        r"""数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        r"""<p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
         :rtype: list of ProxyZone
         """
         return self._ProxyZones
@@ -13581,6 +13595,7 @@ class CreateProxyRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._Cpu = params.get("Cpu")
         self._Mem = params.get("Mem")
+        self._ProxyVersion = params.get("ProxyVersion")
         self._UniqueVpcId = params.get("UniqueVpcId")
         self._UniqueSubnetId = params.get("UniqueSubnetId")
         self._ProxyCount = params.get("ProxyCount")
@@ -13612,11 +13627,11 @@ class CreateProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步流程ID
+        :param _FlowId: <p>异步流程ID</p>
         :type FlowId: int
-        :param _TaskId: 异步任务ID
+        :param _TaskId: <p>异步任务ID</p>
         :type TaskId: int
-        :param _ProxyGroupId: 数据库代理组ID
+        :param _ProxyGroupId: <p>数据库代理组ID</p>
         :type ProxyGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13628,7 +13643,7 @@ class CreateProxyResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步流程ID
+        r"""<p>异步流程ID</p>
         :rtype: int
         """
         return self._FlowId
@@ -13639,7 +13654,7 @@ class CreateProxyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID
+        r"""<p>异步任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -13650,7 +13665,7 @@ class CreateProxyResponse(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组ID
+        r"""<p>数据库代理组ID</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -33417,17 +33432,29 @@ class DescribeSupportProxyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID。与Zone/DbVersion/CynosVersion二选一：查询存量集群支持的代理版本时必填；不传时表示创建集群前查询场景，需同时传入Zone、DbVersion、CynosVersion</p>
         :type ClusterId: str
-        :param _ProxyGroupId: 数据库代理组ID
+        :param _ProxyGroupId: <p>数据库代理组ID。仅在传入ClusterId时有效，传入时返回当前代理版本号</p>
         :type ProxyGroupId: str
+        :param _Zone: <p>可用区，如ap-guangzhou-3。创建集群前查询场景（不传ClusterId时）必填</p>
+        :type Zone: str
+        :param _DbVersion: <p>数据库引擎版本，如5.7、8.0。创建集群前查询场景（不传ClusterId时）必填</p>
+        :type DbVersion: str
+        :param _CynosVersion: <p>目标内核版本，如3.1.20.001。创建集群前查询场景（不传ClusterId时）必填</p>
+        :type CynosVersion: str
+        :param _StorageVersion: <p>存储版本，枚举值：1.0、2.0。可选，仅创建集群前查询场景有效</p>
+        :type StorageVersion: str
         """
         self._ClusterId = None
         self._ProxyGroupId = None
+        self._Zone = None
+        self._DbVersion = None
+        self._CynosVersion = None
+        self._StorageVersion = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID。与Zone/DbVersion/CynosVersion二选一：查询存量集群支持的代理版本时必填；不传时表示创建集群前查询场景，需同时传入Zone、DbVersion、CynosVersion</p>
         :rtype: str
         """
         return self._ClusterId
@@ -33438,7 +33465,7 @@ class DescribeSupportProxyVersionRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组ID
+        r"""<p>数据库代理组ID。仅在传入ClusterId时有效，传入时返回当前代理版本号</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -33447,10 +33474,58 @@ class DescribeSupportProxyVersionRequest(AbstractModel):
     def ProxyGroupId(self, ProxyGroupId):
         self._ProxyGroupId = ProxyGroupId
 
+    @property
+    def Zone(self):
+        r"""<p>可用区，如ap-guangzhou-3。创建集群前查询场景（不传ClusterId时）必填</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def DbVersion(self):
+        r"""<p>数据库引擎版本，如5.7、8.0。创建集群前查询场景（不传ClusterId时）必填</p>
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def CynosVersion(self):
+        r"""<p>目标内核版本，如3.1.20.001。创建集群前查询场景（不传ClusterId时）必填</p>
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
+    @property
+    def StorageVersion(self):
+        r"""<p>存储版本，枚举值：1.0、2.0。可选，仅创建集群前查询场景有效</p>
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ProxyGroupId = params.get("ProxyGroupId")
+        self._Zone = params.get("Zone")
+        self._DbVersion = params.get("DbVersion")
+        self._CynosVersion = params.get("CynosVersion")
+        self._StorageVersion = params.get("StorageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33468,11 +33543,11 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SupportProxyVersions: 支持的数据库代理版本集合
+        :param _SupportProxyVersions: <p>支持的数据库代理版本集合</p>
         :type SupportProxyVersions: list of str
-        :param _CurrentProxyVersion: 当前proxy版本号
+        :param _CurrentProxyVersion: <p>当前proxy版本号</p>
         :type CurrentProxyVersion: str
-        :param _SupportProxyVersionDetail: 代理版本详情
+        :param _SupportProxyVersionDetail: <p>代理版本详情</p>
         :type SupportProxyVersionDetail: list of ProxyVersionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33484,7 +33559,7 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
 
     @property
     def SupportProxyVersions(self):
-        r"""支持的数据库代理版本集合
+        r"""<p>支持的数据库代理版本集合</p>
         :rtype: list of str
         """
         return self._SupportProxyVersions
@@ -33495,7 +33570,7 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        r"""当前proxy版本号
+        r"""<p>当前proxy版本号</p>
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -33506,7 +33581,7 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
 
     @property
     def SupportProxyVersionDetail(self):
-        r"""代理版本详情
+        r"""<p>代理版本详情</p>
         :rtype: list of ProxyVersionInfo
         """
         return self._SupportProxyVersionDetail
@@ -39302,26 +39377,29 @@ class IsolateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _DbType: 该参数已废用
+        :param _DbType: <p>该参数已废用</p>
         :type DbType: str
-        :param _IsolateReasonTypes: 实例退还原因类型
+        :param _IsolateReasonTypes: <p>实例退还原因类型</p>
         :type IsolateReasonTypes: list of int
-        :param _IsolateReason: 实例退还原因补充
+        :param _IsolateReason: <p>实例退还原因补充</p>
         :type IsolateReason: str
-        :param _SaveBackup: 保留备份,true-保留（会产生费用）
+        :param _SaveBackup: <p>保留备份,true-保留（会产生费用）</p>
         :type SaveBackup: bool
+        :param _ImmediateRecycleRo: <p>立即彻底删除RO实例</p>
+        :type ImmediateRecycleRo: bool
         """
         self._ClusterId = None
         self._DbType = None
         self._IsolateReasonTypes = None
         self._IsolateReason = None
         self._SaveBackup = None
+        self._ImmediateRecycleRo = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -39332,7 +39410,7 @@ class IsolateClusterRequest(AbstractModel):
 
     @property
     def DbType(self):
-        r"""该参数已废用
+        r"""<p>该参数已废用</p>
         :rtype: str
         """
         return self._DbType
@@ -39343,7 +39421,7 @@ class IsolateClusterRequest(AbstractModel):
 
     @property
     def IsolateReasonTypes(self):
-        r"""实例退还原因类型
+        r"""<p>实例退还原因类型</p>
         :rtype: list of int
         """
         return self._IsolateReasonTypes
@@ -39354,7 +39432,7 @@ class IsolateClusterRequest(AbstractModel):
 
     @property
     def IsolateReason(self):
-        r"""实例退还原因补充
+        r"""<p>实例退还原因补充</p>
         :rtype: str
         """
         return self._IsolateReason
@@ -39365,7 +39443,7 @@ class IsolateClusterRequest(AbstractModel):
 
     @property
     def SaveBackup(self):
-        r"""保留备份,true-保留（会产生费用）
+        r"""<p>保留备份,true-保留（会产生费用）</p>
         :rtype: bool
         """
         return self._SaveBackup
@@ -39374,6 +39452,17 @@ class IsolateClusterRequest(AbstractModel):
     def SaveBackup(self, SaveBackup):
         self._SaveBackup = SaveBackup
 
+    @property
+    def ImmediateRecycleRo(self):
+        r"""<p>立即彻底删除RO实例</p>
+        :rtype: bool
+        """
+        return self._ImmediateRecycleRo
+
+    @ImmediateRecycleRo.setter
+    def ImmediateRecycleRo(self, ImmediateRecycleRo):
+        self._ImmediateRecycleRo = ImmediateRecycleRo
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -39381,6 +39470,7 @@ class IsolateClusterRequest(AbstractModel):
         self._IsolateReasonTypes = params.get("IsolateReasonTypes")
         self._IsolateReason = params.get("IsolateReason")
         self._SaveBackup = params.get("SaveBackup")
+        self._ImmediateRecycleRo = params.get("ImmediateRecycleRo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39398,9 +39488,9 @@ class IsolateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
+        :param _FlowId: <p>任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)</p>
         :type FlowId: int
-        :param _DealNames: 退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
+        :param _DealNames: <p>退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -39412,7 +39502,7 @@ class IsolateClusterResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
+        r"""<p>任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)</p>
         :rtype: int
         """
         return self._FlowId
@@ -39423,7 +39513,7 @@ class IsolateClusterResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
+        r"""<p>退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -39458,18 +39548,20 @@ class IsolateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _InstanceIdList: 实例ID数组，例如["cynosdbbmysql-ins-asd","cynosdbmysql-ins-zxc"]
+        :param _InstanceIdList: <p>实例ID数组，例如[&quot;cynosdbbmysql-ins-asd&quot;,&quot;cynosdbmysql-ins-zxc&quot;]</p>
         :type InstanceIdList: list of str
-        :param _DbType: 该参数已废弃
+        :param _DbType: <p>该参数已废弃</p>
         :type DbType: str
-        :param _IsolateReasonTypes: 实例退还原因类型
+        :param _IsolateReasonTypes: <p>实例退还原因类型</p>
         :type IsolateReasonTypes: list of int
-        :param _IsolateReason: 实例退还原因补充
+        :param _IsolateReason: <p>实例退还原因补充</p>
         :type IsolateReason: str
-        :param _SaveBackup: 保留备份
+        :param _SaveBackup: <p>保留备份</p>
         :type SaveBackup: bool
+        :param _ImmediateRecycleRo: <p>立即彻底删除RO实例</p>
+        :type ImmediateRecycleRo: bool
         """
         self._ClusterId = None
         self._InstanceIdList = None
@@ -39477,10 +39569,11 @@ class IsolateInstanceRequest(AbstractModel):
         self._IsolateReasonTypes = None
         self._IsolateReason = None
         self._SaveBackup = None
+        self._ImmediateRecycleRo = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -39491,7 +39584,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        r"""实例ID数组，例如["cynosdbbmysql-ins-asd","cynosdbmysql-ins-zxc"]
+        r"""<p>实例ID数组，例如[&quot;cynosdbbmysql-ins-asd&quot;,&quot;cynosdbmysql-ins-zxc&quot;]</p>
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -39502,7 +39595,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def DbType(self):
-        r"""该参数已废弃
+        r"""<p>该参数已废弃</p>
         :rtype: str
         """
         return self._DbType
@@ -39513,7 +39606,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def IsolateReasonTypes(self):
-        r"""实例退还原因类型
+        r"""<p>实例退还原因类型</p>
         :rtype: list of int
         """
         return self._IsolateReasonTypes
@@ -39524,7 +39617,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def IsolateReason(self):
-        r"""实例退还原因补充
+        r"""<p>实例退还原因补充</p>
         :rtype: str
         """
         return self._IsolateReason
@@ -39535,7 +39628,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def SaveBackup(self):
-        r"""保留备份
+        r"""<p>保留备份</p>
         :rtype: bool
         """
         return self._SaveBackup
@@ -39543,6 +39636,17 @@ class IsolateInstanceRequest(AbstractModel):
     @SaveBackup.setter
     def SaveBackup(self, SaveBackup):
         self._SaveBackup = SaveBackup
+
+    @property
+    def ImmediateRecycleRo(self):
+        r"""<p>立即彻底删除RO实例</p>
+        :rtype: bool
+        """
+        return self._ImmediateRecycleRo
+
+    @ImmediateRecycleRo.setter
+    def ImmediateRecycleRo(self, ImmediateRecycleRo):
+        self._ImmediateRecycleRo = ImmediateRecycleRo
 
 
     def _deserialize(self, params):
@@ -39552,6 +39656,7 @@ class IsolateInstanceRequest(AbstractModel):
         self._IsolateReasonTypes = params.get("IsolateReasonTypes")
         self._IsolateReason = params.get("IsolateReason")
         self._SaveBackup = params.get("SaveBackup")
+        self._ImmediateRecycleRo = params.get("ImmediateRecycleRo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39569,9 +39674,9 @@ class IsolateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务流id
+        :param _FlowId: <p>任务流id</p>
         :type FlowId: int
-        :param _DealNames: 隔离实例的订单id（预付费实例）
+        :param _DealNames: <p>隔离实例的订单id（预付费实例）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -39583,7 +39688,7 @@ class IsolateInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务流id
+        r"""<p>任务流id</p>
         :rtype: int
         """
         return self._FlowId
@@ -39594,7 +39699,7 @@ class IsolateInstanceResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""隔离实例的订单id（预付费实例）
+        r"""<p>隔离实例的订单id（预付费实例）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -52909,6 +53014,8 @@ class ProxyConfig(AbstractModel):
         :type Description: str
         :param _ProxyZones: <p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
         :type ProxyZones: list of ProxyZone
+        :param _ProxyVersion: <p>proxy版本号</p>
+        :type ProxyVersion: str
         """
         self._ProxyCount = None
         self._Cpu = None
@@ -52918,6 +53025,7 @@ class ProxyConfig(AbstractModel):
         self._ConnectionPoolTimeOut = None
         self._Description = None
         self._ProxyZones = None
+        self._ProxyVersion = None
 
     @property
     def ProxyCount(self):
@@ -53011,6 +53119,17 @@ class ProxyConfig(AbstractModel):
     def ProxyZones(self, ProxyZones):
         self._ProxyZones = ProxyZones
 
+    @property
+    def ProxyVersion(self):
+        r"""<p>proxy版本号</p>
+        :rtype: str
+        """
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
 
     def _deserialize(self, params):
         self._ProxyCount = params.get("ProxyCount")
@@ -53026,6 +53145,7 @@ class ProxyConfig(AbstractModel):
                 obj = ProxyZone()
                 obj._deserialize(item)
                 self._ProxyZones.append(obj)
+        self._ProxyVersion = params.get("ProxyVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64192,20 +64312,23 @@ class UserHostPrivilege(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbUserName: 授权用户
+        :param _DbUserName: <p>授权用户</p>
         :type DbUserName: str
-        :param _DbHost: 客户端ip
+        :param _DbHost: <p>客户端ip</p>
         :type DbHost: str
-        :param _DbPrivilege: 用户权限
+        :param _DbPrivilege: <p>用户权限</p>
         :type DbPrivilege: str
+        :param _PrivilegeList: <p>权限明细列表</p>
+        :type PrivilegeList: list of str
         """
         self._DbUserName = None
         self._DbHost = None
         self._DbPrivilege = None
+        self._PrivilegeList = None
 
     @property
     def DbUserName(self):
-        r"""授权用户
+        r"""<p>授权用户</p>
         :rtype: str
         """
         return self._DbUserName
@@ -64216,7 +64339,7 @@ class UserHostPrivilege(AbstractModel):
 
     @property
     def DbHost(self):
-        r"""客户端ip
+        r"""<p>客户端ip</p>
         :rtype: str
         """
         return self._DbHost
@@ -64227,7 +64350,7 @@ class UserHostPrivilege(AbstractModel):
 
     @property
     def DbPrivilege(self):
-        r"""用户权限
+        r"""<p>用户权限</p>
         :rtype: str
         """
         return self._DbPrivilege
@@ -64236,11 +64359,23 @@ class UserHostPrivilege(AbstractModel):
     def DbPrivilege(self, DbPrivilege):
         self._DbPrivilege = DbPrivilege
 
+    @property
+    def PrivilegeList(self):
+        r"""<p>权限明细列表</p>
+        :rtype: list of str
+        """
+        return self._PrivilegeList
+
+    @PrivilegeList.setter
+    def PrivilegeList(self, PrivilegeList):
+        self._PrivilegeList = PrivilegeList
+
 
     def _deserialize(self, params):
         self._DbUserName = params.get("DbUserName")
         self._DbHost = params.get("DbHost")
         self._DbPrivilege = params.get("DbPrivilege")
+        self._PrivilegeList = params.get("PrivilegeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

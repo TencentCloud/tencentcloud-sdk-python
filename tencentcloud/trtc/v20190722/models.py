@@ -963,6 +963,108 @@ class AsrParam(AbstractModel):
         
 
 
+class AsyncTTSSegmentResult(AbstractModel):
+    r"""AsyncTTSTextSegment对应的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>分段文本</p>
+        :type Text: str
+        :param _AudioDownloadUrl: <p>音频下载url</p>
+        :type AudioDownloadUrl: str
+        :param _DurationMs: <p>音频时长</p><p>单位：ms</p>
+        :type DurationMs: int
+        """
+        self._Text = None
+        self._AudioDownloadUrl = None
+        self._DurationMs = None
+
+    @property
+    def Text(self):
+        r"""<p>分段文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def AudioDownloadUrl(self):
+        r"""<p>音频下载url</p>
+        :rtype: str
+        """
+        return self._AudioDownloadUrl
+
+    @AudioDownloadUrl.setter
+    def AudioDownloadUrl(self, AudioDownloadUrl):
+        self._AudioDownloadUrl = AudioDownloadUrl
+
+    @property
+    def DurationMs(self):
+        r"""<p>音频时长</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._AudioDownloadUrl = params.get("AudioDownloadUrl")
+        self._DurationMs = params.get("DurationMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsyncTTSTextSegment(AbstractModel):
+    r"""文本分段元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>分段文本</p>
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        r"""<p>分段文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsyncTextToSpeechRequest(AbstractModel):
     r"""AsyncTextToSpeech请求参数结构体
 
@@ -976,6 +1078,8 @@ class AsyncTextToSpeechRequest(AbstractModel):
         :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
         :param _SdkAppId: <p>TRTC的SdkAppId</p>
         :type SdkAppId: int
+        :param _TextSegments: <p>分段文本，优先级高于text，适用于定制长文本分句场景</p><p>入参限制：文本总长度不能超过50000字符，段数不能超过500</p>
+        :type TextSegments: list of AsyncTTSTextSegment
         :param _AudioFormat: <p>文本转语音的输出音频的格式</p>
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         :param _Model: <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
@@ -990,6 +1094,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
         self._Text = None
         self._Voice = None
         self._SdkAppId = None
+        self._TextSegments = None
         self._AudioFormat = None
         self._Model = None
         self._PronunciationDict = None
@@ -1028,6 +1133,17 @@ class AsyncTextToSpeechRequest(AbstractModel):
     @SdkAppId.setter
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
+
+    @property
+    def TextSegments(self):
+        r"""<p>分段文本，优先级高于text，适用于定制长文本分句场景</p><p>入参限制：文本总长度不能超过50000字符，段数不能超过500</p>
+        :rtype: list of AsyncTTSTextSegment
+        """
+        return self._TextSegments
+
+    @TextSegments.setter
+    def TextSegments(self, TextSegments):
+        self._TextSegments = TextSegments
 
     @property
     def AudioFormat(self):
@@ -1091,6 +1207,12 @@ class AsyncTextToSpeechRequest(AbstractModel):
             self._Voice = Voice()
             self._Voice._deserialize(params.get("Voice"))
         self._SdkAppId = params.get("SdkAppId")
+        if params.get("TextSegments") is not None:
+            self._TextSegments = []
+            for item in params.get("TextSegments"):
+                obj = AsyncTTSTextSegment()
+                obj._deserialize(item)
+                self._TextSegments.append(obj)
         if params.get("AudioFormat") is not None:
             self._AudioFormat = AudioFormat()
             self._AudioFormat._deserialize(params.get("AudioFormat"))
@@ -1122,10 +1244,16 @@ class AsyncTextToSpeechResponse(AbstractModel):
         r"""
         :param _TaskId: <p>任务ID</p>
         :type TaskId: str
+        :param _CurrentTaskCount: <p>当前正在处理的任务数</p>
+        :type CurrentTaskCount: int
+        :param _MaxTaskCount: <p>最大允许提交的任务数，默认1000，有提额需求请提交工单</p>
+        :type MaxTaskCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
+        self._CurrentTaskCount = None
+        self._MaxTaskCount = None
         self._RequestId = None
 
     @property
@@ -1138,6 +1266,28 @@ class AsyncTextToSpeechResponse(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def CurrentTaskCount(self):
+        r"""<p>当前正在处理的任务数</p>
+        :rtype: int
+        """
+        return self._CurrentTaskCount
+
+    @CurrentTaskCount.setter
+    def CurrentTaskCount(self, CurrentTaskCount):
+        self._CurrentTaskCount = CurrentTaskCount
+
+    @property
+    def MaxTaskCount(self):
+        r"""<p>最大允许提交的任务数，默认1000，有提额需求请提交工单</p>
+        :rtype: int
+        """
+        return self._MaxTaskCount
+
+    @MaxTaskCount.setter
+    def MaxTaskCount(self, MaxTaskCount):
+        self._MaxTaskCount = MaxTaskCount
 
     @property
     def RequestId(self):
@@ -1153,6 +1303,8 @@ class AsyncTextToSpeechResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._CurrentTaskCount = params.get("CurrentTaskCount")
+        self._MaxTaskCount = params.get("MaxTaskCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5470,14 +5622,14 @@ class DescribeAsyncTextToSpeechRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -5506,18 +5658,16 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态
-- Processing，处理中
-- Success，任务成功
-- Failed，任务失败
-- Expired，任务过期
+        :param _Status: <p>任务状态</p><ul><li>Processing，处理中</li><li>Success，任务成功</li><li>Failed，任务失败</li><li>Expired，任务过期</li></ul>
         :type Status: str
-        :param _AudioDownloadUrl: 音频下载url
+        :param _AudioDownloadUrl: <p>音频下载url</p>
         :type AudioDownloadUrl: str
-        :param _SubtitleDownloadUrl: 字幕下载url
+        :param _SubtitleDownloadUrl: <p>字幕下载url</p>
         :type SubtitleDownloadUrl: str
-        :param _TotalDurationMs: 音频时长
+        :param _TotalDurationMs: <p>音频时长</p>
         :type TotalDurationMs: int
+        :param _SegmentResults: <p>分段文本对应的结果</p>
+        :type SegmentResults: list of AsyncTTSSegmentResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5525,15 +5675,12 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
         self._AudioDownloadUrl = None
         self._SubtitleDownloadUrl = None
         self._TotalDurationMs = None
+        self._SegmentResults = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""任务状态
-- Processing，处理中
-- Success，任务成功
-- Failed，任务失败
-- Expired，任务过期
+        r"""<p>任务状态</p><ul><li>Processing，处理中</li><li>Success，任务成功</li><li>Failed，任务失败</li><li>Expired，任务过期</li></ul>
         :rtype: str
         """
         return self._Status
@@ -5544,7 +5691,7 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
 
     @property
     def AudioDownloadUrl(self):
-        r"""音频下载url
+        r"""<p>音频下载url</p>
         :rtype: str
         """
         return self._AudioDownloadUrl
@@ -5555,7 +5702,7 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
 
     @property
     def SubtitleDownloadUrl(self):
-        r"""字幕下载url
+        r"""<p>字幕下载url</p>
         :rtype: str
         """
         return self._SubtitleDownloadUrl
@@ -5566,7 +5713,7 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
 
     @property
     def TotalDurationMs(self):
-        r"""音频时长
+        r"""<p>音频时长</p>
         :rtype: int
         """
         return self._TotalDurationMs
@@ -5574,6 +5721,17 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
     @TotalDurationMs.setter
     def TotalDurationMs(self, TotalDurationMs):
         self._TotalDurationMs = TotalDurationMs
+
+    @property
+    def SegmentResults(self):
+        r"""<p>分段文本对应的结果</p>
+        :rtype: list of AsyncTTSSegmentResult
+        """
+        return self._SegmentResults
+
+    @SegmentResults.setter
+    def SegmentResults(self, SegmentResults):
+        self._SegmentResults = SegmentResults
 
     @property
     def RequestId(self):
@@ -5592,6 +5750,12 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
         self._AudioDownloadUrl = params.get("AudioDownloadUrl")
         self._SubtitleDownloadUrl = params.get("SubtitleDownloadUrl")
         self._TotalDurationMs = params.get("TotalDurationMs")
+        if params.get("SegmentResults") is not None:
+            self._SegmentResults = []
+            for item in params.get("SegmentResults"):
+                obj = AsyncTTSSegmentResult()
+                obj._deserialize(item)
+                self._SegmentResults.append(obj)
         self._RequestId = params.get("RequestId")
 
 

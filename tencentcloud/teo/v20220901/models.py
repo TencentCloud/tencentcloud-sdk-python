@@ -40969,14 +40969,14 @@ class HTTPUpstreamTimeoutParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResponseTimeout: <p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p>
+        :param _ResponseTimeout: <p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p><p>节点把请求发给源站后开始计时，在设定时间内没有收到源站返回的任何数据即判定超时；开始收到响应后，相邻两次收到数据的间隔超过设定值同样判定超时。节点向源站上传请求体时，相邻两次发送数据的间隔也受该值限制。该值不限制整个响应的总耗时，只要源站持续返回数据，大文件下载不会因此中断。<br>注意：该参数未设置时出参不返回。</p>
         :type ResponseTimeout: int
         """
         self._ResponseTimeout = None
 
     @property
     def ResponseTimeout(self):
-        r"""<p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p>
+        r"""<p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p><p>节点把请求发给源站后开始计时，在设定时间内没有收到源站返回的任何数据即判定超时；开始收到响应后，相邻两次收到数据的间隔超过设定值同样判定超时。节点向源站上传请求体时，相邻两次发送数据的间隔也受该值限制。该值不限制整个响应的总耗时，只要源站持续返回数据，大文件下载不会因此中断。<br>注意：该参数未设置时出参不返回。</p>
         :rtype: int
         """
         return self._ResponseTimeout

@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Git 授权已过期。
 FAILEDOPERATION_GITAUTHEXPIRED = 'FailedOperation.GitAuthExpired'
 
+# 内部错误。
+INTERNALERROR = 'InternalError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 

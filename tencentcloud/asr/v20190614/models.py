@@ -807,7 +807,7 @@ class CreateRecTaskRequest(AbstractModel):
         :type Url: str
         :param _CallbackUrl: <p>回调 URL<br>用户自行搭建的用于接收识别结果的服务URL<br>回调格式和内容详见：<a href="https://cloud.tencent.com/document/product/1093/52632">录音识别回调说明</a></p><p>注意：</p><ul><li>如果用户使用轮询方式获取识别结果，则无需提交该参数</li><li>建议在回调URL中带上您的业务ID等信息，以便处理业务逻辑</li></ul>
         :type CallbackUrl: str
-        :param _SpeakerDiarization: <p>是否开启说话人分离<br>0：不开启；<br>1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh_en_2.0/16k_zh_en_meeting/16k_zh_en/16k_zh/16k_ms/16k_en/16k_id/16k_zh_dialect/16k_es/16k_fr/16k_ja/16k_ko，且ChannelNum=1时可用）；<br>3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en_2.0、16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）<br>默认值为 0</p><p>注意：<br>8k双声道电话音频请按 <strong>ChannelNum 识别声道数</strong> 的参数描述使用默认值。</p>
+        :param _SpeakerDiarization: <p>是否开启说话人分离<br>0：不开启；<br>1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh_en_2.0/16k_zh_en_meeting/16k_zh_en/16k_zh/16k_ms/16k_en/16k_id/16k_zh_dialect/16k_es/16k_fr/16k_ja/16k_ko，且ChannelNum=1时可用）；<br>3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en_meeting、16k_zh_en_2.0、16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）<br>默认值为 0</p><p>注意：<br>8k双声道电话音频请按 <strong>ChannelNum 识别声道数</strong> 的参数描述使用默认值。</p>
         :type SpeakerDiarization: int
         :param _SpeakerNumber: <p>说话人分离人数<br><strong>需配合开启说话人分离使用，不开启无效</strong>，取值范围：0-10<br>0：自动分离（最多分离出20个人）；<br>1-10：指定人数分离；<br>默认值为 0<br>注:16k引擎不支持指定人数分离</p>
         :type SpeakerNumber: int
@@ -839,7 +839,7 @@ class CreateRecTaskRequest(AbstractModel):
         :type KeyWordLibIdList: list of str
         :param _ReplaceTextId: <p>替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考<a href="https://console.cloud.tencent.com/asr/replaceword">配置控制台</a>;强制替换功能可能会影响正常识别结果，请谨慎使用</p><p>注意：</p><ol><li>本功能配置完成后，预计在10分钟后生效</li></ol>
         :type ReplaceTextId: str
-        :param _SpeakerRoles: <p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>此为ASR增值服务<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
+        :param _SpeakerRoles: <p>开启角色分离能力配合SpeakerDiarization: 3 使用。角色分离为<strong>ASR增值服务</strong>。</p><p>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
         :type SpeakerRoles: list of SpeakerRoleInfo
         :param _ContextData: <p>上下文数据，支持文本输入，可输入历史对话上下文、关键词集合等。(支持引擎： 16k_zh_en_meeting)</p>
         :type ContextData: str
@@ -970,7 +970,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SpeakerDiarization(self):
-        r"""<p>是否开启说话人分离<br>0：不开启；<br>1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh_en_2.0/16k_zh_en_meeting/16k_zh_en/16k_zh/16k_ms/16k_en/16k_id/16k_zh_dialect/16k_es/16k_fr/16k_ja/16k_ko，且ChannelNum=1时可用）；<br>3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en_2.0、16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）<br>默认值为 0</p><p>注意：<br>8k双声道电话音频请按 <strong>ChannelNum 识别声道数</strong> 的参数描述使用默认值。</p>
+        r"""<p>是否开启说话人分离<br>0：不开启；<br>1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh_en_2.0/16k_zh_en_meeting/16k_zh_en/16k_zh/16k_ms/16k_en/16k_id/16k_zh_dialect/16k_es/16k_fr/16k_ja/16k_ko，且ChannelNum=1时可用）；<br>3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en_meeting、16k_zh_en_2.0、16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）<br>默认值为 0</p><p>注意：<br>8k双声道电话音频请按 <strong>ChannelNum 识别声道数</strong> 的参数描述使用默认值。</p>
         :rtype: int
         """
         return self._SpeakerDiarization
@@ -1150,7 +1150,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SpeakerRoles(self):
-        r"""<p>开启角色分离能力配合SpeakerDiarization: 3 使用。</p><p>此为ASR增值服务<br>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
+        r"""<p>开启角色分离能力配合SpeakerDiarization: 3 使用。角色分离为<strong>ASR增值服务</strong>。</p><p>使用方式一：<strong>仅可传入一个声纹信息</strong>进行角色认证，仅支持16k_zh_en_2.0和16k_zh_en引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。<br>使用方式二：<strong>可传入一组声纹信息</strong>进行角色认证，仅支持16k_zh_en_meeting引擎。需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及VoicePrintId和SpeakerNick两个参数。 VoicePrintId：需要认证角色的声纹ID（需提前进行<a href="https://cloud.tencent.com/document/product/1093/94483">说话人注册</a>），建议30s的纯净人声，最长不能超过45s，有效人声不得低于1s。 SpeakerNick：需要认证角色的名称，会替换话者分离中的SpeakerID，如不传则复用说话人注册时的名称。<br><strong>注意：声纹注册后5分钟生效</strong></p><p> 示例： &quot;{"EngineModelType":"16k_zh_en","ChannelNum":1,"ResTextFormat":1,"SourceType":0,"Url":"需要进行ASR识别的音频链接","SpeakerDiarization":3,"SpeakerRoles":[{"RoleAudioUrl":"需要认证角色的声纹音频地址","RoleName":"需要认证角色的名称"}]}&quot;</p>
         :rtype: list of SpeakerRoleInfo
         """
         return self._SpeakerRoles

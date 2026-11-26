@@ -1969,13 +1969,13 @@ class CreateWhitelistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID：taw-123
+        :param _InstanceID: <p>实例ID：taw-123</p>
         :type InstanceID: str
-        :param _Remark: 备注（暂未作字节数限制）
+        :param _Remark: <p>备注（暂未作字节数限制）</p>
         :type Remark: str
-        :param _WhitelistUin: uin：业务方标识
+        :param _WhitelistUin: <p>uin：业务方标识</p>
         :type WhitelistUin: str
-        :param _Aid: 业务方标识
+        :param _Aid: <p>业务方标识</p>
         :type Aid: str
         """
         self._InstanceID = None
@@ -1985,7 +1985,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID：taw-123
+        r"""<p>实例ID：taw-123</p>
         :rtype: str
         """
         return self._InstanceID
@@ -1996,7 +1996,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注（暂未作字节数限制）
+        r"""<p>备注（暂未作字节数限制）</p>
         :rtype: str
         """
         return self._Remark
@@ -2007,7 +2007,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def WhitelistUin(self):
-        r"""uin：业务方标识
+        r"""<p>uin：业务方标识</p>
         :rtype: str
         """
         return self._WhitelistUin
@@ -2018,7 +2018,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Aid(self):
-        r"""业务方标识
+        r"""<p>业务方标识</p>
         :rtype: str
         """
         return self._Aid
@@ -2050,9 +2050,9 @@ class CreateWhitelistResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
         :type Msg: str
-        :param _ID: 白名单ID
+        :param _ID: <p>白名单ID</p>
         :type ID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2063,7 +2063,7 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
         :rtype: str
         """
         return self._Msg
@@ -2074,7 +2074,7 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def ID(self):
-        r"""白名单ID
+        r"""<p>白名单ID</p>
         :rtype: int
         """
         return self._ID
@@ -13590,51 +13590,51 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: <p>allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等</p>
         :type Type: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _ID: 项目ID
+        :param _ID: <p>项目ID</p>
         :type ID: int
-        :param _ExtSecond: 自定义2
+        :param _ExtSecond: <p>自定义2</p>
         :type ExtSecond: str
-        :param _Engine: 浏览器引擎
+        :param _Engine: <p>浏览器引擎</p>
         :type Engine: str
-        :param _Isp: 运营商
+        :param _Isp: <p>运营商</p>
         :type Isp: str
-        :param _From: 来源页面
+        :param _From: <p>来源页面</p>
         :type From: str
-        :param _Level: 日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
+        :param _Level: <p>日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）</p>
         :type Level: str
-        :param _Brand: 品牌
+        :param _Brand: <p>品牌</p>
         :type Brand: str
-        :param _Area: 地区
+        :param _Area: <p>地区</p>
         :type Area: str
-        :param _VersionNum: 版本
+        :param _VersionNum: <p>版本</p>
         :type VersionNum: str
-        :param _Platform: 平台
+        :param _Platform: <p>平台</p>
         :type Platform: str
-        :param _ExtThird: 自定义3
+        :param _ExtThird: <p>自定义3</p>
         :type ExtThird: str
-        :param _ExtFirst: 自定义1
+        :param _ExtFirst: <p>自定义1</p>
         :type ExtFirst: str
-        :param _NetType: 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+        :param _NetType: <p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。</p>
         :type NetType: str
-        :param _Device: 机型
+        :param _Device: <p>机型</p>
         :type Device: str
-        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        :param _IsAbroad: <p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
         :type IsAbroad: str
-        :param _Os: 操作系统
+        :param _Os: <p>操作系统</p>
         :type Os: str
-        :param _Browser: 浏览器
+        :param _Browser: <p>浏览器</p>
         :type Browser: str
-        :param _CostType: 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
+        :param _CostType: <p>耗时口径：&quot;50&quot;/&quot;75&quot;/&quot;90&quot;/&quot;95&quot;/&quot;99&quot;/&quot;99.5&quot; 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；&quot;avg&quot; 表示均值（avg）。</p>
         :type CostType: str
-        :param _Url: 来源
+        :param _Url: <p>来源</p>
         :type Url: list of str
-        :param _Env: 环境
+        :param _Env: <p>环境</p>
         :type Env: str
         """
         self._StartTime = None
@@ -13663,7 +13663,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -13674,7 +13674,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""<p>allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等</p>
         :rtype: str
         """
         return self._Type
@@ -13685,7 +13685,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -13696,7 +13696,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ID
@@ -13707,7 +13707,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        r"""自定义2
+        r"""<p>自定义2</p>
         :rtype: str
         """
         return self._ExtSecond
@@ -13718,7 +13718,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
-        r"""浏览器引擎
+        r"""<p>浏览器引擎</p>
         :rtype: str
         """
         return self._Engine
@@ -13729,7 +13729,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
-        r"""运营商
+        r"""<p>运营商</p>
         :rtype: str
         """
         return self._Isp
@@ -13740,7 +13740,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""来源页面
+        r"""<p>来源页面</p>
         :rtype: str
         """
         return self._From
@@ -13751,7 +13751,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Level(self):
-        r"""日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
+        r"""<p>日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）</p>
         :rtype: str
         """
         return self._Level
@@ -13762,7 +13762,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
-        r"""品牌
+        r"""<p>品牌</p>
         :rtype: str
         """
         return self._Brand
@@ -13773,7 +13773,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""地区
+        r"""<p>地区</p>
         :rtype: str
         """
         return self._Area
@@ -13784,7 +13784,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        r"""版本
+        r"""<p>版本</p>
         :rtype: str
         """
         return self._VersionNum
@@ -13795,7 +13795,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""平台
+        r"""<p>平台</p>
         :rtype: str
         """
         return self._Platform
@@ -13806,7 +13806,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        r"""自定义3
+        r"""<p>自定义3</p>
         :rtype: str
         """
         return self._ExtThird
@@ -13817,7 +13817,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        r"""自定义1
+        r"""<p>自定义1</p>
         :rtype: str
         """
         return self._ExtFirst
@@ -13828,7 +13828,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+        r"""<p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。</p>
         :rtype: str
         """
         return self._NetType
@@ -13839,7 +13839,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Device(self):
-        r"""机型
+        r"""<p>机型</p>
         :rtype: str
         """
         return self._Device
@@ -13850,7 +13850,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        r"""显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        r"""<p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
         :rtype: str
         """
         return self._IsAbroad
@@ -13861,7 +13861,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Os(self):
-        r"""操作系统
+        r"""<p>操作系统</p>
         :rtype: str
         """
         return self._Os
@@ -13872,7 +13872,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
-        r"""浏览器
+        r"""<p>浏览器</p>
         :rtype: str
         """
         return self._Browser
@@ -13883,7 +13883,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
-        r"""耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
+        r"""<p>耗时口径：&quot;50&quot;/&quot;75&quot;/&quot;90&quot;/&quot;95&quot;/&quot;99&quot;/&quot;99.5&quot; 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；&quot;avg&quot; 表示均值（avg）。</p>
         :rtype: str
         """
         return self._CostType
@@ -13894,7 +13894,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""来源
+        r"""<p>来源</p>
         :rtype: list of str
         """
         return self._Url
@@ -13905,7 +13905,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Env(self):
-        r"""环境
+        r"""<p>环境</p>
         :rtype: str
         """
         return self._Env
@@ -13956,7 +13956,7 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回值
+        :param _Result: <p>返回值</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13966,7 +13966,7 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回值
+        r"""<p>返回值</p>
         :rtype: str
         """
         return self._Result
@@ -35225,15 +35225,15 @@ class DescribeTawAreasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AreaIds: 片区Id
+        :param _AreaIds: <p>片区Id</p>
         :type AreaIds: list of int
-        :param _AreaKeys: 片区Key
+        :param _AreaKeys: <p>片区Key</p>
         :type AreaKeys: list of str
-        :param _Limit: 分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。
+        :param _Limit: <p>分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。</p>
         :type Limit: int
-        :param _AreaStatuses: 片区状态(1=有效，2=无效)
+        :param _AreaStatuses: <p>片区状态(1=有效，2=无效)</p>
         :type AreaStatuses: list of int
-        :param _Offset: 分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。
+        :param _Offset: <p>分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。</p>
         :type Offset: int
         """
         self._AreaIds = None
@@ -35244,7 +35244,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaIds(self):
-        r"""片区Id
+        r"""<p>片区Id</p>
         :rtype: list of int
         """
         return self._AreaIds
@@ -35255,7 +35255,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaKeys(self):
-        r"""片区Key
+        r"""<p>片区Key</p>
         :rtype: list of str
         """
         return self._AreaKeys
@@ -35266,7 +35266,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。
+        r"""<p>分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。</p>
         :rtype: int
         """
         return self._Limit
@@ -35277,7 +35277,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaStatuses(self):
-        r"""片区状态(1=有效，2=无效)
+        r"""<p>片区状态(1=有效，2=无效)</p>
         :rtype: list of int
         """
         return self._AreaStatuses
@@ -35288,7 +35288,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。
+        r"""<p>分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。</p>
         :rtype: int
         """
         return self._Offset
@@ -35321,9 +35321,9 @@ class DescribeTawAreasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 片区总数
+        :param _TotalCount: <p>片区总数</p>
         :type TotalCount: int
-        :param _AreaSet: 片区列表
+        :param _AreaSet: <p>片区列表</p>
         :type AreaSet: list of RumAreaInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35334,7 +35334,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""片区总数
+        r"""<p>片区总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -35345,7 +35345,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def AreaSet(self):
-        r"""片区列表
+        r"""<p>片区列表</p>
         :rtype: list of RumAreaInfo
         """
         return self._AreaSet
@@ -40056,9 +40056,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Values: 一个或者多个过滤值。
+        :param _Values: <p>一个或者多个过滤值。</p>
         :type Values: list of str
-        :param _Name: 过滤键的名称。
+        :param _Name: <p>过滤键的名称。</p>
         :type Name: str
         """
         self._Values = None
@@ -40066,7 +40066,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""一个或者多个过滤值。
+        r"""<p>一个或者多个过滤值。</p>
         :rtype: list of str
         """
         return self._Values
@@ -40077,7 +40077,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤键的名称。
+        r"""<p>过滤键的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -45184,11 +45184,11 @@ class RumUvInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _Uv: uv访问量
+        :param _Uv: <p>uv访问量</p>
         :type Uv: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
         """
         self._ProjectId = None
@@ -45197,7 +45197,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -45208,7 +45208,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def Uv(self):
-        r"""uv访问量
+        r"""<p>uv访问量</p>
         :rtype: str
         """
         return self._Uv
@@ -45219,7 +45219,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime

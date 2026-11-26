@@ -26,6 +26,29 @@ class MakersClient(AbstractClient):
     _service = 'makers'
 
 
+    def BlockProject(self, request):
+        r"""封禁或解封当前账号指定站点下的项目及域名。Status 支持 Ban或Normal。
+
+        :param request: Request instance for BlockProject.
+        :type request: :class:`tencentcloud.makers.v20261113.models.BlockProjectRequest`
+        :rtype: :class:`tencentcloud.makers.v20261113.models.BlockProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BlockProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.BlockProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeployment(self, request):
         r"""创建部署。上传制品时 ViaMeta 和 Provider 传 Upload，TempBucketPath 传已上传对象的路径。
 

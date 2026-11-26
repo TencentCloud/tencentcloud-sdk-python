@@ -302,6 +302,33 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAttackDetail(self, request):
+        r"""根据 AI 人脸防护盾接口返回的 SeqId，查询本次检测命中的攻击区域坐标与攻击描述信息。常用于在 AttackRiskLevel 为 High 或 Mid 时，对原始图片/视频帧进行可视化标注与人工复核。
+
+        检测结果默认保留 3 天，超过保留期后无法再查询。
+
+        默认接口请求频率限制：10次/秒。
+
+        :param request: Request instance for GetAttackDetail.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetAttackDetailRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetAttackDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAttackDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAttackDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDetectInfo(self, request):
         r"""完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 

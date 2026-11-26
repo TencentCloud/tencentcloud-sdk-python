@@ -733,7 +733,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteTopicResponse:
         """
-        删除ckafka主题
+        异步删除 Ckafka 实例主题（Topic）。接口被调用后 Topic 会先进入删除中状态，之后由后台异步删。
         """
         
         kwargs = {}

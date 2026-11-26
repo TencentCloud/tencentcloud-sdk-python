@@ -1876,6 +1876,83 @@ class CreateAgentCredentialRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Type: <p>类型</p>
+        :type Type: str
+        :param _Content: <p>具体内容</p>
+        :type Content: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
+        """
+        self._InstanceID = None
+        self._Name = None
+        self._Type = None
+        self._Content = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        r"""<p>具体内容</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Content") is not None:
+            self._Content = AgentCredentialContentDTO()
+            self._Content._deserialize(params.get("Content"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateAgentCredentialResponse(AbstractModel):
     r"""CreateAgentCredential返回参数结构体
@@ -1884,10 +1961,24 @@ class CreateAgentCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>credential id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>credential id</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -1902,6 +1993,9 @@ class CreateAgentCredentialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResultIDVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3812,6 +3906,51 @@ class DeleteAgentCredentialRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _ID: <p>credential id</p>
+        :type ID: str
+        """
+        self._InstanceID = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""<p>credential id</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteAgentCredentialResponse(AbstractModel):
     r"""DeleteAgentCredential返回参数结构体
@@ -3820,10 +3959,24 @@ class DeleteAgentCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>credential id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>credential id</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -3838,6 +3991,9 @@ class DeleteAgentCredentialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResultIDVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5467,6 +5623,51 @@ class DescribeAgentCredentialRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _ID: <p>app id</p>
+        :type ID: str
+        """
+        self._InstanceID = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""<p>app id</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAgentCredentialResp(AbstractModel):
     r"""凭据详情响应
@@ -5716,10 +5917,24 @@ class DescribeAgentCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>Credential详情</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Credential详情</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -5734,6 +5949,9 @@ class DescribeAgentCredentialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAgentCredentialResp()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5741,6 +5959,214 @@ class DescribeAgentCredentialsRequest(AbstractModel):
     r"""DescribeAgentCredentials请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>分页大小</p>
+        :type Limit: int
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _NotIDs: <p>notID列表</p>
+        :type NotIDs: list of str
+        :param _Status: <p>状态：normal正常状态，disabled下线状态</p>
+        :type Status: str
+        :param _Offset: <p>分页偏移量</p>
+        :type Offset: int
+        :param _Keyword: <p>关键词</p>
+        :type Keyword: str
+        :param _IDs: <p>服务ID数组</p>
+        :type IDs: list of str
+        :param _Type: <p>认证类型：sts，reqKey</p>
+        :type Type: str
+        :param _Sort: <p>排序</p>
+        :type Sort: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialsSortDTO`
+        """
+        self._Limit = None
+        self._InstanceID = None
+        self._NotIDs = None
+        self._Status = None
+        self._Offset = None
+        self._Keyword = None
+        self._IDs = None
+        self._Type = None
+        self._Sort = None
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def NotIDs(self):
+        r"""<p>notID列表</p>
+        :rtype: list of str
+        """
+        return self._NotIDs
+
+    @NotIDs.setter
+    def NotIDs(self, NotIDs):
+        self._NotIDs = NotIDs
+
+    @property
+    def Status(self):
+        r"""<p>状态：normal正常状态，disabled下线状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Keyword(self):
+        r"""<p>关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def IDs(self):
+        r"""<p>服务ID数组</p>
+        :rtype: list of str
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+    @property
+    def Type(self):
+        r"""<p>认证类型：sts，reqKey</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Sort(self):
+        r"""<p>排序</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialsSortDTO`
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._InstanceID = params.get("InstanceID")
+        self._NotIDs = params.get("NotIDs")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Keyword = params.get("Keyword")
+        self._IDs = params.get("IDs")
+        self._Type = params.get("Type")
+        if params.get("Sort") is not None:
+            self._Sort = DescribeAgentCredentialsSortDTO()
+            self._Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentCredentialsResp(AbstractModel):
+    r"""获取凭证列表的返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _Items: <p>条目</p>
+        :type Items: list of DescribeAgentCredentialResp
+        """
+        self._Total = None
+        self._Items = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>条目</p>
+        :rtype: list of DescribeAgentCredentialResp
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeAgentCredentialResp()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAgentCredentialsResponse(AbstractModel):
@@ -5750,10 +6176,24 @@ class DescribeAgentCredentialsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>Credential列表</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialsResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Credential列表</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialsResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -5768,7 +6208,106 @@ class DescribeAgentCredentialsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAgentCredentialsResp()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentCredentialsSortDTO(AbstractModel):
+    r"""查询凭据列表的排序
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>修改时间</p>
+        :type UpdateTime: int
+        :param _Name: <p>名称</p>
+        :type Name: int
+        :param _Status: <p>状态</p>
+        :type Status: int
+        :param _Type: <p>类型</p>
+        :type Type: int
+        """
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Name = None
+        self._Status = None
+        self._Type = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: int
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeMcpServerRequest(AbstractModel):
@@ -10549,6 +11088,98 @@ class ModifyAgentCredentialRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _ID: <p>certify id</p>
+        :type ID: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Type: <p>类型</p>
+        :type Type: str
+        :param _Content: <p>具体内容</p>
+        :type Content: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
+        """
+        self._InstanceID = None
+        self._ID = None
+        self._Name = None
+        self._Type = None
+        self._Content = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""<p>certify id</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        r"""<p>具体内容</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Content") is not None:
+            self._Content = AgentCredentialContentDTO()
+            self._Content._deserialize(params.get("Content"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyAgentCredentialResponse(AbstractModel):
     r"""ModifyAgentCredential返回参数结构体
@@ -10557,10 +11188,24 @@ class ModifyAgentCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>credential id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>credential id</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -10575,6 +11220,9 @@ class ModifyAgentCredentialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResultIDVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -12756,10 +13404,13 @@ class PromptModerateConfigDTO(AbstractModel):
         :param _ContextScope: <p>检测上下文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContextScope: str
+        :param _CheckTargets: <p>检测内容类型</p>
+        :type CheckTargets: list of str
         """
         self._Action = None
         self._InterceptMessage = None
         self._ContextScope = None
+        self._CheckTargets = None
 
     @property
     def Action(self):
@@ -12797,11 +13448,23 @@ class PromptModerateConfigDTO(AbstractModel):
     def ContextScope(self, ContextScope):
         self._ContextScope = ContextScope
 
+    @property
+    def CheckTargets(self):
+        r"""<p>检测内容类型</p>
+        :rtype: list of str
+        """
+        return self._CheckTargets
+
+    @CheckTargets.setter
+    def CheckTargets(self, CheckTargets):
+        self._CheckTargets = CheckTargets
+
 
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._InterceptMessage = params.get("InterceptMessage")
         self._ContextScope = params.get("ContextScope")
+        self._CheckTargets = params.get("CheckTargets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13408,6 +14071,10 @@ class ServiceVO(AbstractModel):
         :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestProtocolType: str
+        :param _ServiceSecurityRules: <p>安全规则</p>
+        :type ServiceSecurityRules: list of BindMcpSecurityRuleDTO
+        :param _ServiceSecurityRulesVO: <p>安全规则</p>
+        :type ServiceSecurityRulesVO: list of McpSecurityRulesVO
         """
         self._InstanceID = None
         self._Name = None
@@ -13479,6 +14146,8 @@ class ServiceVO(AbstractModel):
         self._CredentialID = None
         self._CredentialName = None
         self._RequestProtocolType = None
+        self._ServiceSecurityRules = None
+        self._ServiceSecurityRulesVO = None
 
     @property
     def InstanceID(self):
@@ -14362,6 +15031,28 @@ class ServiceVO(AbstractModel):
     def RequestProtocolType(self, RequestProtocolType):
         self._RequestProtocolType = RequestProtocolType
 
+    @property
+    def ServiceSecurityRules(self):
+        r"""<p>安全规则</p>
+        :rtype: list of BindMcpSecurityRuleDTO
+        """
+        return self._ServiceSecurityRules
+
+    @ServiceSecurityRules.setter
+    def ServiceSecurityRules(self, ServiceSecurityRules):
+        self._ServiceSecurityRules = ServiceSecurityRules
+
+    @property
+    def ServiceSecurityRulesVO(self):
+        r"""<p>安全规则</p>
+        :rtype: list of McpSecurityRulesVO
+        """
+        return self._ServiceSecurityRulesVO
+
+    @ServiceSecurityRulesVO.setter
+    def ServiceSecurityRulesVO(self, ServiceSecurityRulesVO):
+        self._ServiceSecurityRulesVO = ServiceSecurityRulesVO
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -14487,6 +15178,18 @@ class ServiceVO(AbstractModel):
         self._CredentialID = params.get("CredentialID")
         self._CredentialName = params.get("CredentialName")
         self._RequestProtocolType = params.get("RequestProtocolType")
+        if params.get("ServiceSecurityRules") is not None:
+            self._ServiceSecurityRules = []
+            for item in params.get("ServiceSecurityRules"):
+                obj = BindMcpSecurityRuleDTO()
+                obj._deserialize(item)
+                self._ServiceSecurityRules.append(obj)
+        if params.get("ServiceSecurityRulesVO") is not None:
+            self._ServiceSecurityRulesVO = []
+            for item in params.get("ServiceSecurityRulesVO"):
+                obj = McpSecurityRulesVO()
+                obj._deserialize(item)
+                self._ServiceSecurityRulesVO.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15222,6 +15925,8 @@ class TmsConfigDTO(AbstractModel):
         :param _ContextScope: <p>检测上下文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContextScope: str
+        :param _CheckTargets: <p>检测内容类型</p>
+        :type CheckTargets: list of str
         """
         self._Scope = None
         self._Mode = None
@@ -15230,6 +15935,7 @@ class TmsConfigDTO(AbstractModel):
         self._BizType = None
         self._InterceptMessage = None
         self._ContextScope = None
+        self._CheckTargets = None
 
     @property
     def Scope(self):
@@ -15315,6 +16021,17 @@ class TmsConfigDTO(AbstractModel):
     def ContextScope(self, ContextScope):
         self._ContextScope = ContextScope
 
+    @property
+    def CheckTargets(self):
+        r"""<p>检测内容类型</p>
+        :rtype: list of str
+        """
+        return self._CheckTargets
+
+    @CheckTargets.setter
+    def CheckTargets(self, CheckTargets):
+        self._CheckTargets = CheckTargets
+
 
     def _deserialize(self, params):
         self._Scope = params.get("Scope")
@@ -15324,6 +16041,7 @@ class TmsConfigDTO(AbstractModel):
         self._BizType = params.get("BizType")
         self._InterceptMessage = params.get("InterceptMessage")
         self._ContextScope = params.get("ContextScope")
+        self._CheckTargets = params.get("CheckTargets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

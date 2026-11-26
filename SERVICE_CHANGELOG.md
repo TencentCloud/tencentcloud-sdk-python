@@ -1,6 +1,31 @@
-# Release 3.1.214
+# Release 3.1.215
 
 ## 腾讯云智能体开发平台(adp) 版本：2026-05-20
+
+### 第 43 次发布
+
+发布时间：2026-11-26 01:03:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ConnectorKnowledgeScope](https://cloud.tencent.com/document/api/1759/132545#ConnectorKnowledgeScope)
+* [ConnectorResource](https://cloud.tencent.com/document/api/1759/132545#ConnectorResource)
+* [ConnectorResourceRef](https://cloud.tencent.com/document/api/1759/132545#ConnectorResourceRef)
+
+修改数据结构：
+
+* [AgentPluginConfig](https://cloud.tencent.com/document/api/1759/132545#AgentPluginConfig)
+
+	* 新增成员：KnowledgeScope
+
+* [DocParseConfig](https://cloud.tencent.com/document/api/1759/132545#DocParseConfig)
+
+	* 新增成员：ParseStrategy
+
 
 ### 第 42 次发布
 
@@ -90,6 +115,25 @@
 
 ## Agent 沙箱服务(ags) 版本：2025-09-20
 
+### 第 41 次发布
+
+发布时间：2026-11-26 01:05:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePreCacheImageTask](https://cloud.tencent.com/document/api/1814/127508)
+
+	* 新增入参：IdleTTL
+
+* [DescribePreCacheImageTask](https://cloud.tencent.com/document/api/1814/127507)
+
+	* 新增出参：IdleTTL, ExpireTime
+
+
 ### 第 40 次发布
 
 发布时间：2026-11-20 19:48:37
@@ -115,6 +159,75 @@
 新增数据结构：
 
 * [PreCacheImageCleanupPolicy](https://cloud.tencent.com/document/api/1814/124823#PreCacheImageCleanupPolicy)
+
+
+
+## AI Agent 安全网关(apis) 版本：2024-08-01
+
+### 第 17 次发布
+
+发布时间：2026-11-26 01:09:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAgentCredential](https://cloud.tencent.com/document/api/1627/129675)
+
+	* 新增入参：InstanceID, Name, Type, Content
+
+	* 新增出参：Data
+
+* [DeleteAgentCredential](https://cloud.tencent.com/document/api/1627/129674)
+
+	* 新增入参：InstanceID, ID
+
+	* 新增出参：Data
+
+* [DescribeAgentCredential](https://cloud.tencent.com/document/api/1627/129673)
+
+	* 新增入参：InstanceID, ID
+
+	* 新增出参：Data
+
+* [DescribeAgentCredentials](https://cloud.tencent.com/document/api/1627/129672)
+
+	* 新增入参：Limit, InstanceID, NotIDs, Status, Offset, Keyword, IDs, Type, Sort
+
+	* 新增出参：Data
+
+* [ModifyAgentCredential](https://cloud.tencent.com/document/api/1627/129671)
+
+	* 新增入参：InstanceID, ID, Name, Type, Content
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [DescribeAgentCredentialsResp](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentCredentialsResp)
+* [DescribeAgentCredentialsSortDTO](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentCredentialsSortDTO)
+
+修改数据结构：
+
+* [McpSecurityRulesVO](https://cloud.tencent.com/document/api/1627/129635#McpSecurityRulesVO)
+
+	* <font color="#dd0000">**修改成员**：</font>ID, Type, Name, Description, RiskLevel, VersionNumber, Status, Act, SupportActs, BodyType, IconType
+
+* [PromptModerateConfigDTO](https://cloud.tencent.com/document/api/1627/129635#PromptModerateConfigDTO)
+
+	* 新增成员：CheckTargets
+
+* [ServiceVO](https://cloud.tencent.com/document/api/1627/129635#ServiceVO)
+
+	* 新增成员：ServiceSecurityRules, ServiceSecurityRulesVO
+
+* [TmsConfigDTO](https://cloud.tencent.com/document/api/1627/129635#TmsConfigDTO)
+
+	* 新增成员：CheckTargets
+
 
 
 
@@ -344,6 +457,50 @@
 
 
 
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 205 次发布
+
+发布时间：2026-11-26 01:43:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/1003/94134)
+
+	* 新增入参：ProxyVersion
+
+* [DescribeSupportProxyVersion](https://cloud.tencent.com/document/api/1003/94260)
+
+	* 新增入参：Zone, DbVersion, CynosVersion, StorageVersion
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [IsolateCluster](https://cloud.tencent.com/document/api/1003/48082)
+
+	* 新增入参：ImmediateRecycleRo
+
+* [IsolateInstance](https://cloud.tencent.com/document/api/1003/48081)
+
+	* 新增入参：ImmediateRecycleRo
+
+
+修改数据结构：
+
+* [ProxyConfig](https://cloud.tencent.com/document/api/1003/48097#ProxyConfig)
+
+	* 新增成员：ProxyVersion
+
+* [UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege)
+
+	* 新增成员：PrivilegeList
+
+
+
+
 ## 数据安全治理中心(dsgc) 版本：2019-07-23
 
 ### 第 36 次发布
@@ -412,6 +569,27 @@
 
 
 
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 94 次发布
+
+发布时间：2026-11-26 02:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetAttackDetail](https://cloud.tencent.com/document/api/1007/141365)
+
+新增数据结构：
+
+* [AttackRegion](https://cloud.tencent.com/document/api/1007/41958#AttackRegion)
+* [Point](https://cloud.tencent.com/document/api/1007/41958#Point)
+
+
+
 ## 全球加速(ga2) 版本：2025-01-15
 
 ### 第 16 次发布
@@ -469,6 +647,25 @@
 
 
 
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 33 次发布
+
+发布时间：2026-11-26 02:22:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExclusiveHSM](https://cloud.tencent.com/document/api/573/34431#ExclusiveHSM)
+
+	* 新增成员：CmkUserCount, CmkLimit
+
+
+
+
 ## 云直播CSS(live) 版本：2018-08-01
 
 ### 第 195 次发布
@@ -487,6 +684,18 @@
 
 
 ## Web 与 Agent 开发部署平台 Makers(makers) 版本：2026-11-13
+
+### 第 3 次发布
+
+发布时间：2026-11-26 02:27:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BlockProject](https://cloud.tencent.com/document/api/1847/141366)
 
 ### 第 2 次发布
 
@@ -526,6 +735,21 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
+
+### 第 261 次发布
+
+发布时间：2026-11-26 02:33:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AigcAudioReferenceAudioInfo](https://cloud.tencent.com/document/api/862/37615#AigcAudioReferenceAudioInfo)
+
+	* 新增成员：ReferenceType
+
 
 ### 第 260 次发布
 
@@ -889,6 +1113,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 242 次发布
+
+发布时间：2026-11-26 03:09:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterExternalConfig](https://cloud.tencent.com/document/api/457/31866#ClusterExternalConfig)
+
+	* 新增成员：ProxyCLBMode
+
+
 
 
 ## TokenHub(tokenhub) 版本：2026-03-22
@@ -931,6 +1170,32 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 161 次发布
+
+发布时间：2026-11-26 03:15:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AsyncTextToSpeech](https://cloud.tencent.com/document/api/647/130582)
+
+	* 新增入参：TextSegments
+
+	* 新增出参：CurrentTaskCount, MaxTaskCount
+
+* [DescribeAsyncTextToSpeech](https://cloud.tencent.com/document/api/647/130581)
+
+	* 新增出参：SegmentResults
+
+
+新增数据结构：
+
+* [AsyncTTSSegmentResult](https://cloud.tencent.com/document/api/647/44055#AsyncTTSSegmentResult)
+* [AsyncTTSTextSegment](https://cloud.tencent.com/document/api/647/44055#AsyncTTSTextSegment)
+
 ### 第 160 次发布
 
 发布时间：2026-11-25 02:47:14
@@ -966,6 +1231,21 @@
 
 
 ## TSF-Polaris&ZK&网关(tse) 版本：2020-12-07
+
+### 第 120 次发布
+
+发布时间：2026-11-26 03:16:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudNativeAPIGateways](https://cloud.tencent.com/document/api/1364/96752)
+
+	* 新增入参：EnableRegionFilter
+
 
 ### 第 119 次发布
 

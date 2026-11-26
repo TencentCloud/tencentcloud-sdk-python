@@ -3359,10 +3359,13 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
         :type ImageRegistryType: str
         :param _PreCacheType: <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
         :type PreCacheType: str
+        :param _IdleTTL: <p>闲置清理时间</p><p>枚举值：</p><ul><li>inherit： 继承账号配置的自动清理策略</li><li>0： 永不自动清理</li><li>正整数加 m/h/d： 空闲相应时间后自动清理</li></ul><p>默认值：inherit</p>
+        :type IdleTTL: str
         """
         self._Image = None
         self._ImageRegistryType = None
         self._PreCacheType = None
+        self._IdleTTL = None
 
     @property
     def Image(self):
@@ -3397,11 +3400,23 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
     def PreCacheType(self, PreCacheType):
         self._PreCacheType = PreCacheType
 
+    @property
+    def IdleTTL(self):
+        r"""<p>闲置清理时间</p><p>枚举值：</p><ul><li>inherit： 继承账号配置的自动清理策略</li><li>0： 永不自动清理</li><li>正整数加 m/h/d： 空闲相应时间后自动清理</li></ul><p>默认值：inherit</p>
+        :rtype: str
+        """
+        return self._IdleTTL
+
+    @IdleTTL.setter
+    def IdleTTL(self, IdleTTL):
+        self._IdleTTL = IdleTTL
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._ImageRegistryType = params.get("ImageRegistryType")
         self._PreCacheType = params.get("PreCacheType")
+        self._IdleTTL = params.get("IdleTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7866,6 +7881,10 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         :type ReadyTime: str
         :param _LastUsedTime: <p>该预热镜像最近一次被沙箱实例使用时间</p>
         :type LastUsedTime: str
+        :param _IdleTTL: <p>镜像预热闲置清理时间</p><p>枚举值：</p><ul><li>inherit： 继承账号配置的自动清理策略</li><li>0： 永不自动清理</li><li>正整数加 m/h/d： 空闲相应时间后自动清理</li></ul>
+        :type IdleTTL: str
+        :param _ExpireTime: <p>预计过期清理时间</p>
+        :type ExpireTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7880,6 +7899,8 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._CachedImageSizeBytes = None
         self._ReadyTime = None
         self._LastUsedTime = None
+        self._IdleTTL = None
+        self._ExpireTime = None
         self._RequestId = None
 
     @property
@@ -8004,6 +8025,28 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._LastUsedTime = LastUsedTime
 
     @property
+    def IdleTTL(self):
+        r"""<p>镜像预热闲置清理时间</p><p>枚举值：</p><ul><li>inherit： 继承账号配置的自动清理策略</li><li>0： 永不自动清理</li><li>正整数加 m/h/d： 空闲相应时间后自动清理</li></ul>
+        :rtype: str
+        """
+        return self._IdleTTL
+
+    @IdleTTL.setter
+    def IdleTTL(self, IdleTTL):
+        self._IdleTTL = IdleTTL
+
+    @property
+    def ExpireTime(self):
+        r"""<p>预计过期清理时间</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8027,6 +8070,8 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._CachedImageSizeBytes = params.get("CachedImageSizeBytes")
         self._ReadyTime = params.get("ReadyTime")
         self._LastUsedTime = params.get("LastUsedTime")
+        self._IdleTTL = params.get("IdleTTL")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 

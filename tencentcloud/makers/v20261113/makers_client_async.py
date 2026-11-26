@@ -25,6 +25,24 @@ class MakersClient(AbstractClient):
     _endpoint = 'makers.tencentcloudapi.com'
     _service = 'makers'
 
+    async def BlockProject(
+            self,
+            request: models.BlockProjectRequest,
+            opts: Dict = None,
+    ) -> models.BlockProjectResponse:
+        """
+        封禁或解封当前账号指定站点下的项目及域名。Status 支持 Ban或Normal。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BlockProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BlockProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDeployment(
             self,
             request: models.CreateDeploymentRequest,

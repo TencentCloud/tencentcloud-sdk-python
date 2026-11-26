@@ -14715,8 +14715,11 @@ class AigcAudioReferenceAudioInfo(AbstractModel):
         r"""
         :param _AudioUrl: <p>参考音频URL信息。需外网可访问。</p>
         :type AudioUrl: str
+        :param _ReferenceType: <p>参考类型。</p>
+        :type ReferenceType: str
         """
         self._AudioUrl = None
+        self._ReferenceType = None
 
     @property
     def AudioUrl(self):
@@ -14729,9 +14732,21 @@ class AigcAudioReferenceAudioInfo(AbstractModel):
     def AudioUrl(self, AudioUrl):
         self._AudioUrl = AudioUrl
 
+    @property
+    def ReferenceType(self):
+        r"""<p>参考类型。</p>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
 
     def _deserialize(self, params):
         self._AudioUrl = params.get("AudioUrl")
+        self._ReferenceType = params.get("ReferenceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -95,6 +95,9 @@ RESOURCEINUSE = 'ResourceInUse'
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
+# 当前可用区资源售罄
+RESOURCEINSUFFICIENT_ZONESOLDOUT = 'ResourceInsufficient.ZoneSoldOut'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

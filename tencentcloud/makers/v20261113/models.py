@@ -18,6 +18,100 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BlockProjectRequest(AbstractModel):
+    r"""BlockProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Makers 站点 ID</p>
+        :type ZoneId: str
+        :param _ProjectId: <p>项目 ID</p>
+        :type ProjectId: str
+        :param _Status: <p>操作类型，目前支持 Ban表示封禁项目， Normal表示解封项目。</p><p>枚举值：</p><ul><li>Ban： 表示封禁项目</li><li>Normal： 表示解封项目</li></ul>
+        :type Status: str
+        """
+        self._ZoneId = None
+        self._ProjectId = None
+        self._Status = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Makers 站点 ID</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目 ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Status(self):
+        r"""<p>操作类型，目前支持 Ban表示封禁项目， Normal表示解封项目。</p><p>枚举值：</p><ul><li>Ban： 表示封禁项目</li><li>Normal： 表示解封项目</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProjectId = params.get("ProjectId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlockProjectResponse(AbstractModel):
+    r"""BlockProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CosCredentials(AbstractModel):
     r"""COS 临时密钥
 

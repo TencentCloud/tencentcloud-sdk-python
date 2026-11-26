@@ -4104,24 +4104,27 @@ class ClusterExternalConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkType: 容器网络类型，支持：HostNetwork、CiliumBGP
+        :param _NetworkType: <p>容器网络类型，支持：HostNetwork、CiliumBGP</p>
         :type NetworkType: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _ClusterCIDR: 集群CIDR，网络模式HostNetwork 时无需填写
+        :param _ClusterCIDR: <p>集群CIDR，网络模式HostNetwork 时无需填写</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterCIDR: str
-        :param _Enabled: 【已废弃】是否开启专线连接能力
+        :param _Enabled: <p>【已废弃】是否开启专线连接能力</p>
         :type Enabled: bool
+        :param _ProxyCLBMode: <p>ProxyCLBMode</p><p>枚举值：</p><ul><li>Dedicated： 默认，独立专属 CLB 元素</li><li>Shared： 复用支撑面 CLB</li></ul><p>默认值：Dedicated</p>
+        :type ProxyCLBMode: str
         """
         self._NetworkType = None
         self._SubnetId = None
         self._ClusterCIDR = None
         self._Enabled = None
+        self._ProxyCLBMode = None
 
     @property
     def NetworkType(self):
-        r"""容器网络类型，支持：HostNetwork、CiliumBGP
+        r"""<p>容器网络类型，支持：HostNetwork、CiliumBGP</p>
         :rtype: str
         """
         return self._NetworkType
@@ -4132,7 +4135,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4143,7 +4146,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def ClusterCIDR(self):
-        r"""集群CIDR，网络模式HostNetwork 时无需填写
+        r"""<p>集群CIDR，网络模式HostNetwork 时无需填写</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4155,7 +4158,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""【已废弃】是否开启专线连接能力
+        r"""<p>【已废弃】是否开启专线连接能力</p>
         :rtype: bool
         """
         return self._Enabled
@@ -4164,12 +4167,24 @@ class ClusterExternalConfig(AbstractModel):
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def ProxyCLBMode(self):
+        r"""<p>ProxyCLBMode</p><p>枚举值：</p><ul><li>Dedicated： 默认，独立专属 CLB 元素</li><li>Shared： 复用支撑面 CLB</li></ul><p>默认值：Dedicated</p>
+        :rtype: str
+        """
+        return self._ProxyCLBMode
+
+    @ProxyCLBMode.setter
+    def ProxyCLBMode(self, ProxyCLBMode):
+        self._ProxyCLBMode = ProxyCLBMode
+
 
     def _deserialize(self, params):
         self._NetworkType = params.get("NetworkType")
         self._SubnetId = params.get("SubnetId")
         self._ClusterCIDR = params.get("ClusterCIDR")
         self._Enabled = params.get("Enabled")
+        self._ProxyCLBMode = params.get("ProxyCLBMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

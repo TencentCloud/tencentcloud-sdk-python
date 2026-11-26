@@ -1568,6 +1568,8 @@ class AgentPluginConfig(AbstractModel):
         :type OAuthConsent: int
         :param _CredentialConfig: <p>凭证配置</p>
         :type CredentialConfig: :class:`tencentcloud.adp.v20260520.models.AgentPluginCredentialConfig`
+        :param _KnowledgeScope: <p>连接器知识范围，目前仅支持腾讯乐享配置</p>
+        :type KnowledgeScope: :class:`tencentcloud.adp.v20260520.models.ConnectorKnowledgeScope`
         """
         self._PluginId = None
         self._HeaderParameterList = None
@@ -1576,6 +1578,7 @@ class AgentPluginConfig(AbstractModel):
         self._AuthType = None
         self._OAuthConsent = None
         self._CredentialConfig = None
+        self._KnowledgeScope = None
 
     @property
     def PluginId(self):
@@ -1654,6 +1657,17 @@ class AgentPluginConfig(AbstractModel):
     def CredentialConfig(self, CredentialConfig):
         self._CredentialConfig = CredentialConfig
 
+    @property
+    def KnowledgeScope(self):
+        r"""<p>连接器知识范围，目前仅支持腾讯乐享配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConnectorKnowledgeScope`
+        """
+        return self._KnowledgeScope
+
+    @KnowledgeScope.setter
+    def KnowledgeScope(self, KnowledgeScope):
+        self._KnowledgeScope = KnowledgeScope
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -1675,6 +1689,9 @@ class AgentPluginConfig(AbstractModel):
         if params.get("CredentialConfig") is not None:
             self._CredentialConfig = AgentPluginCredentialConfig()
             self._CredentialConfig._deserialize(params.get("CredentialConfig"))
+        if params.get("KnowledgeScope") is not None:
+            self._KnowledgeScope = ConnectorKnowledgeScope()
+            self._KnowledgeScope._deserialize(params.get("KnowledgeScope"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10912,6 +10929,214 @@ class ConflictQASummary(AbstractModel):
         
 
 
+class ConnectorKnowledgeScope(AbstractModel):
+    r"""连接器知识范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用知识范围</p>
+        :type Enabled: bool
+        :param _ResourceList: <p>已选资源列表，Enabled 为 true 时至少 1 项</p>
+        :type ResourceList: list of ConnectorResource
+        """
+        self._Enabled = None
+        self._ResourceList = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用知识范围</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ResourceList(self):
+        r"""<p>已选资源列表，Enabled 为 true 时至少 1 项</p>
+        :rtype: list of ConnectorResource
+        """
+        return self._ResourceList
+
+    @ResourceList.setter
+    def ResourceList(self, ResourceList):
+        self._ResourceList = ResourceList
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("ResourceList") is not None:
+            self._ResourceList = []
+            for item in params.get("ResourceList"):
+                obj = ConnectorResource()
+                obj._deserialize(item)
+                self._ResourceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConnectorResource(AbstractModel):
+    r"""连接器资源及上级链
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>资源类型</p><p>枚举值：</p><ul><li>1： 空间（乐享知识库）</li><li>2： 文件夹</li><li>3： 文档或文件</li><li>4： 团队</li></ul>
+        :type Type: int
+        :param _ResourceId: <p>连接器侧资源 ID</p>
+        :type ResourceId: str
+        :param _Name: <p>资源名称快照</p>
+        :type Name: str
+        :param _AncestorList: <p>祖先链快照，自顶向下且不含自身，最多 100 项；顶层资源为空。</p>
+        :type AncestorList: list of ConnectorResourceRef
+        """
+        self._Type = None
+        self._ResourceId = None
+        self._Name = None
+        self._AncestorList = None
+
+    @property
+    def Type(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>1： 空间（乐享知识库）</li><li>2： 文件夹</li><li>3： 文档或文件</li><li>4： 团队</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceId(self):
+        r"""<p>连接器侧资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Name(self):
+        r"""<p>资源名称快照</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AncestorList(self):
+        r"""<p>祖先链快照，自顶向下且不含自身，最多 100 项；顶层资源为空。</p>
+        :rtype: list of ConnectorResourceRef
+        """
+        return self._AncestorList
+
+    @AncestorList.setter
+    def AncestorList(self, AncestorList):
+        self._AncestorList = AncestorList
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._ResourceId = params.get("ResourceId")
+        self._Name = params.get("Name")
+        if params.get("AncestorList") is not None:
+            self._AncestorList = []
+            for item in params.get("AncestorList"):
+                obj = ConnectorResourceRef()
+                obj._deserialize(item)
+                self._AncestorList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConnectorResourceRef(AbstractModel):
+    r"""<p>连接器资源引用</p>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>连接器侧资源 ID</p>
+        :type ResourceId: str
+        :param _Type: <p>资源类型：1-空间（乐享知识库），2-文件夹，3-文档或文件，4-团队；0 无效。</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定，不允许用于资源引用</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_WORKSPACE</td><td>1</td><td>空间；乐享个人知识库和团队知识库均为此类型</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_FOLDER</td><td>2</td><td>文件夹</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_DOC</td><td>3</td><td>文档或文件</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_GROUP</td><td>4</td><td>团队或群组</td></tr></tbody></table>
+        :type Type: int
+        :param _Name: <p>资源名称；请求中选填，不参与资源定位。</p>
+        :type Name: str
+        """
+        self._ResourceId = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>连接器侧资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：1-空间（乐享知识库），2-文件夹，3-文档或文件，4-团队；0 无效。</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定，不允许用于资源引用</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_WORKSPACE</td><td>1</td><td>空间；乐享个人知识库和团队知识库均为此类型</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_FOLDER</td><td>2</td><td>文件夹</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_DOC</td><td>3</td><td>文档或文件</td></tr><tr><td>CONNECTOR_RESOURCE_TYPE_GROUP</td><td>4</td><td>团队或群组</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>资源名称；请求中选填，不参与资源定位。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumptionClassification(AbstractModel):
     r"""消耗分类
 
@@ -11196,11 +11421,11 @@ class ContentFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageMinHeight: <p>图片最小高度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :param _ImageMinHeight: 图片最小高度（像素），小于则过滤；<=0 表示不启用
         :type ImageMinHeight: int
-        :param _ImageMinWidth: <p>图片最小宽度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :param _ImageMinWidth: 图片最小宽度（像素），小于则过滤；<=0 表示不启用
         :type ImageMinWidth: int
-        :param _ImageNamePatterns: <p>图片名称过滤规则（用分号 &#39;;&#39; 分隔的多条正则，如 &#39;icon;notice;warning;info.*&#39;）</p>
+        :param _ImageNamePatterns: 图片名称过滤规则（用分号 ';' 分隔的多条正则，如 'icon;notice;warning;info.*'）
         :type ImageNamePatterns: str
         """
         self._ImageMinHeight = None
@@ -11209,7 +11434,7 @@ class ContentFilter(AbstractModel):
 
     @property
     def ImageMinHeight(self):
-        r"""<p>图片最小高度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        r"""图片最小高度（像素），小于则过滤；<=0 表示不启用
         :rtype: int
         """
         return self._ImageMinHeight
@@ -11220,7 +11445,7 @@ class ContentFilter(AbstractModel):
 
     @property
     def ImageMinWidth(self):
-        r"""<p>图片最小宽度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        r"""图片最小宽度（像素），小于则过滤；<=0 表示不启用
         :rtype: int
         """
         return self._ImageMinWidth
@@ -11231,7 +11456,7 @@ class ContentFilter(AbstractModel):
 
     @property
     def ImageNamePatterns(self):
-        r"""<p>图片名称过滤规则（用分号 &#39;;&#39; 分隔的多条正则，如 &#39;icon;notice;warning;info.*&#39;）</p>
+        r"""图片名称过滤规则（用分号 ';' 分隔的多条正则，如 'icon;notice;warning;info.*'）
         :rtype: str
         """
         return self._ImageNamePatterns
@@ -29835,10 +30060,13 @@ class DocParseConfig(AbstractModel):
         :param _ContentFilter: <p>内容过滤配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentFilter: :class:`tencentcloud.adp.v20260520.models.ContentFilter`
+        :param _ParseStrategy: <p>文档解析策略：1=OCR解析 2=智能解析 3=MLLM解析；不传默认智能解析<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_PARSE_STRATEGY_UNKNOWN</td><td>0</td><td>未指定，走服务端默认（智能解析）</td></tr><tr><td>DOC_PARSE_STRATEGY_OCR</td><td>1</td><td>OCR 解析</td></tr><tr><td>DOC_PARSE_STRATEGY_SMART</td><td>2</td><td>智能解析（按图片类型自动选择：数据图/思维导图/架构图/流程图用 MLLM，其他图片用 OCR）</td></tr><tr><td>DOC_PARSE_STRATEGY_MLLM</td><td>3</td><td>MLLM 解析</td></tr></tbody></table></p>
+        :type ParseStrategy: int
         :param _SplitRule: <p>分割规则</p>
         :type SplitRule: str
         """
         self._ContentFilter = None
+        self._ParseStrategy = None
         self._SplitRule = None
 
     @property
@@ -29852,6 +30080,17 @@ class DocParseConfig(AbstractModel):
     @ContentFilter.setter
     def ContentFilter(self, ContentFilter):
         self._ContentFilter = ContentFilter
+
+    @property
+    def ParseStrategy(self):
+        r"""<p>文档解析策略：1=OCR解析 2=智能解析 3=MLLM解析；不传默认智能解析<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_PARSE_STRATEGY_UNKNOWN</td><td>0</td><td>未指定，走服务端默认（智能解析）</td></tr><tr><td>DOC_PARSE_STRATEGY_OCR</td><td>1</td><td>OCR 解析</td></tr><tr><td>DOC_PARSE_STRATEGY_SMART</td><td>2</td><td>智能解析（按图片类型自动选择：数据图/思维导图/架构图/流程图用 MLLM，其他图片用 OCR）</td></tr><tr><td>DOC_PARSE_STRATEGY_MLLM</td><td>3</td><td>MLLM 解析</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ParseStrategy
+
+    @ParseStrategy.setter
+    def ParseStrategy(self, ParseStrategy):
+        self._ParseStrategy = ParseStrategy
 
     @property
     def SplitRule(self):
@@ -29869,6 +30108,7 @@ class DocParseConfig(AbstractModel):
         if params.get("ContentFilter") is not None:
             self._ContentFilter = ContentFilter()
             self._ContentFilter._deserialize(params.get("ContentFilter"))
+        self._ParseStrategy = params.get("ParseStrategy")
         self._SplitRule = params.get("SplitRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

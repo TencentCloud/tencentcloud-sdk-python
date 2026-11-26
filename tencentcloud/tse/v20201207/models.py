@@ -1397,7 +1397,7 @@ class AIGWLLMQuotaLimit(AbstractModel):
         :type RPMLimit: int
         :param _TPMLimit: <p>该模型服务每分钟 Token 数上限，0 表示该维度不限</p>
         :type TPMLimit: int
-        :param _ConcurrentCountLimit: <p>并发限流数</p>
+        :param _ConcurrentCountLimit: <p>并发数限流</p>
         :type ConcurrentCountLimit: int
         """
         self._RPMLimit = None
@@ -1428,7 +1428,7 @@ class AIGWLLMQuotaLimit(AbstractModel):
 
     @property
     def ConcurrentCountLimit(self):
-        r"""<p>并发限流数</p>
+        r"""<p>并发数限流</p>
         :rtype: int
         """
         return self._ConcurrentCountLimit
@@ -1596,9 +1596,9 @@ class AIGWLengthLimitConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableInputLimit: <p>是否开启输入限制</p>
+        :param _EnableInputLimit: <p>是否开启输入长度限制</p>
         :type EnableInputLimit: bool
-        :param _MaxInputChars: <p>最大输入字符数</p>
+        :param _MaxInputChars: <p>最大输入长度字符数</p>
         :type MaxInputChars: int
         """
         self._EnableInputLimit = None
@@ -1606,7 +1606,7 @@ class AIGWLengthLimitConfig(AbstractModel):
 
     @property
     def EnableInputLimit(self):
-        r"""<p>是否开启输入限制</p>
+        r"""<p>是否开启输入长度限制</p>
         :rtype: bool
         """
         return self._EnableInputLimit
@@ -1617,7 +1617,7 @@ class AIGWLengthLimitConfig(AbstractModel):
 
     @property
     def MaxInputChars(self):
-        r"""<p>最大输入字符数</p>
+        r"""<p>最大输入长度字符数</p>
         :rtype: int
         """
         return self._MaxInputChars
@@ -1647,14 +1647,14 @@ class AIGWLoadBalanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Algorithm: <p>负载均衡算法</p>
+        :param _Algorithm: <p>负载均衡类型</p><p>枚举值：</p><ul><li>RoundRobin： 轮询</li><li>WeightedRoundRobin： 加权轮询</li><li>LeastConnections： 最少连接</li><li>Random： 随机</li></ul><p>默认值：RoundRobin</p>
         :type Algorithm: str
         """
         self._Algorithm = None
 
     @property
     def Algorithm(self):
-        r"""<p>负载均衡算法</p>
+        r"""<p>负载均衡类型</p><p>枚举值：</p><ul><li>RoundRobin： 轮询</li><li>WeightedRoundRobin： 加权轮询</li><li>LeastConnections： 最少连接</li><li>Random： 随机</li></ul><p>默认值：RoundRobin</p>
         :rtype: str
         """
         return self._Algorithm
@@ -30055,10 +30055,13 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
         :type Offset: int
         :param _Filters: <p>请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选</p>
         :type Filters: list of Filter
+        :param _EnableRegionFilter: <p>是否按照地域进行过滤</p>
+        :type EnableRegionFilter: bool
         """
         self._Limit = None
         self._Offset = None
         self._Filters = None
+        self._EnableRegionFilter = None
 
     @property
     def Limit(self):
@@ -30093,6 +30096,17 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def EnableRegionFilter(self):
+        r"""<p>是否按照地域进行过滤</p>
+        :rtype: bool
+        """
+        return self._EnableRegionFilter
+
+    @EnableRegionFilter.setter
+    def EnableRegionFilter(self, EnableRegionFilter):
+        self._EnableRegionFilter = EnableRegionFilter
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -30103,6 +30117,7 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._EnableRegionFilter = params.get("EnableRegionFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
