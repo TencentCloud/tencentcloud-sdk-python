@@ -114,8 +114,17 @@ class ApiRequest(object):
             http_resp = self._request(req_inter)
             self.request_size = self.conn.request_length
             return http_resp
+        except TencentCloudSDKException:
+            # Already an SDK exception (e.g., ClientParamsError thrown in _request), throw as-is to avoid double wrapping
+            raise
         except Exception as e:
-            raise TencentCloudSDKException("ClientNetworkError", str(e))
+            # Keep the original ClientNetworkError shell for compatibility with retry mechanism (StandardRetryer depends on this error code),
+            # while using PEP 3134 standard `raise ... from e` to establish exception chain, allowing upper layers to
+            # directly access the original exception via e.__cause__ (such as requests.exceptions.ConnectionError /
+            # ReadTimeout / SSLError, etc.), and trace along __cause__ to reach the end socket.gaierror,
+            # ConnectionRefusedError, socket.timeout, CertificateError, etc., thus enabling
+            # fine-grained failover judgment for DNS/network failures.
+            raise TencentCloudSDKException("ClientNetworkError", str(e)) from e
 
 
 class RequestInternal(object):
