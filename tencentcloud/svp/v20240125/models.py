@@ -970,39 +970,39 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: <p>资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID</p>
         :type ResourceId: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: int
-        :param _ProductCode: 产品编码
+        :param _ProductCode: <p>产品编码</p>
         :type ProductCode: str
-        :param _SubProductCode: 子产品编码
+        :param _SubProductCode: <p>子产品编码</p>
         :type SubProductCode: str
-        :param _StartDate: 费用起始日期，格式yyyy-MM-dd
+        :param _StartDate: <p>费用起始日期，格式yyyy-MM-dd</p>
         :type StartDate: str
-        :param _EndDate: 费用结束日期，格式yyyy-MM-dd，目前与StartDate相等
+        :param _EndDate: <p>费用结束日期，格式yyyy-MM-dd，目前与StartDate相等</p>
         :type EndDate: str
-        :param _SpCoveredAmount: 节省计划覆盖金额（即节省计划支付金额）
+        :param _SpCoveredAmount: <p>节省计划覆盖金额（即节省计划支付金额）</p>
         :type SpCoveredAmount: float
-        :param _SpUncoveredAmount: 节省计划未覆盖金额（即优惠后总价）
+        :param _SpUncoveredAmount: <p>节省计划未覆盖金额（即优惠后总价）</p>
         :type SpUncoveredAmount: float
-        :param _TotalRealAmount: 总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）
+        :param _TotalRealAmount: <p>总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）</p>
         :type TotalRealAmount: float
-        :param _ExpectedAmount: 按量计费预期金额（即折前价 * 折扣）
+        :param _ExpectedAmount: <p>按量计费预期金额（即折前价 * 折扣）</p>
         :type ExpectedAmount: float
-        :param _SpCoverage: 覆盖率结果，取值[0, 100]
+        :param _SpCoverage: <p>覆盖率结果，取值为百分比值，取值范围[0,100]</p>
         :type SpCoverage: float
-        :param _PayerUinName: 支付者昵称
+        :param _PayerUinName: <p>支付者昵称</p>
         :type PayerUinName: str
-        :param _OwnerUinName: 使用者昵称
+        :param _OwnerUinName: <p>使用者昵称</p>
         :type OwnerUinName: str
-        :param _PayerUin: 支付者uin
+        :param _PayerUin: <p>支付者uin</p>
         :type PayerUin: str
-        :param _SubBillingItemName: 计费项名称
+        :param _SubBillingItemName: <p>计费项名称</p>
         :type SubBillingItemName: str
-        :param _BillingItemName: 计费细项名称
+        :param _BillingItemName: <p>计费细项名称</p>
         :type BillingItemName: str
-        :param _SubProductName: 子产品名称
+        :param _SubProductName: <p>子产品名称</p>
         :type SubProductName: str
         """
         self._ResourceId = None
@@ -1025,7 +1025,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        r"""<p>资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1036,7 +1036,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -1047,7 +1047,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""产品编码
+        r"""<p>产品编码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -1058,7 +1058,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SubProductCode(self):
-        r"""子产品编码
+        r"""<p>子产品编码</p>
         :rtype: str
         """
         return self._SubProductCode
@@ -1069,7 +1069,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""费用起始日期，格式yyyy-MM-dd
+        r"""<p>费用起始日期，格式yyyy-MM-dd</p>
         :rtype: str
         """
         return self._StartDate
@@ -1080,7 +1080,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""费用结束日期，格式yyyy-MM-dd，目前与StartDate相等
+        r"""<p>费用结束日期，格式yyyy-MM-dd，目前与StartDate相等</p>
         :rtype: str
         """
         return self._EndDate
@@ -1091,7 +1091,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SpCoveredAmount(self):
-        r"""节省计划覆盖金额（即节省计划支付金额）
+        r"""<p>节省计划覆盖金额（即节省计划支付金额）</p>
         :rtype: float
         """
         return self._SpCoveredAmount
@@ -1102,7 +1102,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SpUncoveredAmount(self):
-        r"""节省计划未覆盖金额（即优惠后总价）
+        r"""<p>节省计划未覆盖金额（即优惠后总价）</p>
         :rtype: float
         """
         return self._SpUncoveredAmount
@@ -1113,7 +1113,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def TotalRealAmount(self):
-        r"""总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）
+        r"""<p>总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）</p>
         :rtype: float
         """
         return self._TotalRealAmount
@@ -1124,7 +1124,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def ExpectedAmount(self):
-        r"""按量计费预期金额（即折前价 * 折扣）
+        r"""<p>按量计费预期金额（即折前价 * 折扣）</p>
         :rtype: float
         """
         return self._ExpectedAmount
@@ -1135,7 +1135,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SpCoverage(self):
-        r"""覆盖率结果，取值[0, 100]
+        r"""<p>覆盖率结果，取值为百分比值，取值范围[0,100]</p>
         :rtype: float
         """
         return self._SpCoverage
@@ -1146,7 +1146,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def PayerUinName(self):
-        r"""支付者昵称
+        r"""<p>支付者昵称</p>
         :rtype: str
         """
         return self._PayerUinName
@@ -1157,7 +1157,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def OwnerUinName(self):
-        r"""使用者昵称
+        r"""<p>使用者昵称</p>
         :rtype: str
         """
         return self._OwnerUinName
@@ -1168,7 +1168,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""支付者uin
+        r"""<p>支付者uin</p>
         :rtype: str
         """
         return self._PayerUin
@@ -1179,7 +1179,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SubBillingItemName(self):
-        r"""计费项名称
+        r"""<p>计费项名称</p>
         :rtype: str
         """
         return self._SubBillingItemName
@@ -1190,7 +1190,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def BillingItemName(self):
-        r"""计费细项名称
+        r"""<p>计费细项名称</p>
         :rtype: str
         """
         return self._BillingItemName
@@ -1201,7 +1201,7 @@ class SavingPlanCoverageDetail(AbstractModel):
 
     @property
     def SubProductName(self):
-        r"""子产品名称
+        r"""<p>子产品名称</p>
         :rtype: str
         """
         return self._SubProductName

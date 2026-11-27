@@ -5159,6 +5159,16 @@ class Coefficient(AbstractModel):
         :type OutputVideoSecondCoefficient: float
         :param _OutputImageCoefficient: <p>输出图片系数</p>
         :type OutputImageCoefficient: float
+        :param _InputAudioTokenCoefficient: <p>Realtime 音频输入积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：80</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :type InputAudioTokenCoefficient: float
+        :param _InputCachedAudioTokenCoefficient: <p>Realtime 音频缓存命中输入积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :type InputCachedAudioTokenCoefficient: float
+        :param _InputImageTokenCoefficient: <p>Realtime 图像输入积分系数，单位为积分/百万图像 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：12.5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :type InputImageTokenCoefficient: float
+        :param _InputCachedImageTokenCoefficient: <p>Realtime 图像缓存命中输入积分系数，单位为积分/百万图像 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :type InputCachedImageTokenCoefficient: float
+        :param _OutputAudioTokenCoefficient: <p>Realtime 音频输出积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：300</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :type OutputAudioTokenCoefficient: float
         """
         self._InputCachedCoefficient = None
         self._InputCacheCreationCoefficient = None
@@ -5168,6 +5178,11 @@ class Coefficient(AbstractModel):
         self._InputVideoSecondCoefficient = None
         self._OutputVideoSecondCoefficient = None
         self._OutputImageCoefficient = None
+        self._InputAudioTokenCoefficient = None
+        self._InputCachedAudioTokenCoefficient = None
+        self._InputImageTokenCoefficient = None
+        self._InputCachedImageTokenCoefficient = None
+        self._OutputAudioTokenCoefficient = None
 
     @property
     def InputCachedCoefficient(self):
@@ -5257,6 +5272,61 @@ class Coefficient(AbstractModel):
     def OutputImageCoefficient(self, OutputImageCoefficient):
         self._OutputImageCoefficient = OutputImageCoefficient
 
+    @property
+    def InputAudioTokenCoefficient(self):
+        r"""<p>Realtime 音频输入积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：80</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :rtype: float
+        """
+        return self._InputAudioTokenCoefficient
+
+    @InputAudioTokenCoefficient.setter
+    def InputAudioTokenCoefficient(self, InputAudioTokenCoefficient):
+        self._InputAudioTokenCoefficient = InputAudioTokenCoefficient
+
+    @property
+    def InputCachedAudioTokenCoefficient(self):
+        r"""<p>Realtime 音频缓存命中输入积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :rtype: float
+        """
+        return self._InputCachedAudioTokenCoefficient
+
+    @InputCachedAudioTokenCoefficient.setter
+    def InputCachedAudioTokenCoefficient(self, InputCachedAudioTokenCoefficient):
+        self._InputCachedAudioTokenCoefficient = InputCachedAudioTokenCoefficient
+
+    @property
+    def InputImageTokenCoefficient(self):
+        r"""<p>Realtime 图像输入积分系数，单位为积分/百万图像 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：12.5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :rtype: float
+        """
+        return self._InputImageTokenCoefficient
+
+    @InputImageTokenCoefficient.setter
+    def InputImageTokenCoefficient(self, InputImageTokenCoefficient):
+        self._InputImageTokenCoefficient = InputImageTokenCoefficient
+
+    @property
+    def InputCachedImageTokenCoefficient(self):
+        r"""<p>Realtime 图像缓存命中输入积分系数，单位为积分/百万图像 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：5</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :rtype: float
+        """
+        return self._InputCachedImageTokenCoefficient
+
+    @InputCachedImageTokenCoefficient.setter
+    def InputCachedImageTokenCoefficient(self, InputCachedImageTokenCoefficient):
+        self._InputCachedImageTokenCoefficient = InputCachedImageTokenCoefficient
+
+    @property
+    def OutputAudioTokenCoefficient(self):
+        r"""<p>Realtime 音频输出积分系数，单位为积分/百万音频 Token。</p><p>取值范围：[0, 5000]</p><p>默认值：300</p><p>仅 Capability=realtime 支持，最多 6 位小数。修改时未提供此字段则保留旧值；0 表示零价，不接受 null。</p>
+        :rtype: float
+        """
+        return self._OutputAudioTokenCoefficient
+
+    @OutputAudioTokenCoefficient.setter
+    def OutputAudioTokenCoefficient(self, OutputAudioTokenCoefficient):
+        self._OutputAudioTokenCoefficient = OutputAudioTokenCoefficient
+
 
     def _deserialize(self, params):
         self._InputCachedCoefficient = params.get("InputCachedCoefficient")
@@ -5267,6 +5337,11 @@ class Coefficient(AbstractModel):
         self._InputVideoSecondCoefficient = params.get("InputVideoSecondCoefficient")
         self._OutputVideoSecondCoefficient = params.get("OutputVideoSecondCoefficient")
         self._OutputImageCoefficient = params.get("OutputImageCoefficient")
+        self._InputAudioTokenCoefficient = params.get("InputAudioTokenCoefficient")
+        self._InputCachedAudioTokenCoefficient = params.get("InputCachedAudioTokenCoefficient")
+        self._InputImageTokenCoefficient = params.get("InputImageTokenCoefficient")
+        self._InputCachedImageTokenCoefficient = params.get("InputCachedImageTokenCoefficient")
+        self._OutputAudioTokenCoefficient = params.get("OutputAudioTokenCoefficient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8092,6 +8167,8 @@ class CreateModelRouterRequest(AbstractModel):
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         :param _ImageConfig: <p>Images 生图配置</p>
         :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        :param _RealtimeConfig: <p>可选的 Realtime 路由配置，提供此参数时预置 realtime 能力的路由策略。</p><p>支持 SimpleShuffle、LeastBusy、CostBasedRouting；省略配置子字段时默认 RoutingStrategy=SimpleShuffle、NumRetries=2。配置及子字段不接受 null。</p>
+        :type RealtimeConfig: :class:`tencentcloud.clb.v20180317.models.RealtimeConfig`
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -8115,6 +8192,7 @@ class CreateModelRouterRequest(AbstractModel):
         self._RerankConfig = None
         self._DecisionsConfig = None
         self._ImageConfig = None
+        self._RealtimeConfig = None
 
     @property
     def ModelRouterType(self):
@@ -8358,6 +8436,17 @@ class CreateModelRouterRequest(AbstractModel):
     def ImageConfig(self, ImageConfig):
         self._ImageConfig = ImageConfig
 
+    @property
+    def RealtimeConfig(self):
+        r"""<p>可选的 Realtime 路由配置，提供此参数时预置 realtime 能力的路由策略。</p><p>支持 SimpleShuffle、LeastBusy、CostBasedRouting；省略配置子字段时默认 RoutingStrategy=SimpleShuffle、NumRetries=2。配置及子字段不接受 null。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RealtimeConfig`
+        """
+        return self._RealtimeConfig
+
+    @RealtimeConfig.setter
+    def RealtimeConfig(self, RealtimeConfig):
+        self._RealtimeConfig = RealtimeConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
@@ -8405,6 +8494,9 @@ class CreateModelRouterRequest(AbstractModel):
         if params.get("ImageConfig") is not None:
             self._ImageConfig = ImageConfig()
             self._ImageConfig._deserialize(params.get("ImageConfig"))
+        if params.get("RealtimeConfig") is not None:
+            self._RealtimeConfig = RealtimeConfig()
+            self._RealtimeConfig._deserialize(params.get("RealtimeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33150,6 +33242,125 @@ class RateLimitConfigForModelRouter(AbstractModel):
     def _deserialize(self, params):
         self._RPM = params.get("RPM")
         self._TPM = params.get("TPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RealtimeConfig(AbstractModel):
+    r"""Realtime 路由配置。支持 SimpleShuffle、LeastBusy、CostBasedRouting，创建时默认 SimpleShuffle、NumRetries=2。修改时仅更新显式传入字段；切换策略时清理旧策略参数。所有字段选填，不接受显式 null。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>Realtime 模型路由策略。</p><p>入参限制：仅支持 SimpleShuffle（随机）、LeastBusy（最少繁忙）、CostBasedRouting（最低成本）。</p><p>默认值：SimpleShuffle</p><p>修改时未传保留旧策略；切换策略会清理旧策略的 RoutingStrategyArgs。不接受 null。</p>
+        :type RoutingStrategy: str
+        :param _NumRetries: <p>Realtime 路由重试次数。</p><p>取值范围：[0, 5]</p><p>默认值：2</p><p>仅接受整数，0 表示不重试。修改时未提供此字段则保留旧值，不接受 null。</p>
+        :type NumRetries: int
+        :param _RoutingStrategyArgs: <p>Realtime 路由策略的附加参数。</p><p>入参限制：LeastBusy 仅接受 LeastBusyBuffer；CostBasedRouting 仅接受 LowestCostBuffer；SimpleShuffle 仅接受空对象。</p><p>修改时未提供的参数保留旧值，切换策略时清理旧参数；适用的 Buffer 默认 0。不接受 null。</p>
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RealtimeRoutingStrategyArgs`
+        """
+        self._RoutingStrategy = None
+        self._NumRetries = None
+        self._RoutingStrategyArgs = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>Realtime 模型路由策略。</p><p>入参限制：仅支持 SimpleShuffle（随机）、LeastBusy（最少繁忙）、CostBasedRouting（最低成本）。</p><p>默认值：SimpleShuffle</p><p>修改时未传保留旧策略；切换策略会清理旧策略的 RoutingStrategyArgs。不接受 null。</p>
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def NumRetries(self):
+        r"""<p>Realtime 路由重试次数。</p><p>取值范围：[0, 5]</p><p>默认值：2</p><p>仅接受整数，0 表示不重试。修改时未提供此字段则保留旧值，不接受 null。</p>
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>Realtime 路由策略的附加参数。</p><p>入参限制：LeastBusy 仅接受 LeastBusyBuffer；CostBasedRouting 仅接受 LowestCostBuffer；SimpleShuffle 仅接受空对象。</p><p>修改时未提供的参数保留旧值，切换策略时清理旧参数；适用的 Buffer 默认 0。不接受 null。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RealtimeRoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        self._NumRetries = params.get("NumRetries")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RealtimeRoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RealtimeRoutingStrategyArgs(AbstractModel):
+    r"""Realtime 路由策略参数。LeastBusy 仅支持 LeastBusyBuffer，CostBasedRouting 仅支持 LowestCostBuffer，SimpleShuffle 不支持策略参数。Buffer 取值为 0～1000，最多两位小数，默认 0；修改时未传字段保留旧值。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeastBusyBuffer: <p>LeastBusy 路由策略的缓冲参数，仅 RoutingStrategy=LeastBusy 时允许设置。</p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>最多支持两位小数；不接受字符串、布尔值或 null。修改时未传保留旧值，显式 0 生效。</p>
+        :type LeastBusyBuffer: float
+        :param _LowestCostBuffer: <p>CostBasedRouting 路由策略的缓冲参数，仅 RoutingStrategy=CostBasedRouting 时允许设置。</p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>最多支持两位小数；不接受字符串、布尔值或 null。修改时未传保留旧值，显式 0 生效。</p>
+        :type LowestCostBuffer: float
+        """
+        self._LeastBusyBuffer = None
+        self._LowestCostBuffer = None
+
+    @property
+    def LeastBusyBuffer(self):
+        r"""<p>LeastBusy 路由策略的缓冲参数，仅 RoutingStrategy=LeastBusy 时允许设置。</p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>最多支持两位小数；不接受字符串、布尔值或 null。修改时未传保留旧值，显式 0 生效。</p>
+        :rtype: float
+        """
+        return self._LeastBusyBuffer
+
+    @LeastBusyBuffer.setter
+    def LeastBusyBuffer(self, LeastBusyBuffer):
+        self._LeastBusyBuffer = LeastBusyBuffer
+
+    @property
+    def LowestCostBuffer(self):
+        r"""<p>CostBasedRouting 路由策略的缓冲参数，仅 RoutingStrategy=CostBasedRouting 时允许设置。</p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>最多支持两位小数；不接受字符串、布尔值或 null。修改时未传保留旧值，显式 0 生效。</p>
+        :rtype: float
+        """
+        return self._LowestCostBuffer
+
+    @LowestCostBuffer.setter
+    def LowestCostBuffer(self, LowestCostBuffer):
+        self._LowestCostBuffer = LowestCostBuffer
+
+
+    def _deserialize(self, params):
+        self._LeastBusyBuffer = params.get("LeastBusyBuffer")
+        self._LowestCostBuffer = params.get("LowestCostBuffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

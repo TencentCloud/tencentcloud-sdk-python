@@ -1147,6 +1147,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCageList(
+            self,
+            request: models.DescribeCageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCageListResponse:
+        """
+        本接口（DescribeCageList）用于查询金融围拢、独享集群列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCdbProxyInfo(
             self,
             request: models.DescribeCdbProxyInfoRequest,

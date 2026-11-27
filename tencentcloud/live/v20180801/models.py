@@ -2486,43 +2486,42 @@ class AvatarRoomInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 数字人直播间 ID。
+        :param _RoomId: <p>数字人直播间 ID。</p>
         :type RoomId: str
-        :param _Name: 数字人直播间名称。
+        :param _Name: <p>数字人直播间名称。</p>
         :type Name: str
-        :param _Status: 数字人直播间状态，
-CLOSE - 未开播。
-OPEN - 直播中。
-
+        :param _Status: <p>数字人直播间状态，<br>CLOSE - 未开播。<br>OPEN - 直播中。</p><p>枚举值：</p><ul><li>CLOSE： 未开播</li><li>OPEN： 直播中</li></ul>
         :type Status: str
-        :param _AvatarKey: 数字人形象 KEY。
+        :param _AvatarKey: <p>数字人形象 KEY。</p>
         :type AvatarKey: str
-        :param _TimbreKey: 音色 KEy。
+        :param _TimbreKey: <p>音色 KEY。</p>
         :type TimbreKey: str
-        :param _AvatarImageUrl: 数字人形象图片 URL。
+        :param _AvatarImageUrl: <p>数字人形象图片 URL。</p>
         :type AvatarImageUrl: str
-        :param _BackgroundUrl: 背景图片 URL。
+        :param _BackgroundUrl: <p>背景图片 URL。</p>
         :type BackgroundUrl: str
-        :param _Comment: 推流目标描述。
+        :param _Comment: <p>推流目标描述。</p>
         :type Comment: str
-        :param _ToUrl: 目标推流地址。
+        :param _ToUrl: <p>目标推流地址。</p>
         :type ToUrl: str
-        :param _AnchorScale: 主播大小，默认1.00。 取值范围(0, 15.00]。
+        :param _AnchorScale: <p>主播大小，默认1.00。 取值范围(0, 15.00]。</p>
         :type AnchorScale: float
-        :param _AnchorVerticalPos: 主播纵向位置。默认-1贴底部。
+        :param _AnchorVerticalPos: <p>主播纵向位置。默认-1贴底部。</p>
         :type AnchorVerticalPos: int
-        :param _AnchorHorizontalPos: 主播横向位置。默认-1居中。
+        :param _AnchorHorizontalPos: <p>主播横向位置。默认-1居中。</p>
         :type AnchorHorizontalPos: int
-        :param _SpeechSpeed: 语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。
+        :param _SpeechSpeed: <p>语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。</p>
         :type SpeechSpeed: float
-        :param _SpeechVolume: 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :param _SpeechVolume: <p>音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
         :type SpeechVolume: int
-        :param _CreateTime: 直播间创建时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        :param _CreateTime: <p>直播间创建时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :type CreateTime: str
-        :param _UpdateTime: 直播间最后更新时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        :param _UpdateTime: <p>直播间最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :type UpdateTime: str
+        :param _RoomType: <p>直播间类型。</p><p>枚举值：</p><ul><li>AIGC： AIGC直播</li></ul>
+        :type RoomType: str
+        :param _AvatarAigcImageUrl: <p>通过AIGC生成的数字人形象图片 URL。</p>
+        :type AvatarAigcImageUrl: str
         """
         self._RoomId = None
         self._Name = None
@@ -2540,10 +2539,12 @@ OPEN - 直播中。
         self._SpeechVolume = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._RoomType = None
+        self._AvatarAigcImageUrl = None
 
     @property
     def RoomId(self):
-        r"""数字人直播间 ID。
+        r"""<p>数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -2554,7 +2555,7 @@ OPEN - 直播中。
 
     @property
     def Name(self):
-        r"""数字人直播间名称。
+        r"""<p>数字人直播间名称。</p>
         :rtype: str
         """
         return self._Name
@@ -2565,10 +2566,7 @@ OPEN - 直播中。
 
     @property
     def Status(self):
-        r"""数字人直播间状态，
-CLOSE - 未开播。
-OPEN - 直播中。
-
+        r"""<p>数字人直播间状态，<br>CLOSE - 未开播。<br>OPEN - 直播中。</p><p>枚举值：</p><ul><li>CLOSE： 未开播</li><li>OPEN： 直播中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -2579,7 +2577,7 @@ OPEN - 直播中。
 
     @property
     def AvatarKey(self):
-        r"""数字人形象 KEY。
+        r"""<p>数字人形象 KEY。</p>
         :rtype: str
         """
         return self._AvatarKey
@@ -2590,7 +2588,7 @@ OPEN - 直播中。
 
     @property
     def TimbreKey(self):
-        r"""音色 KEy。
+        r"""<p>音色 KEY。</p>
         :rtype: str
         """
         return self._TimbreKey
@@ -2601,7 +2599,7 @@ OPEN - 直播中。
 
     @property
     def AvatarImageUrl(self):
-        r"""数字人形象图片 URL。
+        r"""<p>数字人形象图片 URL。</p>
         :rtype: str
         """
         return self._AvatarImageUrl
@@ -2612,7 +2610,7 @@ OPEN - 直播中。
 
     @property
     def BackgroundUrl(self):
-        r"""背景图片 URL。
+        r"""<p>背景图片 URL。</p>
         :rtype: str
         """
         return self._BackgroundUrl
@@ -2623,7 +2621,7 @@ OPEN - 直播中。
 
     @property
     def Comment(self):
-        r"""推流目标描述。
+        r"""<p>推流目标描述。</p>
         :rtype: str
         """
         return self._Comment
@@ -2634,7 +2632,7 @@ OPEN - 直播中。
 
     @property
     def ToUrl(self):
-        r"""目标推流地址。
+        r"""<p>目标推流地址。</p>
         :rtype: str
         """
         return self._ToUrl
@@ -2645,7 +2643,7 @@ OPEN - 直播中。
 
     @property
     def AnchorScale(self):
-        r"""主播大小，默认1.00。 取值范围(0, 15.00]。
+        r"""<p>主播大小，默认1.00。 取值范围(0, 15.00]。</p>
         :rtype: float
         """
         return self._AnchorScale
@@ -2656,7 +2654,7 @@ OPEN - 直播中。
 
     @property
     def AnchorVerticalPos(self):
-        r"""主播纵向位置。默认-1贴底部。
+        r"""<p>主播纵向位置。默认-1贴底部。</p>
         :rtype: int
         """
         return self._AnchorVerticalPos
@@ -2667,7 +2665,7 @@ OPEN - 直播中。
 
     @property
     def AnchorHorizontalPos(self):
-        r"""主播横向位置。默认-1居中。
+        r"""<p>主播横向位置。默认-1居中。</p>
         :rtype: int
         """
         return self._AnchorHorizontalPos
@@ -2678,7 +2676,7 @@ OPEN - 直播中。
 
     @property
     def SpeechSpeed(self):
-        r"""语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。
+        r"""<p>语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。</p>
         :rtype: float
         """
         return self._SpeechSpeed
@@ -2689,7 +2687,7 @@ OPEN - 直播中。
 
     @property
     def SpeechVolume(self):
-        r"""音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        r"""<p>音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
         :rtype: int
         """
         return self._SpeechVolume
@@ -2700,8 +2698,7 @@ OPEN - 直播中。
 
     @property
     def CreateTime(self):
-        r"""直播间创建时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        r"""<p>直播间创建时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2712,8 +2709,7 @@ OPEN - 直播中。
 
     @property
     def UpdateTime(self):
-        r"""直播间最后更新时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        r"""<p>直播间最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -2721,6 +2717,28 @@ OPEN - 直播中。
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def RoomType(self):
+        r"""<p>直播间类型。</p><p>枚举值：</p><ul><li>AIGC： AIGC直播</li></ul>
+        :rtype: str
+        """
+        return self._RoomType
+
+    @RoomType.setter
+    def RoomType(self, RoomType):
+        self._RoomType = RoomType
+
+    @property
+    def AvatarAigcImageUrl(self):
+        r"""<p>通过AIGC生成的数字人形象图片 URL。</p>
+        :rtype: str
+        """
+        return self._AvatarAigcImageUrl
+
+    @AvatarAigcImageUrl.setter
+    def AvatarAigcImageUrl(self, AvatarAigcImageUrl):
+        self._AvatarAigcImageUrl = AvatarAigcImageUrl
 
 
     def _deserialize(self, params):
@@ -2740,6 +2758,8 @@ OPEN - 直播中。
         self._SpeechVolume = params.get("SpeechVolume")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._RoomType = params.get("RoomType")
+        self._AvatarAigcImageUrl = params.get("AvatarAigcImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6051,25 +6071,21 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertId: 证书 ID。
+        :param _CertId: <p>证书 ID。</p>
         :type CertId: int
-        :param _CertName: 证书名称。
+        :param _CertName: <p>证书名称。</p>
         :type CertName: str
-        :param _Description: 描述信息。
+        :param _Description: <p>描述信息。</p>
         :type Description: str
-        :param _CreateTime: 创建时间，UTC 格式。
-注：此字段为北京时间（UTC+8时区）。
+        :param _CreateTime: <p>创建时间，UTC 格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type CreateTime: str
-        :param _HttpsCrt: 证书内容。
+        :param _HttpsCrt: <p>证书内容。</p>
         :type HttpsCrt: str
-        :param _CertType: 证书类型。
-0：用户添加证书，
-1：腾讯云托管证书。
+        :param _CertType: <p>证书类型。<br>0：用户添加证书，<br>1：腾讯云托管证书。</p>
         :type CertType: int
-        :param _CertExpireTime: 证书过期时间，UTC 格式。
-注：此字段为北京时间（UTC+8时区）。
+        :param _CertExpireTime: <p>证书过期时间，UTC 格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type CertExpireTime: str
-        :param _DomainList: 使用此证书的域名列表。
+        :param _DomainList: <p>使用此证书的域名列表。</p>
         :type DomainList: list of str
         """
         self._CertId = None
@@ -6083,7 +6099,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertId(self):
-        r"""证书 ID。
+        r"""<p>证书 ID。</p>
         :rtype: int
         """
         return self._CertId
@@ -6094,7 +6110,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertName(self):
-        r"""证书名称。
+        r"""<p>证书名称。</p>
         :rtype: str
         """
         return self._CertName
@@ -6105,7 +6121,7 @@ class CertInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
+        r"""<p>描述信息。</p>
         :rtype: str
         """
         return self._Description
@@ -6116,8 +6132,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，UTC 格式。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>创建时间，UTC 格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -6128,7 +6143,7 @@ class CertInfo(AbstractModel):
 
     @property
     def HttpsCrt(self):
-        r"""证书内容。
+        r"""<p>证书内容。</p>
         :rtype: str
         """
         return self._HttpsCrt
@@ -6139,9 +6154,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertType(self):
-        r"""证书类型。
-0：用户添加证书，
-1：腾讯云托管证书。
+        r"""<p>证书类型。<br>0：用户添加证书，<br>1：腾讯云托管证书。</p>
         :rtype: int
         """
         return self._CertType
@@ -6152,8 +6165,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertExpireTime(self):
-        r"""证书过期时间，UTC 格式。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>证书过期时间，UTC 格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._CertExpireTime
@@ -6164,7 +6176,7 @@ class CertInfo(AbstractModel):
 
     @property
     def DomainList(self):
-        r"""使用此证书的域名列表。
+        r"""<p>使用此证书的域名列表。</p>
         :rtype: list of str
         """
         return self._DomainList
@@ -9419,7 +9431,7 @@ class CreateLiveAvatarCloneFigureRequest(AbstractModel):
         :type FigureName: str
         :param _MaterialUrl: <p>克隆的形象的url</p>
         :type MaterialUrl: str
-        :param _Gender: <p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNHNOWN： 不知道</li></ul>
+        :param _Gender: <p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNKNOWN： 不知道</li></ul>
         :type Gender: str
         :param _IdentityWrittenUrl: <p>授权pdf</p>
         :type IdentityWrittenUrl: str
@@ -9471,7 +9483,7 @@ class CreateLiveAvatarCloneFigureRequest(AbstractModel):
 
     @property
     def Gender(self):
-        r"""<p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNHNOWN： 不知道</li></ul>
+        r"""<p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNKNOWN： 不知道</li></ul>
         :rtype: str
         """
         return self._Gender
@@ -11673,32 +11685,29 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模板名。仅支持中文、英文、数字、_、-。
+        :param _TemplateName: <p>模板名。仅支持中文、英文、数字、_、-。</p>
         :type TemplateName: str
-        :param _Description: 描述信息。
+        :param _Description: <p>描述信息。</p>
         :type Description: str
-        :param _FlvParam: Flv录制参数，开启Flv录制时设置。
+        :param _FlvParam: <p>Flv录制参数，开启Flv录制时设置。</p>
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param _HlsParam: Hls录制参数，开启hls录制时设置。
+        :param _HlsParam: <p>Hls录制参数，开启hls录制时设置。</p>
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param _Mp4Param: Mp4录制参数，开启Mp4录制时设置。
+        :param _Mp4Param: <p>Mp4录制参数，开启Mp4录制时设置。</p>
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param _AacParam: Aac录制参数，开启Aac录制时设置。
+        :param _AacParam: <p>Aac录制参数，开启Aac录制时设置。</p>
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param _IsDelayLive: 直播类型，默认 0。
-0：普通直播，
-1：慢直播。
+        :param _IsDelayLive: <p>直播类型，默认 0。<br>0：普通直播，<br>1：慢直播。</p>
         :type IsDelayLive: int
-        :param _HlsSpecialParam: HLS专属录制参数。
+        :param _HlsSpecialParam: <p>HLS专属录制参数。</p>
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param _Mp3Param: Mp3录制参数，开启Mp3录制时设置。
+        :param _Mp3Param: <p>Mp3录制参数，开启Mp3录制时设置。</p>
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param _CosStore: 是否存储至 cos，值为 1 时表示存储至 cos。
+        :param _CosStore: <p>是否存储至 cos，值为 1 时表示存储至 cos。</p>
         :type CosStore: int
-        :param _RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
-如果为false，则录制水印流或转码流；如果为true，则录制原始流。
+        :param _RemoveWatermark: <p>是否去除水印，类型为慢直播时此参数无效。<br>如果为false，则录制水印流或转码流；如果为true，则录制原始流。</p>
         :type RemoveWatermark: bool
-        :param _FlvSpecialParam: FLV 录制特殊参数。
+        :param _FlvSpecialParam: <p>FLV 录制特殊参数。</p>
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self._TemplateName = None
@@ -11716,7 +11725,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名。仅支持中文、英文、数字、_、-。
+        r"""<p>模板名。仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -11727,7 +11736,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
+        r"""<p>描述信息。</p>
         :rtype: str
         """
         return self._Description
@@ -11738,7 +11747,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvParam(self):
-        r"""Flv录制参数，开启Flv录制时设置。
+        r"""<p>Flv录制参数，开启Flv录制时设置。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._FlvParam
@@ -11749,7 +11758,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsParam(self):
-        r"""Hls录制参数，开启hls录制时设置。
+        r"""<p>Hls录制参数，开启hls录制时设置。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._HlsParam
@@ -11760,7 +11769,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp4Param(self):
-        r"""Mp4录制参数，开启Mp4录制时设置。
+        r"""<p>Mp4录制参数，开启Mp4录制时设置。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp4Param
@@ -11771,7 +11780,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def AacParam(self):
-        r"""Aac录制参数，开启Aac录制时设置。
+        r"""<p>Aac录制参数，开启Aac录制时设置。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._AacParam
@@ -11782,9 +11791,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        r"""直播类型，默认 0。
-0：普通直播，
-1：慢直播。
+        r"""<p>直播类型，默认 0。<br>0：普通直播，<br>1：慢直播。</p>
         :rtype: int
         """
         return self._IsDelayLive
@@ -11795,7 +11802,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
-        r"""HLS专属录制参数。
+        r"""<p>HLS专属录制参数。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         return self._HlsSpecialParam
@@ -11806,7 +11813,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp3Param(self):
-        r"""Mp3录制参数，开启Mp3录制时设置。
+        r"""<p>Mp3录制参数，开启Mp3录制时设置。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp3Param
@@ -11817,7 +11824,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def CosStore(self):
-        r"""是否存储至 cos，值为 1 时表示存储至 cos。
+        r"""<p>是否存储至 cos，值为 1 时表示存储至 cos。</p>
         :rtype: int
         """
         return self._CosStore
@@ -11828,8 +11835,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RemoveWatermark(self):
-        r"""是否去除水印，类型为慢直播时此参数无效。
-如果为false，则录制水印流或转码流；如果为true，则录制原始流。
+        r"""<p>是否去除水印，类型为慢直播时此参数无效。<br>如果为false，则录制水印流或转码流；如果为true，则录制原始流。</p>
         :rtype: bool
         """
         return self._RemoveWatermark
@@ -11840,7 +11846,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
-        r"""FLV 录制特殊参数。
+        r"""<p>FLV 录制特殊参数。</p>
         :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         return self._FlvSpecialParam
@@ -11894,7 +11900,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板Id。
+        :param _TemplateId: <p>模板Id。</p>
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11904,7 +11910,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id。
+        r"""<p>模板Id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -13032,31 +13038,19 @@ class CreateLiveTimeShiftTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        :param _TemplateName: <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type TemplateName: str
-        :param _Duration: 时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
+        :param _Duration: <p>时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。</p>
         :type Duration: int
-        :param _Description: 描述信息。
-仅支持中文、英文、数字、_、-。
+        :param _Description: <p>描述信息。<br>仅支持中文、英文、数字、_、-。</p>
         :type Description: str
-        :param _Area: 地域。
-Mainland：中国大陆。
-Overseas：海外及港澳台地区。
-默认值：Mainland。
+        :param _Area: <p>地域。<br>Mainland：中国大陆。<br>Overseas：海外及港澳台地区。<br>EuropeFrankfurt：欧洲-法兰克福。<br>NorthAmericaSiliconValley：北美-硅谷。<br>MiddleEastRiyadh：中东-利雅得。<br>AsiaTokyo：亚太-东京。<br>AsiaSeoul：亚太-首尔。<br>默认值：Mainland。</p>
         :type Area: str
-        :param _ItemDuration: 分片时长。
-可取3-10。
-单位：s。
-默认值：5。
+        :param _ItemDuration: <p>分片时长。<br>可取3-10。<br>单位：s。<br>默认值：5。</p>
         :type ItemDuration: int
-        :param _RemoveWatermark: 是否去除水印。
-传true则将录制原始流。
-默认值：false。
+        :param _RemoveWatermark: <p>是否去除水印。<br>传true则将录制原始流。<br>默认值：false。</p>
         :type RemoveWatermark: bool
-        :param _TranscodeTemplateIds: 转码流id列表。
-此参数仅在 RemoveWatermark为false时生效。
+        :param _TranscodeTemplateIds: <p>转码流id列表。<br>此参数仅在 RemoveWatermark为false时生效。</p>
         :type TranscodeTemplateIds: list of int
         """
         self._TemplateName = None
@@ -13069,9 +13063,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TemplateName(self):
-        r"""模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -13082,7 +13074,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Duration(self):
-        r"""时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
+        r"""<p>时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。</p>
         :rtype: int
         """
         return self._Duration
@@ -13093,8 +13085,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Description(self):
-        r"""描述信息。
-仅支持中文、英文、数字、_、-。
+        r"""<p>描述信息。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._Description
@@ -13105,10 +13096,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Area(self):
-        r"""地域。
-Mainland：中国大陆。
-Overseas：海外及港澳台地区。
-默认值：Mainland。
+        r"""<p>地域。<br>Mainland：中国大陆。<br>Overseas：海外及港澳台地区。<br>EuropeFrankfurt：欧洲-法兰克福。<br>NorthAmericaSiliconValley：北美-硅谷。<br>MiddleEastRiyadh：中东-利雅得。<br>AsiaTokyo：亚太-东京。<br>AsiaSeoul：亚太-首尔。<br>默认值：Mainland。</p>
         :rtype: str
         """
         return self._Area
@@ -13119,10 +13107,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def ItemDuration(self):
-        r"""分片时长。
-可取3-10。
-单位：s。
-默认值：5。
+        r"""<p>分片时长。<br>可取3-10。<br>单位：s。<br>默认值：5。</p>
         :rtype: int
         """
         return self._ItemDuration
@@ -13133,9 +13118,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def RemoveWatermark(self):
-        r"""是否去除水印。
-传true则将录制原始流。
-默认值：false。
+        r"""<p>是否去除水印。<br>传true则将录制原始流。<br>默认值：false。</p>
         :rtype: bool
         """
         return self._RemoveWatermark
@@ -13146,8 +13129,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TranscodeTemplateIds(self):
-        r"""转码流id列表。
-此参数仅在 RemoveWatermark为false时生效。
+        r"""<p>转码流id列表。<br>此参数仅在 RemoveWatermark为false时生效。</p>
         :rtype: list of int
         """
         return self._TranscodeTemplateIds
@@ -13182,7 +13164,7 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板Id。
+        :param _TemplateId: <p>模板Id。</p>
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13192,7 +13174,7 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id。
+        r"""<p>模板Id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -24232,24 +24214,13 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PackageType: 包类型，可选值：
-0：流量包
-1：转码包
-2: 连麦包。
+        :param _PackageType: <p>包类型，可选值：<br>0：流量包<br>1：转码包<br>2: 连麦包。</p>
         :type PackageType: int
-        :param _OrderBy: 排序规则:
-1. BuyTimeDesc： 最新购买的排在最前面
-2. BuyTimeAsc： 最老购买的排在最前面
-3. ExpireTimeDesc： 最后过期的排在最前面
-4. ExpireTimeAsc：最先过期的排在最前面。
-
-注意：
-1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。
+        :param _OrderBy: <p>排序规则:</p><ol><li>BuyTimeDesc： 最新购买的排在最前面</li><li>BuyTimeAsc： 最老购买的排在最前面</li><li>ExpireTimeDesc： 最后过期的排在最前面</li><li>ExpireTimeAsc：最先过期的排在最前面。</li></ol><p>注意：</p><ol><li>PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。</li></ol>
         :type OrderBy: str
-        :param _PageNum: 取得第几页的数据，和 PageSize 同时传递才会生效。
+        :param _PageNum: <p>取得第几页的数据，和 PageSize 同时传递才会生效。</p>
         :type PageNum: int
-        :param _PageSize: 分页大小，和 PageNum 同时传递才会生效。
-取值：10 ～ 100 之间的任意整数。
+        :param _PageSize: <p>分页大小，和 PageNum 同时传递才会生效。<br>取值：10 ～ 100 之间的任意整数。</p>
         :type PageSize: int
         """
         self._PackageType = None
@@ -24259,10 +24230,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""包类型，可选值：
-0：流量包
-1：转码包
-2: 连麦包。
+        r"""<p>包类型，可选值：<br>0：流量包<br>1：转码包<br>2: 连麦包。</p>
         :rtype: int
         """
         return self._PackageType
@@ -24273,14 +24241,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序规则:
-1. BuyTimeDesc： 最新购买的排在最前面
-2. BuyTimeAsc： 最老购买的排在最前面
-3. ExpireTimeDesc： 最后过期的排在最前面
-4. ExpireTimeAsc：最先过期的排在最前面。
-
-注意：
-1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。
+        r"""<p>排序规则:</p><ol><li>BuyTimeDesc： 最新购买的排在最前面</li><li>BuyTimeAsc： 最老购买的排在最前面</li><li>ExpireTimeDesc： 最后过期的排在最前面</li><li>ExpireTimeAsc：最先过期的排在最前面。</li></ol><p>注意：</p><ol><li>PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。</li></ol>
         :rtype: str
         """
         return self._OrderBy
@@ -24291,7 +24252,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""取得第几页的数据，和 PageSize 同时传递才会生效。
+        r"""<p>取得第几页的数据，和 PageSize 同时传递才会生效。</p>
         :rtype: int
         """
         return self._PageNum
@@ -24302,8 +24263,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小，和 PageNum 同时传递才会生效。
-取值：10 ～ 100 之间的任意整数。
+        r"""<p>分页大小，和 PageNum 同时传递才会生效。<br>取值：10 ～ 100 之间的任意整数。</p>
         :rtype: int
         """
         return self._PageSize
@@ -24335,36 +24295,23 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LivePackageInfoList: 套餐包信息。
+        :param _LivePackageInfoList: <p>套餐包信息。</p>
         :type LivePackageInfoList: list of LivePackageInfo
-        :param _PackageBillMode: 套餐包当前计费方式:
--1: 无计费方式或获取失败
-0: 无计费方式
-201: 月结带宽
-202: 月结流量
-203: 日结带宽
-204: 日结流量
-205: 日结时长
-206: 月结时长
-304: 日结流量。
+        :param _PackageBillMode: <p>套餐包当前计费方式:<br>-1: 无计费方式或获取失败<br>0: 无计费方式<br>201: 月结带宽<br>202: 月结流量<br>203: 日结带宽<br>204: 日结流量<br>205: 日结时长<br>206: 月结时长<br>304: 日结流量。</p>
         :type PackageBillMode: int
-        :param _TotalPage: 总页数。
+        :param _TotalPage: <p>总页数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
-        :param _TotalNum: 数据总条数。
+        :param _TotalNum: <p>数据总条数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
-        :param _PageNum: 当前页数。
+        :param _PageNum: <p>当前页数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNum: int
-        :param _PageSize: 当前每页数量。
+        :param _PageSize: <p>当前每页数量。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param _FluxPackageBillMode: 当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：
-标准直播，中国大陆（境内全地区）计费方式。
-标准直播，国际/港澳台（境外多地区）计费方式。
-快直播，中国大陆（境内全地区）计费方式。
-快直播，国际/港澳台（境外多地区）计费方式。
+        :param _FluxPackageBillMode: <p>当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：<br>标准直播，中国大陆（境内全地区）计费方式。<br>标准直播，国际/港澳台（境外多地区）计费方式。<br>快直播，中国大陆（境内全地区）计费方式。<br>快直播，国际/港澳台（境外多地区）计费方式。</p>
         :type FluxPackageBillMode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24380,7 +24327,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def LivePackageInfoList(self):
-        r"""套餐包信息。
+        r"""<p>套餐包信息。</p>
         :rtype: list of LivePackageInfo
         """
         return self._LivePackageInfoList
@@ -24391,16 +24338,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PackageBillMode(self):
-        r"""套餐包当前计费方式:
--1: 无计费方式或获取失败
-0: 无计费方式
-201: 月结带宽
-202: 月结流量
-203: 日结带宽
-204: 日结流量
-205: 日结时长
-206: 月结时长
-304: 日结流量。
+        r"""<p>套餐包当前计费方式:<br>-1: 无计费方式或获取失败<br>0: 无计费方式<br>201: 月结带宽<br>202: 月结流量<br>203: 日结带宽<br>204: 日结流量<br>205: 日结时长<br>206: 月结时长<br>304: 日结流量。</p>
         :rtype: int
         """
         return self._PackageBillMode
@@ -24411,7 +24349,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        r"""总页数。
+        r"""<p>总页数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24423,7 +24361,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""数据总条数。
+        r"""<p>数据总条数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24435,7 +24373,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""当前页数。
+        r"""<p>当前页数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24447,7 +24385,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""当前每页数量。
+        r"""<p>当前每页数量。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24459,11 +24397,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def FluxPackageBillMode(self):
-        r"""当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：
-标准直播，中国大陆（境内全地区）计费方式。
-标准直播，国际/港澳台（境外多地区）计费方式。
-快直播，中国大陆（境内全地区）计费方式。
-快直播，国际/港澳台（境外多地区）计费方式。
+        r"""<p>当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：<br>标准直播，中国大陆（境内全地区）计费方式。<br>标准直播，国际/港澳台（境外多地区）计费方式。<br>快直播，中国大陆（境内全地区）计费方式。<br>快直播，国际/港澳台（境外多地区）计费方式。</p>
         :rtype: str
         """
         return self._FluxPackageBillMode
@@ -27878,9 +27812,9 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateIds: 要筛选的模板ID数组。
+        :param _TemplateIds: <p>要筛选的模板ID数组。</p>
         :type TemplateIds: list of int
-        :param _DomainNames: 要筛选的域名数组。
+        :param _DomainNames: <p>要筛选的域名数组。</p>
         :type DomainNames: list of str
         """
         self._TemplateIds = None
@@ -27888,7 +27822,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        r"""要筛选的模板ID数组。
+        r"""<p>要筛选的模板ID数组。</p>
         :rtype: list of int
         """
         return self._TemplateIds
@@ -27899,7 +27833,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def DomainNames(self):
-        r"""要筛选的域名数组。
+        r"""<p>要筛选的域名数组。</p>
         :rtype: list of str
         """
         return self._DomainNames
@@ -27929,7 +27863,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 转码规则列表。
+        :param _Rules: <p>转码规则列表。</p>
         :type Rules: list of RuleInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27939,7 +27873,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        r"""转码规则列表。
+        r"""<p>转码规则列表。</p>
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -28994,7 +28928,7 @@ class DescribeOriginStreamInfoResponse(AbstractModel):
         :param _PassThroughHttpHeader: <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassThroughHttpHeader: str
-        :param _PassThroughResponse: <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :param _PassThroughResponse: <p>是否透传响应，可取值：on、off。当原站播放协议为 hls 时，传递该字段才会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassThroughResponse: str
         :param _PassThroughParam: <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
@@ -29237,7 +29171,7 @@ class DescribeOriginStreamInfoResponse(AbstractModel):
 
     @property
     def PassThroughResponse(self):
-        r"""<p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        r"""<p>是否透传响应，可取值：on、off。当原站播放协议为 hls 时，传递该字段才会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34366,32 +34300,27 @@ class DomainCertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertId: 证书Id。
+        :param _CertId: <p>证书Id。</p>
         :type CertId: int
-        :param _CertName: 证书名称。
+        :param _CertName: <p>证书名称。</p>
         :type CertName: str
-        :param _Description: 描述信息。
+        :param _Description: <p>描述信息。</p>
         :type Description: str
-        :param _CreateTime: 创建时间，UTC格式。
-注：此字段为北京时间（UTC+8时区）。
+        :param _CreateTime: <p>创建时间，UTC格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type CreateTime: str
-        :param _HttpsCrt: 证书内容。
+        :param _HttpsCrt: <p>证书内容。</p>
         :type HttpsCrt: str
-        :param _CertType: 证书类型。
-0：用户添加证书，
-1：腾讯云托管证书。
+        :param _CertType: <p>证书类型。<br>0：用户添加证书，<br>1：腾讯云托管证书。</p>
         :type CertType: int
-        :param _CertExpireTime: 证书过期时间，UTC格式。
-注：此字段为北京时间（UTC+8时区）。
+        :param _CertExpireTime: <p>证书过期时间，UTC格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type CertExpireTime: str
-        :param _DomainName: 使用此证书的域名名称。
+        :param _DomainName: <p>使用此证书的域名名称。</p>
         :type DomainName: str
-        :param _Status: 证书状态。
+        :param _Status: <p>证书状态。</p>
         :type Status: int
-        :param _CertDomains: 证书本身标识的域名列表。
-比如: ["*.x.com"]
+        :param _CertDomains: <p>证书本身标识的域名列表。<br>比如: [&quot;*.x.com&quot;]</p>
         :type CertDomains: list of str
-        :param _CloudCertId: 腾讯云ssl的证书Id
+        :param _CloudCertId: <p>腾讯云ssl的证书Id</p>
         :type CloudCertId: str
         """
         self._CertId = None
@@ -34408,7 +34337,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertId(self):
-        r"""证书Id。
+        r"""<p>证书Id。</p>
         :rtype: int
         """
         return self._CertId
@@ -34419,7 +34348,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertName(self):
-        r"""证书名称。
+        r"""<p>证书名称。</p>
         :rtype: str
         """
         return self._CertName
@@ -34430,7 +34359,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
+        r"""<p>描述信息。</p>
         :rtype: str
         """
         return self._Description
@@ -34441,8 +34370,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，UTC格式。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>创建时间，UTC格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -34453,7 +34381,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def HttpsCrt(self):
-        r"""证书内容。
+        r"""<p>证书内容。</p>
         :rtype: str
         """
         return self._HttpsCrt
@@ -34464,9 +34392,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertType(self):
-        r"""证书类型。
-0：用户添加证书，
-1：腾讯云托管证书。
+        r"""<p>证书类型。<br>0：用户添加证书，<br>1：腾讯云托管证书。</p>
         :rtype: int
         """
         return self._CertType
@@ -34477,8 +34403,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertExpireTime(self):
-        r"""证书过期时间，UTC格式。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>证书过期时间，UTC格式。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._CertExpireTime
@@ -34489,7 +34414,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""使用此证书的域名名称。
+        r"""<p>使用此证书的域名名称。</p>
         :rtype: str
         """
         return self._DomainName
@@ -34500,7 +34425,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""证书状态。
+        r"""<p>证书状态。</p>
         :rtype: int
         """
         return self._Status
@@ -34511,8 +34436,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertDomains(self):
-        r"""证书本身标识的域名列表。
-比如: ["*.x.com"]
+        r"""<p>证书本身标识的域名列表。<br>比如: [&quot;*.x.com&quot;]</p>
         :rtype: list of str
         """
         return self._CertDomains
@@ -34523,7 +34447,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CloudCertId(self):
-        r"""腾讯云ssl的证书Id
+        r"""<p>腾讯云ssl的证书Id</p>
         :rtype: str
         """
         return self._CloudCertId
@@ -36142,7 +36066,7 @@ class LiveAvatarCloneFigureInfo(AbstractModel):
         :type SceneType: str
         :param _FigureName: <p>形象名称</p>
         :type FigureName: str
-        :param _Gender: <p>性别：男或者女</p>
+        :param _Gender: <p>性别：男或者女或者UNKNOWN</p>
         :type Gender: str
         :param _Status: <p>状态</p><p>枚举值：</p><ul><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>PROCESSING： 生成中</li></ul>
         :type Status: str
@@ -36230,7 +36154,7 @@ class LiveAvatarCloneFigureInfo(AbstractModel):
 
     @property
     def Gender(self):
-        r"""<p>性别：男或者女</p>
+        r"""<p>性别：男或者女或者UNKNOWN</p>
         :rtype: str
         """
         return self._Gender
@@ -37652,14 +37576,13 @@ class LogInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogName: 日志名称。
+        :param _LogName: <p>日志名称。</p>
         :type LogName: str
-        :param _LogUrl: 日志 URL。
+        :param _LogUrl: <p>日志 URL。</p>
         :type LogUrl: str
-        :param _LogTime: 日志生成时间。
-注：此字段为北京时间（UTC+8时区）。
+        :param _LogTime: <p>日志生成时间。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type LogTime: str
-        :param _FileSize: 文件大小。
+        :param _FileSize: <p>文件大小，单位字节。</p>
         :type FileSize: int
         """
         self._LogName = None
@@ -37669,7 +37592,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogName(self):
-        r"""日志名称。
+        r"""<p>日志名称。</p>
         :rtype: str
         """
         return self._LogName
@@ -37680,7 +37603,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogUrl(self):
-        r"""日志 URL。
+        r"""<p>日志 URL。</p>
         :rtype: str
         """
         return self._LogUrl
@@ -37691,8 +37614,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogTime(self):
-        r"""日志生成时间。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>日志生成时间。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._LogTime
@@ -37703,7 +37625,7 @@ class LogInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小。
+        r"""<p>文件大小，单位字节。</p>
         :rtype: int
         """
         return self._FileSize
@@ -39387,19 +39309,15 @@ class ModifyLiveDomainCertBindingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainInfos: 要绑定证书的播放域名/状态 信息列表。
-如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
+        :param _DomainInfos: <p>要绑定证书的播放域名/状态 信息列表。<br>如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。</p>
         :type DomainInfos: list of LiveCertDomainInfo
-        :param _CloudCertId: 腾讯云ssl的证书Id。
-见 https://cloud.tencent.com/document/api/400/41665
+        :param _CloudCertId: <p>腾讯云ssl的证书Id。<br>见 https://cloud.tencent.com/document/api/400/41665</p>
         :type CloudCertId: str
-        :param _CertificatePublicKey: 证书公钥。
-CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        :param _CertificatePublicKey: <p>证书公钥。<br>CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。</p>
         :type CertificatePublicKey: str
-        :param _CertificatePrivateKey: 证书私钥。
-CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        :param _CertificatePrivateKey: <p>证书私钥。<br>CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。</p>
         :type CertificatePrivateKey: str
-        :param _CertificateAlias: 上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+        :param _CertificateAlias: <p>上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。</p>
         :type CertificateAlias: str
         """
         self._DomainInfos = None
@@ -39410,8 +39328,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def DomainInfos(self):
-        r"""要绑定证书的播放域名/状态 信息列表。
-如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
+        r"""<p>要绑定证书的播放域名/状态 信息列表。<br>如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。</p>
         :rtype: list of LiveCertDomainInfo
         """
         return self._DomainInfos
@@ -39422,8 +39339,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CloudCertId(self):
-        r"""腾讯云ssl的证书Id。
-见 https://cloud.tencent.com/document/api/400/41665
+        r"""<p>腾讯云ssl的证书Id。<br>见 https://cloud.tencent.com/document/api/400/41665</p>
         :rtype: str
         """
         return self._CloudCertId
@@ -39434,8 +39350,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CertificatePublicKey(self):
-        r"""证书公钥。
-CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        r"""<p>证书公钥。<br>CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。</p>
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -39446,8 +39361,7 @@ CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私�
 
     @property
     def CertificatePrivateKey(self):
-        r"""证书私钥。
-CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        r"""<p>证书私钥。<br>CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。</p>
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -39458,7 +39372,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CertificateAlias(self):
-        r"""上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+        r"""<p>上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。</p>
         :rtype: str
         """
         return self._CertificateAlias
@@ -39496,9 +39410,9 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MismatchedDomainNames: DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
+        :param _MismatchedDomainNames: <p>DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。</p>
         :type MismatchedDomainNames: list of str
-        :param _Errors: 操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
+        :param _Errors: <p>操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。</p>
         :type Errors: list of BatchDomainOperateErrors
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39509,7 +39423,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def MismatchedDomainNames(self):
-        r"""DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
+        r"""<p>DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。</p>
         :rtype: list of str
         """
         return self._MismatchedDomainNames
@@ -39520,7 +39434,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def Errors(self):
-        r"""操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
+        r"""<p>操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。</p>
         :rtype: list of BatchDomainOperateErrors
         """
         return self._Errors
@@ -50827,7 +50741,7 @@ class TemplateInfo(AbstractModel):
         :type AudioBitrate: int
         :param _Width: <p>宽，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始宽度</p>
         :type Width: int
-        :param _Height: <p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始宽度</p>
+        :param _Height: <p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始高度</p>
         :type Height: int
         :param _Fps: <p>帧率，默认0。<br>范围0-60fps</p>
         :type Fps: int
@@ -50962,7 +50876,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Height(self):
-        r"""<p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始宽度</p>
+        r"""<p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始高度</p>
         :rtype: int
         """
         return self._Height

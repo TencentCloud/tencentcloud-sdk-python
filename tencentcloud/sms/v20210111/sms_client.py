@@ -75,7 +75,8 @@ class SmsClient(AbstractClient):
 
 
     def CallbackStatusStatistics(self, request):
-        r"""本接口 (CallbackStatusStatistics) 用于统计用户回执的数据。
+        r"""本接口 (CallbackStatusStatistics) 用于查询回执统计数据。
+        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>本接口仅支持查询国内短信回执统计数据。</li></ul></blockquote>
 
         :param request: Request instance for CallbackStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20210111.models.CallbackStatusStatisticsRequest`
@@ -456,7 +457,7 @@ class SmsClient(AbstractClient):
 
 
     def SendStatusStatistics(self, request):
-        r"""本接口 (SendStatusStatistics) 用于统计用户发送短信的数据。
+        r"""本接口 (SendStatusStatistics) 用于查询用户发送短信的统计数据。
 
         :param request: Request instance for SendStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20210111.models.SendStatusStatisticsRequest`
@@ -479,7 +480,8 @@ class SmsClient(AbstractClient):
 
 
     def SmsPackagesStatistics(self, request):
-        r"""本接口 (SmsPackagesStatistics) 用于统计用户套餐包数据。
+        r"""本接口 (SmsPackagesStatistics) 用于查询国内短信套餐包统计信息。
+        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>本接口仅支持查询国内短信套餐包统计信息。</li></ul></blockquote>
 
         :param request: Request instance for SmsPackagesStatistics.
         :type request: :class:`tencentcloud.sms.v20210111.models.SmsPackagesStatisticsRequest`

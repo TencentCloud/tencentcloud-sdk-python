@@ -21517,7 +21517,7 @@ class TTSParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: <p>tts模型参数，仅支持填写&quot;flow_02_turbo&quot;。</p>
+        :param _Model: <p>tts模型参数，当前支持填写&quot;flow_02_turbo&quot;。</p>
         :type Model: str
         :param _Language: <p>tts语言，必须在TranslationParam 的TargetLang列表中。</p>
         :type Language: str
@@ -21527,16 +21527,19 @@ class TTSParam(AbstractModel):
         :type TTSRobotUser: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
         :param _Voice: <p>TTS的声音配置参数。</p>
         :type Voice: :class:`tencentcloud.trtc.v20190722.models.TTSVoice`
+        :param _ExtraParams: <p>TTS高级扩展参数，使用需要联系我们支持</p><p>参数格式：{"Type":"xxx", "Data":{}}</p>
+        :type ExtraParams: str
         """
         self._Model = None
         self._Language = None
         self._TargetUser = None
         self._TTSRobotUser = None
         self._Voice = None
+        self._ExtraParams = None
 
     @property
     def Model(self):
-        r"""<p>tts模型参数，仅支持填写&quot;flow_02_turbo&quot;。</p>
+        r"""<p>tts模型参数，当前支持填写&quot;flow_02_turbo&quot;。</p>
         :rtype: str
         """
         return self._Model
@@ -21589,6 +21592,17 @@ class TTSParam(AbstractModel):
     def Voice(self, Voice):
         self._Voice = Voice
 
+    @property
+    def ExtraParams(self):
+        r"""<p>TTS高级扩展参数，使用需要联系我们支持</p><p>参数格式：{"Type":"xxx", "Data":{}}</p>
+        :rtype: str
+        """
+        return self._ExtraParams
+
+    @ExtraParams.setter
+    def ExtraParams(self, ExtraParams):
+        self._ExtraParams = ExtraParams
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -21602,6 +21616,7 @@ class TTSParam(AbstractModel):
         if params.get("Voice") is not None:
             self._Voice = TTSVoice()
             self._Voice._deserialize(params.get("Voice"))
+        self._ExtraParams = params.get("ExtraParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

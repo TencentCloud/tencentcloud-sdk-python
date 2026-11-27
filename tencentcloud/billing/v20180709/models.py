@@ -21516,18 +21516,11 @@ class DescribeBillDownloadUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileType: 账单类型，枚举值
-billOverview=L0-PDF账单
-billSummary=L1-汇总账单	
-billResource=L2-资源账单	
-billDetail=L3-明细账单	
-billPack=账单包
+        :param _FileType: <p>账单类型，枚举值<br>billOverview=L0-PDF账单<br>billSummary=L1-汇总账单<br>billResource=L2-资源账单<br>billDetail=L3-明细账单<br>billPack=账单包</p>
         :type FileType: str
-        :param _Month: 账单月份
-支持的最早开始月份为2021-01
-L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
+        :param _Month: <p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :type Month: str
-        :param _ChildUin: 下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+        :param _ChildUin: <p>下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN</p>
         :type ChildUin: list of str
         """
         self._FileType = None
@@ -21536,12 +21529,7 @@ L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账�
 
     @property
     def FileType(self):
-        r"""账单类型，枚举值
-billOverview=L0-PDF账单
-billSummary=L1-汇总账单	
-billResource=L2-资源账单	
-billDetail=L3-明细账单	
-billPack=账单包
+        r"""<p>账单类型，枚举值<br>billOverview=L0-PDF账单<br>billSummary=L1-汇总账单<br>billResource=L2-资源账单<br>billDetail=L3-明细账单<br>billPack=账单包</p>
         :rtype: str
         """
         return self._FileType
@@ -21552,9 +21540,7 @@ billPack=账单包
 
     @property
     def Month(self):
-        r"""账单月份
-支持的最早开始月份为2021-01
-L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
+        r"""<p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :rtype: str
         """
         return self._Month
@@ -21565,7 +21551,7 @@ L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账�
 
     @property
     def ChildUin(self):
-        r"""下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+        r"""<p>下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN</p>
         :rtype: list of str
         """
         return self._ChildUin
@@ -21596,9 +21582,9 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 账单文件是否准备就绪，0文件生成中，1文件已生成
+        :param _Ready: <p>账单文件是否准备就绪，0文件生成中，1文件已生成</p>
         :type Ready: int
-        :param _DownloadUrl: 账单文件下载链接，有效时长为一天
+        :param _DownloadUrl: <p>账单文件下载链接，有效时长为一天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21610,7 +21596,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""账单文件是否准备就绪，0文件生成中，1文件已生成
+        r"""<p>账单文件是否准备就绪，0文件生成中，1文件已生成</p>
         :rtype: int
         """
         return self._Ready
@@ -21621,7 +21607,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""账单文件下载链接，有效时长为一天
+        r"""<p>账单文件下载链接，有效时长为一天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22300,7 +22286,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Month: <p>月份，格式为yyyy-mm。不能早于开通账单2.0的月份</p>
+        :param _Month: <p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :type Month: str
         :param _PeriodType: <p>周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往<a href="https://console.cloud.tencent.com/expense/bill/overview">账单概览</a>页面顶部查看确认您的账单统计周期类型。</p>
         :type PeriodType: str
@@ -22358,7 +22344,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""<p>月份，格式为yyyy-mm。不能早于开通账单2.0的月份</p>
+        r"""<p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :rtype: str
         """
         return self._Month
@@ -22566,11 +22552,11 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _BeginTime: <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type BeginTime: str
-        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _EndTime: <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type EndTime: str
-        :param _PayerUin: 查询账单数据的用户UIN
+        :param _PayerUin: <p>查询账单数据的用户UIN</p>
         :type PayerUin: str
         """
         self._BeginTime = None
@@ -22579,7 +22565,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._BeginTime
@@ -22590,7 +22576,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._EndTime
@@ -22601,7 +22587,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""查询账单数据的用户UIN
+        r"""<p>查询账单数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -22632,9 +22618,9 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :param _Ready: <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :type Ready: int
-        :param _SummaryOverview: 各付费模式花费分布详情
+        :param _SummaryOverview: <p>各付费模式花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of PayModeSummaryOverviewItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22646,7 +22632,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""<p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :rtype: int
         """
         return self._Ready
@@ -22657,7 +22643,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        r"""各付费模式花费分布详情
+        r"""<p>各付费模式花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PayModeSummaryOverviewItem
         """
@@ -22697,18 +22683,13 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _BeginTime: <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type BeginTime: str
-        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _EndTime: <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type EndTime: str
-        :param _PayerUin: 查询账单数据的用户UIN
+        :param _PayerUin: <p>查询账单数据的用户UIN</p>
         :type PayerUin: str
-        :param _PayType: 款项类别，与L0账单上的汇总类别对应。
-此参数自账单3.0（即2021-05）之后开始生效。
-枚举值：
-consume-消费
-refund-退款
-adjustment-调账
+        :param _PayType: <p>款项类别，与L0账单上的汇总类别对应。 此参数自账单3.0（即2021-01）之后开始生效。</p><p>枚举值：</p><ul><li>consume： 消费</li><li>refund： 退款</li><li>adjustment： 调账</li></ul>
         :type PayType: str
         """
         self._BeginTime = None
@@ -22718,7 +22699,7 @@ adjustment-调账
 
     @property
     def BeginTime(self):
-        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._BeginTime
@@ -22729,7 +22710,7 @@ adjustment-调账
 
     @property
     def EndTime(self):
-        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._EndTime
@@ -22740,7 +22721,7 @@ adjustment-调账
 
     @property
     def PayerUin(self):
-        r"""查询账单数据的用户UIN
+        r"""<p>查询账单数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -22751,12 +22732,7 @@ adjustment-调账
 
     @property
     def PayType(self):
-        r"""款项类别，与L0账单上的汇总类别对应。
-此参数自账单3.0（即2021-05）之后开始生效。
-枚举值：
-consume-消费
-refund-退款
-adjustment-调账
+        r"""<p>款项类别，与L0账单上的汇总类别对应。 此参数自账单3.0（即2021-01）之后开始生效。</p><p>枚举值：</p><ul><li>consume： 消费</li><li>refund： 退款</li><li>adjustment： 调账</li></ul>
         :rtype: str
         """
         return self._PayType
@@ -22788,12 +22764,12 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :param _Ready: <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :type Ready: int
-        :param _SummaryTotal: 总花费详情
+        :param _SummaryTotal: <p>总花费详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`
-        :param _SummaryOverview: 各产品花费分布
+        :param _SummaryOverview: <p>各产品花费分布</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of BusinessSummaryOverviewItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22806,7 +22782,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""<p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :rtype: int
         """
         return self._Ready
@@ -22817,7 +22793,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def SummaryTotal(self):
-        r"""总花费详情
+        r"""<p>总花费详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`
         """
@@ -22829,7 +22805,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        r"""各产品花费分布
+        r"""<p>各产品花费分布</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BusinessSummaryOverviewItem
         """
@@ -23003,11 +22979,11 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _BeginTime: <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type BeginTime: str
-        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _EndTime: <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type EndTime: str
-        :param _PayerUin: 查询账单数据的用户UIN
+        :param _PayerUin: <p>查询账单数据的用户UIN</p>
         :type PayerUin: str
         """
         self._BeginTime = None
@@ -23016,7 +22992,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._BeginTime
@@ -23027,7 +23003,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._EndTime
@@ -23038,7 +23014,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""查询账单数据的用户UIN
+        r"""<p>查询账单数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -23069,9 +23045,9 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :param _Ready: <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :type Ready: int
-        :param _SummaryOverview: 各地域花费分布详情
+        :param _SummaryOverview: <p>各地域花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of RegionSummaryOverviewItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23083,7 +23059,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""<p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :rtype: int
         """
         return self._Ready
@@ -23094,7 +23070,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        r"""各地域花费分布详情
+        r"""<p>各地域花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionSummaryOverviewItem
         """
@@ -23134,15 +23110,15 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _BeginTime: <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type BeginTime: str
-        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _EndTime: <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :type EndTime: str
-        :param _TagKey: 分账标签键，用户自定义
+        :param _TagKey: <p>分账标签键，用户自定义</p>
         :type TagKey: str
-        :param _PayerUin: 查询账单数据的用户UIN
+        :param _PayerUin: <p>查询账单数据的用户UIN</p>
         :type PayerUin: str
-        :param _TagValue: 分账标签值
+        :param _TagValue: <p>分账标签值</p>
         :type TagValue: str
         """
         self._BeginTime = None
@@ -23153,7 +23129,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._BeginTime
@@ -23164,7 +23140,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2026-11，EndTime 为 2026-11，查询结果是 2026 年 11 月数据。格式为yyyy-mm，不能早于2021-01</p>
         :rtype: str
         """
         return self._EndTime
@@ -23175,7 +23151,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""分账标签键，用户自定义
+        r"""<p>分账标签键，用户自定义</p>
         :rtype: str
         """
         return self._TagKey
@@ -23186,7 +23162,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""查询账单数据的用户UIN
+        r"""<p>查询账单数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -23197,7 +23173,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""分账标签值
+        r"""<p>分账标签值</p>
         :rtype: str
         """
         return self._TagValue
@@ -23230,12 +23206,12 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :param _Ready: <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :type Ready: int
-        :param _SummaryOverview: 各标签值花费分布详情
+        :param _SummaryOverview: <p>各标签值花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of TagSummaryOverviewItem
-        :param _SummaryTotal: 总数
+        :param _SummaryTotal: <p>总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23248,7 +23224,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""<p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :rtype: int
         """
         return self._Ready
@@ -23259,7 +23235,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        r"""各标签值花费分布详情
+        r"""<p>各标签值花费分布详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagSummaryOverviewItem
         """
@@ -23271,7 +23247,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def SummaryTotal(self):
-        r"""总数
+        r"""<p>总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
         """
@@ -23443,7 +23419,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: <p>账单月份，格式为2023-04</p>
+        :param _Month: <p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :type Month: str
         :param _GroupType: <p>账单维度类型，枚举值如下：business、project、region、payMode、tag</p>
         :type GroupType: str
@@ -23462,7 +23438,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""<p>账单月份，格式为2023-04</p>
+        r"""<p>月份，格式为yyyy-mm，不能早于2021-01  示例值：2026-11</p>
         :rtype: str
         """
         return self._Month

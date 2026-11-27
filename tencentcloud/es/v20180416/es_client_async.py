@@ -1340,6 +1340,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SearchServerlessSpaceData(
+            self,
+            request: models.SearchServerlessSpaceDataRequest,
+            opts: Dict = None,
+    ) -> models.SearchServerlessSpaceDataResponse:
+        """
+        用于查询serverless space中的数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchServerlessSpaceData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchServerlessSpaceDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StartLogstashPipelines(
             self,
             request: models.StartLogstashPipelinesRequest,

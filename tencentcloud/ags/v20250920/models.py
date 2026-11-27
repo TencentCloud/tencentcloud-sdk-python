@@ -14496,6 +14496,8 @@ class SandboxInstance(AbstractModel):
         :type Metadata: list of MetadataVar
         :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
         :type AuthMode: str
+        :param _SubAccountUin: <p>表示发起实例启动并取得该实例的账号 UIN</p>
+        :type SubAccountUin: str
         """
         self._InstanceId = None
         self._ToolId = None
@@ -14513,6 +14515,7 @@ class SandboxInstance(AbstractModel):
         self._NetworkMode = None
         self._Metadata = None
         self._AuthMode = None
+        self._SubAccountUin = None
 
     @property
     def InstanceId(self):
@@ -14690,6 +14693,17 @@ class SandboxInstance(AbstractModel):
     def AuthMode(self, AuthMode):
         self._AuthMode = AuthMode
 
+    @property
+    def SubAccountUin(self):
+        r"""<p>表示发起实例启动并取得该实例的账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14722,6 +14736,7 @@ class SandboxInstance(AbstractModel):
                 obj._deserialize(item)
                 self._Metadata.append(obj)
         self._AuthMode = params.get("AuthMode")
+        self._SubAccountUin = params.get("SubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1706,6 +1706,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchServerlessSpaceData(self, request):
+        r"""用于查询serverless space中的数据
+
+        :param request: Request instance for SearchServerlessSpaceData.
+        :type request: :class:`tencentcloud.es.v20180416.models.SearchServerlessSpaceDataRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.SearchServerlessSpaceDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchServerlessSpaceData", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchServerlessSpaceDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartLogstashPipelines(self, request):
         r"""用于启动Logstash管道
 

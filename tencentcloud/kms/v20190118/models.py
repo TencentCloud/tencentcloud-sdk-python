@@ -5513,6 +5513,8 @@ class GetServiceStatusResponse(AbstractModel):
         :type MultiAccountLimit: int
         :param _MultiAccountUsedCount: <p>多账号启用个数</p><p>单位：个数</p>
         :type MultiAccountUsedCount: int
+        :param _CmkExtPackCount: <p>根密钥的扩展包数量</p><p>单位：个</p>
+        :type CmkExtPackCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5541,6 +5543,7 @@ class GetServiceStatusResponse(AbstractModel):
         self._ResourceRegion = None
         self._MultiAccountLimit = None
         self._MultiAccountUsedCount = None
+        self._CmkExtPackCount = None
         self._RequestId = None
 
     @property
@@ -5819,6 +5822,17 @@ class GetServiceStatusResponse(AbstractModel):
         self._MultiAccountUsedCount = MultiAccountUsedCount
 
     @property
+    def CmkExtPackCount(self):
+        r"""<p>根密钥的扩展包数量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._CmkExtPackCount
+
+    @CmkExtPackCount.setter
+    def CmkExtPackCount(self, CmkExtPackCount):
+        self._CmkExtPackCount = CmkExtPackCount
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5871,6 +5885,7 @@ class GetServiceStatusResponse(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._MultiAccountLimit = params.get("MultiAccountLimit")
         self._MultiAccountUsedCount = params.get("MultiAccountUsedCount")
+        self._CmkExtPackCount = params.get("CmkExtPackCount")
         self._RequestId = params.get("RequestId")
 
 

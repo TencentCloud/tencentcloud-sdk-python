@@ -439,11 +439,6 @@ def test_import_controlcenter_v20230110():
     from tencentcloud.controlcenter.v20230110 import models
 
 
-def test_import_cpdp_v20190820():
-    from tencentcloud.cpdp.v20190820 import cpdp_client
-    from tencentcloud.cpdp.v20190820 import models
-
-
 def test_import_csip_v20221121():
     from tencentcloud.csip.v20221121 import csip_client
     from tencentcloud.csip.v20221121 import models

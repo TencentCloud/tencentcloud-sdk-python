@@ -4509,18 +4509,15 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SmsSdkAppId: 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+        :param _SmsSdkAppId: <p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
         :type SmsSdkAppId: str
-        :param _Limit: 最大上限(需要拉取的套餐包个数)。
-注：Limit默认最大值为500，可结合Offset实现分页查询。
+        :param _Limit: <p>最大上限(需要拉取的套餐包个数)。<br>注：Limit默认最大值为500，可结合Offset实现分页查询。</p>
         :type Limit: int
-        :param _Offset: 偏移量。
+        :param _Offset: <p>偏移量。</p>
         :type Offset: int
-        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
-注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。
+        :param _BeginTime: <p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。<br>注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。</p>
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-注：EndTime 必须大于 BeginTime 且小于当前时间。
+        :param _EndTime: <p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。<br>注：EndTime 必须大于 BeginTime 且小于当前时间。</p>
         :type EndTime: str
         """
         self._SmsSdkAppId = None
@@ -4531,7 +4528,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def SmsSdkAppId(self):
-        r"""短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+        r"""<p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
         :rtype: str
         """
         return self._SmsSdkAppId
@@ -4542,8 +4539,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""最大上限(需要拉取的套餐包个数)。
-注：Limit默认最大值为500，可结合Offset实现分页查询。
+        r"""<p>最大上限(需要拉取的套餐包个数)。<br>注：Limit默认最大值为500，可结合Offset实现分页查询。</p>
         :rtype: int
         """
         return self._Limit
@@ -4554,7 +4550,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量。
+        r"""<p>偏移量。</p>
         :rtype: int
         """
         return self._Offset
@@ -4565,8 +4561,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
-注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。
+        r"""<p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。<br>注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。</p>
         :rtype: str
         """
         return self._BeginTime
@@ -4577,8 +4572,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-注：EndTime 必须大于 BeginTime 且小于当前时间。
+        r"""<p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。<br>注：EndTime 必须大于 BeginTime 且小于当前时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -4611,7 +4605,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SmsPackagesStatisticsSet: 发送数据统计响应包体。
+        :param _SmsPackagesStatisticsSet: <p>套餐包统计信息响应包体。</p>
         :type SmsPackagesStatisticsSet: list of SmsPackagesStatistics
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4621,7 +4615,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     @property
     def SmsPackagesStatisticsSet(self):
-        r"""发送数据统计响应包体。
+        r"""<p>套餐包统计信息响应包体。</p>
         :rtype: list of SmsPackagesStatistics
         """
         return self._SmsPackagesStatisticsSet

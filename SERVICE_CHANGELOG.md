@@ -1,4 +1,4 @@
-# Release 3.1.215
+# Release 3.1.216
 
 ## 腾讯云智能体开发平台(adp) 版本：2026-05-20
 
@@ -115,6 +115,21 @@
 
 ## Agent 沙箱服务(ags) 版本：2025-09-20
 
+### 第 42 次发布
+
+发布时间：2026-11-27 01:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SandboxInstance](https://cloud.tencent.com/document/api/1814/124823#SandboxInstance)
+
+	* 新增成员：SubAccountUin
+
+
 ### 第 41 次发布
 
 发布时间：2026-11-26 01:05:30
@@ -159,6 +174,62 @@
 新增数据结构：
 
 * [PreCacheImageCleanupPolicy](https://cloud.tencent.com/document/api/1814/124823#PreCacheImageCleanupPolicy)
+
+
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2025-09-03
+
+### 第 2 次发布
+
+发布时间：2026-11-27 01:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateProtection](https://cloud.tencent.com/document/api/297/141404)
+* [DeleteProtection](https://cloud.tencent.com/document/api/297/141403)
+* [DescribeDDoSProtectionPolicy](https://cloud.tencent.com/document/api/297/141407)
+* [DescribeProtectionResources](https://cloud.tencent.com/document/api/297/141399)
+* [DescribeProtections](https://cloud.tencent.com/document/api/297/141402)
+* [DescribeResourceProtections](https://cloud.tencent.com/document/api/297/141398)
+* [ModifyDDoSProtectionPolicy](https://cloud.tencent.com/document/api/297/141406)
+* [ModifyProtection](https://cloud.tencent.com/document/api/297/141401)
+* [ModifyProtectionResource](https://cloud.tencent.com/document/api/297/141397)
+
+新增数据结构：
+
+* [AbnormalConnectCondition](https://cloud.tencent.com/document/api/297/131106#AbnormalConnectCondition)
+* [AbnormalConnectionLimit](https://cloud.tencent.com/document/api/297/131106#AbnormalConnectionLimit)
+* [ConnectionProtectionConfig](https://cloud.tencent.com/document/api/297/131106#ConnectionProtectionConfig)
+* [DefaultProtectionConfig](https://cloud.tencent.com/document/api/297/131106#DefaultProtectionConfig)
+* [GeoBlockingConfig](https://cloud.tencent.com/document/api/297/131106#GeoBlockingConfig)
+* [IPACLRule](https://cloud.tencent.com/document/api/297/131106#IPACLRule)
+* [IPACLRules](https://cloud.tencent.com/document/api/297/131106#IPACLRules)
+* [PacketFilterCondition](https://cloud.tencent.com/document/api/297/131106#PacketFilterCondition)
+* [PacketFilterRule](https://cloud.tencent.com/document/api/297/131106#PacketFilterRule)
+* [PacketFilterRules](https://cloud.tencent.com/document/api/297/131106#PacketFilterRules)
+* [PacketMatchContent](https://cloud.tencent.com/document/api/297/131106#PacketMatchContent)
+* [PortACLRule](https://cloud.tencent.com/document/api/297/131106#PortACLRule)
+* [PortACLRules](https://cloud.tencent.com/document/api/297/131106#PortACLRules)
+* [PortRange](https://cloud.tencent.com/document/api/297/131106#PortRange)
+* [ProtectionFilter](https://cloud.tencent.com/document/api/297/131106#ProtectionFilter)
+* [ProtectionInfo](https://cloud.tencent.com/document/api/297/131106#ProtectionInfo)
+* [ProtectionPolicy](https://cloud.tencent.com/document/api/297/131106#ProtectionPolicy)
+* [ProtocolBlockingConfig](https://cloud.tencent.com/document/api/297/131106#ProtocolBlockingConfig)
+* [ResourceInfo](https://cloud.tencent.com/document/api/297/131106#ResourceInfo)
+* [ResourceProtection](https://cloud.tencent.com/document/api/297/131106#ResourceProtection)
+* [SizeRange](https://cloud.tencent.com/document/api/297/131106#SizeRange)
+* [SpeedLimitRule](https://cloud.tencent.com/document/api/297/131106#SpeedLimitRule)
+* [SpeedLimitRules](https://cloud.tencent.com/document/api/297/131106#SpeedLimitRules)
+* [TagInfo](https://cloud.tencent.com/document/api/297/131106#TagInfo)
+* [TrafficSignatureConfig](https://cloud.tencent.com/document/api/297/131106#TrafficSignatureConfig)
+
+
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
 
 
@@ -352,6 +423,33 @@
 
 
 
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 238 次发布
+
+发布时间：2026-11-27 01:17:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCageList](https://cloud.tencent.com/document/api/236/141408)
+
+新增数据结构：
+
+* [CageInfoItem](https://cloud.tencent.com/document/api/236/15878#CageInfoItem)
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：CageId
+
+
+
+
 ## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
 
 ### 第 69 次发布
@@ -433,6 +531,56 @@
 新增数据结构：
 
 * [CloudDedicatedZone](https://cloud.tencent.com/document/api/1629/108683#CloudDedicatedZone)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 122 次发布
+
+发布时间：2026-11-27 01:22:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyEnterpriseSecurityDispatchStatus](https://cloud.tencent.com/document/api/1132/86969)
+
+	* 新增入参：BindFallbackOnce
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 175 次发布
+
+发布时间：2026-11-27 01:26:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelRouter](https://cloud.tencent.com/document/api/214/133217)
+
+	* 新增入参：RealtimeConfig
+
+
+新增数据结构：
+
+* [RealtimeConfig](https://cloud.tencent.com/document/api/214/30694#RealtimeConfig)
+* [RealtimeRoutingStrategyArgs](https://cloud.tencent.com/document/api/214/30694#RealtimeRoutingStrategyArgs)
+
+修改数据结构：
+
+* [Coefficient](https://cloud.tencent.com/document/api/214/30694#Coefficient)
+
+	* 新增成员：InputAudioTokenCoefficient, InputCachedAudioTokenCoefficient, InputImageTokenCoefficient, InputCachedImageTokenCoefficient, OutputAudioTokenCoefficient
+
 
 
 
@@ -545,6 +693,18 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 115 次发布
+
+发布时间：2026-11-27 01:52:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SearchServerlessSpaceData](https://cloud.tencent.com/document/api/845/141409)
+
 ### 第 114 次发布
 
 发布时间：2026-11-24 02:10:17
@@ -649,6 +809,21 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 34 次发布
+
+发布时间：2026-11-27 02:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetServiceStatus](https://cloud.tencent.com/document/api/573/34417)
+
+	* 新增出参：CmkExtPackCount
+
+
 ### 第 33 次发布
 
 发布时间：2026-11-26 02:22:05
@@ -667,6 +842,21 @@
 
 
 ## 云直播CSS(live) 版本：2018-08-01
+
+### 第 196 次发布
+
+发布时间：2026-11-27 02:10:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AvatarRoomInfo](https://cloud.tencent.com/document/api/267/20474#AvatarRoomInfo)
+
+	* 新增成员：RoomType, AvatarAigcImageUrl
+
 
 ### 第 195 次发布
 
@@ -1004,6 +1194,21 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 176 次发布
+
+发布时间：2026-11-27 02:39:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPUpstreamTimeoutParameters](https://cloud.tencent.com/document/api/1552/80721#HTTPUpstreamTimeoutParameters)
+
+	* 新增成员：TCPConnectTimeout, KeepaliveTimeout
+
+
 ### 第 175 次发布
 
 发布时间：2026-11-25 02:38:25
@@ -1169,6 +1374,21 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 162 次发布
+
+发布时间：2026-11-27 02:48:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TTSParam](https://cloud.tencent.com/document/api/647/44055#TTSParam)
+
+	* 新增成员：ExtraParams
+
 
 ### 第 161 次发布
 

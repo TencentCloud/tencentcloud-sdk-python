@@ -40971,8 +40971,14 @@ class HTTPUpstreamTimeoutParameters(AbstractModel):
         r"""
         :param _ResponseTimeout: <p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p><p>节点把请求发给源站后开始计时，在设定时间内没有收到源站返回的任何数据即判定超时；开始收到响应后，相邻两次收到数据的间隔超过设定值同样判定超时。节点向源站上传请求体时，相邻两次发送数据的间隔也受该值限制。该值不限制整个响应的总耗时，只要源站持续返回数据，大文件下载不会因此中断。<br>注意：该参数未设置时出参不返回。</p>
         :type ResponseTimeout: int
+        :param _TCPConnectTimeout: <p>回源 TCP 建连超时时间。</p><p>取值范围：[5, 120]</p><p>单位：秒</p><p>默认值：5</p><p>节点向源站发起 TCP 连接后，如果源站在设定时间内没有完成应答，判定本次建连超时。该值只约束 TCP 建连本身；连接建立后等待源站响应的时间由 ResponseTimeout 控制。<br>注意：该参数未设置时出参不返回。</p>
+        :type TCPConnectTimeout: int
+        :param _KeepaliveTimeout: <p>回源长连接空闲超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>回源请求完成后，节点与源站之间的连接放回连接池进入空闲状态，如果在设定时间内没有新的回源请求复用这条连接，节点主动关闭连接。该参数只作用于直接连接源站的节点，EdgeOne 节点之间的内部连接不受影响；该参数只对 HTTP/1.x 连接生效，HTTP/2 与 HTTP/3（QUIC）连接不受影响。建议该值小于源站的长连接超时时间（例如 Nginx 的 keepalive_timeout 默认为 75 秒），否则节点可能复用一条已被源站关闭的连接，导致回源失败或重试。<br>注意：该参数未设置时出参不返回。</p>
+        :type KeepaliveTimeout: int
         """
         self._ResponseTimeout = None
+        self._TCPConnectTimeout = None
+        self._KeepaliveTimeout = None
 
     @property
     def ResponseTimeout(self):
@@ -40985,9 +40991,33 @@ class HTTPUpstreamTimeoutParameters(AbstractModel):
     def ResponseTimeout(self, ResponseTimeout):
         self._ResponseTimeout = ResponseTimeout
 
+    @property
+    def TCPConnectTimeout(self):
+        r"""<p>回源 TCP 建连超时时间。</p><p>取值范围：[5, 120]</p><p>单位：秒</p><p>默认值：5</p><p>节点向源站发起 TCP 连接后，如果源站在设定时间内没有完成应答，判定本次建连超时。该值只约束 TCP 建连本身；连接建立后等待源站响应的时间由 ResponseTimeout 控制。<br>注意：该参数未设置时出参不返回。</p>
+        :rtype: int
+        """
+        return self._TCPConnectTimeout
+
+    @TCPConnectTimeout.setter
+    def TCPConnectTimeout(self, TCPConnectTimeout):
+        self._TCPConnectTimeout = TCPConnectTimeout
+
+    @property
+    def KeepaliveTimeout(self):
+        r"""<p>回源长连接空闲超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>回源请求完成后，节点与源站之间的连接放回连接池进入空闲状态，如果在设定时间内没有新的回源请求复用这条连接，节点主动关闭连接。该参数只作用于直接连接源站的节点，EdgeOne 节点之间的内部连接不受影响；该参数只对 HTTP/1.x 连接生效，HTTP/2 与 HTTP/3（QUIC）连接不受影响。建议该值小于源站的长连接超时时间（例如 Nginx 的 keepalive_timeout 默认为 75 秒），否则节点可能复用一条已被源站关闭的连接，导致回源失败或重试。<br>注意：该参数未设置时出参不返回。</p>
+        :rtype: int
+        """
+        return self._KeepaliveTimeout
+
+    @KeepaliveTimeout.setter
+    def KeepaliveTimeout(self, KeepaliveTimeout):
+        self._KeepaliveTimeout = KeepaliveTimeout
+
 
     def _deserialize(self, params):
         self._ResponseTimeout = params.get("ResponseTimeout")
+        self._TCPConnectTimeout = params.get("TCPConnectTimeout")
+        self._KeepaliveTimeout = params.get("KeepaliveTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

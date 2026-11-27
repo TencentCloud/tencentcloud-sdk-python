@@ -7089,13 +7089,13 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :type DomainId: int
-        :param _Offset: 记录开始的偏移，第一条记录为 0，依次类推，默认为0
+        :param _Offset: <p>记录开始的偏移，第一条记录为 0，依次类推，默认为0</p>
         :type Offset: int
-        :param _Limit: 共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。
+        :param _Limit: <p>共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。</p>
         :type Limit: int
         """
         self._Domain = None
@@ -7105,7 +7105,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -7116,7 +7116,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :rtype: int
         """
         return self._DomainId
@@ -7127,7 +7127,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""记录开始的偏移，第一条记录为 0，依次类推，默认为0
+        r"""<p>记录开始的偏移，第一条记录为 0，依次类推，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -7138,7 +7138,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。
+        r"""<p>共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。</p>
         :rtype: int
         """
         return self._Limit
@@ -7170,11 +7170,11 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogList: 域名日志信息
+        :param _LogList: <p>域名日志信息</p>
         :type LogList: list of str
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _TotalCount: 日志总条数
+        :param _TotalCount: <p>日志总条数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7186,7 +7186,7 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     @property
     def LogList(self):
-        r"""域名日志信息
+        r"""<p>域名日志信息</p>
         :rtype: list of str
         """
         return self._LogList
@@ -7197,7 +7197,7 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -7208,7 +7208,7 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""日志总条数
+        r"""<p>日志总条数</p>
         :rtype: int
         """
         return self._TotalCount

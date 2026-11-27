@@ -4273,6 +4273,117 @@ class Bucket(AbstractModel):
         
 
 
+class CageInfoItem(AbstractModel):
+    r"""金融围拢、独享集群详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CageId: <p>金融围拢ID、独享集群ID</p>
+        :type CageId: str
+        :param _ZoneId: <p>可用区ID</p>
+        :type ZoneId: int
+        :param _CageName: <p>金融围拢名称/独享集群名称</p>
+        :type CageName: str
+        :param _Status: <p>是否对外售卖</p>
+        :type Status: str
+        :param _DeviceType: <p>后端支持围拢发货的设备类型，normal/common</p>
+        :type DeviceType: str
+        :param _ZoneIds: <p>支持独享集群的可用区</p>
+        :type ZoneIds: list of int non-negative
+        """
+        self._CageId = None
+        self._ZoneId = None
+        self._CageName = None
+        self._Status = None
+        self._DeviceType = None
+        self._ZoneIds = None
+
+    @property
+    def CageId(self):
+        r"""<p>金融围拢ID、独享集群ID</p>
+        :rtype: str
+        """
+        return self._CageId
+
+    @CageId.setter
+    def CageId(self, CageId):
+        self._CageId = CageId
+
+    @property
+    def ZoneId(self):
+        r"""<p>可用区ID</p>
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CageName(self):
+        r"""<p>金融围拢名称/独享集群名称</p>
+        :rtype: str
+        """
+        return self._CageName
+
+    @CageName.setter
+    def CageName(self, CageName):
+        self._CageName = CageName
+
+    @property
+    def Status(self):
+        r"""<p>是否对外售卖</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DeviceType(self):
+        r"""<p>后端支持围拢发货的设备类型，normal/common</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def ZoneIds(self):
+        r"""<p>支持独享集群的可用区</p>
+        :rtype: list of int non-negative
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+
+    def _deserialize(self, params):
+        self._CageId = params.get("CageId")
+        self._ZoneId = params.get("ZoneId")
+        self._CageName = params.get("CageName")
+        self._Status = params.get("Status")
+        self._DeviceType = params.get("DeviceType")
+        self._ZoneIds = params.get("ZoneIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdbRegionSellConf(AbstractModel):
     r"""地域售卖配置
 
@@ -14160,14 +14271,14 @@ class DescribeBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14196,43 +14307,43 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeMin: 自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+        :param _StartTimeMin: <p>自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）</p>
         :type StartTimeMin: int
-        :param _StartTimeMax: 自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+        :param _StartTimeMax: <p>自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）</p>
         :type StartTimeMax: int
-        :param _BackupExpireDays: 备份文件保留时间，单位为天。
+        :param _BackupExpireDays: <p>备份文件保留时间，单位为天。</p>
         :type BackupExpireDays: int
-        :param _BackupMethod: 备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。
+        :param _BackupMethod: <p>备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。</p>
         :type BackupMethod: str
-        :param _BinlogExpireDays: Binlog 文件保留时间，单位为天。
+        :param _BinlogExpireDays: <p>Binlog 文件保留时间，单位为天。</p>
         :type BinlogExpireDays: int
-        :param _BackupTimeWindow: 实例自动备份的时间窗。
+        :param _BackupTimeWindow: <p>实例自动备份的时间窗。</p>
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
-        :param _EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+        :param _EnableBackupPeriodSave: <p>定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off</p>
         :type EnableBackupPeriodSave: str
-        :param _BackupPeriodSaveDays: 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        :param _BackupPeriodSaveDays: <p>定期保留最长天数，最小值：90，最大值：3650，默认值：1080</p>
         :type BackupPeriodSaveDays: int
-        :param _BackupPeriodSaveInterval: 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        :param _BackupPeriodSaveInterval: <p>定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly</p>
         :type BackupPeriodSaveInterval: str
-        :param _BackupPeriodSaveCount: 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        :param _BackupPeriodSaveCount: <p>定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1</p>
         :type BackupPeriodSaveCount: int
-        :param _StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        :param _StartBackupPeriodSaveDate: <p>定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss</p>
         :type StartBackupPeriodSaveDate: str
-        :param _EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+        :param _EnableBackupArchive: <p>是否开启数据备份归档策略，off-关闭，on-打开，默认为off</p>
         :type EnableBackupArchive: str
-        :param _BackupArchiveDays: 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        :param _BackupArchiveDays: <p>数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数</p>
         :type BackupArchiveDays: int
-        :param _EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+        :param _EnableBinlogArchive: <p>是否开启日志备份归档策略，off-关闭，on-打开，默认为off</p>
         :type EnableBinlogArchive: str
-        :param _BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        :param _BinlogArchiveDays: <p>日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数</p>
         :type BinlogArchiveDays: int
-        :param _EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+        :param _EnableBackupStandby: <p>是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off</p>
         :type EnableBackupStandby: str
-        :param _BackupStandbyDays: 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :param _BackupStandbyDays: <p>数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :type BackupStandbyDays: int
-        :param _EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+        :param _EnableBinlogStandby: <p>是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off</p>
         :type EnableBinlogStandby: str
-        :param _BinlogStandbyDays: 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :param _BinlogStandbyDays: <p>日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :type BinlogStandbyDays: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14262,7 +14373,7 @@ class DescribeBackupConfigResponse(AbstractModel):
     def StartTimeMin(self):
         warnings.warn("parameter `StartTimeMin` is deprecated", DeprecationWarning) 
 
-        r"""自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+        r"""<p>自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）</p>
         :rtype: int
         """
         return self._StartTimeMin
@@ -14277,7 +14388,7 @@ class DescribeBackupConfigResponse(AbstractModel):
     def StartTimeMax(self):
         warnings.warn("parameter `StartTimeMax` is deprecated", DeprecationWarning) 
 
-        r"""自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+        r"""<p>自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）</p>
         :rtype: int
         """
         return self._StartTimeMax
@@ -14290,7 +14401,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupExpireDays(self):
-        r"""备份文件保留时间，单位为天。
+        r"""<p>备份文件保留时间，单位为天。</p>
         :rtype: int
         """
         return self._BackupExpireDays
@@ -14301,7 +14412,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。
+        r"""<p>备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。</p>
         :rtype: str
         """
         return self._BackupMethod
@@ -14312,7 +14423,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BinlogExpireDays(self):
-        r"""Binlog 文件保留时间，单位为天。
+        r"""<p>Binlog 文件保留时间，单位为天。</p>
         :rtype: int
         """
         return self._BinlogExpireDays
@@ -14323,7 +14434,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupTimeWindow(self):
-        r"""实例自动备份的时间窗。
+        r"""<p>实例自动备份的时间窗。</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
         """
         return self._BackupTimeWindow
@@ -14334,7 +14445,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def EnableBackupPeriodSave(self):
-        r"""定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+        r"""<p>定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off</p>
         :rtype: str
         """
         return self._EnableBackupPeriodSave
@@ -14345,7 +14456,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupPeriodSaveDays(self):
-        r"""定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        r"""<p>定期保留最长天数，最小值：90，最大值：3650，默认值：1080</p>
         :rtype: int
         """
         return self._BackupPeriodSaveDays
@@ -14356,7 +14467,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupPeriodSaveInterval(self):
-        r"""定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        r"""<p>定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly</p>
         :rtype: str
         """
         return self._BackupPeriodSaveInterval
@@ -14367,7 +14478,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupPeriodSaveCount(self):
-        r"""定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        r"""<p>定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1</p>
         :rtype: int
         """
         return self._BackupPeriodSaveCount
@@ -14378,7 +14489,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def StartBackupPeriodSaveDate(self):
-        r"""定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        r"""<p>定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._StartBackupPeriodSaveDate
@@ -14389,7 +14500,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def EnableBackupArchive(self):
-        r"""是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+        r"""<p>是否开启数据备份归档策略，off-关闭，on-打开，默认为off</p>
         :rtype: str
         """
         return self._EnableBackupArchive
@@ -14400,7 +14511,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupArchiveDays(self):
-        r"""数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        r"""<p>数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数</p>
         :rtype: int
         """
         return self._BackupArchiveDays
@@ -14411,7 +14522,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def EnableBinlogArchive(self):
-        r"""是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+        r"""<p>是否开启日志备份归档策略，off-关闭，on-打开，默认为off</p>
         :rtype: str
         """
         return self._EnableBinlogArchive
@@ -14422,7 +14533,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BinlogArchiveDays(self):
-        r"""日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        r"""<p>日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数</p>
         :rtype: int
         """
         return self._BinlogArchiveDays
@@ -14433,7 +14544,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def EnableBackupStandby(self):
-        r"""是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+        r"""<p>是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off</p>
         :rtype: str
         """
         return self._EnableBackupStandby
@@ -14444,7 +14555,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupStandbyDays(self):
-        r"""数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        r"""<p>数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :rtype: int
         """
         return self._BackupStandbyDays
@@ -14455,7 +14566,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def EnableBinlogStandby(self):
-        r"""是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+        r"""<p>是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off</p>
         :rtype: str
         """
         return self._EnableBinlogStandby
@@ -14466,7 +14577,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BinlogStandbyDays(self):
-        r"""日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        r"""<p>日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :rtype: int
         """
         return self._BinlogStandbyDays
@@ -15809,6 +15920,169 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
         if params.get("TimeIntervalStrategy") is not None:
             self._TimeIntervalStrategy = TimeIntervalStrategy()
             self._TimeIntervalStrategy._deserialize(params.get("TimeIntervalStrategy"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCageListRequest(AbstractModel):
+    r"""DescribeCageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CageIds: <p>金融围拢ID、或者独享集群ID</p>
+        :type CageIds: list of str
+        :param _CageName: <p>金融围拢名称/独享集群名称</p>
+        :type CageName: str
+        :param _ZoneId: <p>本地专属集群所在可用用ID</p>
+        :type ZoneId: int
+        :param _Limit: <p>查询本地专属集群列表LIMIT</p>
+        :type Limit: int
+        :param _Offset: <p>分页</p>
+        :type Offset: int
+        """
+        self._CageIds = None
+        self._CageName = None
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def CageIds(self):
+        r"""<p>金融围拢ID、或者独享集群ID</p>
+        :rtype: list of str
+        """
+        return self._CageIds
+
+    @CageIds.setter
+    def CageIds(self, CageIds):
+        self._CageIds = CageIds
+
+    @property
+    def CageName(self):
+        r"""<p>金融围拢名称/独享集群名称</p>
+        :rtype: str
+        """
+        return self._CageName
+
+    @CageName.setter
+    def CageName(self, CageName):
+        self._CageName = CageName
+
+    @property
+    def ZoneId(self):
+        r"""<p>本地专属集群所在可用用ID</p>
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        r"""<p>查询本地专属集群列表LIMIT</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._CageIds = params.get("CageIds")
+        self._CageName = params.get("CageName")
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCageListResponse(AbstractModel):
+    r"""DescribeCageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>金融围拢、独享集群返回数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: <p>详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CageInfoItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>金融围拢、独享集群返回数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CageInfoItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CageInfoItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25891,6 +26165,8 @@ class InstanceInfo(AbstractModel):
         :type InstanceNodes: int
         :param _TagList: <p>标签列表</p>
         :type TagList: list of TagInfoItem
+        :param _CageId: <p>金融围拢 ID 。</p>
+        :type CageId: str
         :param _EngineType: <p>引擎类型</p>
         :type EngineType: str
         :param _MaxDelayTime: <p>最大延迟阈值</p>
@@ -25958,6 +26234,7 @@ class InstanceInfo(AbstractModel):
         self._ZoneId = None
         self._InstanceNodes = None
         self._TagList = None
+        self._CageId = None
         self._EngineType = None
         self._MaxDelayTime = None
         self._DiskType = None
@@ -26444,6 +26721,17 @@ class InstanceInfo(AbstractModel):
         self._TagList = TagList
 
     @property
+    def CageId(self):
+        r"""<p>金融围拢 ID 。</p>
+        :rtype: str
+        """
+        return self._CageId
+
+    @CageId.setter
+    def CageId(self, CageId):
+        self._CageId = CageId
+
+    @property
     def EngineType(self):
         r"""<p>引擎类型</p>
         :rtype: str
@@ -26631,6 +26919,7 @@ class InstanceInfo(AbstractModel):
                 obj = TagInfoItem()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._CageId = params.get("CageId")
         self._EngineType = params.get("EngineType")
         self._MaxDelayTime = params.get("MaxDelayTime")
         self._DiskType = params.get("DiskType")
@@ -28690,32 +28979,17 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _LogExpireDay: 日志保留时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _LogExpireDay: <p>审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90：  三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul>
         :type LogExpireDay: int
-        :param _HighLogExpireDay: 高频日志保留时长。默认值为7，此项取值需小于等于 LogExpireDay，支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _HighLogExpireDay: <p>高频审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90：  三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul><p>此项取值需小于等于 LogExpireDay。</p>
         :type HighLogExpireDay: int
-        :param _AuditAll: 修改实例审计规则为全审计。
+        :param _AuditAll: <p>修改实例审计规则为全审计。</p>
         :type AuditAll: bool
-        :param _AuditRuleFilters: 废弃。
+        :param _AuditRuleFilters: <p>废弃。</p>
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: 规则模板 ID。可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取。
+        :param _RuleTemplateIds: <p>规则模板 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/101811">DescribeAuditRuleTemplates</a> 接口获取。</p>
         :type RuleTemplateIds: list of str
         """
         self._InstanceId = None
@@ -28727,7 +29001,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -28738,14 +29012,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def LogExpireDay(self):
-        r"""日志保留时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90：  三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul>
         :rtype: int
         """
         return self._LogExpireDay
@@ -28756,15 +29023,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def HighLogExpireDay(self):
-        r"""高频日志保留时长。默认值为7，此项取值需小于等于 LogExpireDay，支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>高频审计日志保存时长。</p><p>枚举值：</p><ul><li>7： 一周</li><li>30： 一个月</li><li>90：  三个月</li><li>180： 六个月</li><li>365： 一年</li><li>1095： 三年</li><li>1825： 五年</li></ul><p>此项取值需小于等于 LogExpireDay。</p>
         :rtype: int
         """
         return self._HighLogExpireDay
@@ -28775,7 +29034,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def AuditAll(self):
-        r"""修改实例审计规则为全审计。
+        r"""<p>修改实例审计规则为全审计。</p>
         :rtype: bool
         """
         return self._AuditAll
@@ -28788,7 +29047,7 @@ class ModifyAuditServiceRequest(AbstractModel):
     def AuditRuleFilters(self):
         warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
 
-        r"""废弃。
+        r"""<p>废弃。</p>
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
@@ -28801,7 +29060,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""规则模板 ID。可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取。
+        r"""<p>规则模板 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/101811">DescribeAuditRuleTemplates</a> 接口获取。</p>
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -28957,49 +29216,45 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _ExpireDays: 数据备份文件的保留时间，单位为天。
-1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
-2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
+        :param _ExpireDays: <p>数据备份文件的保留时间，单位为天。</p><ol><li>MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。</li><li>MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。</li></ol>
         :type ExpireDays: int
-        :param _StartTime: (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
+        :param _StartTime: <p>(将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。</p>
         :type StartTime: str
-        :param _BackupMethod: 自动备份方式，仅支持：physical - 物理冷备
+        :param _BackupMethod: <p>自动备份方式，仅支持：physical - 物理冷备</p>
         :type BackupMethod: str
-        :param _BinlogExpireDays: binlog 的保留时间，单位为天。
-1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
-2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
+        :param _BinlogExpireDays: <p>binlog 的保留时间，单位为天。</p><ol><li>MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。</li><li>MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。</li></ol>
         :type BinlogExpireDays: int
-        :param _BackupTimeWindow: 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
+        :param _BackupTimeWindow: <p>备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{&quot;Monday&quot;: &quot;&quot;, &quot;Tuesday&quot;: &quot;10:00-14:00&quot;, &quot;Wednesday&quot;: &quot;&quot;, &quot;Thursday&quot;: &quot;&quot;, &quot;Friday&quot;: &quot;&quot;, &quot;Saturday&quot;: &quot;&quot;, &quot;Sunday&quot;: &quot;10:00-14:00&quot;}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）</p>
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
-        :param _EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
+        :param _EnableBackupPeriodSave: <p>定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。</p>
         :type EnableBackupPeriodSave: str
-        :param _EnableBackupPeriodLongTermSave: 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
+        :param _EnableBackupPeriodLongTermSave: <p>长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效</p>
         :type EnableBackupPeriodLongTermSave: str
-        :param _BackupPeriodSaveDays: 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        :param _BackupPeriodSaveDays: <p>定期保留最长天数，最小值：90，最大值：3650，默认值：1080</p>
         :type BackupPeriodSaveDays: int
-        :param _BackupPeriodSaveInterval: 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        :param _BackupPeriodSaveInterval: <p>定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly</p>
         :type BackupPeriodSaveInterval: str
-        :param _BackupPeriodSaveCount: 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        :param _BackupPeriodSaveCount: <p>定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1</p>
         :type BackupPeriodSaveCount: int
-        :param _StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        :param _StartBackupPeriodSaveDate: <p>定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss</p>
         :type StartBackupPeriodSaveDate: str
-        :param _EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        :param _EnableBackupArchive: <p>是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :type EnableBackupArchive: str
-        :param _BackupArchiveDays: 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        :param _BackupArchiveDays: <p>数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数</p>
         :type BackupArchiveDays: int
-        :param _BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        :param _BinlogArchiveDays: <p>日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数</p>
         :type BinlogArchiveDays: int
-        :param _EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        :param _EnableBinlogArchive: <p>是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :type EnableBinlogArchive: str
-        :param _EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        :param _EnableBackupStandby: <p>是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :type EnableBackupStandby: str
-        :param _BackupStandbyDays: 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :param _BackupStandbyDays: <p>数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :type BackupStandbyDays: int
-        :param _EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        :param _EnableBinlogStandby: <p>是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :type EnableBinlogStandby: str
-        :param _BinlogStandbyDays: 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :param _BinlogStandbyDays: <p>日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :type BinlogStandbyDays: int
         """
         self._InstanceId = None
@@ -29025,7 +29280,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29036,9 +29291,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def ExpireDays(self):
-        r"""数据备份文件的保留时间，单位为天。
-1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
-2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
+        r"""<p>数据备份文件的保留时间，单位为天。</p><ol><li>MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。</li><li>MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。</li></ol>
         :rtype: int
         """
         return self._ExpireDays
@@ -29049,7 +29302,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""(将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
+        r"""<p>(将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。</p>
         :rtype: str
         """
         return self._StartTime
@@ -29060,7 +29313,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""自动备份方式，仅支持：physical - 物理冷备
+        r"""<p>自动备份方式，仅支持：physical - 物理冷备</p>
         :rtype: str
         """
         return self._BackupMethod
@@ -29071,9 +29324,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BinlogExpireDays(self):
-        r"""binlog 的保留时间，单位为天。
-1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
-2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
+        r"""<p>binlog 的保留时间，单位为天。</p><ol><li>MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。</li><li>MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。</li></ol>
         :rtype: int
         """
         return self._BinlogExpireDays
@@ -29084,7 +29335,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupTimeWindow(self):
-        r"""备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
+        r"""<p>备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{&quot;Monday&quot;: &quot;&quot;, &quot;Tuesday&quot;: &quot;10:00-14:00&quot;, &quot;Wednesday&quot;: &quot;&quot;, &quot;Thursday&quot;: &quot;&quot;, &quot;Friday&quot;: &quot;&quot;, &quot;Saturday&quot;: &quot;&quot;, &quot;Sunday&quot;: &quot;10:00-14:00&quot;}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
         """
         return self._BackupTimeWindow
@@ -29095,7 +29346,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupPeriodSave(self):
-        r"""定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
+        r"""<p>定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。</p>
         :rtype: str
         """
         return self._EnableBackupPeriodSave
@@ -29106,7 +29357,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupPeriodLongTermSave(self):
-        r"""长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
+        r"""<p>长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效</p>
         :rtype: str
         """
         return self._EnableBackupPeriodLongTermSave
@@ -29117,7 +29368,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupPeriodSaveDays(self):
-        r"""定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        r"""<p>定期保留最长天数，最小值：90，最大值：3650，默认值：1080</p>
         :rtype: int
         """
         return self._BackupPeriodSaveDays
@@ -29128,7 +29379,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupPeriodSaveInterval(self):
-        r"""定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        r"""<p>定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly</p>
         :rtype: str
         """
         return self._BackupPeriodSaveInterval
@@ -29139,7 +29390,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupPeriodSaveCount(self):
-        r"""定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        r"""<p>定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1</p>
         :rtype: int
         """
         return self._BackupPeriodSaveCount
@@ -29150,7 +29401,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def StartBackupPeriodSaveDate(self):
-        r"""定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        r"""<p>定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._StartBackupPeriodSaveDate
@@ -29161,7 +29412,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupArchive(self):
-        r"""是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        r"""<p>是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :rtype: str
         """
         return self._EnableBackupArchive
@@ -29172,7 +29423,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupArchiveDays(self):
-        r"""数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        r"""<p>数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数</p>
         :rtype: int
         """
         return self._BackupArchiveDays
@@ -29183,7 +29434,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BinlogArchiveDays(self):
-        r"""日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        r"""<p>日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数</p>
         :rtype: int
         """
         return self._BinlogArchiveDays
@@ -29194,7 +29445,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBinlogArchive(self):
-        r"""是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        r"""<p>是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :rtype: str
         """
         return self._EnableBinlogArchive
@@ -29205,7 +29456,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupStandby(self):
-        r"""是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        r"""<p>是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :rtype: str
         """
         return self._EnableBackupStandby
@@ -29216,7 +29467,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupStandbyDays(self):
-        r"""数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        r"""<p>数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :rtype: int
         """
         return self._BackupStandbyDays
@@ -29227,7 +29478,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBinlogStandby(self):
-        r"""是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
+        r"""<p>是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。</p>
         :rtype: str
         """
         return self._EnableBinlogStandby
@@ -29238,7 +29489,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BinlogStandbyDays(self):
-        r"""日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        r"""<p>日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数</p>
         :rtype: int
         """
         return self._BinlogStandbyDays

@@ -25487,6 +25487,145 @@ class SaveAndDeployLogstashPipelineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchServerlessSpaceDataRequest(AbstractModel):
+    r"""SearchServerlessSpaceData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>space空间id</p>
+        :type SpaceId: str
+        :param _Uri: <p>请求url</p>
+        :type Uri: str
+        :param _Method: <p>method</p><p>枚举值：</p><ul><li>GET： get请求</li><li>POST： post请求</li><li>PUT： put请求</li></ul>
+        :type Method: str
+        :param _Body: <p>请求体</p>
+        :type Body: str
+        """
+        self._SpaceId = None
+        self._Uri = None
+        self._Method = None
+        self._Body = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>space空间id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Uri(self):
+        r"""<p>请求url</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Method(self):
+        r"""<p>method</p><p>枚举值：</p><ul><li>GET： get请求</li><li>POST： post请求</li><li>PUT： put请求</li></ul>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Body(self):
+        r"""<p>请求体</p>
+        :rtype: str
+        """
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Uri = params.get("Uri")
+        self._Method = params.get("Method")
+        self._Body = params.get("Body")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchServerlessSpaceDataResponse(AbstractModel):
+    r"""SearchServerlessSpaceData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpStatus: <p>请求状态</p>
+        :type HttpStatus: int
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HttpStatus = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def HttpStatus(self):
+        r"""<p>请求状态</p>
+        :rtype: int
+        """
+        return self._HttpStatus
+
+    @HttpStatus.setter
+    def HttpStatus(self, HttpStatus):
+        self._HttpStatus = HttpStatus
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HttpStatus = params.get("HttpStatus")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ServerlessDi(AbstractModel):
     r"""创建serverless索引时创建数据接入
 

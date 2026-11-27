@@ -23930,7 +23930,7 @@ class CreateAgentRecordTaskRequest(AbstractModel):
         :type MaxDurationMinutes: int
         :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AgentStoreCosParam`
-        :param _StartTime: <p>定时录制开始时刻</p><p>参数格式：2026-07-01T15:31:32+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
+        :param _StartTime: <p>定时录制开始时刻</p><p>参数格式：2026-07-03T12:10:28.065902+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
         :type StartTime: str
         :param _InterruptPolicy: <p>中断策略</p><p>枚举值：</p><ul><li>STOP_ON_INTERRUPT： 直播流中断后立即结束录制</li><li>CONTINUE_UNTIL_END： 直播流中断时忽略中断，继续录制直到任务结束时间</li></ul><p>默认值：STOP_ON_INTERRUPT</p>
         :type InterruptPolicy: str
@@ -23976,7 +23976,7 @@ class CreateAgentRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>定时录制开始时刻</p><p>参数格式：2026-07-01T15:31:32+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
+        r"""<p>定时录制开始时刻</p><p>参数格式：2026-07-03T12:10:28.065902+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
         :rtype: str
         """
         return self._StartTime

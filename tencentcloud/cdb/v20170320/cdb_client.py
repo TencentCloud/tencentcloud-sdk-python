@@ -1453,6 +1453,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCageList(self, request):
+        r"""本接口（DescribeCageList）用于查询金融围拢、独享集群列表。
+
+        :param request: Request instance for DescribeCageList.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCageListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCdbProxyInfo(self, request):
         r"""本接口（DescribeCdbProxyInfo）用于查询数据库代理详情信息。
 
