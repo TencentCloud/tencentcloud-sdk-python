@@ -20,8 +20,10 @@ logger = logging.getLogger("tencentcloud_sdk_common")
 
 
 def _get_proxy_from_env(host, varname="HTTPS_PROXY"):
-    no_proxy = os.environ.get("NO_PROXY") or os.environ.get("no_proxy")
-    if no_proxy and host in no_proxy:
+    no_proxy = os.environ.get("no_proxy") or os.environ.get("NO_PROXY")
+    scheme = "http" if varname.upper() == "HTTP_PROXY" else "https"
+    url = host if "://" in host else "%s://%s" % (scheme, host)
+    if no_proxy and requests.utils.should_bypass_proxies(url, no_proxy=no_proxy):
         return None
     return os.environ.get(varname.lower()) or os.environ.get(varname.upper())
 
